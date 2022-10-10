@@ -105,13 +105,8 @@ const initTrain = () => {
     }
   }
 
-  // eslint-disable-next-line no-inner-declarations
-  function clearScrollingEvent() {
-    clearInterval(startScrolling);
-  }
-
   // Clear interval on touch event
-  listElem.addEventListener('touchstart', clearScrollingEvent);
+  listElem.addEventListener('touchstart', pauseScrolling);
 };
 
 export default initTrain;
