@@ -52,9 +52,9 @@ ul.swiper-wrapper {
   overflow: visible;
 }
 
-.arrow-link.swiper-button-disabled[disabled]:hover,
-.arrow-link.swiper-button-disabled[disabled]:focus,
-.arrow-link.swiper-button-disabled[disabled] {
+.site-main .arrow-link.swiper-button-disabled[disabled]:hover,
+.site-main .arrow-link.swiper-button-disabled[disabled]:focus,
+.site-main .arrow-link.swiper-button-disabled[disabled] {
   opacity: .2;
 
   .arrow-link-arrow::before {

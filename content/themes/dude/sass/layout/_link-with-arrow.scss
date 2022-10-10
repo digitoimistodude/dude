@@ -61,10 +61,15 @@
   }
 }
 
-.arrow-link-prev {
+.site-main .arrow-link-prev {
   @include link-with-arrow($direction: 'left');
 }
 
-.arrow-link-next {
+.site-main .arrow-link-next {
   @include link-with-arrow($direction: 'right');
+
+  // Fix alignment
+  .arrow-link-arrow {
+    transform: translateY(-2.5px);
+  }
 }
