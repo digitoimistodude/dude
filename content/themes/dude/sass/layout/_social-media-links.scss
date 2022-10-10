@@ -1,0 +1,30 @@
+.social-media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  margin-top: 2rem;
+  padding: 0;
+
+  svg {
+    color: var(--color-text);
+    height: 24px;
+    transition: all $transition-duration;
+    width: 24px;
+
+    @media (max-width: $container-mobile) {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  a:hover svg,
+  a:focus svg {
+    color: var(--color-mint);
+  }
+
+  @media (max-width: $container-mobile) {
+    gap: .5rem 1rem;
+  }
+}

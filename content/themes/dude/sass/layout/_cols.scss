@@ -1,0 +1,22 @@
+// General layout related styles
+.cols-two {
+  display: grid;
+  gap: var(--padding-container-vertical);
+
+  @media (min-width: 760px) {
+    grid-gap: 13rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 1600px) {
+    grid-gap: calc(13rem / 2);
+  }
+
+  @media (min-width: 760px) and (max-width: 1200px) {
+    grid-gap: calc(13rem / 3);
+  }
+
+  @media (max-width: 767px) {
+    grid-gap: 4rem;
+  }
+}

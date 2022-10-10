@@ -1,0 +1,122 @@
+@mixin box-reference($light: false) {
+  position: relative;
+
+  .meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // Text based list with commas:
+    li {
+      color: var(--color-text);
+      font-size: var(--font-size-16);
+    }
+
+    li:first-child {
+      text-transform: capitalize;
+    }
+
+    li::after {
+      content: ', ';
+      display: inline-flex;
+      margin-right: .5rem;
+    }
+
+    li:last-child::after {
+      content: '';
+    }
+  }
+
+  .image {
+    // Default aspect ratio
+    @include aspect-ratio(1, 1);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .global-link {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+  }
+
+  // stylelint-disable-next-line no-descending-specificity
+  &:nth-of-type(2n) .image {
+    @include aspect-ratio(600, 700);
+  }
+
+  // stylelint-disable-next-line no-descending-specificity
+  h3 {
+    @include heading-38();
+  }
+
+  // stylelint-disable
+  // "Pill list"
+  // .meta-tags {
+  //   gap: 1rem;
+
+  //   li {
+  //     background-color: var(--color-light-blue);
+  //     border-radius: 30px;
+  //     font-size: var(--font-size-16);
+  //     padding: 2px 15px;
+  //   }
+  // }
+
+  @if $light {
+    .image > span {
+      color: var(--color-white);
+    }
+  }
+}
+
+.col-reference {
+  @include box-reference();
+}
+
+.col-reference-list {
+  @include box-reference($light: true);
+}
+
+// Don't add duotone if not hovering or focusing the column
+.col:not(:hover):not(:focus) .image.has-duotone {
+  filter: unset;
+}
+
+// Span label in hover
+.cols .col .image > span {
+  @include cubic-bezier($property: opacity);
+  color: var(--color-white);
+  font-size: var(--font-size-26);
+  font-weight: var(--font-weight-semibold);
+  opacity: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.global-link:focus + .image > span,
+.global-link:hover + .image > span {
+  opacity: 1;
+}
+
+.col > .image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.col-post,
+.col-reference {
+  .global-link:focus + .image > img,
+  .global-link:hover + .image > img {
+    opacity: .8;
+  }
+
+  .image > img {
+    @include cubic-bezier($property: opacity);
+  }
+}

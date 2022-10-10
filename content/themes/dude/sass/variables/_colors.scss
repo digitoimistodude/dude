@@ -1,0 +1,105 @@
+// stylelint-disable no-descending-specificity
+// CSS variables
+// Define names:
+// For AAA: https://www.color-blindness.com/color-name-hue/
+// For AA: https://chir.ag/projects/name-that-color/
+// ------------------------------------------------------
+:root {
+  // Brand color pool
+  --color-dark-navy: #2e2f38;
+  --color-midnight: #1c1e26;
+  --color-petrol: #1e4348;
+  --color-light-mint: #e7f8f4;
+  --color-light-blue: #f7f7fa;
+  --color-mint: #7effe1;
+  --color-scropion: #5f5f5f;
+  --color-light-grey: #aeafbc;
+
+  // Brand 2020
+  --color-cobalt-blue: #4d4aff;
+  --color-midnight-blue: #131a50;
+  --color-midnight-2020: #161826;
+  --color-white-two: #f8f8f8;
+
+  // Alternative colors (not in the brand guide)
+  // For example to use in gradients etc.
+  --color-comet: #56586f;
+  --color-trout: #4d4f63;
+  --color-blue-bell: #9ca0ca;
+  --color-java: #23d5ab;
+  --color-paradiso: #337a84;
+  --color-iron: #dcdde0;
+
+  // General multi-purpose colors
+  --color-black: #000;
+  --color-white: #fff;
+  --color-black-rock: #2b303c;
+  --color-blue-chalk: #ece6f2;
+  --color-pattens-blue: #eaf1f8;
+
+  // Main element colors
+  --color-main: var(--color-dark-navy);
+  --color-heading: var(--color-dark-navy);
+  --color-paragraph: var(--color-dark-navy);
+
+  // Code & Community specific
+  --color-github-link: #0366d6;
+  --color-github-css: #563d7c;
+  --color-github-shell: #89e051;
+  --color-github-php: #4f5d95;
+  --color-github-js: #f1e05a;
+
+  // Modern link that has background effect on hover
+  --color-link-border-bottom: var(--color-mint);
+  --color-link-border-focus: var(--color-black);
+  --color-link-comment: var(--color-scropion);
+  --color-link-comment-time-anchor: var(--color-dark-navy);
+  --color-link-edit-background-hover: var(--color-pattens-blue);
+  --color-link-edit-border: var(--color-pattens-blue);
+  --color-link-edit-text: color.adjust(#eaf1f8, -20%);
+  --color-link-edit-text-hover: var(--color-dark-navy);
+  --color-link-text: var(--color-petrol);
+  --color-link-text-focus: var(--color-black);
+  --color-link-text-hover: var(--color-black);
+  --color-link-background-hover: var(--color-mint);
+
+  // Element colors
+  --color-phone-link: #4cd9b8;
+  --color-background-code-block: var(--color-black-rock);
+  --color-background-code-inline: #f9f2f4;
+  --color-background-default: #f0f0f0;
+  --color-background-table-cell-odd: var(--color-white);
+  --color-background-table-cell-even: #f3f3f3;
+  --color-background-top: #f5f5f5;
+  --color-background-top-hover: #f0f0f0;
+  --color-background-tag: var(--color-pattens-blue);
+  --color-blockquote: var(--color-paradiso);
+  --color-comment-text: var(--color-dark-navy);
+  --color-comment-author-text: var(--color-dark-navy);
+  --color-tag-border: rgb(6 22 41 / .1);
+  --color-tag-border-hover: var(--color-midnight);
+  --color-tag-text: var(--color-light-grey);
+  --color-category-border: var(--color-midnight);
+  --color-category-text: var(--color-black);
+  --color-caption: #5c5c6a;
+  --color-code-block: #c7254e;
+  --color-code-text: #f5f5f5;
+  --color-kbd-border: #ccc;
+  --color-kbd-background: var(--color-pattens-blue);
+  --color-pagination-text: var(--color-midnight);
+  --color-pagination-background-hover: var(--color-midnight);
+  --color-pagination-border-hover: var(--color-midnight);
+  --color-pagination-text-hover: var(--color-mint);
+  --color-pagination-background-current: var(--color-midnight);
+  --color-pagination-border-current: var(--color-midnight);
+  --color-pagination-text-current: var(--color-mint);
+  --color-top-arrow-dark: var(--color-black);
+  --color-top-arrow-light: var(--color-white);
+  --color-error-block-border: #adb2ad; // Color picked from ACF
+  --color-error-block-background: #f9f9f9; // Color picked from ACF
+
+  // Element states
+  --color-error: #cc2e2e;
+  --color-success: #a9f3a2;
+  --color-warning: #cc752e;
+}

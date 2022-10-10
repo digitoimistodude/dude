@@ -1,0 +1,66 @@
+// Reference listing block
+.block-reference-list {
+  background-color: var(--color-petrol);
+
+  .cols {
+    display: grid;
+    gap: 7rem;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    @media (max-width: $container-desktop) {
+      gap: 4rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (max-width: $container-ipad) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .col-reference-list {
+    grid-column: auto / span 2;
+
+    a,
+    li,
+    h3 {
+      color: var(--color-text);
+    }
+
+    a {
+      font-size: var(--font-size-28);
+    }
+  }
+
+  .image {
+    @include aspect-ratio(390, 528);
+  }
+
+  .col-reference-list:nth-of-type(1),
+  .col-reference-list:nth-of-type(2) {
+    grid-column: auto / span 3;
+
+    @media (max-width: $container-desktop) {
+      grid-column: auto / span 2;
+    }
+  }
+
+  .col-reference-list:nth-of-type(1) {
+    margin-right: 3rem;
+
+    .image {
+      @include aspect-ratio(1, 1);
+    }
+  }
+
+  .col-reference-list:nth-of-type(2) {
+    margin-left: 3rem;
+
+    .image {
+      @include aspect-ratio(600, 670);
+    }
+  }
+}
+
+.block-hero-content-image + .block-reference-list .container {
+  padding-top: 0;
+}

@@ -1,0 +1,70 @@
+.block-job-techniques {
+  h2 {
+    @include heading-38();
+    color: var(--color-heading);
+    margin-bottom: calc(var(--padding-container-vertical) / 2);
+    margin-top: 0;
+
+    @media (max-width: 800px) {
+      margin-bottom: var(--padding-container-vertical);
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  svg {
+    fill: var(--color-text);
+    height: 100%;
+    max-height: 6.4rem;
+    max-width: 6.4rem;
+    width: auto;
+
+    path:not(.do-not-fill) {
+      fill: var(--color-text);
+    }
+
+    // iPhone and other phones
+    @media (max-width: 700px) {
+      max-height: 6rem;
+      max-width: 6rem;
+      width: 100%;
+    }
+
+    @media (max-width: $container-mobile) {
+      max-height: 4.2rem;
+      max-width: 4.2rem;
+    }
+  }
+
+  .do-not-fill {
+    fill: var(--color-background-block);
+  }
+
+  .logo-wall {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+
+    @media (max-width: 1100px) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    @media (max-width: 800px) {
+      gap: 4rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (max-width: $container-mobile) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

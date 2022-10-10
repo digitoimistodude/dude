@@ -1,0 +1,61 @@
+.block-blog-archive h2 {
+  @include heading-42();
+}
+
+.block-blog-latest {
+  .cols {
+    display: grid;
+  }
+
+  .cols.cols-3 {
+    gap: 6.4rem;
+
+    @media (min-width: $container-ipad) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: $container-ipad-landscape) {
+      gap: 4rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: $container-mobile) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+
+  .col {
+    position: relative;
+  }
+
+  .col .h-entry-content {
+    @include box-post();
+  }
+}
+
+// Block styles for single blocks, other than archive pages
+.block-blog-latest.is-single-block {
+  --gap: calc(var(--padding-container-vertical) / 3);
+
+  h2 {
+    @include heading-90();
+  }
+
+  .cols {
+    gap: var(--gap);
+    margin-bottom: var(--gap);
+    margin-top: var(--gap);
+
+    @media (max-width: $container-desktop) {
+      --gap: 6rem;
+    }
+
+    @media (max-width: $container-desktop) {
+      --gap: 4rem;
+    }
+  }
+
+  .button-wrapper {
+    margin-top: calc(var(--gap) + 2rem);
+  }
+}

@@ -1,0 +1,128 @@
+.block-reference-quotes .container {
+  overflow: visible;
+
+  .swiper-slide {
+    @include cubic-bezier();
+    opacity: 0;
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+  }
+}
+
+.item-quote blockquote > p {
+  color: var(--color-text);
+  font-size: var(--font-size-52);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.item-quote blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.item-quote > figure {
+  display: grid;
+  gap: 8rem;
+
+  @media (max-width: $container-ipad) {
+    gap: 4rem;
+  }
+}
+
+.quotes figure {
+  margin: 0;
+}
+
+.quotes .person {
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+
+  @media (max-width: $container-ipad) {
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+}
+
+.quotes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  cite {
+    color: var(--color-text);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: var(--font-size-16);
+    font-style: normal;
+    margin: 0;
+    max-width: 100%;
+    position: relative;
+    text-align: left;
+    width: 100%;
+  }
+
+  figcaption {
+    align-items: center;
+    color: var(--color-text);
+    display: flex;
+    gap: calc(3rem + calc(1rem + 1.6rem));
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .mdash {
+    background-color: var(--color-text);
+    content: '';
+    display: block;
+    height: 1px;
+    width: 1.6rem;
+  }
+
+  .name {
+    align-items: center;
+    display: flex;
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-semibold);
+    gap: 1rem;
+    margin-left: -#{calc(1rem + 1.6rem)};
+  }
+
+  .name-title {
+    font-size: var(--font-size-18);
+  }
+
+  .company {
+    display: block;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-medium);
+    width: 100%;
+  }
+
+  .comma {
+    margin-left: -.9rem;
+    margin-right: .5rem;
+  }
+
+  @media (max-width: $container-mobile) {
+    .comma {
+      // stylelint-disable-line a11y/no-display-none
+      display: none;
+    }
+
+    .name-title {
+      font-weight: var(--font-weight-medium);
+      width: 100%;
+    }
+  }
+}
+
+.wp-block-acf-references + .wp-block-acf-reference-quotes .container,
+.block-references + .block-reference-quotes .container {
+  padding-top: 0;
+}

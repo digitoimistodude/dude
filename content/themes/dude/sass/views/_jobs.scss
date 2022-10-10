@@ -1,0 +1,78 @@
+// Jobs page image layout
+body.page-id-4491 .site-main .block-images {
+  .image-2 {
+    max-width: 600px;
+    padding-bottom: 0;
+    padding-left: 10%;
+    padding-right: 0;
+    padding-top: 20%;
+
+    @media (min-width: 1390px) {
+      padding-left: 35%;
+      transform: translateX(-20%);
+    }
+  }
+
+  .image-3 {
+    max-width: 500px;
+    padding-bottom: 10%;
+    padding-left: 0;
+    padding-right: 12%;
+    padding-top: 0;
+    transform: translateY(-5%);
+
+    @media (min-width: 1390px) {
+      transform: translateX(-10%) translateY(-5%);
+    }
+
+    @media (max-width: 990px) {
+      transform: translateY(0);
+    }
+  }
+
+  .image-4 {
+    max-width: 400px;
+    padding-bottom: 10%;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 10%;
+
+    @media (min-width: 1390px) {
+      transform: translateX(-35%);
+    }
+  }
+
+  .image-6 {
+    max-width: 700px;
+    padding-bottom: 0;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 7%;
+  }
+}
+
+.job-filled .block:not(.block-hero-jobs) {
+  > .container {
+    opacity: .18;
+  }
+
+  &::after {
+    align-self: center;
+    color: var(--color-text);
+    content: 'Paikka on täytetty';
+    display: flex;
+    font-family: var(--font-paragraph);
+    font-size: clamp-calc($container-mobile, 1600px, 22px, 64px);
+    font-weight: var(--font-weight-semibold);
+    height: unset;
+    justify-self: center;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    width: unset;
+    z-index: 3;
+  }
+}

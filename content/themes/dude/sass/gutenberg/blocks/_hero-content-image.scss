@@ -1,0 +1,241 @@
+// stylelint-disable no-descending-specificity
+.col-content {
+  position: relative;
+  z-index: 3;
+}
+
+.block-hero-content-image {
+  .container {
+    align-items: center;
+    display: flex;
+    overflow: visible;
+    padding-top: calc(var(--height-navigation-mobile) + var(--padding-container-vertical));
+    position: relative;
+
+    @media (max-width: 768px) {
+      display: grid;
+    }
+
+    @media (max-width: $container-mobile) {
+      padding-bottom: 17.5rem;
+    }
+  }
+
+  h1,
+  h2,
+  p {
+    color: var(--color-text-block);
+  }
+
+  h2 {
+    @include heading-110();
+    font-size: clamp-calc($container-mobile, 1600px, 32px, 90px);
+  }
+
+  .col-content p {
+    color: var(--color-text-block);
+    max-width: 55.4rem;
+
+    @media (max-width: 900px) {
+      font-size: var(--font-size-16);
+      max-width: 120rem;
+    }
+  }
+
+  &.has-image-as-img {
+    img {
+      @media (min-width: 768px) {
+        height: auto;
+        max-width: 640px;
+        position: absolute;
+        right: 0;
+      }
+
+      @media (min-width: 1246px) {
+        margin-top: -5rem;
+      }
+
+      @media (min-width: 1620px) {
+        min-width: 640px;
+      }
+
+      @media (max-width: 1619px) {
+        height: auto;
+        min-width: 35vw;
+        width: 100%;
+      }
+
+      @media (max-width: 1100px) {
+        margin-top: 4rem;
+      }
+
+      @media (max-width: 900px) {
+        margin-top: 8rem;
+      }
+
+      @media (max-width: 768px) {
+        margin-top: 4rem;
+      }
+    }
+
+    .col-content {
+      align-items: center;
+      display: flex;
+      max-width: 100rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .col-image {
+      width: 100%;
+    }
+
+    .col-image,
+    .col-image img {
+      @include aspect-ratio(712, 894.6);
+    }
+  }
+
+  // This needs to be separate class because otherwise it would not get external link
+  .button-work {
+    @include button();
+    @include button-size-large();
+
+    // This variable comes dynamically from reference back end
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    background-color: var(--color-brand-reference-text);
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    border-color: var(--color-brand-reference-text);
+
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-brand-reference-bg);
+  }
+
+  @media (min-width: $container-mobile) {
+    .button-wrapper {
+      margin-top: 4.2rem;
+    }
+  }
+}
+
+.has-image .container {
+  padding-bottom: calc(calc(var(--height-navigation-mobile) + var(--padding-container-vertical) / 3));
+
+  @media (min-width: 1180px) {
+    padding-top: 22rem;
+  }
+
+  @media (max-width: 900px) {
+    padding-bottom: calc(var(--padding-container-vertical) * 2);
+  }
+
+  @media (max-width: 768px) {
+    padding-bottom: var(--padding-container-vertical);
+  }
+}
+
+.has-image.has-image-as-img h2 {
+  @media (min-width: 1245px) {
+
+    // This needs to be set, otherwise the long words will wrap uncontrollably
+    min-width: 100rem;
+  }
+
+  @media (max-width: 1245px) {
+    min-width: 60vw;
+  }
+
+  @media (max-width: 768px) {
+    min-width: unset;
+  }
+}
+
+.has-bg-image img {
+  aspect-ratio: unset;
+  height: 100%;
+  max-width: none;
+  min-width: 0;
+  object-fit: cover;
+  opacity: .3;
+  width: 100%;
+}
+
+.has-bg-image .col-image {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  @media (max-width: $container-mobile) {
+    bottom: initial;
+    max-width: none;
+    right: initial;
+  }
+}
+
+.has-bg-image .container {
+  position: static;
+}
+
+// Let's replace the long word in mobile, because it won't wrap properly
+@media (max-width: $container-mobile) {
+  .page-id-9 .site-main .block-hero-content-image h2 {
+    line-height: 0;
+    text-indent: -9999px;
+    visibility: hidden;
+
+    &::after {
+      content: 'Näyttävät, nopeat ja käytettävät verkkosivut';
+      display: block;
+      line-height: 1.23;
+      text-indent: 0;
+      visibility: visible;
+    }
+  }
+}
+
+// Reference version
+// stylelint-disable selector-max-class, selector-max-specificity
+.block.block-hero-content-image.has-image-as-img.block-background-reference .container {
+  .col-content {
+    padding-top: 0;
+  }
+
+  @media (max-width: 1180px) {
+    display: grid;
+    gap: 8rem 4rem;
+
+    .col-content,
+    .content {
+      max-width: unset;
+      position: static;
+      width: unset;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .col-image {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .col-content p {
+      max-width: unset;
+    }
+  }
+}
+
+// Contact version
+.block.block-hero-content-image.block-hero-contact {
+  .col-content * {
+    max-width: 100%;
+  }
+
+  .col-content {
+    max-width: 70rem;
+  }
+}

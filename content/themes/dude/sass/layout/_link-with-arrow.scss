@@ -1,0 +1,70 @@
+// stylelint-disable max-line-length
+@mixin link-with-arrow($direction: 'right', $color: var(--color-text), $hover: var(--color-text), $font-size: var(--font-size-17), $font-weight: var(--font-weight-semibold)) {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: left;
+  transition: color $transition-duration cubic-bezier(.25, .46, .45, .94);
+  width: 90px;
+
+  .arrow-link-arrow {
+    display: inline-block;
+    white-space: nowrap;
+    width: 90px;
+  }
+
+  .arrow-link-arrow::before {
+    background-color: $color;
+    bottom: 4px;
+    content: '';
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    width: 70px;
+  }
+
+  .arrow-link-arrow::after {
+    border-bottom: 2px solid $color;
+    border-radius: 1px;
+    border-right: 2px solid $color;
+    bottom: 1px;
+    content: '';
+    display: inline-block;
+    height: 8px;
+    left: -7px;
+    padding: 3px;
+    position: relative;
+    transform: rotate(-45deg);
+    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    width: 8px;
+  }
+
+  &:hover .arrow-link-arrow::before,
+  &:focus .arrow-link-arrow::before {
+    background-color: $hover;
+    width: 77px;
+  }
+
+  &:hover .arrow-link-arrow::after,
+  &:focus .arrow-link-arrow::after {
+    border-color: $hover;
+  }
+
+  &:hover,
+  &:focus {
+    color: $hover;
+  }
+
+  @if ($direction == 'left') {
+    transform: rotate(-180deg);
+  }
+}
+
+.arrow-link-prev {
+  @include link-with-arrow($direction: 'left');
+}
+
+.arrow-link-next {
+  @include link-with-arrow($direction: 'right');
+}

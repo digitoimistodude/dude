@@ -1,0 +1,44 @@
+// CSS Variables for radios and checkboxes
+:root {
+  // Form element colors
+  --color-background-input-field: var(--color-white);
+  --color-background-fileupload-hover: var(--color-light-blue);
+  --color-form-text: var(--color-midnight);
+  --color-form-label-text: var(--color-midnight);
+  --color-required-label-text: var(--color-midnight);
+  --color-border-forms: var(--color-petrol);
+  --color-border-forms-focus: var(--color-cobalt-blue);
+  --color-button: var(--color-dark-navy);
+  --color-button-hover: var(--color-petrol);
+  --color-button-background: var(--color-mint);
+  --color-button-background-hover: #b4ffee;
+  --color-checkbox: var(--color-dark-navy);
+  --color-checkbox-checked: var(--color-cobalt-blue);
+  --color-checkbox-outline: 0 0 0 3px rgb(84 87 115 / .2);
+  --color-checkbox-border-hover: color.adjust(#545773, 15%);
+  --color-placeholder: var(--color-midnight);
+
+  // Form element settings
+  --border-radius-checkbox: 3px;
+  --border-radius-input-field: 3px;
+  --border-radius-select: 3px;
+  --border-width-checkbox: 1px;
+  --border-width-input-field: 1px;
+  --font-size-input-fields: var(--font-size-18);
+  --font-size-input-labels: var(--font-size-input-fields);
+  --font-size-required-text-label: var(--font-size-input-fields);
+  --font-size-required-asterisk-label: 2rem;
+  --form-column-gap: 2.5rem;
+  --form-row-gap: 2rem;
+  --form-required-gap: .5rem;
+  --form-line-height: 24px;
+  --form-padding-vertical: 1.5rem;
+  --form-padding-horizontal: 1.5rem;
+  --gap-checkbox: 1rem;
+  --gap-select-icon: 1.5rem;
+  --line-height-checkbox: var(--line-height-paragraph);
+  --size-checkbox: 2.6rem;
+  --size-checkbox-marker: 1.4rem;
+  --size-radio-button: 16px;
+  --size-radio-button-marker: 8px;
+}

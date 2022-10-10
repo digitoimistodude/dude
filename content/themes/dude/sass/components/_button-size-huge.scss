@@ -1,0 +1,13 @@
+@mixin button-size-huge() {
+  font-size: var(--font-size-24);
+  // stylelint-disable-next-line number-max-precision
+  line-height: 23.0909px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+
+  @media (max-width: 1000px) {
+    @include button-size-large();
+  }
+}

@@ -1,0 +1,14 @@
+.block-single-question {
+  h1 {
+    @include heading-42();
+  }
+
+  .container {
+    max-width: $width-max-article;
+    padding-top: 25rem;
+
+    @media (max-width: $container-ipad) {
+      padding-top: 15rem;
+    }
+  }
+}

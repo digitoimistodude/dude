@@ -1,0 +1,10 @@
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+.page-id-4485 .site-main .block-hero-content-image > .container {
+  padding-bottom: 0;
+
+  @media (max-width: $container-mobile) {
+    .content > p {
+      max-width: 420px;
+    }
+  }
+}

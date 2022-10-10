@@ -1,0 +1,43 @@
+.vimeo-iframe-wrapper iframe {
+  height: 180vw;
+  left: 50%;
+  min-height: 70vh;
+  min-width: 222vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+.vimeo-iframe-wrapper {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 4;
+
+  &.vimeo-iframe-wrapper-upsell {
+    height: 100%;
+    width: 100%;
+
+    iframe {
+      height: 100%;
+      min-height: 550px;
+
+      @media (max-width: 1500px) {
+        min-height: 600px;
+      }
+
+      @media (min-width: 1920px) {
+        min-height: 400px;
+      }
+
+      @media (min-width: 2450px) {
+        display: none;
+      }
+    }
+  }
+}

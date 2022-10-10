@@ -1,0 +1,77 @@
+.block-jobs {
+  h2 {
+    @include heading-64();
+  }
+
+  .open-positions-description {
+    max-width: 65rem;
+  }
+}
+
+.jobs {
+  border-top: 1px solid #50525c;
+  list-style: none;
+  margin: 4.8rem 0 0;
+  overflow: visible;
+  padding: 0;
+}
+
+.job-location {
+  opacity: .72;
+  text-align: right;
+}
+
+.job-title {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-24);
+  gap: 3rem;
+  margin-right: auto;
+}
+
+.job-link {
+  align-items: center;
+  border-bottom: 1px solid #50525c;
+  color: var(--color-text);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 3.6rem 0;
+  text-decoration: none;
+  width: 100%;
+
+  svg {
+    transition: all $transition-duration cubic-bezier(.19, 1, .22, 1);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-paragraph);
+  }
+
+  &:focus svg,
+  &:hover svg {
+    transform: translateX(20px);
+  }
+
+  &:focus {
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 675px) {
+    display: block;
+    padding: 2.5rem 0;
+    position: relative;
+
+    .job-location {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .job-title svg {
+      position: absolute;
+      right: 0;
+      top: calc(calc(111px / 2) - calc(12px / 2));
+    }
+  }
+}

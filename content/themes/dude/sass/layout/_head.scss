@@ -1,0 +1,15 @@
+// Block heads
+.head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6.5rem;
+
+  p,
+  h2 {
+    margin: 0;
+  }
+
+  @media (max-width: $container-mobile) {
+    margin-bottom: 4.5rem;
+  }
+}

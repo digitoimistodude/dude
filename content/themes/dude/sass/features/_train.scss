@@ -1,0 +1,110 @@
+// stylelint-disable scale-unlimited/declaration-strict-value,  selector-max-compound-selectors, selector-max-combinators, selector-max-class, selector-max-specificity
+.block-testimonial-train {
+  .container {
+    padding-bottom: calc(var(--padding-container-vertical) / 2);
+  }
+
+  .block-heading {
+    @include heading-90();
+    margin-bottom: 8rem;
+    margin-top: 0;
+    max-width: 120rem;
+  }
+
+  .testimonial-train {
+    padding-bottom: var(--padding-container-vertical);
+  }
+}
+
+.site-main .quotes.list {
+  display: flex;
+  gap: 7rem;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  position: relative;
+  scrollbar-width: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  will-change: transform;
+
+  &:not(.drag-to-scroll) {
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0;
+  }
+
+  .person {
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+
+  .item {
+    --color-text: #fff;
+    background-color: var(--color-petrol);
+    flex-basis: 40%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0;
+    max-width: 60rem;
+    min-width: 40rem;
+    padding: 6rem;
+    white-space: normal;
+
+    &.item-quote-hameen-keskiaikafestivaali,
+    &.item-quote-varjolan-tila,
+    &.item-quote-redan-redan,
+    &.item-quote-north-patrol,
+    &.item-quote-tulos {
+      --color-text: #000;
+    }
+
+    &.item-quote-bitwise {
+      --color-text: #141414;
+    }
+
+    &.item-quote-hameen-keskiaikafestivaali {
+      width: 60rem;
+    }
+
+    @media (max-width: 1300px) {
+      padding: 4rem;
+    }
+  }
+
+  .item.item-quote blockquote > p {
+    font-size: var(--font-size-34);
+
+    @media (max-width: 1300px) {
+      font-size: 28px;
+    }
+
+    @media (max-width: 640px) {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    gap: 4rem;
+    padding-left: var(--padding-container-horizontal);
+    padding-right: var(--padding-container-horizontal);
+  }
+}
+
+.page-id-9 .block-testimonial-train .block-heading {
+  @include screen-reader-text();
+}
+
+.page-id-9 .block.has-unified-padding-if-stacked.block-testimonial-train > .container {
+  padding-top: calc(var(--padding-container-vertical) / 2);
+}

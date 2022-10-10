@@ -1,0 +1,36 @@
+// Buttons inside Gutenberg
+// We have to override default wp-admin blue buttons
+// stylelint-disable
+.wp-block .acf-block-preview {
+  button,
+  .button,
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"] {
+    &:not(.accordion-trigger) {
+      @include button();
+
+      // Button sizes
+      &.button-small {
+        @include button-size-small();
+      }
+
+      &.button-large {
+        @include button-size-large();
+      }
+
+      &.button-huge {
+        @include button-size-huge();
+
+        &:focus {
+          outline-offset: 10px;
+        }
+      }
+
+      // Button styles
+      &.button-ghost {
+        @include button-style-ghost();
+      }
+    }
+  }
+}

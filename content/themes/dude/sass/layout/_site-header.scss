@@ -1,0 +1,269 @@
+// The very top of the site, element that usually includes
+// the site navigation and search for example.
+@mixin header-text-light() {
+  --color-main: var(--color-white);
+  --color-current: var(--color-white);
+  --color-main-level: var(--color-white);
+  --color-logo: var(--color-white);
+  --color-hamburger: var(--color-white);
+  --color-hover-main-level: var(--color-mint);
+}
+
+@mixin header-text-dark() {
+  --color-main: var(--color-dark-navy);
+  --color-current: var(--color-dark-navy);
+  --color-main-level: var(--color-dark-navy);
+  --color-logo: var(--color-dark-navy);
+  --color-hamburger: var(--color-dark-navy);
+  --color-hover-main-level: var(--color-black);
+}
+
+.site-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding-bottom: var(--padding-site-header-vertical);
+  padding-left: var(--padding-container-horizontal);
+  padding-right: var(--padding-container-horizontal);
+  padding-top: var(--padding-site-header-vertical);
+  position: relative;
+  z-index: 15;
+
+  @media (min-width: $width-grid-base + 160px) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+.site-phone a {
+  align-items: center;
+  color: var(--color-phone-link);
+  display: flex;
+  font-weight: var(--font-weight-medium);
+}
+
+// stylelint-disable-next-line a11y/no-display-none
+.site-phone {
+  display: none;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: 3rem;
+  margin-top: 0;
+
+  svg {
+    height: 17px;
+    margin-right: 1rem;
+    width: 17px;
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--color-mint);
+
+    svg {
+      stroke: var(--color-mint);
+    }
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+  }
+}
+
+.site-title {
+  line-height: 0;
+  margin: 0;
+}
+
+// stylelint-disable-next-line no-descending-specificity
+.site-title a {
+  align-items: center;
+  color: var(--color-logo);
+  display: flex;
+  transition: unset;
+}
+
+.site-title a:focus,
+.site-title a:hover {
+  color: var(--color-mint);
+}
+
+@media (max-width: 680px) {
+  .site-title svg {
+    height: 13.98px;
+    width: 70px;
+  }
+}
+
+// Nav container visibility fix
+.nav-container {
+  z-index: 10;
+}
+
+// Pages that are known to be always have dark text on nav
+body.has-dark-navigation .site-header {
+  @include header-text-dark();
+}
+
+@media (prefers-color-scheme: dark) {
+  body[data-color-scheme="dark"].has-dark-navigation .site-header,
+  body[data-color-scheme="light"].has-dark-navigation .site-header {
+    @include header-text-dark();
+  }
+
+  body[data-color-scheme="light"].has-light-navigation .site-header,
+  body[data-color-scheme="dark"].has-light-navigation .site-header {
+    @include header-text-light();
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body[data-color-scheme="dark"].has-dark-navigation .site-header,
+  body[data-color-scheme="light"].has-dark-navigation .site-header {
+    @include header-text-dark();
+  }
+
+  body[data-color-scheme="light"].has-light-navigation .site-header,
+  body[data-color-scheme="dark"].has-light-navigation .site-header {
+    @include header-text-light();
+  }
+}
+
+// Force color for pages that have heros that have an actual dark/light mode
+body.has-dark-navigation[data-color-scheme="dark"] {
+  &.error404,
+  &.archive,
+  &.blog,
+  &.single-post,
+  &.single-job,
+  &.page-id-4491,
+  &.page-id-4485,
+  &.page-id-9 {
+
+    // stylelint-disable-next-line
+    .site-header {
+      @include header-text-light();
+    }
+  }
+}
+
+// Force light site-header font color for pages that have dark navigation chosen and heros with always dark background
+body[data-color-scheme="light"],
+body.has-dark-navigation[data-color-scheme="light"] {
+  &.post-type-archive-reference,
+  &.single-job,
+  &.page-id-4491 {
+    // Also use always light text for these pages
+    --color-text-block: var(--color-white);
+
+    // stylelint-disable-next-line
+    .site-header {
+      @include header-text-light();
+    }
+  }
+
+  // stylelint-disable-next-line
+  &.single-post .site-header {
+    @include header-text-light();
+  }
+}
+
+// Pages that are known to be always have light text on nav
+// stylelint-disable
+body.archive.post-type-archive-reference .site-header,
+body[data-color-scheme="light"].archive.post-type-archive-reference .site-header,
+body.has-light-navigation[data-color-scheme="dark"].error404 .site-header,
+body.has-light-navigation[data-color-scheme="light"].error404 .site-header,
+body.has-dark-navigation[data-color-scheme="light"].error404 .site-header,
+body[data-color-scheme="dark"].single-post .site-header,
+body[data-color-scheme="light"].single-post .site-header,
+body.page-id-4491 .site-header,
+body[data-color-scheme="dark"].page-id-4491 .site-header,
+body[data-color-scheme="light"].page-id-4491 .site-header,
+body.single-post .site-header,
+body.has-light-navigation .site-header {
+  @include header-text-light();
+}
+
+// Repeat for default dark mode
+@media (prefers-color-scheme: dark) {
+  // Pages that are known to be always have light text on nav
+  body.archive.post-type-archive-reference .site-header,
+  body[data-color-scheme="light"].archive.post-type-archive-reference .site-header,
+  body.has-light-navigation[data-color-scheme="dark"].error404 .site-header,
+  body.has-light-navigation[data-color-scheme="light"].error404 .site-header,
+  body.has-dark-navigation[data-color-scheme="light"].error404 .site-header,
+  body[data-color-scheme="dark"].single-post .site-header,
+  body[data-color-scheme="light"].single-post .site-header,
+  body.page-id-4491 .site-header,
+  body[data-color-scheme="dark"].page-id-4491 .site-header,
+  body[data-color-scheme="light"].page-id-4491 .site-header,
+  body[data-color-scheme="light"].single-job .site-header,
+  body[data-color-scheme="dark"].single-job .site-header,
+  body.single-job .site-header,
+  body.single-post .site-header,
+  body.has-light-navigation .site-header {
+    @include header-text-light();
+  }
+}
+
+// Repeat for default light mode
+@media (prefers-color-scheme: light) {
+  // Pages that are known to be always have light text on nav
+  body.archive.post-type-archive-reference .site-header,
+  body[data-color-scheme="light"].archive.post-type-archive-reference .site-header,
+  body.has-light-navigation[data-color-scheme="dark"].error404 .site-header,
+  body.has-light-navigation[data-color-scheme="light"].error404 .site-header,
+  body.has-dark-navigation[data-color-scheme="light"].error404 .site-header,
+  body[data-color-scheme="dark"].single-post .site-header,
+  body[data-color-scheme="light"].single-post .site-header,
+  body.page-id-4491 .site-header,
+  body[data-color-scheme="dark"].page-id-4491 .site-header,
+  body[data-color-scheme="light"].page-id-4491 .site-header,
+  body[data-color-scheme="light"].single-job .site-header,
+  body[data-color-scheme="dark"].single-job .site-header,
+  body.single-job .site-header,
+  body.single-post .site-header,
+  body.has-light-navigation .site-header {
+    @include header-text-light();
+  }
+}
+
+// Open position counts
+.open-positions-count {
+  align-items: center;
+  background-color: var(--color-mint);
+  border-radius: 50%;
+  color: var(--color-midnight);
+  display: flex;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  height: 14px;
+  justify-content: center;
+  position: absolute;
+  right: -12px;
+  top: 4px;
+  width: 14px;
+}
+
+// Reference color exceptions
+body.single-reference .site-header {
+  --color-main-level: var(--color-brand-reference-text) !important;
+  --color-logo: var(--color-brand-reference-text) !important;
+  --color-hamburger: var(--color-brand-reference-text) !important;
+  --color-phone-link: var(--color-brand-reference-text) !important;
+
+  .open-positions-count {
+    background-color: var(--color-brand-reference-text) !important;
+    color: var(--color-brand-reference-bg) !important;
+  }
+}
+
+body.has-dark-navigation.single-reference[data-color-scheme=dark] .toggle-mode-button-mode >.toggle-slot,
+body.has-dark-navigation.single-reference[data-color-scheme=dark] .toggle-mode-button-mode >.toggle-slot > .toggle-button {
+  background-color: var(--color-brand-reference-text) !important;
+  border-color: var(--color-brand-reference-text) !important;
+}

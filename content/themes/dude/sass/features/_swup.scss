@@ -1,0 +1,29 @@
+.has-transition-fade {
+  // stylelint-disable-next-line property-disallowed-list
+  animation: slideup .9s cubic-bezier(.075, .82, .165, 1) forwards;
+  -webkit-font-smoothing: antialiased;
+  opacity: 1;
+  transform: translate3d(0, 3vh, 0);
+  transition: all $transition-duration;
+  transition-timing-function: cubic-bezier(.23, 1, .32, 1);
+
+  @media (prefers-reduced-motion) {
+    // stylelint-disable-next-line
+    animation: unset;
+    transform: unset;
+  }
+}
+
+html.is-animating .has-transition-fade {
+  opacity: 0;
+}
+
+@keyframes slideup {
+  0% {
+    transform: translate3d(0, 3vh, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}

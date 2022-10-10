@@ -1,0 +1,5 @@
+@mixin heading-42() {
+  font-size: clamp-calc($container-mobile, 1600px, 32px, 42px);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -.01em;
+}

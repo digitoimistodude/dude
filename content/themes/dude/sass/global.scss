@@ -1,0 +1,99 @@
+@charset 'utf-8';
+
+// Waterfall of partial sizes checked 2022-08-05
+// Reset (>1 kB)
+@import 'helpers/sanitize';
+@import 'sanitize.css/reduce-motion';
+
+// Helpers (>1 kB)
+@import 'helpers/animations';
+@import 'helpers/aspect-ratio';
+@import 'helpers/box-model';
+@import 'helpers/clamp';
+@import 'helpers/images';
+@import 'helpers/typography';
+
+// Variables (>2 kB)
+@import 'variables/colors';
+@import 'variables/breakpoints';
+@import 'variables/font-face';
+@import 'variables/font-family';
+@import 'variables/font-size';
+@import 'variables/forms';
+@import 'variables/spacings';
+
+// Animations (>1 kB)
+@import 'animations/radial-gradient';
+@import 'animations/text-gradient';
+
+// Style components (>3 kB)
+@import 'components/components';
+
+// Accessibility (>2 kB)
+@import 'base/accessibility';
+
+// Navigation
+@import 'navigation/nav-desktop';
+@import 'navigation/nav-mobile'; // Size: 29.1 kB
+
+// Structure
+@import 'layout/general';
+@import 'layout/cols';
+@import 'layout/head';
+@import 'layout/link-with-arrow';
+@import 'layout/link-wrapper';
+@import 'layout/print';
+@import 'layout/typography';
+@import 'layout/site-header';
+@import 'layout/site-footer';
+@import 'layout/forms';
+@import 'layout/blog';
+@import 'layout/duotone';
+@import 'layout/scrollable-div-shadows';
+@import 'layout/social-media-links';
+
+// Global features
+@import 'features/top';
+@import 'features/gallery';
+@import 'features/pagination';
+@import 'features/wpforms';
+@import 'features/carousels';
+@import 'features/vimeo-iframe-wrapper';
+@import 'features/vimeoplayer';
+@import 'features/showreel';
+@import 'features/dark-mode'; // Size: 39 kB
+@import 'features/dark-mode-switch';
+@import 'features/dark-mode-footer-toggle';
+@import 'features/train';
+@import 'features/swup';
+
+// Views
+@import 'views/brand';
+@import 'views/front-page';
+@import 'views/search';
+@import 'views/404';
+@import 'views/single-person';
+@import 'views/single-question';
+@import 'views/single-reference';
+@import 'views/archive-blog';
+@import 'views/archive-question';
+@import 'views/single';
+@import 'views/references';
+@import 'views/jobs';
+@import 'views/code-community';
+@import 'views/contact';
+@import 'views/template-oizo';
+
+// Parts
+@import 'parts/loops/reference';
+@import 'parts/loops/post-block';
+@import 'parts/logos';
+
+// Gutenberg layout outside blocks
+@import 'gutenberg/layout/content';
+
+// Gutenberg blocks
+@import 'gutenberg/blocks'; // Size: 144 kB
+
+// Gutenberg formatting
+@import 'gutenberg/formatting';

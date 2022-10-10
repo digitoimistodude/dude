@@ -1,0 +1,21 @@
+.block.block-hero.block-hero-contact-thanks {
+  .mask {
+    background-color: var(--color-petrol);
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  > .container {
+    z-index: 5;
+  }
+
+  h1,
+  p {
+    color: var(--color-white);
+  }
+}

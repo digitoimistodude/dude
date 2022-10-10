@@ -1,0 +1,12 @@
+.block-references {
+  .block-heading {
+    @include heading-64();
+    margin-bottom: 8rem;
+    margin-top: 0;
+    max-width: 100rem;
+  }
+
+  .link-wrapper {
+    margin-top: 6rem;
+  }
+}

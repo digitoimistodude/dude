@@ -1,0 +1,42 @@
+.block.block-reference-quote-short {
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  --color-text: var(--color-brand-reference-text);
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  --color-heading: var(--color-brand-reference-text);
+
+  // This variable comes dynamically from reference back end
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  background-color: var(--color-brand-reference-bg);
+
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  color: var(--color-brand-reference-text);
+
+  p {
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-brand-reference-text);
+  }
+}
+
+// Only for short reference quote
+.block-reference-quote-short figure {
+
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  border-left: 3px solid var(--color-brand-reference-text);
+  padding-left: 11.5rem;
+
+  @media (max-width: $container-ipad) {
+    padding-left: 4rem;
+  }
+
+  @media (max-width: $container-mobile) {
+    padding-left: 2rem;
+  }
+}
+
+.block-reference-quote-short > .container p {
+  font-family: var(--font-heading);
+  font-size: clamp-calc($container-mobile, 1600px, 22px, 52px);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.55;
+  margin: 0;
+}

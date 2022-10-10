@@ -1,0 +1,11 @@
+@mixin heading-150() {
+  // stylelint-disable-next-line
+  font-size: clamp-calc($container-mobile, 1600px, 52px, 150px);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+.heading-150 {
+  @include heading-150();
+}

@@ -1,0 +1,13 @@
+@mixin button-size-large() {
+  font-size: var(--font-size-16);
+  // stylelint-disable-next-line number-max-precision
+  line-height: 23.0909px;
+  padding-bottom: calc(17px - calc(var(--border-width-input-field) * 2));
+  padding-left: calc(28px - calc(var(--border-width-input-field) * 2));
+  padding-right: calc(28px - calc(var(--border-width-input-field) * 2));
+  padding-top: calc(17px - calc(var(--border-width-input-field) * 2));
+
+  @media (max-width: $container-mobile) {
+    @include button-size-small();
+  }
+}

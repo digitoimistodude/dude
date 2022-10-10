@@ -1,0 +1,103 @@
+// stylelint-disable selector-max-class, selector-max-specificity, no-descending-specificity, selector-max-combinators, selector-max-compound-selectors, selector-max-pseudo-class, selector-attribute-quotes, max-nesting-depth, function-url-quotes, font-family-name-quotes, font-weight-notation, max-line-length
+@font-face {
+  font-family: 'Perfect Dos';
+  font-style: normal;
+  font-weight: normal;
+
+  // Slightly Deeper Browser Support
+  // @source https://css-tricks.com/snippets/css/using-font-face/#slightly-deeper-browser-support
+  src: url('../../fonts/perfectdosvga437win.woff') format('woff'), url('../../fonts/perfectdosvga437win.woff2') format('woff2'), url('../../fonts/perfectdosvga437win.ttf') format('truetype');
+}
+
+.overlay {
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+
+  &.overlay-vignette {
+    background-image: radial-gradient(ellipse at center, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / .25) 100%);
+  }
+
+  &.overlay-scanline {
+    background-image: repeating-linear-gradient(transparent, transparent 1px, black 2px, black 2px);
+    z-index: 5;
+  }
+}
+
+.blink {
+  // stylelint-disable-next-line
+  animation: blink 1s steps(1) infinite;
+
+  &::after {
+    background-color: var(--color-white-two);
+    content: '';
+    display: inline-block;
+    height: 19px;
+    transform: translateY(2px) translateX(2px);
+    width: 11px;
+  }
+}
+
+@keyframes blink {
+  66% {
+    opacity: 0;
+  }
+}
+
+body.error404,
+.block-error-404 {
+  background-color: var(--color-cobalt-blue);
+}
+
+.block-error-404 {
+  .dudefi {
+    background-color: var(--color-white-two);
+    color: var(--color-cobalt-blue);
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 2rem;
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
+    height: calc(var(--vh, 1vh) * 100);
+
+    @media (min-width: $container-ipad-landscape) {
+      min-height: 90rem;
+    }
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: 80rem;
+    text-align: center;
+
+    .hero-description p {
+      line-height: 1.8;
+      max-width: 100%;
+    }
+
+    .press-f5 {
+      transform: translateX(15px);
+    }
+  }
+
+  h1,
+  p {
+    color: var(--color-white-two);
+    font-family: 'Perfect DOS', 'Circular', 'Courier', sans-serif;
+  }
+
+  p {
+    font-size: var(--font-size-22);
+  }
+
+  h1 {
+    @include responsive-font(70px, 250px);
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+}

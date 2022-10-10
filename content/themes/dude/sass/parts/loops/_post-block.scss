@@ -1,0 +1,13 @@
+// stylelint-disable selector-max-class, selector-max-specificity
+.block-blog-latest.block-blog-latest .col-post.col-post-block {
+  gap: 1.5rem;
+
+  h3 {
+    @include heading-38();
+    order: 2;
+  }
+
+  .meta-category {
+    order: 1;
+  }
+}

@@ -1,0 +1,117 @@
+.block-image-content {
+  img {
+    max-width: 100%;
+  }
+
+  figcaption {
+    font-size: var(--font-size-16);
+    margin-top: 2rem;
+    opacity: .7;
+  }
+
+  .container {
+    display: grid;
+    gap: 7.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (max-width: $container-ipad + 1px) {
+      gap: 6rem;
+      grid-template-columns: minmax(0, 1fr);
+
+      .col-image {
+        order: 2;
+      }
+    }
+  }
+
+  h2 {
+    @include heading-64();
+
+    @media (min-width: 1465px) {
+      margin-top: -3.2rem;
+    }
+  }
+
+  p,
+  li,
+  ol,
+  ul {
+    color: var(--color-text);
+    font-size: var(--font-size-20);
+  }
+
+  .col-content {
+    align-items: center;
+    display: grid;
+    padding: 0;
+  }
+
+  .image {
+    @include aspect-ratio(1, 1);
+    height: 100%;
+    max-width: 100%;
+    width: auto;
+
+    @media (max-width: $container-ipad) {
+      @include aspect-ratio(16, 9);
+    }
+  }
+
+  @media (min-width: $container-ipad) {
+    &.block-image-content-right .col-image {
+      order: 1;
+    }
+  }
+}
+
+// Card styles
+.block-image-content.block-image-content-cards {
+  .container {
+    overflow: visible;
+
+    @media (min-width: $container-ipad) {
+      gap: 0;
+    }
+  }
+
+  .image {
+    aspect-ratio: unset;
+  }
+
+  .col-image {
+    @media (min-width: $container-ipad) {
+      margin-right: -22px;
+      position: relative;
+      transform: translateY(-10rem);
+    }
+  }
+
+  .col-content {
+    @media (min-width: $container-ipad) {
+      background-color: var(--color-background-block-alternative);
+      box-shadow: 0 2px 39px 0 rgb(0 0 0 / .07);
+      margin-left: -22px;
+      padding: 10rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    @media (min-width: $container-ipad) and (max-width: $container-desktop) {
+      padding: 5rem 7rem;
+    }
+  }
+
+  &.block-image-content-right {
+    @media (min-width: $container-ipad) {
+      .col-image {
+        margin-left: -22px;
+        margin-right: 0;
+      }
+
+      .col-content {
+        margin-left: 0;
+        margin-right: -22px;
+      }
+    }
+  }
+}

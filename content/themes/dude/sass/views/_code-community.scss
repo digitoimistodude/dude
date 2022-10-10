@@ -1,0 +1,52 @@
+// Template exceptions
+
+// Remove paddings
+.page-id-4489 .block-images > .container {
+  padding-bottom: 0;
+}
+
+.page-id-4489 .block-badges > .container,
+.page-id-4489 .block-job-techniques > .container {
+  padding-top: 0;
+}
+
+// Do not use the narrow width on this page
+.page-id-4489 .site-main .block-content .container {
+  max-width: $width-grid-base;
+}
+
+// Use smaller font-size
+.page-id-4489 .site-main .block-title-content-50-50 h2 {
+  @include heading-64();
+}
+
+// Unique layout for image gallery
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-compound-selectors, selector-max-specificity
+.page-id-4489 .site-main .block-images > .container {
+  .image-3 {
+    max-width: 70rem;
+  }
+
+  .image-4 {
+    transform: translateX(-25%);
+  }
+
+  .image-5 {
+    max-width: 50rem;
+  }
+
+  .image-6 {
+    max-width: 50rem;
+    transform: translate(-10%, -45%);
+  }
+
+  .image-7 {
+    max-width: 70rem;
+    transform: translate(-16%, 3%);
+  }
+
+  .image-8 {
+    max-width: 62rem;
+    transform: translate(-10%, -35%);
+  }
+}

@@ -1,0 +1,22 @@
+.block-image img {
+  height: auto;
+  width: 100%;
+}
+
+[data-type="acf/hero-centered"] + .wp-block-acf-image,
+.block-hero-centered + .block-image {
+  background-color: var(--color-background-block);
+
+  .container {
+    overflow: visible;
+    padding-top: 0;
+  }
+
+  img {
+    margin-top: -10rem;
+
+    @media (max-width: $container-ipad) {
+      margin-top: -5rem;
+    }
+  }
+}

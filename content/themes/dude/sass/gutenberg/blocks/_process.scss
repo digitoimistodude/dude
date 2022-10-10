@@ -1,0 +1,139 @@
+.block-process {
+  --color-link-text: var(--color-mint);
+  background-color: var(--color-dark-navy);
+
+  .swiper,
+  .container {
+    overflow: visible;
+  }
+
+  .head > h2 {
+    @include heading-90();
+    color: var(--color-white);
+
+    @media (min-width: 600px) {
+      max-width: 70%;
+    }
+
+    // Let's replace the long word in mobile, because it won't wrap properly
+    @media (max-width: 460px) {
+      line-height: 0;
+      text-indent: -9999px;
+      visibility: hidden;
+
+      &::after {
+        content: 'Projektinne sisältää kaiken tämän';
+        display: block;
+        line-height: 1.23;
+        text-indent: 0;
+        visibility: visible;
+      }
+    }
+  }
+
+  .head {
+    display: grid;
+    gap: 4rem;
+
+    @media (min-width: 960px) {
+      grid-template-columns: 100rem minmax(0, 1fr);
+
+      .swiper-controls {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        transform: unset;
+      }
+    }
+
+    @media (max-width: 959px) {
+      margin-bottom: 0;
+      padding-bottom: 0;
+
+      .swiper-controls {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .arrow-link-prev .arrow-link-arrow::after,
+  .arrow-link-next .arrow-link-arrow::after {
+    border-color: var(--color-white);
+  }
+
+  .arrow-link-prev .arrow-link-arrow::before,
+  .arrow-link-next .arrow-link-arrow::before {
+    background-color: var(--color-white);
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .item h2,
+  li,
+  p {
+    color: var(--color-white);
+  }
+
+  .item {
+    @include list-inside-blocks();
+    padding-left: .5rem;
+    width: 50%;
+
+    li {
+      margin-bottom: .5rem;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+
+    @media (min-width: 1082px) {
+      padding-right: 10rem;
+    }
+  }
+
+  .button-wrapper,
+  .button {
+    overflow: visible;
+  }
+
+  .item a:not(.button):hover,
+  .item a:not(.button):focus {
+    color: var(--color-white);
+    text-decoration-color: var(--color-white);
+  }
+
+  .step-number {
+    color: var(--color-white);
+    transition: $transition-duration all;
+
+    @media (max-width: $container-mobile) {
+      display: none;
+    }
+  }
+
+  .swiper-slide {
+    opacity: .5;
+    transform: scale(.9);
+    transform-origin: 0 0;
+    transition: $transition-duration all;
+  }
+
+  .swiper-slide.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+
+    .step-number {
+      color: var(--color-mint);
+    }
+  }
+}

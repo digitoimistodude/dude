@@ -1,0 +1,238 @@
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors, max-line-length, a11y/no-display-none
+// This must match the iframe!
+// Check it from full screen video:
+// <iframe src="https://player.vimeo.com/video/727306829?h=df2da26021&amp;title=0&amp;portrait=0&amp;muted=1&amp;autoplay=1&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=122963" width="1208" height="680" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Dude Showreel Preview" data-ready="true"></iframe>
+$transition-duration-showreel: 280ms;
+
+:root {
+  --height-showreel-layer: calc(var(--vh, 1vh) * 100);
+}
+
+// Default CTA state
+body .site-main .block-hero .video-cta.container {
+  align-items: center;
+  background-color: var(--color-black);
+  display: none;
+  opacity: 0;
+  text-align: center;
+  transition: all $transition-duration-showreel ease-in-out;
+  visibility: hidden;
+  width: 100%;
+
+  .video-cta-content {
+    aspect-ratio: unset;
+    height: unset;
+    margin-top: -5rem;
+  }
+
+  p {
+    margin: 0 auto;
+    max-width: 90rem;
+  }
+}
+
+.video-cta-content a:hover,
+.video-cta-content a:focus {
+  color: var(--color-mint);
+  text-decoration-color: var(--color-mint);
+}
+
+.vimeo-player {
+  transition: all $transition-duration-showreel ease-in-out;
+}
+
+// Prevent stop showreel button overlapping cta
+body .site-main .block.block-hero .container.is-cta.playing > .content {
+  bottom: 0;
+  height: unset;
+  max-height: 5rem;
+  max-width: 100%;
+  position: absolute;
+}
+
+.block-hero .is-cta .showreel.playing .video-cta {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.block-hero .is-cta .showreel.playing .vimeo-player {
+  display: none;
+}
+
+.showreel {
+  @include aspect-ratio(1208, 680);
+  --border-radius-showreel: 0;
+  background-color: transparent;
+  border-radius: var(--border-radius-showreel);
+  bottom: 0;
+  margin-top: 0;
+  opacity: .4;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  transform: translate(19vw, 10rem);
+  transition: all $transition-duration-showreel ease-in-out;
+  z-index: 0;
+
+  // stylelint-disable-next-line
+  &.playing .vimeo-player,
+  &.playing .video {
+    align-items: center;
+    background-image: none;
+    display: flex;
+    height: 100%;
+    width: 100vw;
+  }
+
+  &.playing {
+    background-color: var(--color-black);
+    bottom: 0;
+    height: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    opacity: 1;
+    right: 0;
+    transform: translate(0, 0);
+    width: 100%;
+  }
+
+  &.playing div,
+  &.playing iframe {
+    @include aspect-ratio(1208, 680);
+    bottom: 0;
+    height: auto;
+    left: 0;
+    margin: 0;
+    max-width: 100%;
+    opacity: 1;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  div[data-vimeo-initialized="true"] {
+    overflow: hidden;
+  }
+
+  @media (max-width: 900px) {
+    &:not(.playing) {
+      margin-top: -10rem;
+      top: 0;
+    }
+  }
+
+  @media (max-width: $container-mobile) {
+    opacity: .2;
+  }
+}
+
+body .site-main .block-hero.playing {
+  height: var(--height-showreel-layer);
+  max-height: unset;
+  min-height: unset;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+}
+
+// stylelint-disable no-descending-specificity
+body .site-main .block-hero .container .content,
+body .site-main .block-hero .container {
+  position: relative;
+  transition: all $transition-duration-showreel ease-in-out;
+}
+
+body .site-main .block-hero .container.playing {
+  height: var(--height-showreel-layer);
+  max-height: unset;
+  max-width: 100%;
+  padding-bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0;
+
+  .content {
+    height: var(--height-showreel-layer);
+    max-width: 100%;
+    z-index: 10;
+
+    h1,
+    p {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    p.button-wrapper {
+      opacity: 1;
+      pointer-events: unset;
+    }
+  }
+}
+
+.block button.play-showreel {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--color-mint);
+  display: inline-flex;
+  gap: 2rem;
+  overflow: visible;
+  padding: 0;
+  transition: all $transition-duration-showreel ease-in-out;
+
+  .play-label {
+    pointer-events: none;
+  }
+
+  &.playing {
+    bottom: 2rem;
+    position: absolute;
+  }
+
+  .icon-wrapper {
+    align-items: center;
+    background-color: var(--color-mint);
+    border-radius: 50%;
+    display: inline-flex;
+    height: 28px;
+    justify-content: center;
+    transition: all 120ms ease;
+    width: 28px;
+  }
+
+  .icon {
+    align-self: center;
+    background-color: transparent;
+    border: 0;
+    border-color: transparent transparent transparent var(--color-dark-navy);
+    border-radius: unset;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    display: inline-block;
+    height: 10px;
+    justify-self: center;
+    left: 1px;
+    position: relative;
+    transition: all 120ms ease;
+    width: 0;
+  }
+
+  &.playing .icon {
+    border-style: double;
+    border-width: 0 0 0 10px;
+  }
+
+  &:hover .icon,
+  &:focus .icon {
+    border-color: transparent transparent transparent var(--color-petrol);
+    transform: scale(1.1);
+  }
+
+  &:hover .icon-wrapper,
+  &:focus .icon-wrapper {
+    transform: scale(1.1);
+  }
+}

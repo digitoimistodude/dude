@@ -1,0 +1,76 @@
+// stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, no-descending-specificity, selector-max-class, no-unknown-animations
+
+// Reference listing page exceptions
+// Always white reference archive text
+.site-main.archive-reference .block-hero-content-image .prefix,
+.site-main.archive-reference .block-hero-content-image p,
+.site-main.archive-reference .block-hero-content-image .col-content p,
+.site-main.archive-reference .block-hero-content-image h2 {
+  color: var(--color-white);
+}
+
+.site-main.archive-reference .block-hero-content-image .content .prefix {
+  color: var(--color-mint);
+}
+
+@media (max-width: $container-mobile) {
+  .site-main.archive-reference .block-hero-content-image .content > p {
+    max-width: 420px;
+  }
+}
+
+// Reset padding because of the same background color
+.site-main.archive-reference .block-hero-content-image > .container {
+  padding-bottom: 0;
+}
+
+// Always light text-gradient
+.site-main.archive-reference .col-reference .has-text-gradient {
+  --color-gradient-shade-1: var(--color-blue-bell);
+  --color-gradient-shade-2: var(--color-light-blue);
+  --color-gradient-shade-3: var(--color-trout);
+  --color-gradient-shade-4: var(--color-java);
+  --color-gradient-shade-5: var(--color-mint);
+  --color-gradient-shade-6: var(--color-white);
+  background-image: linear-gradient(-45deg, var(--color-gradient-shade-6), var(--color-gradient-shade-2));
+}
+
+.h-entry > .global-link:focus + .h-entry-content > .has-duotone + .has-text-gradient,
+.h-entry > .global-link:hover + .h-entry-content > .has-duotone + .has-text-gradient,
+.site-main.archive-reference .col-reference .has-text-gradient:focus,
+.site-main.archive-reference .col-reference .has-text-gradient:hover,
+.site-main.archive-reference .col-reference .global-link:focus + .has-duotone + .has-text-gradient,
+.site-main.archive-reference .col-reference .global-link:hover + .has-duotone + .has-text-gradient {
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-name: shine;
+  animation-timing-function: linear;
+  background-image: linear-gradient(-45deg, var(--color-gradient-shade-3), var(--color-gradient-shade-2), var(--color-gradient-shade-2), var(--color-gradient-shade-4));
+  background-size: 100% auto;
+}
+
+body.post-type-archive-reference .site {
+  background-image: linear-gradient(45deg, var(--color-petrol), rgb(70 85 80 / .26) 56%, rgb(32 88 96 / .7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+
+  .meta-tags li {
+    color: var(--color-white);
+  }
+}
+
+// Add full gradient bg
+body[data-color-scheme="dark"].post-type-archive-reference .site {
+  background-image: linear-gradient(45deg, var(--color-petrol), rgb(70 85 80 / .26) 56%, rgb(32 88 96 / .7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+}
+
+body[data-color-scheme="light"].post-type-archive-reference .site {
+  background-image: linear-gradient(45deg, var(--color-petrol), rgb(74 169 181 / .26) 56%, rgb(32 88 96 / .7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+}
+
+body.post-type-archive-reference .site-content .site-main .block {
+  background-color: transparent;
+  background-image: none;
+}
+
+body.post-type-archive-reference .site-main .block-hero-content-image h2 {
+  max-width: 96rem;
+}

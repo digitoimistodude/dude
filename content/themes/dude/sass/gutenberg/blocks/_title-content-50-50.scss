@@ -1,0 +1,23 @@
+.block-title-content-50-50 {
+  background-color: var(--color-background-block);
+
+  h2 {
+    @include heading-64();
+    margin: 0;
+  }
+
+  p {
+    color: var(--color-text);
+    font-size: var(--font-size-16);
+  }
+
+  .col-content p:first-child {
+    margin-top: 0;
+  }
+}
+
+.block-hero-content-image.has-image-as-img + .block-title-content-50-50 > .container {
+  @media (min-width: $container-ipad) {
+    padding-bottom: 10rem;
+  }
+}

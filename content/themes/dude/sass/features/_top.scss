@@ -1,0 +1,27 @@
+// The one and only anchor link that brings user back to top
+.top {
+  background-color: var(--color-background-block);
+  border: 0;
+  border-radius: 2px;
+  bottom: var(--padding-container-horizontal);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-size-16);
+  height: 3rem;
+  line-height: 30px;
+  opacity: 0;
+  padding: 0;
+  position: fixed;
+  right: var(--padding-container-horizontal);
+  text-align: center;
+  text-decoration: none;
+  transition: $transition-duration all;
+  visibility: hidden;
+  width: 3rem;
+  z-index: 10;
+}
+
+.top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,22 @@
+.block-faq-accordion {
+  background-color: var(--color-background-block);
+
+  > .container {
+    display: grid;
+    gap: 8rem;
+
+    @media (min-width: 1000px) {
+      gap: 10rem;
+      grid-template-columns: 40rem minmax(0, 1fr);
+    }
+  }
+
+  .col-title h2 {
+    @include heading-38();
+    margin-bottom: 4rem;
+  }
+
+  .col-title p {
+    font-size: var(--font-size-18);
+  }
+}

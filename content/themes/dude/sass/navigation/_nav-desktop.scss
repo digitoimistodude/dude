@@ -1,0 +1,155 @@
+// Site navigation desktop layout
+// The main layout for the website navigation, for a desktop devices only.
+
+// Disable some rules that are not needed here
+// stylelint-disable no-descending-specificity
+
+// Settings
+$absolute-navigation: true;
+
+// CSS variables
+// These can be adjusted with media queries for in-between breakpoints
+:root {
+  // Dimensions, gaps and spacings
+  --gap-main-level-horizontal: 5.2rem;
+  --padding-main-level-horizontal: 0;
+  --padding-main-level-vertical: .6rem;
+
+  // Colors
+  --color-background-nav-desktop: var(--color-dark-navy);
+  --color-main-level: var(--color-white);
+  --color-hover-main-level: var(--color-petrol);
+  --color-current: var(--color-white);
+
+  // Font styles
+  --font-size-main-level: var(--font-size-18);
+  --font-weight-main-level: var(--font-weight-medium);
+
+  @media (max-width: 1000px) {
+    --font-size-main-level: var(--font-size-16);
+  }
+}
+
+// General navigation resets
+.site-header ul {
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+}
+
+@media only screen and (min-width: $width-max-mobile) {
+  .nav-container {
+    @if $absolute-navigation == false {
+      background-color: var(--color-background-nav-desktop);
+      position: relative;
+      z-index: 222;
+    }
+
+    @if $absolute-navigation == true {
+      background-color: transparent;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  // Need to use display: none here to make sure mobile nav-toggle is visually hidden on desktop
+  // stylelint-disable-next-line a11y/no-display-none
+  .nav-toggle {
+    display: none;
+  }
+
+  // Navigation wrapper
+  .nav-primary {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  // Navigation unordered list wrapper element
+  .menu-items {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    gap: var(--gap-main-level-horizontal);
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  // Navigation list item
+  .menu-item {
+    margin: 0;
+    position: relative;
+  }
+
+  // Menu items
+  .menu-item > a {
+    align-items: center;
+    color: var(--color-main-level);
+    display: inline-flex;
+    font-size: var(--font-size-main-level);
+    font-weight: var(--font-weight-main-level);
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: var(--padding-main-level-vertical);
+    padding-left: var(--padding-main-level-horizontal);
+    padding-right: var(--padding-main-level-horizontal);
+    padding-top: var(--padding-main-level-vertical);
+    white-space: nowrap;
+  }
+
+  // Custom hovers
+  // .menu-item a {
+  //   opacity: 1;
+  //   transition: all 120ms;
+  // }
+
+  // .menu-items:not(.js-keep-opacity):hover .menu-item a,
+  // .menu-items:not(.js-keep-opacity):focus .menu-item a {
+  //   opacity: .5;
+  // }
+
+  // .menu-items:not(.js-keep-opacity) > .menu-item > a:hover,
+  // .menu-items:not(.js-keep-opacity) > .menu-item > a:focus {
+  //   opacity: 1;
+
+  //   // stylelint-disable-next-line
+  //   * {
+  //     opacity: 1;
+  //   }
+  // }
+
+  // Current menu item color
+  .menu-item.current-menu-parent > a,
+  .menu-item.current-menu-item > a {
+    color: var(--color-current);
+  }
+
+  .menu-item > a:hover,
+  .menu-item > a:focus {
+    color: var(--color-hover-main-level);
+  }
+
+  .nav-primary > ul:first-of-type > .menu-item-has-children:focus::before,
+  .nav-primary > ul:first-of-type > .menu-item-has-children:hover::before {
+    transform: scale(1);
+    transition: all .2s cubic-bezier(.19, 1, .22, 1);
+  }
+
+  @media only screen and (max-width: $width-max-mobile) {
+    ul li:focus > ul,
+    ul li:hover > ul {
+      display: block;
+    }
+  }
+
+  // Disable animations on IE10 + IE11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    // Enable hovers
+    ul li:focus > ul,
+    ul li:hover > ul {
+      display: block;
+    }
+  }
+} // @media only screen and (min-width: $width-max-mobile)

@@ -1,0 +1,23 @@
+@mixin box-post() {
+  display: grid;
+  gap: 3.2rem;
+  position: relative;
+
+  .image {
+    @include aspect-ratio(1, 1);
+
+    @media (max-width: $container-mobile) {
+      @include aspect-ratio(16, 9);
+    }
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  > h3 {
+    font-size: var(--font-size-26);
+    font-weight: var(--font-weight-medium);
+  }
+}

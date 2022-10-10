@@ -1,0 +1,109 @@
+.block-badges {
+  // Official WordPress badge styles
+  .badge {
+    border: 2px solid var(--color-white-two);
+    border-radius: 50%;
+    box-sizing: border-box;
+    height: 32px;
+    left: 0;
+    margin: 4px;
+    padding: 2px;
+    position: absolute;
+    top: 8px;
+    width: 32px;
+  }
+
+  .badge-themes {
+    box-shadow: 0 0 0 4px rgb(78 50 136);
+    fill: rgb(78 50 136);
+  }
+
+  .badge-translation-contributor {
+    box-shadow: 0 0 0 4px rgb(195 34 131);
+    fill: rgb(195 34 131);
+  }
+
+  .badge-translation-editor {
+    background-color: rgb(195 34 131 / .25);
+    box-shadow: 0 0 0 4px rgb(195 34 131);
+    fill: rgb(195 34 131);
+  }
+
+  .badge-speaker {
+    box-shadow: 0 0 0 4px rgb(247 173 67);
+    fill: rgb(247 173 67);
+  }
+
+  .badge-plugins {
+    box-shadow: 0 0 0 4px rgb(240 103 35);
+    fill: rgb(240 103 35);
+  }
+
+  .badge-community-contributor {
+    box-shadow: 0 0 0 4px rgb(17 121 157);
+    fill: rgb(17 121 157);
+  }
+
+  .badge-community {
+    background-color: rgb(17 121 157 / .25);
+    box-shadow: 0 0 0 4px rgb(17 121 157);
+    fill: rgb(17 121 157);
+  }
+
+  .badge-code {
+    box-shadow: 0 0 0 4px rgb(205 0 0);
+    fill: rgb(205 0 0);
+  }
+
+  .badge-meta-contributor {
+    box-shadow: 0 0 0 4px rgb(174 173 173);
+    fill: rgb(174 173 173);
+  }
+
+  .badge-organizer {
+    box-shadow: 0 0 0 4px rgb(247 173 67);
+    fill: rgb(247 173 67);
+  }
+
+  .badge-photos {
+    box-shadow: 0 0 0 4px rgb(59 114 54);
+    fill: rgb(59 114 54);
+  }
+
+  .badge-buddypress {
+    box-shadow: 0 0 0 4px rgb(216 72 0);
+    fill: rgb(216 72 0);
+  }
+
+  .item-list {
+    display: grid;
+    list-style: none;
+    margin-left: 0;
+    margin-top: 4rem;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: left;
+
+    @media (min-width: $container-ipad-landscape) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 570px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .item-list li {
+    border-bottom: 0;
+    box-sizing: border-box;
+    display: block;
+    font-size: 17px;
+    padding: 16px 0 16px 55px;
+    position: relative;
+  }
+}

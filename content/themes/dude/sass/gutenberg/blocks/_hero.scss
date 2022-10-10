@@ -1,0 +1,100 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder, no-descending-specificity */
+.block-hero {
+  background-color: var(--color-background-block);
+  // Limit maximum height to the generic UWD screen heights
+  max-height: 141.4rem;
+  // min-height: fill-available;
+  overflow: hidden;
+  transition: all 400ms ease-in-out;
+
+  .content {
+    max-width: 120rem;
+    overflow: visible;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    @include heading-150();
+    // stylelint-disable-next-line
+    animation: animateheading 8s ease infinite;
+    background-clip: text;
+    // stylelint-disable-next-line
+    background-image: linear-gradient(45deg, #fff, #7effe1, #aab0e4, #e7f8f4, #7effe1);
+    background-size: 100% 60%;
+    color: var(--color-heading);
+    overflow: visible;
+
+    // Prevents text from clipping for example in small g-letter
+    padding-bottom: 1.5rem;
+    -webkit-text-fill-color: transparent;
+
+    @media (prefers-reduced-motion) {
+      background-size: unset;
+    }
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
+    height: calc(var(--vh, 1vh) * 100);
+    max-height: 110rem;
+    min-height: 80rem;
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 0;
+    position: unset;
+
+    @media (max-width: 1000px) {
+      height: unset;
+      min-height: 60rem;
+    }
+
+    @media (max-width: $container-mobile) {
+      padding-bottom: calc(calc(var(--height-navigation-mobile) + var(--padding-container-vertical) / 3));
+      padding-top: calc(var(--height-navigation-mobile) + var(--padding-container-vertical));
+    }
+  }
+
+  p {
+    color: var(--color-white);
+    font-size: var(--font-size-26);
+    font-weight: var(--font-weight-medium);
+    max-width: 72rem;
+  }
+
+  h1,
+  p {
+    transition: all 400ms ease-in-out;
+  }
+
+  @media (min-width: $container-mobile) {
+    .container:not(.playing) .content {
+      margin-top: 8.6rem;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    height: 100vh;
+    min-height: 80rem;
+  }
+
+  @media (min-width: 1200px) {
+    height: 100vh;
+    min-height: 120rem;
+  }
+}
+
+@keyframes animateheading {
+  0% {
+    background-size: 100% auto;
+  }
+
+  50% {
+    background-size: 1000% auto;
+  }
+
+  100% {
+    background-size: 100% auto;
+  }
+}

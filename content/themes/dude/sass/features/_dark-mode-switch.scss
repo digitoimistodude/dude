@@ -1,0 +1,96 @@
+// stylelint-disable scale-unlimited/declaration-strict-value
+:root {
+  --dark-mode-toggle-size-factor: 4.8;
+}
+
+// Moon/Sun toggle
+.menu-item.menu-item-dark-mode-switch {
+  align-items: center;
+  display: flex;
+}
+
+.toggle-mode-button-mode {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+
+  span {
+    display: inline-flex;
+  }
+}
+
+.toggle-slot {
+  background-color: white;
+  border: calc(5px / var(--dark-mode-toggle-size-factor)) solid #e4e7ec;
+  border-radius: calc(10em / var(--dark-mode-toggle-size-factor));
+  height: calc(10em / var(--dark-mode-toggle-size-factor));
+  position: relative;
+  transition: background-color 250ms;
+  width: calc(20em / var(--dark-mode-toggle-size-factor));
+}
+
+[data-color-scheme="dark"] .toggle-mode-button-mode > .toggle-slot {
+  background-color: #374151;
+  border-color: #58657b;
+}
+
+.toggle-button {
+  background-color: #ffeccf;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 calc(.7em / var(--dark-mode-toggle-size-factor)) #ffbb52;
+  height: calc(6.5em / var(--dark-mode-toggle-size-factor));
+  position: absolute;
+  transform: translate(calc(11.75em / var(--dark-mode-toggle-size-factor)), calc(1.6em / var(--dark-mode-toggle-size-factor)));
+  transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+  width: calc(6.5em / var(--dark-mode-toggle-size-factor));
+}
+
+[data-color-scheme="dark"] .toggle-mode-button-mode > .toggle-slot > .toggle-button {
+  background-color: #485367;
+  box-shadow: inset 0 0 0 calc(.7em / var(--dark-mode-toggle-size-factor)) white;
+  transform: translate(calc(1.75em / var(--dark-mode-toggle-size-factor)), calc(1.6em / var(--dark-mode-toggle-size-factor)));
+}
+
+.sun-icon {
+  color: #ffbb52;
+  height: calc(6em / var(--dark-mode-toggle-size-factor));
+  position: absolute;
+  width: calc(6em / var(--dark-mode-toggle-size-factor));
+}
+
+.sun-icon-wrapper {
+  height: calc(6em / var(--dark-mode-toggle-size-factor));
+  opacity: 1;
+  position: absolute;
+  transform: translate(calc(2em / var(--dark-mode-toggle-size-factor)), calc(2em / var(--dark-mode-toggle-size-factor))) rotate(15deg);
+  transform-origin: 50% 50%;
+  transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+  width: calc(6em / var(--dark-mode-toggle-size-factor));
+}
+
+[data-color-scheme="dark"] .toggle-mode-button-mode > .toggle-slot > .sun-icon-wrapper {
+  opacity: 0;
+  transform: translate(calc(3em / var(--dark-mode-toggle-size-factor)), calc(2em / var(--dark-mode-toggle-size-factor))) rotate(0deg);
+}
+
+.moon-icon {
+  color: white;
+  height: calc(6em / var(--dark-mode-toggle-size-factor));
+  position: absolute;
+  width: calc(6em / var(--dark-mode-toggle-size-factor));
+}
+
+.moon-icon-wrapper {
+  height: calc(6em / var(--dark-mode-toggle-size-factor));
+  opacity: 0;
+  position: absolute;
+  transform: translate(calc(11em / var(--dark-mode-toggle-size-factor)), calc(2em / var(--dark-mode-toggle-size-factor))) rotate(0deg);
+  transform-origin: 50% 50%;
+  transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
+  width: calc(6em / var(--dark-mode-toggle-size-factor));
+}
+
+[data-color-scheme="dark"] .toggle-mode-button-mode > .toggle-slot > .moon-icon-wrapper {
+  opacity: 1;
+  transform: translate(calc(12em / var(--dark-mode-toggle-size-factor)), calc(2em / var(--dark-mode-toggle-size-factor))) rotate(-15deg);
+}

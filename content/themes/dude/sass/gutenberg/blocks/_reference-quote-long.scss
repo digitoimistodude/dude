@@ -1,0 +1,25 @@
+.block-reference-quote-long {
+  h2 {
+    @include heading-90();
+    margin-bottom: var(--padding-container-vertical);
+
+    @media (min-width: $width-wide) {
+      margin-bottom: calc(var(--padding-container-vertical) / 2);
+    }
+  }
+
+  p {
+    font-family: var(--font-heading);
+    font-size: clamp-calc($container-mobile, 1600px, 16px, 25px);
+    font-weight: var(--font-weight-medium);
+    max-width: 960px;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,132 @@
+// stylelint-disable selector-max-specificity, selector-max-compound-selectors, selector-max-class, selector-max-combinators
+
+// Global WPForms overrides
+.site-main {
+  // Errors
+  div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-error,
+  div.wpforms-container-full .wpforms-form .wpforms-field input.user-invalid,
+  div.wpforms-container-full .wpforms-form .wpforms-field textarea.wpforms-error,
+  div.wpforms-container-full .wpforms-form .wpforms-field textarea.user-invalid,
+  div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-error,
+  div.wpforms-container-full .wpforms-form .wpforms-field select.user-invalid,
+  div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-has-error .choices__inner {
+    border-color: var(--color-error);
+    color: var(--color-error);
+
+    &::placeholder {
+      color: var(--color-error);
+      opacity: 1;
+    }
+  }
+
+  // Success message
+  .wpforms-confirmation-container-full,
+  div[submit-success] > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    color: var(--color-success);
+    font-weight: var(--font-weight-bold);
+  }
+
+  div.wpforms-container-full .wpforms-form .wpforms-required-label {
+    color: var(--color-java);
+    font-size: var(--font-size-required-asterisk-label);
+    font-weight: var(--font-weight-semibold);
+    left: 1px;
+    position: relative;
+    top: 2px;
+  }
+
+  div.wpforms-container-full .wpforms-form label.wpforms-error {
+    color: var(--color-error);
+    margin-top: 1rem;
+  }
+
+  div.wpforms-container-full .wpforms-form .wpforms-field {
+    padding: unset;
+    position: relative;
+  }
+
+  div.wpforms-container-full .wpforms-form .wpforms-field-label {
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 1.6rem;
+  }
+
+  div.wpforms-container-full .wpforms-form .wpforms-one-half,
+  div.wpforms-container-full .wpforms-form .wpforms-three-sixths,
+  div.wpforms-container-full .wpforms-form .wpforms-two-fourths {
+    float: unset;
+    margin: unset;
+    padding: unset;
+    width: unset;
+  }
+
+  div.wpforms-container-full .wpforms-form button[type="submit"] {
+    @include button-size-large();
+    background-color: var(--color-mint);
+    border-color: var(--color-mint);
+    border-radius: 0;
+    color: var(--color-midnight);
+    font-size: var(--font-size-20);
+    margin-top: 2.6rem;
+
+    &:focus,
+    &:hover {
+      background-color: var(--color-button-background-hover);
+      box-shadow: 0 0 0 3px var(--color-button-background-hover);
+    }
+  }
+
+  // Uploader icon
+  div.wpforms-container div.wpforms-uploader .dz-message svg {
+    fill: var(--color-midnight);
+    opacity: 1;
+  }
+
+  // Uploader
+  div.wpforms-container div.wpforms-uploader {
+    background-color: var(--color-background-input-field);
+    border-color: var(--color-midnight);
+    transition: all $transition-duration;
+
+    &:hover {
+      background-color: var(--color-background-fileupload-hover);
+    }
+
+    &:focus {
+      background-color: var(--color-background-input-field);
+    }
+
+    // Change text
+    .modern-title {
+      color: var(--color-midnight);
+      opacity: 1;
+      transform: translateY(-1rem);
+      visibility: hidden;
+    }
+
+    .modern-title::after {
+      content: 'Pudota tiedostot tähän tai valitse liite klikkaamalla. Voit lähettää maksimissaan 5 tiedostoa.';
+      display: block;
+      visibility: visible;
+    }
+
+    .dz-preview * {
+      color: var(--color-midnight);
+      opacity: 1;
+    }
+
+    // stylelint-disable-next-line a11y/no-display-none
+    .modern-hint {
+      display: none;
+    }
+  }
+
+  @media (max-width: $container-mobile) {
+    div.wpforms-container-full .wpforms-form button[type="submit"] {
+      width: 100%;
+    }
+  }
+}

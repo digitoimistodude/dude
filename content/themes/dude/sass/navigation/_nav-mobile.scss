@@ -1,0 +1,193 @@
+// Site navigation mobile layout
+// The main layout for the website navigation, for the mobile version only.
+
+// Vars
+:root {
+  --color-hamburger: var(--color-white);
+  --color-hamburger-active: var(--color-hamburger);
+  --height-navigation-mobile: 68.31px;
+}
+
+// Settings for jonsuh/hamburgers
+// These need to be SCSS variables
+$hamburger-padding-x: 1.5rem;
+$hamburger-padding-y: 4rem;
+$hamburger-layer-width: 3rem;
+$hamburger-layer-height: .2rem;
+$hamburger-layer-spacing: .5rem;
+$hamburger-layer-color: var(--color-hamburger);
+$hamburger-layer-border-radius: 0;
+$hamburger-hover-opacity: .8;
+$hamburger-transition-duration: 100ms;
+$hamburger-hover-transition-duration: 100ms;
+$hamburger-hover-transition-timing-function: linear;
+
+// Init Tasty Hamburger navigation toggle
+@import 'hamburgers/_sass/hamburgers/hamburgers';
+
+// Init hamburger animation
+// Choose from animations: https://jonsuh.com/hamburgers/
+.hamburger {
+  // This comes from node module so can't do anything about the selector
+  // stylelint-disable-next-line
+  @extend .hamburger--spin;
+}
+
+// Tweak duration
+.hamburger .hamburger-inner::after,
+.hamburger--collapse .hamburger-inner::after,
+.hamburger-box,
+.hamburger-inner,
+.hamburger *::before,
+.hamburger--collapse *::before,
+.hamburger,
+.hamburger * {
+  transition-delay: none;
+  transition-duration: $hamburger-transition-duration;
+}
+
+// Mobile styles
+@media screen and (max-width: $width-max-mobile - 1px) {
+  .nav-container {
+    position: absolute;
+    width: 100%;
+  }
+
+  .site-branding,
+  .site-phone,
+  .site-header {
+    position: relative;
+    z-index: 2;
+  }
+
+  .site-header .menu-items {
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-header .open-positions-count {
+    right: -18px;
+  }
+
+  .nav-primary {
+    align-items: flex-start;
+    background-color: var(--color-midnight);
+    // stylelint-disable-next-line number-max-precision, max-line-length
+    box-shadow: 0 .0625em .125em rgb(0 0 0 / .03), 0 .125em .25em rgb(0 0 0 / .03), 0 .25em .5em rgb(0 0 0 / .03), 0 .25em .75em rgb(0 0 0 / .03);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    padding-bottom: 10vh;
+    padding-left: var(--padding-container-horizontal);
+    padding-right: var(--padding-container-horizontal);
+    padding-top: calc(var(--height-navigation-mobile) + 10vh);
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 180ms cubic-bezier(.14, 0, .42, 1.38);
+    width: 100vw;
+    z-index: 1;
+  }
+
+  .site-content,
+  .site-footer {
+    transition: filter 180ms;
+  }
+
+  // stylelint-disable-next-line
+  .menu-item.menu-item-dark-mode-switch#dark-mode-toggle {
+    display: none;
+  }
+
+  .site-header .menu-item {
+    margin-bottom: 1.4rem;
+    margin-top: 1.4rem;
+  }
+
+  .site-header .nav-link {
+    color: var(--color-white);
+    font-size: clamp-calc($container-mobile, $width-max-mobile, 28px, 42px);
+    font-weight: var(--font-weight-semibold);
+    opacity: 0;
+    transition: opacity 100ms cubic-bezier(.14, 0, .42, 1.38);
+  }
+
+  // When nav is activated
+  .js-nav-active {
+    overflow: hidden;
+  }
+
+  // Ensure logo is white when nav is open
+  .js-nav-active .site-title a {
+    // stylelint-disable-next-line
+    color: var(--color-white) !important;
+  }
+
+  // Ensure phone is always phone colored when nav is open
+  .js-nav-active .site-phone a {
+    // stylelint-disable-next-line
+    --color-phone-link: #4cd9b8 !important;
+    // stylelint-disable-next-line
+    color: var(--color-phone-link) !important;
+  }
+
+  .js-nav-active .nav-primary {
+    display: block;
+    overflow: auto;
+    transform: scaleY(1);
+  }
+
+  .js-nav-active .site-header .nav-link {
+    opacity: 1;
+  }
+
+  .site-header .menu-item .nav-link:focus,
+  .site-header .menu-item .nav-link:hover {
+    opacity: .5;
+    transition: unset;
+  }
+}
+
+// Hamburger menu icon specific
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: var(--color-hamburger-active);
+  color: var(--color-hamburger-active);
+}
+
+.nav-toggle {
+  background-color: transparent;
+  border: 0;
+  color: var(--color-hamburger);
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  text-decoration: none;
+  top: 0;
+  user-select: none;
+  z-index: 10;
+
+  &:not(.toggled-on) .hamburger-inner::after {
+    transition: width $hamburger-transition-duration;
+    width: 18px;
+  }
+
+  &.is-active .hamburger-inner,
+  &:not(.is-active):hover .hamburger-inner::after,
+  &:not(.is-active):focus .hamburger-inner {
+    width: $hamburger-layer-width;
+  }
+
+  @media (min-width: $width-max-mobile) {
+    display: none;
+  }
+}

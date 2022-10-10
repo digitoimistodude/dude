@@ -1,0 +1,579 @@
+// Defaults
+// stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, no-descending-specificity, selector-max-class
+@mixin color-scheme-light() {
+  // Variables in light mode
+  --color-background-block: var(--color-white);
+  --color-background-block-alternative: var(--color-white);
+  --color-text: var(--color-dark-navy);
+  --color-text-block: var(--color-dark-navy);
+  --color-heading: var(--color-dark-navy);
+  --color-gradient-shade-1: var(--color-comet);
+  --color-gradient-shade-2: var(--color-dark-navy);
+  --color-gradient-shade-3: var(--color-trout);
+  --color-gradient-shade-4: var(--color-java);
+  --color-gradient-shade-5: var(--color-mint);
+  --color-gradient-shade-6: var(--color-white);
+  --color-paragraph: var(--color-dark-navy);
+  --color-focus-outline: #7b46e1;
+  --color-link-underlined: var(--color-petrol);
+  --color-link-underlined-underline: var(--color-petrol);
+  --color-link-underlined-hover: var(--color-java);
+  --color-link-underlined-underline-hover: var(--color-java);
+  --color-link-text: var(--color-link-text);
+  --color-link-text-hover: var(--color-midnight);
+  --color-text-skip-link: var(--color-midnight);
+  --color-background-skip-link: var(--color-white);
+  --color-link-with-arrow: var(--color-midnight);
+  --color-link-with-arrow-hover: var(--color-midnight);
+  --color-blockquote: var(--color-paradiso);
+  --color-github-border-default: #d0d7de;
+  --color-github-fg-default: #24292f;
+  --color-github-fg-muted: #57606a;
+  --color-github-fg-subtle: #6e7781;
+  --color-github-link: var(--color-petrol);
+  --color-error: var(--color-error);
+  --color-category-border: var(--color-midnight);
+  --color-category-hover: var(--color-midnight);
+  --color-category-border-hover: var(--color-midnight);
+  --color-tag-border: rgb(6 22 41 / .1);
+  --color-tag-border-hover: var(--color-midnight);
+  --color-tag-text: rgb(19 26 80 / .6);
+  --color-success: var(--color-java);
+  --color-main-level: var(--color-dark-navy);
+  --color-current: var(--color-dark-navy);
+  --color-cool-grey: #8a8ca2;
+  --color-hamburger: var(--color-dark-navy);
+  --color-hover-main-level: var(--color-paradiso);
+  --color-caption: #5c5c6a;
+
+  // Article exceptions in dark mode
+  .article-content {
+    --color-link-underlined-hover: var(--color-paradiso);
+    --color-link-text-hover: var(--color-paradiso);
+
+    ::marker {
+      color: var(--color-text);
+    }
+  }
+
+  // Blocks in light mode
+  .block-hero-centered,
+  .block-hero {
+    background-image: linear-gradient(45deg, var(--color-dark-navy), rgb(196 227 217 / .16) 56%, rgb(62 71 79 / .7)), linear-gradient(-45deg, #323446, hsl(0deg 0% 0% / .5) 100%);
+  }
+
+  .is-icon-left {
+    --color-light-mint: #e7f8f4;
+  }
+
+  // More padding when blocks don't have the same background
+  .block-title-content-50-50 + .block-list > .container {
+    padding: var(--padding-container-vertical) var(--padding-container-horizontal);
+  }
+
+  .block-hero.playing {
+    background-color: var(--color-black);
+    background-image: none;
+  }
+
+  // stylelint-disable-next-line
+  .block.block-image-list,
+  .block.block-image-list + .is-skip-link + .block.block-carousel,
+  .block-background-mint.block-hero-content-image {
+    --color-text-block: var(--color-petrol);
+    background-color: var(--color-light-mint);
+  }
+
+  // stylelint-disable-next-line
+  .block-carousel + .is-skip-link + .block-reference-quotes,
+  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small,
+  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small + .block-faq-accordion,
+  .block.block-image-list + .is-skip-link + .block.block-carousel + .block-cta-small {
+    background-color: var(--color-light-mint);
+  }
+
+  // stylelint-disable-next-line
+  .block.block-image-list + .is-skip-link + .block.block-carousel h2 {
+    color: var(--color-petrol);
+  }
+
+  .block-background-petrol-gradient,
+  .block-hero-jobs.block-background-petrol,
+  .block-hero-content-image.block-background-petrol {
+    background-image: linear-gradient(45deg, var(--color-petrol), rgb(74 169 181 / .26) 56%, rgb(32 88 96 / .7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+  }
+
+  // Other exceptions in light mode
+  .block-badges .badge {
+    border-color: var(--color-white-two);
+  }
+
+  li::marker {
+    color: var(--color-paradiso);
+  }
+
+  .archive-head .filter-label {
+    color: var(--color-midnight);
+  }
+
+  .archive-filters > li > a {
+    border-color: var(--color-midnight);
+    color: var(--color-midnight);
+  }
+
+  .archive-filters > li {
+    &.current-cat a,
+    a:hover,
+    a:focus {
+      background-color: var(--color-midnight);
+      border-color: var(--color-midnight);
+      color: var(--color-white);
+    }
+  }
+
+  .block-hero-single .box {
+    background-color: var(--color-white);
+    color: var(--color-black);
+
+    svg {
+      color: var(--color-java);
+    }
+  }
+
+  .meta-category a {
+    color: var(--color-paradiso);
+  }
+
+  .top:hover,
+  .top:focus {
+    background-color: var(--color-background-top-hover);
+    color: var(--color-petrol);
+  }
+
+  .block-icon-list-cols .container ul {
+    list-style-image: url('../../svg/checkmark-round-light-mode.svg');
+  }
+
+  .block.block-list ul {
+    list-style-image: url('../../svg/list-line.svg');
+  }
+
+  .block.block-image-list ul {
+    list-style-image: url('../../svg/list-line-large.svg');
+
+    @media (max-width: $container-mobile) {
+      list-style-image: url('../../svg/list-line.svg');
+    }
+  }
+
+  .site-main .accordion-icon {
+    background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%232e2f38" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
+  }
+
+  .block-form-person .container > .form #wpforms-11358-field_5 > .choice-3 > input[type="checkbox"]:checked::before {
+    background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%237effe1" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid rgb(174 177 207 / .5);
+  }
+
+  // Background style options in Gutenberg blocks
+  // Use --color-text-block inside block scss-files
+  .block.block-background-mint,
+  .block.block-title-content-cols-30 .col {
+    --color-text-block: var(--color-petrol);
+    background-color: var(--color-light-mint);
+
+    .icon {
+      color: var(--color-petrol);
+    }
+
+    .prefix {
+      color: var(--color-petrol);
+    }
+  }
+
+  .block-timeline {
+    --color-heading: var(--color-white);
+  }
+
+  .block.block-list,
+  .block.block-faq-accordion,
+  .block.block-title-content-50-50 {
+    --color-background-block: var(--color-light-mint);
+
+    // Because this block has background different than other, do not reset padding
+    + .block > .container {
+      @include container();
+    }
+  }
+
+  // Exception for single reference page
+  &.single-reference {
+    .block.block-list,
+    .block.block-faq-accordion,
+    .block.block-title-content-50-50 {
+      --color-background-block: var(--color-background-block);
+    }
+  }
+
+  .block.block-background-petrol {
+    --color-text-block: var(--color-white);
+    --color-link-text-hover: var(--color-link-underlined-hover);
+    background-color: var(--color-petrol);
+
+    .icon {
+      color: var(--color-mint);
+    }
+
+    .prefix,
+    h1.prefix,
+    .content p.prefix {
+      color: var(--color-mint);
+    }
+
+    .col,
+    h2,
+    h3,
+    p,
+    .content p {
+      color: var(--color-white);
+    }
+  }
+
+  .block.block-blog-upsell .col-content {
+    background-color: var(--color-mint);
+
+    a {
+      --color-link-text: var(--color-petrol);
+    }
+
+    .date {
+      color: var(--color-petrol);
+    }
+  }
+
+  .block.block-background-white {
+    --color-text-block: var(--color-paragraph);
+    background-color: var(--color-white);
+  }
+
+  .site-footer {
+    background-color: var(--color-midnight);
+
+    &::after {
+      opacity: 1;
+    }
+
+    .certificates > ul {
+      border-color: rgb(255 255 255 / .14);
+    }
+  }
+}
+
+@mixin color-scheme-dark() {
+  // Variables in dark mode
+  --color-background-block: var(--color-dark-navy);
+  --color-background-block-alternative: var(--color-petrol);
+  --color-text: var(--color-white);
+  --color-text-block: var(--color-white);
+  --color-heading: var(--color-white);
+  --color-gradient-shade-1: var(--color-blue-bell);
+  --color-gradient-shade-2: var(--color-text);
+  --color-gradient-shade-3: var(--color-trout);
+  --color-gradient-shade-4: var(--color-java);
+  --color-gradient-shade-5: var(--color-mint);
+  --color-gradient-shade-6: var(--color-white);
+  --color-paragraph: var(--color-iron);
+  --color-focus-outline: #7b46e1;
+  --color-link-underlined: var(--color-mint);
+  --color-link-underlined-hover: var(--color-java);
+  --color-link-underlined-underline: var(--color-mint);
+  --color-link-underlined-underline-hover: var(--color-java);
+  --color-link-text: var(--color-mint);
+  --color-link-text-hover: var(--color-white);
+  --color-text-skip-link: var(--color-white);
+  --color-background-skip-link: var(--color-petrol);
+  --color-link-with-arrow: var(--color-white);
+  --color-link-with-arrow-hover: var(--color-mint);
+  --color-blockquote: var(--color-white);
+  --color-github-border-default: #464d56;
+  --color-github-fg-default: #c9d1d9;
+  --color-github-fg-muted: #8b949e;
+  --color-github-fg-subtle: #8d98a7;
+  --color-github-link: var(--color-mint);
+  --color-error: #f07373;
+  --color-category-border: var(--color-light-grey);
+  --color-category-hover: var(--color-midnight);
+  --color-category-border-hover: var(--color-midnight);
+  --color-tag-border: var(--color-light-grey);
+  --color-tag-border-hover: var(--color-white);
+  --color-success: #a9f3a2;
+  --color-main-level: var(--color-white);
+  --color-current: var(--color-white);
+  --color-cool-grey: #c6c9e7;
+  --color-hamburger: var(--color-white);
+  --color-hover-main-level: var(--color-mint);
+  --color-caption: #dcdde0b3;
+
+  // Blocks in dark mode
+  .block-hero-centered,
+  .block-hero {
+    // background-image: linear-gradient(45deg, var(--color-dark-navy), rgb(70 85 80 / .26) 56%, rgb(62 71 79 / .7)), linear-gradient(-45deg, var(--color-dark-navy), var(--color-midnight) 100%);
+    // background-image: linear-gradient(9deg, rgb(46 47 56 / 1) 0%, rgb(46 47 56 / 1) 53%, rgba(55 61 70 / 1) 100%);
+    background-color: var(--color-dark-navy);
+    background-image: linear-gradient(198deg, #7effe126 5.92%, #2e2f3826 56.09%, #2e2f3826 109.5%);
+  }
+
+  .is-icon-left {
+    --color-light-mint: #1e4348;
+  }
+
+  // Less padding when blocks have the same background
+  .block-title-content-50-50 + .block-list > .container {
+    padding-bottom: 0;
+  }
+
+  // stylelint-disable-next-line
+  .block-carousel + .is-skip-link + .block-reference-quotes,
+  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small,
+  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small + .block-faq-accordion,
+  .block.block-image-list + .is-skip-link + .block.block-carousel + .block-cta-small {
+    background-color: var(--color-petrol);
+  }
+
+  // stylelint-disable-next-line
+  .block.block-image-list,
+  .block.block-image-list + .is-skip-link + .block.block-carousel,
+  .block-background-mint.block-hero-content-image {
+    --color-text-block: var(--color-white);
+    background-color: var(--color-petrol);
+  }
+
+  // stylelint-disable-next-line
+  .block.block-image-list + .is-skip-link + .block.block-carousel h2,
+  .block.block-image-list span {
+    color: var(--color-text);
+  }
+
+  .block.block-image-list ul {
+    list-style-image: url('../../svg/list-line-large-dark-mode.svg');
+
+    @media (max-width: $container-mobile) {
+      list-style-image: url('../../svg/list-line-dark-mode.svg');
+    }
+  }
+
+  .block-hero.playing {
+    background-color: var(--color-black);
+    background-image: none;
+  }
+
+  .block-background-petrol-gradient,
+  .block-hero-jobs.block-background-petrol,
+  .block-hero-content-image.block-background-petrol {
+    background-image: linear-gradient(45deg, var(--color-petrol), rgb(70 85 80 / .26) 56%, rgb(32 88 96 / .7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+
+    p {
+      color: var(--color-white);
+    }
+
+    .prefix,
+    h1.prefix,
+    p.prefix {
+      color: var(--color-mint);
+    }
+  }
+
+  .block.block-blog-upsell .col-content {
+    background-color: var(--color-petrol);
+
+    a {
+      --color-link-text: var(--color-white);
+    }
+
+    .date {
+      color: var(--color-mint);
+    }
+  }
+
+  // Other exceptions in dark mode
+  .block-badges .badge {
+    border-color: var(--color-dark-navy);
+  }
+
+  li::marker {
+    color: var(--color-mint);
+  }
+
+  .archive-head .filter-label {
+    color: var(--color-white);
+  }
+
+  .archive-filters > li > a {
+    border-color: var(--color-white);
+    color: var(--color-white);
+  }
+
+  .archive-filters > li {
+    &.current-cat a,
+    a:hover,
+    a:focus {
+      background-color: var(--color-white);
+      border-color: var(--color-white);
+      color: var(--color-midnight);
+    }
+  }
+
+  .block-hero-single .box {
+    background-color: var(--color-petrol);
+    color: var(--color-white);
+
+    svg {
+      color: var(--color-mint);
+    }
+  }
+
+  .meta-category a {
+    color: var(--color-mint);
+  }
+
+  .logo-big-white-path {
+    fill: var(--color-background-block);
+  }
+
+  .top:hover,
+  .top:focus {
+    background-color: var(--color-petrol);
+  }
+
+  .block-icon-list-cols .container ul {
+    list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+  }
+
+  .block.block-list ul {
+    list-style-image: url('../../svg/list-line-dark-mode.svg');
+  }
+
+  .site-main .accordion-icon {
+    background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%23fff" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
+  }
+
+  .block-form-person .container > .form #wpforms-11358-field_5 > .choice-3 > input[type="checkbox"]:checked::before {
+    background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%237effe1" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid rgb(255 255 255 / .4);
+  }
+
+  // Background style options in Gutenberg blocks
+  // Use --color-text-block inside block scss-files
+  .block.block-background-mint,
+  .block.block-title-content-cols-30 .col {
+    --color-text-block: var(--color-light-mint);
+    background-color: var(--color-petrol);
+
+    .prefix,
+    .icon {
+      color: var(--color-mint);
+    }
+  }
+
+  .block-timeline {
+    --color-heading: var(--color-white);
+  }
+
+  .block.block-list,
+  .block.block-faq-accordion,
+  .block.block-title-content-50-50 {
+    --color-background-block: var(--color-background-block);
+  }
+
+  .block.block-background-petrol {
+    --color-text-block: var(--color-white);
+    --color-link-text-hover: var(--color-link-underlined-hover);
+    background-color: var(--color-petrol);
+
+    .col,
+    h2,
+    h3,
+    p,
+    .content p {
+      color: var(--color-white);
+    }
+
+    .icon,
+    .content p.prefix {
+      color: var(--color-mint);
+    }
+  }
+
+  .block.block-background-white {
+    --color-text-block: var(--color-white);
+    background-color: var(--color-dark-navy);
+  }
+
+  .site-footer {
+    background-color: var(--color-midnight);
+
+    &::after {
+      opacity: 0;
+    }
+
+    .certificates > ul {
+      border-color: var(--color-dark-navy);
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    @include color-scheme-light();
+  }
+
+  body[data-color-scheme="dark"] {
+    @include color-scheme-dark();
+
+    .site-header {
+      @include header-text-dark();
+    }
+  }
+
+  body[data-color-scheme="light"] {
+    @include color-scheme-light();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include color-scheme-dark();
+  }
+
+  body[data-color-scheme="dark"] {
+    @include color-scheme-dark();
+  }
+
+  body[data-color-scheme="light"] {
+    @include color-scheme-light();
+
+    &.archive .site-header {
+      @include header-text-dark();
+    }
+
+    // Exceptions for a scenario when prefers dark mode is set by OS
+    // but light mode is forced via site toggle
+    &.has-dark-navigation .site-header {
+      @include header-text-dark();
+    }
+
+    .block.block-blog-upsell .col-content {
+      background-color: var(--color-mint);
+
+      a {
+        --color-link-text: var(--color-text);
+      }
+    }
+  }
+}

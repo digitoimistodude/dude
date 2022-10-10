@@ -1,0 +1,230 @@
+{
+    "key": "group_62641122e9e00",
+    "title": "Referenssi",
+    "fields": [
+        {
+            "key": "field_631a0532a3d1d",
+            "label": "Linkki livesivustolle",
+            "name": "link_to_work",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/alpaknitwear.com"
+        },
+        {
+            "key": "field_6264112954557",
+            "label": "Lyhyt esittely",
+            "name": "short_desc",
+            "type": "text",
+            "instructions": "Tätä tekstiä käytetään referenssilistauksessa.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_630a26dda2f1f",
+            "label": "Oma CSS",
+            "name": "custom_css",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_631f1aa03afae",
+            "label": "Brändiväri, virallinen",
+            "name": "brand_color_official",
+            "type": "color_picker",
+            "instructions": "Laita tähän virallinen, vahva <b>tummahko<\/b> brändiväri. Tämä väri tulee näkyviin esim. karusellissa.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_633f22ca944c7",
+            "label": "Dark mode",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62e3909fb6361",
+            "label": "Brändiväri isoille taustapinnoille (dark mode)",
+            "name": "brand_color",
+            "type": "color_picker",
+            "instructions": "Valitse brändiväri, joka sopii taustavärinä isoille pinnoille. Varsinainen brändin väri (esim. WorkPowerin punainen) voi olla liian aggressiivinen näihin...",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_631f18eb3afad",
+            "label": "Brändiväri tekstipinnoille (dark mode)",
+            "name": "brand_color_text",
+            "type": "color_picker",
+            "instructions": "Valitse brändiväri, joka sopii isojen pintojen valitun värin päällä. Esim. jos on haalean harmaa niin joku musta voisi toimia parhaiten.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_633f283825af4",
+            "label": "Default-lohkon taustaväri referenssille (dark mode)",
+            "name": "color_background_block",
+            "type": "color_picker",
+            "instructions": "Oletus: Dark navy.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#2e2f38",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_633f22e4944c8",
+            "label": "Light mode",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_633f233a944cb",
+            "label": "Brändiväri isoille taustapinnoille (light mode)",
+            "name": "brand_color_light",
+            "type": "color_picker",
+            "instructions": "Valitse brändiväri, joka sopii taustavärinä isoille pinnoille. Varsinainen brändin väri (esim. WorkPowerin punainen) voi olla liian aggressiivinen näihin...",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_633f232a944ca",
+            "label": "Brändiväri tekstipinnoille (light mode)",
+            "name": "brand_color_text_light",
+            "type": "color_picker",
+            "instructions": "Valitse brändiväri, joka sopii isojen pintojen valitun värin päällä. Esim. jos on haalean harmaa niin joku musta voisi toimia parhaiten.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_633f281325af3",
+            "label": "Default-lohkon taustaväri referenssille (light mode)",
+            "name": "color_background_block_light",
+            "type": "color_picker",
+            "instructions": "Oletus: Valkoinen.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "reference"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1665083816
+}

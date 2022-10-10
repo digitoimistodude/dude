@@ -1,0 +1,24 @@
+.link-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+
+  a {
+    align-items: center;
+    color: var(--color-text);
+    display: inline-flex;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-semibold);
+    gap: 1.2rem;
+  }
+
+  svg {
+    @include cubic-bezier($property: transform);
+    min-width: 13px;
+  }
+
+  a:hover svg,
+  a:focus svg {
+    transform: translateX(.5rem);
+  }
+}

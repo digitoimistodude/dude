@@ -1,0 +1,104 @@
+// Gutenberg editor styles
+// Please note: These styles affect only wp-admin
+// editor side. Please remember to add imports
+// from "Gutenberg blocks" also to the main
+// global.scss to see them on front end side.
+:root {
+  // Set root size for rems so that 1rem = 10px
+  // stylelint-disable-next-line declaration-property-unit-allowed-list
+  font-size: 62.5%;
+}
+
+// Helpers
+@import 'helpers/animations';
+@import 'helpers/aspect-ratio';
+@import 'helpers/box-model';
+@import 'helpers/clamp';
+@import 'helpers/images';
+@import 'helpers/typography';
+
+// Variables
+@import 'variables/colors';
+@import 'variables/breakpoints';
+@import 'variables/font-family';
+@import 'variables/font-size';
+@import 'variables/forms';
+@import 'variables/spacings';
+
+// Accessibility
+@import 'base/accessibility';
+
+// Gutenberg editor specific webfonts
+@import 'gutenberg/variables/font-face';
+
+// Animations
+@import 'animations/radial-gradient';
+@import 'animations/text-gradient';
+
+// Components needed by gutenberg
+@import 'components/components';
+
+// Gutenberg layout outside blocks
+@import 'gutenberg/layout/content';
+@import 'gutenberg/layout/button';
+
+// Gutenberg blocks
+@import 'gutenberg/blocks';
+
+// Navigation
+@import 'navigation/nav-desktop';
+@import 'navigation/nav-mobile'; // Size: 29.1 kB
+
+// Structure
+@import 'layout/general';
+@import 'layout/cols';
+@import 'layout/head';
+@import 'layout/link-with-arrow';
+@import 'layout/link-wrapper';
+@import 'layout/print';
+@import 'layout/site-header';
+@import 'layout/site-footer';
+@import 'layout/forms';
+@import 'layout/blog';
+@import 'layout/duotone';
+@import 'layout/scrollable-div-shadows';
+@import 'layout/social-media-links';
+
+// Global features
+@import 'features/top';
+@import 'features/gallery';
+@import 'features/pagination';
+@import 'features/wpforms';
+@import 'features/carousels';
+@import 'features/vimeoplayer';
+@import 'features/showreel';
+@import 'features/dark-mode';
+@import 'features/train';
+@import 'features/swup';
+
+// Views
+@import 'views/brand';
+@import 'views/front-page';
+@import 'views/search';
+@import 'views/404';
+@import 'views/single-person';
+@import 'views/single-question';
+@import 'views/single-reference';
+@import 'views/archive-blog';
+@import 'views/archive-question';
+@import 'views/single';
+@import 'views/references';
+@import 'views/jobs';
+@import 'views/code-community';
+@import 'views/contact';
+
+// Parts
+@import 'parts/loops/reference';
+@import 'parts/loops/post-block';
+@import 'parts/logos';
+
+// Gutenberg formatting
+@import 'gutenberg/formatting';
+
+// Other features needed on editor side
+@import 'gutenberg/editor';

@@ -1,0 +1,132 @@
+// stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors, max-line-length
+// Contact page
+.page-id-4487 {
+  .site-main .block-hero-content-image .container {
+    padding-bottom: 12rem;
+
+    .prefix {
+      color: var(--color-mint);
+    }
+
+    @media (max-width: 959px) {
+      padding-bottom: 4rem;
+    }
+  }
+
+  // Hide persons title
+  .block-persons .title-content {
+    @include screen-reader-text();
+  }
+
+  // Default
+  .site-content .site-main {
+    background-color: var(--color-dark-navy);
+    background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+    .block {
+      --color-text: var(--color-white);
+      --color-text-block: var(--color-white);
+      --color-paragraph: var(--color-white);
+      --color-heading: var(--color-white);
+      --color-link-text-hover: var(--color-white-two);
+      background-color: transparent;
+    }
+  }
+
+  // Contact page hero version
+  @media (prefers-color-scheme: light) {
+    .site-content .site-main {
+      background-color: var(--color-dark-navy);
+      background-image: linear-gradient(239.71deg, rgb(126 255 225 / .2) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+      .block {
+        --color-text: var(--color-white);
+        --color-text-block: var(--color-white);
+        --color-paragraph: var(--color-white);
+        --color-heading: var(--color-white);
+        --color-link-text-hover: var(--color-white-two);
+        background-color: transparent;
+      }
+    }
+
+    &[data-color-scheme="dark"] {
+      .site-content .site-main {
+        background-color: var(--color-dark-navy);
+        background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+        .block {
+          --color-text: var(--color-white);
+          --color-text-block: var(--color-white);
+          --color-paragraph: var(--color-white);
+          --color-heading: var(--color-white);
+          --color-link-text-hover: var(--color-white-two);
+          background-color: transparent;
+        }
+      }
+    }
+
+    &[data-color-scheme="light"] {
+      .site-content .site-main {
+        background-color: var(--color-dark-navy);
+        background-image: linear-gradient(239.71deg, rgb(126 255 225 / .2) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+        .block {
+          --color-text: var(--color-white);
+          --color-text-block: var(--color-white);
+          --color-paragraph: var(--color-white);
+          --color-heading: var(--color-white);
+          --color-link-text-hover: var(--color-white-two);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .site-content .site-main {
+      background-color: var(--color-dark-navy);
+      background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+      .block {
+        --color-text: var(--color-white);
+        --color-text-block: var(--color-white);
+        --color-paragraph: var(--color-white);
+        --color-heading: var(--color-white);
+        --color-link-text-hover: var(--color-white-two);
+        background-color: transparent;
+      }
+    }
+
+    &[data-color-scheme="dark"] {
+      .site-content .site-main {
+        background-color: var(--color-dark-navy);
+        background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+        .block {
+          --color-text: var(--color-white);
+          --color-text-block: var(--color-white);
+          --color-paragraph: var(--color-white);
+          --color-heading: var(--color-white);
+          --color-link-text-hover: var(--color-white-two);
+          background-color: transparent;
+        }
+      }
+    }
+
+    &[data-color-scheme="light"] {
+      .site-content .site-main {
+        background-color: var(--color-dark-navy);
+        background-image: linear-gradient(239.71deg, rgb(126 255 225 / .2) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+        .block {
+          --color-text: var(--color-white);
+          --color-text-block: var(--color-white);
+          --color-paragraph: var(--color-white);
+          --color-heading: var(--color-white);
+          --color-link-text-hover: var(--color-white-two);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

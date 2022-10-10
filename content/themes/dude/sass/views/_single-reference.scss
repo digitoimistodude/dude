@@ -1,0 +1,138 @@
+// stylelint-disable selector-max-class, selector-max-specificity, no-descending-specificity
+.editor-styles-wrapper .block.block-reference-quote-short {
+  // This variable comes dynamically from reference back end
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  --color-text-block: var(--color-brand-reference-text);
+
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  background-color: var(--color-brand-reference-bg);
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  color: var(--color-brand-reference-text);
+
+  span {
+    // This variable comes dynamically from reference back end
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    --color-text: var(--color-brand-reference-text);
+  }
+}
+
+.editor-styles-wrapper .block-hero-content-image.block-background-reference.has-image-as-img,
+.site-main .block-hero-content-image.block-background-reference.has-image-as-img {
+  // This variable comes dynamically from reference back end
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  --color-text-block: var(--color-brand-reference-text);
+
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  background-color: var(--color-brand-reference-bg);
+  // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+  color: var(--color-brand-reference-text);
+
+  > .container {
+    position: static;
+  }
+
+  .prefix {
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-brand-reference-text);
+    font-size: var(--font-size-14);
+  }
+
+  h2 {
+    @include heading-64();
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-brand-reference-text);
+    font-weight: var(--font-weight-bold);
+    min-width: unset;
+  }
+
+  .col-image {
+    aspect-ratio: unset;
+    display: flex;
+    height: unset;
+    justify-content: flex-end;
+    max-width: unset;
+    min-width: unset;
+    position: static;
+    width: 100%;
+  }
+
+  .col-image > img {
+    aspect-ratio: unset;
+    height: unset;
+    max-width: unset;
+    min-width: unset;
+    position: static;
+    width: unset;
+  }
+}
+
+.single-reference figure.wp-block-image {
+  margin: 0;
+}
+
+// For both referenec quotes, short and long
+.block-reference-quote {
+  figure,
+  blockquote {
+    margin: 0;
+  }
+
+  figure {
+    display: grid;
+    gap: 8rem;
+
+    @media (max-width: $container-ipad) {
+      gap: 4rem;
+    }
+  }
+
+  img {
+    border-radius: 100px;
+    height: 128px;
+    object-fit: cover;
+    width: 128px;
+
+    @media (max-width: $container-mobile) {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  .name,
+  .name-title {
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-text);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-bold);
+  }
+
+  cite {
+    font-size: var(--font-size-16);
+    font-style: normal;
+    margin: unset;
+    max-width: unset;
+    text-align: left;
+  }
+
+  figcaption {
+    align-items: center;
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-brand-reference-text);
+    display: flex;
+    gap: 4rem;
+    margin: unset;
+    max-width: unset;
+  }
+
+  .company {
+    // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
+    color: var(--color-text);
+    display: block;
+    font-size: var(--font-size-16);
+    margin-top: .8rem;
+  }
+}
+
+.block-background-reference + .block-background-reference > .container {
+  padding-top: 0;
+}

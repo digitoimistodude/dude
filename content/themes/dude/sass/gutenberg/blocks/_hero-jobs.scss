@@ -1,0 +1,108 @@
+.block-hero-jobs .container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: unset;
+  justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+  position: unset;
+  width: 100%;
+
+  .col-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin: 0 auto;
+    padding-bottom: 12.4rem;
+    padding-top: 22.8rem;
+
+    @media (min-width: $container-mobile) {
+      text-align: center;
+    }
+
+    @media (max-width: $width-max-mobile) {
+      padding-top: 18.4rem;
+    }
+
+    @media (max-width: $container-mobile) {
+      padding-left: var(--padding-container-horizontal);
+      padding-right: var(--padding-container-horizontal);
+      width: 100%;
+    }
+  }
+
+  h1 {
+    color: var(--color-white);
+    font-size: clamp-calc($container-mobile, 1600px, 52px, 126px);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -.01em;
+    line-height: 1.23;
+    margin: 0;
+    max-width: 110rem;
+  }
+}
+
+.block-hero-jobs .logo-big-white {
+  margin-bottom: -11.5rem;
+  position: relative;
+  width: calc(100vw + 140px);
+  z-index: 3;
+
+  @media (max-width: $width-max-mobile) {
+    margin-bottom: -3rem;
+  }
+}
+
+// Anchor link
+.block-hero-jobs .button-wrapper > a {
+  align-items: center;
+  border: 1px solid var(--color-mint);
+  border-radius: 22px;
+  box-shadow: none;
+  color: var(--color-mint);
+  display: inline-flex;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  gap: 12px;
+  justify-content: space-between;
+  padding: 6px 25px 8px 16px;
+  text-decoration: none;
+  transition: all $transition-duration cubic-bezier(.19, 1, .22, 1);
+
+  &::before {
+    // stylelint-disable-next-line property-disallowed-list
+    animation: 1s cubic-bezier(.5, 0, 1, 1) infinite alternate blinker;
+    background-color: var(--color-mint);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 13px;
+    transition: all $transition-duration cubic-bezier(.19, 1, .22, 1);
+    width: 13px;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: var(--color-mint);
+    box-shadow: none;
+    color: var(--color-midnight);
+
+    &::before {
+      background-color: var(--color-midnight);
+    }
+  }
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: .1;
+  }
+}

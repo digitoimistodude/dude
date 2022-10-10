@@ -1,0 +1,27 @@
+// stylelint-disable no-descending-specificity
+// Default list block
+ul,
+ol {
+  list-style-position: outside;
+  width: calc((100% - calc(var(--padding-container-horizontal) * 2)));
+}
+
+ul {
+  list-style-type: '\2022  ';
+  padding-inline-start: 1em;
+}
+
+ol {
+  padding-inline-start: 1.25em;
+
+  li::marker {
+    // Reseting the font in numbering magically removes the gap
+    font-family: system-ui, sans-serif;
+  }
+}
+
+// Colorized markers
+li::marker {
+  color: var(--color-mint);
+  font-size: inherit;
+}

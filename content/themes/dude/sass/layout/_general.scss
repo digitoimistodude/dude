@@ -1,0 +1,137 @@
+// stylelint-disable no-descending-specificity, max-line-length, selector-max-class, selector-max-specificity
+// This file is meant for general styles and containers
+// that apply everywhere throughout the website. Add more
+// always repeating elements right below.
+
+// Default structural element
+.block {
+  background-color: var(--color-background-block);
+  margin: 0 auto;
+  max-width: $width-max-layout;
+  position: relative;
+  transition: all $transition-duration;
+}
+
+.site-main:not(.archive-reference) {
+  background-color: var(--color-background-block);
+}
+
+// Block padding exceptions
+// This class is useful when we have multiple blocks stacked with same background-color
+.block.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked .container {
+  padding-top: 0;
+}
+
+// Exceptions
+.block.block-list.block.has-unified-padding-if-stacked + .block.block-reset-styles.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked.block-reference-quotes .container,
+.block.has-style-alt.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked.block-image-content-right .container {
+  padding-top: var(--padding-container-vertical);
+}
+
+// Global link helper
+// This is useful in services -type of areas where the whole block is a link
+// Remember to define aria-label or screen-reader-text for accessibility
+.global-link {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+// Site wrapper
+.site {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+// Containers
+.container {
+  @include container();
+}
+
+// Clear block containers by default
+.site-main .container {
+  clear: both;
+  overflow: hidden;
+}
+
+// Better edit link
+.edit-link {
+  background-color: var(--color-background-block);
+  display: block;
+  margin: 4rem 0 0;
+  margin-bottom: 0;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: var(--padding-container-horizontal);
+  text-align: left;
+  transition: all $transition-duration;
+  width: 100%;
+
+  a.post-edit-link {
+    border: 1px dashed var(--color-tag-text);
+    clear: both;
+    color: var(--color-tag-text);
+    font-size: var(--font-size-16);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &:focus,
+  a:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+  }
+}
+
+// Hide/show helpers
+// stylelint-disable-next-line a11y/no-display-none
+.hide-on-desktop {
+  @media (min-width: $container-mobile) {
+    // Forced to use important here, because makes no sense to write too specific selectors here
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+// Forced to use important here, because makes no sense to write too specific selectors here
+// stylelint-disable-next-line a11y/no-display-none
+.hide-on-mobile {
+  @media (max-width: $container-mobile) {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+// Only function of these is to force hide content based on the view
+// Forced to use important here, because makes no sense to write too specific selectors here
+// stylelint-disable-next-line a11y/no-display-none
+.hide-on-mobile-nav-view {
+  @media (max-width: $width-max-mobile) {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+// Forced to use important here, because makes no sense to write too specific selectors here
+// stylelint-disable-next-line a11y/no-display-none
+.hide-on-desktop-nav-view {
+  @media (min-width: $width-max-mobile) {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+// Forced to use important here, because makes no sense to write too specific selectors here
+// stylelint-disable-next-line a11y/no-display-none
+.hide-completely {
+  // stylelint-disable-next-line declaration-no-important
+  display: none !important;
+}

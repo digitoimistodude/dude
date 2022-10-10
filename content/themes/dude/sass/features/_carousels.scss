@@ -1,0 +1,85 @@
+@import 'swiper/swiper';
+
+button.swiper-actions,
+button.swiper-actions:focus,
+button.swiper-actions:hover,
+.wp-block .acf-block-preview button.swiper-actions,
+.wp-block .acf-block-preview button.swiper-actions:focus,
+.wp-block .acf-block-preview button.swiper-actions:hover {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  color: var(--color-dark-navy);
+  padding: 0;
+}
+
+// stylelint-disable
+.site-main button.swiper-actions:hover {
+  opacity: .5;
+}
+
+.swiper-pagination {
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+}
+
+.swiper-controls {
+  display: flex;
+  gap: 3.7rem;
+  margin-bottom: 6.4rem;
+  transform: translateX(-13px);
+
+  @media (max-width: $container-mobile) {
+    gap: 2rem;
+  }
+}
+
+.swiper-pagination {
+  white-space: nowrap;
+}
+
+ul.swiper-wrapper {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.swiper-slide {
+  margin: 0;
+  width: 100%;
+}
+
+.site-main button.arrow-link {
+  overflow: visible;
+}
+
+.arrow-link.swiper-button-disabled[disabled]:hover,
+.arrow-link.swiper-button-disabled[disabled]:focus,
+.arrow-link.swiper-button-disabled[disabled] {
+  opacity: .2;
+
+  .arrow-link-arrow::before {
+    width: 70px;
+  }
+}
+
+.block.block-reset-styles {
+  background-color: unset;
+  background-image: unset;
+  border: unset;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.site-main .block.is-skip-link {
+  @extend .container;
+  height: 0;
+  overflow: visible;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  z-index: 3;
+
+  .skip-link {
+    transform: translateY(-10rem);
+  }
+}

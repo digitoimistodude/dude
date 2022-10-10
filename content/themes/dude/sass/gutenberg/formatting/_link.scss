@@ -1,0 +1,23 @@
+// stylelint-disable no-descending-specificity
+// Default links everywhere
+.site-main,
+.block-editor-rich-text__editable {
+  a {
+    @include link();
+  }
+}
+
+// Define elements where you do not want to use default link styles
+.head,
+.footer-columns,
+.col-post,
+.col-reference,
+.entry-footer,
+.site-header,
+.site-footer,
+.block-blog-upsell,
+.author-card {
+  a {
+    text-decoration: none;
+  }
+}

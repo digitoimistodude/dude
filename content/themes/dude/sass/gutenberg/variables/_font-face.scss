@@ -1,0 +1,15 @@
+// Font family settings for Gutenberg
+@include fontface('Inter', '../../../../../content/themes/dude/fonts/inter-400', 400);
+@include fontface('Inter', '../../../../../content/themes/dude/fonts/inter-400-italic', 400, italic);
+@include fontface('Inter', '../../../../../content/themes/dude/fonts/inter-500', 500);
+@include fontface('Inter', '../../../../../content/themes/dude/fonts/inter-600', 600);
+@include fontface('Inter', '../../../../../content/themes/dude/fonts/inter-700', 700);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-400', 400);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-400-italic', 400, italic);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-500', 500);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-500-italic', 500, italic);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-600', 600);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-600-italic', 600, italic);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-700', 700);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-700', 800);
+@include fontface('Circular', '../../../../../content/themes/dude/fonts/circular-900', 900);

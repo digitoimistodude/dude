@@ -1,0 +1,18 @@
+.block-archive-questions {
+  h1 {
+    @include heading-90();
+    margin: 0;
+  }
+
+  .container {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    padding-top: 25rem;
+
+    @media (max-width: $container-ipad) {
+      grid-template-columns: minmax(0, 1fr);
+      padding-top: 15rem;
+    }
+  }
+}

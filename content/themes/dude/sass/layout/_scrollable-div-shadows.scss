@@ -1,0 +1,72 @@
+.h-list-container {
+  position: relative;
+}
+
+.fade-overlay {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-between;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  @media (min-width: 1000px) {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .has-horizontal-scroll {
+    width: 100%;
+  }
+
+  .has-horizontal-scroll .horizontal-list {
+    justify-content: unset;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      height: 0;
+      width: 0;
+    }
+  }
+}
+
+.fade-right,
+.fade-left {
+  background-color: transparent;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .2s ease;
+  width: 50px;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.fade-left {
+  background-image: linear-gradient(90deg, rgb(28 30 38 / 1) 0%, rgb(28 30 38 / .5) 50%, rgb(28 30 38 / 0) 100%);
+}
+
+.fade-right {
+  background-image: linear-gradient(280deg, rgb(28 30 38 / 1) 0%, rgb(28 30 38 / .5) 50%, rgb(28 30 38 / 0) 100%);
+}
+
+// Tablist exceptions
+.tablist.has-horizontal-scroll .fade-left {
+  width: 10vw;
+}
+
+.tablist.has-horizontal-scroll .fade-right {
+  right: -2rem;
+  width: 30vw;
+}

@@ -1,0 +1,77 @@
+// Use like this in template
+// <a class="arrow-link" href="<?php echo esc_attr( $link_here ) ?>">
+//  <?php echo esc_html( $link_text_here ) ?>
+//  <span class="arrow-link-arrow"></span>
+// </a>
+
+// stylelint-disable max-line-length
+@mixin link-with-arrow($font-size: var(--font-size-17), $font-weight: var(--font-weight-semibold)) {
+  --color-link-arrow: var(--color-link-with-arrow);
+  --color-link-arrow-hover: var(--color-link-with-arrow-hover);
+  color: var(--color-link-arrow);
+  font-family: var(--font-heading);
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-decoration: none;
+  transition: color $transition-duration cubic-bezier(.25, .46, .45, .94);
+
+  .arrow-link-arrow {
+    display: inline-block;
+    padding-left: .5rem;
+    white-space: nowrap;
+    width: 25px;
+  }
+
+  .arrow-link-arrow::before {
+    background-color: var(--color-link-arrow);
+    bottom: 4px;
+    content: '';
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    width: 15px;
+  }
+
+  .arrow-link-arrow::after {
+    border-bottom: 2px solid var(--color-link-arrow);
+    border-radius: 1px;
+    border-right: 2px solid var(--color-link-arrow);
+    bottom: 1px;
+    content: '';
+    display: inline-block;
+    height: 8px;
+    left: -7px;
+    padding: 3px;
+    position: relative;
+    transform: rotate(-45deg);
+    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    width: 8px;
+  }
+
+  &:hover .arrow-link-arrow::before,
+  &:focus .arrow-link-arrow::before {
+    background-color: var(--color-link-arrow-hover);
+    width: 22px;
+  }
+
+  &:hover .arrow-link-arrow::after,
+  &:focus .arrow-link-arrow::after {
+    border-color: var(--color-link-arrow-hover);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-link-arrow-hover);
+  }
+
+  // If link is external
+  // stylelint-disable-next-line
+  &.is-external-link > .external-link-icon {
+    display: none;
+  }
+}
+
+.site-main .arrow-link {
+  @include link-with-arrow();
+}

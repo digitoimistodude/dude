@@ -1,0 +1,191 @@
+.logos-label {
+  @include screen-reader-text();
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: 4rem;
+  margin-top: 8rem;
+  opacity: .8;
+}
+
+.logos {
+  --color-client-logo: var(--color-text);
+  --color-client-logo-no-fill: var(--color-background-block);
+  display: grid;
+  grid-column-gap: 7rem;
+  grid-row-gap: 7rem;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  margin-bottom: var(--padding-container-vertical);
+  margin-left: 0;
+  margin-top: 0;
+  padding-left: 0;
+
+  svg.is-bigger {
+    max-height: 110px;
+    max-width: 110px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 50px;
+      max-width: 90px;
+    }
+  }
+
+  svg.is-biggest {
+    max-height: 124px;
+    max-width: 124px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 50px;
+      max-width: 90px;
+    }
+  }
+
+  > li {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 150px;
+    overflow: visible;
+    padding-left: 0;
+  }
+
+  svg {
+    fill: var(--color-client-logo);
+    height: 100%;
+    max-height: 50px;
+    max-width: 90px;
+    width: auto;
+
+    path:not(.do-not-fill) {
+      fill: var(--color-client-logo);
+    }
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 30px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  .do-not-fill {
+    fill: var(--color-client-logo-no-fill);
+  }
+
+  .logo-ulkoministerio svg {
+    max-height: 140px;
+    max-width: 190px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 60px;
+      max-width: 80px;
+      width: 100%;
+    }
+
+    @media (max-width: 430px) {
+      max-height: 50px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  .logo-wotkins svg {
+    max-width: 150px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 60px;
+      max-width: 80px;
+      width: 100%;
+    }
+
+    @media (max-width: 430px) {
+      max-height: 50px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  .logo-sfcaravan svg {
+    max-width: 150px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 60px;
+      max-width: 80px;
+      width: 100%;
+    }
+
+    @media (max-width: 430px) {
+      max-height: 50px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  .logo-kktavastia svg,
+  .logo-mediashake svg {
+    height: auto;
+    max-height: 150px;
+    max-width: 170px;
+    width: 170px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 60px;
+      max-width: 80px;
+      width: 100%;
+    }
+
+    @media (max-width: 430px) {
+      max-height: 50px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  .logo-ark svg,
+  .logo-blackbruin svg {
+    max-height: 100px;
+    max-width: 100px;
+
+    // iPhone and other phones
+    @media (max-width: 650px) {
+      max-height: 60px;
+      max-width: 80px;
+      width: 100%;
+    }
+
+    @media (max-width: 490px) {
+      max-height: 50px;
+      max-width: 70px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    grid-column-gap: 5rem;
+    grid-row-gap: 4rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-column-gap: 3rem;
+    grid-row-gap: 4rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+// Keyframes
+@keyframes gradient-heading {
+  0% {
+    background-size: 100% auto;
+  }
+
+  100% {
+    background-size: 500% auto;
+  }
+}

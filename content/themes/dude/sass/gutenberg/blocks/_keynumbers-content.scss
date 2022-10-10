@@ -1,0 +1,119 @@
+.block-keynumbers-content {
+  .cols {
+    align-items: start;
+    display: grid;
+    gap: 24rem;
+    grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+
+    @media (max-width: $container-desktop) {
+      gap: 12rem;
+    }
+
+    @media (max-width: 1000px) {
+      gap: 8rem;
+    }
+
+    @media (max-width: $container-ipad) {
+      gap: 4rem;
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .title,
+  .additional-info-title {
+    font-size: var(--font-size-14);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .number-and-description {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .description {
+    color: var(--color-text);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-regular);
+    line-height: .9;
+  }
+
+  .number {
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-50);
+    font-weight: var(--font-weight-semibold);
+    line-height: .8;
+  }
+
+  .col-numbers {
+    display: grid;
+    row-gap: 9rem;
+
+    @media (max-width: $container-ipad) {
+      column-gap: 4rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 6rem;
+    }
+  }
+
+  .col-content {
+    h2 {
+      font-size: var(--font-size-34);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    h2:not(h2:first-child) {
+      margin-top: 5rem;
+    }
+
+    p {
+      font-size: var(--font-size-20);
+    }
+
+    > p:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ul,
+  ol {
+    color: var(--color-text);
+    list-style-position: outside;
+  }
+
+  ul {
+    list-style-type: '\2022  ';
+    padding-inline-start: 1em;
+  }
+
+  ol {
+    padding-inline-start: 1.25em;
+  }
+
+  li::marker {
+    font-size: var(--font-size-18);
+  }
+
+  li {
+    color: var(--color-text);
+    font-size: var(--font-size-16);
+    padding-inline-start: .4em;
+  }
+
+  .button-wrapper {
+    margin-top: 6rem;
+  }
+
+  @media (max-width: $container-ipad) {
+    .additional-information {
+      grid-column: auto / span 2;
+    }
+  }
+}
