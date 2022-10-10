@@ -17,16 +17,15 @@ function head_analytics_scripts() { ?>
   <?php
   // We need to load up WPForms related scripts on the pages that are no forms
   // to make forms work with Swup.js
-  if ( ! is_page( 4487 ) ) : ?>
-    <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/js/wpforms.min.js" id="wpforms-js-swup"></script>
-    <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/pro/js/wpforms-conditional-logic-fields.min.js" id="wpforms-builder-conditionals-js-swup"></script>
-    <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/lib/choices.min.js" id="wpforms-choicesjs-js-swup"></script>
-    <script data-swup-reload-script data-swup-ignore-script>
-    /* <![CDATA[ */
-    var wpforms_conditional_logic = {"11358":{"4":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"6":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"9":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"7":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"}}}
-    /* ]]> */
-    </script>
-  <?php endif; ?>
+  ?>
+  <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/js/wpforms.min.js" id="wpforms-js-swup"></script>
+  <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/pro/js/wpforms-conditional-logic-fields.min.js" id="wpforms-builder-conditionals-js-swup"></script>
+  <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/lib/choices.min.js" id="wpforms-choicesjs-js-swup"></script>
+  <script data-swup-reload-script data-swup-ignore-script>
+  /* <![CDATA[ */
+  var wpforms_conditional_logic = {"11358":{"4":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"6":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"9":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"},"7":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin projektista","type":"checkbox"}]],"action":"show"}}}
+  /* ]]> */
+  </script>
 
   <?php if ( 'production' === wp_get_environment_type() ) : ?>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
