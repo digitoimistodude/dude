@@ -8,6 +8,21 @@
   padding-top: var(--padding-block);
 }
 
+// Fix some Gutenberg compatibility issues
+.blocks-gallery-grid:not(.has-nested-images),
+.wp-block-gallery:not(.has-nested-images) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-main .article-content ul.blocks-gallery-grid {
+  list-style: none;
+  list-style-type: none;
+  padding-inline-start: unset;
+  padding-left: 0;
+  width: 100%;
+}
+
 // Gutenberg core magic
 .is-root-container > *,
 .article-content > * {
