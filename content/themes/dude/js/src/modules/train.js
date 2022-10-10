@@ -32,6 +32,10 @@ const initTrain = () => {
       trainListElement.style.cursor = 'grabbing';
       trainListElement.style.userSelect = 'none';
 
+      // Stop scrolling
+      // eslint-disable-next-line no-use-before-define
+      pauseScrolling();
+
       pos = {
         left: trainListElement.scrollLeft,
         top: trainListElement.scrollTop,
@@ -83,7 +87,23 @@ const initTrain = () => {
   }
 
   // Kick off for the animation function
-  const startScrolling = window.setInterval(animationLoop, 10);
+  let scrollingInt = null;
+
+  // eslint-disable-next-line no-use-before-define
+  startScrolling();
+
+  function startScrolling() {
+    if (!scrollingInt) { scrollingInt = window.setInterval(animationLoop, 15); }
+  }
+
+  function pauseScrolling() {
+    if (scrollingInt) {
+      clearInterval(scrollingInt);
+      scrollingInt = null;
+
+      setTimeout(startScrolling, 3000);
+    }
+  }
 
   // eslint-disable-next-line no-inner-declarations
   function clearScrollingEvent() {
