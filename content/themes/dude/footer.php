@@ -74,7 +74,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
         40100 Jyväskylä</p>
 
         <p>
-          <a class="button button-small" href="https://dude.fi/yhteystiedot">
+          <a class="button button-small" href="<?php echo esc_url( get_page_link( 4487 ) ); ?>">
             Lähetä viesti
           </a>
         </p>
