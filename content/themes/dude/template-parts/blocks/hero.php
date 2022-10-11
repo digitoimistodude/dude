@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-09-07 16:12:29
+ * @Last Modified time: 2022-10-11 15:50:54
  *
  * @package dude
  */
@@ -61,7 +61,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
         <div class="video-cta container">
           <div class="video-cta-content">
             <h1>Miltäs vaikutti?</h1>
-            <p>Puhuttelivatko työnäytteemme? <a href="https://www.dude.fi/tyot">Täältä</a> voit katsoa lisää. Soittele numeroon <a href="<?php echo esc_html( $sales_phone_tel_value ); ?>"><?php echo esc_html( $sales_phone ); ?></a> tai lähetä sähköpostia <a href="mailto:moro@dude.fi">moro@dude.fi</a>, jos haluat uudistaa verkkosivusi tai brändi-ilmeesi.</p>
+            <p>Puhuttelivatko työnäytteemme? <a href="https://www.dude.fi/tyot">Täältä</a> voit katsoa lisää. Soittele numeroon <a href="tel:<?php echo esc_html( $sales_phone_tel_value ); ?>"><?php echo esc_html( $sales_phone ); ?></a> tai lähetä sähköpostia <a href="mailto:moro@dude.fi">moro@dude.fi</a>, jos haluat uudistaa verkkosivusi tai brändi-ilmeesi.</p>
           </div>
         </div>
 
