@@ -28,7 +28,12 @@
   color: var(--color-brand-reference-text);
 
   > .container {
+    gap: 4rem;
     position: static;
+
+    @media (max-width: 1180px) {
+      gap: 2rem;
+    }
   }
 
   .prefix {
@@ -59,7 +64,7 @@
   .col-image > img {
     aspect-ratio: unset;
     height: unset;
-    max-width: unset;
+    max-width: 100%;
     min-width: unset;
     position: static;
     width: unset;
