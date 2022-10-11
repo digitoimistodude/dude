@@ -103,6 +103,7 @@
     "koodimonni/composer-dropin-installer": "dev-master",
     "koodimonni-language/fi": "*",
     "koodimonni-language/en_gb": "*",
+    "digitoimistodude/air-cookie": "dev-master",
     "digitoimistodude/air-setting-groups": "dev-master"
   },
   "require-dev": {
