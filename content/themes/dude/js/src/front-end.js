@@ -3,7 +3,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-04-23 13:44:09
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 15:13:01
+ * @Last Modified time: 2022-10-11 12:15:26
  */
 
 // Import modules
@@ -59,7 +59,10 @@ function init(target, args) {
   initNavigation();
 
   // Init carousels for testimonials and image galleries
-  initCarousels();
+  // Timeout needed for Firefox and iOS Safari
+  setTimeout(() => {
+    initCarousels();
+  }, 1000);
 
   // Init all possible anchor links
   initAnchors();

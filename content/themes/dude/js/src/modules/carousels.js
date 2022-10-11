@@ -3,7 +3,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-05-07 12:03:42
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 15:01:23
+ * @Last Modified time: 2022-10-11 11:54:30
  */
 import Swiper, {
   Navigation, Pagination, A11y,
@@ -71,6 +71,7 @@ const initCarousels = () => {
       CarouselParams = {
         slidesPerView: 1,
         spaceBetween: 40,
+        autoHeight: true,
         loop: true,
       };
     } else {
