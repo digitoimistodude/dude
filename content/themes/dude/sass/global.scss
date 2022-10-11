@@ -61,11 +61,12 @@
 @import 'features/vimeo-iframe-wrapper';
 @import 'features/vimeoplayer';
 @import 'features/showreel';
-@import 'features/dark-mode'; // Size: 39 kB
+@import 'features/dark-mode';
 @import 'features/dark-mode-switch';
 @import 'features/dark-mode-footer-toggle';
 @import 'features/train';
 @import 'features/swup';
+@import 'features/cookie-consent';
 
 // Views
 @import 'views/brand';
@@ -93,7 +94,7 @@
 @import 'gutenberg/layout/content';
 
 // Gutenberg blocks
-@import 'gutenberg/blocks'; // Size: 144 kB
+@import 'gutenberg/blocks';
 
 // Gutenberg formatting
 @import 'gutenberg/formatting';

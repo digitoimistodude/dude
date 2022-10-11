@@ -1,0 +1,218 @@
+// Styles for air-cookie
+// stylelint-disable selector-max-specificity, sh-waqar/declaration-use-variable, no-descending-specificity, declaration-no-important, max-line-length, a11y/font-size-is-readable, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors
+:root {
+  // General variables
+  --color-white: #fff;
+  --cc-bg: var(--color-white);
+  --color-cc-link: var(--color-button-background);
+
+  // Look for paragraph font color in the theme
+  --cc-text: var(--color-dark-navy);
+
+  // Look for main button component
+  --cc-btn-primary-bg: var(--color-button-background);
+  --cc-btn-primary-text: var(--color-white);
+  --cc-btn-primary-hover-bg: var(--color-black);
+  --cc-btn-secondary-bg: var(--color-dark-navy);
+  --cc-btn-secondary-text: #fff;
+  --cc-btn-secondary-hover-bg: var(--color-black);
+  --color-close-button: var(--color-black);
+
+  // Chose these wisely
+  --cc-toggle-bg-off: rgb(255 255 255 / .2);
+  --cc-toggle-bg-on: var(--color-java);
+  --cc-toggle-bg-readonly: rgb(255 255 255 / .1);
+  --cc-toggle-knob-bg: var(--color-midnight);
+  --cc-toggle-knob-bg-layer: #d6d6d6;
+  --cc-toggle-knob-icon-color: var(--color-white);
+  --cc-cookie-category-block-bg: var(--color-light-blue);
+  --cc-cookie-category-block-bg-hover: var(--color-light-blue);
+  --cc-section-border: rgb(255 255 255 / .1);
+  --cc-cookie-table-border: #333;
+  --cc-overlay-bg: rgb(4 6 8 / .85);
+  --cc-webkit-scrollbar-bg: #cfd5db;
+  --cc-webkit-scrollbar-bg-hover: #9199a0;
+
+  // Use border radius from theme
+  --cc-border-radius: 0;
+
+  // Or force border-radius to be different
+  // --cc-border-radius: 2px;
+
+  // Our own cookie bot related variables
+  --border-radius-cookie-box: 0;
+}
+
+.site-footer .contact-information p.cookie-settings {
+  margin: 2rem 0 5rem;
+}
+
+#s-sv-bn,
+#c-s-bn {
+  background-color: transparent;
+  border: 1px solid var(--cc-btn-secondary-bg);
+  color: var(--cc-btn-secondary-bg) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--cc-btn-secondary-bg) !important;
+    color: var(--color-white) !important;
+  }
+}
+
+.cc_div [role="heading"] {
+  font-family: var(--font-paragraph);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cc_div #c-txt {
+  font-family: var(--font-paragraph);
+}
+
+.cc_div #cm {
+  border: 0;
+  border-radius: var(--border-radius-cookie-box);
+  height: unset;
+  left: 1.25em;
+  max-width: 607px;
+  padding: 35px;
+  right: auto;
+
+  @media (max-width: 600px) {
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100% !important;
+    padding-bottom: 4rem !important;
+    width: 100%;
+
+    // Hide the text on mobile
+    // stylelint-disable a11y/no-display-none
+    #c-txt,
+    [role="heading"] {
+      bottom: 0;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      visibility: hidden;
+    }
+
+    #c-txt button.cc-link {
+      bottom: 1.5rem;
+      font-size: var(--font-size-14) !important;
+      height: unset;
+      margin: unset;
+      overflow: unset;
+      padding: unset;
+      position: absolute;
+      text-align: right;
+      visibility: visible;
+      white-space: nowrap;
+      width: calc(100% - 2.2rem);
+    }
+  }
+}
+
+.cc_div #c-txt button.cc-link {
+  border: 0 !important;
+  color: var(--cc-text) !important;
+  overflow: visible !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-dark-navy) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  transition: all .18s ease-in-out !important;
+
+  &:hover,
+  &:focus {
+    // stylelint-disable-next-line scale-unlimited/declaration-strict-value
+    color: #000 !important;
+    // stylelint-disable-next-line scale-unlimited/declaration-strict-value
+    text-decoration-color: #000 !important;
+  }
+}
+
+.cc_div .c-bn,
+.cc_div .c_button,
+.cc_div #cs_blocks .cs_block,
+.cc_div #cs_cont .block_button .b_title,
+.cc_div #cs_inner {
+  border-radius: var(--cc-border-radius);
+  font-size: 13px !important;
+  text-transform: unset !important;
+}
+
+// This needs to be set, otherwise border is flickering on hover
+#s-all-bn,
+.c-bn#c-p-bn:not(:hover),
+.c-bn#c-p-bn:not(:focus) {
+  background-color: var(--color-dark-navy) !important;
+  background-image: linear-gradient(198deg, rgb(126 255 225 / .149) 5.92%, rgb(46 47 56 / .149) 56.09%, rgb(46 47 56 / .149) 109.5%) !important;
+  border: 0 !important;
+  padding: calc(1em + 1px) calc(1.7em + 1px) !important;
+}
+
+.c-bn#c-p-bn:hover,
+.c-bn#c-p-bn:focus {
+  border: 0 !important;
+  padding: calc(1em + 1px) calc(1.7em + 1px) !important;
+}
+
+#s-cnt .b-bn .b-tl {
+  background-color: var(--cc-cookie-category-block-bg) !important;
+  border: 1px solid var(--cc-cookie-category-block-bg) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--cc-cookie-category-block-bg-hover) !important;
+    border: 1px solid var(--cc-cookie-category-block-bg-hover) !important;
+  }
+}
+
+// Close button
+#s-c-bn,
+.cc_div button[aria-label="Close"].c-bn {
+  background-color: transparent;
+  border: 0 !important;
+  color: var(--color-dark-navy) !important;
+  overflow: visible;
+
+  &::before,
+  &::after {
+    background-color: var(--color-close-button) !important;
+    height: 2px;
+    width: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent !important;
+  }
+}
+
+// Arrows in settings
+.cc_div .act .b-bn .b-tl::before,
+.cc_div .act .b-bn .b-tl::after,
+.cc_div .b-bn .b-tl::before,
+.cc_div .b-bn .b-tl::after {
+  border-color: var(--cc-text);
+  color: var(--cc-text);
+}
+
+// Toggle icons
+.cc_div .on-i::before {
+  border-color: var(--cc-toggle-knob-icon-color);
+  color: var(--cc-toggle-knob-icon-color);
+}
+
+// Toggle knob bg
+.cc_div .b-tg,
+.cc_div .b-tg .c-tg,
+.cc_div .b-tg .c-tgl,
+.cc_div span.t-lb {
+  background-color: var(--cc-toggle-knob-bg-layer);
+}
+
+.b-tl {
+  color: var(--color-black) !important;
+}
