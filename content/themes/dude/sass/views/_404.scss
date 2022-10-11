@@ -1,5 +1,8 @@
 // stylelint-disable selector-max-class, selector-max-specificity, no-descending-specificity, selector-max-combinators, selector-max-compound-selectors, selector-max-pseudo-class, selector-attribute-quotes, max-nesting-depth, function-url-quotes, font-family-name-quotes, font-weight-notation, max-line-length
 @font-face {
+  // Ensure text remains visible during webfont load
+  // @source https://web.dev/font-display/
+  font-display: swap;
   font-family: 'Perfect Dos';
   font-style: normal;
   font-weight: normal;
