@@ -3,8 +3,8 @@
  * The template for displaying all single posts
  *
  * @Date:   2019-10-15 12:30:02
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 14:48:43
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-11 19:48:07
  *
  * @package dude
  */
@@ -84,7 +84,7 @@ get_header(); ?>
           <p>
             <a class="author" href="<?php echo esc_url( get_author_posts_url( $user_id ) ) ?>" rel="author">
               <?php echo get_avatar( $user_id, '100' ); ?>
-              <span><span class="writtenby">Kirjoittanut</span> <?php echo esc_html( get_the_title( $author_person_id ) ); ?></span>
+              <span><span class="writtenby">Kirjoittanut</span> <?php echo esc_html( get_userdata( $user_id )->display_name ); ?></span>
             </a>
           </p>
         </div>
