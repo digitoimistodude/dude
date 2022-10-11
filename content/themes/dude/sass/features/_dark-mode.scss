@@ -45,6 +45,14 @@
   --color-hamburger: var(--color-dark-navy);
   --color-hover-main-level: var(--color-paradiso);
   --color-caption: #5c5c6a;
+  --cc-bg: var(--color-white);
+  --cc-btn-secondary-bg: var(--color-dark-navy);
+  --cc-btn-secondary-hover-bg: var(--color-black);
+  --cc-text: var(--color-dark-navy);
+  --cc-cookie-category-block-bg: var(--color-light-blue);
+  --cc-cookie-category-block-bg-hover: var(--color-light-blue);
+  --cc-toggle-knob-bg-layer: #d6d6d6;
+  --color-close-button: var(--color-dark-navy);
 
   // Article exceptions in dark mode
   .article-content {
@@ -316,6 +324,26 @@
   --color-hamburger: var(--color-white);
   --color-hover-main-level: var(--color-mint);
   --color-caption: #dcdde0b3;
+  --cc-bg: #24252c;
+  --cc-btn-secondary-bg: var(--color-white);
+  --cc-btn-secondary-hover-bg: var(--color-white-two);
+  --cc-text: var(--color-white);
+  --cc-cookie-category-block-bg: var(--color-midnight);
+  --cc-cookie-category-block-bg-hover: var(--color-midnight);
+  --cc-toggle-knob-bg-layer: #000;
+  --color-close-button: var(--color-white);
+
+  // Cookie consent exceptions
+  #s-all-bn,
+  .c-bn#c-p-bn:not(:hover),
+  .c-bn#c-p-bn:not(:focus) {
+    // stylelint-disable-next-line
+    background-color: var(--color-mint) !important;
+    // stylelint-disable-next-line
+    background-image: linear-gradient(198deg, #538d8026 5.92%, #7effe126 56.09%, #7effe155 109.5%);
+    color: var(--color-dark-navy);
+    // stylelint-disable-next-line
+  }
 
   // Blocks in dark mode
   .block-hero-centered,

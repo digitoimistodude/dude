@@ -8,6 +8,7 @@
 
   // Look for paragraph font color in the theme
   --cc-text: var(--color-dark-navy);
+  --cc-block-text: var(--cc-text);
 
   // Look for main button component
   --cc-btn-primary-bg: var(--color-button-background);
@@ -16,7 +17,7 @@
   --cc-btn-secondary-bg: var(--color-dark-navy);
   --cc-btn-secondary-text: #fff;
   --cc-btn-secondary-hover-bg: var(--color-black);
-  --color-close-button: var(--color-black);
+  --color-close-button: var(--color-dark-navy);
 
   // Chose these wisely
   --cc-toggle-bg-off: rgb(255 255 255 / .2);
@@ -56,11 +57,12 @@
   &:hover,
   &:focus {
     background-color: var(--cc-btn-secondary-bg) !important;
-    color: var(--color-white) !important;
+    color: var(--cc-bg) !important;
   }
 }
 
 .cc_div [role="heading"] {
+  color: var(--cc-text);
   font-family: var(--font-paragraph);
   font-weight: var(--font-weight-semibold);
 }
@@ -72,6 +74,7 @@
 .cc_div #cm {
   border: 0;
   border-radius: var(--border-radius-cookie-box);
+  box-shadow: none;
   height: unset;
   left: 1.25em;
   max-width: 607px;
@@ -109,6 +112,10 @@
       visibility: visible;
       white-space: nowrap;
       width: calc(100% - 2.2rem);
+
+      @media (max-width: 600px) {
+        font-size: 12px !important;
+      }
     }
   }
 }
@@ -118,7 +125,7 @@
   color: var(--cc-text) !important;
   overflow: visible !important;
   text-decoration: underline !important;
-  text-decoration-color: var(--color-dark-navy) !important;
+  text-decoration-color: var(--cc-text) !important;
   text-decoration-thickness: 1px !important;
   text-underline-offset: 3px !important;
   transition: all .18s ease-in-out !important;
@@ -126,9 +133,9 @@
   &:hover,
   &:focus {
     // stylelint-disable-next-line scale-unlimited/declaration-strict-value
-    color: #000 !important;
+    color: var(--cc-btn-secondary-hover-bg) !important;
     // stylelint-disable-next-line scale-unlimited/declaration-strict-value
-    text-decoration-color: #000 !important;
+    text-decoration-color: var(--cc-btn-secondary-hover-bg) !important;
   }
 }
 
@@ -146,14 +153,17 @@
 #s-all-bn,
 .c-bn#c-p-bn:not(:hover),
 .c-bn#c-p-bn:not(:focus) {
-  background-color: var(--color-dark-navy) !important;
+  background-color: var(--cc-text) !important;
   background-image: linear-gradient(198deg, rgb(126 255 225 / .149) 5.92%, rgb(46 47 56 / .149) 56.09%, rgb(46 47 56 / .149) 109.5%) !important;
   border: 0 !important;
+  color: var(--color-dark-navy) !important;
   padding: calc(1em + 1px) calc(1.7em + 1px) !important;
 }
 
 .c-bn#c-p-bn:hover,
 .c-bn#c-p-bn:focus {
+  background-color: var(--color-black) !important;
+  background-image: none !important;
   border: 0 !important;
   padding: calc(1em + 1px) calc(1.7em + 1px) !important;
 }
@@ -174,7 +184,7 @@
 .cc_div button[aria-label="Close"].c-bn {
   background-color: transparent;
   border: 0 !important;
-  color: var(--color-dark-navy) !important;
+  color: var(--cc-text) !important;
   overflow: visible;
 
   &::before,
@@ -213,6 +223,13 @@
   background-color: var(--cc-toggle-knob-bg-layer);
 }
 
-.b-tl {
-  color: var(--color-black) !important;
+.desc > .p {
+  --cc-block-text: var(--cc-text);
+  --cc-text: var(--cc-text);
+}
+
+@media screen and (max-width: 600px) {
+  .cc_div #c-bns {
+    margin-top: 0 !important;
+  }
 }
