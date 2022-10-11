@@ -1,7 +1,11 @@
 // stylelint-disable no-descending-specificity
 .block-background-petrol-gradient .vimeo-iframe-wrapper,
 .block-background-petrol-gradient img {
-  opacity: .3;
+  opacity: .22;
+
+  @media (max-width: $container-mobile) {
+    opacity: .12;
+  }
 }
 
 .block-single.is-old {
