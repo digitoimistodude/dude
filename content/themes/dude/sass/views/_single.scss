@@ -112,7 +112,7 @@
     z-index: 5;
 
     @media (max-width: $container-mobile) {
-      margin-top: 1rem;
+      margin-top: 4rem;
     }
   }
 
@@ -197,6 +197,11 @@
 
   .box svg {
     color: var(--color-java);
+  }
+
+  @media (max-width: $container-mobile) {
+    padding-bottom: 8rem;
+    padding-top: 8rem;
   }
 
   @media (min-width: 700px) {
