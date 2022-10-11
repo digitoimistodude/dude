@@ -4,8 +4,8 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-09-26 11:04:44
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-11 19:46:12
  *
  * @package dude
  */
@@ -68,3 +68,47 @@ function pre_get_posts( $query ) {
 		$query->set( 'order', 'ASC' );
   }
 }
+
+function tsm_acf_profile_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+  $user = '';
+
+  // Get user by id or email
+  if ( is_numeric( $id_or_email ) ) {
+    $id   = (int) $id_or_email;
+    $user = get_user_by( 'id', $id );
+  } elseif ( is_object( $id_or_email ) ) {
+    if ( ! empty( $id_or_email->user_id ) ) {
+      $id   = (int) $id_or_email->user_id;
+      $user = get_user_by( 'id', $id );
+    }
+  } else {
+    $user = get_user_by( 'email', $id_or_email );
+  }
+
+  if ( ! $user ) {
+    return $avatar;
+  }
+
+  // Get the user id
+  $user_id = $user->ID;
+
+  // Get the file id
+  $image_id = get_user_meta( $user_id, 'tsm_local_avatar', true ); // This is your field name
+
+  // Bail if we don't have a local avatar
+  if ( ! $image_id ) {
+    return $avatar;
+  }
+
+  // Get the file size
+  $image_url = wp_get_attachment_image_src( $image_id, 'thumbnail' ); // Set image size by name
+
+  // Get the file url
+  $avatar_url = $image_url[0];
+
+  // Get the img markup
+  $avatar = '<img alt="' . $alt . '" src="' . $avatar_url . '" class="avatar avatar-' . $size . '" height="' . $size . '" width="' . $size . '"/>';
+
+  // Return our new avatar
+  return $avatar;
+} // end tsm_acf_profile_avatar

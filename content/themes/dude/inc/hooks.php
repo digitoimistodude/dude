@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-11 17:56:34
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-11 19:46:06
  *
  * @package dude
  */
@@ -55,6 +55,7 @@ require get_theme_file_path( 'inc/hooks/general.php' );
 add_action( 'widgets_init', __NAMESPACE__ . '\widgets_init' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\reference_archive_query' );
 add_action( 'save_post_job', __NAMESPACE__ . '\clear_open_jobs_count_cache', 10, 2 );
+add_filter( 'get_avatar', __NAMESPACE__ . '\tsm_acf_profile_avatar', 10, 5 );
 
 /**
  * Scripts and styles associated hooks
