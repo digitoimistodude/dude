@@ -14,9 +14,10 @@
     --color-error: #ff7d7d;
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 6rem 8rem;
+    grid-gap: 4rem 8rem;
     grid-template-areas:
       "name-field big"
+      "company-field big"
       "email-field big"
       "send-to-myself more-details"
       "checkboxes checkboxes"
@@ -82,6 +83,15 @@
       padding: 0;
     }
 
+    // Name field
+    #wpforms-11358-field_11-container {
+      align-self: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      grid-area: company-field;
+      padding: 0;
+    }
+
     // Email field
     #wpforms-11358-field_8-container {
       align-self: flex-end;
@@ -97,7 +107,7 @@
       padding: 0;
 
       textarea {
-        height: 245px;
+        height: 38.7rem;
       }
     }
 
@@ -164,6 +174,7 @@
     // Checkboxes
     #wpforms-11358-field_4-container {
       grid-area: checkboxes;
+      padding: 2.2rem 0;
     }
 
     // General checkboxes
@@ -361,7 +372,11 @@
     @include button-size-large();
     border-radius: 0;
     font-size: var(--font-size-20);
-    margin-top: 2.6rem;
+    margin-top: 4rem;
+
+    @media (max-width: 1060px) {
+      margin-top: 2.2rem;
+    }
 
     @media (max-width: $container-mobile) {
       font-size: var(--font-size-18);
@@ -383,7 +398,7 @@
 
     // Ensure there's no excessive padding after the form
     div.wpforms-container-full:not(.is-open) .wpforms-field-container {
-      max-height: 41rem;
+      max-height: 51rem;
       overflow: hidden;
     }
 
