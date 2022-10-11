@@ -34,6 +34,7 @@
 
 .block-editor-writing-flow,
 .block-single {
+
   // Defaults
   p,
   dd,
@@ -55,6 +56,16 @@
     font-family: var(--font-circular);
     font-size: var(--font-size-19);
     line-height: 1.7;
+  }
+
+  @media (max-width: $container-mobile) {
+    .article-content {
+      padding-top: 3.2rem;
+    }
+
+    .article-content .author-card {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -212,6 +223,10 @@
   display: flex;
   font-weight: var(--font-weight-semibold);
   gap: 2.7rem;
+
+  @media (max-width: $container-mobile) {
+    gap: 2rem;
+  }
 }
 
 .block-single .author span {
@@ -232,9 +247,9 @@
   width: 74px;
 
   @media (max-width: $container-mobile) {
-    height: 64px;
-    min-width: 64px;
-    width: 64px;
+    height: 48px;
+    min-width: 48px;
+    width: 48px;
   }
 }
 
