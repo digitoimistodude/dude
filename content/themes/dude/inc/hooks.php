@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-06 17:09:22
+ * @Last Modified time: 2022-10-11 17:56:34
  *
  * @package dude
  */
@@ -123,3 +123,8 @@ if ( is_admin() ) {
     );
   } );
 }
+
+/**
+ * Cookies and GDPR
+ */
+require get_theme_file_path( 'inc/hooks/air-cookie.php' );
