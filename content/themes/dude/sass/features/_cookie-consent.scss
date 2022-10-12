@@ -182,7 +182,6 @@
   background-color: var(--cc-text) !important;
   background-image: linear-gradient(198deg, rgb(126 255 225 / .149) 5.92%, rgb(46 47 56 / .149) 56.09%, rgb(46 47 56 / .149) 109.5%) !important;
   border: 0 !important;
-  color: var(--color-dark-navy) !important;
   padding: calc(1em + 1px) calc(1.7em + 1px) !important;
 }
 
@@ -249,9 +248,11 @@
   background-color: var(--cc-toggle-knob-bg-layer);
 }
 
+#s-cnt .p,
 .desc > .p {
   --cc-block-text: var(--cc-text);
   --cc-text: var(--cc-text);
+  color: var(--cc-text);
 }
 
 @media screen and (max-width: 600px) {

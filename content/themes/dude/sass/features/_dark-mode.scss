@@ -54,6 +54,20 @@
   --cc-toggle-knob-bg-layer: #d6d6d6;
   --color-close-button: var(--color-dark-navy);
 
+  // Cookie consent exceptions
+  #s-all-bn,
+  .c-bn#c-p-bn:not(:hover),
+  .c-bn#c-p-bn:not(:focus) {
+    // stylelint-disable-next-line
+    background-color: var(--cc-text) !important;
+    // stylelint-disable-next-line
+    background-image: linear-gradient(198deg, rgb(126 255 225 / .149) 5.92%, rgb(46 47 56 / .149) 56.09%, rgb(46 47 56 / .149) 109.5%) !important;
+    // stylelint-disable-next-line
+    border: 0 !important;
+    // stylelint-disable-next-line
+    padding: calc(1em + 1px) calc(1.7em + 1px) !important;
+  }
+
   // Article exceptions in dark mode
   .article-content {
     --color-link-underlined-hover: var(--color-paradiso);
