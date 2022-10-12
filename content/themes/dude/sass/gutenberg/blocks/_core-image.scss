@@ -2,6 +2,8 @@
 .wp-block-image {
   display: block;
   margin-bottom: var(--margin-wp-block-image);
+  margin-left: auto;
+  margin-right: auto;
   margin-top: var(--margin-wp-block-image);
 
   &.alignwide,
