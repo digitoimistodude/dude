@@ -1,7 +1,10 @@
 // Styling background-images
 // For custom sized image background, use: class="image image-background"
 // For bg as layer, use: class="image image-background image-background-layer"
-.image-background > img {
+// stylelint-disable no-descending-specificity
+.image-background > picture,
+.image-background > img,
+.image-background > picture > img {
   object-fit: cover;
 }
 
@@ -11,6 +14,8 @@
 }
 
 .image-background > img,
+.image-background > picture,
+.image-background > picture > img,
 .image-background-layer {
   height: 100%;
   left: 0;
