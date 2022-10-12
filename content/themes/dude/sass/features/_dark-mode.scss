@@ -579,7 +579,7 @@
     @include color-scheme-dark();
 
     .site-header {
-      @include header-text-dark();
+      @include header-text-light();
     }
   }
 
