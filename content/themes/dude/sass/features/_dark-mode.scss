@@ -65,7 +65,16 @@
     // stylelint-disable-next-line
     border: 0 !important;
     // stylelint-disable-next-line
+    color: var(--color-white) !important;
+    // stylelint-disable-next-line
     padding: calc(1em + 1px) calc(1.7em + 1px) !important;
+  }
+
+  body[data-color-scheme="light"] #s-all-bn,
+  body[data-color-scheme="light"] .c-bn#c-p-bn:not(:hover),
+  body[data-color-scheme="light"] .c-bn#c-p-bn:not(:focus) {
+    // stylelint-disable-next-line
+    color: var(--color-white) !important;
   }
 
   // Article exceptions in dark mode
@@ -355,7 +364,8 @@
     background-color: var(--color-mint) !important;
     // stylelint-disable-next-line
     background-image: linear-gradient(198deg, #538d8026 5.92%, #7effe126 56.09%, #7effe155 109.5%);
-    color: var(--color-dark-navy);
+    // stylelint-disable-next-line
+    color: var(--color-dark-navy) !important;
     // stylelint-disable-next-line
   }
 
@@ -591,6 +601,13 @@
 @media (prefers-color-scheme: dark) {
   body {
     @include color-scheme-dark();
+  }
+
+  body[data-color-scheme="light"] #s-all-bn,
+  body[data-color-scheme="light"] .c-bn#c-p-bn:not(:hover),
+  body[data-color-scheme="light"] .c-bn#c-p-bn:not(:focus) {
+    // stylelint-disable-next-line
+    color: var(--color-white) !important;
   }
 
   body[data-color-scheme="dark"] {
