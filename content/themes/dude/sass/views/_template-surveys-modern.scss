@@ -4,16 +4,15 @@
 // --------------------------------------------------------------
 body.template-surveys-modern {
   --survey-max-width: 100rem;
-  --color-text-survey: #fff;
+  --color-text-survey: var(--color-white);
   --color-checked: var(--color-mint);
-  --color-survey-background: #03061b;
+  --color-survey-background: var(--color-midnight);
   --color-survey-body-text: var(--color-white);
   --color-success-box-body-text: var(--color-survey-body-text);
   --color-success-box-title: #7eaf56;
   --color-background-checked: rgb(--color-mint .35);
   --color-background-checked-checkbox: var(--color-mint);
-  --color-borders: #898888;
-  --color-faded: #bbb;
+  --color-borders: rgb(255 255 255 / .15);
   --color-border-main-header: rgb(255 255 255 / .15);
   --color-error-surveys: #c56b68;
   --color-success-box-bg: transparent;
@@ -28,12 +27,24 @@ body.template-surveys-modern {
   --color-survey-wrapper-background: rgb(0 0 0 / .05);
   --color-survey-start-button-background: #232527;
   --color-survey-start-button-text: #e3e4e6;
+  --color-background-survey-selection-hover: rgb(126 255 225 / .05);
+  --color-background-survey-selected: rgb(126 255 225 / .08);
   background-attachment: fixed;
   background-color: var(--color-survey-background);
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100% auto;
   color: var(--color-survey-body-text);
+
+  .site-main {
+    background-color: var(--color-survey-background);
+
+    h1,
+    h2,
+    h3 {
+      color: var(--color-white);
+    }
+  }
 
   .container {
     padding: 0;
@@ -104,7 +115,7 @@ body.template-surveys-modern {
   form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"]:checked + label::before {
     // stylelint-disable-next-line
     background-color: transparent !important;
-    background-image: url('../svg/checkbox-dark.svg');
+    background-image: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%2303061b" stroke="%2303061b"%3E%3Cpolyline fill="none" stroke="%2303061b" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     background-repeat: no-repeat;
     background-size: 15px;
   }
@@ -143,6 +154,7 @@ body.template-surveys-modern {
   form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td label:hover::after,
   form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td label:focus::after {
     border: 2px solid var(--color-survey-body-text) !important;
+    opacity: .7;
     transition: border-width var(--transition-duration-survey) linear !important;
   }
 
@@ -186,7 +198,6 @@ body.template-surveys-modern {
   }
 
   div.wpforms-container-full .wpforms-form .wpforms-field-limit-text {
-    color: var(--color-faded);
     font-size: 18px;
     padding-bottom: 43px;
     padding-top: 30px;
@@ -448,10 +459,14 @@ body.template-surveys-modern {
         }
       }
 
-      > li.wpforms-selected,
       > li:hover,
       > li:focus {
-        background: #222 !important;
+        background: var(--color-background-survey-selection-hover) !important;
+        opacity: 1 !important;
+      }
+
+      > li.wpforms-selected {
+        background: var(--color-background-survey-selected) !important;
         opacity: 1 !important;
       }
 
@@ -488,7 +503,10 @@ body.template-surveys-modern {
 
     // Checkboxes
     .wpforms-field.wpforms-field-checkbox > ul > li {
+      align-items: center;
+      display: flex;
       flex: 1;
+      justify-content: center;
       margin-bottom: -1px !important;
       margin-right: 0 !important;
       min-width: 33.3% !important;
@@ -600,7 +618,7 @@ body.template-surveys-modern {
     input[type="checkbox"]:checked + label,
     input[type="radio"]:checked + label {
       color: var(--color-checked);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-regular);
       opacity: 1;
     }
 
@@ -844,6 +862,7 @@ body.template-surveys-modern {
       display: block;
       height: 1px;
       left: 3rem;
+      opacity: .66;
       position: absolute;
       width: calc(100% - 6rem);
 
@@ -893,6 +912,7 @@ body.template-surveys-modern {
 
     h1 {
       @include heading-38();
+      color: var(--color-white);
       font-weight: var(--font-weight-bold);
       margin-bottom: 1rem;
       margin-top: 0;

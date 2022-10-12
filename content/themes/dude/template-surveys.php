@@ -5,7 +5,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 13:58:58
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-09-13 18:06:56
+ * @Last Modified time: 2022-10-12 14:45:00
  * @package dude
  */
 
@@ -35,7 +35,7 @@ $hero_content = get_post_meta( get_the_id(), 'hero_content', true );
           <header class="survey-header">
             <div class="survey-header--text">
               <?php if ( ! empty( $form_title ) ) : ?>
-                <h1 id="content"><?php echo esc_html( $form_title ); ?></h1>
+                <h1 id="content"><?php echo wp_kses_post( $form_title ); ?></h1>
               <?php endif; ?>
 
               <?php if ( ! empty( $hero_content ) ) : ?>

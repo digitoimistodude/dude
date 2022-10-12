@@ -3,11 +3,11 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-08-09 18:01:38
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-10 13:29:57
+ * @Last Modified time: 2022-10-12 15:05:50
  */
 const initFormHelpers = () => {
   // Find all form triggers
-  const formTriggers = document.querySelectorAll('.wpforms-conditional-trigger');
+  const formTriggers = document.querySelectorAll('#wpforms-form-11358 .wpforms-conditional-trigger');
 
   if (typeof formTriggers !== 'undefined') {
     // Loop through
