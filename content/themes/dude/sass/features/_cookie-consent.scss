@@ -120,6 +120,32 @@
   }
 }
 
+.site-footer button.cc-link:hover,
+.site-footer button.cc-link:focus,
+.site-footer button.cc-link {
+  // stylelint-disable-next-line
+  background-color: unset;
+  border: unset;
+  border-radius: unset;
+  box-shadow: unset;
+  // stylelint-disable-next-line
+  color: inherit;
+  font-size: var(--font-size-12);
+  font-weight: inherit;
+  height: unset;
+  margin: unset;
+  overflow: unset;
+  padding: unset;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer button.cc-link:focus,
+.site-footer button.cc-link:hover {
+  color: var(--color-mint);
+  text-decoration-color: var(--color-mint);
+}
+
 .cc_div #c-txt button.cc-link {
   border: 0 !important;
   color: var(--cc-text) !important;
