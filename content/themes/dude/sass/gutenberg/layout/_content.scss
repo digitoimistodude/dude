@@ -46,3 +46,11 @@
     }
   }
 }
+
+.article-content > .wp-block-gallery,
+.article-content > .wp-block-gallery:not(.has-nested-images) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}

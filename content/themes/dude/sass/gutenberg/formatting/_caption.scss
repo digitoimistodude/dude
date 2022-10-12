@@ -4,7 +4,8 @@
 .article-content {
   figcaption,
   cite,
-  small {
+  small,
+  .wp-block-image figcaption {
     border: 0;
     color: var(--color-caption);
     font-size: var(--font-size-captions);
