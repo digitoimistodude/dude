@@ -19,9 +19,9 @@ html :where(.wp-block) {
   margin-top: 0;
 }
 
-// Force dark mode
 body {
   @include color-scheme-dark();
+  margin: 0;
 }
 
 // Use ACF defined font styles in ACF fields
