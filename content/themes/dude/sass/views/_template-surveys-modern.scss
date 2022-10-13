@@ -803,6 +803,7 @@ body.template-surveys-modern {
     textarea {
       color: var(--color-survey-body-text);
       height: 240px;
+      overflow: hidden;
     }
 
     @media (max-width: 870px) {
