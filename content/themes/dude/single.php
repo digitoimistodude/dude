@@ -3,8 +3,8 @@
  * The template for displaying all single posts
  *
  * @Date:   2019-10-15 12:30:02
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-11 19:48:07
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-13 13:10:32
  *
  * @package dude
  */
@@ -106,7 +106,7 @@ get_header(); ?>
       entry_footer();
 
       if ( get_edit_post_link() ) {
-        edit_post_link( sprintf( wp_kses( __( 'Edit <span class="screen-reader-text-dude">%s</span>', 'dude' ), [ 'span' => [ 'class' => [] ] ] ), get_the_title() ), '<p class="edit-link">', '</p>' );
+        edit_post_link( sprintf( wp_kses( __( 'Muokkaa artikkelia <span class="screen-reader-text-dude">%s</span>', 'dude' ), [ 'span' => [ 'class' => [] ] ] ), get_the_title() ), '<p class="edit-link">', '</p>' );
       } ?>
 
     </article>
