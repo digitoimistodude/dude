@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Elias Kautto
- * @Last Modified time: 2022-10-13 15:51:45
+ * @Last Modified time: 2022-10-13 16:24:15
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -20,18 +20,22 @@ function get_picture_element_with_cfcd( $image_id, $img_params, $sources ) {
     return;
   }
 
-  if ( ! isset( $img_params ) || empty( $img_params ) ) {
-    return;
-  }
-
   if ( empty( $image_id ) ) {
     return;
   }
 
-  $image_url = wp_get_attachment_image_url( $image_id, 'full' );
+  $image_data = wp_get_attachment_image_src( $image_id, 'full' );
+  $image_url = $image_data[0];
   if ( false === $image_url ) {
     return;
   }
+
+  $img_params = wp_parse_args( $img_params, [
+    'width'   => $image_data[1],
+    'height'  => $image_data[2],
+    'quality' => '75',
+    'fit'      => 'cover',
+  ] );
 
   ksort( $sources );
 

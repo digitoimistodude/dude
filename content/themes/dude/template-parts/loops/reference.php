@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Elias Kautto
- * @Last Modified time: 2022-10-13 14:53:41
+ * @Last Modified time: 2022-10-13 16:26:11
  * @package dude
  */
 
@@ -42,7 +42,7 @@ $data = [
           alt=""
         >
       </picture> -->
-      <?php generate_picture_tag( get_post_thumbnail_id( 12530 ), [
+      <?php get_picture_element_with_cfcd( get_post_thumbnail_id( 12530 ), [
         'width'   => '635',
         'height'  => '635',
         'quality' => '75',
