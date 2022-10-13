@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Elias Kautto
- * @Last Modified time: 2022-10-13 15:43:51
+ * @Last Modified time: 2022-10-13 15:51:45
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -37,6 +37,10 @@ function get_picture_element_with_cfcd( $image_id, $img_params, $sources ) {
 
   echo '<picture>';
   foreach ( $sources as $key => $source ) {
+    if ( ! isset( $source['width'] ) || ! isset( $source['height'] ) ) {
+      continue;
+    }
+
     $media = "(min-width: {$key})";
     next( $sources );
     $next_key = key( $sources );
