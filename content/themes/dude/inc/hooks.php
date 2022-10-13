@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-11 21:36:39
+ * @Last Modified by:   Elias Kautto
+ * @Last Modified time: 2022-10-13 15:42:20
  *
  * @package dude
  */
@@ -11,10 +11,10 @@
 namespace Air_Light;
 
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-add_filter( 'wp_get_attachment_image_src', function( $image, $attachment_id, $size ) {
-  $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
-  return $image;
-}, 10, 3 );
+// add_filter( 'wp_get_attachment_image_src', function( $image, $attachment_id, $size ) {
+//   $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
+//   return $image;
+// }, 10, 3 );
 
 // Air helper custom settings
 add_filter( 'air_helper_custom_settings_post_ids', __NAMESPACE__ . '\custom_settings_post_ids' );

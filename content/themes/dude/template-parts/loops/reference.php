@@ -2,8 +2,8 @@
 /**
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-12 12:22:02
+ * @Last Modified by:   Elias Kautto
+ * @Last Modified time: 2022-10-13 14:53:41
  * @package dude
  */
 
@@ -30,7 +30,7 @@ $data = [
     // If is dev and Sofi
     if ( 'development' === getenv( 'WP_ENV' ) && 12530 === $args['post_id'] ) : ?>
 
-      <picture>
+      <!-- <picture>
         <source media="(min-width: 220px) and (max-width: 599px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=450,height=450,quality=75,fit=cover,format=auto/https://www.dude.fi/media/sofi_oksanen_19b8714-scaled-1.jpg">
         <source media="(min-width: 600px) and (max-width: 759px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=678,height=678,quality=75,fit=cover,format=auto/https://www.dude.fi/media/sofi_oksanen_19b8714-scaled-1.jpg">
         <source media="(min-width: 760px) and (max-width: 899px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=320,height=320,quality=75,fit=cover,format=auto/https://www.dude.fi/media/sofi_oksanen_19b8714-scaled-1.jpg">
@@ -41,7 +41,30 @@ $data = [
           src="https://cdn.dude.fi/cdn-cgi/image/width=635,height=635,quality=75,fit=cover,format=auto/https://www.dude.fi/media/sofi_oksanen_19b8714-scaled-1.jpg"
           alt=""
         >
-      </picture>
+      </picture> -->
+      <?php generate_picture_tag( get_post_thumbnail_id( 12530 ), [
+        'width'   => '635',
+        'height'  => '635',
+        'quality' => '75',
+        'fit'      => 'cover',
+      ], [
+        220 => [
+          'width'     => '450',
+          'height'    => '450',
+        ],
+        600 => [
+          'width'     => '678',
+          'height'    => '678',
+        ],
+        1349 => [
+          'width'     => '500',
+          'height'    => '500',
+        ],
+        760 => [
+          'width'     => '320',
+          'height'    => '450',
+        ],
+      ] ); ?>
 
     <?php else : ?>
       <?php native_lazyload_tag( $data['thumbnail_id'] ) ?>
