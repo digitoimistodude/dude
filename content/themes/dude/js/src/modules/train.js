@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-27 09:11:28
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-27 16:22:20
+ * @Last Modified time: 2022-10-13 13:55:03
  */
 /* eslint-disable max-len, no-plusplus */
 function isTouchDevice() {
@@ -106,7 +106,7 @@ const initTrain = () => {
   }
 
   // Clear interval on touch event
-  listElem.addEventListener('touchstart', pauseScrolling);
+  listElem.addEventListener('touchstart', pauseScrolling, { passive: true });
 };
 
 export default initTrain;
