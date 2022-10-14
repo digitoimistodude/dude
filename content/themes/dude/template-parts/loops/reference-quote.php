@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 16:15:21
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 11:35:55
+ * @Last Modified time: 2022-10-14 12:02:02
  *
  * @package dude
  */
@@ -27,18 +27,33 @@ $picture_cdn_args = [
   'classes' => [ 'person' ],
 ];
 
+if ( is_front_page() || is_page( 9 ) ) {
 $picture_cdn_srcset = [
   220 => [
-    'width'     => '64',
-    'height'    => '64',
+    'width'     => '50',
+    'height'    => '50',
+    'quality'   => '50',
   ],
-  768 => [
+  600 => [
     'width'     => '64',
     'height'    => '64',
+    'quality'   => '50',
   ],
 ];
-
-
+} else {
+  $picture_cdn_srcset = [
+    220 => [
+      'width'     => '64',
+      'height'    => '64',
+      'quality'   => '50',
+    ],
+    771 => [
+      'width'     => '100',
+      'height'    => '100',
+      'quality'   => '50',
+    ],
+  ];
+}
 ?>
 
 <li class="item item-quote item-quote-<?php echo esc_html( sanitize_title( $data['person']['company'] ) ); ?> item-quote-big swiper-slide"<?php if ( is_front_page() || is_page( 9 ) ) echo 'style="background-color: ' . esc_attr( $data['color'] ) . ';"'; ?>>
