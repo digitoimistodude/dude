@@ -5,7 +5,7 @@
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-11 19:46:12
+ * @Last Modified time: 2022-10-14 11:20:18
  *
  * @package dude
  */
@@ -112,3 +112,13 @@ function tsm_acf_profile_avatar( $avatar, $id_or_email, $size, $default, $alt ) 
   // Return our new avatar
   return $avatar;
 } // end tsm_acf_profile_avatar
+
+function change_attachment_image_src_to_cfcdn( $image ) {
+  // CF CDN does not support loading from local (duh), get same image from production
+  if ( 'production' !== wp_get_environment_type() ) {
+    $image[0] = str_replace( 'dude.test', 'dude.fi', $image[0] );
+  }
+
+  $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
+  return $image;
+} // end change_attachment_image_src_to_cfcdn

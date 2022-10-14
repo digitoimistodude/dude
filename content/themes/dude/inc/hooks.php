@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Elias Kautto
- * @Last Modified time: 2022-10-13 15:42:20
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 11:15:22
  *
  * @package dude
  */
@@ -11,10 +11,6 @@
 namespace Air_Light;
 
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-// add_filter( 'wp_get_attachment_image_src', function( $image, $attachment_id, $size ) {
-//   $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
-//   return $image;
-// }, 10, 3 );
 
 // Air helper custom settings
 add_filter( 'air_helper_custom_settings_post_ids', __NAMESPACE__ . '\custom_settings_post_ids' );
@@ -62,6 +58,7 @@ add_action( 'widgets_init', __NAMESPACE__ . '\widgets_init' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\reference_archive_query' );
 add_action( 'save_post_job', __NAMESPACE__ . '\clear_open_jobs_count_cache', 10, 2 );
 add_filter( 'get_avatar', __NAMESPACE__ . '\tsm_acf_profile_avatar', 10, 5 );
+add_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
 
 /**
  * Scripts and styles associated hooks
