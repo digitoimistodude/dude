@@ -2,8 +2,8 @@
 /**
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 11:01:48
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-14 11:14:52
  * @package dude
  */
 
@@ -31,13 +31,17 @@ $picture_cdn_srcset = [
     'width'     => '678',
     'height'    => '678',
   ],
-  1349 => [
+  760 => [
     'width'     => '500',
     'height'    => '500',
   ],
-  760 => [
-    'width'     => '320',
-    'height'    => '450',
+  1460 => [
+    'width'     => '591',
+    'height'    => '591',
+  ],
+  1590 => [
+    'width'     => '635',
+    'height'    => '635',
   ],
 ];
 
@@ -49,8 +53,8 @@ if ( isset( $args['key'] ) ) {
 // :nth-of-type(2n)
 if ( ( $key % 2 ) !== 0 ) {
   $picture_cdn_args = [
-    'width'   => '200',
-    'height'  => '200',
+    'width'   => '635',
+    'height'  => '741',
   ];
 
   $picture_cdn_srcset = [
@@ -67,8 +71,8 @@ if ( ( $key % 2 ) !== 0 ) {
       'height'    => '500',
     ],
     760 => [
-      'width'     => '320',
-      'height'    => '450',
+      'width'     => '635',
+      'height'    => '741',
     ],
   ];
 }
