@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 09:34:47
+ * @Last Modified time: 2022-10-14 09:37:38
  *
  * @package dude
  */
@@ -31,9 +31,6 @@ add_action( 'init', function() {
   remove_action( 'wp_enqueue_scripts', 'air_helper_enqueue_instantpage_script' );
 }, 999 );
 
-// Cookies and GDPR
-require get_theme_file_path( 'inc/hooks/air-cookie.php' );
-
 // WPForms related hooks
 require get_theme_file_path( 'inc/hooks/wpforms.php' );
 
@@ -41,6 +38,7 @@ require get_theme_file_path( 'inc/hooks/wpforms.php' );
 require get_theme_file_path( 'inc/hooks/analytics.php' );
 add_action( 'wp_head', __NAMESPACE__ . '\head_analytics_scripts' );
 add_action( 'wp_footer', __NAMESPACE__ . '\footer_analytics_scripts' );
+add_action( 'air_cookie_js_analytics', __NAMESPACE__ . '\air_cookie_js_analytics' );
 
 // General hooks
 require get_theme_file_path( 'inc/hooks/general.php' );

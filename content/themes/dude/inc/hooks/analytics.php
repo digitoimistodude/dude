@@ -2,8 +2,8 @@
 /**
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 15:11:06
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 09:37:13
  * @package dude
  */
 
@@ -95,3 +95,20 @@ function head_analytics_scripts() { ?>
 
 function footer_analytics_scripts() { ?>
 <?php } // end footer_analytics_scripts
+
+function air_cookie_js_analytics() {
+  if ( is_user_logged_in() ) {
+    return;
+  }
+
+  ob_start(); ?>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:8741,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  <?php echo ob_get_clean(); // phpcs:ignore
+} // end air_cookie_js_analytics
