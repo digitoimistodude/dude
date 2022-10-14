@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 11:14:52
+ * @Last Modified time: 2022-10-14 11:24:11
  * @package dude
  */
 
@@ -24,8 +24,12 @@ $picture_cdn_args = [
 
 $picture_cdn_srcset = [
   220 => [
-    'width'     => '450',
-    'height'    => '450',
+    'width'     => '435',
+    'height'    => '435',
+  ],
+  480 => [
+    'width'     => '435',
+    'height'    => '435',
   ],
   600 => [
     'width'     => '678',
@@ -34,6 +38,10 @@ $picture_cdn_srcset = [
   760 => [
     'width'     => '500',
     'height'    => '500',
+  ],
+  1000 => [
+    'width'     => '596',
+    'height'    => '596',
   ],
   1460 => [
     'width'     => '591',
@@ -59,18 +67,30 @@ if ( ( $key % 2 ) !== 0 ) {
 
   $picture_cdn_srcset = [
     220 => [
-      'width'     => '450',
-      'height'    => '450',
+      'width'     => '435',
+      'height'    => '508',
+    ],
+    480 => [
+      'width'     => '435',
+      'height'    => '508',
     ],
     600 => [
-      'width'     => '678',
-      'height'    => '678',
-    ],
-    1349 => [
-      'width'     => '500',
-      'height'    => '500',
+      'width'     => '555',
+      'height'    => '648',
     ],
     760 => [
+      'width'     => '395',
+      'height'    => '461',
+    ],
+    1000 => [
+      'width'     => '542',
+      'height'    => '632',
+    ],
+    1460 => [
+      'width'     => '591',
+      'height'    => '690',
+    ],
+    1590 => [
       'width'     => '635',
       'height'    => '741',
     ],
