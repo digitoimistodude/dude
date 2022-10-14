@@ -2,8 +2,8 @@
 /**
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 10:44:32
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 11:01:48
  * @package dude
  */
 
@@ -17,6 +17,61 @@ $data = [
   'meta_tags'     => wp_get_post_terms( $args['post_id'], 'reference-category' ),
 ];
 
+$picture_cdn_args = [
+  'width'   => '635',
+  'height'  => '635',
+];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '450',
+    'height'    => '450',
+  ],
+  600 => [
+    'width'     => '678',
+    'height'    => '678',
+  ],
+  1349 => [
+    'width'     => '500',
+    'height'    => '500',
+  ],
+  760 => [
+    'width'     => '320',
+    'height'    => '450',
+  ],
+];
+
+$key = null;
+if ( isset( $args['key'] ) ) {
+  $key = $args['key'];
+}
+
+// :nth-of-type(2n)
+if ( ( $key % 2 ) !== 0 ) {
+  $picture_cdn_args = [
+    'width'   => '200',
+    'height'  => '200',
+  ];
+
+  $picture_cdn_srcset = [
+    220 => [
+      'width'     => '450',
+      'height'    => '450',
+    ],
+    600 => [
+      'width'     => '678',
+      'height'    => '678',
+    ],
+    1349 => [
+      'width'     => '500',
+      'height'    => '500',
+    ],
+    760 => [
+      'width'     => '320',
+      'height'    => '450',
+    ],
+  ];
+}
 ?>
 
 <div class="col col-reference">
@@ -24,29 +79,7 @@ $data = [
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 
   <div class="image image-background has-duotone">
-    <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], [
-      'width'   => '635',
-      'height'  => '635',
-      'quality' => '75',
-      'fit'      => 'cover',
-    ], [
-      220 => [
-        'width'     => '450',
-        'height'    => '450',
-      ],
-      600 => [
-        'width'     => '678',
-        'height'    => '678',
-      ],
-      1349 => [
-        'width'     => '500',
-        'height'    => '500',
-      ],
-      760 => [
-        'width'     => '320',
-        'height'    => '450',
-      ],
-    ] ); ?>
+    <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
   </div>
 
   <h3 class="has-text-gradient">
