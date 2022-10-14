@@ -22,6 +22,30 @@ while ( have_posts() ) {
   ];
 }
 
+$picture_cdn_args = [
+  'width'     => '732',
+  'height'    => '628',
+];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '435',
+    'height'    => '245',
+  ],
+  767 => [
+    'width'     => '673',
+    'height'    => '379',
+  ],
+  700 => [
+    'width'     => '688',
+    'height'    => '626',
+  ],
+  1590 => [
+    'width'     => '732',
+    'height'    => '628',
+  ],
+];
+
 // Video post thumbnail for testing
 // $video_post_id = 5776;
 $featured_post = $items[0];
@@ -43,6 +67,7 @@ get_header(); ?>
           <div class="col col-image">
             <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1"></a>
             <div class="image image-background">
+              <?php // get_picture_element_with_cfcdn( $featured_post['post_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
               <?php echo get_the_post_thumbnail( $featured_post['post_id'] );
 
               $video_bg = get_post_meta( $featured_post['post_id'], 'article_video', true );
