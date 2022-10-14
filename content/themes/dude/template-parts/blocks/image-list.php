@@ -40,6 +40,26 @@ if ( empty( $items ) ) {
   maybe_show_error_block( 'Listaelementtejä on pakko olla.' );
   return;
 }
+
+$picture_cdn_args = [
+  'width'     => '663',
+  'height'    => '470',
+];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '435',
+    'height'    => '326',
+  ],
+  600 => [
+    'width'     => '555',
+    'height'    => '416',
+  ],
+  1620 => [
+    'width'     => '663',
+    'height'    => '470',
+  ],
+];
 ?>
 
 <section class="block block-image-list">
@@ -47,7 +67,7 @@ if ( empty( $items ) ) {
     <div class="cols">
       <div class="col image image-background">
         <?php if ( ! empty( $image ) ) {
-          native_lazyload_tag( $image );
+          get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
         } ?>
       </div>
 

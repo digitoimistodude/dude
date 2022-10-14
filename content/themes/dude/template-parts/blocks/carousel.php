@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-11 11:58:56
+ * @Last Modified time: 2022-10-14 12:31:19
  *
  * @package dude
  */
@@ -28,6 +28,26 @@ if ( empty( $images ) ) {
   maybe_show_error_block( 'Kuvia ei valittuna' );
   return;
 }
+
+$picture_cdn_args = [
+  'width'     => '1400',
+  'height'    => '840',
+ ];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '435',
+    'height'    => '237',
+  ],
+  600 => [
+    'width'     => '555',
+    'height'    => '302',
+  ],
+  860 => [
+    'width'     => '1400',
+    'height'    => '840',
+  ],
+];
 ?>
 
 <section class="block block-carousel is-carousel">
@@ -56,7 +76,7 @@ if ( empty( $images ) ) {
       <ul class="images swiper-wrapper">
         <?php foreach ( $images as $image_id ) : ?>
           <li class="item item-image swiper-slide">
-            <?php native_lazyload_tag( $image_id ) ?>
+            <?php get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset ); ?>
           </li>
         <?php endforeach; ?>
       </ul>

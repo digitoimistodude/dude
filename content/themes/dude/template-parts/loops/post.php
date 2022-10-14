@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 17:32:22
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-09-08 17:33:06
+ * @Last Modified time: 2022-10-14 12:55:15
  *
  * @package dude
  */
@@ -18,13 +18,37 @@ $data = [
   'rawdate'       => get_the_date( 'c', $args['post_id'] ),
   'post_id'       => $args['post_id'],
 ];
+
+$picture_cdn_args = [
+  'width'     => '424',
+  'height'    => '424',
+];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '435',
+    'height'    => '245',
+  ],
+  601 => [
+    'width'     => '421',
+    'height'    => '421',
+  ],
+  767 => [
+    'width'     => '421',
+    'height'    => '421',
+  ],
+  1025 => [
+    'width'     => '424',
+    'height'    => '424',
+  ],
+];
 ?>
 
 <div class="h-entry col col-post">
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
   <div class="h-entry-content">
     <div class="image image-background has-duotone" aria-hidden="true">
-      <?php native_lazyload_tag( $data['thumbnail_id'] ) ?>
+      <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
       <span aria-hidden="true">Lue kirjoitus</span>
 
       <?php

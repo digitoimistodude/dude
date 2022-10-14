@@ -6,8 +6,8 @@
  *
  * @Author:		Roni Laukkarinen
  * @Date:   		2021-05-18 10:29:32
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-07-29 11:39:33
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-14 12:47:34
  *
  * @package dude
  */
@@ -19,3 +19,4 @@ require get_theme_file_path( '/inc/template-tags/entry-footer.php' );
 require get_theme_file_path( '/inc/template-tags/single-comment.php' );
 require get_theme_file_path( '/inc/template-tags/wp-body-open.php' );
 require get_theme_file_path( '/inc/template-tags/edit-link.php' );
+require get_theme_file_path( '/inc/template-tags/picture-with-cf-cdn.php' );

@@ -4,8 +4,8 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-11 19:46:12
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-14 15:17:19
  *
  * @package dude
  */
@@ -112,3 +112,47 @@ function tsm_acf_profile_avatar( $avatar, $id_or_email, $size, $default, $alt ) 
   // Return our new avatar
   return $avatar;
 } // end tsm_acf_profile_avatar
+
+function change_attachment_image_src_to_cfcdn( $image ) {
+  $image[0] = build_image_cf_cdn_url( $image[0], [
+    'width'   => $image[1],
+    'height'  => $image[2],
+    'quality' => THEME_SETTINGS['cfcdn_defaults']['quality'],
+  ] );
+
+  return $image;
+} // end change_attachment_image_src_to_cfcdn
+
+function post_content_replace_image_urls_with_cfcdn( $content ) {
+  if ( ! is_singular( 'post' ) ) {
+    return $content;
+  }
+
+  $quality = THEME_SETTINGS['cfcdn_defaults']['quality'];
+
+  // Match all urls on src and srcset
+  preg_match_all( '/[^"\'=\s]+\.(jpe?g|png|gif)/', $content, $matches );
+  if ( empty( $matches ) ) {
+    return $content;
+  }
+
+  // keep log on which urls are already replaced to avoid doing that multiple times
+  $handled = [];
+
+  // handle matches and replace the image url
+  foreach ( $matches[0] as $match ) {
+    if ( array_key_exists( $match, $handled ) ) {
+      continue;
+    }
+
+    $handled[ $match ] = true;
+
+    $image_url = build_image_cf_cdn_url( $match, [
+      'quality' => THEME_SETTINGS['cfcdn_defaults']['quality'],
+    ] );
+
+    $content = str_replace( $match, $image_url, $content );
+  }
+
+  return $content;
+} // end post_content_replace_image_urls_with_cfcdn

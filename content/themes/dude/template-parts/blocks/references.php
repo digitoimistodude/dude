@@ -6,8 +6,8 @@
  *
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-05 18:36:30
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 10:50:32
  *
  * @package dude
  */
@@ -78,8 +78,8 @@ if ( empty( $title ) || empty( $reference_ids ) ) {
     <?php endif; ?>
 
     <div class="cols cols-two">
-      <?php foreach ( $reference_ids as $reference_id ) {
-        get_template_part( 'template-parts/loops/reference', null, [ 'post_id' => $reference_id ] );
+      <?php foreach ( $reference_ids as $key => $reference_id ) {
+        get_template_part( 'template-parts/loops/reference', null, [ 'post_id' => $reference_id, 'key' => $key ] );
       } ?>
     </div>
 

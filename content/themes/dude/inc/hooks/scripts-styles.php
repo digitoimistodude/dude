@@ -4,8 +4,8 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 10:31:32
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-14 15:17:30
  *
  * @package dude
  */
@@ -133,7 +133,7 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'scripts',
     'koko-analytics',
     'cookieconsent',
-    'iframemanager'
+    'iframemanager',
   ];
 
   if ( ! in_array( $handle, $allowed_handles ) ) { // phpcs:ignore
@@ -147,7 +147,7 @@ function swupify_air_cookie_inline_script( $script ) {
   ob_start(); ?>
 
   function dudeSwupAircookieInit() {
-    <?php echo $script; ?>
+    <?php echo $script; // phpcs:ignore ?>
   }
 
   // When document has been completely loaded

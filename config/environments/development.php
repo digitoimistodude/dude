@@ -13,7 +13,7 @@ Config::define( 'SCRIPT_DEBUG', false );
 Config::define( 'FS_METHOD', 'direct' );
 Config::define( 'PLL_CACHE_HOME_URL', false );
 
-ini_set( 'display_errors', '0' );
+ini_set( 'display_errors', '1' );
 
 // Enable plugin and theme updates and installation from the admin
 Config::define( 'DISALLOW_FILE_MODS', false );

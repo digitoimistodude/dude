@@ -68,12 +68,16 @@
   }
 
   figcaption {
-    align-items: center;
+    align-items: flex-start;
     color: var(--color-text);
     display: flex;
     gap: calc(3rem + calc(1rem + 1.6rem));
     margin: 0;
     max-width: 100%;
+
+    @media (max-width: $container-mobile) {
+      gap: 4.6rem;
+    }
   }
 
   .mdash {
@@ -91,10 +95,15 @@
     font-weight: var(--font-weight-semibold);
     gap: 1rem;
     margin-left: -#{calc(1rem + 1.6rem)};
+    padding-top: .5rem;
   }
 
   .name-title {
     font-size: var(--font-size-18);
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-14);
+    }
   }
 
   .company {
@@ -102,6 +111,10 @@
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-medium);
     width: 100%;
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-14);
+    }
   }
 
   .comma {

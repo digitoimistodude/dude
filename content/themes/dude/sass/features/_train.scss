@@ -47,6 +47,16 @@
     height: 6.4rem;
     pointer-events: none;
     width: 6.4rem;
+
+    @media (max-width: $container-ipad) {
+      height: 6.4rem;
+      width: 6.4rem;
+    }
+
+    @media (max-width: $container-mobile) {
+      height: 5rem;
+      width: 5rem;
+    }
   }
 
   .item {

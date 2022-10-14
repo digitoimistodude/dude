@@ -6,8 +6,8 @@
  * own files under /inc and just require here.
  *
  * @Date: 2019-10-15 12:30:02
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-03 15:07:54
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 14:30:57
  *
  * @package dude
  */
@@ -54,6 +54,14 @@ add_action( 'after_setup_theme', function() {
      */
     'page_ids' => [
       'jobs'  => 4491,
+    ],
+
+    /**
+     * CF CDN default settings
+     */
+    'cfcdn_defaults' => [
+      'quality' => 75,
+      'fit'     => 'cover',
     ],
 
     /**

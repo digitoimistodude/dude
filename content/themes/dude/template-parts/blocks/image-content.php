@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-05 15:48:56
+ * @Last Modified time: 2022-10-14 12:41:03
  *
  * @package dude
  */
@@ -46,13 +46,37 @@ if ( 'cards' === $style ) {
 if ( $image_side ) {
   $classes[] = 'block-image-content-right';
 }
+
+$picture_cdn_args = [
+  'width'     => '663',
+  'height'    => '605',
+];
+
+$picture_cdn_srcset = [
+  220 => [
+    'width'     => '435',
+    'height'    => '397',
+  ],
+  500 => [
+    'width'     => '475',
+    'height'    => '433',
+  ],
+  700 => [
+    'width'     => '675',
+    'height'    => '616',
+  ],
+  1000 => [
+    'width'     => '663',
+    'height'    => '605',
+  ],
+];
 ?>
 
 <section class="<?php echo esc_attr( join( ' ', $classes ) ) ?>">
   <div class="container">
 
     <div class="col col-image">
-      <?php native_lazyload_tag( $image ) ?>
+      <?php get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset ); ?>
       <?php if ( 'job' === get_post_type() ) :
         $caption = wp_get_attachment_metadata( $image )['image_meta']['caption'];
         if ( ! empty( $caption ) ) : ?>
