@@ -34,13 +34,9 @@ $picture_cdn_srcset = [
     'width'     => '435',
     'height'    => '245',
   ],
-  767 => [
-    'width'     => '673',
-    'height'    => '379',
-  ],
   700 => [
-    'width'     => '688',
-    'height'    => '626',
+    'width'     => '732',
+    'height'    => '628',
   ],
   1590 => [
     'width'     => '732',
