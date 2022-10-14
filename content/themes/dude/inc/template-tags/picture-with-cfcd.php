@@ -6,8 +6,8 @@
  *
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
- * @Last Modified by:   Elias Kautto
- * @Last Modified time: 2022-10-13 16:24:15
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-14 10:33:05
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -15,7 +15,7 @@
 
 namespace Air_Light;
 
-function get_picture_element_with_cfcd( $image_id, $img_params, $sources ) {
+function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
   if ( ! isset( $sources ) || empty( $sources ) ) {
     return;
   }
