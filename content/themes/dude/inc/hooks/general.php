@@ -5,7 +5,7 @@
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 11:20:18
+ * @Last Modified time: 2022-10-14 14:28:36
  *
  * @package dude
  */
@@ -122,3 +122,35 @@ function change_attachment_image_src_to_cfcdn( $image ) {
   $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
   return $image;
 } // end change_attachment_image_src_to_cfcdn
+
+function post_content_replace_image_urls_with_cfcdn( $content ) {
+  if ( ! is_singular( 'post' ) ) {
+    return $content;
+  }
+
+  // CF CDN does not support loading from local (duh), get same image from production
+  if ( 'production' !== wp_get_environment_type() ) {
+    $content = str_replace( 'https://dude.test/media', 'https://www.dude.fi/media', $content );
+  }
+
+  // Match all urls on src and srcset
+  preg_match_all('/[^"\'=\s]+\.(jpe?g|png|gif)/', $content, $matches );
+  if ( empty( $matches ) ) {
+    return $content;
+  }
+
+  // keep log on which urls are already replaced to avoid doing that multiple times
+  $handled = [];
+
+  // handle matches and replace the image url
+  foreach ( $matches[0] as $match ) {
+    if ( array_key_exists( $match, $handled ) ) {
+      continue;
+    }
+
+    $handled[ $match ] = true;
+    $content = str_replace( $match, "https://cdn.dude.fi/cdn-cgi/image/quality=75,fit=cover/{$match}", $content );
+  }
+
+  return $content;
+} // end post_content_replace_image_urls_with_cfcdn
