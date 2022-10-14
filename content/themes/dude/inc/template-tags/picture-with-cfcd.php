@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 10:33:05
+ * @Last Modified time: 2022-10-14 10:34:40
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -26,8 +26,13 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
 
   $image_data = wp_get_attachment_image_src( $image_id, 'full' );
   $image_url = $image_data[0];
+
   if ( false === $image_url ) {
     return;
+  }
+
+  if ( wp_get_environment_type() !== 'production' ) {
+    $image_url = str_replace( 'dude.test', 'dude.fi', $image_url );
   }
 
   $img_params = wp_parse_args( $img_params, [
