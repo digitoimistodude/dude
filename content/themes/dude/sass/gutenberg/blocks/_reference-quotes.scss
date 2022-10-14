@@ -55,6 +55,7 @@
   padding: 0;
 
   cite {
+    align-items: flex-end;
     color: var(--color-text);
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +69,7 @@
   }
 
   figcaption {
-    align-items: flex-start;
+    align-items: center;
     color: var(--color-text);
     display: flex;
     gap: calc(3rem + calc(1rem + 1.6rem));
@@ -99,8 +100,6 @@
   }
 
   .name-title {
-    font-size: var(--font-size-18);
-
     @media (max-width: $container-mobile) {
       font-size: var(--font-size-14);
     }

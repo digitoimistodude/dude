@@ -72,6 +72,14 @@
     padding: 6rem;
     white-space: normal;
 
+    figure {
+      gap: 6rem;
+    }
+
+    figcaption {
+      align-items: center;
+    }
+
     &.item-quote-hameen-keskiaikafestivaali,
     &.item-quote-varjolan-tila,
     &.item-quote-redan-redan,
