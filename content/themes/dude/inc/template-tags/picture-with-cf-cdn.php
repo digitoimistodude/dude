@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 14:51:58
+ * @Last Modified time: 2022-10-14 15:57:36
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -40,7 +40,11 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
     'classes' => [],
   ] );
 
-  $img_params['classes'] = implode( ' ', $img_params['classes'] );
+  if ( ! empty( $img_params['classes'] ) ) {
+    $img_params['classes'] = 'class="' . implode( ' ', $img_params['classes'] ) . '" ';
+  } else {
+    $img_params['classes'] = '';
+  }
 
   $alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 
@@ -72,7 +76,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
 
   $image_cdn_url = build_image_cf_cdn_url( $image_url, $img_params );
 
-  echo '<img class="' . $img_params['classes'] . '" loading="lazy" src="' . $image_cdn_url . '" alt="' . $alt . '">'; //phpcs:ignore
+  echo '<img ' . $img_params['classes'] . 'loading="lazy" src="' . $image_cdn_url . '" width="' . $img_params['width'] . '" height="' . $img_params['height'] . '" alt="' . $alt . '">'; //phpcs:ignore
   echo '</picture>';
 } // get_picture_element_with_cfcd
 
