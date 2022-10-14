@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-04 16:40:19
+ * @Last Modified time: 2022-10-14 12:26:12
  *
  * @package dude
  */
@@ -93,7 +93,31 @@ if ( is_page( 4487 ) ) {
 
     <?php if ( ! empty( $image ) && ! is_page( 4487 ) ) : ?>
       <div class="col col-image has-transition-fade">
-        <?php native_lazyload_tag( $image ) ?>
+        <?php if ( is_page( 9 ) ) {
+           $picture_cdn_args = [
+            'width'     => '640',
+            'height'    => '804',
+           ];
+
+          $picture_cdn_srcset = [
+            220 => [
+              'width'     => '435',
+              'height'    => '507',
+            ],
+            600 => [
+              'width'     => '548',
+              'height'    => '689',
+            ],
+            1620 => [
+              'width'     => '640',
+              'height'    => '804',
+            ],
+          ];
+          get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
+        } else {
+          native_lazyload_tag( $image );
+        }
+        ?>
       </div>
     <?php endif; ?>
 
