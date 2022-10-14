@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 11:30:14
+ * @Last Modified time: 2022-10-14 11:40:50
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -45,11 +45,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
     'classes' => [],
   ] );
 
-  if ( ! empty( $img_params['classes'] ) ) {
-    $img_params['classes'] = implode( ' ', $classes );
-  } else {
-    $img_params['classes'] = '';
-  }
+  $img_params['classes'] = implode( ' ', $img_params['classes'] );
 
   // Get alt
   $alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
