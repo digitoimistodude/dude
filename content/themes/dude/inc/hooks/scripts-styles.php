@@ -4,8 +4,8 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 15:23:41
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 16:42:55
  *
  * @package dude
  */
@@ -159,3 +159,57 @@ function swupify_air_cookie_inline_script( $script ) {
 
   <?php return ob_get_clean();
 } // end swupify_air_cookie_inline_script
+
+add_action( 'wpforms_frontend_js', function() {
+  if ( 'template-surveys.php' === basename( get_page_template() )  ) {
+    return;
+  }
+
+  wp_dequeue_script( 'wpforms-password-field' );
+  wp_dequeue_script( 'wpforms-smart-phone-field' );
+  wp_dequeue_script( 'wpforms-choicesjs' );
+  wp_dequeue_script( 'wpforms-surveys-polls' );
+  wp_dequeue_script( 'wpforms-modal-views' );
+  wp_dequeue_script( 'wpforms-richtext-field' );
+  wp_dequeue_script( 'wpforms-richtext-frontend-full' );
+  wp_dequeue_script( 'wpforms-jquery-timepicker' );
+  wp_dequeue_script( 'wpforms-flatpickr' );
+  wp_dequeue_script( 'wpforms-payment' );
+  wp_dequeue_script( 'wpforms-maskedinput' );
+
+  wp_deregister_script( 'wpforms-password-field' );
+  wp_deregister_script( 'wpforms-smart-phone-field' );
+  wp_deregister_script( 'wpforms-choicesjs' );
+  wp_deregister_script( 'wpforms-surveys-polls' );
+  wp_deregister_script( 'wpforms-modal-views' );
+  wp_deregister_script( 'wpforms-richtext-field' );
+  wp_deregister_script( 'wpforms-richtext-frontend-full' );
+  wp_deregister_script( 'wpforms-jquery-timepicker' );
+  wp_deregister_script( 'wpforms-flatpickr' );
+  wp_deregister_script( 'wpforms-payment' );
+  wp_deregister_script( 'wpforms-maskedinput' );
+}, 99999 );
+
+add_action( 'wpforms_frontend_css', function() {
+  if ( 'template-surveys.php' === basename( get_page_template() )  ) {
+    return;
+  }
+
+  wp_dequeue_style( 'wpforms-password-field' );
+  wp_dequeue_style( 'wpforms-smart-phone-field' );
+  wp_dequeue_style( 'wpforms-choicesjs' );
+  wp_dequeue_style( 'wpforms-surveys-polls' );
+  wp_dequeue_style( 'wpforms-modal-views' );
+  wp_dequeue_style( 'wpforms-richtext-frontend-full' );
+  wp_dequeue_style( 'wpforms-jquery-timepicker' );
+  wp_dequeue_style( 'wpforms-flatpickr' );
+
+  wp_deregister_style( 'wpforms-password-field' );
+  wp_deregister_style( 'wpforms-smart-phone-field' );
+  wp_deregister_style( 'wpforms-choicesjs' );
+  wp_deregister_style( 'wpforms-surveys-polls' );
+  wp_deregister_style( 'wpforms-modal-views' );
+  wp_deregister_style( 'wpforms-richtext-frontend-full' );
+  wp_deregister_style( 'wpforms-jquery-timepicker' );
+  wp_deregister_style( 'wpforms-flatpickr' );
+}, 99999 );
