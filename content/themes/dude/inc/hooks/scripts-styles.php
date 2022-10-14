@@ -4,8 +4,8 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-04 10:50:33
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 10:31:32
  *
  * @package dude
  */
@@ -132,6 +132,8 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     null,
     'scripts',
     'koko-analytics',
+    'cookieconsent',
+    'iframemanager'
   ];
 
   if ( ! in_array( $handle, $allowed_handles ) ) { // phpcs:ignore
@@ -140,3 +142,19 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
 
   return $tag;
 } // end add_data_attribute_to_scripts
+
+function swupify_air_cookie_inline_script( $script ) {
+  ob_start(); ?>
+
+  function dudeSwupAircookieInit() {
+    <?php echo $script; ?>
+  }
+
+  // When document has been completely loaded
+  document.addEventListener('DOMContentLoaded', dudeSwupAircookieInit);
+
+  // Do things when content is replaced via Swup
+  document.addEventListener('swup:contentReplaced', dudeSwupAircookieInit);
+
+  <?php return ob_get_clean();
+} // end swupify_air_cookie_inline_script

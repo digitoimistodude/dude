@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 09:37:38
+ * @Last Modified time: 2022-10-14 10:30:32
  *
  * @package dude
  */
@@ -52,6 +52,7 @@ require get_theme_file_path( 'inc/hooks/scripts-styles.php' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_polyfills' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_scripts' );
 add_filter( 'script_loader_tag',  __NAMESPACE__ . '\add_data_attribute_to_scripts', 10, 2 );
+add_filter( 'air_cookie_inline_js', __NAMESPACE__ . '\swupify_air_cookie_inline_script' );
 
 // NB! If you use ajax functionality in Gravity Forms, remove this line
 // to prevent Uncaught ReferenceError: jQuery is not defined
