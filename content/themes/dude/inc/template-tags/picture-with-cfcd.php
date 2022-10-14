@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 10:38:40
+ * @Last Modified time: 2022-10-14 11:15:19
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -61,7 +61,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
       $media .= " and (max-width: {$max_width}px)";
     }
 
-    echo "<source media='{$media}' srcet='https://cdn.dude.fi/cdn-cgi/image/width={$source['width']},height={$source['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}'>"; //phpcs:ignore
+    echo "<source media='{$media}' srcset='https://cdn.dude.fi/cdn-cgi/image/width={$source['width']},height={$source['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}'>"; //phpcs:ignore
   }
 
   echo "<img loading='lazy' src='https://cdn.dude.fi/cdn-cgi/image/width={$img_params['width']},height={$img_params['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}' alt='{$alt}'>"; //phpcs:ignore
