@@ -42,6 +42,9 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
     'fit'     => 'cover',
   ] );
 
+  // Get alt
+  $alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+
   ksort( $sources );
 
   echo '<picture>';
@@ -61,6 +64,6 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
     echo "<source media='{$media}' srcet='https://cdn.dude.fi/cdn-cgi/image/width={$source['width']},height={$source['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}'>"; //phpcs:ignore
   }
 
-  echo "<img loading='lazy' src='https://cdn.dude.fi/cdn-cgi/image/width={$img_params['width']},height={$img_params['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}' alt=''>"; //phpcs:ignore
+  echo "<img loading='lazy' src='https://cdn.dude.fi/cdn-cgi/image/width={$img_params['width']},height={$img_params['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}' alt='{$alt}'>"; //phpcs:ignore
   echo '</picture>';
 } // get_picture_element_with_cfcd
