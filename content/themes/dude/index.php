@@ -13,6 +13,8 @@
  * @package dude
  */
 
+namespace Air_Light;
+
 $items = [];
 while ( have_posts() ) {
   the_post();
@@ -67,9 +69,7 @@ get_header(); ?>
           <div class="col col-image">
             <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1"></a>
             <div class="image image-background">
-              <?php // get_picture_element_with_cfcdn( $featured_post['post_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
-              <?php echo get_the_post_thumbnail( $featured_post['post_id'] );
-
+              <?php get_picture_element_with_cfcdn( get_post_thumbnail_id( $featured_post['post_id'] ), $picture_cdn_args, $picture_cdn_srcset );
               $video_bg = get_post_meta( $featured_post['post_id'], 'article_video', true );
               if ( $video_bg ) : ?>
                 <div class="vimeo-iframe-wrapper vimeo-iframe-wrapper-upsell">
