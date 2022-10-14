@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 12:26:12
+ * @Last Modified time: 2022-10-14 12:28:34
  *
  * @package dude
  */
@@ -111,6 +111,27 @@ if ( is_page( 4487 ) ) {
             1620 => [
               'width'     => '640',
               'height'    => '804',
+            ],
+          ];
+          get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
+        } elseif ( is_page( 4485 ) ) {
+          $picture_cdn_args = [
+            'width'     => '640',
+            'height'    => '804',
+           ];
+
+          $picture_cdn_srcset = [
+            220 => [
+              'width'     => '435',
+              'height'    => '326',
+            ],
+            600 => [
+              'width'     => '555',
+              'height'    => '416',
+            ],
+            1620 => [
+              'width'     => '663',
+              'height'    => '470',
             ],
           ];
           get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
