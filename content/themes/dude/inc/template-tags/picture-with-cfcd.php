@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 10:34:40
+ * @Last Modified time: 2022-10-14 10:38:40
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -39,7 +39,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
     'width'   => $image_data[1],
     'height'  => $image_data[2],
     'quality' => '75',
-    'fit'      => 'cover',
+    'fit'     => 'cover',
   ] );
 
   ksort( $sources );
@@ -50,12 +50,12 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
       continue;
     }
 
-    $media = "(min-width: {$key})";
+    $media = "(min-width: {$key}px)";
     next( $sources );
     $next_key = key( $sources );
     if ( null !== $next_key ) {
       $max_width = absint( $next_key ) - 1;
-      $media .= " and (max-width: {$max_width})";
+      $media .= " and (max-width: {$max_width}px)";
     }
 
     echo "<source media='{$media}' srcet='https://cdn.dude.fi/cdn-cgi/image/width={$source['width']},height={$source['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}'>"; //phpcs:ignore

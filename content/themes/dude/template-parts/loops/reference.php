@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 10:32:57
+ * @Last Modified time: 2022-10-14 10:38:24
  * @package dude
  */
 
@@ -26,8 +26,6 @@ $data = [
   <div class="image image-background has-duotone" aria-hidden="true">
 
     <?php
-    // TODO: Temporary hard coded experiments
-    // If is dev and Sofi
     if ( 'development' === getenv( 'WP_ENV' ) && 12530 === $args['post_id'] ) : ?>
 
       <!-- <picture>
