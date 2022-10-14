@@ -5,7 +5,7 @@
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 15:17:30
+ * @Last Modified time: 2022-10-14 15:23:41
  *
  * @package dude
  */
@@ -134,6 +134,7 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'koko-analytics',
     'cookieconsent',
     'iframemanager',
+    'wpforms-generic-utils',
   ];
 
   if ( ! in_array( $handle, $allowed_handles ) ) { // phpcs:ignore
