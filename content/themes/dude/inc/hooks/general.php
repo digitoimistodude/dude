@@ -5,7 +5,7 @@
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 14:32:49
+ * @Last Modified time: 2022-10-14 14:50:07
  *
  * @package dude
  */
@@ -114,13 +114,12 @@ function tsm_acf_profile_avatar( $avatar, $id_or_email, $size, $default, $alt ) 
 } // end tsm_acf_profile_avatar
 
 function change_attachment_image_src_to_cfcdn( $image ) {
-  // CF CDN does not support loading from local (duh), get same image from production
-  if ( 'production' !== wp_get_environment_type() ) {
-    $image[0] = str_replace( 'dude.test', 'dude.fi', $image[0] );
-  }
+  $image[0] = build_image_cf_cdn_url( $image[0], [
+    'width'   => $image[1],
+    'height'  => $image[2],
+    'quality' => THEME_SETTINGS['cfcdn_defaults']['quality'],
+  ] );
 
-  $quality = THEME_SETTINGS['cfcdn_defaults']['quality'];
-  $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality={$quality},format=auto/{$image[0]}";
   return $image;
 } // end change_attachment_image_src_to_cfcdn
 
@@ -130,11 +129,6 @@ function post_content_replace_image_urls_with_cfcdn( $content ) {
   }
 
   $quality = THEME_SETTINGS['cfcdn_defaults']['quality'];
-
-  // CF CDN does not support loading from local (duh), get same image from production
-  if ( 'production' !== wp_get_environment_type() ) {
-    $content = str_replace( 'https://dude.test/media', 'https://www.dude.fi/media', $content );
-  }
 
   // Match all urls on src and srcset
   preg_match_all('/[^"\'=\s]+\.(jpe?g|png|gif)/', $content, $matches );
@@ -152,7 +146,12 @@ function post_content_replace_image_urls_with_cfcdn( $content ) {
     }
 
     $handled[ $match ] = true;
-    $content = str_replace( $match, "https://cdn.dude.fi/cdn-cgi/image/quality={$quality},format=auto/{$match}", $content );
+
+    $image_url = build_image_cf_cdn_url( $match, [
+      'quality' => THEME_SETTINGS['cfcdn_defaults']['quality'],
+    ] );
+
+    $content = str_replace( $match, $image_url, $content );
   }
 
   return $content;

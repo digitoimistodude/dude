@@ -7,7 +7,7 @@
  * @Author:        Elias Kautto
  * @Date:           2022-10-13 15:43:28
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 14:31:33
+ * @Last Modified time: 2022-10-14 14:51:58
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -32,11 +32,6 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
 
   add_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
 
-  // CF CDN does not support loading from local (duh), get same image from production
-  if ( wp_get_environment_type() !== 'production' ) {
-    $image_url = str_replace( 'dude.test', 'dude.fi', $image_url );
-  }
-
   $img_params = wp_parse_args( $img_params, [
     'width'   => $image_data[1],
     'height'  => $image_data[2],
@@ -47,7 +42,6 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
 
   $img_params['classes'] = implode( ' ', $img_params['classes'] );
 
-  // Get alt
   $alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 
   ksort( $sources );
@@ -66,9 +60,38 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources ) {
       $media .= " and (max-width: {$max_width}px)";
     }
 
-    echo "<source media='{$media}' srcset='https://cdn.dude.fi/cdn-cgi/image/width={$source['width']},height={$source['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}'>"; //phpcs:ignore
+    $image_cdn_url = build_image_cf_cdn_url( $image_url, [
+      'width'   => $source['width'],
+      'height'  => $source['height'],
+      'quality' => $img_params['quality'],
+      'fit'     => $img_params['fit'],
+    ] );
+
+    echo '<source media="' . $media .'" srcset="' .$image_cdn_url . '">'; //phpcs:ignore
   }
 
-  echo "<img class='{$img_params['classes']}' loading='lazy' src='https://cdn.dude.fi/cdn-cgi/image/width={$img_params['width']},height={$img_params['height']},quality={$img_params['quality']},fit={$img_params['fit']},format=auto/{$image_url}' alt='{$alt}'>"; //phpcs:ignore
+  $image_cdn_url = build_image_cf_cdn_url( $image_url, $img_params );
+
+  echo '<img class="' . $img_params['classes'] . '" loading="lazy" src="' . $image_cdn_url . '" alt="' . $alt . '">'; //phpcs:ignore
   echo '</picture>';
 } // get_picture_element_with_cfcd
+
+function build_image_cf_cdn_url( $image_url, $args = [] ) {
+  unset( $args['classes'] );
+
+  if ( ! isset( $args['format'] ) ) {
+    $args['format'] = 'auto';
+  }
+
+  $args_url = [];
+  foreach ( $args as $key => $value ) {
+    $args_url[] = "{$key}={$value}";
+  }
+
+  // CF CDN does not support loading from local (duh), get same image from production
+  if ( 'production' !== wp_get_environment_type() ) {
+    $image_url = str_replace( 'dude.test', 'dude.fi', $image_url );
+  }
+
+  return 'https://cdn.dude.fi/cdn-cgi/image/' . implode( ',', $args_url ) . "/{$image_url}";
+} // end build_image_cf_cdn_url
