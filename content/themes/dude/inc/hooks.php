@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-13 12:57:27
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-10-14 09:34:47
  *
  * @package dude
  */
@@ -12,7 +12,10 @@ namespace Air_Light;
 
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 add_filter( 'wp_get_attachment_image_src', function( $image, $attachment_id, $size ) {
-  $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
+  if ( 'production' === wp_get_environment_type() ) {
+    $image[0] = "https://cdn.dude.fi/cdn-cgi/image/width={$image[1]},height={$image[2]},quality=75,format=auto/{$image[0]}";
+  }
+
   return $image;
 }, 10, 3 );
 
@@ -27,6 +30,12 @@ add_filter( 'air_helper_disable_views_tag', '__return_false' );
 add_action( 'init', function() {
   remove_action( 'wp_enqueue_scripts', 'air_helper_enqueue_instantpage_script' );
 }, 999 );
+
+// Cookies and GDPR
+require get_theme_file_path( 'inc/hooks/air-cookie.php' );
+
+// WPForms related hooks
+require get_theme_file_path( 'inc/hooks/wpforms.php' );
 
 // Analytics and external scripts
 require get_theme_file_path( 'inc/hooks/analytics.php' );
@@ -94,10 +103,4 @@ if ( is_admin() ) {
       "post.php?post={$diamond_articles_settings['id']}&action=edit"
     );
   } );
-}
-
-// Cookies and GDPR
-require get_theme_file_path( 'inc/hooks/air-cookie.php' );
-
-// WPForms related hooks
-require get_theme_file_path( 'inc/hooks/wpforms.php' );
+} // end is_admin
