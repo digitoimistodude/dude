@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 16:15:21
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 16:26:29
+ * @Last Modified time: 2022-10-14 16:41:00
  *
  * @package dude
  */
@@ -21,15 +21,15 @@ $data = [
   ],
 ];
 
-$picture_cdn_args = [
-  'width'   => '635',
-  'height'  => '635',
-  'classes' => [ 'person' ],
-  'quality'   => '50',
-];
-
 if ( is_front_page() || is_page( 9 ) ) {
-$picture_cdn_srcset = [
+  $picture_cdn_args = [
+    'width'   => '64',
+    'height'  => '64',
+    'classes' => [ 'person' ],
+    'quality'   => '80',
+  ];
+
+  $picture_cdn_srcset = [
   220 => [
     'width'     => '50',
     'height'    => '50',
@@ -40,6 +40,12 @@ $picture_cdn_srcset = [
   ],
 ];
 } else {
+  $picture_cdn_args = [
+    'width'   => '100',
+    'height'  => '100',
+    'classes' => [ 'person' ],
+  ];
+
   $picture_cdn_srcset = [
     220 => [
       'width'     => '64',
