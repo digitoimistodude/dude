@@ -142,6 +142,10 @@
     @media (min-width: 700px) {
       line-height: 1.7;
     }
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-18);
+    }
   }
 
   .date {
