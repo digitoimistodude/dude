@@ -4,15 +4,14 @@
  *
  * @Author: Niku Hietanen
  * @Date: 2020-02-20 13:46:50
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 16:42:55
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-19 09:35:50
  *
  * @package dude
  */
 
 namespace Air_Light;
 
-// TODO: Test
 /**
  * Move jQuery to footer
  */
@@ -161,7 +160,7 @@ function swupify_air_cookie_inline_script( $script ) {
 } // end swupify_air_cookie_inline_script
 
 add_action( 'wpforms_frontend_js', function() {
-  if ( 'template-surveys.php' === basename( get_page_template() )  ) {
+  if ( 'template-surveys.php' === basename( get_page_template() ) ) {
     return;
   }
 
@@ -191,7 +190,7 @@ add_action( 'wpforms_frontend_js', function() {
 }, 99999 );
 
 add_action( 'wpforms_frontend_css', function() {
-  if ( 'template-surveys.php' === basename( get_page_template() )  ) {
+  if ( 'template-surveys.php' === basename( get_page_template() ) ) {
     return;
   }
 
