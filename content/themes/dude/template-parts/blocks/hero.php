@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-21 15:18:30
+ * @Last Modified time: 2022-10-21 23:08:33
  *
  * @package dude
  */
@@ -60,7 +60,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
       <picture>
         <source media="(min-width: 220px) and (max-width: 600px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1243.52,height=700,fit=cover,quality=75,format=auto/https://www.dude.fi/media/showreel.jpg">
         <source media="(min-width: 1000px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg">
-        <img loading="lazy" src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
+        <img src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
       </picture>
     </div>
 
