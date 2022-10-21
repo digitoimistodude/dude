@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-21 14:52:21
+ * @Last Modified time: 2022-10-21 15:09:22
  */
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
@@ -171,6 +171,7 @@ const initShowreel = () => {
     player.ready().then(() => {
       // Add loaded class to the wrapper around the iframe
       player.element.parentNode.classList.add('loaded');
+      player.element.parentNode.parentNode.parentNode.classList.add('is-ready');
 
       // Start playing from start position
       player.setCurrentTime(startSeconds);

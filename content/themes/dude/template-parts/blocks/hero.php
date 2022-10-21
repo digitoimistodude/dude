@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-11 15:50:54
+ * @Last Modified time: 2022-10-21 15:18:30
  *
  * @package dude
  */
@@ -55,6 +55,15 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
     </div>
 
   <div class="showreel">
+
+    <div class="image-poster image image-background image-background-layer">
+      <picture>
+        <source media="(min-width: 220px) and (max-width: 600px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1243.52,height=700,fit=cover,quality=75,format=auto/https://www.dude.fi/media/showreel.jpg">
+        <source media="(min-width: 1000px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg">
+        <img loading="lazy" src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
+      </picture>
+    </div>
+
     <div class="video js-video">
       <div class="vimeo-player" id="<?php echo esc_html( $vimeo_showreel_id ); ?>" data-video-id="<?php echo esc_html( $vimeo_showreel_id ); ?>" data-play-button="play-<?php echo esc_html( $vimeo_showreel_id ); ?>"></div>
 
