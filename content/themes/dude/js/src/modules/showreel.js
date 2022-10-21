@@ -2,9 +2,10 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 15:32:02
+ * @Last Modified time: 2022-10-21 14:52:21
  */
 import MoveTo from 'moveto';
+import Player from '@vimeo/player';
 
 /* eslint-disable no-console */
 const initShowreel = () => {
@@ -42,7 +43,7 @@ const initShowreel = () => {
 
     // Construct player
     // eslint-disable-next-line no-undef
-    const player = new Vimeo.Player(autoplayplayer, options);
+    const player = new Player(autoplayplayer, options);
 
     // Find the play button
     const playButton = autoplayplayer.dataset.playButton
