@@ -77,7 +77,8 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
 
   .image-poster {
     opacity: 1;
-    transition: 500ms $transition-duration-showreel ease-in-out;
+    transition: 150ms $transition-duration-showreel ease-in-out;
+    transition-delay: 1000ms;
   }
 
   // stylelint-disable-next-line
