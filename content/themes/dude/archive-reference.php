@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-07-29 15:17:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-13 12:50:40
+ * @Last Modified time: 2022-10-23 12:12:30
  * @package dude
  */
 
@@ -22,7 +22,7 @@ get_header(); ?>
 <main class="site-main archive-reference">
 
   <?php get_template_part( 'template-parts/blocks/hero-content-image', null, [
-    'prefix'          => 'Työt',
+    'prefix'          => 'Töitämme',
     'title'           => 'Näistä olemme erityisen ylpeitä',
     'content'         => 'Olemme toteuttaneet monipuolisesti verkkopalveluita ja brändi-identiteettejä kaikenlaisille toimijoille.',
     'block_color'     => 'petrol',
