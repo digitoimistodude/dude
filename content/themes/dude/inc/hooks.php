@@ -15,10 +15,6 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 // Air helper custom settings
 add_filter( 'air_helper_custom_settings_post_ids', __NAMESPACE__ . '\custom_settings_post_ids' );
 
-// Enable views
-add_filter( 'air_helper_disable_views_category', '__return_false' );
-add_filter( 'air_helper_disable_views_tag', '__return_false' );
-
 // Disable instant.page script
 add_action( 'init', function() {
   remove_action( 'wp_enqueue_scripts', 'air_helper_enqueue_instantpage_script' );
