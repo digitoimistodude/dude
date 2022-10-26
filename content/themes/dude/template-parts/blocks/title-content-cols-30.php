@@ -34,9 +34,9 @@ if ( empty( $cols ) ) {
   <div class="container">
 
     <?php if ( ! $hide_title && ! empty( $title ) ) : ?>
-      <h1>
+      <h2>
         <?php echo esc_html( $title ); ?>
-      </h1>
+      </h2>
     <?php elseif ( $hide_title && ! empty( $title ) ) : ?>
       <span class="screen-reader-text-dude">
         <?php echo esc_html( $title ) ?>

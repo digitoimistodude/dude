@@ -29,9 +29,9 @@ if ( empty( $title ) ) {
 <section class="block block-open-source">
   <div class="container">
 
-    <h1>
+    <h2>
       <?php echo esc_html( $title ); ?>
-    </h1>
+    </h2>
 
     <div class="content">
       <p>Dudelle on perustamishetkestä lähtien ollut tärkeää tuottaa laadukasta koodia, käyttää elämää helpottavia tekniikoita ja kehittyä koko ajan paremmaksi. Käyttämällä moderneja tekniikoita saa aikaan myös moderneja verkkosivuja, eikä aikaa tarvitse tuhlata toistuviin, puuduttaviin ja hitaisiin toimenpiteisiin. Käytämme työssämme mm. seuraavia työkaluja ja tekniikoita: SASS/SCSS, Capistrano, HTML, Gulp, NPM, jQuery, JavaScript, Git, NGINX, Vue.js, SVG, Composer, PHP, Mithril.js.</p>
