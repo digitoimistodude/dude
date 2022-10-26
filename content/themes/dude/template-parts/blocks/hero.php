@@ -60,7 +60,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
       <picture>
         <source media="(min-width: 220px) and (max-width: 600px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1243.52,height=700,fit=cover,quality=75,format=auto/https://www.dude.fi/media/showreel.jpg">
         <source media="(min-width: 1000px)" srcset="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg">
-        <img src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
+        <img loading="eager" src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
       </picture>
     </div>
 
