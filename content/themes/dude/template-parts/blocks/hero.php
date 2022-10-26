@@ -69,7 +69,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
         <div class="video-cta container">
           <div class="video-cta-content">
-            <h1>Miltäs vaikutti?</h1>
+            <h2 class="h1">Miltäs vaikutti?</h2>
             <p>Puhuttelivatko työnäytteemme? <a href="https://www.dude.fi/tyot">Täältä</a> voit katsoa lisää. Soittele numeroon <a href="tel:<?php echo esc_html( $sales_phone_tel_value ); ?>"><?php echo esc_html( $sales_phone ); ?></a> tai lähetä sähköpostia <a href="mailto:moro@dude.fi">moro@dude.fi</a>, jos haluat uudistaa verkkosivusi tai brändi-ilmeesi.</p>
           </div>
         </div>
