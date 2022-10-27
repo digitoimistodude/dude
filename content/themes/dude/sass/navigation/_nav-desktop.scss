@@ -39,6 +39,12 @@ $absolute-navigation: true;
   position: relative;
 }
 
+// Current menu item color
+.menu-item.current-menu-parent > a,
+.menu-item.current-menu-item > a {
+  color: var(--color-current);
+}
+
 @media only screen and (min-width: $width-max-mobile) {
   .nav-container {
     @if $absolute-navigation == false {
@@ -97,12 +103,6 @@ $absolute-navigation: true;
     padding-right: var(--padding-main-level-horizontal);
     padding-top: var(--padding-main-level-vertical);
     white-space: nowrap;
-  }
-
-  // Current menu item color
-  .menu-item.current-menu-parent > a,
-  .menu-item.current-menu-item > a {
-    color: var(--color-current);
   }
 
   .menu-item > a:hover,
