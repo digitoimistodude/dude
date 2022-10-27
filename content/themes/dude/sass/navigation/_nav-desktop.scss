@@ -99,27 +99,6 @@ $absolute-navigation: true;
     white-space: nowrap;
   }
 
-  // Custom hovers
-  // .menu-item a {
-  //   opacity: 1;
-  //   transition: all 120ms;
-  // }
-
-  // .menu-items:not(.js-keep-opacity):hover .menu-item a,
-  // .menu-items:not(.js-keep-opacity):focus .menu-item a {
-  //   opacity: .5;
-  // }
-
-  // .menu-items:not(.js-keep-opacity) > .menu-item > a:hover,
-  // .menu-items:not(.js-keep-opacity) > .menu-item > a:focus {
-  //   opacity: 1;
-
-  //   // stylelint-disable-next-line
-  //   * {
-  //     opacity: 1;
-  //   }
-  // }
-
   // Current menu item color
   .menu-item.current-menu-parent > a,
   .menu-item.current-menu-item > a {

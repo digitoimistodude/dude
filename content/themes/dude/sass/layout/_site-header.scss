@@ -2,20 +2,20 @@
 // the site navigation and search for example.
 @mixin header-text-light() {
   --color-main: var(--color-white);
-  --color-current: var(--color-white);
   --color-main-level: var(--color-white);
   --color-logo: var(--color-white);
   --color-hamburger: var(--color-white);
   --color-hover-main-level: var(--color-mint);
+  --color-current: var(--color-hover-main-level);
 }
 
 @mixin header-text-dark() {
   --color-main: var(--color-dark-navy);
-  --color-current: var(--color-dark-navy);
   --color-main-level: var(--color-dark-navy);
   --color-logo: var(--color-dark-navy);
   --color-hamburger: var(--color-dark-navy);
   --color-hover-main-level: var(--color-black);
+  --color-current: var(--color-hover-main-level);
 }
 
 .site-header {
