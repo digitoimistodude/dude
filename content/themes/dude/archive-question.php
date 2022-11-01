@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-06-20 14:41:04
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-07-29 12:15:09
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-11-01 14:34:04
  *
  * @package dude
  */
@@ -25,12 +25,13 @@ if ( have_posts() ) {
 get_header(); ?>
 
 <main class="site-main archive-questions">
-  <section class="block block-archive-questions">
+  <section class="block block-archive-questions block-accordion block-faq-accordion">
     <div class="container">
 
-      <h1 id="content">
-        <?php ask_e( 'Arkisto: Kaikki kyssärit' ) ?>
-      </h1>
+      <div class="col-title">
+        <h2>Hyvä tietää</h2>
+        <p>Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset verkkosivuista. Kannattaa katsoa myös vuonna 2021 järjestetty <a href="https://www.dude.fi/ama">Ask Me Anything kysymyspalsta</a>.</p>
+      </div>
 
       <div class="accordion" data-allow-toggle>
         <?php foreach ( $question_datas as $question_data ) :

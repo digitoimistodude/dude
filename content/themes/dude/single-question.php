@@ -7,7 +7,7 @@
  *
  * @Author:		Tuomas Marttila
  * @Date:   		2022-06-23 14:50:40
- * @Last Modified by:   Timi Wahalahti
+ * @Last Modified by:   Roni Laukkarinen
  * @Last Modified time: 2022-07-29 12:21:48
  *
  * @package dude
@@ -28,7 +28,7 @@ get_header(); ?>
 
       <?php the_content(); ?>
 
-      <p class="back-to-archive">
+      <p class="back-to-archive" style="margin-top: 4rem;">
         <a class="arrow-link" href="<?php echo esc_attr( $archive_link ) ?>">
           Kaikki kysymykset
           <span class="arrow-link-arrow"></span>
