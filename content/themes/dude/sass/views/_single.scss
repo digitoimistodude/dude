@@ -23,9 +23,7 @@
 }
 
 // Blog font family, size and line height
-.wp-admin.post-type-post .block-editor-writing-flow,
 .block-single,
-.block-editor-writing-flow,
 .block-editor-writing-flow .wp-block-paragraph.block-editor-rich-text__editable,
 .block-single .article-content p {
   font-family: var(--font-circular);
@@ -33,7 +31,6 @@
   line-height: 1.7;
 }
 
-.wp-admin.post-type-post .block-editor-writing-flow,
 .block-editor-writing-flow,
 .block-single {
 

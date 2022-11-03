@@ -1,3 +1,4 @@
+// stylelint-disable no-descending-specificity
 // Core/blockquote block
 blockquote + cite,
 blockquote + p > cite {
@@ -5,6 +6,8 @@ blockquote + p > cite {
 }
 
 // General blockquote styles
+.block-editor-writing-flow .wp-block-quote,
+.wp-block-quote,
 blockquote {
   border: 0 none;
   clear: both;
@@ -42,6 +45,10 @@ blockquote {
     line-height: var(--line-height-paragraph);
     margin-bottom: 2.5rem;
     margin-top: 0;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
   }
 
   cite {
