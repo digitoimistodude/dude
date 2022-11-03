@@ -139,6 +139,7 @@
     border-color: var(--color-white-two);
   }
 
+  .block-single li::marker,
   li::marker {
     color: var(--color-paradiso);
   }
@@ -455,6 +456,7 @@
     border-color: var(--color-dark-navy);
   }
 
+  .block-single li::marker,
   li::marker {
     color: var(--color-mint);
   }
