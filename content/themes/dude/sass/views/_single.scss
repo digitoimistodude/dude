@@ -1,4 +1,4 @@
-// stylelint-disable no-descending-specificity
+// stylelint-disable no-descending-specificity, selector-max-class, selector-max-specificity
 .block-background-petrol-gradient .vimeo-iframe-wrapper,
 .block-background-petrol-gradient img {
   opacity: .22;
@@ -23,6 +23,7 @@
 }
 
 // Blog font family, size and line height
+.wp-admin.post-type-post .block-editor-writing-flow,
 .block-single,
 .block-editor-writing-flow,
 .block-editor-writing-flow .wp-block-paragraph.block-editor-rich-text__editable,
@@ -32,6 +33,7 @@
   line-height: 1.7;
 }
 
+.wp-admin.post-type-post .block-editor-writing-flow,
 .block-editor-writing-flow,
 .block-single {
 
@@ -70,6 +72,12 @@
 }
 
 // Blog headings
+.wp-admin.post-type-post .block-editor-writing-flow h1,
+.wp-admin.post-type-post .block-editor-writing-flow h2,
+.wp-admin.post-type-post .block-editor-writing-flow h3,
+.wp-admin.post-type-post .block-editor-writing-flow h4,
+.wp-admin.post-type-post .block-editor-writing-flow h5,
+.wp-admin.post-type-post .block-editor-writing-flow h6,
 .block-single .article-content h1,
 .block-single .article-content h2,
 .block-single .article-content h3,
@@ -82,6 +90,7 @@
   margin-top: 4rem;
 }
 
+.wp-admin.post-type-post .block-editor-writing-flow h2,
 .block-single .article-content h2 {
   @media (min-width: 700px) {
     --font-size-h2: 26px;
