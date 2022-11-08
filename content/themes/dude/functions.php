@@ -6,8 +6,8 @@
  * own files under /inc and just require here.
  *
  * @Date: 2019-10-15 12:30:02
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 14:30:57
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-11-08 16:37:10
  *
  * @package dude
  */
@@ -141,10 +141,12 @@ add_action( 'after_setup_theme', function() {
       [
        'name' => 'form-person',
        'title' => 'Lomake henkilöllä',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'form',
        'title' => 'Lomake',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'title-icon-list-cols',
@@ -254,6 +256,7 @@ add_action( 'after_setup_theme', function() {
       [
        'name' => 'reference-quotes',
        'title' => 'Asiakaslainaukset',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'references',
