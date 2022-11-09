@@ -3,7 +3,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-04-23 13:44:09
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-11 12:15:26
+ * @Last Modified time: 2022-10-21 14:50:11
  */
 
 // Import modules
@@ -113,7 +113,9 @@ function init(target, args) {
   initEmbeds();
 
   // Fit video embeds to container
-  reframe('.wp-has-aspect-ratio iframe');
+  if (window.innerWidth < 768) {
+    reframe('.wp-has-aspect-ratio iframe, .article-content iframe');
+  }
 }
 
 // When document has been completely loaded

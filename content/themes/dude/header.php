@@ -7,7 +7,7 @@
  * @Author: Roni Laukkarinen
  * @Date: 2020-05-11 13:17:32
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-06 20:02:29
+ * @Last Modified time: 2022-10-19 09:35:42
  *
  * @package dude
  *
@@ -56,7 +56,7 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class( $body_class ); ?>>
+<body <?php body_class( $body_class ); // The following style margin needed for Autoptimize ?> style="margin: 0 !important;">
   <a class="skip-link screen-reader-text-dude js-trigger" href="#content"><?php echo esc_html( get_default_localization( 'Skip to content' ) ); ?></a>
 
   <?php wp_body_open(); ?>

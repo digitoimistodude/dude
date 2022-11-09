@@ -12,6 +12,9 @@ passwords.txt
 .DS_Store
 composer.lock
 .vscode/
+content/cache
+content/w3tc-config
+nginx.conf
 
 # Logs
 package-lock.json

@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 12:34:41
+ * @Last Modified time: 2022-10-28 13:08:13
  *
  * @package dude
  */
@@ -17,6 +17,7 @@ namespace Air_Light;
 // Page data
 $link_to_work = get_field( 'link_to_work', get_the_ID() );
 $prefix = get_the_title();
+$serp_title = get_field( 'serp_title' );
 
 if ( ! isset( $args ) ) {
   $title = get_field( 'title' );
@@ -74,7 +75,7 @@ if ( is_page( 4487 ) ) {
     <div class="col col-content has-transition-fade">
       <div class="content">
         <h1 id="content" class="prefix">
-          <?php echo esc_html( $prefix ); ?>
+          <?php if ( $serp_title ) echo esc_html( $serp_title ); else echo esc_html( $prefix ); ?>
         </h1>
 
         <h2>

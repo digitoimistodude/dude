@@ -7,12 +7,15 @@
 
     p {
       font-size: var(--font-size-16);
-      margin: 0;
     }
 
     @media (max-width: $container-ipad) {
       grid-template-columns: minmax(0, 1fr);
       margin-bottom: 5rem;
+
+      p {
+        margin: 0;
+      }
     }
   }
 

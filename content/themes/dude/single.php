@@ -4,7 +4,7 @@
  *
  * @Date:   2019-10-15 12:30:02
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-13 13:10:32
+ * @Last Modified time: 2022-10-22 14:02:05
  *
  * @package dude
  */
@@ -27,6 +27,10 @@ $now_year = wp_date( 'Y' );
 $post_year = get_the_time( 'Y' );
 $post_is_old = $post_year <= $now_year - 2;
 $post_is_years_old = $now_year - $post_year;
+
+if ( true === get_field( 'hide_old_box' ) ) {
+  $post_is_old = false;
+}
 
 get_header(); ?>
 

@@ -75,6 +75,28 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   transition: all $transition-duration-showreel ease-in-out;
   z-index: 0;
 
+  .image-poster {
+    opacity: 1;
+    transition: 150ms $transition-duration-showreel ease-in-out;
+    transition-delay: 1000ms;
+  }
+
+  // stylelint-disable-next-line
+  &.is-ready .vimeo-player {
+    opacity: 1;
+  }
+
+  // stylelint-disable-next-line
+  .vimeo-player {
+    opacity: 0;
+  }
+
+  &.is-ready .image-poster {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
   // stylelint-disable-next-line
   &.playing .vimeo-player,
   &.playing .video {

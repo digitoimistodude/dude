@@ -40,10 +40,10 @@
   --color-tag-text: rgb(19 26 80 / .6);
   --color-success: var(--color-java);
   --color-main-level: var(--color-dark-navy);
-  --color-current: var(--color-dark-navy);
   --color-cool-grey: #8a8ca2;
   --color-hamburger: var(--color-dark-navy);
   --color-hover-main-level: var(--color-paradiso);
+  --color-current: var(--color-hover-main-level);
   --color-caption: #5c5c6a;
   --cc-bg: var(--color-white);
   --cc-btn-secondary-bg: var(--color-dark-navy);
@@ -139,6 +139,7 @@
     border-color: var(--color-white-two);
   }
 
+  .block-single li::marker,
   li::marker {
     color: var(--color-paradiso);
   }
@@ -342,10 +343,10 @@
   --color-tag-border-hover: var(--color-white);
   --color-success: #a9f3a2;
   --color-main-level: var(--color-white);
-  --color-current: var(--color-white);
   --color-cool-grey: #c6c9e7;
   --color-hamburger: var(--color-white);
   --color-hover-main-level: var(--color-mint);
+  --color-current: var(--color-hover-main-level);
   --color-caption: #dcdde0b3;
   --cc-bg: #24252c;
   --cc-btn-secondary-bg: var(--color-white);
@@ -455,6 +456,7 @@
     border-color: var(--color-dark-navy);
   }
 
+  .block-single li::marker,
   li::marker {
     color: var(--color-mint);
   }

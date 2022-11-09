@@ -2,8 +2,8 @@
 /**
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 10:29:04
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-10-21 14:49:46
  * @package dude
  */
 
@@ -11,9 +11,6 @@ namespace Air_Light;
 
 // phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedScript
 function head_analytics_scripts() { ?>
-  <?php // We need Vimeo script globally for showreel to work when coming from any page ?>
-  <script data-swup-ignore-script defer src="https://player.vimeo.com/api/player.js"></script>
-
   <?php
   // We need to load up WPForms related scripts on the pages that are no forms
   // to make forms work with Swup.js

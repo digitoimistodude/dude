@@ -15,10 +15,6 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 // Air helper custom settings
 add_filter( 'air_helper_custom_settings_post_ids', __NAMESPACE__ . '\custom_settings_post_ids' );
 
-// Enable views
-add_filter( 'air_helper_disable_views_category', '__return_false' );
-add_filter( 'air_helper_disable_views_tag', '__return_false' );
-
 // Disable instant.page script
 add_action( 'init', function() {
   remove_action( 'wp_enqueue_scripts', 'air_helper_enqueue_instantpage_script' );
@@ -65,6 +61,10 @@ add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\remove_gutenberg_inli
 require get_theme_file_path( 'inc/hooks/acf-blocks.php' );
 add_filter( 'block_categories_all', __NAMESPACE__ . '\acf_blocks_add_category_in_gutenberg', 10, 2 );
 add_action( 'acf/init', __NAMESPACE__ . '\acf_blocks_init' );
+
+// Yoast
+require get_theme_file_path( 'inc/hooks/yoast.php' );
+add_filter( 'pre_get_document_title', __NAMESPACE__ . '\yoast_author_archive_title', 99 );
 
 if ( is_admin() ) {
   // Dynamic svg icon select
