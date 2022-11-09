@@ -6,8 +6,8 @@
  *
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-08-13 09:47:34
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-06 22:26:43
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-11-09 14:32:17
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -36,6 +36,9 @@ if ( ! $reference_ids ) {
     'posts_per_page'          => 4,
     'meta_key'                => '_thumbnail_id', // phpcs:ignore
     'post__not_in'            => [ get_the_id() ],
+    'date_query'              => [
+      'after' => '-2 years',
+    ],
     'no_found_rows'           => true,
     'cache_results'           => true,
     'update_post_term_cache'  => false,
