@@ -80,11 +80,14 @@
     > p:first-child {
       margin-top: 0;
     }
+
+    li {
+      padding-left: .5rem;
+    }
   }
 
   ul,
   ol {
-    color: var(--color-text);
     list-style-position: outside;
   }
 
@@ -97,11 +100,15 @@
     padding-inline-start: 1.25em;
   }
 
-  li::marker {
+  .additional-information ul {
+    line-height: 1.5;
+  }
+
+  .additional-information li::marker {
     font-size: var(--font-size-18);
   }
 
-  li {
+  .additional-information li {
     color: var(--color-text);
     font-size: var(--font-size-16);
     padding-inline-start: .4em;
