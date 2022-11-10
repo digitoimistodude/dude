@@ -2,8 +2,8 @@
 /**
  * @Author: Niku Hietanen
  * @Date: 2020-02-18 15:06:45
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-10 13:45:31
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-11-10 10:35:45
  *
  * @package dude
  */
@@ -50,7 +50,7 @@ class Reference extends Post_Type {
       'menu_position'      => null,
       'menu_icon'          => 'dashicons-portfolio',
       'show_in_rest'       => true,
-      'supports'           => [ 'title', 'editor', 'thumbnail', 'revisions', 'page-attributes' ],
+      'supports'           => [ 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes' ],
       'rewrite'            => [
         'with_front'  => false,
         'slug'        => 'toitamme',
