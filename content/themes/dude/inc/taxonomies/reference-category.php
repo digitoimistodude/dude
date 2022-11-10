@@ -2,8 +2,8 @@
 /**
  * @Author: Niku Hietanen
  * @Date: 2020-02-18 15:05:35
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-13 13:12:27
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2022-11-10 10:36:23
  *
  * @package dude
  */
@@ -42,6 +42,7 @@ class Reference_Category extends Taxonomy {
       'labels'            => $labels,
       'public'            => false,
       'show_in_nav_menus' => true,
+      'show_in_rest'      => true,
       'show_admin_column' => true,
       'hierarchical'      => true,
       'show_tagcloud'     => false,
