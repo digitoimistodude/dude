@@ -75,7 +75,7 @@
   margin: 0;
 }
 
-// For both referenec quotes, short and long
+// For both reference quotes, short and long
 .block-reference-quote {
   figure,
   blockquote {
@@ -86,7 +86,7 @@
     display: grid;
     gap: 8rem;
 
-    @media (max-width: $container-ipad) {
+    @media (max-width: $container-mobile) {
       gap: 4rem;
     }
   }
@@ -97,9 +97,14 @@
     object-fit: cover;
     width: 128px;
 
-    @media (max-width: $container-mobile) {
+    @media (max-width: 700px) {
       height: 80px;
       width: 80px;
+    }
+
+    @media (max-width: $container-mobile) {
+      height: 62px;
+      width: 62px;
     }
   }
 
@@ -109,6 +114,10 @@
     color: var(--color-text);
     font-size: var(--font-size-18);
     font-weight: var(--font-weight-bold);
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-14);
+    }
   }
 
   cite {
@@ -117,6 +126,10 @@
     margin: unset;
     max-width: unset;
     text-align: left;
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-14);
+    }
   }
 
   figcaption {
@@ -127,6 +140,10 @@
     gap: 4rem;
     margin: unset;
     max-width: unset;
+
+    @media (max-width: $container-mobile) {
+      gap: 2.5rem;
+    }
   }
 
   .company {
@@ -135,6 +152,10 @@
     display: block;
     font-size: var(--font-size-16);
     margin-top: .8rem;
+
+    @media (max-width: $container-mobile) {
+      font-size: var(--font-size-14);
+    }
   }
 }
 
