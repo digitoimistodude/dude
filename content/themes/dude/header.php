@@ -7,7 +7,7 @@
  * @Author: Roni Laukkarinen
  * @Date: 2020-05-11 13:17:32
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-19 09:35:42
+ * @Last Modified time: 2022-11-25 11:31:14
  *
  * @package dude
  *
@@ -52,6 +52,7 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="profile" href="http://gmpg.org/xfn/11">
+  <link rel="icon" href="<?php echo esc_html( get_template_directory_uri() ); ?>/svg/dynamic-favicon.svg">
 
   <?php wp_head(); ?>
 </head>
