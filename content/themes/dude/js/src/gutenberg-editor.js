@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-05-09 08:52:26
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-06-10 13:59:12
+ * @Last Modified time: 2022-11-25 11:35:27
  */
 /* eslint-disable camelcase, prefer-arrow-callback, no-unused-vars, no-undef, vars-on-top, no-var, func-names, max-len, import/no-unresolved */
 import { setFigureWidths, setLazyLoadedFigureWidth } from './modules/gutenberg-helpers';
@@ -33,16 +33,10 @@ window.addEventListener('load', function () {
   var initializeBlock = function ($block) {
     // Init carousels
     initCarousels();
-
-    // Init buttons
-    initLiquidButtonMint();
   };
 
   // Init carousels
   initCarousels();
-
-  // Init buttons
-  initLiquidButtonMint();
 
   // Set non-lazyloaded figures width so captions in aligned images will be same width as image
   const figures = document.querySelectorAll('figure');
