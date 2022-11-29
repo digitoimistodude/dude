@@ -15,6 +15,7 @@ composer.lock
 content/cache
 content/w3tc-config
 nginx.conf
+content/autoptimize_404_handler.php
 
 # Logs
 package-lock.json
