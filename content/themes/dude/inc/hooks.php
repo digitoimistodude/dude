@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-11-29 17:09:00
+ * @Last Modified time: 2022-12-05 11:52:04
  *
  * @package dude
  */
@@ -40,12 +40,12 @@ add_filter( 'the_content', __NAMESPACE__ . '\post_content_replace_image_urls_wit
 
 // Scripts and styles associated hooks
 require get_theme_file_path( 'inc/hooks/scripts-styles.php' );
-require get_theme_file_path( 'inc/hooks/autoptimize.php' );
+// require get_theme_file_path( 'inc/hooks/autoptimize.php' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_polyfills' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_scripts' );
 add_filter( 'script_loader_tag',  __NAMESPACE__ . '\add_data_attribute_to_scripts', 10, 2 );
 add_filter( 'air_cookie_inline_js', __NAMESPACE__ . '\swupify_air_cookie_inline_script' );
-add_filter( 'autoptimize_filter_css_replacetag', __NAMESPACE__ . '\autoptimize_tweaks', 10, 1 );
+// add_filter( 'autoptimize_filter_css_replacetag', __NAMESPACE__ . '\autoptimize_tweaks', 10, 1 );
 
 // NB! If you use ajax functionality in Gravity Forms, remove this line
 // to prevent Uncaught ReferenceError: jQuery is not defined
