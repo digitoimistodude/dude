@@ -56,10 +56,6 @@
       height: auto;
       width: 100%;
     }
-
-    @media (max-width: 1000px) {
-      @include aspect-ratio(16, 9);
-    }
   }
 
   @media (min-width: 1000px) {
