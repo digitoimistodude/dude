@@ -1,4 +1,9 @@
 .block-title-content-cols-30 {
+  h2 {
+    font-size: var(--font-size-36);
+    font-weight: var(--font-weight-medium);
+  }
+
   .cols {
     display: grid;
     gap: 2rem;
