@@ -130,7 +130,8 @@
     "digitoimistodude/air-cookie": "dev-master",
     "digitoimistodude/air-setting-groups": "dev-master",
     "wpforms/wpforms": "1.7.3",
-    "wpforms/wpforms-surveys-polls": "1.7.0"
+    "wpforms/wpforms-surveys-polls": "1.7.0",
+    "rhubarbgroup/object-cache-pro": "^1.17"
   },
   "require-dev": {
     "rarst/laps": "*",
