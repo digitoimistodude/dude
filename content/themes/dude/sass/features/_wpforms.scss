@@ -124,9 +124,48 @@
     }
   }
 
+  // Newsletter form
+  #wpforms-form-14532 {
+    display: grid;
+    margin: 0 auto;
+    max-width: 70rem;
+
+    button[type="submit"] {
+      font-size: var(--font-size-22);
+      height: 6rem;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    input.wpforms-field-medium,
+    input {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
   @media (max-width: $container-mobile) {
     div.wpforms-container-full .wpforms-form button[type="submit"] {
       width: 100%;
     }
+  }
+}
+
+body.page-id-14538 {
+  .block.block-hero-centered .container {
+    padding-bottom: 0;
+
+    h2 + p {
+      max-width: 80rem;
+    }
+
+    .content {
+      padding-bottom: 0;
+    }
+  }
+
+  .block-form div.wpforms-field-container {
+    gap: 2.6rem;
+    grid-template-columns: 1fr;
   }
 }
