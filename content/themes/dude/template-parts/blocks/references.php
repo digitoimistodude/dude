@@ -6,8 +6,8 @@
  *
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2022-10-14 10:50:32
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2022-12-28 15:27:41
  *
  * @package dude
  */
@@ -27,7 +27,7 @@ $logos = [
   'alpa',
   'workpower',
   'rex',
-  'gradia',
+  'siipiweikot',
   'suomenkirjasaatio',
   'kktavastia',
   'northpatrol',
