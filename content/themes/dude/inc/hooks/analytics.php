@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-11-29 17:09:09
+ * @Last Modified time: 2023-01-10 12:36:54
  * @package dude
  */
 
@@ -93,6 +93,7 @@ function head_analytics_scripts() { ?>
 function footer_analytics_scripts() { ?>
 <?php } // end footer_analytics_scripts
 
+// Chatwoot parameters: https://github.com/chatwoot/chatwoot/issues/1693#issuecomment-767538532
 function air_cookie_js_analytics() {
   if ( is_user_logged_in() ) {
     return;
@@ -107,5 +108,24 @@ function air_cookie_js_analytics() {
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+    (function(d,t) {
+        window.chatwootSettings = {
+            position: 'left',
+            locale: 'fi',
+        };
+        var BASE_URL="https://chatwoot.dude.fi";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'rKGHi6iBY2JR915f2VtMLrLz',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
   <?php echo ob_get_clean(); // phpcs:ignore
 } // end air_cookie_js_analytics
