@@ -55,6 +55,12 @@
   --color-close-button: var(--color-dark-navy);
   --color-background-code-block: var(--color-midnight);
 
+  .block-single .article-content hr,
+  .wp-block-separator {
+    // stylelint-disable-next-line
+    background-image: linear-gradient(to bottom, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / .4) 50%) !important;
+  }
+
   // Cookie consent exceptions
   #s-all-bn,
   .c-bn#c-p-bn:not(:hover),
@@ -359,6 +365,12 @@
   --cc-toggle-knob-bg-layer: #000;
   --color-close-button: var(--color-white);
   --color-background-code-block: var(--color-midnight);
+
+  .block-single .article-content hr,
+  .wp-block-separator {
+    // stylelint-disable-next-line
+    background-image: linear-gradient(to bottom, rgb(255 255 255 / 0) 50%, rgb(255 255 255 / .4) 50%) !important;
+  }
 
   // Cookie consent exceptions
   #s-all-bn,
