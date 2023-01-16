@@ -52,7 +52,8 @@
     grid-column: 1 / -1;
   }
 
-  input[type="checkbox"] {
+  input[type="checkbox"],
+  div.wpforms-container-full .wpforms-form input[type="checkbox"] {
     border-color: var(--color-text);
     overflow: hidden;
   }

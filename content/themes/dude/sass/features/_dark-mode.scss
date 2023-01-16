@@ -189,8 +189,12 @@
     color: var(--color-petrol);
   }
 
-  .block-icon-list-cols .container ul {
+  .block.block-icon-list-cols .container ul {
     list-style-image: url('../../svg/checkmark-round-light-mode.svg');
+
+    @media (max-width: $container-mobile) {
+      list-style-image: url('../../svg/checkmark-round-light-mode.svg');
+    }
   }
 
   .block.block-list ul {
@@ -517,8 +521,12 @@
     background-color: var(--color-petrol);
   }
 
-  .block-icon-list-cols .container ul {
+  .block.block-icon-list-cols .container ul {
     list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+
+    @media (max-width: $container-mobile) {
+      list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+    }
   }
 
   .block.block-list ul {
