@@ -51,4 +51,19 @@
   #wpforms-11309-field_12-container {
     grid-column: 1 / -1;
   }
+
+  input[type="checkbox"] {
+    border-color: var(--color-text);
+    overflow: hidden;
+  }
+
+  .wpforms-field-checkbox > ul > li {
+    align-items: center;
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .wpforms-field-checkbox label {
+    color: var(--color-text);
+  }
 }
