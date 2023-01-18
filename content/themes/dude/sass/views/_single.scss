@@ -431,3 +431,45 @@ p > img[width] {
   top: 4px;
   width: 24px;
 }
+
+// WPForms (MailerLite) styles for newsletter
+.site-main .article-content div.wpforms-container-full {
+  max-width: $width-max-article;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+
+  form#wpforms-form-14532 {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
+  .wpforms-field-label {
+    color: var(--color-text);
+  }
+
+  // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
+  .wpforms-field {
+    padding: 10px 0;
+  }
+
+  // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
+  button[type="submit"] {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: $width-max-article + 40px) {
+    padding-left: var(--padding-container-horizontal);
+    padding-right: var(--padding-container-horizontal);
+  }
+}
+
+@media (min-width: 700px) {
+  .site-main .article-content #wpforms-14532 .wpforms-field-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
