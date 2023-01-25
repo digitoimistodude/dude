@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-01-10 12:36:54
+ * @Last Modified time: 2023-01-25 14:54:41
  * @package dude
  */
 
@@ -101,15 +101,6 @@ function air_cookie_js_analytics() {
 
   ob_start(); ?>
     (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKP9Rw8OYGd');
-
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:8741,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 
     (function(d,t) {
         window.chatwootSettings = {
