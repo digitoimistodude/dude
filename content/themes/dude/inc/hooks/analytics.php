@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-01-25 14:54:41
+ * @Last Modified time: 2023-01-25 14:55:00
  * @package dude
  */
 
@@ -100,8 +100,6 @@ function air_cookie_js_analytics() {
   }
 
   ob_start(); ?>
-    (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lAxoEaKP9Rw8OYGd');
-
     (function(d,t) {
         window.chatwootSettings = {
             position: 'left',
