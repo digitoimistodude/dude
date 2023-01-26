@@ -7,7 +7,7 @@
  *
  * @Date: 2019-10-15 12:30:02
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-11-08 16:37:10
+ * @Last Modified time: 2023-01-26 17:58:40
  *
  * @package dude
  */
@@ -373,6 +373,7 @@ add_action( 'after_setup_theme', function() {
       ],
       'reference' => [
         'core/image',
+        'core/html',
         'core/columns',
       ],
       'ama' => [
