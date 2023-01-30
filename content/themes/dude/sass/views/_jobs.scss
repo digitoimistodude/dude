@@ -51,6 +51,15 @@ body.page-id-4491 .site-main .block-images {
   }
 }
 
+.job-filled .wp-block:not(.block-hero-jobs),
+.job-filled .wp-block-html:not(.block-hero-jobs),
+.job-filled .wp-block-image:not(.block-hero-jobs) {
+  opacity: .18;
+}
+
+.job-filled .wp-block:not(.block-hero-jobs),
+.job-filled .wp-block-html:not(.block-hero-jobs),
+.job-filled .wp-block-image:not(.block-hero-jobs),
 .job-filled .block:not(.block-hero-jobs) {
   > .container {
     opacity: .18;
