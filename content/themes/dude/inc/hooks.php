@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-02-03 14:21:43
+ * @Last Modified time: 2023-02-03 14:23:27
  *
  * @package dude
  */
@@ -101,8 +101,8 @@ if ( is_admin() ) {
   } );
 } // end is_admin
 
-add_action( 'rest_api_init', __NAMESPACE__ . '\add_custom_users_api');
-function add_custom_users_api() {
+add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api');
+function salesperson_rest_api() {
   register_rest_route( 'dude/v1', '/salesperson', [
     'methods'   => 'GET',
     'callback'  => function( $data ) {
@@ -121,4 +121,4 @@ function add_custom_users_api() {
       ];
     }
   ] );
-} // end add_custom_users_api
+} // end salesperson_rest_api
