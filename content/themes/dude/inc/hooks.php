@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-12-05 12:13:20
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2023-02-03 14:21:43
  *
  * @package dude
  */
@@ -100,3 +100,25 @@ if ( is_admin() ) {
     );
   } );
 } // end is_admin
+
+add_action( 'rest_api_init', __NAMESPACE__ . '\add_custom_users_api');
+function add_custom_users_api() {
+  register_rest_route( 'dude/v1', '/salesperson', [
+    'methods'   => 'GET',
+    'callback'  => function( $data ) {
+      $salesperson_id = get_custom_setting( 'salesperson', 'general' );
+      $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
+      $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
+
+      return [
+        'name'  => get_the_title( $salesperson_id ),
+        'email' => 'tuki@dude.fi',
+        'tel'   => [
+          'display' => $sales_phone,
+          'value'   => $sales_phone_tel_value,
+        ],
+        'img'   => wp_get_attachment_image_url( get_post_meta( $salesperson_id, 'avatar', true ), 'thumbnail', false ),
+      ];
+    }
+  ] );
+} // end add_custom_users_api
