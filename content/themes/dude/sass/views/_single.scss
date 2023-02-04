@@ -26,7 +26,7 @@
 .block-single,
 .block-editor-writing-flow .wp-block-paragraph.block-editor-rich-text__editable,
 .block-single .article-content p {
-  font-family: var(--font-circular);
+  font-family: var(--font-inter);
   font-size: var(--font-size-19);
   line-height: 1.7;
 }
@@ -52,7 +52,7 @@
   td,
   table,
   tr {
-    font-family: var(--font-circular);
+    font-family: var(--font-inter);
     font-size: var(--font-size-19);
     line-height: 1.7;
   }
