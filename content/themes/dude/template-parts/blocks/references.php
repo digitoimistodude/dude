@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-12-28 15:27:41
+ * @Last Modified time: 2023-02-14 15:42:19
  *
  * @package dude
  */
@@ -19,7 +19,7 @@ $logos = [
   'otava',
   'bauermedia',
   'paytrail',
-  'liiga',
+  'gofore',
   'sofioksanen',
   'berner',
   'kiinteistoliitto',
