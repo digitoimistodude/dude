@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-02-14 15:42:19
+ * @Last Modified time: 2023-02-17 11:30:55
  *
  * @package dude
  */
@@ -21,8 +21,8 @@ $logos = [
   'paytrail',
   'gofore',
   'sofioksanen',
+  'kiinteistomedia',
   'berner',
-  'kiinteistoliitto',
   'upcloud',
   'alpa',
   'workpower',
