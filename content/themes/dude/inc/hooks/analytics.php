@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-08-05 14:10:57
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-01-25 14:55:24
+ * @Last Modified time: 2023-02-24 17:24:09
  * @package dude
  */
 
@@ -99,5 +99,10 @@ function air_cookie_js_analytics() {
   }
 
   ob_start(); ?>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8TT42P');
   <?php echo ob_get_clean(); // phpcs:ignore
 } // end air_cookie_js_analytics
