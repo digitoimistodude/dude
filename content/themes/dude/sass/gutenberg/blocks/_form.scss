@@ -1,5 +1,9 @@
 // stylelint-disable selector-max-specificity, selector-id-pattern
 .block-form {
+  div[submit-success] > .wpforms-confirmation-container-full {
+    padding: 0;
+  }
+
   h2 {
     @include heading-90();
     margin-bottom: 0;
