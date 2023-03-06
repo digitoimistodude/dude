@@ -156,3 +156,11 @@ function post_content_replace_image_urls_with_cfcdn( $content ) {
 
   return $content;
 } // end post_content_replace_image_urls_with_cfcdn
+
+function two_factor_force_email_provider_for_user( $enabled_providers ) {
+  if ( ! in_array( 'Two_Factor_Email', $enabled_providers ) ) {
+    $enabled_providers[] = 'Two_Factor_Email';
+  }
+
+  return $enabled_providers;
+} // end two_factor_force_email_provider_for_user
