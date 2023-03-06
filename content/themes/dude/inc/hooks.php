@@ -37,6 +37,7 @@ add_action( 'save_post_job', __NAMESPACE__ . '\clear_open_jobs_count_cache', 10,
 add_filter( 'get_avatar', __NAMESPACE__ . '\tsm_acf_profile_avatar', 10, 5 );
 add_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
 add_filter( 'the_content', __NAMESPACE__ . '\post_content_replace_image_urls_with_cfcdn' );
+add_filter( 'two_factor_enabled_providers_for_user',  __NAMESPACE__ . '\two_factor_force_email_provider_for_user', 1 );
 
 // Scripts and styles associated hooks
 require get_theme_file_path( 'inc/hooks/scripts-styles.php' );
