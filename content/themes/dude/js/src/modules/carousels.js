@@ -3,7 +3,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-05-07 12:03:42
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-11 11:54:30
+ * @Last Modified time: 2023-03-13 15:29:45
  */
 import Swiper, {
   Navigation, Pagination, A11y,
@@ -81,6 +81,7 @@ const initCarousels = () => {
         slideToClickedSlide: true,
         spaceBetween: 0,
         centeredSlides: false,
+        loop: false,
 
         // Responsive breakpoints
         breakpoints: {
@@ -165,9 +166,18 @@ const initCarousels = () => {
       },
       pagination: {
         el: `.swiper-pagination-${i}`,
-        type: 'fraction',
-      },
+        type: 'custom',
 
+        // Custom pagination
+        renderCustom(swiper, current, total) {
+          // If process slider, make total as 9
+          if (swiper.$el[0].classList.contains('is-process')) {
+            total = 9;
+          }
+
+          return `<span class="swiper-pagination-current">${current}</span> / <span class="swiper-pagination-total">${total}</span>`;
+        },
+      },
     });
   }
 };
