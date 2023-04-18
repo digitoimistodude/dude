@@ -144,6 +144,10 @@
   z-index: 1;
 }
 
+.col-reference.has-video .image {
+  background-color: var(--color-black);
+}
+
 .col-reference.has-video .js-video .vimeo-player {
   opacity: 0;
   visibility: hidden;

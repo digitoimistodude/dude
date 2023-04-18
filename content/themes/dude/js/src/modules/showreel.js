@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 18:14:16
+ * @Last Modified time: 2023-04-18 20:03:05
  */
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
@@ -22,6 +22,7 @@ const initShowreel = () => {
   const endSeconds = 11;
 
   // Timestamps for short video in reference
+  const initSeconds = 48;
   const startSecondsReference = 48;
   const endSecondsReference = 64;
 
@@ -242,8 +243,14 @@ const initShowreel = () => {
       player.element.parentNode.classList.add('loaded');
       player.element.parentNode.parentNode.parentNode.classList.add('is-ready');
 
+      // If is reference
+      if (player.element.parentNode.parentNode.parentNode.parentNode.classList.contains('col-reference')) {
+        // Start playing from start position
+        player.setCurrentTime(startSecondsReference);
+      } else {
       // Start playing from start position
-      player.setCurrentTime(startSeconds);
+        player.setCurrentTime(startSeconds);
+      }
     });
 
     playButton.addEventListener('click', () => {
