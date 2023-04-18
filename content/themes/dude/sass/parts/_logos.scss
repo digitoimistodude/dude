@@ -24,7 +24,7 @@
     max-width: 110px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 50px;
       max-width: 90px;
     }
@@ -35,7 +35,7 @@
     max-width: 124px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 50px;
       max-width: 90px;
     }
@@ -63,7 +63,7 @@
     }
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 30px;
       max-width: 70px;
       width: 100%;
@@ -79,7 +79,7 @@
     max-width: 190px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 60px;
       max-width: 80px;
       width: 100%;
@@ -96,7 +96,7 @@
     max-width: 150px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 60px;
       max-width: 80px;
       width: 100%;
@@ -113,7 +113,7 @@
     max-width: 150px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 60px;
       max-width: 80px;
       width: 100%;
@@ -134,7 +134,7 @@
     width: 170px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 60px;
       max-width: 80px;
       width: 100%;
@@ -153,7 +153,7 @@
     max-width: 100px;
 
     // iPhone and other phones
-    @media (max-width: 650px) {
+    @media (max-width: $container-ipad) {
       max-height: 60px;
       max-width: 80px;
       width: 100%;
