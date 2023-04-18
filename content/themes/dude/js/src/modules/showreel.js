@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-21 15:09:22
+ * @Last Modified time: 2023-04-18 16:05:26
  */
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
@@ -20,6 +20,10 @@ const initShowreel = () => {
   // Timestamps for short video
   const startSeconds = 4;
   const endSeconds = 11;
+
+  // Timestamps for short video in reference
+  const startSecondsReference = 42;
+  const endSecondsReference = 62;
 
   // Loop through all players
   autoplayplayers.forEach((autoplayplayer) => {
@@ -63,6 +67,48 @@ const initShowreel = () => {
 
     // Play state function
     // eslint-disable-next-line func-names
+    const onPlayStateFunctionReference = function () {
+      // If showreel, poll every 1 seconds to get the current time
+      // eslint-disable-next-line no-undef
+      const handle = window.setInterval(() => {
+        // Check if play button has not been clicked
+        if (!player.element.parentNode.parentNode.classList.contains('playing')) {
+          // Ensure CTA is removed
+          player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
+
+          player.getCurrentTime().then((currentTime) => {
+            console.log(currentTime);
+            if (currentTime < 10) {
+              player.setCurrentTime(startSecondsReference);
+            }
+
+            if (currentTime > endSecondsReference) {
+              player.setCurrentTime(startSecondsReference);
+            }
+          });
+        }
+
+        // If we have the full player theatre on
+        if (player.element.parentNode.parentNode.classList.contains('playing')) {
+          // Get ended and add CTA
+          player.getEnded().then((ended) => {
+            if (ended) {
+              // Show CTA in place of the player
+              player.element.parentNode.parentNode.parentNode.parentNode.classList.add('is-cta');
+
+              // Change button text
+              vimeoPlayButtonLabel.innerHTML = 'Sulje showreel';
+
+              // Stop counting the ending from now on
+              clearInterval(handle);
+            }
+          });
+        }
+      }, 1000);
+    };
+
+    // Play state function
+    // eslint-disable-next-line func-names
     const onPlayStateFunction = function () {
       // If showreel, poll every 1 seconds to get the current time
       // eslint-disable-next-line no-undef
@@ -103,7 +149,12 @@ const initShowreel = () => {
     };
 
     // Start polling when video is playing
-    player.on('play', onPlayStateFunction);
+    // If is reference
+    if (player.element.parentNode.parentNode.parentNode.classList.contains('col-reference')) {
+      player.on('play', onPlayStateFunctionReference);
+    } else {
+      player.on('play', onPlayStateFunction);
+    }
 
     // Function for short video loop
     function setShortVideoLoop() {

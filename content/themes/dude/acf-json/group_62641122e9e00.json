@@ -3,6 +3,38 @@
     "title": "Referenssi",
     "fields": [
         {
+            "key": "field_643e8525075ce",
+            "label": "Asiakasvideo (Vimeo)",
+            "name": "vimeo_video_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/vimeo.com\/811203469"
+        },
+        {
+            "key": "field_643e89ffb6e4d",
+            "label": "Asiakasvideo taustalle pyörimään (tekstittämätön versio)",
+            "name": "vimeo_video_url_nosubs",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_631a0532a3d1d",
             "label": "Linkki livesivustolle",
             "name": "link_to_work",
@@ -226,5 +258,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665083816
+    "modified": 1681820338
 }

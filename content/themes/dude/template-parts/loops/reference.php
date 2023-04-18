@@ -3,18 +3,20 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 11:24:11
+ * @Last Modified time: 2023-04-18 15:46:05
  * @package dude
  */
 
 namespace Air_Light;
 
 $data = [
-  'thumbnail_id'  => get_post_thumbnail_id( $args['post_id'] ),
-  'permalink'     => get_the_permalink( $args['post_id'] ),
-  'title'         => get_the_title( $args['post_id'] ),
-  'desc'          => get_post_meta( $args['post_id'], 'short_desc', true ),
-  'meta_tags'     => wp_get_post_terms( $args['post_id'], 'reference-category' ),
+  'thumbnail_id'    => get_post_thumbnail_id( $args['post_id'] ),
+  'permalink'       => get_the_permalink( $args['post_id'] ),
+  'title'           => get_the_title( $args['post_id'] ),
+  'desc'            => get_post_meta( $args['post_id'], 'short_desc', true ),
+  'meta_tags'       => wp_get_post_terms( $args['post_id'], 'reference-category' ),
+  'vimeo_video_url' => get_post_meta( $args['post_id'], 'vimeo_video_url', true ),
+  'vimeo_video_url_nosubs' => get_post_meta( $args['post_id'], 'vimeo_video_url_nosubs', true ),
 ];
 
 $picture_cdn_args = [
@@ -102,8 +104,33 @@ if ( ( $key % 2 ) !== 0 ) {
 
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 
-  <div class="image image-background has-duotone">
-    <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
+  <div class="image image-background has-duotone<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>">
+
+    <?php
+    // If there is a vimeo video url, play the video in video bg instead of image
+    if ( ! empty( $data['vimeo_video_url'] ) ) :
+      $vimeo_id = get_vimeo_id( $data['vimeo_video_url'] );
+      $vimeo_id_nosubs = get_vimeo_id( $data['vimeo_video_url_nosubs'] );
+    ?>
+
+      <div class="video js-video wp-has-aspect-ratio" data-video="<?php echo esc_html( $vimeo_id_nosubs ); ?>">
+        <div class="vimeo-player" data-video-id="<?php echo esc_html( $vimeo_id_nosubs ); ?>" data-play-button="play-<?php echo esc_html( $vimeo_id ); ?>" id="<?php echo esc_html( $vimeo_id ); ?>"></div>
+        <div class="video-preview js-video-preview">
+          <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
+        </div>
+
+        <div>
+          <button class="play" id="play-<?php echo esc_html( $vimeo_id ); ?>" type="button">
+            Katso asiakastarina
+          </button>
+        </div>
+
+      </div>
+
+    <?php else :
+      get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset );
+    endif; ?>
+
   </div>
 
   <h3 class="has-text-gradient">

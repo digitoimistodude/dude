@@ -7,7 +7,7 @@
  *
  * @Date: 2019-10-15 12:30:02
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-01-26 17:58:40
+ * @Last Modified time: 2023-04-18 14:59:39
  *
  * @package dude
  */
@@ -434,3 +434,36 @@ require get_theme_file_path( '/inc/template-tags.php' );
 // Run theme setup
 add_action( 'init', __NAMESPACE__ . '\theme_setup' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\build_theme_support' );
+
+/**
+ * Get Vimeo video id from url
+ *
+ * Supported url formats -
+ *
+ * https://vimeo.com/11111111
+ * http://vimeo.com/11111111
+ * https://www.vimeo.com/11111111
+ * http://www.vimeo.com/11111111
+ * https://vimeo.com/channels/11111111
+ * http://vimeo.com/channels/11111111
+ * https://vimeo.com/groups/name/videos/11111111
+ * http://vimeo.com/groups/name/videos/11111111
+ * https://vimeo.com/album/2222222/video/11111111
+ * http://vimeo.com/album/2222222/video/11111111
+ * https://vimeo.com/11111111?param=test
+ * http://vimeo.com/11111111?param=test
+ *
+ * @param string $url The URL
+ *
+ * @return string the video id extracted from url
+ */
+function get_vimeo_id( $url = '' ) {
+  $regs = array();
+  $id = '';
+
+  if ( preg_match( '%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs ) ) {
+    $id = $regs[3];
+  }
+
+  return $id;
+}

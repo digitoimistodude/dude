@@ -29,6 +29,7 @@
     }
   }
 
+  .vimeo-player,
   .image {
     // Default aspect ratio
     @include aspect-ratio(1, 1);
@@ -45,6 +46,7 @@
   }
 
   // stylelint-disable-next-line no-descending-specificity
+  &:nth-of-type(2n) .vimeo-player,
   &:nth-of-type(2n) .image {
     @include aspect-ratio(600, 700);
   }
@@ -119,4 +121,34 @@
   .image > img {
     @include cubic-bezier($property: opacity);
   }
+}
+
+// Video background
+.col-reference .video {
+  aspect-ratio: unset;
+  bottom: unset;
+  left: 0;
+  position: absolute;
+  right: unset;
+  top: 0;
+  transform: unset;
+
+  iframe {
+    height: 80vh;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+  }
+}
+
+.col-reference .has-video .js-video .vimeo-player {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.col-reference .has-video.is-ready .js-video .vimeo-player {
+  opacity: 1;
+  visibility: visible;
 }
