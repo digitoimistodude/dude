@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 15:46:05
+ * @Last Modified time: 2023-04-18 16:08:53
  * @package dude
  */
 
@@ -100,11 +100,11 @@ if ( ( $key % 2 ) !== 0 ) {
 }
 ?>
 
-<div class="col col-reference">
+<div class="col col-reference<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>">
 
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 
-  <div class="image image-background has-duotone<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>">
+  <div class="image image-background has-duotone">
 
     <?php
     // If there is a vimeo video url, play the video in video bg instead of image

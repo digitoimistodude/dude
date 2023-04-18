@@ -140,15 +140,23 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 80vw;
+
+    @media (max-width: $container-ipad) {
+      width: 200vw;
+    }
   }
 }
 
-.col-reference .has-video .js-video .vimeo-player {
+.col-reference.has-video .js-video .vimeo-player {
   opacity: 0;
   visibility: hidden;
 }
 
-.col-reference .has-video.is-ready .js-video .vimeo-player {
+.col-reference.has-video.is-ready .js-video .vimeo-player {
   opacity: 1;
   visibility: visible;
+}
+
+.col-reference.has-video .global-link {
+  display: none;
 }
