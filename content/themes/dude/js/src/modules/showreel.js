@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 18:03:35
+ * @Last Modified time: 2023-04-18 18:14:16
  */
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
@@ -22,8 +22,8 @@ const initShowreel = () => {
   const endSeconds = 11;
 
   // Timestamps for short video in reference
-  const startSecondsReference = 42;
-  const endSecondsReference = 62;
+  const startSecondsReference = 48;
+  const endSecondsReference = 64;
 
   // Loop through all players
   autoplayplayers.forEach((autoplayplayer) => {

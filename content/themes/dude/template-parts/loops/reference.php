@@ -3,20 +3,19 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 17:26:21
+ * @Last Modified time: 2023-04-18 18:11:51
  * @package dude
  */
 
 namespace Air_Light;
 
 $data = [
-  'thumbnail_id'    => get_post_thumbnail_id( $args['post_id'] ),
-  'permalink'       => get_the_permalink( $args['post_id'] ),
-  'title'           => get_the_title( $args['post_id'] ),
-  'desc'            => get_post_meta( $args['post_id'], 'short_desc', true ),
-  'meta_tags'       => wp_get_post_terms( $args['post_id'], 'reference-category' ),
-  'vimeo_video_url' => get_post_meta( $args['post_id'], 'vimeo_video_url', true ),
-  'vimeo_video_url_nosubs' => get_post_meta( $args['post_id'], 'vimeo_video_url_nosubs', true ),
+  'thumbnail_id'          => get_post_thumbnail_id( $args['post_id'] ),
+  'permalink'             => get_the_permalink( $args['post_id'] ),
+  'title'                 => get_the_title( $args['post_id'] ),
+  'desc'                  => get_post_meta( $args['post_id'], 'short_desc', true ),
+  'meta_tags'             => wp_get_post_terms( $args['post_id'], 'reference-category' ),
+  'vimeo_video_url'       => get_post_meta( $args['post_id'], 'vimeo_video_url', true ),
 ];
 
 $picture_cdn_args = [
@@ -110,11 +109,10 @@ if ( ( $key % 2 ) !== 0 ) {
     // If there is a vimeo video url, play the video in video bg instead of image
     if ( ! empty( $data['vimeo_video_url'] ) ) :
       $vimeo_id = get_vimeo_id( $data['vimeo_video_url'] );
-      $vimeo_id_nosubs = get_vimeo_id( $data['vimeo_video_url_nosubs'] );
     ?>
 
-      <div class="video js-video wp-has-aspect-ratio" data-video="<?php echo esc_html( $vimeo_id_nosubs ); ?>">
-        <div class="vimeo-player" data-video-id="<?php echo esc_html( $vimeo_id_nosubs ); ?>" data-play-button="play-<?php echo esc_html( $vimeo_id ); ?>" id="<?php echo esc_html( $vimeo_id ); ?>"></div>
+      <div class="video js-video wp-has-aspect-ratio">
+        <div class="vimeo-player" data-video-id="<?php echo esc_html( $vimeo_id ); ?>" data-play-button="play-<?php echo esc_html( $vimeo_id ); ?>" id="<?php echo esc_html( $vimeo_id ); ?>"></div>
         <div class="play-button-container">
           <button class="play-reference-video" id="play-<?php echo esc_html( $vimeo_id ); ?>" type="button">
             <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>

@@ -134,7 +134,7 @@
     width: 125vw;
 
     @media (max-width: $container-ipad) {
-      width: 200vw;
+      width: 280vw;
     }
   }
 }
@@ -251,7 +251,12 @@ body.is-playing-reference {
     .cols-two {
       background-color: var(--color-black);
       height: 100vh;
+      margin-bottom: 10rem;
       width: 100vw;
+
+      @media (max-width: $container-mobile) {
+        margin-bottom: 5rem;
+      }
     }
 
     .vimeo-player {
