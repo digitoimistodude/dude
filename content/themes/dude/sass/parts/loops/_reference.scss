@@ -177,12 +177,6 @@
   width: 100vw;
 }
 
-// Dark shade over video when not playing
-// .col-reference.has-video:not(.playing) .is-ready .js-video .vimeo-player {
-//   background-color: var(--color-black);
-//   opacity: .5;
-// }
-
 .col-reference.has-video:not(.playing) button.play-reference-video {
   .play-label {
     @include screen-reader-text();
@@ -231,12 +225,14 @@ body.is-playing-reference {
     }
 
     .col.col-reference {
+      display: none;
       height: 100vh;
       opacity: 0;
       width: 100vw;
     }
 
     .col.col-reference.has-video.playing {
+      display: block;
       opacity: 1;
     }
 
@@ -252,10 +248,12 @@ body.is-playing-reference {
       background-color: var(--color-black);
       height: 100vh;
       margin-bottom: 10rem;
+      margin-top: 10rem;
       width: 100vw;
 
       @media (max-width: $container-mobile) {
         margin-bottom: 5rem;
+        margin-top: 5rem;
       }
     }
 
