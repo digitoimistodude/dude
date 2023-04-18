@@ -3,7 +3,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2022-04-23 15:45:23
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 16:08:53
+ * @Last Modified time: 2023-04-18 17:26:21
  * @package dude
  */
 
@@ -104,7 +104,7 @@ if ( ( $key % 2 ) !== 0 ) {
 
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 
-  <div class="image image-background has-duotone">
+  <div class="image image-background<?php if ( empty( $data['vimeo_video_url'] ) ) echo ' has-duotone'; ?>">
 
     <?php
     // If there is a vimeo video url, play the video in video bg instead of image
@@ -115,21 +115,16 @@ if ( ( $key % 2 ) !== 0 ) {
 
       <div class="video js-video wp-has-aspect-ratio" data-video="<?php echo esc_html( $vimeo_id_nosubs ); ?>">
         <div class="vimeo-player" data-video-id="<?php echo esc_html( $vimeo_id_nosubs ); ?>" data-play-button="play-<?php echo esc_html( $vimeo_id ); ?>" id="<?php echo esc_html( $vimeo_id ); ?>"></div>
-        <div class="video-preview js-video-preview">
-          <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
-        </div>
-
-        <div>
-          <button class="play" id="play-<?php echo esc_html( $vimeo_id ); ?>" type="button">
-            Katso asiakastarina
+        <div class="play-button-container">
+          <button class="play-reference-video" id="play-<?php echo esc_html( $vimeo_id ); ?>" type="button">
+            <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
+            <span class="play-label">Katso video</span>
           </button>
         </div>
 
       </div>
-
-    <?php else :
-      get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset );
-    endif; ?>
+    <?php endif; ?>
+    <?php get_picture_element_with_cfcdn( $data['thumbnail_id'], $picture_cdn_args, $picture_cdn_srcset ); ?>
 
   </div>
 

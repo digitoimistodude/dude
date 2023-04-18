@@ -125,21 +125,13 @@
 
 // Video background
 .col-reference .video {
-  aspect-ratio: unset;
-  bottom: unset;
-  left: 0;
-  position: absolute;
-  right: unset;
-  top: 0;
-  transform: unset;
-
   iframe {
-    height: 80vh;
+    height: 100vh;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
+    width: 125vw;
 
     @media (max-width: $container-ipad) {
       width: 200vw;
@@ -147,16 +139,130 @@
   }
 }
 
+.col-reference.has-video .vimeo-player {
+  height: 0;
+  z-index: 1;
+}
+
 .col-reference.has-video .js-video .vimeo-player {
   opacity: 0;
   visibility: hidden;
 }
 
-.col-reference.has-video.is-ready .js-video .vimeo-player {
+.col-reference.has-video * {
+  transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+}
+
+.col-reference.has-video .is-ready .js-video .vimeo-player {
   opacity: 1;
   visibility: visible;
 }
 
 .col-reference.has-video .global-link {
   display: none;
+}
+
+.col-reference .play-button-container {
+  position: relative;
+  z-index: 1;
+}
+
+// When the reference video is playing
+.col-reference.playing .video iframe {
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: unset;
+  width: 100vw;
+}
+
+// Dark shade over video when not playing
+// .col-reference.has-video:not(.playing) .is-ready .js-video .vimeo-player {
+//   background-color: var(--color-black);
+//   opacity: .5;
+// }
+
+.col-reference.has-video:not(.playing) button.play-reference-video {
+  .play-label {
+    @include screen-reader-text();
+  }
+
+  .icon-wrapper {
+    transform: scale(3);
+
+    &:hover .icon-wrapper,
+    &:focus .icon-wrapper {
+      border-color: transparent transparent transparent var(--color-petrol);
+      transform: scale(3.2);
+    }
+  }
+}
+
+.col-reference:not(.playing) .image.is-ready picture {
+  opacity: 0;
+}
+
+body.is-playing-reference {
+  button.play-reference-video {
+    background-color: var(--color-black);
+    bottom: 0;
+    padding: 2rem;
+  }
+
+  .block.block-references {
+    overflow: visible;
+    padding: 0;
+    position: relative;
+
+    > .container {
+      max-width: 100%;
+      padding: 0;
+      position: static;
+    }
+
+    // Things to be hidden when playing
+    picture,
+    .has-text-gradient,
+    .meta-tags,
+    .logos,
+    .block-heading {
+      display: none;
+    }
+
+    .col.col-reference {
+      height: 100vh;
+      opacity: 0;
+      width: 100vw;
+    }
+
+    .col.col-reference.has-video.playing {
+      opacity: 1;
+    }
+
+    .col-reference > .image,
+    .video,
+    .col-reference,
+    .has-video {
+      overflow: visible;
+      position: static;
+    }
+
+    .cols-two {
+      background-color: var(--color-black);
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .vimeo-player {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .image.image-background.playing {
+      align-items: flex-start;
+      position: relative;
+      z-index: 999;
+    }
+  }
 }

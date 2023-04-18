@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-06-28 15:20:10
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 16:05:26
+ * @Last Modified time: 2023-04-18 18:03:35
  */
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
@@ -40,6 +40,7 @@ const initShowreel = () => {
       portrait: 0,
       title: 0,
       background: 1,
+      playsinline: 1,
       muted: 1,
       dnt: 1,
       transparent: 1,
@@ -68,7 +69,7 @@ const initShowreel = () => {
     // Play state function
     // eslint-disable-next-line func-names
     const onPlayStateFunctionReference = function () {
-      // If showreel, poll every 1 seconds to get the current time
+      // If reference video, poll every 1 seconds to get the current time
       // eslint-disable-next-line no-undef
       const handle = window.setInterval(() => {
         // Check if play button has not been clicked
@@ -77,7 +78,6 @@ const initShowreel = () => {
           player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
 
           player.getCurrentTime().then((currentTime) => {
-            console.log(currentTime);
             if (currentTime < 10) {
               player.setCurrentTime(startSecondsReference);
             }
@@ -174,7 +174,11 @@ const initShowreel = () => {
       vimeoPlayButton.classList.remove('playing');
 
       // Change button text
-      vimeoPlayButtonLabel.innerHTML = 'Katso showreel';
+      if (vimeoPlayButton.classList.contains('play-reference-video')) {
+        vimeoPlayButtonLabel.innerHTML = 'Katso video';
+      } else {
+        vimeoPlayButtonLabel.innerHTML = 'Katso showreel';
+      }
 
       // Remove needed classes from elements
       player.element.parentNode.parentNode.classList.remove('playing');
@@ -182,6 +186,11 @@ const initShowreel = () => {
       player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('playing');
       player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove('playing');
       player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
+
+      // If reference video is playing, add class to body
+      if (vimeoPlayButton.classList.contains('play-reference-video')) {
+        document.body.classList.remove('is-playing-reference');
+      }
     }
 
     // Function for full player presentation
@@ -202,13 +211,22 @@ const initShowreel = () => {
       vimeoPlayButton.classList.add('playing');
 
       // Change button text
-      vimeoPlayButtonLabel.innerHTML = 'Pysäytä showreel';
+      if (vimeoPlayButton.classList.contains('play-reference-video')) {
+        vimeoPlayButtonLabel.innerHTML = 'Pysäytä video';
+      } else {
+        vimeoPlayButtonLabel.innerHTML = 'Pysäytä showreel';
+      }
 
       // Add needed classes to elements
       player.element.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add('playing');
+
+      // If reference video is playing, add class to body
+      if (vimeoPlayButton.classList.contains('play-reference-video')) {
+        document.body.classList.add('is-playing-reference');
+      }
 
       // Quit showreel when pressing esc key
       document.addEventListener('keydown', (keydownMouseoverEvent) => {
@@ -229,11 +247,22 @@ const initShowreel = () => {
     });
 
     playButton.addEventListener('click', () => {
+      // If this button is not related to the reference-video
+
       // Set moveTo
       const moveToTop = new MoveTo({ duration: 300, easing: 'easeOutQuart' });
 
-      // Scroll to the top of the page
-      moveToTop.move(document.getElementById('page'));
+      if (!playButton.classList.contains('play-reference-video')) {
+        // Scroll to the top of the page
+        moveToTop.move(document.getElementById('page'));
+      } else {
+        // Wait animation to load up
+        setTimeout(() => {
+        // Get reference wrapper
+          const moveToElement = playButton.closest('.cols-two');
+          moveToTop.move(moveToElement);
+        }, 250);
+      }
 
       // Start from the beginning
       player.setCurrentTime(0);

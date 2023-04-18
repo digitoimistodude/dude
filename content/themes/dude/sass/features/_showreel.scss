@@ -192,6 +192,7 @@ body .site-main .block-hero .container.playing {
   }
 }
 
+button.play-reference-video,
 .block button.play-showreel {
   align-items: center;
   background-color: transparent;
@@ -204,6 +205,14 @@ body .site-main .block-hero .container.playing {
   overflow: visible;
   padding: 0;
   transition: all $transition-duration-showreel ease-in-out;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--color-mint);
+  }
 
   .play-label {
     pointer-events: none;
