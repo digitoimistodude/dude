@@ -10,9 +10,3 @@
   padding: 2rem;
   width: calc(100% - 4rem);
 }
-
-@media (min-width: $width-max-article + 40px) {
-  .is-style-boxed {
-    transform: translate(2rem, 0);
-  }
-}
