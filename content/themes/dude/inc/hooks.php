@@ -112,13 +112,15 @@ function salesperson_rest_api() {
       $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
       return [
-        'name'  => get_the_title( $salesperson_id ),
-        'email' => 'tuki@dude.fi',
-        'tel'   => [
+        'title'   => 'Kehitystoiveita sivustollesi?',
+        'content' => 'Ovatko ominaisuudet ajan tasalla, kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, soita tai pistä postia.',
+        'name'    => get_the_title( $salesperson_id ),
+        'email'   => 'tuki@dude.fi',
+        'tel'     => [
           'display' => $sales_phone,
           'value'   => $sales_phone_tel_value,
         ],
-        'img'   => wp_get_attachment_image_url( get_post_meta( $salesperson_id, 'avatar', true ), 'thumbnail', false ),
+        'img'     => wp_get_attachment_image_url( get_post_meta( $salesperson_id, 'avatar', true ), 'thumbnail', false ),
       ];
     }
   ] );
