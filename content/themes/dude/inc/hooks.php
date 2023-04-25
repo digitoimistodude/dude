@@ -2,8 +2,8 @@
 /**
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
- * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-02-03 14:23:27
+ * @Last Modified by:   Roni Laukkarinen
+ * @Last Modified time: 2023-04-25 14:44:59
  *
  * @package dude
  */
@@ -22,6 +22,7 @@ add_action( 'init', function() {
 
 // WPForms related hooks
 require get_theme_file_path( 'inc/hooks/wpforms.php' );
+require get_theme_file_path( 'inc/hooks/lead-magnet.php' );
 
 // Analytics and external scripts
 require get_theme_file_path( 'inc/hooks/analytics.php' );
@@ -102,7 +103,7 @@ if ( is_admin() ) {
   } );
 } // end is_admin
 
-add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api');
+add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api' );
 function salesperson_rest_api() {
   register_rest_route( 'dude/v1', '/salesperson', [
     'methods'   => 'GET',
@@ -122,6 +123,6 @@ function salesperson_rest_api() {
         ],
         'img'     => wp_get_attachment_image_url( get_post_meta( $salesperson_id, 'avatar', true ), 'thumbnail', false ),
       ];
-    }
+    },
   ] );
 } // end salesperson_rest_api
