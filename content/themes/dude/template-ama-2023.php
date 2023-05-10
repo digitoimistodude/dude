@@ -9,7 +9,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-08-03 15:25:27
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-05-10 13:11:41
+ * @Last Modified time: 2023-05-10 13:16:06
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -98,7 +98,7 @@ $questions = array_reverse( $questions );
   </script>
 </head>
 
-<body class="template-ama">
+<body class="template-ama template-ama-2023">
 
   <div id="page" class="site">
    <div class="site-content">
