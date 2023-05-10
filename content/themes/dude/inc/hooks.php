@@ -102,26 +102,19 @@ if ( is_admin() ) {
   } );
 } // end is_admin
 
-add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api');
+add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api' );
 function salesperson_rest_api() {
   register_rest_route( 'dude/v1', '/salesperson', [
     'methods'   => 'GET',
     'callback'  => function( $data ) {
-      $salesperson_id = get_custom_setting( 'salesperson', 'general' );
-      $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
-      $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
-
       return [
-        'title'   => 'Kehitystoiveita sivustollesi?',
-        'content' => 'Ovatko ominaisuudet ajan tasalla, kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, soita tai pistä postia.',
-        'name'    => get_the_title( $salesperson_id ),
+        'title'   => 'Kehitystoiveita mielessä tai ongelmia sivuston kanssa?',
+        'content' => 'Ovatko ominaisuudet ajan tasalla, kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, pistä postia ja katsellaan hommaa eteenpäin.<br/><br/>Voit lähestyä meitä myös ongelmatilanteissa sähköpostitse tai oikean alakulman "tuki"-pelastusrenkaan kautta. Tukitiimimme on valmiina palvelemaan arkisin 9-17.',
+        'name'    => 'Tukitiimi',
         'email'   => 'tuki@dude.fi',
-        'tel'     => [
-          'display' => $sales_phone,
-          'value'   => $sales_phone_tel_value,
-        ],
-        'img'     => wp_get_attachment_image_url( get_post_meta( $salesperson_id, 'avatar', true ), 'thumbnail', false ),
+        'tel'     => null,
+        'img'     => 'https://dude.fi/tukitiimi-2023-05.jpeg',
       ];
-    }
+    },
   ] );
 } // end salesperson_rest_api
