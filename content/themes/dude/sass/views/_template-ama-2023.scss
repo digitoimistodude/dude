@@ -1,6 +1,24 @@
 // stylelint-disable no-descending-specificity, selector-max-specificity, selector-max-class
 // Default theme
 body.template-ama.template-ama-2023 {
+  .ama-header .container {
+    gap: 4.2rem;
+    grid-template-columns: 1fr;
+
+    > div {
+      display: grid;
+      justify-content: center;
+      justify-self: center;
+      max-width: 50rem;
+      padding: 0 2rem;
+      text-align: center;
+    }
+  }
+
+  .ama-header {
+    background-image: url('../../img/ama-hero-2023.jpg');
+  }
+
   .form textarea {
     background-color: var(--color-background-input-field);
     border-color: var(--color-border-forms);
@@ -41,11 +59,26 @@ body.template-ama.template-ama-2023 {
       border: 0;
       box-shadow: 0 0 0 3px var(--color-button-background-hover);
     }
+
+    @media (max-width: $container-mobile) {
+      @include button-size-huge();
+      border-radius: 0;
+      font-size: 18px;
+      padding: 1.5rem 0;
+      width: 100%;
+    }
   }
 
   .button.button-large {
     @include button-size-large();
     border: 0;
+  }
+
+  @media (max-width: $container-mobile) {
+    .info-area,
+    .form {
+      margin-top: 4rem;
+    }
   }
 }
 

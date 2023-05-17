@@ -22,7 +22,7 @@ use Dude_Ama;
 the_post();
 
 $test_mode = isset( $_GET['pieritysvalkki'] ) ? true : false; // phpcs:ignore
-$stop_the_madness = false; // Stop auto updating answers
+$stop_the_madness = true; // Stop auto updating answers
 $hide_form = false;
 
 $form_id = 9;
@@ -108,7 +108,7 @@ $questions = array_reverse( $questions );
         <header class="ama-header">
           <div class="container">
             <div class="ama-header-logo" aria-hidden="true">
-              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama.svg' ); ?></a>
+              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama-2023.svg' ); ?></a>
             </div>
 
             <div class="ama-header-text">
