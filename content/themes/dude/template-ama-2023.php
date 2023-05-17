@@ -108,7 +108,7 @@ $questions = array_reverse( $questions );
         <header class="ama-header">
           <div class="container">
             <div class="ama-header-logo" aria-hidden="true">
-              <?php include get_theme_file_path( '/svg/logo-ama.svg' ); ?>
+              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama.svg' ); ?></a>
             </div>
 
             <div class="ama-header-text">
@@ -128,7 +128,7 @@ $questions = array_reverse( $questions );
 
           <div class="thank-you form hide-until-vue-loaded" v-if="questionSent">
             <p v-if="error">Error flynn! Joku ihme kämmi kävi kun koitettiin laittaa kysymystä faksiin. Pistä vaikka meiliin <a href="mailto:moro@dude.fi">moro@dude.fi</a></p>
-            <p v-else>Kiitos! Vastaamme kysymykseesi perjantain 26.5.2023 aikana ja lisäämme vastauksen näkyville tälle sivulle.</p>
+            <p v-else>Kiitos! Vastaamme kysymykseesi <b>perjantain 26.5.2023 aikana</b> ja lisäämme vastauksen näkyville tälle sivulle.</p>
             <input type="button" v-on:click="resetForm" value="Lähetä uusi kysymys" />
           </div>
 
