@@ -4,12 +4,12 @@
  *
  * Template for ask me anything.
  *
- * Template Name: AMA
+ * Template Name: AMA 2023
  *
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-08-03 15:25:27
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-05 11:13:30
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2023-05-10 13:16:06
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -23,12 +23,12 @@ the_post();
 
 $test_mode = isset( $_GET['pieritysvalkki'] ) ? true : false; // phpcs:ignore
 $stop_the_madness = true; // Stop auto updating answers
-$hide_form = true;
+$hide_form = false;
 
-$form_id = get_field( 'form_id' );
-$form_title = get_field( 'form_title' );
-$form_description = get_field( 'form_description' );
-$hero_content = get_field( 'hero_content' );
+$form_id = 9;
+$form_title = 'Kysy mitä tahansa';
+$form_description = 'AMA eli "Ask Me Anything" on alunperin Redditistä tuttu formaatti, jossa starat vastaa kansan kysymyksiin. Me päätimme tehdä AMAn Redditin sijaan omilla sivuillamme. Suora linja on auki <b>perjantaina 26.5.2023</b>, jolloin järjestämme koko päivän mittaisen kysy ja vastaa -session. Rehellisiä vastauksia tilannehuoneessa on sorvailemassa enemmistö Duden tiimistä.';
+$hero_content = 'Duden juhlavuoden Ask Me Anything -teemapäivä avaa bisnessalaisuudet auki. Lue kysymykset vastauksineen alta!';
 
 $drafts = \Dude_Ama\get_drafts_count();
 $questions = [];
@@ -37,6 +37,13 @@ $questions_args = [
   'post_status'     => 'publish',
   'posts_per_page'  => $test_mode ? 2 : 500,
   'order'           => 'ASC',
+  'date_query'      => [
+    'after' => [
+      'year'  => '2023',
+      'month' => '01',
+      'day'   => '01',
+    ],
+  ],
 ];
 
 if ( $stop_the_madness ) {
@@ -91,7 +98,7 @@ $questions = array_reverse( $questions );
   </script>
 </head>
 
-<body class="template-ama">
+<body class="template-ama template-ama-2023">
 
   <div id="page" class="site">
    <div class="site-content">
@@ -101,7 +108,7 @@ $questions = array_reverse( $questions );
         <header class="ama-header">
           <div class="container">
             <div class="ama-header-logo" aria-hidden="true">
-              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama.svg' ); ?></a>
+              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama-2023.svg' ); ?></a>
             </div>
 
             <div class="ama-header-text">
@@ -121,7 +128,7 @@ $questions = array_reverse( $questions );
 
           <div class="thank-you form hide-until-vue-loaded" v-if="questionSent">
             <p v-if="error">Error flynn! Joku ihme kämmi kävi kun koitettiin laittaa kysymystä faksiin. Pistä vaikka meiliin <a href="mailto:moro@dude.fi">moro@dude.fi</a></p>
-            <p v-else>Kiitos! Vastaamme kysymykseesi perjantain 15.1.2021 aikana ja lisäämme vastauksen näkyville tälle sivulle.</p>
+            <p v-else>Kiitos! Vastaamme kysymykseesi <b>perjantain 26.5.2023 aikana</b> ja lisäämme vastauksen näkyville tälle sivulle.</p>
             <input class="button button-large" type="button" v-on:click="resetForm" value="Lähetä uusi kysymys" />
           </div>
 
@@ -211,6 +218,8 @@ $questions = array_reverse( $questions );
             </div>
           <?php endif; ?>
         </div>
+
+        <p class="footer container ama is-small">Digitoimisto Dude Oy on vuonna 2013 perustettu WordPress-toimisto. <a href="https://www.dude.fi/yritys">Lue lisää Dudesta</a>.</p>
 
       </main><!-- #main -->
     </div><!-- #primary -->
