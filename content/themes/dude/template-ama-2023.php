@@ -27,8 +27,8 @@ $hide_form = false;
 
 $form_id = 9;
 $form_title = 'Kysy mitä tahansa';
-$form_description = 'AMA eli "Ask Me Anything" on alunperin Redditistä tuttu formaatti, jossa starat vastaa kansan kysymyksiin. Me päätimme tehdä AMAn Redditin sijaan omilla sivuillamme. Suora linja Duden sopukoihin oli avoinna perjantaina 15.1.2021, kun järjestimme koko päivän mittaisen kysy ja vastaa -session. Rehellisiä vastauksia tilannehuoneessa sorvasi koko Duden tiimi.';
-$hero_content = 'Duden ensimmäinen Ask Me Anything -teemapäivä avasi bisnessalaisuudet auki. Lue yli 100 kysymystä vastauksineen alta!';
+$form_description = 'AMA eli "Ask Me Anything" on alunperin Redditistä tuttu formaatti, jossa starat vastaa kansan kysymyksiin. Me päätimme tehdä AMAn Redditin sijaan omilla sivuillamme. Suora linja on auki <b>perjantaina 26.5.2023</b>, jolloin järjestämme koko päivän mittaisen kysy ja vastaa -session. Rehellisiä vastauksia tilannehuoneessa on sorvailemassa enemmistö Duden tiimistä.';
+$hero_content = 'Duden juhlavuoden Ask Me Anything -teemapäivä avaa bisnessalaisuudet auki. Lue kysymykset vastauksineen alta!';
 
 $drafts = \Dude_Ama\get_drafts_count();
 $questions = [];
@@ -42,8 +42,8 @@ $questions_args = [
       'year'  => '2023',
       'month' => '01',
       'day'   => '01',
-    ]
-  ]
+    ],
+  ],
 ];
 
 if ( $stop_the_madness ) {
@@ -128,7 +128,7 @@ $questions = array_reverse( $questions );
 
           <div class="thank-you form hide-until-vue-loaded" v-if="questionSent">
             <p v-if="error">Error flynn! Joku ihme kämmi kävi kun koitettiin laittaa kysymystä faksiin. Pistä vaikka meiliin <a href="mailto:moro@dude.fi">moro@dude.fi</a></p>
-            <p v-else>Kiitos! Vastaamme kysymykseesi perjantain 15.1.2021 aikana ja lisäämme vastauksen näkyville tälle sivulle.</p>
+            <p v-else>Kiitos! Vastaamme kysymykseesi perjantain 26.5.2023 aikana ja lisäämme vastauksen näkyville tälle sivulle.</p>
             <input type="button" v-on:click="resetForm" value="Lähetä uusi kysymys" />
           </div>
 
