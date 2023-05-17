@@ -219,6 +219,8 @@ $questions = array_reverse( $questions );
           <?php endif; ?>
         </div>
 
+        <p class="footer container ama is-small">Digitoimisto Dude Oy on vuonna 2013 perustettu WordPress-toimisto. <a href="https://www.dude.fi/yritys">Lue lisää Dudesta</a>.</p>
+
       </main><!-- #main -->
     </div><!-- #primary -->
 

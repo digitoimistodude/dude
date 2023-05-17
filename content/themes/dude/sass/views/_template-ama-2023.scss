@@ -1,0 +1,70 @@
+// stylelint-disable no-descending-specificity, selector-max-specificity
+// Dark theme
+@media (prefers-color-scheme: dark) {
+  body.template-ama.template-ama-2023 {
+    background-color: var(--color-dark-navy);
+    background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+
+    .block {
+      --color-text: var(--color-white);
+      --color-text-block: var(--color-white);
+      --color-paragraph: var(--color-white);
+      --color-heading: var(--color-white);
+      --color-link-text-hover: var(--color-white-two);
+      background-color: transparent;
+    }
+
+    .site-main {
+      background-color: transparent;
+    }
+
+    .form textarea {
+      background-color: transparent;
+      border: 1px solid var(--color-mint);
+      border-radius: 0;
+      color: var(--color-mint);
+      font-size: var(--font-size-18);
+      max-width: unset;
+
+      &:focus {
+        border-color: var(--color-java);
+
+        &::placeholder {
+          color: var(--color-java);
+        }
+      }
+
+      // stylelint-disable-next-line
+      &:focus-visible {
+        outline: none;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+
+      &::placeholder {
+        color: var(--color-mint);
+        font-size: var(--font-size-18);
+        opacity: .5;
+      }
+    }
+
+    .form input[type="submit"] {
+      @include button-size-large();
+      background-color: var(--color-mint);
+      border-color: var(--color-mint);
+      border-radius: 0;
+      color: var(--color-midnight);
+      font-size: var(--font-size-20);
+      margin-top: 2.6rem;
+
+      &:focus,
+      &:hover {
+        background-color: var(--color-button-background-hover);
+        box-shadow: 0 0 0 3px var(--color-button-background-hover);
+      }
+    }
+  }
+}
