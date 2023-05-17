@@ -2,8 +2,14 @@
 // Default theme
 body.template-ama.template-ama-2023 {
   .ama-header .container {
-    gap: 4.2rem;
+    display: grid;
+    gap: 1rem;
     grid-template-columns: 1fr;
+
+    // stylelint-disable-next-line
+    .ama-header-text {
+      margin: 0;
+    }
 
     > div {
       display: grid;
@@ -12,6 +18,10 @@ body.template-ama.template-ama-2023 {
       max-width: 50rem;
       padding: 0 2rem;
       text-align: center;
+    }
+
+    @media (max-width: $container-mobile) {
+      gap: 1rem;
     }
   }
 
@@ -63,8 +73,11 @@ body.template-ama.template-ama-2023 {
     @media (max-width: $container-mobile) {
       @include button-size-huge();
       border-radius: 0;
-      font-size: 18px;
-      padding: 1.5rem 0;
+      // stylelint-disable-next-line
+      font-size: 18px !important;
+
+      // stylelint-disable-next-line
+      padding: 1.5rem 0 !important;
       width: 100%;
     }
   }
@@ -78,6 +91,12 @@ body.template-ama.template-ama-2023 {
     .info-area,
     .form {
       margin-top: 4rem;
+    }
+
+    .ama-header .ama-header-logo svg {
+      height: auto;
+      max-width: 180px;
+      width: 100%;
     }
   }
 }
