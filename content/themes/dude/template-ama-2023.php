@@ -129,13 +129,13 @@ $questions = array_reverse( $questions );
           <div class="thank-you form hide-until-vue-loaded" v-if="questionSent">
             <p v-if="error">Error flynn! Joku ihme kämmi kävi kun koitettiin laittaa kysymystä faksiin. Pistä vaikka meiliin <a href="mailto:moro@dude.fi">moro@dude.fi</a></p>
             <p v-else>Kiitos! Vastaamme kysymykseesi <b>perjantain 26.5.2023 aikana</b> ja lisäämme vastauksen näkyville tälle sivulle.</p>
-            <input type="button" v-on:click="resetForm" value="Lähetä uusi kysymys" />
+            <input class="button button-large" type="button" v-on:click="resetForm" value="Lähetä uusi kysymys" />
           </div>
 
           <div class="form hide-until-vue-loaded" v-else>
             <label for="question" class="screen-reader-text-dude">Kysymyksesi</label>
             <textarea name="question" id="question" class="textarea medium" v-model="question" aria-required="true" aria-invalid="false" rows="10" cols="50" minlength="5" maxlength="1000" placeholder="Kirjoita tähän kysymyksesi..."></textarea>
-            <input type="submit" v-on:click="submitQuestion" value="Lähetä kysymys" :disabled="sendingQuestion"/>
+            <input class="button button-large" type="submit" v-on:click="submitQuestion" value="Lähetä kysymys" :disabled="sendingQuestion"/>
             <div class="sending-question hide-until-vue-loaded" v-if="sendingQuestion" style="position: absolute; margin-top: -52px; margin-left: 195px;">
               <div class="spinner">
                 <svg version="1.1"

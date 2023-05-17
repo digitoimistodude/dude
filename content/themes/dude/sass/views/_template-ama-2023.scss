@@ -1,4 +1,54 @@
-// stylelint-disable no-descending-specificity, selector-max-specificity
+// stylelint-disable no-descending-specificity, selector-max-specificity, selector-max-class
+// Default theme
+body.template-ama.template-ama-2023 {
+  .form textarea {
+    background-color: var(--color-background-input-field);
+    border-color: var(--color-border-forms);
+    border-radius: var(--border-radius-input-field);
+    border-style: solid;
+    border-width: var(--border-width-input-field);
+    color: var(--color-form-text);
+    font-family: var(--font-paragraph);
+    font-size: var(--font-size-input-fields);
+    line-height: var(--form-line-height);
+    padding: var(--form-padding-vertical) var(--form-padding-horizontal);
+    position: relative;
+    text-decoration: none;
+    transition: background .55s;
+
+    // stylelint-disable-next-line
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  input[type="reset"],
+  input[type="submit"],
+  input[type="button"],
+  .button {
+    @include button();
+    background-color: var(--color-mint);
+    border: 0;
+    border-color: var(--color-mint);
+    border-radius: 84px;
+    color: var(--color-midnight);
+    font-size: var(--font-size-20);
+    transition: all .18s;
+
+    &:focus,
+    &:hover {
+      background-color: var(--color-button-background-hover);
+      border: 0;
+      box-shadow: 0 0 0 3px var(--color-button-background-hover);
+    }
+  }
+
+  .button.button-large {
+    @include button-size-large();
+    border: 0;
+  }
+}
+
 // Dark theme
 @media (prefers-color-scheme: dark) {
   body.template-ama.template-ama-2023 {
@@ -34,11 +84,6 @@
         }
       }
 
-      // stylelint-disable-next-line
-      &:focus-visible {
-        outline: none;
-      }
-
       &:hover,
       &:focus {
         background-color: transparent;
@@ -58,7 +103,6 @@
       border-radius: 0;
       color: var(--color-midnight);
       font-size: var(--font-size-20);
-      margin-top: 2.6rem;
 
       &:focus,
       &:hover {

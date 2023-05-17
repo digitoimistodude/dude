@@ -870,7 +870,8 @@
 
   a:focus,
   a:hover {
-    color: var(--color-white);
+    color: var(--color-java);
+    text-decoration-color: var(--color-java);
   }
 
   &:focus,
