@@ -27,8 +27,8 @@ $hide_form = false;
 
 $form_id = 9;
 $form_title = 'Kysy mitä tahansa';
-$form_description = 'AMA eli "Ask Me Anything" on alunperin Redditistä tuttu formaatti, jossa starat vastaa kansan kysymyksiin. Me päätimme tehdä AMAn Redditin sijaan omilla sivuillamme. Suora linja on auki <b>perjantaina 26.5.2023</b>, jolloin järjestämme koko päivän mittaisen kysy ja vastaa -session. Rehellisiä vastauksia tilannehuoneessa on sorvailemassa enemmistö Duden tiimistä.';
-$hero_content = 'Duden juhlavuoden Ask Me Anything -teemapäivä avaa bisnessalaisuudet auki. Kysy & saa vastaus! Teemapäivä järjestetään perjantaina 26.5.2023, mutta voit lähettää kysymyksiä myös ennakkoon.';
+$form_description = 'AMA eli "Ask Me Anything" on alunperin Redditistä tuttu formaatti, jossa starat vastaa kansan kysymyksiin. Me päätimme tehdä AMAn Redditin sijaan omilla sivuillamme. Suora linja on auki <b>perjantaina 26.5.2023 klo 10-15</b>. Rehellisiä vastauksia tilannehuoneessa on sorvailemassa enemmistö Duden tiimistä.';
+$hero_content = 'Duden juhlavuoden Ask Me Anything -teemapäivä avaa bisnessalaisuudet auki. Kysy & saa vastaus! Teemapäivä järjestetään perjantaina 26.5.2023 ja tiimi vastaa kysymyksiin klo 10-15, mutta voit lähettää kysymyksiä myös ennakkoon.';
 
 $drafts = \Dude_Ama\get_drafts_count();
 $questions = [];
