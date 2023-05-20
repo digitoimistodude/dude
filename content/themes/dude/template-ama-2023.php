@@ -136,7 +136,7 @@ $questions = array_reverse( $questions );
             <label for="question" class="screen-reader-text-dude">Kysymyksesi</label>
             <textarea name="question" id="question" class="textarea medium" v-model="question" aria-required="true" aria-invalid="false" rows="10" cols="50" minlength="5" maxlength="1000" placeholder="Kirjoita tähän kysymyksesi..."></textarea>
             <input class="button button-large" type="submit" v-on:click="submitQuestion" value="Lähetä kysymys" :disabled="sendingQuestion"/>
-            <div class="sending-question hide-until-vue-loaded" v-if="sendingQuestion" style="position: absolute; margin-top: -52px; margin-left: 195px;">
+            <div class="sending-question hide-until-vue-loaded" v-if="sendingQuestion">
               <div class="spinner">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
