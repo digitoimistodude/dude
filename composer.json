@@ -98,6 +98,22 @@
           "url": "https://plugins.dude.fi/wpforms-surveys-polls-1.7.0.zip"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "gravityforms/gravityforms",
+        "version": "2.5.9.3",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.gravityhelp.com/wp-content/plugins/gravitymanager/api.php?op=get_plugin&slug=gravityforms&key={%WP_PLUGIN_GF_KEY}"
+        },
+        "require": {
+          "composer/installers": "^1.4",
+          "gotoandplay/gravityforms-composer-installer": "^2.3"
+        }
+      }
     }
   ],
   "require": {
