@@ -1,8 +1,8 @@
 /**
  * @Author: Roni Laukkarinen
  * @Date:   2022-09-13 13:10:11
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-05-17 17:45:14
+ * @Last Modified by:   Timi Wahalahti
+ * @Last Modified time: 2023-05-24 16:21:02
  */
 /* eslint-disable-next-line */
 const api = axios.create({
@@ -53,10 +53,9 @@ const Ama = {
         return;
       }
       this.loadingPosts = true;
-      //const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc` : '';
 
-      // For AMA 2023
-      const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc&date_query[after][year]=2023&date_query[after][month]=01&date_query[after][day]=01` : '';
+      //const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc` : '';
+      const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc` : `?per_page=${perPage}&order=asc&after=2023-01-01T00:00:00`;
 
       // Get questions
       api
