@@ -9,7 +9,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-08-03 15:25:27
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-05-24 15:52:35
+ * @Last Modified time: 2023-05-24 16:23:23
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
