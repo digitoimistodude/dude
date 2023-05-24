@@ -79,7 +79,7 @@
             "name": "gravity_forms_form",
             "aria-label": "",
             "type": "gravity_forms_field",
-            "instructions": "",
+            "instructions": "Jos tämä on valittuna, yliajetaan WPForms-lomake.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -109,5 +109,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684932830
+    "modified": 1684933461
 }
