@@ -133,6 +133,7 @@
     "wpackagist-plugin/worker": "*",
     "wpackagist-plugin/disable-media-pages": "*",
     "devgeniem/wp-sanitize-accented-uploads": "*",
+    "gravityforms/gravityforms": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/so-clean-up-wp-seo": "*",
     "wpackagist-plugin/simple-page-ordering": "*",
