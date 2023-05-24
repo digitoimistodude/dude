@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-02-03 14:23:27
+ * @Last Modified time: 2023-05-24 18:44:22
  *
  * @package dude
  */
@@ -118,3 +118,6 @@ function salesperson_rest_api() {
     },
   ] );
 } // end salesperson_rest_api
+
+// 10v party invitations
+require get_theme_file_path( 'inc/hooks/10-calendar-invite.php' );
