@@ -9,7 +9,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-08-03 15:25:27
  * @Last Modified by:   Timi Wahalahti
- * @Last Modified time: 2023-05-10 13:16:06
+ * @Last Modified time: 2023-05-24 15:52:35
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -163,8 +163,15 @@ $questions = array_reverse( $questions );
           <div class="info-area">
             <div class="infobox">
               <button class="info button-toggle"><svg version="1.1" class="has-solid " viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="128" height="128" fill="currentColor"><circle class="clr-i-outline clr-i-outline-path-1" cx="17.97" cy="10.45" r="1.4"/><path class="clr-i-outline clr-i-outline-path-2" d="M21,25H19V14.1H16a1,1,0,0,0,0,2h1V25H15a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z"/><path class="clr-i-outline clr-i-outline-path-3" d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34ZM18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z"/><path class="clr-i-solid clr-i-solid-path-1" d="M18,2.1a16,16,0,1,0,16,16A16,16,0,0,0,18,2.1Zm-.1,5.28a2,2,0,1,1-2,2A2,2,0,0,1,17.9,7.38Zm3.6,21.25h-7a1.4,1.4,0,1,1,0-2.8h2.1v-9.2H15a1.4,1.4,0,1,1,0-2.8h4.4v12h2.1a1.4,1.4,0,1,1,0,2.8Z" style="display:none"/></svg>Mikä AMA?</button>
-              <div class="info-content">
+              <div class="info-content info-content-0">
                 <?php echo wpautop( $form_description ); // phpcs:ignore ?>
+              </div>
+            </div>
+
+            <div class="infobox streambox" style="margin-top:1rem;">
+              <button class="info stream button-toggle"><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#fff"><path d="M15 12v4.4a.6.6 0 01-.6.6H3.6a.6.6 0 01-.6-.6V7.6a.6.6 0 01.6-.6h10.8a.6.6 0 01.6.6V12zm0 0l5.016-4.18a.6.6 0 01.984.461v7.438a.6.6 0 01-.984.46L15 12z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Seuraa livestriimiä pajalta!</button>
+              <div class="info-content info-content-1" style="position:relative;width:100%;padding-top:56.25%;">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nY8drGjB1pM?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;bottom:0;right:0;width:100%;height:100%;"></iframe>
               </div>
             </div>
           </div>
@@ -229,11 +236,13 @@ $questions = array_reverse( $questions );
 <?php wp_footer(); ?>
 
 <script>
-document.querySelector('.button-toggle').addEventListener('click', function(e) {
-  [].map.call(document.querySelectorAll('.info-content'), function(el) {
-    el.classList.toggle('toggled');
+const cbox = document.querySelectorAll('.button-toggle');
+
+for ( let i = 0; i < cbox.length; i++ ) {
+  cbox[i].addEventListener('click', function() {
+    document.querySelector('.info-content-' + i).classList.toggle('toggled');
   });
-});
+}
 </script>
 
 </body>
