@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-05-24 16:18:55
+ * @Last Modified time: 2023-05-24 17:15:33
  *
  * @package dude
  */
@@ -43,8 +43,6 @@ $form = intval( get_field( 'gravity_forms_form' ) );
 
 if ( ! empty( $form ) ) {
   $forminfo = \GFAPI::get_form( $form );
-  $title    = $forminfo['title'];
-  $content  = $forminfo['description'];
 }
 ?>
 

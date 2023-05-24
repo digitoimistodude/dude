@@ -1,0 +1,255 @@
+/* stylelint-disable no-descending-specificity */
+.page-template-template-marketing-campaign {
+  --color-gf-light-mint: #7effe180;
+  --color-gf-mint: #7effe1;
+
+  h2 {
+    // stylelint-disable-next-line
+    animation: animateheading 8s ease infinite;
+    background-clip: text;
+    // stylelint-disable-next-line
+    background-image: linear-gradient(45deg, var(--color-heading), var(--color-hover-main-level), var(--color-gradient-shade-1), var(--color-gradient-shade-2), var(--color-heading));
+    background-size: 100% 60%;
+    color: var(--color-heading);
+    margin: 0;
+    overflow: visible;
+
+    // Prevents text from clipping for example in small g-letter
+    padding-bottom: 1.5rem;
+    -webkit-text-fill-color: transparent;
+
+    @media (prefers-reduced-motion) {
+      background-size: unset;
+    }
+  }
+
+  .block-form .container > p {
+    margin: 0;
+    max-width: 60rem;
+  }
+
+  h2,
+  .gform_wrapper {
+    grid-column: -1 / 1;
+  }
+
+  // Quiz form styles
+  .gform_page_fields,
+  .gform-body {
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+  }
+
+  h2.gform_submission_error,
+  .gfield_required_text {
+    @include screen-reader-text();
+  }
+
+  /* stylelint-disable-next-line */
+  .gf_progressbar {
+    backface-visibility: hidden;
+    background-color: var(--color-github-border-default);
+    border-radius: 3rem;
+    font-size: var(--font-size-14);
+    overflow: hidden;
+
+    span {
+      color: var(--color-dark-navy);
+      font-weight: var(--font-weight-semibold);
+      padding: 0 1rem;
+      white-space: nowrap;
+    }
+  }
+
+  .block p.gf_progressbar_title {
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 1rem;
+  }
+
+  .gf_progressbar_percentage {
+    /* stylelint-disable-next-line */
+    animation: gradient 2s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    background-image: repeating-linear-gradient(to right, var(--color-gradient-shade-1) 0%, var(--color-gradient-shade-5) 50%, var(--color-gradient-shade-1) 100%);
+    background-position: 0 100%;
+    background-size: 200% auto;
+    width: 100%;
+  }
+
+  legend {
+    @include heading-38();
+    margin-bottom: var(--form-row-gap);
+  }
+
+  label,
+  legend {
+    color: var(--color-text);
+  }
+
+  fieldset {
+    border: 0;
+    margin: var(--form-row-gap) 0;
+    padding: 0;
+  }
+
+  .gform_page_footer,
+  .gform_footer {
+    display: flex;
+    gap: var(--gap-checkbox);
+    margin-top: var(--form-row-gap);
+  }
+
+  .gfield_description {
+    font-size: var(--font-size-14);
+    margin-top: var(--form-row-gap);
+
+    &.validation_message {
+      color: var(--color-error);
+    }
+  }
+
+  .gfield_radio {
+    display: grid;
+    gap: var(--form-row-gap);
+  }
+
+  .gchoice {
+    display: flex;
+    gap: var(--gap-checkbox);
+
+    &:focus input[type="radio"],
+    &:focus input[type="checkbox"],
+    &:hover input[type="radio"],
+    &:hover input[type="checkbox"] {
+      border-color: var(--color-gf-mint);
+    }
+  }
+
+  // Checkboxes & radio buttons
+  // Learn about this technique:
+  // @link https://moderncss.dev/pure-css-custom-checkbox-style/
+  input[type="radio"],
+  input[type="checkbox"] {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--color-gf-light-mint);
+    color: currentColor;
+    display: grid;
+    // stylelint-disable-next-line property-disallowed-list
+    font: inherit;
+    height: var(--size-checkbox);
+    margin: 0;
+    place-content: center;
+    width: var(--size-checkbox);
+
+    &:focus,
+    &:hover {
+      border-color: var(--color-gf-mint);
+    }
+  }
+
+  // Round style radio buttons
+  input[type="radio"]::before,
+  input[type="radio"] {
+    border-radius: 50%;
+  }
+
+  // Square style checkboxes
+  input[type="checkbox"]::before,
+  input[type="checkbox"] {
+    border-radius: var(--border-radius-checkbox);
+  }
+
+  input[type="radio"]::before,
+  input[type="checkbox"]::before {
+    background-color: var(--color-gf-mint);
+    background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%232e2f38" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%232e2f38" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
+    background-position: center;
+    background-size: var(--size-checkbox-marker) var(--size-checkbox-marker);
+    border: 1px solid var(--color-gf-mint);
+    content: '';
+    height: var(--size-checkbox);
+    opacity: 0;
+    transform: scale(.8);
+    transition: transform .2s;
+    width: var(--size-checkbox);
+  }
+
+  input[type="radio"]:checked::before,
+  input[type="checkbox"]:checked::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  input[type="radio"]:checked,
+  input[type="checkbox"]:checked {
+    // Hide element visually on click so it creates a bouncy animation illusion
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  input[type="radio"]:hover,
+  input[type="radio"] + label:hover,
+  input[type="radio"]:focus,
+  input[type="radio"] + label:focus,
+  input[type="checkbox"]:hover,
+  input[type="checkbox"] + label:hover,
+  input[type="checkbox"]:focus,
+  input[type="checkbox"] + label:focus {
+    cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    .block-form {
+      padding-top: 6rem;
+    }
+  }
+
+  @media (min-width: $container-mobile) {
+    .block-form > .container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@keyframes animateheading {
+  0% {
+    background-size: 100% auto;
+  }
+
+  50% {
+    background-size: 1000% auto;
+  }
+
+  100% {
+    background-size: 100% auto;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body[data-color-scheme="light"].page-template-template-marketing-campaign,
+  .page-template-template-marketing-campaign {
+    --color-gf-light-mint: #45917f80;
+    --color-gf-mint: var(--color-paradiso);
+
+    input[type="radio"]::before,
+    input[type="checkbox"]::before {
+      background-color: var(--color-gf-mint);
+      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%23fff" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body[data-color-scheme="light"].page-template-template-marketing-campaign {
+    --color-gf-light-mint: #45917f80;
+    --color-gf-mint: var(--color-paradiso);
+
+    input[type="radio"]::before,
+    input[type="checkbox"]::before {
+      background-color: var(--color-gf-mint);
+      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%23fff" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
+    }
+  }
+}
