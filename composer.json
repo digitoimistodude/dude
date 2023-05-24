@@ -36,7 +36,9 @@
       "pivvenit/acf-pro-installer": true,
       "composer/installers": true,
       "johnpbloch/wordpress-core-installer": true,
-      "koodimonni/composer-dropin-installer": true
+      "koodimonni/composer-dropin-installer": true,
+      "ffraenz/private-composer-installer": true,
+      "gotoandplay/gravityforms-composer-installer": true
     }
   },
   "autoload": {
