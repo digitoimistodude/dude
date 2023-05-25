@@ -411,15 +411,15 @@
     // Also let's move this here, as this also needs adjusting based on color scheme
     .sending-question {
       @media (prefers-color-scheme: dark) {
-        position: absolute;
-        margin-top: -52px;
         margin-left: 218px; // Button is 208px wide, + 10px = 218px
-      }
-      
-      @media (prefers-color-scheme: dark) {
-        position: absolute;
         margin-top: -52px;
+        position: absolute;
+      }
+
+      @media (prefers-color-scheme: dark) {
         margin-left: 187px; // Button is 177px wide, + 10px = 187px
+        margin-top: -52px;
+        position: absolute;
       }
     }
 
