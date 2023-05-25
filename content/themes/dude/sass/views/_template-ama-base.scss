@@ -397,22 +397,23 @@
     margin-bottom: 0;
     margin-top: 6rem;
     padding-bottom: 0;
+    position: relative;
+
+    .button,
+    button {
+      position: relative;
+      z-index: 2;
+    }
 
     .disclaimer {
       color: var(--color-faded);
       font-size: 15px;
 
-      // Because the button has a different width on dark and light mode, these need to be adjusted
-      @media (min-width: 550px) and (prefers-color-scheme: dark) {
-        margin-left: 278px; // 208px (button) + 10px (space) + 50px (spinner) + 10px (space) = 278px
+      @media (min-width: 550px) {
         margin-top: -37px;
         position: absolute;
-      }
-
-      @media (min-width: 550px) and (prefers-color-scheme: dark) {
-        margin-left: 247px;
-        margin-top: -37px;
-        position: absolute; // 177px + 10px + 50px + 10px = 247px
+        text-align: right;
+        width: 100%;
       }
     }
 
@@ -424,7 +425,7 @@
         position: absolute;
       }
 
-      @media (prefers-color-scheme: dark) {
+      @media (prefers-color-scheme: light) {
         margin-left: 187px; // Button is 177px wide, + 10px = 187px
         margin-top: -52px;
         position: absolute;
