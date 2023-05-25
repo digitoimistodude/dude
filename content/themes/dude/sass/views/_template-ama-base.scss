@@ -394,10 +394,32 @@
       color: var(--color-faded);
       font-size: 15px;
 
-      @media (min-width: 550px) {
-        margin-left: 240px;
+      // Because the button has a different width on dark and light mode, these need to be adjusted
+      @media (min-width: 550px) and (prefers-color-scheme: dark) {
+        margin-left: 278px; // 208px (button) + 10px (space) + 50px (spinner) + 10px (space) = 278px
         margin-top: -37px;
         position: absolute;
+      }
+
+      @media (min-width: 550px) and (prefers-color-scheme: dark) {
+        margin-left: 247px;
+        margin-top: -37px;
+        position: absolute; // 177px + 10px + 50px + 10px = 247px
+      }
+    }
+
+    // Also let's move this here, as this also needs adjusting based on color scheme
+    .sending-question {
+      @media (prefers-color-scheme: dark) {
+        position: absolute;
+        margin-top: -52px;
+        margin-left: 218px; // Button is 208px wide, + 10px = 218px
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        position: absolute;
+        margin-top: -52px;
+        margin-left: 187px; // Button is 177px wide, + 10px = 187px
       }
     }
 
