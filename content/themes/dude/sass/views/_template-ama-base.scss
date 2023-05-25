@@ -274,6 +274,10 @@
       &.toggled {
         display: block;
       }
+
+      @media (max-width: $container-mobile) {
+        margin-top: 2rem;
+      }
     }
 
     button {
@@ -316,6 +320,10 @@
     h3 {
       font-size: var(--font-size-20);
       margin: 0;
+    }
+
+    @media (max-width: $container-mobile) {
+      padding: 2rem;
     }
 
     @media (prefers-color-scheme: dark) {

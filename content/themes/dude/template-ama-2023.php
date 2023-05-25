@@ -22,7 +22,7 @@ use Dude_Ama;
 the_post();
 
 $test_mode = isset( $_GET['pieritysvalkki'] ) ? true : false; // phpcs:ignore
-$stop_the_madness = true; // Stop auto updating answers
+$stop_the_madness = false; // Stop auto updating answers
 $hide_form = false;
 
 $form_id = 9;
