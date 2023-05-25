@@ -890,7 +890,7 @@
 .is-small {
   color: var(--color-text-block);
   font-size: 14px;
-  opacity: .5;
+  opacity: .7;
   transition: all 500ms;
 
   a {
@@ -906,6 +906,6 @@
 
   &:focus,
   &:hover {
-    opacity: .8;
+    opacity: .9;
   }
 }

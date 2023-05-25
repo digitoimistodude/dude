@@ -87,6 +87,32 @@ body.template-ama.template-ama-2023 {
     border: 0;
   }
 
+  .sponsor.footer {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+
+    p {
+      margin: 0;
+    }
+
+    img {
+      height: auto;
+      max-width: 10rem;
+      min-width: 10rem;
+      width: 100%;
+
+      @media (max-width: $container-mobile) {
+        max-width: 8rem;
+        min-width: 8rem;
+      }
+    }
+
+    @media (max-width: $container-mobile) {
+      align-items: flex-start;
+    }
+  }
+
   @media (max-width: $container-mobile) {
     .info-area,
     .form {

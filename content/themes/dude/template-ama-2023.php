@@ -226,7 +226,10 @@ $questions = array_reverse( $questions );
           <?php endif; ?>
         </div>
 
-        <p class="footer container ama is-small">Digitoimisto Dude Oy on vuonna 2013 perustettu WordPress-toimisto. <a href="https://www.dude.fi/yritys">Lue lisää Dudesta</a>.</p>
+        <div class="sponsor footer container ama is-small">
+          <a href="https://mieli.fi"><img src="<?php echo esc_url( get_template_directory_uri() ) ?>/img/ama-mieli.png" alt="Tuemme mieli työtä"></a>
+          <p>Digitoimisto Dude Oy on vuonna 2013 perustettu WordPress-toimisto. <a href="https://www.dude.fi/yritys">Lue lisää Dudesta</a>. Jokaisesta vastatusta kysymyksestä lahjoitamme euron (1 €) <a href="https://mieli.fi/">mielenterveystyöhön</a> 💚</p>
+        </div>
 
       </main><!-- #main -->
     </div><!-- #primary -->
