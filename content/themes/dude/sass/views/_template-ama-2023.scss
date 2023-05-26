@@ -150,7 +150,8 @@ body.template-ama.template-ama-2023 {
 
   body.template-ama.template-ama-2023 {
     background-color: var(--color-dark-navy);
-    background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
+    // Doesn't work if content is long
+    // background-image: linear-gradient(239.71deg, rgb(126 255 225 / .15) 5.92%, rgb(28 30 38 / .15) 56.09%, rgb(28 30 38 / .15) 109.5%);
 
     .block {
       --color-text: var(--color-white);
