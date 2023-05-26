@@ -63,13 +63,6 @@
     }
   }
 
-  .ama-header-logo {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
   .ama-header-description {
     font-size: var(--font-size-16);
   }
@@ -115,6 +108,15 @@
     // Offset for "Ama" word in logo so it would appear more centered
     @media (min-width: 720px) {
       margin-bottom: -45px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .ama-header-logo {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 

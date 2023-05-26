@@ -12,6 +12,13 @@ body.template-ama.template-ama-2023 {
     }
   }
 
+  .ama-header-logo {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   .ama-header .container {
     display: grid;
     gap: 1rem;
