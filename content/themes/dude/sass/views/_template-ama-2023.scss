@@ -1,6 +1,17 @@
-// stylelint-disable no-descending-specificity, selector-max-specificity, selector-max-class
+// stylelint-disable no-descending-specificity, selector-max-specificity, selector-max-class, selector-max-combinators, selector-max-compound-selectors
 // Default theme
 body.template-ama.template-ama-2023 {
+  .site-main > .container.ama .likes .button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    + span {
+      align-items: center;
+      display: flex;
+    }
+  }
+
   .ama-header .container {
     display: grid;
     gap: 1rem;
