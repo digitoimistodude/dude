@@ -37,6 +37,13 @@ $questions_args = [
   'post_status'     => 'publish',
   'posts_per_page'  => $test_mode ? 2 : 500,
   'order'           => 'ASC',
+  'date_query'      => [
+    'before' => [
+      'year'  => '2022',
+      'month' => '01',
+      'day'   => '01',
+    ],
+  ],
 ];
 
 if ( $stop_the_madness ) {
