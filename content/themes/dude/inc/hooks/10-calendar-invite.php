@@ -4,14 +4,14 @@
  * @Author: Timi Wahalahti
  * @Date:   2023-05-24 18:18:30
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-06-08 10:56:05
+ * @Last Modified time: 2023-06-08 11:07:34
  *
  * @package dude
  */
 
 namespace Air_Light;
 
-add_action( 'gform_after_submission_15', function( $entry, $form ) {
+add_action( 'gform_after_submission_13', function( $entry, $form ) {
   $email_field_id = 3;
 
   // Create ics file to send
