@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   	2022-08-05 11:13:30
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-06-08 11:58:09
+ * @Last Modified time: 2023-06-08 12:16:42
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials

@@ -1,12 +1,16 @@
 .vimeo-iframe-wrapper iframe {
-  height: 180vw;
+  height: 200vw;
   left: 50%;
-  min-height: 70vh;
-  min-width: 222vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+  min-height: 200vw;
+  min-width: 260vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
+
+  @media (max-height: 900px) {
+    top: 20%;
+  }
 }
 
 .vimeo-iframe-wrapper {
