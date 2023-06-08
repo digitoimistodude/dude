@@ -4,7 +4,7 @@
  * @Author: Timi Wahalahti
  * @Date:   2023-05-24 18:18:30
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-06-08 11:07:34
+ * @Last Modified time: 2023-06-08 12:08:03
  *
  * @package dude
  */
@@ -88,8 +88,6 @@ function create_ics_file( $to, $entry_id ) {
   $file_path = urldecode( $upload_dir['basedir'] . "/10-invitation-{$entry_id}.ics" );
 
   file_put_contents( $file_path, $ical ); // phpcs:ignore
-
-  var_dump( $file_path );
 
   if ( is_file( $file_path ) === false ) {
     return false;
