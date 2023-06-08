@@ -1,4 +1,5 @@
 # Dotfiles and directories
+content/themes/twentytwentythree
 auth.json
 passwords.txt
 .DS_Store

@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-13 12:36:33
+ * @Last Modified time: 2023-05-24 17:15:33
  *
  * @package dude
  */
@@ -37,6 +37,13 @@ if ( empty( $form_id ) ) {
 if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true ) ) {
   return;
 }
+
+// Gravity Form fields
+$form = intval( get_field( 'gravity_forms_form' ) );
+
+if ( ! empty( $form ) ) {
+  $forminfo = \GFAPI::get_form( $form );
+}
 ?>
 
 <section class="block block-form has-unified-padding-if-stacked">
@@ -52,7 +59,11 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
       echo wp_kses_post( wpautop( $content ) );
     }
 
-    wpforms_display( $form_id ); ?>
+    if ( ! empty( $form ) ) {
+      gravity_form( $form, false, false, false, '', true, 1 );
+    } else {
+      wpforms_display( $form_id );
+    } ?>
 
   </div>
 </section>

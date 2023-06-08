@@ -6,6 +6,7 @@
             "key": "field_c3b4510e1e0b6",
             "label": "Otsikko",
             "name": "title",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_62bbf2159cac5",
             "label": "Sisältö",
             "name": "content",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -42,8 +44,9 @@
         },
         {
             "key": "field_62bbf22d9cac6",
-            "label": "Lomake",
+            "label": "Lomake (WP Forms, kyselyt jne.)",
             "name": "wpforms_id",
+            "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 0,
@@ -53,14 +56,39 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "12306": "Ennakkokysely &#8211; Työpajaan valmistavat tiedot",
+                "11358": "Yhteydenottolomake",
+                "11309": "Työhakemus",
+                "8729": "Asiakastyytyväisyyskysely",
+                "8716": "Projektityytyväisyyskysely 2021",
+                "8663": "Palaute myyntityöstä",
+                "8060": "Brändikysely 2021"
+            },
             "default_value": false,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
             "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_646e0889e1468",
+            "label": "Gravity Forms -lomake (markkinointikamppikset, juhlakutsut)",
+            "name": "gravity_forms_form",
+            "aria-label": "",
+            "type": "gravity_forms_field",
+            "instructions": "Jos tämä on valittuna, yliajetaan WPForms-lomake.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "multiple": 0,
+            "allow_null": 0
         }
     ],
     "location": [
@@ -81,5 +109,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1656485968
+    "modified": 1684933461
 }
