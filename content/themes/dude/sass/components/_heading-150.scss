@@ -4,6 +4,10 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: -.01em;
   line-height: 1;
+
+  @media (max-width: 420px) {
+    font-size: clamp-calc($container-mobile, 1600px, 42px, 150px);
+  }
 }
 
 .heading-150 {
