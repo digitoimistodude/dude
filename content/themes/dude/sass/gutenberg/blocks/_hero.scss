@@ -3,7 +3,7 @@
   background-color: var(--color-background-block);
   // Limit maximum height to the generic UWD screen heights
   max-height: 141.4rem;
-  // min-height: fill-available;
+  min-height: fill-available;
   overflow: hidden;
   transition: all 400ms ease-in-out;
 
@@ -83,7 +83,6 @@
 
   @media (min-width: 1200px) {
     height: 100vh;
-    min-height: 120rem;
   }
 }
 
