@@ -6,6 +6,11 @@
   margin-right: auto;
   margin-top: var(--margin-wp-block-image);
 
+  img {
+    // stylelint-disable-next-line
+    height: auto !important;
+  }
+
   &.alignwide,
   &.alignfull {
     padding-left: 0;
