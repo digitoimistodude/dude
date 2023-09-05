@@ -55,7 +55,20 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="icon" href="<?php echo esc_html( get_template_directory_uri() ); ?>/svg/dynamic-favicon.svg">
 
-  <?php wp_head(); ?>
+  <?php wp_head();
+
+  if ( 16399 === get_the_id() ) : ?>
+    <style>
+      .wp-block-gallery.has-nested-images figcaption {
+        margin: 0 auto;
+        flex: 0 0 100%;
+      }
+
+      .wp-block-gallery.has-nested-images figure.width-100 {
+        width: 100% !important;
+      }
+    </style>
+  <?php endif; ?>
 </head>
 
 <body <?php body_class( $body_class ); // The following style margin needed for Autoptimize ?> style="margin: 0 !important;">
