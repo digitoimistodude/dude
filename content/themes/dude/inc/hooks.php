@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-06-09 16:59:59
+ * @Last Modified time: 2023-09-25 17:23:55
  *
  * @package dude
  */
@@ -109,7 +109,7 @@ function salesperson_rest_api() {
     'callback'  => function( $data ) {
       return [
         'title'   => 'Kehitystoiveita mielessä tai ongelmia sivuston kanssa?',
-        'content' => 'Ovatko ominaisuudet ajan tasalla, kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, pistä postia ja katsellaan hommaa eteenpäin.<br/><br/>Voit lähestyä meitä myös ongelmatilanteissa sähköpostitse tai oikean alakulman "tuki"-pelastusrenkaan kautta. Tukitiimimme on valmiina palvelemaan arkisin 9-17.',
+        'content' => 'Ovatko ominaisuudet ajan tasalla tai kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, pistä viestiä!<br/><br/>Voit lähestyä meitä myös ongelmatilanteissa sähköpostitse tai oikean alakulman "Tuki"-pelastusrenkaan kautta. Tukitiimimme on valmiina palvelemaan arkisin 9-17.',
         'name'    => 'Tukitiimi',
         'email'   => 'tuki@dude.fi',
         'tel'     => null,
