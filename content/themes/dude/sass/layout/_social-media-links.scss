@@ -13,9 +13,19 @@
     transition: all $transition-duration;
     width: 24px;
 
+    &.x {
+      height: 22px;
+      width: 22px;
+    }
+
     @media (max-width: $container-mobile) {
       height: 20px;
       width: 20px;
+
+      &.x {
+        height: 18px;
+        width: 18px;
+      }
     }
   }
 
