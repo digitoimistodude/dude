@@ -7,7 +7,7 @@
  * @Author: Roni Laukkarinen
  * @Date: 2020-05-11 13:33:49
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-10-10 17:07:46
+ * @Last Modified time: 2023-11-06 16:45:17
  *
  * @package dude
  */
@@ -106,7 +106,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
           <a aria-label="Ulkoinen sivusto: Luotettava kumppani" class="no-external-link-indicator" href="https://zeckit.com/selvitys/FI/2548021-5?lang=fi"><?php include get_theme_file_path( '/svg/certificates/certificate-luotettavakumppani-no-box.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: AAA-luottoluokitus" class="no-external-link-indicator" href="https://www.bisnode.fi/aaa-kauppa/products/25480215"><?php include get_theme_file_path( '/svg/certificates/certificate-aaa-2022.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: AAA-luottoluokitus" class="no-external-link-indicator" href="https://www.bisnode.fi/aaa-kauppa/products/25480215"><?php include get_theme_file_path( '/svg/certificates/certificate-aaa-2023.svg' ); ?></a>
         </li>
       </ul>
     </div>
