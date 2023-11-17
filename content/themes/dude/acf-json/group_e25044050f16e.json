@@ -17,13 +17,32 @@
             },
             "choices": {
                 "petrol": "Petrooli",
-                "mint": "Minttu",
+                "mint": "Vaalea minttu",
                 "white": "Valkoinen"
             },
             "allow_null": 0,
             "default_value": "",
             "layout": "horizontal",
             "return_format": "value"
+        },
+        {
+            "key": "field_635ba8ab213d8",
+            "label": "Yliaja SERP-otsikko prefixiin",
+            "name": "serp_title",
+            "type": "text",
+            "instructions": "Prefixiin tuleva otsikko. Jos tämä on tyhjä, näytetään sivun nimi. Hyödyllinen, jos sivua on erikseen hakukoneoptimoitu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_a9b2cd9c3686f",
@@ -125,5 +144,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1655213142
+    "modified": 1666951552
 }

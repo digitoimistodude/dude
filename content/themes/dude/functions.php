@@ -7,7 +7,7 @@
  *
  * @Date: 2019-10-15 12:30:02
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 14:59:39
+ * @Last Modified time: 2023-11-17 18:29:15
  *
  * @package dude
  */
@@ -27,6 +27,13 @@ define( 'AIR_LIGHT_VERSION', '8.4.2' );
  * Theme settings
  */
 add_action( 'after_setup_theme', function() {
+  /* Different IDs on local and production */
+  if ( 'development' === wp_get_environment_type() ) {
+    $dashboard_widget_id = 13547;
+  } else {
+    $dashboard_widget_id = 16864;
+  }
+
   $theme_settings = [
     /**
      * Theme textdomain
@@ -73,6 +80,10 @@ add_action( 'after_setup_theme', function() {
         'id'    => 11585,
         'title' => 'Yleiset',
        ],
+       'dashboard_widget' => [
+         'id'    => $dashboard_widget_id,
+         'title' => 'Dashboard-widget asiakkaiden hallintapaneeliin',
+        ],
        'diamond-articles' => [
         'id'    => 11673,
         'title' => 'Timanttiset blogaukset',

@@ -1,0 +1,88 @@
+{
+    "key": "group_65577edcda9fc",
+    "title": "Dashboard-widget asiakkaiden hallintapaneeliin",
+    "fields": [
+        {
+            "key": "field_65577edd4c530",
+            "label": "Otsikko",
+            "name": "dashboard_widget_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Kehitystoiveita mielessä tai ongelmia sivuston kanssa?",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65577f434c531",
+            "label": "Sisältö",
+            "name": "dashboard_widget_content",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "default_value": "Ovatko ominaisuudet ajan tasalla tai kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, pistä viestiä!\r\n\r\nVoit lähestyä meitä myös ongelmatilanteissa sähköpostitse tai oikean alakulman \"Tuki\"-pelastusrenkaan kautta. Tukitiimimme on valmiina palvelemaan arkisin 9-17.",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6557aaf68ada4",
+            "label": "Näytetäänkö Help Scout \"viimeksi paikalla\" indikaattori?",
+            "name": "dashboard_widget_show_helpscout_indicator",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "air_setting_groups",
+                "operator": "==",
+                "value": "dashboard_widget"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1700244263
+}

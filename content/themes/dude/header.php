@@ -17,14 +17,8 @@
 namespace Air_Light;
 
 /**
- * !!! HUOMIO !!!
- *
- * Jos meinaat lisätä tänne analytiikkaskriptejä tai muuta ulkopuolista
- * koodia, teeppä se mieluummin inc/hooks/analytics.php tiedostoon.
- *
- * !!! HUOMIO !!!
+ * Analytics etc. can be found at inc/hooks/analytics.php
  */
-
 $salesperson_id = get_custom_setting( 'salesperson', 'general' );
 $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
 $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );

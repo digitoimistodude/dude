@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-09-25 17:23:55
+ * @Last Modified time: 2023-11-17 20:03:32
  *
  * @package dude
  */
@@ -104,17 +104,38 @@ if ( is_admin() ) {
 
 add_action( 'rest_api_init', __NAMESPACE__ . '\salesperson_rest_api' );
 function salesperson_rest_api() {
+
+  // Do not display if ACF not active
+  if ( ! function_exists( 'get_field' ) ) {
+    return;
+  }
+
+  // Define setting groups
+  $setting_groups = THEME_SETTINGS['custom_settings'];
+
+  // Do not display if setting group not found
+  if ( ! array_key_exists( 'dashboard_widget', $setting_groups ) ) {
+    return;
+  }
+
+  // Get setting group ID
+  $setting_group_id = $setting_groups['dashboard_widget']['id'];
+
+  // Get fields from dashboard_widget custom_settings fields
+  $dashboard_widget_title = get_field( 'dashboard_widget_title', $setting_group_id );
+  $dashboard_widget_content = get_field( 'dashboard_widget_content', $setting_group_id );
+  $dashboard_widget_show_helpscout_indicator = get_field( 'dashboard_widget_show_helpscout_indicator', $setting_group_id );
+
+  // Add everything to array
+  $dashboard_widget = [
+    'title'   => $dashboard_widget_title,
+    'content' => $dashboard_widget_content,
+  ];
+
   register_rest_route( 'dude/v1', '/salesperson', [
     'methods'   => 'GET',
-    'callback'  => function( $data ) {
-      return [
-        'title'   => 'Kehitystoiveita mielessä tai ongelmia sivuston kanssa?',
-        'content' => 'Ovatko ominaisuudet ajan tasalla tai kaipaatko jotain uusia toiminnallisuuksia? Autamme sinua kehittämään sivustoasi paremmaksi, pistä viestiä!<br/><br/>Voit lähestyä meitä myös ongelmatilanteissa sähköpostitse tai oikean alakulman "Tuki"-pelastusrenkaan kautta. Tukitiimimme on valmiina palvelemaan arkisin 9-17.',
-        'name'    => 'Tukitiimi',
-        'email'   => 'tuki@dude.fi',
-        'tel'     => null,
-        'img'     => 'https://dude.fi/tukitiimi-2023-05.jpeg',
-      ];
+    'callback'  => function( $data ) use ( $dashboard_widget ) {
+      return $dashboard_widget;
     },
   ] );
 } // end salesperson_rest_api
