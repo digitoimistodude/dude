@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-11-17 20:03:32
+ * @Last Modified time: 2023-11-20 11:56:31
  *
  * @package dude
  */
@@ -124,12 +124,13 @@ function salesperson_rest_api() {
   // Get fields from dashboard_widget custom_settings fields
   $dashboard_widget_title = get_field( 'dashboard_widget_title', $setting_group_id );
   $dashboard_widget_content = get_field( 'dashboard_widget_content', $setting_group_id );
-  $dashboard_widget_show_helpscout_indicator = get_field( 'dashboard_widget_show_helpscout_indicator', $setting_group_id );
+  $dashboard_widget_content_thirdparty = get_field( 'dashboard_widget_content_thirdparty', $setting_group_id );
 
   // Add everything to array
   $dashboard_widget = [
     'title'   => $dashboard_widget_title,
     'content' => $dashboard_widget_content,
+    'content_thirdparty' => $dashboard_widget_content_thirdparty,
   ];
 
   register_rest_route( 'dude/v1', '/salesperson', [

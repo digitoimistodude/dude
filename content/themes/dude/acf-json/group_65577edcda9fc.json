@@ -45,11 +45,11 @@
             "delay": 0
         },
         {
-            "key": "field_6557aaf68ada4",
-            "label": "Näytetäänkö Help Scout \"viimeksi paikalla\" indikaattori?",
-            "name": "dashboard_widget_show_helpscout_indicator",
+            "key": "field_655b2c01de622",
+            "label": "Sisältö, jos hostaus on jossain muualla kuin Dudella (esim. Seravo)",
+            "name": "dashboard_widget_content_thirdparty",
             "aria-label": "",
-            "type": "true_false",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -59,11 +59,11 @@
                 "id": ""
             },
             "relevanssi_exclude": 0,
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -84,5 +84,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700244263
+    "modified": 1700473898
 }
