@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-11-20 11:56:31
+ * @Last Modified time: 2023-11-28 10:15:47
  *
  * @package dude
  */
@@ -36,7 +36,7 @@ add_action( 'pre_get_posts', __NAMESPACE__ . '\reference_archive_query' );
 add_action( 'save_post_job', __NAMESPACE__ . '\clear_open_jobs_count_cache', 10, 2 );
 add_filter( 'get_avatar', __NAMESPACE__ . '\tsm_acf_profile_avatar', 10, 5 );
 add_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
-add_filter( 'the_content', __NAMESPACE__ . '\post_content_replace_image_urls_with_cfcdn' );
+// add_filter( 'the_content', __NAMESPACE__ . '\post_content_replace_image_urls_with_cfcdn' );
 add_filter( 'two_factor_enabled_providers_for_user',  __NAMESPACE__ . '\two_factor_force_email_provider_for_user', 1 );
 
 // Scripts and styles associated hooks
