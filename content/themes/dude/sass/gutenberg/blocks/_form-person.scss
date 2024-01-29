@@ -21,6 +21,7 @@
       "company-field big"
       "send-to-myself more-details"
       "checkboxes checkboxes"
+      "featurescheckboxes featurescheckboxes"
       "when files"
       "where files";
     grid-template-columns: 458px minmax(0, 1fr);
@@ -175,6 +176,11 @@
     #wpforms-11358-field_4-container {
       grid-area: checkboxes;
       padding: 2.2rem 0;
+    }
+
+    #wpforms-11358-field_12-container {
+      grid-area: featurescheckboxes;
+      padding: 0 0 2.2rem;
     }
 
     // General checkboxes
@@ -347,6 +353,7 @@
     width: 100%;
   }
 
+  .wpforms-field-checkbox ul#wpforms-11358-field_12,
   .wpforms-field-checkbox ul#wpforms-11358-field_4 {
     display: grid;
     grid-gap: 1rem 2rem;
