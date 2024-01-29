@@ -367,11 +367,20 @@
     }
 
     @media (min-width: $container-mobile) {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    @media (min-width: 1270px) {
-      justify-content: space-between;
+    @media (min-width: 1161px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (min-width: $container-mobile) and (max-width: 1160px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 580px) {
+      display: block;
     }
   }
 
