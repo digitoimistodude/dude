@@ -12,7 +12,7 @@
   }
 
   .testimonial-train {
-    padding-bottom: var(--padding-container-vertical);
+    padding-bottom: calc(var(--padding-container-vertical) / 2);
   }
 }
 
