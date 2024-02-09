@@ -6,6 +6,11 @@
   overflow: visible;
 }
 
-body.postid-11453 .block-icon-list-cols > .container {
+body.postid-11453 .block-images + .block-icon-list-cols > .container {
+  padding-top: calc(var(--padding-container-vertical) / 2);
+}
+
+body.postid-11453 .block-images > .container {
+  padding-bottom: 0;
   padding-top: var(--padding-container-vertical);
 }
