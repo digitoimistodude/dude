@@ -1,3 +1,11 @@
 .single-job .block-icon-list-cols + .wp-block-image {
   margin-top: var(--padding-container-vertical);
 }
+
+.single-job .block-image-content .container {
+  overflow: visible;
+}
+
+body.postid-11453 .block-icon-list-cols > .container {
+  padding-top: var(--padding-container-vertical);
+}

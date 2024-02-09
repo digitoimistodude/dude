@@ -40,9 +40,15 @@
     font-size: clamp-calc($container-mobile, 1600px, 52px, 126px);
     font-weight: var(--font-weight-bold);
     letter-spacing: -.01em;
-    line-height: 1.23;
+    line-height: 1.18;
     margin: 0;
     max-width: 110rem;
+  }
+
+  p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
   }
 }
 

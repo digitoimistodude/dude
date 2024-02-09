@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-14 16:36:40
+ * @Last Modified time: 2024-02-09 14:51:36
  *
  * @package dude
  */
@@ -95,7 +95,7 @@ if ( is_page( 4487 ) ) {
 }
 ?>
 
-<section class="<?php echo esc_attr( join( ' ', $classes ) ) ?>">
+<section class="<?php echo esc_attr( join( ' ', $classes ) ) ?>"<?php if ( ! empty( $title ) ) : ?> id="<?php echo esc_attr( sanitize_title( $title ) ); ?>"<?php endif; ?>>
   <div class="container">
 
     <div class="col col-image">
