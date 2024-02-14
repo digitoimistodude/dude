@@ -29,7 +29,7 @@
         <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
         <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
-        <exclude name="WordPress.WhiteSpace.PrecisionAlignment" />
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration" />
         <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
         <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned" />
         <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned" />
@@ -100,6 +100,8 @@
         <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_tax_query" />
         <exclude name="WordPress.PHP.DisallowShortTernary.Found" />
         <exclude name="Universal.WhiteSpace.DisallowInlineTabs.NonIndentTabsUsed" />
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+        <exclude name="Universal.WhiteSpace.PrecisionAlignment.Found" />
 
         <!-- Project based -->
         <exclude name="Squiz.PHP.CommentedOutCode.Found" />

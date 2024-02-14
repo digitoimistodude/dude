@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-11-28 10:15:47
+ * @Last Modified time: 2024-02-14 23:08:54
  *
  * @package dude
  */
@@ -140,7 +140,7 @@ function salesperson_rest_api() {
 
   register_rest_route( 'dude/v1', '/salesperson', [
     'methods'   => 'GET',
-    'callback'  => function( $data ) use ( $dashboard_widget ) {
+    'callback'  => function( $data ) use ( $dashboard_widget ) { // phpcs:disable
       return $dashboard_widget;
     },
   ] );
