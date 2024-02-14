@@ -41,7 +41,7 @@
   }
 
   @media (min-width: 960px) {
-    grid-template-columns: 80rem minmax(0, 1fr);
+    grid-template-columns: minmax(0, 80rem) minmax(230px, 1fr);
 
     .button-wrapper {
       align-items: flex-end;
