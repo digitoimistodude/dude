@@ -3,7 +3,7 @@
  * @Author:		Elias Kautto
  * @Date:   		2022-05-31 10:31:39
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2024-02-14 23:08:54
+ * @Last Modified time: 2024-02-16 11:42:36
  *
  * @package dude
  */
@@ -19,11 +19,6 @@ add_filter( 'air_helper_custom_settings_post_ids', __NAMESPACE__ . '\custom_sett
 add_action( 'init', function() {
   remove_action( 'wp_enqueue_scripts', 'air_helper_enqueue_instantpage_script' );
 }, 999 );
-
-/**
- * Enable users endpoint view for ActivityPub
- */
-remove_filter( 'rest_endpoints', __NAMESPACE__ . '\air_helper_disable_rest_endpoints' );
 
 // WPForms related hooks
 require get_theme_file_path( 'inc/hooks/wpforms.php' );
