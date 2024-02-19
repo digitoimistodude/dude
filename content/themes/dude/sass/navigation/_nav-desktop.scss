@@ -132,3 +132,8 @@ $absolute-navigation: true;
     }
   }
 } // @media only screen and (min-width: $width-max-mobile)
+
+// Generic menu items
+.site-header .menu-item > a {
+  font-family: var(--font-heading);
+}
