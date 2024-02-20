@@ -1,7 +1,6 @@
 // It is acceptable to hide things for print
 // stylelint-disable a11y/no-display-none
 @media print {
-  .nav-container,
   .site-footer,
   .side-nav {
     display: none;

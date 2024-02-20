@@ -18,7 +18,7 @@ namespace Air_Light;
  * The current version of the theme.
  */
 // It's really 8.3.7, but we got the updates later on
-define( 'AIR_LIGHT_VERSION', '8.4.2' );
+define( 'dude_VERSION', '8.4.2' );
 
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray

@@ -3,7 +3,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-04-23 13:44:09
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 18:57:20
+ * @Last Modified time: 2024-02-19 13:51:14
  */
 
 // Import modules
@@ -20,7 +20,7 @@ import initAnchors from './modules/anchors';
 import initBackToTop from './modules/top';
 import initMoveToTop from './modules/move-to-top';
 import initAccordions from './modules/accordion';
-import initNavigation from './modules/navigation';
+import initNavigation, { navDesktop, navMobile } from './modules/navigation';
 import initTabs from './modules/tabs';
 import initEmbeds from './modules/embeds';
 import initScrollableDivs from './modules/scrollable-div-shadows';
@@ -55,8 +55,9 @@ function init(target, args) {
   // Init move to top on page change
   initMoveToTop();
 
-  // Init site navigation
-  initNavigation();
+  // Init navigation
+  navDesktop();
+  navMobile();
 
   // Init carousels for testimonials and image galleries
   // Timeout needed for Firefox and iOS Safari

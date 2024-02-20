@@ -30,6 +30,7 @@
   padding-right: var(--padding-container-horizontal);
   padding-top: var(--padding-site-header-vertical);
   position: relative;
+  position: absolute;
   z-index: 15;
 
   @media (min-width: $width-grid-base + 160px) {
@@ -96,11 +97,6 @@
     height: 13.98px;
     width: 70px;
   }
-}
-
-// Nav container visibility fix
-.nav-container {
-  z-index: 10;
 }
 
 // Pages that are known to be always have dark text on nav

@@ -71,21 +71,9 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   <?php wp_body_open(); ?>
   <div id="page" class="site" aria-live="polite">
 
-    <div class="nav-container">
-      <header class="site-header" id="site-header">
-
-        <?php get_template_part( 'template-parts/header/branding' ); ?>
-
-        <p class="site-phone">
-          <a href="tel:<?php echo esc_html( str_replace( ' ', '', $sales_phone ) ); ?>">
-            <?php include get_theme_file_path( '/svg/phone.svg' ); ?>
-            <span>Kilauta</span>
-          </a>
-        </p>
-
-        <?php get_template_part( 'template-parts/header/navigation' ); ?>
-
-      </header>
-    </div><!-- .nav-container -->
+    <header class="site-header">
+      <?php get_template_part( 'template-parts/header/branding' ); ?>
+      <?php get_template_part( 'template-parts/header/navigation' ); ?>
+    </header>
 
     <div class="site-content">

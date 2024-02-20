@@ -5,7 +5,7 @@
  * @Author: Roni Laukkarinen
  * @Date: 2020-05-11 13:22:26
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-08-11 16:43:31
+ * @Last Modified time: 2024-02-19 13:50:09
  *
  * @package dude
  */
@@ -14,16 +14,13 @@ namespace Air_Light;
 
 ?>
 
-<div class="main-navigation-wrapper" id="main-navigation-wrapper">
+<nav id="nav" class="nav-primary nav-menu" aria-label="<?php echo esc_html( get_default_localization( 'Main navigation' ) ); ?>">
 
-  <button aria-controls="nav" id="nav-toggle" class="nav-toggle hamburger" type="button" aria-label="<?php echo esc_html( get_default_localization( 'Open main menu' ) ); ?>">
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
+  <button aria-haspopup="true" aria-expanded="false" aria-controls="nav" id="nav-toggle" class="nav-toggle" type="button" aria-label="<?php echo esc_html( get_default_localization( 'Open main menu' ) ); ?>">
+    <span class="hamburger" aria-hidden="true"></span>
   </button>
 
-  <nav id="nav" class="nav-primary nav-menu" aria-label="<?php echo esc_html( get_default_localization( 'Main navigation' ) ); ?>">
-
+  <div id="menu-items-wrapper" class="menu-items-wrapper">
     <?php wp_nav_menu( array(
       'theme_location' => 'primary',
       'container'      => false,
@@ -36,6 +33,6 @@ namespace Air_Light;
       'has_dropdown'   => true,
       'walker'         => new Nav_Walker(),
     ) ); ?>
+  </div>
 
-  </nav><!-- #nav -->
-</div>
+</nav>
