@@ -41,7 +41,7 @@ $person_query = new \WP_Query( [
   'order'                   => 'ASC',
   'orderby'                 => 'menu_order',
   'post__not_in'            => [ $current_person ],
-  'posts_per_page'          => 50,
+  'posts_per_page'          => 100,
   'no_found_rows'           => true,
   'cache_results'           => true,
   'update_post_term_cache'  => false,
@@ -58,12 +58,14 @@ foreach ( $person_ids as $person_id ) {
   $persons[] = [
     'person_id' => $person_id,
     'show_phone' => false,
+    'posts_per_page' => 100,
   ];
-};
+}; // phpcs:ignore
 
 $args = [
   'persons' => $persons,
   'title' => 'Katso myös muut dudet',
+  'posts_per_page' => 100,
 ];
 
 get_header(); ?>

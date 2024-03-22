@@ -7,7 +7,7 @@
  * @Author:		Roni Laukkarinen
  * @Date:   		2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-07 11:00:39
+ * @Last Modified time: 2024-03-22 15:02:30
  *
  * @package dude
  */
@@ -24,6 +24,7 @@ if ( empty( $persons ) && is_singular( 'person' ) ) {
     'post_type'      => 'person',
     'status'         => 'publish',
     'fields'         => 'ids',
+    'posts_per_page' => 100,
     'post__not_in'        => [ get_the_ID() ],
   ] );
 
