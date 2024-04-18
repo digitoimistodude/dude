@@ -78,7 +78,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
 
   ksort( $sources );
 
-  echo '<div class="image image-background image-background-layer"><picture>';
+  echo '<picture>';
   foreach ( $sources as $key => $source ) {
     if ( ! isset( $source['width'] ) || ! isset( $source['height'] ) ) {
       continue;
@@ -119,7 +119,7 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
     echo '<img ' . $img_params['classes'] . 'loading="' . $loading . '" src="' . $image_cdn_url . '" width="' . $img_params['width'] . '" height="' . $img_params['height'] . '" alt="' . $alt . '">'; //phpcs:ignore
   }
 
-  echo '</picture></div>';
+  echo '</picture>';
 }
 
 if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
