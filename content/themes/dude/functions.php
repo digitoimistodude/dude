@@ -67,7 +67,7 @@ add_action( 'after_setup_theme', function() {
      * CF CDN default settings
      */
     'cfcdn_defaults' => [
-      'quality' => 75,
+      'quality' => 100,
       'fit'     => 'cover',
     ],
 
