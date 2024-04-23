@@ -63,7 +63,7 @@ get_header(); ?>
       <div class="container">
         <div class="cols has-transition-fade">
           <div class="col col-image">
-            <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1"></a>
+            <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1" aria-hidden="true"></a>
             <div class="image image-background">
               <?php get_picture_element_with_cfcdn( get_post_thumbnail_id( $featured_post['post_id'] ), $picture_cdn_args, $picture_cdn_srcset );
               $video_bg = get_post_meta( $featured_post['post_id'], 'article_video', true );
@@ -78,7 +78,7 @@ get_header(); ?>
           </div>
 
           <div class="col col-content">
-            <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1"></a>
+            <a href="<?php echo esc_url( get_the_permalink( $featured_post['post_id'] ) ) ?>" class="global-link" tabindex="-1" aria-hidden="true"></a>
             <p class="date">
               <?php echo esc_html( ucfirst( wp_date( 'l', get_the_date( 'U' ) ) ) ) ?>na <?php echo esc_html( get_the_date( 'j.n.Y', $featured_post['post_id'] ) ) ?>
             </p>

@@ -100,7 +100,7 @@ if ( empty( $persons_data ) ) {
         <div class="col col-person">
           <div class="image-wrapper">
             <?php native_lazyload_tag( $person['image'] ) ?>
-            <a href="<?php echo esc_url( $person['permalink'] ); ?>" class="global-link" tabindex="-1"></a>
+            <a href="<?php echo esc_url( $person['permalink'] ); ?>" class="global-link" tabindex="-1" aria-hidden="true"></a>
           </div>
 
           <div class="content">
