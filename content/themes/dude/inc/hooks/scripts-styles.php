@@ -212,3 +212,12 @@ add_action( 'wpforms_frontend_css', function() {
   wp_deregister_style( 'wpforms-jquery-timepicker' );
   wp_deregister_style( 'wpforms-flatpickr' );
 }, 99999 );
+
+// Remove dashicons in frontend in front-end
+add_action( 'wp_enqueue_scripts',  __NAMESPACE__ . '\dequeue_dashicons' );
+
+function dequeue_dashicons() {
+  if ( ! is_admin() ) {
+    wp_deregister_style( 'dashicons' );
+  }
+}
