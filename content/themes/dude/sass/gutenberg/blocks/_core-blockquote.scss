@@ -54,6 +54,7 @@ blockquote {
   cite {
     color: var(--color-blockquote);
     margin-top: 2.5rem;
+    text-align: left;
 
     > a {
       color: var(--color-blockquote);
