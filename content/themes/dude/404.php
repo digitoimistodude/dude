@@ -12,6 +12,17 @@
 
 namespace Air_Light;
 
+$word = filter_input( INPUT_SERVER, 'REQUEST_URI' );
+
+// Filter out special characters
+$word = preg_replace( '/[^a-zA-Z0-9]/', '', $word );
+
+// Filter out all things that look like url like http and https
+$word = preg_replace( '/https|http|net|com|fi/', '', $word );
+
+// Obfuscate random letters of the word
+$word = str_shuffle( $word );
+
 get_header(); ?>
 
 <div class="overlay overlay-scanline" aria-hidden="true"></div>
@@ -26,7 +37,7 @@ get_header(); ?>
       <div class="hero-description">
         <h1 class="screen-reader-text-dude"><?php echo esc_html( get_default_localization( 'Page not found.' ) ); ?></h1>
         <p aria-hidden="true"><span class="dudefi">dude.fi</span></p>
-        <p>Tapahtui virhe 404 kohdassa <?php echo esc_html( filter_input( INPUT_SERVER, 'REQUEST_URI' ) ); ?>. Etsimääsi sivua tai tiedostoa ei löydy, se on saatettu poistaa tai siirtää.</p>
+        <p>Tapahtui virhe 404 kohdassa <?php echo esc_html( $word ); ?>. Etsimääsi sivua tai tiedostoa ei löydy, se on saatettu poistaa tai siirtää.</p>
         <p class="press-f5">Paina F5 jatkaaksesi <span class="blink" aria-hidden="true"></span></p>
       </div>
 
