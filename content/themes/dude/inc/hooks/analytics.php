@@ -23,7 +23,7 @@ function head_analytics_scripts() { ?>
   </script>
 
   <?php if ( 'production' === wp_get_environment_type() ) : ?>
-    <script data-cookiecategory="analytics" data-src="//rum-static.pingdom.net/pa-6653422168cac40012000b95.js" defer></script>
+    <script data-swup-ignore-script data-cookiecategory="analytics" data-src="//rum-static.pingdom.net/pa-6653422168cac40012000b95.js" defer></script>
     <script data-swup-ignore-script>(function(l,e,a,d,i,n,f,o){if(!l[i]){l.GlobalLeadinfoNamespace=l.GlobalLeadinfoNamespace||[];l.GlobalLeadinfoNamespace.push(i);l[i]=function(){(l[i].q=l[i].q||[]).push(arguments)};l[i].t=l[i].t||n;l[i].q=l[i].q||[];o=e.createElement(a);f=e.getElementsByTagName(a)[0];o.async=1;o.src=d;f.parentNode.insertBefore(o,f);}}(window,document,'script','https://cdn.leadinfo.net/ping.js','leadinfo','LI-66461A90231DA'));</script>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
   <?php endif; ?>
