@@ -10,6 +10,13 @@
   overflow: visible;
   padding-top: 0;
 
+  // Hide unnecessary things
+  /* stylelint-disable-next-line */
+  .wpforms-field-limit-text {
+    /* stylelint-disable-next-line */
+    display: none !important;
+  }
+
   .wpforms-field-container {
     --color-error: #ff7d7d;
     display: grid;
