@@ -472,7 +472,7 @@
 
   // Other exceptions in dark mode
   .block-badges .badge {
-    border-color: var(--color-dark-navy);
+    --color-white-two: var(--color-background-block);
   }
 
   .block-single li::marker,
