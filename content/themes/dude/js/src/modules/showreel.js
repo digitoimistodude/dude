@@ -326,7 +326,7 @@ const initShowreel = () => {
   if ('requestIdleCallback' in window) {
     requestIdleCallback(initPlayers);
   } else {
-    document.addEventListener('DOMContentLoaded', initPlayers);
+    window.addEventListener('load', initPlayers); // Only load video after everything has loaded
   }
 };
 
