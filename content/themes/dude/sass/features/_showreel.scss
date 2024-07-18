@@ -66,6 +66,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   background-color: transparent;
   border-radius: var(--border-radius-showreel);
   bottom: 0;
+  height: 680px;
   margin-top: 0;
   opacity: .4;
   overflow: hidden;
@@ -73,6 +74,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   right: 0;
   transform: translate(19vw, 10rem);
   transition: all $transition-duration-showreel ease-in-out;
+  width: 1208px;
   z-index: 0;
 
   .image-poster {
@@ -131,6 +133,11 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
     right: 0;
     width: 100%;
     z-index: 5;
+  }
+
+  &.playing .image-poster {
+    border: 1px transparent solid; // Otherwise the poster will overflow 1px :( 
+    margin: auto 0;
   }
 
   div[data-vimeo-initialized="true"] {

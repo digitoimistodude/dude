@@ -16,6 +16,7 @@ if ( have_posts() ) {
     $reference_ids[] = get_the_id();
   }
 }
+wp_enqueue_script( 'video-player' );
 
 get_header(); ?>
 

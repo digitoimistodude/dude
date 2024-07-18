@@ -4,8 +4,24 @@
  * @Last Modified by:   Roni Laukkarinen
  * @Last Modified time: 2023-04-18 20:03:05
  */
+// Includes code from https://github.com/luwes/lite-vimeo-embed, licensed under MIT
+
 import MoveTo from 'moveto';
 import Player from '@vimeo/player';
+
+/**
+ * Add a <link rel={preload | preconnect} ...> to the head
+ */
+function addPrefetch(kind, url, as) {
+  const linkElem = document.createElement('link');
+  linkElem.rel = kind;
+  linkElem.href = url;
+  if (as) {
+    linkElem.as = as;
+  }
+  linkElem.crossorigin = true;
+  document.head.append(linkElem);
+}
 
 /* eslint-disable no-console */
 const initShowreel = () => {
@@ -17,17 +33,20 @@ const initShowreel = () => {
     return;
   }
 
+  addPrefetch('preconnect', 'https://player.vimeo.com'); // The iframe document and most of its subresources come right off player.vimeo.com
+  addPrefetch('preconnect', 'https://f.vimeocdn.com'); // Files .js, .css
+  addPrefetch('preconnect', 'https://i.vimeocdn.com'); // Images
+
   // Timestamps for short video
   const startSeconds = 4;
   const endSeconds = 11;
 
   // Timestamps for short video in reference
-  const initSeconds = 48;
   const startSecondsReference = 48;
   const endSecondsReference = 64;
 
   // Loop through all players
-  autoplayplayers.forEach((autoplayplayer) => {
+  const initPlayer = (autoplayplayer) => {
     // eslint-disable-next-line new-cap
     // Player options
     const options = {
@@ -241,14 +260,17 @@ const initShowreel = () => {
     player.ready().then(() => {
       // Add loaded class to the wrapper around the iframe
       player.element.parentNode.classList.add('loaded');
-      player.element.parentNode.parentNode.parentNode.classList.add('is-ready');
+
+      player.on('play', () => {
+        player.element.parentNode.parentNode.parentNode.classList.add('is-ready');
+      });
 
       // If is reference
       if (player.element.parentNode.parentNode.parentNode.parentNode.classList.contains('col-reference')) {
         // Start playing from start position
         player.setCurrentTime(startSecondsReference);
       } else {
-      // Start playing from start position
+        // Start playing from start position
         player.setCurrentTime(startSeconds);
       }
     });
@@ -265,7 +287,7 @@ const initShowreel = () => {
       } else {
         // Wait animation to load up
         setTimeout(() => {
-        // Get reference wrapper
+          // Get reference wrapper
           const moveToElement = playButton.closest('.cols-two');
           moveToTop.move(moveToElement);
         }, 250);
@@ -281,7 +303,31 @@ const initShowreel = () => {
         setFullPlayingTheatre();
       }
     });
-  });
+  };
+
+  function initPlayers() {
+    autoplayplayers.forEach((autoplayplayer) => {
+      if (autoplayplayer.parentNode.parentNode.classList.contains("showreel")) {
+        initPlayer(autoplayplayer); // Showreel should be loaded always as it won't have any height for intersectionobserver
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          // Load the video
+          initPlayer(autoplayplayer);
+          observer.disconnect();
+        }
+      });
+      observer.observe(autoplayplayer);
+    });
+  }
+
+  // Great job Safari!
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initPlayers);
+  } else {
+    document.addEventListener('DOMContentLoaded', initPlayers);
+  }
 };
 
 export default initShowreel;

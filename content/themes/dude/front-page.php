@@ -15,6 +15,8 @@
 
 namespace Air_Light;
 
+wp_enqueue_script( 'video-player' ); 
+
 get_header(); ?>
 
 <main class="site-main">

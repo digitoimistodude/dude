@@ -44,6 +44,14 @@ function enqueue_theme_scripts() {
     true
   );
 
+  // Register video-player script
+  wp_register_script( 'video-player',
+    get_theme_file_uri( get_asset_file( 'video-player.js' ) ),
+    [],
+    filemtime( get_theme_file_path( get_asset_file( 'video-player.js' ) ) ),
+    [ 'in_footer' => true, 'strategy' => 'defer' ]
+  );
+
   // Required comment-reply script
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
