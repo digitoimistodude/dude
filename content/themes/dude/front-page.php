@@ -15,7 +15,7 @@
 
 namespace Air_Light;
 
-wp_enqueue_script( 'video-player' ); 
+add_filter( 'load_video_player', '__return_true' );
 
 get_header(); ?>
 
