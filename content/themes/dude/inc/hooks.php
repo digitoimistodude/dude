@@ -45,6 +45,7 @@ require get_theme_file_path( 'inc/hooks/autoptimize.php' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_polyfills' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_theme_scripts' );
 add_filter( 'script_loader_tag',  __NAMESPACE__ . '\add_data_attribute_to_scripts', 10, 2 );
+add_filter( 'script_loader_tag',  __NAMESPACE__ . '\conditional_video_player_script', 10, 2 );
 add_filter( 'air_cookie_inline_js', __NAMESPACE__ . '\swupify_air_cookie_inline_script' );
 // add_filter( 'autoptimize_filter_css_replacetag', __NAMESPACE__ . '\autoptimize_tweaks', 10, 1 );
 

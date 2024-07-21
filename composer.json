@@ -66,8 +66,8 @@
       "url": "https://github.com/digitoimistodude/air-blocks-acf-example-data"
     },
     {
-      "type": "composer",
-      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+        "type":"composer",
+        "url":"https://connect.advancedcustomfields.com"
     },
     {
       "type": "composer",
@@ -125,9 +125,9 @@
     "vlucas/phpdotenv": "^5.3",
     "oscarotero/env": "^2.1",
     "roots/wp-config": "^1.0",
-    "johnpbloch/wordpress": "6.0.2",
+    "johnpbloch/wordpress": "6.6",
     "digitoimistodude/air-helper": "*",
-    "advanced-custom-fields/advanced-custom-fields-pro": "*",
+    "wpengine/advanced-custom-fields-pro": "*",
     "digitoimistodude/air-blocks-acf-example-data": "dev-master",
     "wpackagist-plugin/akismet": "*",
     "wpackagist-plugin/simple-history": "*",

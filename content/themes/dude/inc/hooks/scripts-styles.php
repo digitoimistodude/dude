@@ -44,6 +44,14 @@ function enqueue_theme_scripts() {
     true
   );
 
+  // Register video-player script
+  wp_enqueue_script( 'video-player',
+    get_theme_file_uri( get_asset_file( 'video-player.js' ) ),
+    [],
+    filemtime( get_theme_file_path( get_asset_file( 'video-player.js' ) ) ),
+    [ 'in_footer' => true, 'strategy' => 'defer' ]
+  );
+
   // Required comment-reply script
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
@@ -134,6 +142,7 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'cookieconsent',
     'iframemanager',
     'wpforms-generic-utils',
+    'video-player'
   ];
 
   if ( ! in_array( $handle, $allowed_handles ) ) { // phpcs:ignore
@@ -142,6 +151,21 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
 
   return $tag;
 } // end add_data_attribute_to_scripts
+
+/**
+ * Only by default loads the video-player script on pages it's needed, otherwise load it from data-src
+ */
+function conditional_video_player_script( $tag, $handle ) {
+  if ( 'video-player' !== $handle ) {
+    return $tag;
+  }
+
+  if ( apply_filters( 'load_video_player', false ) ) {
+    return $tag;
+  }
+
+  return str_replace( 'src=', 'data-src=', $tag );
+}
 
 function swupify_air_cookie_inline_script( $script ) {
   ob_start(); ?>
