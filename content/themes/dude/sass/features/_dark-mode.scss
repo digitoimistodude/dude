@@ -146,6 +146,7 @@
     border-color: var(--color-white-two);
   }
 
+  .block.block-single .article-content li::marker,
   .block-single li::marker,
   li::marker {
     color: var(--color-paradiso);
@@ -475,6 +476,7 @@
     --color-white-two: var(--color-background-block);
   }
 
+  .block.block-single .article-content li::marker,
   .block-single li::marker,
   li::marker {
     color: var(--color-mint);
