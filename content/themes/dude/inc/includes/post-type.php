@@ -57,5 +57,4 @@ abstract class Post_Type {
   public function register_wp_post_type( $slug, $args ) {
     return register_post_type( $slug, $args );
   }
-
 }

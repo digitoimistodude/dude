@@ -142,7 +142,7 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'cookieconsent',
     'iframemanager',
     'wpforms-generic-utils',
-    'video-player'
+    'video-player',
   ];
 
   if ( ! in_array( $handle, $allowed_handles ) ) { // phpcs:ignore

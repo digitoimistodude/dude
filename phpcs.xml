@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Theme Coding Standards">
+<ruleset name="WordPress-Core">
     <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
     <!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
     <!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki -->
@@ -25,11 +25,10 @@
      <!-- Include the WordPress ruleset, with exclusions. -->
      <rule ref="WordPress">
 
-        <!-- Nazi-strict intendation rules we want to exclude -->
+        <!-- Strict intendation rules we want to exclude -->
         <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
         <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
-        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration" />
         <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
         <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned" />
         <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned" />
@@ -69,7 +68,6 @@
         <exclude name="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma" />
         <exclude name="Generic.Commenting.DocComment.MissingShort" />
         <exclude name="Generic.Commenting.DocComment.SpacingBeforeTags" />
-        <exclude name="Squiz.Commenting" />
         <exclude name="Squiz.PHP.EmbeddedPhp.NoSemicolon" />
         <exclude name="PHPCompatibility.PHP.NewClosure.Found" />
         <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
@@ -99,28 +97,21 @@
         <exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode" />
         <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_tax_query" />
         <exclude name="WordPress.PHP.DisallowShortTernary.Found" />
-        <exclude name="Universal.WhiteSpace.DisallowInlineTabs.NonIndentTabsUsed" />
+
+        <!-- Dudestack based -->
+        <exclude name="Squiz.PHP.CommentedOutCode.Found" />
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
+        <exclude name="WordPress.PHP.IniSet.display_errors_Blacklisted" />
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+        <exclude name="WordPress.WP.AlternativeFunctions.parse_url_parse_url" />
+        <exclude name="Squiz.Commenting.ClassComment.Missing" />
+        <exclude name="Squiz.Commenting.VariableComment.Missing" />
         <exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
         <exclude name="Universal.WhiteSpace.PrecisionAlignment.Found" />
-
-        <!-- Project based -->
-        <exclude name="Squiz.PHP.CommentedOutCode.Found" />
-    </rule>
-
-    <!-- Verify that the text_domain is set to the desired text-domain.
-    Multiple valid text domains can be provided as a comma-delimited list. -->
-    <rule ref="WordPress.WP.I18n">
-        <properties>
-            <property name="text_domain" type="array" value="dude" />
-        </properties>
-    </rule>
-
-    <!-- Allow for theme specific exceptions to the file name rules based
-    on the theme hierarchy. -->
-    <rule ref="WordPress.Files.FileName">
-        <properties>
-            <property name="is_theme" value="true" />
-        </properties>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+        <exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
+        <exclude name="Universal.Operators.DisallowShortTernary.Found" />
     </rule>
 
     <!-- Include sniffs for PHP cross-version compatibility. -->

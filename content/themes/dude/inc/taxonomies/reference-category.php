@@ -55,5 +55,4 @@ class Reference_Category extends Taxonomy {
 
     $this->register_wp_taxonomy( $this->slug, $post_types, $args );
   }
-
 }

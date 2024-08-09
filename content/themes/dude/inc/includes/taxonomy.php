@@ -71,11 +71,10 @@ abstract class Taxonomy {
 
 		// Remove post types that in which the taxonomy was not properly
 		// registered from the result array.
-		$registered_object_types = array_filter( $register_result, function( $result, $object_type ) {
+		$registered_object_types = array_filter( $register_result, function( $result, $object_type ) { // phpcs:ignore
 			return ( $result ) ? true : false;
 		}, ARRAY_FILTER_USE_BOTH );
 
 		return $registered_object_types;
 	}
-
 }
