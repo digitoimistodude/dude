@@ -1,6 +1,6 @@
 .has-transition-fade {
   // stylelint-disable-next-line property-disallowed-list
-  animation: slideup .9s cubic-bezier(.075, .82, .165, 1) forwards;
+  animation: slideup 300ms cubic-bezier(.075, .82, .165, 1) forwards;
   -webkit-font-smoothing: antialiased;
   opacity: 1;
   transform: translate3d(0, 3vh, 0);
