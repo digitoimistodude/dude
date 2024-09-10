@@ -150,6 +150,10 @@ add_action( 'after_setup_theme', function() {
     // Register custom ACF Blocks
     'acf_blocks' => [
       [
+       'name' => 'video-autoplay',
+       'title' => 'Autoplay-video',
+      ],
+      [
        'name' => 'form-person',
        'title' => 'Lomake henkilöllä',
        'prevent_cache' => true,
