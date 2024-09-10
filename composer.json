@@ -52,6 +52,10 @@
     ]
   },
   "repositories": [
+      {
+        "type": "composer",
+        "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+      },
     {
       "type": "composer",
       "url": "https://wpackagist.org",
@@ -125,7 +129,7 @@
     "vlucas/phpdotenv": "^5.3",
     "oscarotero/env": "^2.1",
     "roots/wp-config": "^1.0",
-    "johnpbloch/wordpress": "6.6",
+    "johnpbloch/wordpress": "6.6.1",
     "digitoimistodude/air-helper": "*",
     "wpengine/advanced-custom-fields-pro": "*",
     "digitoimistodude/air-blocks-acf-example-data": "dev-master",
