@@ -152,6 +152,7 @@ add_action( 'after_setup_theme', function() {
       [
        'name' => 'video-autoplay',
        'title' => 'Autoplay-video',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'form-person',
@@ -166,107 +167,133 @@ add_action( 'after_setup_theme', function() {
       [
        'name' => 'title-icon-list-cols',
        'title' => 'Otsikko ja listat kuvakkeilla',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'job-techniques',
        'title' => 'Tekniikat',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'hero-jobs',
        'title' => 'Työpaikkasivun yläosa',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'images',
        'title' => 'Kuvat',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'title-content-cols-30',
        'title' => 'Tekstipalstat 30-30-30',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'jobs',
        'title' => 'Avoimet työpaikat',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'title-images',
        'title' => 'Otsikko ja kuvat',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'timeline',
        'title' => 'Aikajana',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'carousel',
        'title' => 'Kuvakaruselli',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'image',
        'title' => 'Kuva',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'persons',
        'title' => 'Henkilöt',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'reference-quote-long',
        'title' => 'Yksittäinen pidempi lainaus',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'reference-quote-short',
        'title' => 'Yksittäinen lyhempi lainaus',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'image-content',
        'title' => 'Kuva ja teksti',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'keynumbers-content',
        'title' => 'Avainluvut ja tekstisisältö',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'hero-centered',
        'title' => 'Sivun yläosa keskitetty',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'image-list',
        'title' => 'Kuva ja lista',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'process',
        'title' => 'Prosessi',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'faq-accordion',
        'title' => 'UKK-haitari',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'list',
        'title' => 'Lista',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'title-content-50-50',
        'title' => 'Otsikko ja teksti 50/50',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'hero-content-image',
        'title' => 'Sivun yläosa kuvalla',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'blog-latest',
        'title' => 'Blogaukset',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'cta-big',
        'title' => 'Iso toimintakehoite',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'title-content-columns',
        'title' => 'Otsikko ja sisältöpalstat',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'cta-small',
        'title' => 'Pieni toimintakehoite',
        'keywords' => [ 'cta' ],
+       'prevent_cache' => true,
       ],
       [
        'name' => 'reference-quotes',
@@ -276,22 +303,27 @@ add_action( 'after_setup_theme', function() {
       [
        'name' => 'references',
        'title' => 'Referenssit',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'hero',
        'title' => 'Yksinkertainen sivun yläosa',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'content',
        'title' => 'Tekstisisältö',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'badges',
        'title' => 'WordPress-ansiomerkit',
+       'prevent_cache' => true,
       ],
       [
        'name' => 'open-source',
        'title' => 'Avoin lähdekoodi',
+       'prevent_cache' => true,
       ],
     ],
 
