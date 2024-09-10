@@ -241,7 +241,8 @@ add_action( 'wpforms_frontend_css', function() {
 add_action( 'wp_enqueue_scripts',  __NAMESPACE__ . '\dequeue_dashicons' );
 
 function dequeue_dashicons() {
-  if ( ! is_admin() ) {
+  // If not in admin or logged in
+  if ( ! is_admin() && ! is_user_logged_in() ) {
     wp_deregister_style( 'dashicons' );
   }
 }
