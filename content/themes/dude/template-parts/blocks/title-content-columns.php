@@ -74,14 +74,12 @@ if ( $hide_title ) {
     <div class="cols<?php if ( $two_columns ) echo ' cols-2' ?>">
       <?php foreach ( $columns as $column ) : ?>
         <div class="col<?php if ( $column['icon_left'] ) echo ' is-icon-left' ?>">
-          <div class="icon">
-            <?php if ( ! empty( $column['icon_svg'] ) ) {
-              $icon_path = get_theme_file_path( "svg/foruser/{$column['icon_svg']}" );
-              if ( file_exists( $icon_path ) ) {
-                include $icon_path;
-              }
-            } ?>
-          </div>
+            <?php if ( ! empty( $column['icon_svg'] ) ) : ?>
+              <div class="icon">
+                <?php $icon_path = get_theme_file_path( "svg/foruser/{$column['icon_svg']}" );
+                if ( file_exists( $icon_path ) ) include $icon_path; ?>
+              </div>
+            <?php endif; ?>
 
           <div class="content">
             <h3>

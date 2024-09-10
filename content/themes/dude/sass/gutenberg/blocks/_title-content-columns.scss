@@ -127,14 +127,14 @@
   flex-wrap: unset;
   gap: 4.6rem;
 
-  svg {
+  .icon svg {
     height: auto;
     max-height: 170px;
     min-width: 170px;
   }
 
   @media (max-width: 1180px) {
-    svg {
+    .icon svg {
       min-width: 120px;
     }
   }
@@ -142,7 +142,7 @@
   @media (max-width: $container-mobile) {
     gap: calc(var(--padding-container-horizontal) * 2);
 
-    svg {
+    .icon svg {
       height: 64px;
       min-width: 64px;
       width: 64px;
