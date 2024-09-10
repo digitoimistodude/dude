@@ -49,10 +49,10 @@ $picture_cdn_srcset = [
 
 ?>
 
-<section class="block block-image has-unified-padding-if-stacked has-transition-fade">
+<section class="block block-image has-unified-padding-if-stacked has-transition-fade<?php if ( $use_full_width ) echo ' is-full-width'; ?>">
   <?php
-    if ( $use_full_width ) echo '<div class="container">';
+    if ( ! $use_full_width ) echo '<div class="container">';
     get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset );
-    if ( $use_full_width ) echo '</div>';
+    if ( ! $use_full_width ) echo '</div>';
   ?>
 </section>
