@@ -19,9 +19,17 @@ namespace Air_Light;
 /**
  * Analytics etc. can be found at inc/hooks/analytics.php
  */
-$salesperson_id = get_custom_setting( 'salesperson', 'general' );
-$sales_phone = get_post_meta( $salesperson_id, 'tel', true );
-$sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
+// Check if get_custom_setting exists
+if ( function_exists( 'get_custom_setting' ) ) {
+
+  $salesperson_id = get_custom_setting( 'salesperson', 'general' );
+  $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
+  $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
+
+ } else {
+  $sales_phone = '';
+  $sales_phone_tel_value = '';
+}
 
 $body_class = [ 'no-js' ];
 $navigation_color = get_post_meta( get_the_id(), 'color', true );

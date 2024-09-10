@@ -12,17 +12,22 @@
  * @package dude
  */
 
-// Hack to get WPForms to function with swup.js
-$wforms = \WPForms\WPForms::instance()->frontend;
-add_filter( 'wpforms_global_assets', '__return_true' );
-// remove_action( 'wp_footer', [ $wforms, 'assets_footer' ], 15 );
-remove_action( 'wp_footer', [ $wforms, 'recaptcha_noconflict' ], 19 );
-remove_action( 'wp_footer', [ $wforms, 'missing_assets_error_js' ], 20 );
-// remove_action( 'wp_footer', [ $wforms, 'footer_end' ], 99 );
-add_action( 'dude_site_main_after_content', [ $wforms, 'assets_footer' ], 15 );
-// add_action( 'dude_site_main_after_content', [ $wforms, 'recaptcha_noconflict' ], 19 );
-add_action( 'dude_site_main_after_content', [ $wforms, 'missing_assets_error_js' ], 20 );
-// add_action( 'dude_site_main_after_content', [ $wforms, 'footer_end' ], 99 );
+ // Check if Class exists
+if ( class_exists( 'WPForms' ) ) {
+
+  // Hack to get WPForms to function with swup.js
+  $wforms = \WPForms\WPForms::instance()->frontend;
+  add_filter( 'wpforms_global_assets', '__return_true' );
+  // remove_action( 'wp_footer', [ $wforms, 'assets_footer' ], 15 );
+  remove_action( 'wp_footer', [ $wforms, 'recaptcha_noconflict' ], 19 );
+  remove_action( 'wp_footer', [ $wforms, 'missing_assets_error_js' ], 20 );
+  // remove_action( 'wp_footer', [ $wforms, 'footer_end' ], 99 );
+  add_action( 'dude_site_main_after_content', [ $wforms, 'assets_footer' ], 15 );
+  // add_action( 'dude_site_main_after_content', [ $wforms, 'recaptcha_noconflict' ], 19 );
+  add_action( 'dude_site_main_after_content', [ $wforms, 'missing_assets_error_js' ], 20 );
+  // add_action( 'dude_site_main_after_content', [ $wforms, 'footer_end' ], 99 );
+
+}
 
 // Disable WPForms email suggestions like "Did you mean juha@dude.fr?"
 add_filter( 'wpforms_mailcheck_enabled', '__return_false' );
