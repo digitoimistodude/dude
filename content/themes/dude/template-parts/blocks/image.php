@@ -14,6 +14,8 @@
 
 namespace Air_Light;
 
+$use_full_width = get_field( 'use_full_width' );
+
 if ( ! isset( $args ) ) {
   $image_id = get_field( 'image_id' );
 } else {
@@ -44,10 +46,13 @@ $picture_cdn_srcset = [
     'height'    => '865',
   ],
 ];
+
 ?>
 
-<section class="block block-image has-unified-padding-if-stacked">
-  <div class="container has-transition-fade">
-    <?php get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset ); ?>
-  </div>
+<section class="block block-image has-unified-padding-if-stacked has-transition-fade">
+  <?php
+    if ( $use_full_width ) echo '<div class="container">';
+    get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset );
+    if ( $use_full_width ) echo '</div>';
+  ?>
 </section>

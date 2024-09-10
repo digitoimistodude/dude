@@ -6,6 +6,7 @@
             "key": "field_a47dc9fadd827",
             "label": "Kuva",
             "name": "image_id",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -15,8 +16,8 @@
                 "class": "",
                 "id": ""
             },
+            "relevanssi_exclude": 0,
             "return_format": "id",
-            "preview_size": "medium",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -24,7 +25,31 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66e0793d26b84",
+            "label": "Käytä kokoleveänä",
+            "name": "use_full_width",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 1,
+            "message": "Käytetäänkö 100% kuvaa",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -45,5 +70,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1655118517
+    "modified": 1725987168
 }
