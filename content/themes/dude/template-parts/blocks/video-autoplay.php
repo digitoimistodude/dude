@@ -50,6 +50,6 @@ if ( is_wp_error( $video_data ) ) {
 ?>
 
 <section class="block block-video-autoplay">
-  <iframe class="reference-iframe" src="<?php echo esc_url( $player_embed_url ); ?>?autoplay=1&loop=1&muted=1&background=1" width="<?php echo esc_attr( $video_width ); ?>" height="<?php echo esc_attr( $video_height ); ?>" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  <iframe class="reference-iframe" src="<?php echo esc_url( $player_embed_url ); ?>?autoplay=1&loop=1&muted=1&background=1&dnt=1" width="<?php echo esc_attr( $video_width ); ?>" height="<?php echo esc_attr( $video_height ); ?>" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </section>
 
