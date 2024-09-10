@@ -298,7 +298,7 @@ add_action( 'after_setup_theme', function() {
     // Custom ACF block default settings
     'acf_block_defaults' => [
       'category'          => 'dude',
-      'mode'              => 'auto',
+      'mode'              => 'preview',
       'align'             => 'full',
       'post_types'        => [
         'page',
