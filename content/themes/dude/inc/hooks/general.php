@@ -52,12 +52,14 @@ function clear_open_jobs_count_cache() {
   wp_cache_delete( 'open-jobs-count', 'theme' );
 } // end clear_open_jobs_count_cache
 
-/**
- * Show archives
- */
+// Air helper disables
 add_filter( 'air_helper_disable_views_tag', '__return_false' );
 add_filter( 'air_helper_disable_views_category', '__return_false' );
 add_filter( 'air_helper_disable_views_author', '__return_false' );
+
+// Air cookie disables
+// Allow Vimeo videos to autoplay
+add_filter( 'air_cookie\embeds\vimeo\add_dnt', '__return_false' );
 
 // Pre_get_posts for some archives to enable Simple Post Ordering
 add_action( 'pre_get_posts', __NAMESPACE__ . '\pre_get_posts' );

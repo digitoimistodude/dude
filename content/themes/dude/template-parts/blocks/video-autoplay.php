@@ -1,13 +1,8 @@
 <?php
 /**
- * The template for video-autoplay
+ * Video-autoplay block
  *
  * Description of your block called "video-autoplay" goes here.
- *
- * @Author:		Roni Laukkarinen
- * @Date:   		2022-02-10 12:28:36
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-02-10 12:28:36
  *
  * @package dude
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -26,8 +21,8 @@ if ( empty( $vimeo_url ) ) {
 // Get VIMEO_TOKEN from .env
 $vimeo_token = getenv( 'VIMEO_TOKEN' );
 
-// Get video width and height from https://api.vimeo.com/videos/<video>
-$video_id = explode( '/', $vimeo_url )[3];
+// Get video ID
+$video_id = get_vimeo_id( $vimeo_url );
 
 // Get video data from Vimeo API
 $video_data = wp_remote_get( 'https://api.vimeo.com/videos/' . $video_id, [
