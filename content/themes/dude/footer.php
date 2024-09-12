@@ -148,6 +148,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
   id="top"
   class="top"
   type="button"
+  style="display: none;"
 >
   <span class="screen-reader-text-dude"><?php echo esc_html( get_default_localization( 'Back to top' ) ); ?></span>
   <span aria-hidden="true">&uarr;</span>
