@@ -473,3 +473,10 @@ p > img[width] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+// Heading size exceptions for long words
+@media (max-width: 500px) {
+  .postid-17537 .block-hero-single h1 {
+    font-size: 30px;
+  }
+}
