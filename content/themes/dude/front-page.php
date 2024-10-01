@@ -15,8 +15,6 @@
 
 namespace Air_Light;
 
-add_filter( 'load_video_player', '__return_true' );
-
 get_header(); ?>
 
 <main class="site-main">

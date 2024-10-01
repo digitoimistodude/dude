@@ -25,8 +25,8 @@ import initTabs from './modules/tabs';
 import initEmbeds from './modules/embeds';
 import initScrollableDivs from './modules/scrollable-div-shadows';
 import initdarkModeFooterToggle from './modules/dark-mode-footer-toggle';
-import initShowreel from './modules/showreel';
 import initTrain from './modules/train';
+import initShowreel from './modules/showreel';
 import init100vhMobileFix from './modules/100vh';
 import init404 from './modules/404';
 import initSwupHelpers from './modules/swup-helpers';
@@ -126,5 +126,3 @@ document.addEventListener('DOMContentLoaded', init);
 
 // Do things when content is replaced via Swup
 swup.on('contentReplaced', init);
-
-window._dude_swup = swup;

@@ -22,7 +22,6 @@ const initShowreel = () => {
   const endSeconds = 11;
 
   // Timestamps for short video in reference
-  const initSeconds = 48;
   const startSecondsReference = 48;
   const endSecondsReference = 64;
 

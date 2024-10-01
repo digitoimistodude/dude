@@ -17,8 +17,6 @@ if ( have_posts() ) {
   }
 }
 
-add_filter( 'load_video_player', '__return_true' );
-
 get_header(); ?>
 
 <main class="site-main archive-reference">
