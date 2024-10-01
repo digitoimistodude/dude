@@ -152,21 +152,6 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
   return $tag;
 } // end add_data_attribute_to_scripts
 
-/**
- * Only by default loads the video-player script on pages it's needed, otherwise load it from data-src
- */
-function conditional_video_player_script( $tag, $handle ) {
-  if ( 'video-player' !== $handle ) {
-    return $tag;
-  }
-
-  if ( apply_filters( 'load_video_player', false ) ) {
-    return $tag;
-  }
-
-  return str_replace( 'src=', 'data-src=', $tag );
-}
-
 function swupify_air_cookie_inline_script( $script ) {
   ob_start(); ?>
 
