@@ -25,6 +25,7 @@ import initTabs from './modules/tabs';
 import initEmbeds from './modules/embeds';
 import initScrollableDivs from './modules/scrollable-div-shadows';
 import initdarkModeFooterToggle from './modules/dark-mode-footer-toggle';
+import initShowreel from './modules/showreel';
 import initTrain from './modules/train';
 import init100vhMobileFix from './modules/100vh';
 import init404 from './modules/404';
@@ -75,6 +76,9 @@ function init(target, args) {
   // Init scrollable divs
   initScrollableDivs();
 
+  // Init showreel
+  initShowreel();
+
   // Init dark mode toggle
   initdarkModeFooterToggle();
 
@@ -121,16 +125,6 @@ function init(target, args) {
 document.addEventListener('DOMContentLoaded', init);
 
 // Do things when content is replaced via Swup
-swup.on('contentReplaced', () => {
-  init();
-
-  // Lazy-load videoplayer if any players are present
-  if (document.querySelectorAll('.vimeo-player').length > 0) {
-    const videoPlayerJs = document.getElementById('video-player-js');
-    if (!videoPlayerJs || !videoPlayerJs.dataset.src) return; // Not found or already loaded
-    videoPlayerJs.src = videoPlayerJs.dataset.src;
-    window._dude_swup_run_video_player = true;
-  }
-});
+swup.on('contentReplaced', init);
 
 window._dude_swup = swup;
