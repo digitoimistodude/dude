@@ -52,7 +52,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
     <div class="footer-columns">
 
       <div class="col col-full-width">
-        <p class="introduction">Dude, vuodesta 2013. Paljon on nähty ja tehty. Tuntuuko, että olisimme oikea tekijä sinulle ja sinä oikea asiakas meille? Ota meihin yhteyttä.</p>
+        <p class="introduction">Dude, vuodesta 2013. Tuntuuko, että olisimme oikea tekijä sinulle ja sinä oikea asiakas meille? Ota meihin yhteyttä.</p>
       </div>
 
       <div class="col">
