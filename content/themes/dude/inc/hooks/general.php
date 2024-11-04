@@ -166,3 +166,6 @@ function two_factor_force_email_provider_for_user( $enabled_providers ) {
 
   return $enabled_providers;
 } // end two_factor_force_email_provider_for_user
+
+// Disable WordPress scaling down (-scaled) images
+add_filter( 'big_image_size_threshold', '__return_false' );
