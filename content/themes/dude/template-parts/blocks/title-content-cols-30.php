@@ -34,30 +34,30 @@ if ( empty( $cols ) ) {
   <div class="container">
 
     <?php if ( ! $hide_title && ! empty( $title ) ) : ?>
-      <h2>
-        <?php echo esc_html( $title ); ?>
-      </h2>
+    <h2>
+      <?php echo esc_html( $title ); ?>
+    </h2>
     <?php elseif ( $hide_title && ! empty( $title ) ) : ?>
-      <span class="screen-reader-text-dude">
-        <?php echo esc_html( $title ) ?>
-      </span>
+    <span class="screen-reader-text-dude">
+      <?php echo esc_html( $title ) ?>
+    </span>
     <?php endif; ?>
 
     <div class="cols">
       <?php foreach ( $cols as $col ) : ?>
-        <div class="col">
-          <p>
-            <?php echo esc_html( $col['content'] ) ?>
-          </p>
+      <div class="col">
+        <p>
+          <?php echo wp_kses_post( $col['content'] ) ?>
+        </p>
 
-          <?php if ( ! empty( $col['link'] ) ) : ?>
-            <p class="link-underlined-wrapper">
-              <a class="link-underlined" href="<?php echo esc_html( $col['link']['url'] ) ?>">
-                <?php echo esc_html( $col['link']['title'] ) ?>
-              </a>
-            </p>
-          <?php endif; ?>
-        </div>
+        <?php if ( ! empty( $col['link'] ) ) : ?>
+        <p class="link-underlined-wrapper">
+          <a class="link-underlined" href="<?php echo esc_html( $col['link']['url'] ) ?>">
+            <?php echo esc_html( $col['link']['title'] ) ?>
+          </a>
+        </p>
+        <?php endif; ?>
+      </div>
       <?php endforeach; ?>
     </div>
 
