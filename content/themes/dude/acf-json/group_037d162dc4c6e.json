@@ -6,6 +6,7 @@
             "key": "field_8f23aa8b28038",
             "label": "Otsikko",
             "name": "title",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_62b981c74b782",
             "label": "Piilota otsikko",
             "name": "hide_title",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -44,6 +46,7 @@
             "key": "field_62b980fd14806",
             "label": "Laatikot",
             "name": "cols",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -57,13 +60,15 @@
             "min": 0,
             "max": 0,
             "layout": "block",
-            "button_label": "",
+            "button_label": "Lisää rivi",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_62b9812814807",
                     "label": "Sisältö",
                     "name": "content",
-                    "type": "text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -72,16 +77,20 @@
                         "class": "",
                         "id": ""
                     },
+                    "relevanssi_exclude": 0,
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_62b980fd14806"
                 },
                 {
                     "key": "field_62bc02474c195",
                     "label": "Lisää linkki",
                     "name": "use_link",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -95,12 +104,14 @@
                     "default_value": 0,
                     "ui": 1,
                     "ui_on_text": "",
-                    "ui_off_text": ""
+                    "ui_off_text": "",
+                    "parent_repeater": "field_62b980fd14806"
                 },
                 {
                     "key": "field_62b98a31d5589",
                     "label": "Linkki",
                     "name": "link",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
@@ -118,7 +129,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array"
+                    "return_format": "array",
+                    "parent_repeater": "field_62b980fd14806"
                 }
             ]
         }
@@ -141,5 +153,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1656587696
+    "modified": 1731948930
 }
