@@ -135,3 +135,18 @@
   // stylelint-disable-next-line declaration-no-important
   display: none !important;
 }
+
+.block-video-autoplay {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.block-video-autoplay iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

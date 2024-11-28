@@ -116,9 +116,6 @@ function init(target, args) {
   if (window.innerWidth < 768) {
     reframe('.wp-has-aspect-ratio iframe, .article-content iframe');
   }
-
-  // Responsive reference video
-  reframe('.reference-iframe');
 }
 
 // When document has been completely loaded
