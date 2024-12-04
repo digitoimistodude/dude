@@ -79,34 +79,6 @@ function enqueue_theme_scripts() {
 } // end enqueue_theme_scripts
 
 /**
- * Load polyfills for legacy browsers
- */
-function enqueue_polyfills() {
-  // Include polyfills
-  $script = '
-  var supportsES6 = (function () {
-  try {
-    new Function("(a = 0) => a");
-    return true;
-  } catch (err) {
-    return false;
-  }
-  }());
-  var legacyScript ="' . esc_url( get_theme_file_uri( get_asset_file( 'legacy.js' ) ) ) . '";
-  if (!supportsES6) {
-    var script = document.createElement("script");
-    script.src = legacyScript;
-    document.head.appendChild(script);
-  }';
-
-  if ( file_exists( get_theme_file_path( get_asset_file( 'legacy.js' ) ) ) ) {
-    wp_register_script( 'dude_legacy', '', [], filemtime( get_theme_file_path( get_asset_file( 'legacy.js' ) ) ), false );
-    wp_enqueue_script( 'dude_legacy' );
-    wp_add_inline_script( 'dude_legacy', $script, true );
-  }
-} // end enqueue_polyfills
-
-/**
  * Returns the built asset filename and path depending on
  * current environment.
  *
