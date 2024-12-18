@@ -52,10 +52,10 @@
     ]
   },
   "repositories": [
-      {
-        "type": "composer",
-        "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
-      },
+    {
+      "type": "composer",
+      "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-plugin/"
+    },
     {
       "type": "composer",
       "url": "https://wpackagist.org",
@@ -70,8 +70,8 @@
       "url": "https://github.com/digitoimistodude/air-blocks-acf-example-data"
     },
     {
-        "type":"composer",
-        "url":"https://connect.advancedcustomfields.com"
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
     },
     {
       "type": "composer",
@@ -84,12 +84,12 @@
     {
       "type": "package",
       "package": {
-        "name": "wpforms/wpforms",
+        "name": "wpforms/wpforms-pro",
         "type": "wordpress-plugin",
-        "version": "1.7.3",
+        "version": "1.9.2.3",
         "dist": {
           "type": "zip",
-          "url": "https://plugins.dude.fi/wpforms-1.7.3.zip"
+          "url": "https://plugins.dude.fi/wpforms_1.9.2.3.zip"
         }
       }
     },
@@ -152,7 +152,7 @@
     "koodimonni-language/en_gb": "*",
     "digitoimistodude/air-cookie": "dev-master",
     "digitoimistodude/air-setting-groups": "dev-master",
-    "wpforms/wpforms": "1.7.3",
+    "wpforms/wpforms-pro": "*",
     "wpforms/wpforms-surveys-polls": "1.7.0",
     "rhubarbgroup/object-cache-pro": "^1.17"
   },
