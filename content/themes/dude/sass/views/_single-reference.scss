@@ -62,12 +62,20 @@
   }
 
   .col-image > img {
-    aspect-ratio: unset;
-    height: unset;
-    max-width: 100%;
-    min-width: unset;
-    position: static;
-    width: unset;
+    height: auto;
+    max-width: unset;
+    position: unset;
+    width: 100%;
+
+    // air-helper 3.2.4, issue #76
+    &:not([sizes]) {
+      aspect-ratio: unset;
+      height: unset;
+      max-width: 100%;
+      min-width: unset;
+      position: static;
+      width: unset;
+    }
   }
 }
 

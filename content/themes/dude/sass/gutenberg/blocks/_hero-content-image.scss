@@ -87,12 +87,8 @@
     }
 
     .col-image {
-      width: 100%;
-    }
-
-    .col-image,
-    .col-image img {
       @include aspect-ratio(712, 894.6);
+      width: 100%;
     }
   }
 
@@ -151,7 +147,6 @@
 }
 
 .has-bg-image img {
-  aspect-ratio: unset;
   height: 100%;
   max-width: none;
   min-width: 0;
