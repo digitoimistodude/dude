@@ -60,5 +60,5 @@ $player_embed_url = add_query_arg( [
 ?>
 
 <section class="block block-video-autoplay">
-  <iframe class="reference-iframe" src="<?php echo esc_url( $player_embed_url ); ?>" width="<?php echo esc_attr( $video_width ); ?>" height="<?php echo esc_attr( $video_height ); ?>" frameborder="0" allow="fullscreen" allow="autoplay"></iframe>
+  <iframe class="reference-iframe" src="<?php echo esc_url( $player_embed_url ); ?>" width="<?php echo esc_attr( $video_width ); ?>" height="<?php echo esc_attr( $video_height ); ?>" allow="autoplay; fullscreen" style="border:0;"></iframe>
 </section>
