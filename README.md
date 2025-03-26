@@ -1,5 +1,5 @@
 # Dude.fi official website
-![based_on_air_version 8.3.7_](https://img.shields.io/badge/based_on_air_version-8.3.7_-brightgreen.svg?style=flat-square) ![project_created 23_Apr_2022](https://img.shields.io/badge/project_created-23_Apr_2022-blue.svg?style=flat-square) ![Tested_up_to WordPress_6.0](https://img.shields.io/badge/Tested_up_to-WordPress_6.0-blue.svg?style=flat-square) ![Compatible_with PHP_7.4](https://img.shields.io/badge/Compatible_with-PHP_7.4-green.svg?style=flat-square)
+![based_on_air_version 8.3.7_](https://img.shields.io/badge/based_on_air_version-8.3.7_-brightgreen.svg?style=flat-square) ![Tested_up_to WordPress_6.7](https://img.shields.io/badge/Tested_up_to-WordPress_6.7-blue.svg?style=flat-square) ![Compatible_with PHP_8.3](https://img.shields.io/badge/Compatible_with-PHP_8.3-green.svg?style=flat-square)
 
 You are looking at the official website code repository at <a href="https://www.dude.fi">dude.fi</a>.
 
