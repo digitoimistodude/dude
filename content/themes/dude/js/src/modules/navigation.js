@@ -22,7 +22,7 @@ const initNavigation = () => {
   // Navigation.js start
   (function ($) {
   // Responsive nav width
-    var responsivenav = 1200;
+    var responsivenav = 1260;
     var html;
     var body;
     var container;

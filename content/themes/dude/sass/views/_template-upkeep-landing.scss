@@ -98,6 +98,7 @@ body.page-template-template-upkeep-landing {
 
       &::after {
         animation: shine 4s ease-in-out infinite;
+        // stylelint-disable-next-line
         background: linear-gradient(60deg, transparent 0%, rgba(255, 255, 255, .2) 50%, transparent 100%);
         content: '';
         height: 100%;
