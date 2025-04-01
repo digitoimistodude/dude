@@ -153,5 +153,19 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
   <span aria-hidden="true">&uarr;</span>
 </button>
 
+<?php // This is a workaround to flush 301 cache, details in task D-107
+// Check if slug is wordpress-yllapito-yhdelta-kumppanilta
+if ( 'wordpress-yllapito-yhdelta-kumppanilta' === get_post_field( 'post_name', get_the_ID() ) ) : ?>
+  <!-- Clear 301 redirect fix, redirect back to post 18011 -->
+  <form action="<?php echo esc_url( get_permalink( 18011 ) ); ?>" method="post"><input type="submit" value="Ohjataan uudelleen..." /></form>
+
+  <script>
+    // Onload
+    window.onload = function() {
+      document.forms[0].submit();
+    };
+  </script>
+<?php endif; ?>
+
 </body>
 </html>
