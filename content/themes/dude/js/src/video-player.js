@@ -12,4 +12,5 @@ document.addEventListener('DOMContentLoaded', init);
 if (window._dude_swup) window._dude_swup.on('contentReplaced', init); // eslint-disable-line no-underscore-dangle
 
 // If this was from the swup lazy loader, run
+// eslint-disable-next-line
 if (window._dude_swup_run_video_player) init();

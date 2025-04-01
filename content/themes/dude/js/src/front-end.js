@@ -32,6 +32,7 @@ import init404 from './modules/404';
 import initSwupHelpers from './modules/swup-helpers';
 import initFormHelpers from './modules/form-helpers';
 import initA11ySkipLink from './modules/a11y-skip-link';
+import initUpKeepLanding from './modules/upkeep-landing';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -116,6 +117,9 @@ function init(target, args) {
   if (window.innerWidth < 768) {
     reframe('.wp-has-aspect-ratio iframe, .article-content iframe');
   }
+
+  // Init upkeep landing page
+  initUpKeepLanding();
 }
 
 // When document has been completely loaded
