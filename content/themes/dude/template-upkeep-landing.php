@@ -45,29 +45,46 @@ get_header(); ?>
       </h2>
     </div>
 
-      <div class="carousel" id="carousel">
-        <div class="carousel-track" id="carousel-track">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/radiomedia.svg' ); ?>" alt="RadioMedia">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/otava.svg' ); ?>" alt="Kustannusosakeyhtiö Otava">
-          <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/blackbruin-nocolor.svg' ); ?>" alt="Black Bruin">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gradia.svg' ); ?>" alt="Gradia">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/forum.svg' ); ?>" alt="Forum">
-          <img class="size-xl" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/musiikkitalo.svg' ); ?>" alt="Helsingin Musiikkitalo">
-          <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kata.svg' ); ?>" alt="Kata Safety">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gofore.svg' ); ?>" alt="Gofore">
-          <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/bauermedia-nocolor.svg' ); ?>" alt="Bauer Media">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/siipiweikot.svg' ); ?>" alt="Siipiweikot">
-          <img style="position: relative; top: 10px;"class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vierityspalkki.svg' ); ?>" alt="Vierityspalkki">
-          <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/northpatrol-nocolor.svg' ); ?>" alt="North Patrol">
-          <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kiinteistolehti.svg' ); ?>" alt="Kiinteistölehti">
-        </div>
-    </div>
-
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/radiomedia.svg' ); ?>" alt="RadioMedia">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/otava.svg' ); ?>" alt="Kustannusosakeyhtiö Otava">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/blackbruin-nocolor.svg' ); ?>" alt="Black Bruin">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gradia.svg' ); ?>" alt="Gradia">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/forum.svg' ); ?>" alt="Forum">
+        <img class="size-xl" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/musiikkitalo.svg' ); ?>" alt="Helsingin Musiikkitalo">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kata.svg' ); ?>" alt="Kata Safety">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gofore.svg' ); ?>" alt="Gofore">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/bauermedia-nocolor.svg' ); ?>" alt="Bauer Media">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/siipiweikot.svg' ); ?>" alt="Siipiweikot">
+        <img style="position: relative; top: 10px;"class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vierityspalkki.svg' ); ?>" alt="Vierityspalkki">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/northpatrol-nocolor.svg' ); ?>" alt="North Patrol">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kiinteistolehti.svg' ); ?>" alt="Kiinteistölehti">
+      </div>
     </div>
   </section>
 
-  <section class="block" style="background: transparent;">
+  <section class="block block-upkeep-price" style="background: transparent;">
     <div class="container">
+      <div class="items">
+        <div class="item item-glow">
+          <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="global-link" aria-hidden="true" tabindex="-1"></a>
+
+          <p class="badge" aria-hidden="true" tabindex="-1">
+            Ota yhteyttä ja tilaa
+          </p>
+
+          <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">199 &euro;</a></h2>
+          <p>per WordPress-verkkopalvelu</p>
+          <ul>
+            <li>Multisite-alasivustot +79 € / kpl</li>
+            <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
+            <li>Laskutus kolmen kuukauden välein etukäteen.</li>
+            <li>Jos käyttöönottovaiheessa ilmenee merkittäviä esteitä ylläpitoon ottoa varten ja palvelua ei voida toimittaa, emme veloita mitään ja sopimus puretaan.</li>
+            <li>Hinnat voimassa 12 kuukautta sopimuksen allekirjoittamisesta.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
