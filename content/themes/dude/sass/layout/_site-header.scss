@@ -238,6 +238,52 @@ body.has-light-navigation .site-header {
   }
 }
 
+// New badge, D-105
+.new-badge {
+  align-items: center;
+  background-color: var(--color-mint);
+  border-radius: 6px;
+  color: var(--color-midnight);
+  display: inline-flex;
+  font-size: 10px !important;
+  font-weight: var(--font-weight-bold);
+  height: 16px;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  right: -25px;
+  text-align: center;
+  text-transform: uppercase;
+  top: -1px;
+  width: 40px;
+
+  &::before {
+    animation: shine 1.8s ease-in-out infinite;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+    content: '';
+    height: 100%;
+    left: -100%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg);
+    width: 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+
+  50% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
 // Open position counts
 .open-positions-count {
   align-items: center;
