@@ -73,9 +73,9 @@ body.page-template-template-upkeep-landing {
 }
 
 .upkeep-background {
+  color: rgb(255 255 255 / .02);
   height: 100%;
   left: 0;
-  opacity: 1;
   overflow: visible;
   position: absolute;
   top: 0;
@@ -84,39 +84,14 @@ body.page-template-template-upkeep-landing {
 
   svg {
     bottom: auto;
+    filter: drop-shadow(0 0 150px rgb(255 255 255 / .8));
     height: 100%;
-    left: auto;
+    left: 50%;
     mix-blend-mode: overlay;
-    opacity: .05;
     position: absolute;
-    right: -30%;
-    top: 20%;
+    top: 60%;
+    transform: translate(-20%, -44%);
     width: 100%;
-
-    path {
-      position: relative;
-
-      &::after {
-        animation: shine 4s ease-in-out infinite;
-        // stylelint-disable-next-line
-        background: linear-gradient(60deg, transparent 0%, rgba(255, 255, 255, .2) 50%, transparent 100%);
-        content: '';
-        height: 100%;
-        left: -100%;
-        position: absolute;
-        top: 0;
-        width: 50%;
-      }
-    }
-  }
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-
-  100% {
-    transform: translateX(200%) rotate(45deg);
+    will-change: transform;
   }
 }
