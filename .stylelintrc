@@ -234,10 +234,6 @@
         "severity": "warning"
       }
     ],
-    "property-disallowed-list": [
-      "font",
-      "animation",
-      "background"
-    ]
+    "property-disallowed-list": null
   }
 }
