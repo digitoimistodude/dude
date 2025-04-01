@@ -25,6 +25,51 @@ body.page-template-template-upkeep-landing {
     // stylelint-disable-next-line
     border-color: #2a595e;
   }
+
+  // Logo carousel
+  .carousel {
+    overflow: hidden;
+    padding: 40px 0;
+    position: relative;
+  }
+
+  .carousel-track {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 80px;
+    height: 40px;
+    will-change: transform;
+  }
+
+  .carousel-track img {
+    filter: invert(58%) sepia(8%) saturate(343%) hue-rotate(174deg) brightness(89%) contrast(87%);
+    flex-shrink: 0;
+    height: 40px;
+    opacity: .7;
+    transition: opacity .3s;
+  }
+
+  .carousel-track img:focus,
+  .carousel-track img:hover {
+    opacity: 1;
+  }
+
+  .carousel-track img.size-s {
+    height: 32px;
+  }
+
+  .carousel-track img.size-xs {
+    height: 24px;
+  }
+
+  .carousel-track img.size-l {
+    height: 60px;
+  }
+
+  .carousel-track img.size-xl {
+    height: 80px;
+  }
 }
 
 .upkeep-background {
@@ -45,35 +90,32 @@ body.page-template-template-upkeep-landing {
     opacity: .05;
     position: absolute;
     right: -30%;
-    top: 7%;
+    top: 20%;
     width: 100%;
 
     path {
-      fill: currentColor;
       position: relative;
 
       &::after {
-        animation: upkeep-bg-rays 4s ease-in-out infinite;
-        background: linear-gradient(60deg, transparent 0%, rgb(255 255 255 / .2) 50%, transparent 100%);
+        animation: shine 4s ease-in-out infinite;
+        background: linear-gradient(60deg, transparent 0%, rgba(255, 255, 255, .2) 50%, transparent 100%);
         content: '';
         height: 100%;
-        left: -150%;
-        mask: url(#wp-logo);
+        left: -100%;
         position: absolute;
         top: 0;
-        transform: rotate(45deg);
         width: 50%;
       }
     }
   }
 }
 
-@keyframes upkeep-bg-rays {
+@keyframes shine {
   0% {
-    left: -150%;
+    transform: translateX(-100%) rotate(45deg);
   }
 
   100% {
-    left: 150%;
+    transform: translateX(200%) rotate(45deg);
   }
 }
