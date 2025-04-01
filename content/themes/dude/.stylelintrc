@@ -71,7 +71,7 @@
     "block-no-empty": true,
     "declaration-colon-newline-after": null,
     "declaration-empty-line-before": null,
-    "number-leading-zero": "never",
+    "number-leading-zero": null,
     "number-no-trailing-zeros": true,
     "value-list-comma-newline-after": "never-multi-line",
     "selector-list-comma-newline-after": "always",
