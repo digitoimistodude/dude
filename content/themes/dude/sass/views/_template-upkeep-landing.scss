@@ -31,6 +31,35 @@ body.page-template-template-upkeep-landing {
     overflow: hidden;
     padding: 40px 0;
     position: relative;
+
+    &::before,
+    &::after {
+      bottom: 0;
+      content: '';
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 160px; // Wider area for smoother transition
+      z-index: 2;
+
+      @media (max-width: 768px) {
+        width: 100px;
+      }
+    }
+
+    // First layer - wider, lighter blur
+    &::before {
+      backdrop-filter: blur(4px);
+      left: 0;
+      mask-image: linear-gradient(to right, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / .8) 30%, rgb(0 0 0 / 0) 100%);
+    }
+
+    &::after {
+      backdrop-filter: blur(4px);
+      mask-image: linear-gradient(to left, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / .8) 30%, rgb(0 0 0 / 0) 100%);
+      right: 0;
+    }
   }
 
   .carousel-track {
@@ -40,6 +69,10 @@ body.page-template-template-upkeep-landing {
     gap: 80px;
     height: 40px;
     will-change: transform;
+
+    @media (max-width: 768px) {
+      gap: 60px;
+    }
   }
 
   .carousel-track img {
@@ -55,20 +88,44 @@ body.page-template-template-upkeep-landing {
     opacity: 1;
   }
 
+  .carousel-track img.size-m {
+    height: 40px;
+
+    @media (max-width: 768px) {
+      height: 32px;
+    }
+  }
+
   .carousel-track img.size-s {
     height: 32px;
+
+    @media (max-width: 768px) {
+      height: 24px;
+    }
   }
 
   .carousel-track img.size-xs {
     height: 24px;
+
+    @media (max-width: 768px) {
+      height: 16px;
+    }
   }
 
   .carousel-track img.size-l {
     height: 60px;
+
+    @media (max-width: 768px) {
+      height: 40px;
+    }
   }
 
   .carousel-track img.size-xl {
     height: 80px;
+
+    @media (max-width: 768px) {
+      height: 60px;
+    }
   }
 }
 

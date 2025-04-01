@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus, brace-style, max-len */
 const initUpKeepLanding = () => {
   // Check if elements exist before proceeding
   const carousel = document.getElementById('carousel');
