@@ -1,5 +1,10 @@
-.block-cta p {
+@mixin text-huge() {
   font-size: clamp-calc($container-mobile, 1600px, 18px, 30px);
+}
+
+.text-huge,
+.block-cta p {
+  @include text-huge();
   margin: 0;
 }
 
