@@ -81,6 +81,10 @@ $absolute-navigation: true;
     margin: 0;
     padding: 0;
     position: relative;
+
+    @media (max-width: 1360px) {
+      --gap-main-level-horizontal: 4rem;
+    }
   }
 
   // Navigation list item
