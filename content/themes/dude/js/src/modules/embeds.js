@@ -16,33 +16,6 @@ const initEmbeds = () => {
   };
 
   loadMastodonAPI();
-
-  // Load Twitter API script
-  const loadTwitterWidgets = () => {
-    const tag = document.createElement('script');
-    tag.src = 'https://platform.twitter.com/widgets.js';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    window.isInstagramIframeAPILoaded = true;
-  };
-
-  loadTwitterWidgets();
-
-  // Load Instagram API script
-  const loadInstagramAPI = () => {
-    const tag = document.createElement('script');
-    tag.src = 'https://www.instagram.com/embed.js';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    window.isInstagramIframeAPILoaded = true;
-  };
-
-  loadInstagramAPI();
-
-  // Important: This generates the images
-  if (document.querySelector('.instagram-media')) {
-    window.instgrm.Embeds.process();
-  }
 };
 
 export default initEmbeds;
