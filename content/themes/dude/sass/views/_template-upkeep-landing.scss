@@ -1,4 +1,4 @@
-/* stylelint-disable a11y/font-size-is-readable, selector-max-class */
+// stylelint-disable a11y/font-size-is-readable, selector-max-class, scale-unlimited/declaration-strict-value
 @property --gradient-angle {
   inherits: false;
   initial-value: 90deg;
@@ -12,10 +12,24 @@ body.page-template-template-upkeep-landing {
   // stylelint-disable-next-line
   background-image: linear-gradient(159deg, #1e4348 0%, rgba(30, 32, 38, .734) 35%, #1e4348 65%, #1e2026 100%) !important;
 
+  // Override color themes
+  h1,
+  h2,
+  h3,
+  p {
+    color: #fff;
+  }
+
+  // stylelint-disable-next-line
+  .site-footer::after {
+    // stylelint-disable-next-line
+    display: none !important;
+  }
+
   // We don't use the toggle here
   // stylelint-disable-next-line
   .dark-mode-footer-toggle {
-    display: none;
+    // display: none;
   }
 
   .site-footer,
@@ -183,7 +197,8 @@ body.page-template-template-upkeep-landing {
 .block.block-upkeep-price {
   > .container {
     overflow: visible;
-    padding-top: 100px;
+    padding-bottom: 80px;
+    padding-top: 0;
 
     @media (max-width: 730px) {
       padding-top: 20px;
@@ -410,6 +425,7 @@ body.page-template-template-upkeep-landing {
   }
 }
 
+// stylelint-disable keyframes-name-pattern, kebab-case
 @keyframes fadeInOut {
   0%,
   100% {
@@ -424,5 +440,82 @@ body.page-template-template-upkeep-landing {
   50%,
   100% {
     opacity: 0.5;
+  }
+}
+
+.block.block-upkeep-steps {
+  .head {
+    align-items: center;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .steps {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @media (max-width: 1100px) {
+      gap: 20px;
+
+      .step {
+        padding: 32px;
+      }
+
+      // stylelint-disable-next-line
+      .step h3 span {
+        font-size: 62px;
+      }
+
+      .head {
+        margin-bottom: 40px;
+      }
+    }
+
+    @media (max-width: 880px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .step {
+    background-color: #1e3137;
+    border: 1px solid #3f616a;
+    border-radius: 16px;
+    padding: 40px;
+    transition: all .3s;
+
+    &:hover,
+    &:focus {
+      border-color: rgb(126 251 255 / .699);
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 0 0 16px;
+    }
+
+    h3 span {
+      color: var(--color-mint);
+      display: block;
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      margin-top: -10px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    p:first-of-type {
+      margin-top: 0;
+    }
   }
 }

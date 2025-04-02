@@ -6,3 +6,7 @@
   line-height: 1.35;
   max-width: 110rem;
 }
+
+.heading-64 {
+  @include heading-64();
+}

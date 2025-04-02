@@ -38,7 +38,7 @@ get_header(); ?>
     </div>
   </section>
 
-  <section class="block block-upkeep-logos">
+  <section class="block block-upkeep-logos has-transition-fade">
     <div class="container" style="padding-top: 64px; padding-bottom: 0;">
       <h2 class="block-heading" style="margin-bottom: 2px; color: #6a747d; font-size: 16px; font-weight: 600;">
         Ylläpitopalveluumme luottavat
@@ -161,6 +161,51 @@ get_header(); ?>
     </div>
   </section>
 
+  <section class="block block-upkeep-steps">
+    <div class="container" style="padding-top: 16px;">
+
+      <div class="head" style="text-align: center;">
+        <h2 style="background: #203039;border-radius: 20px;border: 1px solid #31606d;font-size: 16px;display: inline-block;padding: 7px 15px;margin: 0 auto;font-weight: 500;color: rgb(255 255 255 / .8);">Prosessi</h2>
+        <h3 style="font-size: 52px; font-weight: 900; margin: 0;">Mites tämä sitten menee?</h3>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h3><span>1. </span>Yhteydenotto ja alkukartoitus</h3>
+          <p>Ota meihin yhteyttä, kerro hieman teistä ja verkkopalvelustanne. Kartoitetaan tilanne.</p>
+
+          <p>Selvitetään onko järkevää vaihtaa palvelin meille, vai otetaanko sivusto ylläpitoon nykyiseen ympäristöön.</p>
+        </div>
+
+        <div class="step">
+          <h3><span>2. </span>Ilmainen auditointi</h3>
+          <p>Lähetä sivustosi tiedot meille tietoturvallisesti ja kurkkaamme konepellin alle veloituksetta (työn arvo jopa 840 &euro;!).</p>
+
+          <p>Kurkataan WordPressin hallintapaneeli tuotannossa ja tarkistetaan ajokelpoisuus kehitysympäristöissä.</p>
+        </div>
+
+        <div class="step">
+          <h3><span>3. </span>Verkkopalvelu Duden hoiteisiin</h3>
+          <p>Siirretään sivusto Duden palvelimille ja otetaan ylläpitoon. Voidaam sopia siirto ja ylläpito tai ylläpito- ja jatkokehityssopimus ilman Duden WordPress-optimoitua palvelintilaa.</p>
+
+          <p>Kaikki on sovittavissa.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="block block-upkeep-faq">
+    <div class="container" style="padding-top: 0;">
+      <h2 style="background: #203039;border-radius: 20px;border: 1px solid #31606d;font-size: 16px;display: inline-block;padding: 7px 15px;margin: 0;font-weight: 500;color: rgb(255 255 255 / .8);">Usein kysytyt kysymykset</h2>
+      <h3 class="heading-42">Kaikki WordPress-ylläpidostamme</h2>
+
+      <div class="items">
+
+
+      </div>
+    </div>
+  </section>
 </main>
 
 <?php get_footer();

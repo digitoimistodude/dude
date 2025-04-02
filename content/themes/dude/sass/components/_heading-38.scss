@@ -4,3 +4,7 @@
   font-weight: var(--font-weight-medium);
   letter-spacing: -.01em;
 }
+
+.heading-38 {
+  @include heading-38();
+}
