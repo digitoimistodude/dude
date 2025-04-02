@@ -202,7 +202,10 @@ body.page-template-template-upkeep-landing {
 
     .container {
       overflow: visible;
-      padding-bottom: 0;
+
+      @media (min-width: $width-max-mobile) {
+        padding-bottom: 0;
+      }
     }
 
     .cta-box-content h2 {
@@ -235,23 +238,35 @@ body.page-template-template-upkeep-landing {
   color: rgb(255 255 255 / .02);
   height: 100%;
   left: 0;
+  margin: 0 auto;
+  max-width: 100vw;
   overflow: visible;
   position: absolute;
+  right: 0;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 0;
 
   svg {
     bottom: auto;
     filter: drop-shadow(0 0 150px rgb(255 255 255 / .8));
-    height: 100%;
+    height: 850px;
     left: 50%;
     mix-blend-mode: overlay;
-    position: absolute;
-    top: 60%;
-    transform: translate(-20%, -44%);
-    width: 100%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
     will-change: transform;
+  }
+
+  @media (min-width: 1300px) {
+    max-width: 1600px;
+
+    svg {
+      right: 0;
+      transform: translate(0, -50%);
+    }
   }
 }
 
