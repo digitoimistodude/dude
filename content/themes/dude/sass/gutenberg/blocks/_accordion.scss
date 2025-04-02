@@ -75,7 +75,7 @@ button.accordion-trigger {
 }
 
 .accordion-trigger[aria-expanded="true"] .accordion-icon {
-  transform: rotate(-45deg);
+  transform: rotate(-315deg);
 }
 
 .accordion-trigger[aria-expanded="true"] {

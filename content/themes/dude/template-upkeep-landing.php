@@ -78,11 +78,9 @@ get_header(); ?>
             <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">199 &euro; <span class="text-small">/kk</span></a></h2>
             <p>per WordPress-verkkopalvelu</p>
             <ul>
-              <li>Multisite-alasivustot +79 € / kpl</li>
               <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
-              <li>Laskutus kolmen kuukauden välein etukäteen.</li>
-              <li>Jos käyttöönottovaiheessa ilmenee merkittäviä esteitä ylläpitoon ottoa varten ja palvelua ei voida toimittaa, emme veloita mitään ja sopimus puretaan.</li>
               <li>Hinnat voimassa 12 kuukautta sopimuksen allekirjoittamisesta.</li>
+              <li>Hintaan lisätään voimassa oleva arvonlisävero.</li>
             </ul>
           </div>
 
@@ -90,16 +88,15 @@ get_header(); ?>
             <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="global-link" aria-hidden="true" tabindex="-1"></a>
 
             <p class="badge" aria-hidden="true" tabindex="-1">
-              Ota yhteyttä ja tilaa
+              Ota yhteyttä ja kysy lisää
             </p>
 
-            <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">Sopimuksen mukaan <span class="text-small">/kk</span></a></h2>
+            <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">Tarvitsetko vielä räätälöidymmän ratkaisun?</a></h2>
             <ul>
               <li>Räätälöimme jatkokehityksen ja kuukausitapaamisten määrän sinua varten.</li>
               <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
-              <li>Laskutus kolmen kuukauden välein etukäteen.</li>
-              <li>Jos käyttöönottovaiheessa ilmenee merkittäviä esteitä ylläpitoon ottoa varten ja palvelua ei voida toimittaa, emme veloita mitään ja sopimus puretaan.</li>
               <li>Hinnat voimassa 12 kuukautta sopimuksen allekirjoittamisesta.</li>
+              <li>Hintaan lisätään voimassa oleva arvonlisävero.</li>
             </ul>
           </div>
         </div>
@@ -166,26 +163,26 @@ get_header(); ?>
 
       <div class="head" style="text-align: center;">
         <h2 style="background: #203039;border-radius: 20px;border: 1px solid #31606d;font-size: 16px;display: inline-block;padding: 7px 15px;margin: 0 auto;font-weight: 500;color: rgb(255 255 255 / .8);">Prosessi</h2>
-        <h3 style="font-size: 52px; font-weight: 900; margin: 0;">Mites tämä sitten menee?</h3>
+        <h3 class="heading-42" style="margin-top: 0;">Mites tämä sitten menee?</h3>
       </div>
 
       <div class="steps">
         <div class="step">
-          <h3><span>1. </span>Yhteydenotto ja alkukartoitus</h3>
+          <h3><span>1<i class="screen-reader-text">.</i> </span>Yhteydenotto ja alkukartoitus</h3>
           <p>Ota meihin yhteyttä, kerro hieman teistä ja verkkopalvelustanne. Kartoitetaan tilanne.</p>
 
           <p>Selvitetään onko järkevää vaihtaa palvelin meille, vai otetaanko sivusto ylläpitoon nykyiseen ympäristöön.</p>
         </div>
 
         <div class="step">
-          <h3><span>2. </span>Ilmainen auditointi</h3>
+          <h3><span>2<i class="screen-reader-text">.</i> </span>Ilmainen auditointi</h3>
           <p>Lähetä sivustosi tiedot meille tietoturvallisesti ja kurkkaamme konepellin alle veloituksetta (työn arvo jopa 840 &euro;!).</p>
 
           <p>Kurkataan WordPressin hallintapaneeli tuotannossa ja tarkistetaan ajokelpoisuus kehitysympäristöissä.</p>
         </div>
 
         <div class="step">
-          <h3><span>3. </span>Verkkopalvelu Duden hoiteisiin</h3>
+          <h3><span>3<i class="screen-reader-text">.</i> </span>Verkkopalvelu Duden hoiteisiin</h3>
           <p>Siirretään sivusto Duden palvelimille ja otetaan ylläpitoon. Voidaam sopia siirto ja ylläpito tai ylläpito- ja jatkokehityssopimus ilman Duden WordPress-optimoitua palvelintilaa.</p>
 
           <p>Kaikki on sovittavissa.</p>
@@ -196,16 +193,137 @@ get_header(); ?>
   </section>
 
   <section class="block block-upkeep-faq">
-    <div class="container" style="padding-top: 0;">
-      <h2 style="background: #203039;border-radius: 20px;border: 1px solid #31606d;font-size: 16px;display: inline-block;padding: 7px 15px;margin: 0;font-weight: 500;color: rgb(255 255 255 / .8);">Usein kysytyt kysymykset</h2>
-      <h3 class="heading-42">Kaikki WordPress-ylläpidostamme</h2>
+    <div class="container" style="padding-top: 0; padding-bottom: 100px;">
 
       <div class="items">
+        <div>
+          <h2 style="background: #203039;border-radius: 20px;border: 1px solid #31606d;font-size: 16px;display: inline-block;padding: 7px 15px;margin: 0 auto;font-weight: 500;color: rgb(255 255 255 / .8); min-width: 215px;">Usein kysytyt kysymykset</h2>
+          <h3 class="heading-42">Kaikki WordPress-ylläpidostamme</h3>
+        </div>
 
+        <div>
+        </div>
 
-      </div>
+        <div class="items" style="grid-column: 1 / -1;">
+          <div class="tablist" role="tablist" aria-orientation="vertical" aria-label="Lorem ipsum dolor sit">
+            <div class="tab-list-box">
+              <button role="tab"
+                      aria-selected="true"
+                      aria-controls="sanitized-tab-title-here-tab"
+                      id="sanitized-tab-title-here">
+                Yleiset kysymykset
+              </button>
+              <button role="tab"
+                      aria-selected="false"
+                      aria-controls="sanitized-tab-title2-here-tab"
+                      id="sanitized-tab-title2-here">
+                Hinnoittelu
+              </button>
+            </div>
+          </div>
+
+          <div class="tabpanels">
+            <div tabindex="0"
+                  role="tabpanel"
+                  id="sanitized-tab-title-here-tab"
+                  aria-labelledby="sanitized-tab-title-here">
+
+                  <div class="accordion" data-allow-multiple data-allow-toggle>
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="true" class="accordion-trigger" aria-controls="question-1" id="accordion-question-1">
+                          <span class="accordion-title">
+                            Voinko tilata teiltä ylläpitopalvelun, vaikka verkkosivumme eivät ole Duden toteuttamat?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-1" role="region" aria-labelledby="question-1" class="accordion-panel">
+                        <div>
+                          <p>Kyllä! Me Dudella olemme erikoistuneet WordPress-verkkosivujen ylläpitoon ja kehitykseen ja olemme nähneet kaikenlaista. Ihan ensialkuun <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>">ota yhteyttä</a> ja pistä hieman infoa verkkopalvelustasi, jatketaan siitä!</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-3" id="accordion-question-3">
+                          <span class="accordion-title">
+                            Mitä ilmainen auditointi pitää sisällään?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-3" role="region" aria-labelledby="question-3" class="accordion-panel" hidden>
+                        <div>
+                          <p>Meillä puhutaan "konepellin alle kurkkaamisesta". Duden ilmainen auditointi tarkoittaa sitä, että pyydämme tiedostot, laitamme projektin pyörimään paikalliseen kehitysympäristöömme ja käymme ison kasan erilaisia testejä ja tarkistuksia läpi. Katsomme koodin laadun, jatkokehitettävyyden ja kurkkaamme WordPressin hallintapaneeliin täysillä käyttäjäoikeuksilla.</p>
+
+                          <p>Ilmainen auditointi on välttämätön, jotta saamme tietää millä tasolla verkkopalvelusi on ja kuinka jatkokehitettävissä se on. Samalla näemme voidaanko verkkosivut siirtää meille.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-2" id="accordion-question-2">
+                          <span class="accordion-title">
+                            Saanko SFTP- tai SSH-tunnukset tai vastaavat palvelimelle?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-2" role="region" aria-labelledby="question-2" class="accordion-panel" hidden>
+                        <div>
+                          <p>Emme myönnä pääsyä palvelimille tai toimita käyttäjätunnuksia asiakkaillemme. Isoin syy tähän on se, että emme ole hostingyritys, eli emme tarjoa "tee se itse"-palvelua, vaan ensiluokkaista WordPress-ylläpitopalvelua, jossa huolehdimme palvelimista, niiden toiminnasta ja verkkosivuista asiakkaan puolesta.</p>
+
+                          <p>Olemme kuin vuokraisäntä, joka huolehtii asunnon kunnossapidosta, mutta emme anna vuokralaiselle pääsyä talon teknisiin tiloihin, kuten pannuhuoneeseen, sähkökaappiin tai lämmitysjärjestelmän ohjauspaneeliin. Ne eivät kuulu normaalin käytön piiriin ja niiden vapaa säätö voi aiheuttaa enemmän haittaa kuin hyötyä. Enimmäkseen asiakkaan ei edes tarvitse päästä näihin tiloihin, kun meillä on kaikki kunnossa.</p>
+
+                          <p>Haluamme taata asiakkaillemme korkean luokan tietoturvan ja toimivuuden ja tällainen WordPress-palvelun luonne takaa hyvän palvelun.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+                  </div><!-- .accordion -->
+
+                </div>
+
+            <div tabindex="-1"
+                  role="tabpanel"
+                  id="sanitized-tab-title2-here-tab"
+                  aria-labelledby="sanitized-tab-title2-here"
+                  hidden="">
+
+                  <div class="accordion" data-allow-multiple data-allow-toggle>
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="true" class="accordion-trigger" aria-controls="question-4" id="accordion-question-4">
+                          <span class="accordion-title">
+                            Paljonko sivuston siirto Dudelle maksaa?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-4" role="region" aria-labelledby="question-4" class="accordion-panel">
+                        <div>
+                          <p>Veloitamme verkkosivujen siirrosta Dudelle 840 euroa. Työhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, verkkosivujen kääntötyä ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+                  </div><!-- .accordion -->
+
+            </div>
+          </div>
+
+      </div><!-- .items -->
+
     </div>
   </section>
+
+  <?php the_content();
+  do_action( 'dude_site_main_after_content' ); ?>
 </main>
 
 <?php get_footer();

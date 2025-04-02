@@ -2,7 +2,7 @@
  * @Author: Roni Laukkarinen
  * @Date:   2022-02-10 18:16:29
  * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-06-24 13:02:35
+ * @Last Modified time: 2022-11-24 15:38:37
  */
 /* eslint-disable no-use-before-define, no-inner-declarations, no-undef, no-plusplus, default-case, func-names, max-len, no-shadow, no-param-reassign, consistent-return */
 /*
@@ -186,6 +186,12 @@ const initTabs = () => {
     // Activates any given tab panel
     function activateTab(tab, setFocus) {
       setFocus = setFocus || true;
+
+      // If panels not found, bail
+      if (!tab.parentNode.parentNode || !tab.parentNode.parentNode.nextElementSibling) {
+        return;
+      }
+
       // Deactivate all other tabs
       tabs = tab.parentNode.querySelectorAll('[role="tab"]');
       panels = tab.parentNode.parentNode.nextElementSibling.querySelectorAll('[role="tabpanel"]');
@@ -196,8 +202,21 @@ const initTabs = () => {
         tabs[t].removeEventListener('focus', focusEventHandler);
       }
 
+      // Get the value of aria-controls (which is an ID)
+      const controls = tab.getAttribute('aria-controls');
+
+      // Check for controls
+      if (!document.getElementById(controls)) {
+        return;
+      }
+
       for (let p = 0; p < panels.length; p++) {
         panels[p].setAttribute('hidden', 'hidden');
+
+        // Remove hidden attribute from tab panel to make it visible
+        if (panels[p].getAttribute('id') === controls) {
+          panels[p].removeAttribute('hidden');
+        }
       }
 
       // Remove tabindex attribute
@@ -205,12 +224,6 @@ const initTabs = () => {
 
       // Set the tab as selected
       tab.setAttribute('aria-selected', 'true');
-
-      // Get the value of aria-controls (which is an ID)
-      const controls = tab.getAttribute('aria-controls');
-
-      // Remove hidden attribute from tab panel to make it visible
-      document.getElementById(controls).removeAttribute('hidden');
 
       // Set focus when required
       if (setFocus) {
