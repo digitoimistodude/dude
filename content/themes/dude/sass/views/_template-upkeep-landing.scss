@@ -442,6 +442,11 @@ body.page-template-template-upkeep-landing {
       top: 0;
       transition: background-color .3s;
       width: 100%;
+
+      @media (max-width: 730px) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
 
     h2 {
