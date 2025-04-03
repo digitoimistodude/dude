@@ -34,9 +34,10 @@ const initUpKeepLanding = () => {
       width: 100%;
       position: relative;
     }
+
     #carousel-track {
       display: flex;
-      gap: 80px;
+      gap: 70px;
       width: fit-content;
       position: relative;
       transform: translate3d(0, 0, 0);
@@ -47,14 +48,17 @@ const initUpKeepLanding = () => {
       perspective: 1000px;
       -webkit-perspective: 1000px;
     }
+
     #carousel-track[data-animated="true"] {
       animation: scroll ${duration}s linear infinite;
       -webkit-animation: scroll ${duration}s linear infinite;
     }
+
     #carousel-track.paused {
       animation-play-state: paused;
       -webkit-animation-play-state: paused;
     }
+
     @keyframes scroll {
       0% {
         transform: translate3d(0, 0, 0);
@@ -63,6 +67,12 @@ const initUpKeepLanding = () => {
       100% {
         transform: translate3d(-50%, 0, 0);
         -webkit-transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #carousel-track {
+        gap: 40px;
       }
     }
   `;
@@ -126,5 +136,4 @@ if (document.readyState === 'loading') {
 
 // Expose the function globally
 window.initUpKeepLanding = initUpKeepLanding;
-
 export default initUpKeepLanding;

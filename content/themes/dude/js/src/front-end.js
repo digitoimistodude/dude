@@ -63,6 +63,9 @@ function init(target, args) {
   // Timeout needed for Firefox and iOS Safari
   setTimeout(() => {
     initCarousels();
+
+    // Init upkeep landing page
+    initUpKeepLanding();
   }, 1000);
 
   // Init all possible anchor links
@@ -117,9 +120,6 @@ function init(target, args) {
   if (window.innerWidth < 768) {
     reframe('.wp-has-aspect-ratio iframe, .article-content iframe');
   }
-
-  // Init upkeep landing page
-  initUpKeepLanding();
 }
 
 // When document has been completely loaded
@@ -127,3 +127,5 @@ document.addEventListener('DOMContentLoaded', init);
 
 // Do things when content is replaced via Swup
 swup.on('contentReplaced', init);
+
+// Do things after page has loaded

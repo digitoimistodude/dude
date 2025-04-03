@@ -74,16 +74,6 @@ function enqueue_theme_scripts() {
     );
   }
 
-  // Upkeep landing page script
-  if ( 'template-upkeep-landing.php' === basename( get_page_template() ) ) {
-    wp_enqueue_script( 'upkeep-landing',
-      get_theme_file_uri( get_asset_file( 'upkeep-landing.js' ) ),
-      [ 'jquery' ],
-      filemtime( get_theme_file_path( get_asset_file( 'upkeep-landing.js' ) ) ),
-      true
-    );
-  }
-
   // Add domains/hosts to disable external link indicators
   wp_localize_script( 'scripts', 'dude_externalLinkDomains', THEME_SETTINGS['external_link_domains_exclude'] );
 } // end enqueue_theme_scripts
