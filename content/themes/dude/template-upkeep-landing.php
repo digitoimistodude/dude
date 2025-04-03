@@ -387,7 +387,7 @@ get_header(); ?>
 
                       <div id="question-4" role="region" aria-labelledby="question-4" class="accordion-panel">
                         <div>
-                          <p>Veloitamme verkkosivujen siirrosta Dudelle 840 euroa. Työhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, verkkosivujen kääntötyä ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
+                          <p>Veloitamme verkkosivujen siirrosta Dudelle 840 euroa. Työhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, nimipalvelintietueiden kääntötyö ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
                         </div>
                       </div><!-- .accordion-panel -->
 
