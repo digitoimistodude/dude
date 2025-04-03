@@ -48,6 +48,15 @@ $hamburger-hover-transition-timing-function: linear;
 
 // Mobile styles
 @media screen and (max-width: $width-max-mobile - 1px) {
+  .main-navigation-wrapper {
+    align-items: center;
+    display: flex;
+
+    > button {
+      height: 20px;
+    }
+  }
+
   .nav-container {
     position: absolute;
     width: 100%;
