@@ -237,7 +237,7 @@ get_header(); ?>
 
         <div class="step">
           <h3><span>3<i class="screen-reader-text">.</i> </span>Verkkopalvelu Duden hoiteisiin</h3>
-          <p>Siirretään sivusto Duden palvelimille ja otetaan ylläpitoon. Voidaam sopia siirto ja ylläpito tai ylläpito- ja jatkokehityssopimus ilman Duden WordPress-optimoitua palvelintilaa.</p>
+          <p>Siirretään sivusto Duden palvelimille ja otetaan ylläpitoon. Voidaan sopia siirto ja ylläpito tai ylläpito- ja jatkokehityssopimus ilman Duden WordPress-optimoitua palvelintilaa.</p>
 
           <p>Kaikki on sovittavissa.</p>
         </div>
