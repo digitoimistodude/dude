@@ -85,7 +85,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
     <div class="certificates">
       <ul aria-label="Logot ja sertifikaatit">
         <li>
-          <a aria-label="Ulkoinen sivusto: Vierityspalkki" class="no-external-link-indicator" href="https://vierityspalkki.fi/toimistot/digitoimisto-dude"><?php include get_theme_file_path( '/svg/certificates/certificate-vierityspalkki.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Vierityspalkki" class="no-external-link-indicator" href="https://vierityspalkki.fi/toimistot/digitoimisto-dude"><?php include get_theme_file_path( '/svg/certificates/certificate-vierityspalkki-new.svg' ); ?></a>
         </li>
         <li>
           <a aria-label="Ulkoinen sivusto: ite wiki" class="no-external-link-indicator" href="https://www.itewiki.fi/digitoimisto-dude"><?php include get_theme_file_path( '/svg/certificates/certificate-itewiki.svg' ); ?></a>
