@@ -1,8 +1,24 @@
 /* eslint-disable no-plusplus, brace-style, max-len */
-const initUpKeepLanding = () => {
+const initUpKeepLanding = function initUpKeepLanding() {
   // Check if elements exist before proceeding
   const carousel = document.getElementById('carousel');
   const track = document.getElementById('carousel-track');
+  const debug = document.getElementById('debug');
+
+  // Add more detailed debug info
+  if (debug) {
+    debug.innerHTML = `
+      <p>Debug Info:</p>
+      <p>Carousel element: ${carousel ? 'Found' : 'Not found'}</p>
+      <p>Track element: ${track ? 'Found' : 'Not found'}</p>
+      <p>Carousel width: ${carousel ? carousel.offsetWidth : 'N/A'}px</p>
+      <p>Track width: ${track ? track.offsetWidth : 'N/A'}px</p>
+      <p>Track scrollWidth: ${track ? track.scrollWidth : 'N/A'}px</p>
+      <p>Track children: ${track ? track.children.length : 'N/A'}</p>
+      <p>Window width: ${window.innerWidth}px</p>
+      <p>Is mobile: ${window.innerWidth < 768 ? 'Yes' : 'No'}</p>
+    `;
+  }
 
   if (!carousel || !track) {
     // eslint-disable-next-line
@@ -104,5 +120,15 @@ const initUpKeepLanding = () => {
   window.addEventListener('unload', cleanup);
   window.addEventListener('beforeunload', cleanup);
 };
+
+// Auto-initialize when loaded for iOS Safari
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initUpKeepLanding);
+} else {
+  initUpKeepLanding();
+}
+
+// Expose the function globally
+window.initUpKeepLanding = initUpKeepLanding;
 
 export default initUpKeepLanding;

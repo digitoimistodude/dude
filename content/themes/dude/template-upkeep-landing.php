@@ -380,5 +380,8 @@ get_header(); ?>
   do_action( 'dude_site_main_after_content' ); ?>
 </main>
 
-<?php get_footer();
+<?php get_footer(); ?>
+
+</body>
+</html>
 
