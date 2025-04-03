@@ -47,19 +47,72 @@ get_header(); ?>
 
     <div class="carousel" id="carousel">
       <div class="carousel-track" id="carousel-track">
-        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/radiomedia.svg' ); ?>" alt="RadioMedia">
-        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/otava.svg' ); ?>" alt="Kustannusosakeyhtiö Otava">
-        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/blackbruin-nocolor.svg' ); ?>" alt="Black Bruin">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/ylva.svg' ); ?>" alt="Ylva Kiinteistöt">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/figbc.svg' ); ?>" alt="Green Building Council Finland">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/eurohostel.svg' ); ?>" alt="Eurohostel">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/halltex.svg' ); ?>" alt="Halltex">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/helinamuseo.svg' ); ?>" alt="Helinä Rautavaaran museo">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/hotellialba-nocolor.svg' ); ?>" alt="Hotelli Alba">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/ark.svg' ); ?>" alt="Ark">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/sagax.svg' ); ?>" alt="Sagax">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/mpsmotors.svg' ); ?>" alt="MPS Motors">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gofore.svg' ); ?>" alt="Gofore">
+        <img style="position: relative; top: 2px;" class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/rakentaja.svg' ); ?>" alt="Rakentaja-lehti">
+        <img style="position: relative; top: 5px;" class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/paahtimopapu.svg' ); ?>" alt="Paahtimo Papu">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/harmooni.svg' ); ?>" alt="Ravintola Harmooni">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/workpower-nocolor.svg' ); ?>" alt="WorkPower">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kktavastia.svg' ); ?>" alt="KKTavastia">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/musiikkikampus.svg' ); ?>" alt="Suomalainen Musiikkikampus">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/turunakk.svg' ); ?>" alt="TurunAKK">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/tatujapatu.svg' ); ?>" alt="Tatu ja Patu">
         <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gradia.svg' ); ?>" alt="Gradia">
         <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/forum.svg' ); ?>" alt="Forum">
         <img class="size-xl" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/musiikkitalo.svg' ); ?>" alt="Helsingin Musiikkitalo">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/lhkk.svg' ); ?>" alt="Lounais-Hämeen koulutuskuntayhtymä">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/rex.svg' ); ?>" alt="Rex">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/suomenkirjasaatio.svg' ); ?>" alt="Suomen kirjasäätiö">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/sofioksanen.svg' ); ?>" alt="Sofi Oksanen">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/finn-id.svg' ); ?>" alt="Finn-id">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/alpa.svg' ); ?>" alt="AlpaFinlandia">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/radiomedia.svg' ); ?>" alt="RadioMedia">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/padasjoki.svg' ); ?>" alt="Padasjoki">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/otava.svg' ); ?>" alt="Kustannusosakeyhtiö Otava">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/blackbruin-nocolor.svg' ); ?>" alt="Black Bruin">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/akvafilter.svg' ); ?>" alt="Akva filter">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/trey.svg' ); ?>" alt="Trey">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/caravanlehti.svg' ); ?>" alt="Caravan-lehti">
         <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kata.svg' ); ?>" alt="Kata Safety">
-        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/gofore.svg' ); ?>" alt="Gofore">
+        <img class="size-xxs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/miseva.svg' ); ?>" alt="Miseva">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/tofuture.svg' ); ?>" alt="Tofuture">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/visiiri.svg' ); ?>" alt="Visiiri-lehti">
         <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/bauermedia-nocolor.svg' ); ?>" alt="Bauer Media">
+        <img style="position: relative; top: 10px;" class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/paut.svg' ); ?>" alt="Autismiyhdistys paut ry">
         <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/siipiweikot.svg' ); ?>" alt="Siipiweikot">
-        <img style="position: relative; top: 10px;"class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vierityspalkki.svg' ); ?>" alt="Vierityspalkki">
+        <img style="position: relative; top: 5px;" class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/pienpanimoliitto.svg' ); ?>" alt="Pienpanimoliitto">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/tikkaspikes.svg' ); ?>" alt="Tikka Spikes">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vaao.svg' ); ?>" alt="Valkeakosken ammattiopisto">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/lutakko.svg' ); ?>" alt="Tanssisali Lutakko">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/paijanneristeilythilden.svg' ); ?>" alt="Päijänne Risteilyt Hilden">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/jylkkari.svg' ); ?>" alt="Jylkkäri">
+        <img style="position: relative; top: 10px;" class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vierityspalkki.svg' ); ?>" alt="Vierityspalkki">
         <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/northpatrol-nocolor.svg' ); ?>" alt="North Patrol">
         <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kiinteistolehti.svg' ); ?>" alt="Kiinteistölehti">
+        <img style="position: relative; top: 5px;" class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/murska.svg' ); ?>" alt="Murska">
+        <img class="size-xl" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kuivalihakundi.svg' ); ?>" alt="Kuivalihakundi">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kustantajat.svg' ); ?>" alt="Suomen Kustannusyhdistys">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/mirjamhelin.svg' ); ?>" alt="Mirjam Helin">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/mpn.svg' ); ?>" alt="Metallipaja Nieminen">
+        <img class="size-l" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/kuntoutuskouluttajat.svg' ); ?>" alt="Kuntoutuskouluttajat">
+        <img class="size-s" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/alive.svg' ); ?>" alt="Alive">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/probot.svg' ); ?>" alt="Probot">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/flumenia.svg' ); ?>" alt="Flumenia">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/alonen.svg' ); ?>" alt="Rakennustoimisto Alonen Oy">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/mediashake-nocolor.svg' ); ?>" alt="Mediashake">
+        <img class="size-xs" style="position: relative; top: -2px;" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/flowhouse.svg' ); ?>" alt="Flowhouse">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/suomenuusiutuvat.svg' ); ?>" alt="Suomen uusiutuvat">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/businesstampere.svg' ); ?>" alt="Business Tampere">
+        <img class="size-xs" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/vastuunjako.svg' ); ?>" alt="Vastuunjako">
+        <img class="size-m" src="<?php echo esc_url( get_template_directory_uri() . '/svg/logos/groom.svg' ); ?>" alt="Groom">
       </div>
     </div>
   </section>

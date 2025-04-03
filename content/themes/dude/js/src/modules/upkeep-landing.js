@@ -35,11 +35,16 @@ const initUpKeepLanding = () => {
     const minWidth = carousel.getBoundingClientRect().width * 2;
     let iterations = 0;
     const maxIterations = 100; // Prevent infinite loops
+    let lastAddedItem = null;
 
     while (track.scrollWidth < minWidth && originals.length > 0 && iterations < maxIterations) {
       for (let i = 0; i < originals.length && track.scrollWidth < minWidth; i++) {
-        const clone = originals[i].cloneNode(true);
-        track.appendChild(clone);
+        // Only add if this item is different from the last added one
+        if (!lastAddedItem || !originals[i].isEqualNode(lastAddedItem)) {
+          const clone = originals[i].cloneNode(true);
+          track.appendChild(clone);
+          lastAddedItem = originals[i];
+        }
       }
       // eslint-disable-next-line
       iterations++;

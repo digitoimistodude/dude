@@ -167,6 +167,14 @@ body.page-template-template-upkeep-landing {
     }
   }
 
+  .carousel-track img.size-xxs {
+    height: 20px;
+
+    @media (max-width: 768px) {
+      height: 16px;
+    }
+  }
+
   .carousel-track img.size-xs {
     height: 24px;
 
@@ -239,7 +247,6 @@ body.page-template-template-upkeep-landing {
   height: 100%;
   left: 0;
   margin: 0 auto;
-  margin-top: 90px;
   max-width: 100vw;
   overflow: visible;
   position: absolute;
@@ -253,8 +260,11 @@ body.page-template-template-upkeep-landing {
     filter: drop-shadow(0 0 150px rgb(255 255 255 / .8));
     height: 850px;
     left: 50%;
+    margin-top: 90px;
+    max-width: 100vw;
     mix-blend-mode: overlay;
-    position: fixed;
+    overflow: visible;
+    position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 850px;
