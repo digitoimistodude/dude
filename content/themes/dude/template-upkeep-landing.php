@@ -263,15 +263,21 @@ get_header(); ?>
             <div class="tab-list-box">
               <button role="tab"
                       aria-selected="true"
-                      aria-controls="sanitized-tab-title-here-tab"
-                      id="sanitized-tab-title-here">
+                      aria-controls="tab-1-title-tab"
+                      id="tab-1-title">
                 Yleiset kysymykset
               </button>
               <button role="tab"
                       aria-selected="false"
-                      aria-controls="sanitized-tab-title2-here-tab"
-                      id="sanitized-tab-title2-here">
+                      aria-controls="tab-2-title-tab"
+                      id="tab-2-title">
                 Hinnoittelu
+              </button>
+              <button role="tab"
+                      aria-selected="false"
+                      aria-controls="tab-3-title-tab"
+                      id="tab-3-title">
+                Tekniikka
               </button>
             </div>
           </div>
@@ -279,8 +285,8 @@ get_header(); ?>
           <div class="tabpanels">
             <div tabindex="0"
                   role="tabpanel"
-                  id="sanitized-tab-title-here-tab"
-                  aria-labelledby="sanitized-tab-title-here">
+                  id="tab-1-title-tab"
+                  aria-labelledby="tab-1-title">
 
                   <div class="accordion" data-allow-multiple data-allow-toggle>
                     <div class="accordion-item">
@@ -321,32 +327,52 @@ get_header(); ?>
 
                     <div class="accordion-item">
                       <h3>
-                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-2" id="accordion-question-2">
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-7" id="accordion-question-7">
                           <span class="accordion-title">
-                            Saanko SFTP- tai SSH-tunnukset tai vastaavat palvelimelle?<span class="accordion-icon"></span>
+                            Miksi WordPress-ylläpitopalvelu on tärkeää olla? Enkö voi ylläpitää sivustoa itse?<span class="accordion-icon"></span>
                           </span>
                         </button>
                       </h3>
 
-                      <div id="question-2" role="region" aria-labelledby="question-2" class="accordion-panel" hidden>
+                      <div id="question-7" role="region" aria-labelledby="question-3" class="accordion-panel" hidden>
                         <div>
-                          <p>Emme myönnä pääsyä palvelimille tai toimita käyttäjätunnuksia asiakkaillemme. Isoin syy tähän on se, että emme ole hostingyritys, eli emme tarjoa "tee se itse"-palvelua, vaan ensiluokkaista WordPress-ylläpitopalvelua, jossa huolehdimme palvelimista, niiden toiminnasta ja verkkosivuista asiakkaan puolesta.</p>
+                          <p>Voit tietenkin hoitaa kaiken itse ja tilata hosting-palvelun mistä tahansa webhotellifirmasta ja ylläpitää verkkopalveluanne itse. Tällöin kaikki on kuitenkin "omalla vastuulla".</p>
 
-                          <p>Olemme kuin vuokraisäntä, joka huolehtii asunnon kunnossapidosta, mutta emme anna vuokralaiselle pääsyä talon teknisiin tiloihin, kuten pannuhuoneeseen, sähkökaappiin tai lämmitysjärjestelmän ohjauspaneeliin. Ne eivät kuulu normaalin käytön piiriin ja niiden vapaa säätö voi aiheuttaa enemmän haittaa kuin hyötyä. Enimmäkseen asiakkaan ei edes tarvitse päästä näihin tiloihin, kun meillä on kaikki kunnossa.</p>
+                          <p>Komennoissa, DNS-tietueissa, tietoturvassa, verkkotunnuksissa on oma vaivansa. Kaiken itse tekeminen syö arvokasta aikaa rahanarvoiselta liiketoiminnalta. Mitä teet, jos sivustosi hakkeroidaan? Tiedätkö, onko WordPress-kirjautumisesi turvassa? Verkkopalvelunne voi louhia vaikkapa kryptoja tietämättäsi tai alasivuilla voi olla uhkapelimainoksia, jos et ole tarkkana.</p>
 
-                          <p>Haluamme taata asiakkaillemme korkean luokan tietoturvan ja toimivuuden ja tällainen WordPress-palvelun luonne takaa hyvän palvelun.</p>
+                          <p>WordPress-ylläpitopalvelumme on rakennettu sitä varten, että sinun ei tarvitsisi huolehtia teknisestä säädöstä. Myös jatkokehitys, lisädomainit ja jopa sähköpostiosoitteet hoituvat kätevästi saman katon alta meiltä, ilman että tarvitsee jonotella jonnekin muualle.</p>
                         </div>
                       </div><!-- .accordion-panel -->
 
                     </div><!-- .accordion-item -->
+
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-8" id="accordion-question-8">
+                          <span class="accordion-title">
+                            Onko teillä ollut tätä palvelua aikaisemmin, vai olenko vain missannut sen? Miksi tarjoatte tätä palvelua?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-8" role="region" aria-labelledby="question-3" class="accordion-panel" hidden>
+                        <div>
+                          <p>Hyvä kysymys! Olemme tarjonneet WordPress-ylläpitopalvelua olemassaolomme alusta saakka (2013) teknologiajohtajamme palvelintaustojen myötä, mutta palvelua on tarjottu puhtaasti asiakkaillemme, joille olemme myös toteuttaneet verkkosivut. Meidän mielestä verkkosivut ja palvelimet kulkevat käsi kädessä, eikä niitä voi erotella eri kumppanille.</p>
+
+                          <p>Lisääntyneen kysynnän vuoksi olemme päättäneet laajentaa palvelumme myös omien toteutustemme ulkopuolelle. Nykyään kuka tahansa voi tilata WordPress-ylläpitopalvelun meiltä, eikä verkkopalvelun tarvitse olla meidän toteuttama.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+
                   </div><!-- .accordion -->
 
                 </div>
 
             <div tabindex="-1"
                   role="tabpanel"
-                  id="sanitized-tab-title2-here-tab"
-                  aria-labelledby="sanitized-tab-title2-here"
+                  id="tab-2-title-tab"
+                  aria-labelledby="tab-2-title"
                   hidden="">
 
                   <div class="accordion" data-allow-multiple data-allow-toggle>
@@ -362,6 +388,76 @@ get_header(); ?>
                       <div id="question-4" role="region" aria-labelledby="question-4" class="accordion-panel">
                         <div>
                           <p>Veloitamme verkkosivujen siirrosta Dudelle 840 euroa. Työhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, verkkosivujen kääntötyä ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+                  </div><!-- .accordion -->
+
+            </div>
+
+            <div tabindex="-1"
+                  role="tabpanel"
+                  id="tab-3-title-tab"
+                  aria-labelledby="tab-3-title"
+                  hidden="">
+
+                  <div class="accordion" data-allow-multiple data-allow-toggle>
+                  <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-5" id="accordion-question-5">
+                          <span class="accordion-title">
+                            Sivustollani on Elementor, aivan liikaa lisäosia tai mainoksia hallintapaneelissa. Haittaako?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-5" role="region" aria-labelledby="question-5" class="accordion-panel">
+                        <div>
+                          <p>Yhteydenottosi jälkeen katsomme mielellämme sivustoasi tarkemmin. Perataan läpi lisäosat ja niiden laatu ja katsotaan mitä voitaisiin tehdä sekavalle hallintapaneelille. Meillä on tapana "kitkeä pahimmat rikkaruohot" alkuun. Yllättävän monen asian voi tehdä kokonaan ilmanlisäosaa parilla rivillä koodia.</p>
+
+                          <p>Otamme ylläpitoomme myös pagebuildereilla tehtyjä sivustoja, vaikka emme suosittelekaan esimerkiksi Elementorin käyttöä (lue blogista lisää: <a href="https://www.dude.fi/miksi-ei-elementoria-wordpressiin">10 syytä miksi kenenkään ei pitäisi käyttää Elementoria WordPress-verkkosivuilla</a>).</p>
+
+                          <p>Jokainen sivusto on oma kokonaisuutensa. Osaamme kyllä ehdottaa, jos tilanne on toivoton. Useimmiten pienillä korjauksilla sivustolle saa kuitenkin rutkasti lisää elinaikaa. Toisinaan tekohengittäminen ja uudistaminen myöhemmin on paras ratkaisu.</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-6" id="accordion-question-6">
+                          <span class="accordion-title">
+                            Otatteko ylläpitoon myös Drupal-sivustoja tai Single Page Application -sivustoja?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-6" role="region" aria-labelledby="question-6" class="accordion-panel" hidden>
+                        <div>
+                          <p>Jos sivustosi on tehty jollain muulla kuin WordPressillä, emme ottaa sitä ylläpitoomme. Ylläpitopalvelumme rajoittuu WordPress-verkkosivujen ylläpitoon. Olemme WordPress-toimisto ja asiantuntijamme ovat erikoistuneet nimenomaan WordPress-verkkopalveluihin ja WordPress-optimoituihin palvelimiin.</p>
+                          <p>Jos olet uudistamassa verkkosivuja ja siirtymässä esimerkiksi Drupalista WordPressiin, voimme sivustouudistuksen yhteydessä migratoida sisällöt WordPress-asennukseen. <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>">Ota ihmeessä yhteyttä</a>, jos tällainen kiinnostaa!</p>
+                        </div>
+                      </div><!-- .accordion-panel -->
+
+                    </div><!-- .accordion-item -->
+
+                    <div class="accordion-item">
+                      <h3>
+                        <button aria-expanded="false" class="accordion-trigger" aria-controls="question-2" id="accordion-question-2">
+                          <span class="accordion-title">
+                            Saanko SFTP- tai SSH-tunnukset tai vastaavat palvelimelle?<span class="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+
+                      <div id="question-2" role="region" aria-labelledby="question-2" class="accordion-panel" hidden>
+                        <div>
+                          <p>Emme myönnä pääsyä palvelimille tai toimita käyttäjätunnuksia asiakkaillemme. Isoin syy tähän on se, että emme ole hostingyritys, eli emme tarjoa "tee se itse"-palvelua, vaan ensiluokkaista WordPress-ylläpitopalvelua, jossa huolehdimme palvelimista, niiden toiminnasta ja verkkosivuista asiakkaan puolesta.</p>
+
+                          <p>Olemme kuin vuokraisäntä, joka huolehtii asunnon kunnossapidosta, mutta emme anna vuokralaiselle pääsyä talon teknisiin tiloihin, kuten pannuhuoneeseen, sähkökaappiin tai lämmitysjärjestelmän ohjauspaneeliin. Ne eivät kuulu normaalin käytön piiriin ja niiden vapaa säätö voi aiheuttaa enemmän haittaa kuin hyötyä. Enimmäkseen asiakkaan ei edes tarvitse päästä näihin tiloihin, kun meillä on kaikki kunnossa.</p>
+
+                          <p>Haluamme taata asiakkaillemme korkean luokan tietoturvan ja toimivuuden ja tällainen WordPress-palvelun luonne takaa hyvän palvelun.</p>
                         </div>
                       </div><!-- .accordion-panel -->
 
