@@ -19,10 +19,10 @@ const initFormHelpers = () => {
         const formTriggerLabel = formTrigger.querySelectorAll('.wpforms-field-label-inline')[0];
 
         if (formTrigger.nextSibling.classList.contains('wpforms-conditional-hide')) {
-          formTriggerLabel.innerHTML = 'Haluan kertoa vähemmän projektista';
+          formTriggerLabel.innerHTML = 'Haluan kertoa vähemmän';
           formTrigger.parentNode.parentNode.parentNode.classList.add('is-open');
         } else {
-          formTriggerLabel.innerHTML = 'Haluan kertoa tarkemmin projektista';
+          formTriggerLabel.innerHTML = 'Haluan kertoa tarkemmin';
           formTrigger.parentNode.parentNode.parentNode.classList.remove('is-open');
         }
       });
