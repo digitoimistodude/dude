@@ -11,12 +11,6 @@ const initUpKeepLanding = () => {
   }
 
   const gap = parseInt(getComputedStyle(track).gap, 10) || 64;
-  let scrollPos = 0;
-  // Faster speed for mobile
-  const speed = window.innerWidth < 768 ? 1.5 : 0.8;
-  let isPaused = false;
-  let animationId;
-  let isDestroyed = false;
 
   // Add hardware acceleration hints for smoother animation
   track.style.willChange = 'transform';
@@ -64,57 +58,50 @@ const initUpKeepLanding = () => {
     return;
   }
 
-  carousel.addEventListener('mouseenter', () => {
-    isPaused = true;
-  });
-  carousel.addEventListener('mouseleave', () => {
-    isPaused = false;
-  });
-
   // Calculate total width of original items
   const totalOriginalWidth = originals.reduce((total, item) => total + item.offsetWidth + gap, 0);
 
-  function animate() {
-    if (isDestroyed) return;
+  // Calculate animation duration based on content width and device
+  // Faster on mobile (iOS Safari)
+  const duration = window.innerWidth < 768
+    ? (totalOriginalWidth / 100) // Faster on mobile
+    : (totalOriginalWidth / 50); // Slower on desktop
 
-    try {
-      if (!isPaused) {
-        scrollPos += speed;
-
-        // When we've scrolled past the width of original items, reset position
-        // but keep the visual position the same to avoid jumping
-        if (scrollPos >= totalOriginalWidth) {
-          scrollPos %= totalOriginalWidth;
-        }
-
-        track.style.transform = `translate3d(-${scrollPos}px, 0, 0)`;
-        track.style.webkitTransform = `translate3d(-${scrollPos}px, 0, 0)`;
+  // Create CSS animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes scroll {
+      0% {
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
       }
-      animationId = requestAnimationFrame(animate);
-    } catch (error) {
-      // eslint-disable-next-line
-      console.error('Animation error:', error);
-      cancelAnimationFrame(animationId);
+      100% {
+        transform: translate3d(-${totalOriginalWidth}px, 0, 0);
+        -webkit-transform: translate3d(-${totalOriginalWidth}px, 0, 0);
+      }
     }
-  }
+    #carousel-track {
+      animation: scroll ${duration}s linear infinite;
+      -webkit-animation: scroll ${duration}s linear infinite;
+    }
+    #carousel-track.paused {
+      animation-play-state: paused;
+      -webkit-animation-play-state: paused;
+    }
+  `;
+  document.head.appendChild(style);
 
-  // Start animation with error handling
-  try {
-    // Force a reflow before starting animation to ensure proper rendering
-    // eslint-disable-next-line no-unused-expressions
-    track.offsetHeight;
-    animate();
-  } catch (error) {
-    // eslint-disable-next-line
-    console.error('Failed to start animation:', error);
-  }
+  // Add pause on hover
+  carousel.addEventListener('mouseenter', () => {
+    track.classList.add('paused');
+  });
+  carousel.addEventListener('mouseleave', () => {
+    track.classList.remove('paused');
+  });
 
   // Cleanup on page unload/destroy
   const cleanup = () => {
-    isDestroyed = true;
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-    }
+    style.remove();
   };
 
   window.addEventListener('unload', cleanup);
