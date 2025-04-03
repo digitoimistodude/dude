@@ -298,7 +298,10 @@ body.page-template-template-upkeep-landing {
     padding-top: 80px;
 
     @media (max-width: 730px) {
-      padding-top: 20px;
+      margin-top: -40px;
+      padding-top: 60px;
+      position: relative;
+      z-index: 5;
     }
   }
 

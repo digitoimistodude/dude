@@ -273,6 +273,15 @@ body.has-light-navigation .site-header {
 .site-footer .new-badge {
   right: -23px;
   top: -4px;
+
+  @media (max-width: 1000px) {
+    right: -24px;
+    top: -14px;
+  }
+}
+
+.menu-item-18322 {
+  white-space: nowrap;
 }
 
 @keyframes shine {
