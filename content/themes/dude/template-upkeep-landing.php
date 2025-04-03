@@ -78,6 +78,7 @@ get_header(); ?>
             <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">199 &euro; <span class="text-small">/kk</span></a></h2>
             <p>per WordPress-verkkopalvelu</p>
             <ul>
+              <li>Jos sivusto siirretään Duden WordPress-optimoiduille palvelimille, siirrosta ja asennuksesta veloitamme kertamaksun <span style="color:#7effe1">840 &euro;</span>.</li>
               <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
               <li>Hinnat voimassa 12 kuukautta sopimuksen allekirjoittamisesta.</li>
               <li>Hintaan lisätään voimassa oleva arvonlisävero.</li>
@@ -129,7 +130,7 @@ get_header(); ?>
             </div>
 
             <div class="upsell">
-              <svg aria-hidden="true" fill="none" height="32" width="32" viewBox="0 0 38 45" xmlns="http://www.w3.org/2000/svg"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m17.5 13.2266 6-6.00004-6-6"></path><path d="m36.9379 23.7266c.04.494.062 1 .062 1.5.0017 1.5179-.1891 3.03-.568 4.5"></path><path d="m32.7881 13.6562c.9773 1.1616 1.8033 2.4425 2.458 3.8121"></path><path d="m32.744 36.8496c-.32.3787-.6586.7467-1.016 1.104-1.0723 1.0744-2.2766 2.0085-3.584 2.78"></path><path d="m20.5 43.1646c-.494.04-1 .062-1.5.062-4.7739 0-9.35227-1.8965-12.72792-5.2721-3.37566-3.3757-5.27208-7.954-5.27208-12.7279s1.89642-9.3523 5.27208-12.728c3.37565-3.37561 7.95402-5.27204 12.72792-5.27204h4.5"></path></g></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.25 17.25a6 6 0 1 0 12 0 6 6 0 0 0-12 0ZM17.25 14.25v6M17.25 20.25 15 18M17.25 20.25 19.5 18" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.25 18.75h-6a1.5 1.5 0 0 1-1.5-1.5V6.75a1.5 1.5 0 0 1 1.5-1.5h15a1.5 1.5 0 0 1 1.5 1.5v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="m18.266 5.647-2.821-4.229A1.5 1.5 0 0 0 14.2.75H5.3a1.5 1.5 0 0 0-1.248.668L1.234 5.647M9.75.75v4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <h3>Palvelinpäivitykset</h3>
               <p>Jos palvelin on meidän hoiteissa, pidämme tekniikan ajan tasalla. Muiden palvelimia hoidamme myös kuin omiamme, rajoitteineen.</p>
             </div>
