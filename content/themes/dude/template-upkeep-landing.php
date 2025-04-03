@@ -247,7 +247,7 @@ get_header(); ?>
   </section>
 
   <section class="block block-upkeep-faq">
-    <div class="container" style="padding-top: 0; padding-bottom: 100px;">
+    <div class="container" style="padding-top: 0;">
 
       <div class="items">
         <div>

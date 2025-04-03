@@ -302,6 +302,10 @@ body.page-template-template-upkeep-landing {
       padding-top: 60px;
       position: relative;
       z-index: 5;
+
+      .items {
+        gap: 0;
+      }
     }
   }
 
@@ -387,7 +391,7 @@ body.page-template-template-upkeep-landing {
     }
 
     @media (max-width: 730px) {
-      padding: 20px 20px 60px;
+      padding: 20px 20px 0;
     }
   }
 
@@ -581,6 +585,14 @@ body.page-template-template-upkeep-landing {
   }
 }
 
+body .block.block-upkeep-faq > .container {
+  padding-bottom: 100px;
+
+  @media (max-width: 760px) {
+    padding-bottom: 20px;
+  }
+}
+
 body .block.block-upkeep-faq,
 body .site-main .block-upkeep-faq {
   color: #fff;
@@ -601,7 +613,7 @@ body .site-main .block-upkeep-faq {
     }
 
     @media (max-width: 760px) {
-      gap: 20px;
+      gap: 10px;
       grid-template-columns: minmax(0, 1fr);
 
       h2 {
@@ -620,6 +632,7 @@ body .site-main .block-upkeep-faq {
 
       [role="tabpanel"] + [role="tabpanel"] {
         border-top: 1px solid #3f616a;
+        padding-bottom: 20px;
         padding-top: 20px;
       }
     }
