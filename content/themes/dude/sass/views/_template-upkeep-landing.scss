@@ -632,8 +632,8 @@ body .site-main .block-upkeep-faq {
 
       [role="tabpanel"] + [role="tabpanel"] {
         border-top: 1px solid #3f616a;
-        padding-bottom: 20px;
-        padding-top: 20px;
+        padding-bottom: 0;
+        padding-top: 0;
       }
     }
   }
@@ -695,5 +695,24 @@ body .site-main .block-upkeep-faq {
     box-shadow: none;
     padding-bottom: 22px;
     padding-top: 22px;
+  }
+
+  @media (max-width: 760px) {
+    .accordion-trigger {
+      // stylelint-disable-next-line
+      padding-bottom: 22px !important;
+      // stylelint-disable-next-line
+      padding-top: 22px !important;
+    }
+
+    .accordion-panel {
+      // stylelint-disable-next-line
+      padding-bottom: 0 !important;
+
+      > div {
+        // stylelint-disable-next-line
+        padding-bottom: 22px !important;
+      }
+    }
   }
 }
