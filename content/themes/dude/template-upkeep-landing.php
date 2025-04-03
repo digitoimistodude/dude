@@ -169,7 +169,7 @@ get_header(); ?>
       <div class="steps">
         <div class="step">
           <h3><span>1<i class="screen-reader-text">.</i> </span>Yhteydenotto ja alkukartoitus</h3>
-          <p>Ota meihin yhteyttä, kerro hieman teistä ja verkkopalvelustanne. Kartoitetaan tilanne.</p>
+          <p><a href="<a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>">">Ota meihin yhteyttä</a>, kerro hieman teistä ja verkkopalvelustanne. Kartoitetaan tilanne.</p>
 
           <p>Selvitetään onko järkevää vaihtaa palvelin meille, vai otetaanko sivusto ylläpitoon nykyiseen ympäristöön.</p>
         </div>
