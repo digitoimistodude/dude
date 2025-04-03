@@ -12,7 +12,7 @@ const initUpKeepLanding = () => {
 
   const gap = parseInt(getComputedStyle(track).gap, 10) || 64;
   let scrollPos = 0;
-  const speed = 0.5;
+  const speed = 2;
   let isPaused = false;
   let animationId;
   let isDestroyed = false;
@@ -35,17 +35,13 @@ const initUpKeepLanding = () => {
     const minWidth = carousel.getBoundingClientRect().width * 2;
     let iterations = 0;
     const maxIterations = 100; // Prevent infinite loops
-    let lastAddedItem = null;
 
     while (track.scrollWidth < minWidth && originals.length > 0 && iterations < maxIterations) {
-      for (let i = 0; i < originals.length && track.scrollWidth < minWidth; i++) {
-        // Only add if this item is different from the last added one
-        if (!lastAddedItem || !originals[i].isEqualNode(lastAddedItem)) {
-          const clone = originals[i].cloneNode(true);
-          track.appendChild(clone);
-          lastAddedItem = originals[i];
-        }
-      }
+      // Add one complete set of originals
+      originals.forEach((item) => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+      });
       // eslint-disable-next-line
       iterations++;
     }
