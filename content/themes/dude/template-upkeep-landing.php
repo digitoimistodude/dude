@@ -435,7 +435,7 @@ get_header(); ?>
 
                       <div id="question-6" role="region" aria-labelledby="question-6" class="accordion-panel" hidden>
                         <div>
-                          <p>Jos sivustosi on tehty jollain muulla kuin WordPressillä, emme ottaa sitä ylläpitoomme. Ylläpitopalvelumme rajoittuu WordPress-verkkosivujen ylläpitoon. Olemme WordPress-toimisto ja asiantuntijamme ovat erikoistuneet nimenomaan WordPress-verkkopalveluihin ja WordPress-optimoituihin palvelimiin.</p>
+                          <p>Jos sivustosi on tehty jollain muulla kuin WordPressillä, emme voi ottaa sitä ylläpitoomme. Ylläpitopalvelumme rajoittuu WordPress-verkkosivujen ylläpitoon. Olemme WordPress-toimisto ja asiantuntijamme ovat erikoistuneet nimenomaan WordPress-verkkopalveluihin ja WordPress-optimoituihin palvelimiin.</p>
                           <p>Jos olet uudistamassa verkkosivuja ja siirtymässä esimerkiksi Drupalista WordPressiin, voimme sivustouudistuksen yhteydessä migratoida sisällöt WordPress-asennukseen. <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>">Ota ihmeessä yhteyttä</a>, jos tällainen kiinnostaa!</p>
                         </div>
                       </div><!-- .accordion-panel -->
