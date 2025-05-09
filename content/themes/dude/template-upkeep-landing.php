@@ -414,7 +414,7 @@ get_header(); ?>
 
                       <div id="question-5" role="region" aria-labelledby="question-5" class="accordion-panel">
                         <div>
-                          <p>Yhteydenottosi jälkeen katsomme mielellämme sivustoasi tarkemmin. Perataan läpi lisäosat ja niiden laatu ja katsotaan mitä voitaisiin tehdä sekavalle hallintapaneelille. Meillä on tapana "kitkeä pahimmat rikkaruohot" alkuun. Yllättävän monen asian voi tehdä kokonaan ilmanlisäosaa parilla rivillä koodia.</p>
+                          <p>Yhteydenottosi jälkeen katsomme mielellämme sivustoasi tarkemmin. Perataan läpi lisäosat ja niiden laatu ja katsotaan mitä voitaisiin tehdä sekavalle hallintapaneelille. Meillä on tapana "kitkeä pahimmat rikkaruohot" alkuun. Yllättävän monen asian voi tehdä kokonaan ilman lisäosaa parilla rivillä koodia.</p>
 
                           <p>Otamme ylläpitoomme myös pagebuildereilla tehtyjä sivustoja, vaikka emme suosittelekaan esimerkiksi Elementorin käyttöä (lue blogista lisää: <a href="https://www.dude.fi/miksi-ei-elementoria-wordpressiin">10 syytä miksi kenenkään ei pitäisi käyttää Elementoria WordPress-verkkosivuilla</a>).</p>
 
