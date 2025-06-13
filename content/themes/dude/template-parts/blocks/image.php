@@ -29,7 +29,7 @@ if ( empty( $image_id ) ) {
 
 $picture_cdn_args = [
   'width'     => '1800',
-  'height'    => '865',
+  'height'    => '1112',
 ];
 
 $picture_cdn_srcset = [
@@ -43,7 +43,7 @@ $picture_cdn_srcset = [
   ],
   1000 => [
     'width'     => '1800',
-    'height'    => '865',
+    'height'    => '1112',
   ],
 ];
 
