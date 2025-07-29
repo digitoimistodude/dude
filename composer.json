@@ -120,6 +120,10 @@
           "gotoandplay/gravityforms-composer-installer": "^2.3"
         }
       }
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/digitoimistodude/so-clean-up-wp-seo"
     }
   ],
   "require": {
@@ -129,7 +133,7 @@
     "vlucas/phpdotenv": "^5.3",
     "oscarotero/env": "^2.1",
     "roots/wp-config": "^1.0",
-    "johnpbloch/wordpress": "6.6.1",
+    "johnpbloch/wordpress": "6.8.2",
     "digitoimistodude/air-helper": "*",
     "wpengine/advanced-custom-fields-pro": "*",
     "digitoimistodude/air-blocks-acf-example-data": "dev-master",
@@ -141,7 +145,7 @@
     "devgeniem/wp-sanitize-accented-uploads": "*",
     "gravityforms/gravityforms": "*",
     "wpackagist-plugin/wordpress-seo": "*",
-    "wpackagist-plugin/so-clean-up-wp-seo": "*",
+    "digitoimistodude/so-clean-up-wp-seo": "dev-develop",
     "wpackagist-plugin/simple-page-ordering": "*",
     "wpackagist-plugin/duplicate-post": "*",
     "wpackagist-plugin/public-post-preview": "*",
