@@ -25,6 +25,7 @@ function head_analytics_scripts() { ?>
   <?php if ( 'production' === wp_get_environment_type() ) : ?>
     <script data-swup-ignore-script src="https://analytics.ahrefs.com/analytics.js" data-key="Q6R+r37sIUxbXX0sqwgVGQ" async></script>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
+    <script data-swup-ignore-script data-src="https://leadbooster-chat.pipedrive.com/assets/loader.js" data-cookiecategory="analytics" async></script>
   <?php endif; ?>
 
   <script>
@@ -98,6 +99,8 @@ function air_cookie_js_analytics() {
   }
 
   ob_start(); ?>
+window.pipedriveLeadboosterConfig = {base: 'leadbooster-chat.pipedrive.com',companyId: 7297292,playbookUuid: '9c38fe13-4ddb-4df8-9978-bfbded9d9ba7',version: 2};(function () {var w = window;if (w.LeadBooster) {console.warn('LeadBooster already exists');} else {w.LeadBooster = {q: [],on: function (n, h) {this.q.push({ t: 'o', n: n, h: h });},trigger: function (n) {this.q.push({ t: 't', n: n });},};}})();
+
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
