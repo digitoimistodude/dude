@@ -63,7 +63,7 @@ if ( $jobs_query->have_posts() ) {
     <?php else : ?>
       <div class="no-jobs">
         <p>
-          Ei avoinna olevia työpaikkoja.
+          <b>Ei avoinna olevia työpaikkoja, työssäoppimispaikkoja tai harjoittelupaikkoja.</b> Tiedustelut: moro@dude.fi.
         </p>
       </div>
     <?php endif; ?>
