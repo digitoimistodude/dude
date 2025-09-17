@@ -17,7 +17,6 @@
     "babel-loader": "^8.2.5",
     "babel-preset-airbnb": "^5.0.0",
     "browser-sync": "^2.27.10",
-    "caniuse-lite": "^1.0.30001359",
     "cssnano": "^5.1.12",
     "cssnano-preset-advanced": "^5.3.8",
     "eslint": "^8.18.0",

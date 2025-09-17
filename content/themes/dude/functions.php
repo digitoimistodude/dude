@@ -128,6 +128,10 @@ add_action( 'after_setup_theme', function() {
         'name' => 'Reference_Category',
         'post_types' => [ 'reference' ],
       ],
+      'reference-target-group' => [
+        'name' => 'Reference_Target_Group',
+        'post_types' => [ 'reference' ],
+      ],
     ],
 
     /**

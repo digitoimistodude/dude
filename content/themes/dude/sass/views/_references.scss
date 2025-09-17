@@ -1,5 +1,8 @@
 // stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, no-descending-specificity, selector-max-class, no-unknown-animations
 
+// Import reference filters
+@import "reference-filters";
+
 // Reference listing page exceptions
 // Always white reference archive text
 .site-main.archive-reference .block-hero-content-image .prefix,

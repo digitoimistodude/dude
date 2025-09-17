@@ -23,4 +23,4 @@ Config::define( 'WP_REDIS_DISABLED', false );
 
 // Developing in the train :)
 // TODO: Disable this later
-// Config::define( 'WP_HTTP_BLOCK_EXTERNAL', true );
+Config::define( 'WP_HTTP_BLOCK_EXTERNAL', true );

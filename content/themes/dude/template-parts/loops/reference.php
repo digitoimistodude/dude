@@ -18,6 +18,21 @@ $data = [
   'vimeo_video_url'       => get_post_meta( $args['post_id'], 'vimeo_video_url', true ),
 ];
 
+// Get target group from taxonomy
+$target_group_terms = wp_get_post_terms( $args['post_id'], 'reference-target-group' );
+$target_group = '';
+if ( ! empty( $target_group_terms ) && ! is_wp_error( $target_group_terms ) ) {
+  $target_group = $target_group_terms[0]->slug;
+}
+
+// Get category slugs for filtering
+$category_slugs = [];
+if ( ! empty( $data['meta_tags'] ) ) {
+  foreach ( $data['meta_tags'] as $tag ) {
+    $category_slugs[] = $tag->slug;
+  }
+}
+
 $picture_cdn_args = [
   'width'   => '635',
   'height'  => '635',
@@ -99,7 +114,11 @@ if ( ( $key % 2 ) !== 0 ) {
 }
 ?>
 
-<div class="col col-reference<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>">
+<div class="col col-reference<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>" 
+     data-title="<?php echo esc_attr( mb_strtolower( $data['title'] ) ); ?>"
+     data-categories="<?php echo esc_attr( implode( ' ', $category_slugs ) ); ?>"
+     data-target-group="<?php echo esc_attr( $target_group ); ?>"
+     data-searchable="<?php echo esc_attr( mb_strtolower( $data['title'] . ' ' . $data['desc'] . ' ' . implode( ' ', array_map( function( $tag ) { return $tag->name; }, $data['meta_tags'] ) ) ) ); ?>">
 
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 

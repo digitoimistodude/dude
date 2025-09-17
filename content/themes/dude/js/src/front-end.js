@@ -33,6 +33,7 @@ import initSwupHelpers from './modules/swup-helpers';
 import initFormHelpers from './modules/form-helpers';
 import initA11ySkipLink from './modules/a11y-skip-link';
 import initUpKeepLanding from './modules/upkeep-landing';
+import initReferenceFilters from './modules/reference-filters';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -112,6 +113,9 @@ function init(target, args) {
 
   // Init skip links
   initA11ySkipLink();
+
+  // Init reference filters
+  initReferenceFilters();
 
   // Init Twitter and Instagram embeds in blog posts
   initEmbeds();

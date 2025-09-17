@@ -1,0 +1,65 @@
+{
+    "key": "group_reference_target_group_2025",
+    "title": "Toimiala - Arkistosivun asetukset",
+    "fields": [
+        {
+            "key": "field_target_group_archive_title",
+            "label": "Arkistosivun otsikko",
+            "name": "archive_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Mukautettu otsikko arkistosivulle, esim. \"Verkkosivut oppilaitoksille ja koulutuskuntayhtymille\"",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Esim. Verkkosivut oppilaitoksille ja koulutuskuntayhtymille",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_target_group_archive_description",
+            "label": "Arkistosivun kuvaus",
+            "name": "archive_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Vapaaehtoinen kuvaus arkistosivulle",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "new_lines": "wpautop",
+            "maxlength": "",
+            "rows": 4
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "reference-target-group"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1726583100
+}
