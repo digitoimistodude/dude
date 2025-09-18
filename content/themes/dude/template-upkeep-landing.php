@@ -131,7 +131,6 @@ get_header(); ?>
             <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">199 &euro; <span class="text-small">/kk</span></a></h2>
             <p>per WordPress-verkkopalvelu</p>
             <ul>
-              <li>Jos sivusto siirretään Duden WordPress-optimoiduille palvelimille, siirrosta ja asennuksesta veloitamme kertamaksun <span style="color:#7effe1">840 &euro;</span>.</li>
               <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
               <li>Hinnat voimassa 12 kuukautta sopimuksen allekirjoittamisesta.</li>
               <li>Hintaan lisätään voimassa oleva arvonlisävero.</li>
@@ -387,7 +386,7 @@ get_header(); ?>
 
                       <div id="question-4" role="region" aria-labelledby="question-4" class="accordion-panel">
                         <div>
-                          <p>Veloitamme verkkosivujen siirrosta Dudelle 840 euroa. Työhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, nimipalvelintietueiden kääntötyö ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
+                          <p>Jos pääsemme sopimukseen, emme vleoita siirrosta erikseen! Siirto- ja asennustyöhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, nimipalvelintietueiden kääntötyö ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
                         </div>
                       </div><!-- .accordion-panel -->
 
