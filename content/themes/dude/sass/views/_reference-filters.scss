@@ -175,6 +175,11 @@
         padding-left: var(--padding-container-horizontal);
         padding-right: var(--padding-container-horizontal);
       }
+
+      @media (max-width: $container-mobile) {
+        padding-left: var(--padding-container-horizontal);
+        padding-right: var(--padding-container-horizontal);
+      }
     }
 
     // Show filters always on desktop
