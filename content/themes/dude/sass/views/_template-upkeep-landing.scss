@@ -17,23 +17,14 @@
     /* stylelint-disable-next-line */
     background-color: #1a2b37;
     /* stylelint-disable-next-line */
-    background-image: radial-gradient(
-      circle,
-      #18363a 0%,
-      rgba(30, 32, 38, 0.536) 100%
-    );
+    background-image: radial-gradient(circle, #18363a 0%, rgba(30, 32, 38, 0.536) 100%);
     border-color: var(--color-mint);
   }
 
   &::after,
   &::before {
     animation: rotate 2.5s linear infinite;
-    background: conic-gradient(
-      from var(--gradient-angle),
-      var(--color-1),
-      var(--color-2),
-      var(--color-3)
-    );
+    background: conic-gradient(from var(--gradient-angle), var(--color-1), var(--color-2), var(--color-3));
     border-radius: inherit;
     content: ' ';
     inset: -1px;
@@ -50,13 +41,7 @@ body.page-template-template-upkeep-landing {
   // stylelint-disable-next-line
   background-color: #1e4348 !important;
   // stylelint-disable-next-line
-  background-image: linear-gradient(
-    159deg,
-    #1e4348 0%,
-    rgba(30, 32, 38, 0.734) 35%,
-    #1e4348 65%,
-    #1e2026 100%
-  ) !important;
+  background-image: linear-gradient(159deg, #1e4348 0%, rgba(30, 32, 38, 0.734) 35%, #1e4348 65%, #1e2026 100%) !important;
 
   // Override color themes
   h1,
@@ -117,44 +102,24 @@ body.page-template-template-upkeep-landing {
 
     // First layer - wider, lighter blur
     &::before {
-      background: linear-gradient(
-        to right,
-        #1e4348 0%,
-        rgb(30 67 72 / 0.8) 30%,
-        transparent 100%
-      );
+      background: linear-gradient(to right, #1e4348 0%, rgb(30 67 72 / 0.8) 30%, transparent 100%);
       left: 0;
 
       @supports (backdrop-filter: blur(4px)) {
         backdrop-filter: blur(4px);
         background: none;
-        mask-image: linear-gradient(
-          to right,
-          rgb(0 0 0 / 1) 0%,
-          rgb(0 0 0 / 0.8) 30%,
-          rgb(0 0 0 / 0) 100%
-        );
+        mask-image: linear-gradient(to right, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / 0.8) 30%, rgb(0 0 0 / 0) 100%);
       }
     }
 
     &::after {
-      background: linear-gradient(
-        to left,
-        #1e4348 0%,
-        rgb(30 67 72 / 0.8) 30%,
-        transparent 100%
-      );
+      background: linear-gradient(to left, #1e4348 0%, rgb(30 67 72 / 0.8) 30%, transparent 100%);
       right: 0;
 
       @supports (backdrop-filter: blur(4px)) {
         backdrop-filter: blur(4px);
         background: none;
-        mask-image: linear-gradient(
-          to left,
-          rgb(0 0 0 / 1) 0%,
-          rgb(0 0 0 / 0.8) 30%,
-          rgb(0 0 0 / 0) 100%
-        );
+        mask-image: linear-gradient(to left, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / 0.8) 30%, rgb(0 0 0 / 0) 100%);
       }
     }
   }
@@ -173,8 +138,7 @@ body.page-template-template-upkeep-landing {
   }
 
   .carousel-track img {
-    filter: invert(58%) sepia(8%) saturate(343%) hue-rotate(174deg)
-      brightness(89%) contrast(87%);
+    filter: invert(58%) sepia(8%) saturate(343%) hue-rotate(174deg) brightness(89%) contrast(87%);
     flex-shrink: 0;
     height: 40px;
     opacity: 0.7;
@@ -261,11 +225,7 @@ body.page-template-template-upkeep-landing {
       // stylelint-disable-next-line
       background-color: #223948 !important;
       // stylelint-disable-next-line
-      background-image: radial-gradient(
-        circle,
-        #1e4348 0%,
-        rgba(30, 32, 38, 0.536) 100%
-      ) !important;
+      background-image: radial-gradient(circle, #1e4348 0%, rgba(30, 32, 38, 0.536) 100%) !important;
       border-radius: 16px;
     }
   }
@@ -437,11 +397,7 @@ body.page-template-template-upkeep-landing {
   .item-price {
     /* stylelint-disable-next-line */
     background-color: #223948;
-    background-image: radial-gradient(
-      circle,
-      #1e4348 0%,
-      rgb(30 32 38 / 0.536) 100%
-    );
+    background-image: radial-gradient(circle, #1e4348 0%, rgb(30 32 38 / 0.536) 100%);
     border-radius: 16px;
     margin-bottom: 40px;
     padding: 45px 40px 40px;
@@ -449,11 +405,7 @@ body.page-template-template-upkeep-landing {
     &.item-customized {
       /* stylelint-disable-next-line */
       background-color: #223948;
-      background-image: radial-gradient(
-        circle,
-        #1e4348 0%,
-        rgb(30 32 38 / 0.536) 100%
-      );
+      background-image: radial-gradient(circle, #1e4348 0%, rgb(30 32 38 / 0.536) 100%);
       border: 1px solid #2a595e;
       position: relative;
 

@@ -101,27 +101,14 @@ body {
   }
 
   // Fix stacked padding in editor
-  .wp-block-acf-process
-    + .wp-block-acf-references
-    .block.has-unified-padding-if-stacked
-    > .container,
-  .wp-block-acf-list
-    + .wp-block-acf-reference-quotes
-    .block.has-unified-padding-if-stacked
-    > .container,
-  .wp-block-acf-hero-content-image
-    + .wp-block-acf-title-content-50-50
-    .block.has-unified-padding-if-stacked
-    > .container {
-    padding: var(--padding-container-vertical)
-      var(--padding-container-horizontal);
+  .wp-block-acf-process + .wp-block-acf-references .block.has-unified-padding-if-stacked > .container,
+  .wp-block-acf-list + .wp-block-acf-reference-quotes .block.has-unified-padding-if-stacked > .container,
+  .wp-block-acf-hero-content-image + .wp-block-acf-title-content-50-50 .block.has-unified-padding-if-stacked > .container {
+    padding: var(--padding-container-vertical) var(--padding-container-horizontal);
   }
 
   // Unified padding fixes
-  .wp-block-acf-title-content-50-50
-    + .wp-block
-    .has-unified-padding-if-stacked
-    .container {
+  .wp-block-acf-title-content-50-50 + .wp-block .has-unified-padding-if-stacked .container {
     padding-top: 0;
 
     // stylelint-disable-next-line
@@ -209,17 +196,13 @@ body {
 }
 
 // Reset minus margins in Gutenberg editor
-.editor-styles-wrapper
-  .block-editor-block-list__layout.is-root-container
-  > .wp-block[data-align='full'] {
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block[data-align='full'] {
   margin-left: unset;
   margin-right: unset;
 }
 
 // Article view main title in Gutenberg editor
-.editor-styles-wrapper
-  .edit-post-visual-editor__post-title-wrapper
-  .editor-post-title {
+.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper .editor-post-title {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   max-width: $width-max-article;

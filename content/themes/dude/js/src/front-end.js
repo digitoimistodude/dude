@@ -1,10 +1,4 @@
 /* eslint-disable max-len, no-underscore-dangle, no-param-reassign, no-unused-vars, no-new, new-cap */
-/**
- * @Author: Roni Laukkarinen
- * @Date:   2022-04-23 13:44:09
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2023-04-18 18:57:20
- */
 
 // Import modules
 import reframe from 'reframe.js';
@@ -14,11 +8,7 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 // eslint-disable-next-line no-unused-vars
 import whatInput from 'what-input';
 import getLocalization from './modules/localization';
-import {
-  styleExternalLinks,
-  initExternalLinkLabels,
-  getChildAltText,
-} from './modules/external-link';
+import { styleExternalLinks, initExternalLinkLabels, getChildAltText } from './modules/external-link';
 import initCarousels from './modules/carousels';
 import initAnchors from './modules/anchors';
 import initBackToTop from './modules/top';

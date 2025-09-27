@@ -1,34 +1,91 @@
+/* eslint-disable wrap-iife */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-plusplus */
+/* eslint-disable func-names */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-shadow */
+/* eslint-disable max-len */
+/* eslint-disable no-continue */
 /* eslint-disable no-param-reassign, no-unused-vars */
 /**
  * Reference filtering functionality
  */
 
-const initReferenceFilters = () => {
-  // Run on both main archive and taxonomy archives
-  if (
-    !document.body.classList.contains('post-type-archive-reference') &&
-    !document.body.classList.contains('tax-reference-target-group')
-  ) {
-    return;
-  }
-
+const initReferenceFilters = function () {
   // Base URLs
   const archiveBaseUrl = `${window.location.origin}/referenssit`;
   const currentUrl = window.location.origin + window.location.pathname;
 
   const referenceItems = document.querySelectorAll('.col-reference');
   const targetGroupButtons = document.querySelectorAll('.filter-target-group');
-  const solutionCheckboxes = document.querySelectorAll(
-    'input[name="solution"]'
-  );
+  const solutionCheckboxes = document.querySelectorAll('input[name="solution"]');
   const searchInput = document.getElementById('reference-search');
   const advancedToggle = document.querySelector('.filter-toggle-advanced');
   const advancedContent = document.getElementById('advanced-filters-content');
   const advancedSection = document.getElementById('advanced-filters');
 
+  const parseQueryParams = (queryString) => {
+    const params = {};
+
+    if (!queryString) {
+      return params;
+    }
+
+    const query = queryString.charAt(0) === '?' ? queryString.slice(1) : queryString;
+
+    if (!query) {
+      return params;
+    }
+
+    const pairs = query.split('&');
+    for (let i = 0; i < pairs.length; i += 1) {
+      const pair = pairs[i];
+      if (!pair) {
+        continue;
+      }
+
+      const equalIndex = pair.indexOf('=');
+      let rawKey;
+      let rawValue;
+
+      if (equalIndex === -1) {
+        rawKey = pair;
+        rawValue = '';
+      } else {
+        rawKey = pair.substring(0, equalIndex);
+        rawValue = pair.substring(equalIndex + 1);
+      }
+
+      if (!rawKey) {
+        continue;
+      }
+
+      const key = decodeURIComponent(rawKey);
+      const value = decodeURIComponent((rawValue || '').replace(/\+/g, ' '));
+
+      params[key] = value;
+    }
+
+    return params;
+  };
+
+  const buildQueryString = (params) =>
+    Object.keys(params)
+      .map((key) => {
+        const value = params[key];
+
+        if (value === undefined || value === null || value === '') {
+          return '';
+        }
+
+        return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+      })
+      .filter(Boolean)
+      .join('&');
+
   // Initialize filters from URL parameters and current page
   const getFiltersFromUrl = () => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = parseQueryParams(window.location.search);
 
     // Check if we're on a taxonomy archive and get the current target group
     let currentTargetGroup = 'all';
@@ -38,143 +95,155 @@ const initReferenceFilters = () => {
     }
 
     // Override with URL parameters if present
-    const urlTargetGroup = urlParams.get('toimiala');
+    const urlTargetGroup = urlParams.toimiala;
     if (urlTargetGroup) {
       currentTargetGroup = urlTargetGroup;
     }
 
+    const solutionsFromUrl = urlParams.ratkaisut ? urlParams.ratkaisut.split(',') : ['all'];
+    const searchTermFromUrl = urlParams.haku ? urlParams.haku : '';
+
     return {
       targetGroup: currentTargetGroup,
-      solutions: urlParams.get('ratkaisut')
-        ? urlParams.get('ratkaisut').split(',')
-        : ['all'],
-      searchTerm: urlParams.get('haku') || '',
+      solutions: solutionsFromUrl,
+      searchTerm: searchTermFromUrl,
     };
   };
 
   // State management
   let activeFilters = getFiltersFromUrl();
 
-  // Toggle advanced filters
+  // Toggle advanced filters - using document.body event delegation for iOS Safari 17.4.1+ compatibility
   if (advancedToggle && advancedContent) {
-    advancedToggle.addEventListener('click', () => {
-      const isExpanded =
-        advancedToggle.getAttribute('aria-expanded') === 'true';
+    // Remove any existing listeners first
+    document.body.addEventListener('click', (e) => {
+      if (e.target === advancedToggle || advancedToggle.contains(e.target)) {
+        e.preventDefault();
+        e.stopPropagation();
 
-      if (isExpanded) {
-        advancedToggle.setAttribute('aria-expanded', 'false');
-        advancedSection.setAttribute('aria-expanded', 'false');
-        advancedContent.hidden = true;
-      } else {
-        advancedToggle.setAttribute('aria-expanded', 'true');
-        advancedSection.setAttribute('aria-expanded', 'true');
-        advancedContent.hidden = false;
+        const isExpanded = advancedToggle.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          advancedToggle.setAttribute('aria-expanded', 'false');
+          advancedSection.setAttribute('aria-expanded', 'false');
+          advancedContent.hidden = true;
+        } else {
+          advancedToggle.setAttribute('aria-expanded', 'true');
+          advancedSection.setAttribute('aria-expanded', 'true');
+          advancedContent.hidden = false;
+        }
       }
     });
   }
 
-  // Target group filtering - real-time filtering
-  targetGroupButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
+  // Target group filtering - direct event attachment for iOS Safari compatibility
+  const handleTargetGroupClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-      // Check if this button has an archive link and we're not on the main archive
+    const button = e.currentTarget;
+
+    // Check if this button has an archive link and we're not on the main archive
+    const archiveLink = button.querySelector('.archive-link');
+    if (archiveLink && button.dataset.value !== 'all' && !document.body.classList.contains('post-type-archive-reference')) {
+      // Navigate to the taxonomy archive
+      const { archiveUrl } = archiveLink.dataset;
+      if (archiveUrl) {
+        window.location.href = archiveUrl;
+        return;
+      }
+    } else if (button.dataset.value === 'all' && !document.body.classList.contains('post-type-archive-reference')) {
+      // Navigate to main archive for "all"
       const archiveLink = button.querySelector('.archive-link');
-      if (
-        archiveLink &&
-        button.dataset.value !== 'all' &&
-        !document.body.classList.contains('post-type-archive-reference')
-      ) {
-        // Navigate to the taxonomy archive
-        const { archiveUrl } = archiveLink.dataset;
-        if (archiveUrl) {
-          window.location.href = archiveUrl;
-          return;
-        }
-      } else if (
-        button.dataset.value === 'all' &&
-        !document.body.classList.contains('post-type-archive-reference')
-      ) {
-        // Navigate to main archive for "all"
-        const archiveLink = button.querySelector('.archive-link');
-        if (archiveLink) {
-          window.location.href = archiveLink.dataset.archiveUrl;
-          return;
+      if (archiveLink) {
+        window.location.href = archiveLink.dataset.archiveUrl;
+        return;
+      }
+    }
+
+    // For real-time filtering (on main archive or same taxonomy page)
+    // Remove active class from all buttons
+    for (let i = 0; i < targetGroupButtons.length; i += 1) {
+      const btn = targetGroupButtons[i];
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    }
+
+    // Add active class to clicked button
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+
+    // Update active filter
+    activeFilters.targetGroup = button.dataset.value;
+
+    // Update URL and apply filters
+    updateUrlAndApplyFilters();
+  };
+
+  // Ultra-simple target group buttons for iOS Safari compatibility
+  for (let i = 0; i < targetGroupButtons.length; i += 1) {
+    const button = targetGroupButtons[i];
+    button.style.cursor = 'pointer';
+
+    // Use closure to capture the button reference
+    (function (btn) {
+      btn.onclick = function () {
+        console.log('Target group button clicked via onclick!');
+        handleTargetGroupClick({ currentTarget: btn, preventDefault() {}, stopPropagation() {} });
+      };
+    })(button);
+  }
+
+  // Solution/category filtering with multi-select - direct attachment for iOS Safari compatibility
+  const handleCheckboxChange = function (e) {
+    const checkbox = e.target;
+    const allCheckbox = document.querySelector('input[name="solution"][value="all"]');
+
+    if (checkbox.value === 'all' && checkbox.checked) {
+      for (let i = 0; i < solutionCheckboxes.length; i += 1) {
+        const cb = solutionCheckboxes[i];
+        if (cb.value !== 'all') {
+          cb.checked = false;
         }
       }
+      activeFilters.solutions = ['all'];
+    } else if (checkbox.value !== 'all') {
+      if (checkbox.checked) {
+        if (allCheckbox) {
+          allCheckbox.checked = false;
+        }
 
-      // For real-time filtering (on main archive or same taxonomy page)
-      // Remove active class from all buttons
-      targetGroupButtons.forEach((btn) => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
-      });
+        const allIndex = activeFilters.solutions.indexOf('all');
+        if (allIndex > -1) {
+          activeFilters.solutions.splice(allIndex, 1);
+        }
 
-      // Add active class to clicked button
-      button.classList.add('active');
-      button.setAttribute('aria-pressed', 'true');
+        if (activeFilters.solutions.indexOf(checkbox.value) === -1) {
+          activeFilters.solutions.push(checkbox.value);
+        }
+      } else {
+        const index = activeFilters.solutions.indexOf(checkbox.value);
+        if (index > -1) {
+          activeFilters.solutions.splice(index, 1);
+        }
 
-      // Update active filter
-      activeFilters.targetGroup = button.dataset.value;
-
-      // Update URL and apply filters
-      updateUrlAndApplyFilters();
-    });
-  });
-
-  // Solution/category filtering with multi-select
-  solutionCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-      const allCheckbox = document.querySelector(
-        'input[name="solution"][value="all"]'
-      );
-
-      if (checkbox.value === 'all' && checkbox.checked) {
-        // If "All" is checked, uncheck all others
-        solutionCheckboxes.forEach((cb) => {
-          if (cb.value !== 'all') {
-            cb.checked = false;
-          }
-        });
-        activeFilters.solutions = ['all'];
-      } else if (checkbox.value !== 'all') {
-        // If any other checkbox is changed
-        if (checkbox.checked) {
-          // Uncheck "All" when selecting specific categories
+        if (activeFilters.solutions.length === 0) {
           if (allCheckbox) {
-            allCheckbox.checked = false;
+            allCheckbox.checked = true;
           }
-
-          // Remove 'all' from active filters if present
-          const allIndex = activeFilters.solutions.indexOf('all');
-          if (allIndex > -1) {
-            activeFilters.solutions.splice(allIndex, 1);
-          }
-
-          // Add the selected category
-          if (!activeFilters.solutions.includes(checkbox.value)) {
-            activeFilters.solutions.push(checkbox.value);
-          }
-        } else {
-          // Remove unchecked category
-          const index = activeFilters.solutions.indexOf(checkbox.value);
-          if (index > -1) {
-            activeFilters.solutions.splice(index, 1);
-          }
-
-          // If no categories are selected, select "All"
-          if (activeFilters.solutions.length === 0) {
-            if (allCheckbox) {
-              allCheckbox.checked = true;
-            }
-            activeFilters.solutions = ['all'];
-          }
+          activeFilters.solutions = ['all'];
         }
       }
+    }
 
-      updateUrlAndApplyFilters();
-    });
-  });
+    updateUrlAndApplyFilters();
+  };
+
+  // Attach change events directly to each checkbox for iOS Safari compatibility
+  for (let i = 0; i < solutionCheckboxes.length; i += 1) {
+    const checkbox = solutionCheckboxes[i];
+    checkbox.addEventListener('change', handleCheckboxChange);
+  }
 
   // Search functionality with debounce
   let searchTimeout;
@@ -191,34 +260,33 @@ const initReferenceFilters = () => {
   // Apply filters and update URL with pushState
   const updateUrlAndApplyFilters = () => {
     let baseUrl = currentUrl;
-    const params = new URLSearchParams();
+    const params = {};
 
     // Get the appropriate base URL from the target group button
-    const targetButton = document.querySelector(
-      `[data-value="${activeFilters.targetGroup}"]`
-    );
-    const archiveLink = targetButton?.querySelector('.archive-link');
+    const targetButton = document.querySelector(`[data-value="${activeFilters.targetGroup}"]`);
+    const archiveLink = targetButton ? targetButton.querySelector('.archive-link') : null;
     if (archiveLink && archiveLink.dataset.archiveUrl) {
       baseUrl = archiveLink.dataset.archiveUrl;
     }
 
     // Add remaining filter parameters as query params
-    if (
-      !activeFilters.solutions.includes('all') &&
-      activeFilters.solutions.length > 0
-    ) {
-      params.set('ratkaisut', activeFilters.solutions.join(','));
+    if (activeFilters.solutions.indexOf('all') === -1 && activeFilters.solutions.length > 0) {
+      params.ratkaisut = activeFilters.solutions.join(',');
     }
 
     if (activeFilters.searchTerm) {
-      params.set('haku', activeFilters.searchTerm);
+      params.haku = activeFilters.searchTerm;
     }
 
     // Build final URL
-    const newUrl = params.toString()
-      ? `${baseUrl}?${params.toString()}`
-      : baseUrl;
-    window.history.pushState({ filters: activeFilters }, '', newUrl);
+    const queryString = buildQueryString(params);
+    const newUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
+    const stateFilters = {
+      targetGroup: activeFilters.targetGroup,
+      solutions: [...activeFilters.solutions],
+      searchTerm: activeFilters.searchTerm,
+    };
+    window.history.pushState({ filters: stateFilters }, '', newUrl);
 
     // Apply the filters
     applyFilters();
@@ -235,7 +303,8 @@ const initReferenceFilters = () => {
 
     // Reset UI
     // Target group buttons
-    targetGroupButtons.forEach((btn) => {
+    for (let i = 0; i < targetGroupButtons.length; i += 1) {
+      const btn = targetGroupButtons[i];
       if (btn.dataset.value === 'all') {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
@@ -243,12 +312,13 @@ const initReferenceFilters = () => {
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed', 'false');
       }
-    });
+    }
 
     // Solution checkboxes
-    solutionCheckboxes.forEach((checkbox) => {
+    for (let i = 0; i < solutionCheckboxes.length; i += 1) {
+      const checkbox = solutionCheckboxes[i];
       checkbox.checked = checkbox.value === 'all';
-    });
+    }
 
     // Search input
     if (searchInput) {
@@ -266,7 +336,8 @@ const initReferenceFilters = () => {
     activeFilters.solutions = ['all'];
 
     // Update target group buttons UI
-    targetGroupButtons.forEach((btn) => {
+    for (let i = 0; i < targetGroupButtons.length; i += 1) {
+      const btn = targetGroupButtons[i];
       if (btn.dataset.value === 'all') {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
@@ -274,12 +345,13 @@ const initReferenceFilters = () => {
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed', 'false');
       }
-    });
+    }
 
     // Update solution checkboxes UI
-    solutionCheckboxes.forEach((checkbox) => {
+    for (let i = 0; i < solutionCheckboxes.length; i += 1) {
+      const checkbox = solutionCheckboxes[i];
       checkbox.checked = checkbox.value === 'all';
-    });
+    }
 
     // Apply filters (keeping only search term)
     applyFilters();
@@ -289,7 +361,8 @@ const initReferenceFilters = () => {
   const applyFilters = () => {
     let visibleCount = 0;
 
-    referenceItems.forEach((item) => {
+    for (let i = 0; i < referenceItems.length; i += 1) {
+      const item = referenceItems[i];
       let shouldShow = true;
 
       // Target group filter
@@ -301,13 +374,24 @@ const initReferenceFilters = () => {
       }
 
       // Category/solution filter
-      if (shouldShow && !activeFilters.solutions.includes('all')) {
-        const itemCategories = (item.dataset.categories || '')
-          .split(' ')
-          .filter(Boolean);
-        const hasMatchingCategory = activeFilters.solutions.some((solution) =>
-          itemCategories.includes(solution)
-        );
+      if (shouldShow && activeFilters.solutions.indexOf('all') === -1) {
+        const categoriesString = item.dataset.categories || '';
+        const itemCategories = [];
+        const categoriesArray = categoriesString.split(' ');
+        // Manual filter instead of .filter(Boolean)
+        for (let j = 0; j < categoriesArray.length; j += 1) {
+          if (categoriesArray[j] && categoriesArray[j].length > 0) {
+            itemCategories.push(categoriesArray[j]);
+          }
+        }
+
+        let hasMatchingCategory = false;
+        for (let k = 0; k < activeFilters.solutions.length; k += 1) {
+          if (itemCategories.indexOf(activeFilters.solutions[k]) !== -1) {
+            hasMatchingCategory = true;
+            break;
+          }
+        }
 
         if (!hasMatchingCategory) {
           shouldShow = false;
@@ -317,7 +401,7 @@ const initReferenceFilters = () => {
       // Search filter
       if (shouldShow && activeFilters.searchTerm) {
         const searchableText = item.dataset.searchable || '';
-        if (!searchableText.includes(activeFilters.searchTerm)) {
+        if (searchableText.indexOf(activeFilters.searchTerm) === -1) {
           shouldShow = false;
         }
       }
@@ -339,16 +423,11 @@ const initReferenceFilters = () => {
           }
         }, 300);
       }
-    });
+    }
 
     // Check for cross-filter results if no current results and we have any filters applied
     let crossFilterCount = 0;
-    if (
-      visibleCount === 0 &&
-      (activeFilters.targetGroup !== 'all' ||
-        !activeFilters.solutions.includes('all') ||
-        activeFilters.searchTerm)
-    ) {
+    if (visibleCount === 0 && (activeFilters.targetGroup !== 'all' || activeFilters.solutions.indexOf('all') === -1 || activeFilters.searchTerm)) {
       crossFilterCount = countCrossFilterResults();
     }
 
@@ -360,7 +439,8 @@ const initReferenceFilters = () => {
   const countCrossFilterResults = () => {
     let count = 0;
 
-    referenceItems.forEach((item) => {
+    for (let i = 0; i < referenceItems.length; i += 1) {
+      const item = referenceItems[i];
       let shouldShow = true;
 
       // For cross-filter search, we relax the most restrictive filters:
@@ -371,7 +451,7 @@ const initReferenceFilters = () => {
       // Only apply search filter for cross-filter search
       if (activeFilters.searchTerm) {
         const searchableText = item.dataset.searchable || '';
-        if (!searchableText.includes(activeFilters.searchTerm)) {
+        if (searchableText.indexOf(activeFilters.searchTerm) === -1) {
           shouldShow = false;
         }
       }
@@ -379,13 +459,16 @@ const initReferenceFilters = () => {
       if (shouldShow) {
         count++;
       }
-    });
+    }
 
     return count;
   };
 
   // Handle no results message
-  const handleNoResults = (count, crossFilterCount = 0) => {
+  const handleNoResults = function (count, crossFilterCount) {
+    if (typeof crossFilterCount === 'undefined') {
+      crossFilterCount = 0;
+    }
     const container = document.querySelector('.cols.cols-two');
     let noResultsMessage = document.getElementById('no-results-message');
 
@@ -407,14 +490,11 @@ const initReferenceFilters = () => {
       if (crossFilterCount > 0) {
         // Show cross-filter results message - be more specific about what was found
         let messageText = '';
-        if (
-          activeFilters.targetGroup !== 'all' &&
-          !activeFilters.solutions.includes('all')
-        ) {
+        if (activeFilters.targetGroup !== 'all' && activeFilters.solutions.indexOf('all') === -1) {
           messageText = `${crossFilterCount} hakutulosta löytyi muilta toimialoilta ja kategorioilta, haetaanko kaikista?`;
         } else if (activeFilters.targetGroup !== 'all') {
           messageText = `${crossFilterCount} hakutulosta löytyi muilta toimialoilta, haetaanko kaikista?`;
-        } else if (!activeFilters.solutions.includes('all')) {
+        } else if (activeFilters.solutions.indexOf('all') === -1) {
           messageText = `${crossFilterCount} hakutulosta löytyi muista kategorioista, haetaanko kaikista?`;
         } else {
           messageText = `${crossFilterCount} hakutulosta löytyi, haetaanko kaikista?`;
@@ -439,18 +519,7 @@ const initReferenceFilters = () => {
 
       noResultsMessage.innerHTML = content;
 
-      // Add event listeners
-      const resetButton = noResultsMessage.querySelector('#reset-filters');
-      if (resetButton) {
-        resetButton.addEventListener('click', resetAllFilters);
-      }
-
-      const searchAllButton = noResultsMessage.querySelector(
-        '#search-all-filters'
-      );
-      if (searchAllButton) {
-        searchAllButton.addEventListener('click', searchAllFilters);
-      }
+      // Event listeners are handled by document.body delegation below
 
       container.appendChild(noResultsMessage);
     } else if (noResultsMessage) {
@@ -461,7 +530,8 @@ const initReferenceFilters = () => {
   // Initialize UI with URL state
   const initializeFromUrl = () => {
     // Set target group button states based on activeFilters
-    targetGroupButtons.forEach((btn) => {
+    for (let i = 0; i < targetGroupButtons.length; i += 1) {
+      const btn = targetGroupButtons[i];
       if (btn.dataset.value === activeFilters.targetGroup) {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
@@ -469,16 +539,17 @@ const initReferenceFilters = () => {
         btn.classList.remove('active');
         btn.setAttribute('aria-pressed', 'false');
       }
-    });
+    }
 
     // Set solution checkboxes state based on activeFilters
-    solutionCheckboxes.forEach((checkbox) => {
-      if (activeFilters.solutions.includes('all')) {
+    for (let i = 0; i < solutionCheckboxes.length; i += 1) {
+      const checkbox = solutionCheckboxes[i];
+      if (activeFilters.solutions.indexOf('all') !== -1) {
         checkbox.checked = checkbox.value === 'all';
       } else {
-        checkbox.checked = activeFilters.solutions.includes(checkbox.value);
+        checkbox.checked = activeFilters.solutions.indexOf(checkbox.value) !== -1;
       }
-    });
+    }
 
     // Set search input state
     if (searchInput && activeFilters.searchTerm) {
@@ -497,6 +568,24 @@ const initReferenceFilters = () => {
       activeFilters = getFiltersFromUrl();
     }
     initializeFromUrl();
+  });
+
+  // Event delegation for dynamically created buttons
+  document.body.addEventListener('click', (e) => {
+    // Handle reset filters button
+    if (e.target.matches('#reset-filters')) {
+      e.preventDefault();
+      e.stopPropagation();
+      resetAllFilters();
+      return;
+    }
+
+    // Handle search all filters button
+    if (e.target.matches('#search-all-filters')) {
+      e.preventDefault();
+      e.stopPropagation();
+      searchAllFilters();
+    }
   });
 
   // Initialize with URL state

@@ -1,11 +1,7 @@
 // Core/separator block
 hr,
 .wp-block-separator {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(0 0 0 / 0) 50%,
-    rgb(0 0 0 / 0.4) 50%
-  );
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / 0.4) 50%);
   background-position: 0 50%;
   background-repeat: repeat-x;
   background-size: 2px 2px;

@@ -17,9 +17,9 @@
 }
 
 .editor-styles-wrapper
-  .block-hero-content-image.block-background-reference.has-image-as-img,
+.block-hero-content-image.block-background-reference.has-image-as-img,
 .site-main
-  .block-hero-content-image.block-background-reference.has-image-as-img {
+.block-hero-content-image.block-background-reference.has-image-as-img {
   // This variable comes dynamically from reference back end
   // stylelint-disable-next-line csstools/value-no-unknown-custom-properties
   --color-text-block: var(--color-brand-reference-text);

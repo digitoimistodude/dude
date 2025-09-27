@@ -9,9 +9,7 @@
     align-items: center;
     display: flex;
     overflow: visible;
-    padding-top: calc(
-      var(--height-navigation-mobile) + var(--padding-container-vertical)
-    );
+    padding-top: calc(var(--height-navigation-mobile) + var(--padding-container-vertical));
     position: relative;
 
     @media (max-width: 768px) {
@@ -117,11 +115,7 @@
 }
 
 .has-image .container {
-  padding-bottom: calc(
-    calc(
-      var(--height-navigation-mobile) + var(--padding-container-vertical) / 3
-    )
-  );
+  padding-bottom: calc(calc(var(--height-navigation-mobile) + var(--padding-container-vertical) / 3));
 
   @media (min-width: 1180px) {
     padding-top: 22rem;
@@ -197,8 +191,7 @@
 
 // Reference version
 // stylelint-disable selector-max-class, selector-max-specificity
-.block.block-hero-content-image.has-image-as-img.block-background-reference
-  .container {
+.block.block-hero-content-image.has-image-as-img.block-background-reference .container {
   .col-content {
     padding-top: 0;
   }

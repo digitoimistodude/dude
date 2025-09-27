@@ -115,7 +115,7 @@ get_header(); ?>
 
     <div class="advanced-filters-content" id="advanced-filters-content" hidden>
       <div class="container">
-        <div class="filter-row">
+        <div class="cols cols-two">
           <?php // Solutions/Categories filter ?>
           <div class="filter-group filter-solutions">
             <div class="archive-head">

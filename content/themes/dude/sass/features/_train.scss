@@ -125,16 +125,12 @@
   @include screen-reader-text();
 }
 
-.page-id-9
-  .block.has-unified-padding-if-stacked.block-testimonial-train
-  > .container {
+.page-id-9 .block.has-unified-padding-if-stacked.block-testimonial-train > .container {
   padding-top: calc(var(--padding-container-vertical) / 2);
 }
 
 // stylelint-disable-next-line
-body[data-color-scheme='light'].page-id-9
-  .block.has-unified-padding-if-stacked.block-testimonial-train
-  > .container {
+body[data-color-scheme='light'].page-id-9 .block.has-unified-padding-if-stacked.block-testimonial-train > .container {
   // stylelint-disable-next-line
   padding-top: 0 !important;
 }

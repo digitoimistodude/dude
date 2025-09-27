@@ -6,16 +6,16 @@
   div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field input.user-invalid,
   div.wpforms-container-full
-    .wpforms-form
-    .wpforms-field
-    textarea.wpforms-error,
+  .wpforms-form
+  .wpforms-field
+  textarea.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field textarea.user-invalid,
   div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field select.user-invalid,
   div.wpforms-container-full
-    .wpforms-form
-    .wpforms-field.wpforms-has-error
-    .choices__inner {
+  .wpforms-form
+  .wpforms-field.wpforms-has-error
+  .choices__inner {
     border-color: var(--color-error);
     color: var(--color-error);
 
@@ -28,7 +28,7 @@
   // Success message
   .wpforms-confirmation-container-full,
   div[submit-success]
-    > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+  > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
     background-color: transparent;
     background-image: none;
     border: 0;

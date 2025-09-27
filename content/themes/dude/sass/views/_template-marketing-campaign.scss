@@ -9,14 +9,7 @@
     animation: animateheading 8s ease infinite;
     background-clip: text;
     // stylelint-disable-next-line
-    background-image: linear-gradient(
-      45deg,
-      var(--color-heading),
-      var(--color-hover-main-level),
-      var(--color-gradient-shade-1),
-      var(--color-gradient-shade-2),
-      var(--color-heading)
-    );
+    background-image: linear-gradient(45deg, var(--color-heading), var(--color-hover-main-level), var(--color-gradient-shade-1), var(--color-gradient-shade-2), var(--color-heading));
     background-size: 100% 60%;
     color: var(--color-heading);
     margin: 0;
@@ -79,12 +72,7 @@
     animation: gradient 2s infinite;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
-    background-image: repeating-linear-gradient(
-      to right,
-      var(--color-gradient-shade-1) 0%,
-      var(--color-gradient-shade-5) 50%,
-      var(--color-gradient-shade-1) 100%
-    );
+    background-image: repeating-linear-gradient(to right, var(--color-gradient-shade-1) 0%, var(--color-gradient-shade-5) 50%, var(--color-gradient-shade-1) 100%);
     background-position: 0 100%;
     background-size: 200% auto;
     width: 100%;
