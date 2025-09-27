@@ -159,6 +159,7 @@ body.has-dark-navigation[data-color-scheme='dark'] {
 body[data-color-scheme='light'],
 body.has-dark-navigation[data-color-scheme='light'] {
   &.post-type-archive-reference,
+  &.tax-reference-target-group,
   &.single-job,
   &.page-id-4491 {
     // Also use always light text for these pages
@@ -179,7 +180,10 @@ body.has-dark-navigation[data-color-scheme='light'] {
 // Pages that are known to be always have light text on nav
 // stylelint-disable
 body.archive.post-type-archive-reference .site-header,
+body.archive.tax-reference-target-group .site-header,
 body[data-color-scheme='light'].archive.post-type-archive-reference
+  .site-header,
+body[data-color-scheme='light'].archive.tax-reference-target-group
   .site-header,
 body.error404 .site-header,
 body.has-light-navigation[data-color-scheme='dark'].error404 .site-header,
@@ -199,7 +203,10 @@ body.has-light-navigation .site-header {
 @media (prefers-color-scheme: dark) {
   // Pages that are known to be always have light text on nav
   body.archive.post-type-archive-reference .site-header,
+  body.archive.tax-reference-target-group .site-header,
   body[data-color-scheme='light'].archive.post-type-archive-reference
+    .site-header,
+  body[data-color-scheme='light'].archive.tax-reference-target-group
     .site-header,
   body.error404 .site-header,
   body.has-light-navigation[data-color-scheme='dark'].error404 .site-header,

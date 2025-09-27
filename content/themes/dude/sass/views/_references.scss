@@ -68,7 +68,8 @@
   background-size: 100% auto;
 }
 
-body.post-type-archive-reference .site {
+body.post-type-archive-reference .site,
+body.tax-reference-target-group .site {
   background-image:
     linear-gradient(45deg,var(--color-petrol),rgb(70 85 80 / 0.26) 56%,rgb(32 88 96 / 0.7)),
     linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
@@ -79,23 +80,27 @@ body.post-type-archive-reference .site {
 }
 
 // Add full gradient bg
-body[data-color-scheme='dark'].post-type-archive-reference .site {
+body[data-color-scheme='dark'].post-type-archive-reference .site,
+body[data-color-scheme='dark'].tax-reference-target-group .site {
   background-image:
     linear-gradient(45deg,var(--color-petrol),rgb(70 85 80 / 0.26) 56%,rgb(32 88 96 / 0.7)),
     linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
 }
 
-body[data-color-scheme='light'].post-type-archive-reference .site {
+body[data-color-scheme='light'].post-type-archive-reference .site,
+body[data-color-scheme='light'].tax-reference-target-group .site {
   background-image:
     linear-gradient(45deg,var(--color-petrol),rgb(74 169 181 / 0.26) 56%,rgb(32 88 96 / 0.7)),
     linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
 }
 
-body.post-type-archive-reference .site-content .site-main .block {
+body.post-type-archive-reference .site-content .site-main .block,
+body.tax-reference-target-group .site-content .site-main .block {
   background-color: transparent;
   background-image: none;
 }
 
-body.post-type-archive-reference .site-main .block-hero-content-image h2 {
+body.post-type-archive-reference .site-main .block-hero-content-image h2,
+body.tax-reference-target-group .site-main .block-hero-content-image h2 {
   max-width: 96rem;
 }
