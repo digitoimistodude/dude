@@ -1,47 +1,45 @@
 {
-    "key": "group_62e38a73cc708",
-    "title": "Myyntihenkilö",
-    "fields": [
-        {
-            "key": "field_62e38a89ba01a",
-            "label": "Tyyppi",
-            "name": "salesperson",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "person"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "id",
-            "ui": 1
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "air_setting_groups",
-                "operator": "==",
-                "value": "general"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1659081182
+  "key": "group_62e38a73cc708",
+  "title": "Myyntihenkilö",
+  "fields": [
+    {
+      "key": "field_62e38a89ba01a",
+      "label": "Tyyppi",
+      "name": "salesperson",
+      "type": "post_object",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["person"],
+      "taxonomy": "",
+      "allow_null": 0,
+      "multiple": 0,
+      "return_format": "id",
+      "ui": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "air_setting_groups",
+        "operator": "==",
+        "value": "general"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1659081182
 }

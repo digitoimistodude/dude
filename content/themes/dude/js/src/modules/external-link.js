@@ -17,12 +17,7 @@ function isLinkExternal(link, localDomains) {
     return false;
   }
 
-  const exceptions = [
-    '#',
-    'tel:',
-    'mailto:',
-    '/',
-  ];
+  const exceptions = ['#', 'tel:', 'mailto:', '/'];
 
   // Check if the url starts with some of the exceptions
   const isException = exceptions.some((exception) => {
@@ -47,12 +42,12 @@ function isLinkExternal(link, localDomains) {
 }
 
 /**
-   * Try to get image alt texts from inside a link
-   * to use in aria-label, when only elements inside
-   * of link are images
-   * @param {*} link DOM link element
-   * @returns string
-   */
+ * Try to get image alt texts from inside a link
+ * to use in aria-label, when only elements inside
+ * of link are images
+ * @param {*} link DOM link element
+ * @returns string
+ */
 export function getChildAltText(link) {
   const children = [...link.children];
 
@@ -60,7 +55,9 @@ export function getChildAltText(link) {
     return '';
   }
 
-  const childImgs = children.filter((child) => child.tagName.toLowerCase() === 'img');
+  const childImgs = children.filter(
+    (child) => child.tagName.toLowerCase() === 'img'
+  );
 
   // If there are other elements than img elements, no need to add aria-label
   if (children.length !== childImgs.length) {
@@ -68,7 +65,9 @@ export function getChildAltText(link) {
   }
 
   // Find alt texts and add to array
-  const altTexts = childImgs.filter((child) => child.alt && child.alt !== '').map((child) => child.alt);
+  const altTexts = childImgs
+    .filter((child) => child.alt && child.alt !== '')
+    .map((child) => child.alt);
 
   // If there is no alt texts,
   if (!altTexts.length) {
@@ -79,9 +78,7 @@ export function getChildAltText(link) {
 }
 
 export function styleExternalLinks() {
-  let localDomains = [
-    window.location.host,
-  ];
+  let localDomains = [window.location.host];
 
   if (typeof window.dude_externalLinkDomains !== 'undefined') {
     localDomains = localDomains.concat(window.dude_externalLinkDomains);
@@ -89,19 +86,28 @@ export function styleExternalLinks() {
 
   const links = document.querySelectorAll('a');
 
-  const externalLinks = [...links].filter((link) => isLinkExternal(link.href, localDomains));
+  const externalLinks = [...links].filter((link) =>
+    isLinkExternal(link.href, localDomains)
+  );
 
   // eslint-disable-next-line consistent-return
   externalLinks.forEach((externalLink) => {
     // Abort mission if there is only img element inside of link
-    if (externalLink.childElementCount === 1 && externalLink.children[0].tagName.toLowerCase() === 'img') {
+    if (
+      externalLink.childElementCount === 1 &&
+      externalLink.children[0].tagName.toLowerCase() === 'img'
+    ) {
       return false;
     }
 
     if (!externalLink.classList.contains('no-external-link-label')) {
       const textContent = externalLink.textContent.trim().length
-        ? externalLink.textContent.trim() : getChildAltText(externalLink);
-      const ariaLabel = externalLink.target === '_blank' ? `${textContent}: ${getLocalization('external_link')}, ${getLocalization('target_blank')}` : `${textContent}: ${getLocalization('external_link')}`;
+        ? externalLink.textContent.trim()
+        : getChildAltText(externalLink);
+      const ariaLabel =
+        externalLink.target === '_blank'
+          ? `${textContent}: ${getLocalization('external_link')}, ${getLocalization('target_blank')}`
+          : `${textContent}: ${getLocalization('external_link')}`;
       externalLink.setAttribute('aria-label', ariaLabel);
     }
 
@@ -112,9 +118,16 @@ export function styleExternalLinks() {
       'button',
     ];
 
-    if (!classExceptions.some((className) => externalLink.classList.contains(className))) {
+    if (
+      !classExceptions.some((className) =>
+        externalLink.classList.contains(className)
+      )
+    ) {
       // Add SVG arrow icon
-      externalLink.insertAdjacentHTML('beforeend', '<svg class="external-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 9"><path d="M4.499 1.497h4v4m0-4l-7 7" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>');
+      externalLink.insertAdjacentHTML(
+        'beforeend',
+        '<svg class="external-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 9"><path d="M4.499 1.497h4v4m0-4l-7 7" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>'
+      );
     }
   });
 }

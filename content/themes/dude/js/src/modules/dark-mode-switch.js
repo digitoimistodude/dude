@@ -13,7 +13,7 @@ const supportsES6 = (function () {
     // console.log('No ES6');
     return false;
   }
-}());
+})();
 
 const supportsLocalStorage = (function () {
   try {
@@ -25,7 +25,7 @@ const supportsLocalStorage = (function () {
     // console.log('localStorage unavailable');
     return false;
   }
-}());
+})();
 
 const initdarkModeToggle = () => {
   // Define toggle
@@ -44,7 +44,12 @@ const initdarkModeToggle = () => {
   darkmodeToggle.addEventListener('mouseover', darkmodeToggleOver, false);
   darkmodeToggle.addEventListener('mouseout', darkmodeToggleOut, false);
 
-  const darkLightModeToggleButton = (function (window, document, supportsES6, supportsLocalStorage) {
+  const darkLightModeToggleButton = (function (
+    window,
+    document,
+    supportsES6,
+    supportsLocalStorage
+  ) {
     if (!supportsES6) return;
 
     const name = 'mode';
@@ -61,9 +66,13 @@ const initdarkModeToggle = () => {
     const _modeText = (bool) => (bool ? light : dark);
 
     const _clicked = (_) => {
-    // Note: aria-clicked state is purposefully not linked to the mode setting.
-    // Initially: The mode may be light or dark, but aria-clicked state is always false.
-      _setAttr(btn, 'aria-clicked', btn.getAttribute('aria-clicked') === 'false');
+      // Note: aria-clicked state is purposefully not linked to the mode setting.
+      // Initially: The mode may be light or dark, but aria-clicked state is always false.
+      _setAttr(
+        btn,
+        'aria-clicked',
+        btn.getAttribute('aria-clicked') === 'false'
+      );
 
       mode = mode === false;
 
@@ -97,7 +106,10 @@ const initdarkModeToggle = () => {
 
     const _getMode = (_) => {
       // Get the OS mode setting
-      mode = !((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches));
+      mode = !(
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      );
 
       // Override OS mode with the locally stored value.
       // Caters to state persistence across pages and visits.
@@ -133,7 +145,7 @@ const initdarkModeToggle = () => {
     };
 
     _init();
-  }(window, document, supportsES6, supportsLocalStorage));
+  })(window, document, supportsES6, supportsLocalStorage);
 };
 
 export default initdarkModeToggle;

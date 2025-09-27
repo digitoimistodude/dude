@@ -1,69 +1,65 @@
 {
-    "key": "group_c669b69d0689a",
-    "title": "Lohko: Asiakaslainaukset",
-    "fields": [
-        {
-            "key": "field_b91ea4dfdba88",
-            "label": "Title",
-            "name": "title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6295ce888fd12",
-            "label": "References to show",
-            "name": "reference_ids",
-            "type": "relationship",
-            "instructions": "Only selected references will be shown. If left empty all references will be shown.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "reference"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "id"
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/reference-quotes"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1653985633
+  "key": "group_c669b69d0689a",
+  "title": "Lohko: Asiakaslainaukset",
+  "fields": [
+    {
+      "key": "field_b91ea4dfdba88",
+      "label": "Title",
+      "name": "title",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_6295ce888fd12",
+      "label": "References to show",
+      "name": "reference_ids",
+      "type": "relationship",
+      "instructions": "Only selected references will be shown. If left empty all references will be shown.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["reference"],
+      "taxonomy": "",
+      "filters": ["search"],
+      "elements": "",
+      "min": "",
+      "max": "",
+      "return_format": "id"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/reference-quotes"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1653985633
 }

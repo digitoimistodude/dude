@@ -1,4 +1,10 @@
 // stylelint-disable max-line-length
 @mixin button-style-white() {
-  @include button($background: var(--color-white), $color: var(--color-black), $border: var(--border-width-input-field) solid var(--color-white), $background-hover: var(--color-light-mint), $hover: var(--color-black));
+  @include button(
+    $background: var(--color-white),
+    $color: var(--color-black),
+    $border: var(--border-width-input-field) solid var(--color-white),
+    $background-hover: var(--color-light-mint),
+    $hover: var(--color-black)
+  );
 }

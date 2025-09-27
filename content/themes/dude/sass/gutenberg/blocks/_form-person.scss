@@ -23,14 +23,14 @@
     grid-auto-flow: row;
     grid-gap: 4rem 8rem;
     grid-template-areas:
-      "name-field big"
-      "email-field big"
-      "company-field big"
-      "send-to-myself more-details"
-      "checkboxes checkboxes"
-      "featurescheckboxes featurescheckboxes"
-      "when files"
-      "where files";
+      'name-field big'
+      'email-field big'
+      'company-field big'
+      'send-to-myself more-details'
+      'checkboxes checkboxes'
+      'featurescheckboxes featurescheckboxes'
+      'when files'
+      'where files';
     grid-template-columns: 458px minmax(0, 1fr);
     grid-template-rows: min-content min-content min-content min-content min-content min-content;
 
@@ -42,8 +42,8 @@
     }
 
     textarea,
-    input[type="email"],
-    input[type="text"] {
+    input[type='email'],
+    input[type='text'] {
       color: var(--color-mint);
       padding: 2rem;
 
@@ -78,7 +78,7 @@
       &::placeholder {
         color: var(--color-mint);
         font-size: var(--font-size-18);
-        opacity: .5;
+        opacity: 0.5;
       }
     }
 
@@ -129,9 +129,9 @@
       grid-area: more-details;
       overflow: visible;
 
-      #wpforms-11358-field_5 > .choice-3 > input[type="checkbox"] {
+      #wpforms-11358-field_5 > .choice-3 > input[type='checkbox'] {
         background-color: transparent;
-        border: 1px solid rgb(169 173 205 / .3);
+        border: 1px solid rgb(169 173 205 / 0.3);
         border-radius: 50%;
         padding: 1rem;
         transform: unset;
@@ -139,7 +139,7 @@
 
         &:hover,
         &:focus {
-          border-color: rgb(169 173 205 / .5);
+          border-color: rgb(169 173 205 / 0.5);
         }
 
         &:checked {
@@ -191,13 +191,13 @@
     }
 
     // General checkboxes
-    input[type="checkbox"] {
-      border: 1px solid rgb(126 255 225 / .5);
+    input[type='checkbox'] {
+      border: 1px solid rgb(126 255 225 / 0.5);
       border-radius: 0;
 
       &:hover,
       &:focus {
-        border: 1px solid rgb(126 255 225 / .8);
+        border: 1px solid rgb(126 255 225 / 0.8);
       }
 
       &:checked {
@@ -205,15 +205,15 @@
       }
     }
 
-    input[type="checkbox"]::before {
+    input[type='checkbox']::before {
       border-radius: 0;
     }
 
-    input[type="checkbox"]:checked::before {
+    input[type='checkbox']:checked::before {
       // stylelint-disable-next-line
       background-color: #313a41;
       border-color: var(--color-mint);
-      transform: scale(.95);
+      transform: scale(0.95);
     }
 
     // Deadline field
@@ -391,7 +391,7 @@
     }
   }
 
-  div.wpforms-container-full .wpforms-form button[type="submit"] {
+  div.wpforms-container-full .wpforms-form button[type='submit'] {
     @include button-size-large();
     border-radius: 0;
     font-size: var(--font-size-20);
@@ -418,7 +418,6 @@
   }
 
   @media (min-width: 1060px) {
-
     // Ensure there's no excessive padding after the form
     div.wpforms-container-full:not(.is-open) .wpforms-field-container {
       max-height: 51rem;

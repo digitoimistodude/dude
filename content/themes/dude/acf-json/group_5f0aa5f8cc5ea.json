@@ -1,250 +1,250 @@
 {
-    "key": "group_5f0aa5f8cc5ea",
-    "title": "Lohko: Otsikko ja sisältöpalstat",
-    "fields": [
+  "key": "group_5f0aa5f8cc5ea",
+  "title": "Lohko: Otsikko ja sisältöpalstat",
+  "fields": [
+    {
+      "key": "field_62a712573f29c",
+      "label": "Lohkon väri",
+      "name": "block_color",
+      "type": "button_group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "petrol": "Petrooli",
+        "mint": "Vaalea minttu",
+        "white": "Valkoinen"
+      },
+      "default_value": "",
+      "allow_null": 0,
+      "return_format": "value",
+      "layout": "horizontal"
+    },
+    {
+      "key": "field_a238fab31daaf",
+      "label": "Otsikko",
+      "name": "title",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_62ab14af45bb8",
+      "label": "Piilota otsikko näkyvistä",
+      "name": "hide_title",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_62ab14c445bb9",
+      "label": "Käytä matalaa tyyliä (Visio ja missio)",
+      "name": "style_vision_mission",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_62a1cd105eb0d",
+      "label": "Näytä kahdessa palstassa",
+      "name": "two_columns",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_6264084b12327",
+      "label": "Palstat",
+      "name": "columns",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "collapsed": "field_627bcf4c347df",
+      "min": 0,
+      "max": 0,
+      "layout": "block",
+      "button_label": "Lisää palsta",
+      "sub_fields": [
         {
-            "key": "field_62a712573f29c",
-            "label": "Lohkon väri",
-            "name": "block_color",
-            "type": "button_group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "petrol": "Petrooli",
-                "mint": "Vaalea minttu",
-                "white": "Valkoinen"
-            },
-            "default_value": "",
-            "allow_null": 0,
-            "return_format": "value",
-            "layout": "horizontal"
+          "key": "field_626408811232a",
+          "label": "Kuvake",
+          "name": "icon_svg",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "75",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "0": "Ei kuvaketta<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 20 20\"><path fill=\"#888\" d=\"M0 10a10 10 0 1 1 20 0 10 10 0 0 1-20 0zm16.32-4.9L5.09 16.31A8 8 0 0 0 16.32 5.09zm-1.41-1.42A8 8 0 0 0 3.68 14.91L14.91 3.68z\"\/><\/svg>",
+            "checkmark-round.svg": "Checkmark round<svg width=\"31\" height=\"31\" viewBox=\"0 0 31 31\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M14.209 21.957a.65.65 0 01-.403-.14L7.347 16.65a.648.648 0 01.403-1.151c.146 0 .29.05.403.14l5.934 4.747 8.644-11.73a.645.645 0 011.159.287.64.64 0 01-.12.481l-9.04 12.27a.644.644 0 01-.521.263z\" fill=\"currentColor\"\/><path d=\"M15.5 30.999c-8.547 0-15.5-6.953-15.5-15.5s6.953-15.5 15.5-15.5S31 6.952 31 15.499s-6.953 15.5-15.5 15.5zm0-29.708c-7.834 0-14.208 6.374-14.208 14.208 0 7.834 6.374 14.208 14.208 14.208 7.834 0 14.208-6.374 14.208-14.208 0-7.834-6.374-14.208-14.208-14.208z\" fill=\"currentColor\"\/><\/svg>\n",
+            "donation-charity-handshake-heart.svg": "Donation charity handshake heart<svg fill=\"none\" height=\"49\" viewBox=\"0 0 49 49\" width=\"49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-donation\"><path d=\"m.272949.59375h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-donation)\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m40.0928 39.5117-10.742 2.148\"\/><path d=\"m30.4149 29.4742-5.068 2.142c-.4006.1649-.8305.2467-1.2637.2405s-.8606-.1002-1.2563-.2765c-.4005-.1799-.7615-.4372-1.0622-.7571-.3006-.3199-.5351-.6961-.6898-1.1069-.3039-.781-.3102-1.6465-.0178-2.4319s.8631-1.436 1.6038-1.8281l5.066-2.53c.5481-.2845 1.15-.4503 1.7664-.4869.6165-.0365 1.2337.0572 1.8116.2749l10.41 4.102\"\/><path d=\"m9.27295 41.7446h3.98595l6.842 5.22c.3203.3613.7683.5842 1.2496.6215.4814.0373.9584-.1138 1.3305-.4215l9.56-7.894c.3783-.3124.62-.7599.6737-1.2475.0538-.4877-.0846-.9771-.3857-1.3645l-5.256-5.852\"\/><path d=\"m22.109 25.8122-.554-.456c-.5502-.4039-1.1941-.6612-1.8711-.7477-.6771-.0864-1.3649.0009-1.9989.2537l-8.53803 3.412\"\/><path d=\"m1.27295 44.5935h5.308c.67459.0361 1.33611-.196 1.84037-.6455.50425-.4496.81037-1.0802.85163-1.7545v-13.19c-.03872-.6761-.34374-1.3093-.84828-1.761s-1.16749-.6851-1.84372-.649h-5.308\"\/><path d=\"m47.2729 44.5935h-4.3079c-.6746.0361-1.3362-.1959-1.8404-.6455-.5043-.4495-.8104-1.0802-.8517-1.7545v-13.2c.0413-.6743.3474-1.305.8517-1.7545.5042-.4496 1.1658-.6816 1.8404-.6455h4.3079\"\/><path d=\"m23.535 19.5929-8.766-9.144c-.7699-.76985-1.278-1.76242-1.4525-2.8371-.1744-1.07468-.0063-2.17701.4805-3.15087.3674-.73508.9043-1.3723 1.5664-1.85916.662-.48685 1.4303-.80939 2.2415-.94104s1.642-.06864 2.4241.18385c.782.25248 1.4929.68721 2.074 1.26835l1.432 1.432 1.432-1.432c.581-.58114 1.2919-1.01587 2.0739-1.26835.7821-.25249 1.6129-.3155 2.4241-.18385s1.5795.45419 2.2416.94104c.662.48686 1.1989 1.12408 1.5664 1.85916.4849.97428.652 2.07617.4776 3.15042-.1743 1.07426-.6814 2.06673-1.4496 2.83755z\"\/><\/g><\/svg>\n",
+            "headphones-customer-support-human.svg": "Headphones customer support human<svg fill=\"none\" height=\"48\" viewBox=\"0 0 49 48\" width=\"49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-headphones\"><path d=\"m.74585 0h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-headphones)\" stroke=\"currentColor\" stroke-width=\"2\"><g stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m32.7439 53.5837h1.9996c3.867 0 6.9982-2.1336 6.9982-5.9986v-4.339\"\/><path d=\"m39.7421 27.5898c1.8876-.0013 3.7148.665 5.1586 1.8811 1.4436 1.2161 2.4106 2.9037 2.7298 4.7639.3194 1.8604-.0296 3.7738-.985 5.4016-.9556 1.628-2.456 2.8654-4.236 3.4936-.3016.1068-.6242.1398-.9412.096-.3168-.0436-.6186-.1628-.88-.3474-.2614-.1844-.4746-.429-.6218-.713s-.2242-.5992-.2244-.9192z\"\/><path d=\"m9.74955 27.5898c-1.88758-.0013-3.7148.665-5.15844 1.8811s-2.41065 2.9037-2.72997 4.7639c-.31932 1.8604.02964 3.7738.98513 5.4016.9555 1.628 2.45596 2.8654 4.23594 3.4936.30154.1068.6243.1398.9412.096.3169-.0436.61868-.1628.88-.3474.26132-.1844.47456-.429.62178-.713.14724-.284.22418-.5992.22436-.9192z\"\/><path d=\"m39.7423 30.589v-3.999c0-3.9772-1.58-7.7916-4.3924-10.604-2.8124-2.8123-6.6268-4.3922-10.604-4.3922s-7.7916 1.5799-10.6039 4.3922c-2.8124 2.8124-4.39237 6.6268-4.39237 10.604v3.999\"\/><path d=\"m31.1942 39.916c-.8468.847-1.852 1.5188-2.9584 1.9774-1.1064.4584-2.2924.6942-3.49.6942s-2.3836-.2358-3.49-.6942c-1.1065-.4586-2.1117-1.1304-2.9584-1.9774\"\/><\/g><path d=\"m18.2476 30.9121c-.2762 0-.5-.224-.5-.5 0-.2762.2238-.5.5-.5\"\/><path d=\"m18.2473 30.9121c.2762 0 .5-.224.5-.5 0-.2762-.2238-.5-.5-.5\"\/><path d=\"m31.2445 30.9121c-.2762 0-.5-.224-.5-.5 0-.2762.2238-.5.5-.5\"\/><path d=\"m31.2441 30.9121c.2762 0 .5-.224.5-.5 0-.2762-.2238-.5-.5-.5\"\/><\/g><\/svg>\n",
+            "helppokayttoisyys-2.svg": "Helppokayttoisyys 2<svg width=\"48\" height=\"49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 48 49\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 29.915c.392.202.785.402 1.18.6 7.274 3.676 6.918 2.96 13.146 2.96 2.6 0 3.922-1.692 4.69-4.17v-.016l1.89-6.308v-.012a1.975 1.975 0 0 0-1.896-2.548h-4.86a2 2 0 0 1-1.57-.768 1.961 1.961 0 0 1-.346-1.708l.874-3.298a1.676 1.676 0 0 0-.322-1.49 1.702 1.702 0 0 0-2.706.09l-4.846 7.45a2 2 0 0 1-1.62.834H15M13 19.531h2v14h-2\"\/><path d=\"M1 24.531a23 23 0 1 0 46 0 23 23 0 0 0-46 0v0Z\"\/><\/g><\/svg>\n",
+            "helppokayttoisyys.svg": "Helppokayttoisyys<svg width=\"50\" height=\"51\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 50 51\"><path d=\"M41.695 33.693c.411 0 .818.092 1.198.27.38.178.725.439 1.016.768.29.33.52.72.678 1.15a3.954 3.954 0 0 1 0 2.712c-.157.43-.388.82-.678 1.15-.29.329-.636.59-1.016.768-.38.178-.787.27-1.198.27h-2.087c.83 0 1.627.373 2.214 1.038.587.664.917 1.566.917 2.506 0 1.958-1.403 2.362-3.13 2.362H26.042c-5.95 0-7.305-1.181-14.61-2.362V24.243C16.548 24.243 25 13.61 25 4.16c0-3.736 4.569-5.127 6.261 1.698 1.044 4.208-2.087 12.477-2.087 12.477H45.87c.83 0 1.627.374 2.214 1.038.587.665.917 1.566.917 2.506 0 1.959-1.403 4.725-3.13 4.725h-2.088c.83 0 1.627.374 2.214 1.038.587.665.917 1.566.917 2.506 0 .94-.33 1.841-.917 2.506-.587.665-1.384 1.038-2.214 1.038h-2.087Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M11.435 20.697H1v28.351h10.435v-28.35Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M6.739 44.324c-.289 0-.522-.264-.522-.59 0-.327.233-.591.522-.591\" stroke=\"currentColor\" stroke-width=\"2\"\/><path d=\"M6.738 44.324c.288 0 .522-.264.522-.59 0-.327-.234-.591-.522-.591\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
+            "hinta-laatu-2.svg": "Hinta laatu 2<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M24 47.947v-2M35.314 43.262 33.9 41.848M40 31.947h-2M8 31.947h2M12.688 43.262l1.413-1.414M32.193 9.947H15.81M12 1.947h24M21.2 21.26 12 1.946l-5.933 6.78a2 2 0 0 0-.094 2.518l10 13.334M26.729 21.42 36 1.946l5.931 6.78a2 2 0 0 1 .094 2.518L31.715 24.993\"\/><path d=\"M13.682 30.947a10 10 0 1 0 20 0 10 10 0 0 0-20 0Z\"\/><path d=\"M19.682 30.947a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z\"\/><\/g><\/svg>\n",
+            "hinta-laatu.svg": "Hinta laatu<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M24 46.576c12.426 0 22.5-10.073 22.5-22.5 0-12.426-10.074-22.5-22.5-22.5S1.5 11.65 1.5 24.076c0 12.427 10.074 22.5 22.5 22.5Z\"\/><path d=\"M27 33.076c-5.8 0-9-3.2-9-9s3.2-9 9-9M15 21.076h12M15 27.076h12\"\/><\/g><\/svg>\n",
+            "kehittyminen-2.svg": "Kehittyminen 2<svg width=\"49\" height=\"49\" fill=\"none\" viewBox=\"0 0 49 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M39.117 2.72c-5 0-10 7-10 7s-5-7-10-7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M20.717 6.63a7.969 7.969 0 0 0-.6 3.09c.002 1.373.155 2.742.456 4.082-1.372.316-5.056 3.906-7.456 11.918a123.051 123.051 0 0 0-4 21h4c14-2 26-14 23.674-30.214a16.201 16.201 0 0 0 1.326-6.786 7.997 7.997 0 0 0-.57-3.032m-2.11-2.868a9.822 9.822 0 0 0-6.32-2.1 9.822 9.822 0 0 0-6.32 2.1M34.117 45.72h-6M28.941 39.193l2.176 6.528\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m31.117 14.72-2 2-2-2M24.117 42.82a32.103 32.103 0 0 1 0-18.105\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M24.617 11.72a.5.5 0 1 1 0-1M24.617 11.72a.5.5 0 1 0 0-1M33.617 11.72a.5.5 0 1 1 0-1M33.617 11.72a.5.5 0 1 0 0-1\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
+            "kehittyminen.svg": "Kehittyminen<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"m25.619 12.37 12.18-4.66a.56.56 0 0 0 0-1.04l-12.18-4.68a2.32 2.32 0 0 0-1.56 0l-13.5 5.2 13.5 5.18c.5.2 1.059.2 1.56 0ZM34.738 15.97v-7.1M14.938 8.87v7.1M10.559 7.19v7.7M31.438 25.87a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11ZM18.238 25.87a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m20.117 25.549 4.72 4.72 4.72-4.72\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M36.838 28.61v7.16a12 12 0 1 1-24 0v-7.16\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M35.817 23.67h1.02a6.6 6.6 0 0 1 6.6 6.6v4.4a10.98 10.98 0 0 1-10.98 10.98h-.76M13.858 23.67h-1.02a6.6 6.6 0 0 0-6.6 6.6v4.4a10.98 10.98 0 0 0 10.9 10.98h.76\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M18.239 21.308a.938.938 0 1 1 0-1.876\" stroke=\"currentColor\" stroke-width=\"2\"\/><path d=\"M18.238 21.308a.938.938 0 0 0 0-1.876M31.438 21.308a.938.938 0 0 1 0-1.876M31.438 21.308a.938.938 0 0 0 0-1.876\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
+            "lapinakyvyys-1.svg": "Lapinakyvyys 1<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M1.508 24.693a22.5 22.5 0 1 0 45 0 22.5 22.5 0 0 0-45 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M24.008 16.238c-5.374-.088-10.934 3.556-14.428 7.286a2.102 2.102 0 0 0 0 2.878c3.428 3.652 8.956 7.378 14.428 7.292 5.472.088 11-3.638 14.432-7.29a2.102 2.102 0 0 0 0-2.878c-3.498-3.732-9.058-7.376-14.432-7.288Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M21.008 24.963a3 3 0 1 0 6 0 3 3 0 0 0-6 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "lapinakyvyys-2.svg": "Lapinakyvyys 2<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M24.008 11.297c-8.062-.136-16.4 5.498-21.642 11.268a3.326 3.326 0 0 0 0 4.452c5.128 5.648 13.442 11.412 21.642 11.274 8.2.138 16.516-5.626 21.648-11.274a3.326 3.326 0 0 0 0-4.452c-5.248-5.77-13.586-11.404-21.648-11.268Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M31.508 24.795a7.5 7.5 0 1 1-15.001-.004 7.5 7.5 0 0 1 15 .004Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "lupaukset-pidetaan.svg": "Lupaukset pidetaan<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"m38.937 39.998-9.574 1.914M30.313 31.046l-4.52 1.907a2.848 2.848 0 0 1-2.244-.03 2.966 2.966 0 0 1-1.562-1.662 3.05 3.05 0 0 1 1.412-3.8l4.518-2.255a3.944 3.944 0 0 1 3.188-.189l9.278 3.657\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M11.838 41.99h3.2l6.082 4.656a1.66 1.66 0 0 0 2.3.18l8.52-7.036a1.684 1.684 0 0 0 .258-2.328l-4.694-5.216M22.91 27.79l-.494-.4a3.58 3.58 0 0 0-3.45-.44l-7.14 3.04\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M4.338 43.49h5.2a2.282 2.282 0 0 0 2.4-2.144V30.632a2.282 2.282 0 0 0-2.4-2.142h-5.2M45.337 43.49h-4a2.282 2.282 0 0 1-2.4-2.144V30.632a2.282 2.282 0 0 1 2.4-2.142h4M24.6 20.49l-8.762-9.147a5.184 5.184 0 0 1-.972-5.986v0a5.186 5.186 0 0 1 8.306-1.348l1.432 1.432 1.432-1.432a5.186 5.186 0 1 1 7.334 7.334L24.6 20.49Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "missio.svg": "Missio<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"154\" height=\"157\" fill=\"none\" viewBox=\"0 0 154 157\"><path style=\"fill: var(--color-background-block);\" d=\"m102.076 121.81-3.333-26.667-20-6.666-20 6.666-3.333 26.667h10l-6.666 33.333 20-26.667 19.999 26.667-6.667-33.333h10Zm-9.997-43.334-13.334 6.666-13.333-6.666V61.809l13.333-6.666 13.334 6.666v16.667Zm-53.334-3.332L25.41 81.81l-13.333-6.666V58.477l13.333-6.666 13.334 6.666v16.667Zm35.335-50 56.666 10L152.079 1.81H88.746l-4 6.666h-36l-12.666 20 31.333 6.667 6.667-10ZM41.411 93.81l-16-5.333-20 6.666-3.333 26.667h10l-6.667 33.333 20-26.667 20 26.667-6.667-33.333 2.667-28Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"m2.078 15.143 30 20 4-6.667 8.666-13.333H2.078Zm65.999-6.664L53.41 31.812l14 3.333L84.743 8.479H68.077Zm10.667 46.664 13.333 6.666v16.667l-13.333 6.666v-30Zm0 73.333 20 26.667-6.667-33.333h10l-3.333-26.667-20-6.666v39.999ZM25.41 51.81l13.333 6.667v16.667L25.41 81.81v-30Zm0 76.666 20 26.667-6.667-33.333 2.667-28-16-5.333v39.999Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"m130.744 35.144-56.666-10L88.745 1.81h63.332L82.078 111.809\"\/><path style=\"stroke: var(--color-text);\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M44.744 15.143H2.078l30 20 4-6.667m56.001 50-13.334 6.666-13.333-6.666V61.809l13.333-6.666 13.334 6.666v16.667Zm9.997 43.334-3.333-26.667-20-6.666-20 6.666-3.333 26.667h10l-6.666 33.333 20-26.667 19.999 26.667-6.667-33.333h10ZM38.745 75.144 25.41 81.81l-13.333-6.666V58.477l13.333-6.666 13.334 6.666v16.667Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"m41.411 93.81-16-5.333-20 6.666-3.333 26.667h10l-6.667 33.333 20-26.667 20 26.667-6.667-33.333\"\/><path style=\"stroke: var(--color-text);\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M84.746 8.479h-36l-12.666 20 31.333 6.666 6.667-10\"\/><\/svg>\n",
+            "palveluasenne-2.svg": "Palveluasenne 2<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M24.184 47.963v-2M35.498 43.277l-1.414-1.414M40.184 31.963h-2M8.184 31.963h2M12.871 43.277l1.414-1.414M32.376 9.963H15.994M12.184 1.963h24M21.383 21.275l-9.2-19.312-5.932 6.78a2 2 0 0 0-.094 2.518l10 13.334M26.912 21.435l9.272-19.472 5.932 6.78a2 2 0 0 1 .094 2.518L31.898 25.009\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M13.865 30.963a10 10 0 1 0 20 0 10 10 0 0 0-20 0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M19.865 30.963a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "palveluasenne.svg": "Palveluasenne<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M19.482 18.453v1.523M28.621 18.453v1.523M17.959 27.594c.508.794 2.437 2.383 6.092 2.383s5.584-1.589 6.091-2.383\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"\/><path d=\"M46.497 23.29c0-3.553-1.828-5.427-2.741-5.92h-5.17v11.84h5.17c.913-.494 2.74-2.369 2.74-5.92ZM1.8 23.29c0-3.553 1.828-5.427 2.741-5.92h5.17v11.84h-5.17c-.913-.494-2.74-2.369-2.74-5.92Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M38.39 29.21V15.57c.11-4.42-5.173-12.046-14.375-12.046-9.2 0-14.416 7.627-14.304 12.046V29.21\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"\/><path d=\"M23.117 45.632c9.495-1.57 12.759-6.71 14.341-11.454.436-1.306.934-4.325.934-5.774\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "projektinhallinta.svg": "Projektinhallinta<svg width=\"49\" height=\"49\" fill=\"none\" viewBox=\"0 0 49 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M39.838 25.276a10.559 10.559 0 0 0 3.638-2.85M45.784 16.758a10.6 10.6 0 0 0-.6-4.582M41.478 7.3a10.2 10.2 0 0 0-4.246-1.816M7.622 27.43a10.301 10.301 0 0 0-3.706 3.116M1.842 36.611a10.292 10.292 0 0 0 1.032 4.728M7.273 46.002a10.523 10.523 0 0 0 4.67 1.276M22.832 17.303v30M17.105 23.03l5.726-5.727 5.729 5.728M18.332 6.803a4.5 4.5 0 1 0 8.998 0 4.5 4.5 0 0 0-8.998 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "rotate-forward.svg": "Rotate forward<svg fill=\"none\" height=\"45\" viewBox=\"0 0 38 45\" width=\"38\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m17.5 13.2266 6-6.00004-6-6\"\/><path d=\"m36.9379 23.7266c.04.494.062 1 .062 1.5.0017 1.5179-.1891 3.03-.568 4.5\"\/><path d=\"m32.7881 13.6562c.9773 1.1616 1.8033 2.4425 2.458 3.8121\"\/><path d=\"m32.744 36.8496c-.32.3787-.6586.7467-1.016 1.104-1.0723 1.0744-2.2766 2.0085-3.584 2.78\"\/><path d=\"m20.5 43.1646c-.494.04-1 .062-1.5.062-4.7739 0-9.35227-1.8965-12.72792-5.2721-3.37566-3.3757-5.27208-7.954-5.27208-12.7279s1.89642-9.3523 5.27208-12.728c3.37565-3.37561 7.95402-5.27204 12.72792-5.27204h4.5\"\/><\/g><\/svg>\n",
+            "target-path.svg": "Target path<svg fill=\"none\" height=\"49\" viewBox=\"0 0 48 49\" width=\"48\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-target\"><path d=\"m0 .726562h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-target)\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m40.5 25.1566c1.4083-.6696 2.6507-1.643 3.638-2.85\"\/><path d=\"m46.4459 16.6386c.1395-1.5528-.0654-3.1173-.6-4.582\"\/><path d=\"m42.14 7.18123c-1.2578-.92198-2.7104-1.54323-4.246-1.816\"\/><path d=\"m7.284 27.3105c-1.46534.7295-2.73576 1.7977-3.706 3.116\"\/><path d=\"m1.50405 36.4922c-.03667 1.6356.31711 3.2564 1.032 4.728\"\/><path d=\"m6.93604 45.8828c1.43632.7825 3.03531 1.2194 4.66996 1.276\"\/><path d=\"m22.4941 17.1836v30\"\/><path d=\"m16.7681 22.9116 5.726-5.728 5.728 5.728\"\/><path d=\"m17.994 6.68359c0 .59095.1164 1.17611.3426 1.72208.2261.54596.5576 1.04204.9754 1.4599.4179.41783.914.74933 1.4599.97553.546.2261 1.1312.3425 1.7221.3425.591 0 1.1761-.1164 1.7221-.3425.546-.2262 1.042-.5577 1.4599-.97553.4179-.41786.7493-.91394.9755-1.4599.2261-.54597.3425-1.13113.3425-1.72208 0-.59094-.1164-1.17611-.3425-1.72207-.2262-.54597-.5576-1.04204-.9755-1.45991-.4179-.41786-.9139-.74933-1.4599-.97547-.546-.22615-1.1311-.34255-1.7221-.34255-.5909 0-1.1761.1164-1.7221.34255-.5459.22614-1.042.55761-1.4599.97547-.4178.41787-.7493.91394-.9754 1.45991-.2262.54596-.3426 1.13113-.3426 1.72207z\"\/><\/g><\/svg>\n",
+            "turvallinen-ja-tuettu-alusta.svg": "Turvallinen ja tuettu alusta<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M37.715 19.479H10.286a3.429 3.429 0 0 0-3.429 3.428v20.571a3.429 3.429 0 0 0 3.429 3.43h27.429a3.429 3.429 0 0 0 3.428-3.43v-20.57a3.429 3.429 0 0 0-3.428-3.43Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M32.469 5.867A11.795 11.795 0 0 0 24 2.336a12 12 0 0 0-12 12v5.143M24 34.907a1.714 1.714 0 1 0 0-3.428 1.714 1.714 0 0 0 0 3.428Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
+            "valittaminen.svg": "Valittaminen<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M23.9998 43.697L4.82379 23.697C3.13847 22.013 2.02612 19.8411 1.64452 17.4894C1.26291 15.1376 1.63143 12.7255 2.69779 10.595V10.595C3.50191 8.98721 4.67653 7.59352 6.12489 6.52874C7.57324 5.46396 9.25387 4.75856 11.0283 4.47067C12.8027 4.18278 14.6202 4.32063 16.3309 4.87286C18.0416 5.4251 19.5966 6.37591 20.8678 7.64697L23.9998 10.777L27.1318 7.64697C28.403 6.37591 29.958 5.4251 31.6687 4.87286C33.3794 4.32063 35.1969 4.18278 36.9713 4.47067C38.7457 4.75856 40.4263 5.46396 41.8747 6.52874C43.3231 7.59352 44.4977 8.98721 45.3018 10.595C46.3667 12.7246 46.7346 15.1354 46.3534 17.4858C45.9722 19.8361 44.8612 22.007 43.1778 23.691L23.9998 43.697Z\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<\/svg>\n",
+            "vastuullisuus.svg": "Vastuullisuus<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<g clip-path=\"url(#clip0_1456_1336)\">\n<path d=\"M8 3.96289H20C20.5304 3.96289 21.0391 4.1736 21.4142 4.54868C21.7893 4.92375 22 5.43246 22 5.96289V9.96289H42C43.1 9.96289 43.298 10.5249 42.438 11.2129L29 21.9629L44 33.9629H15.2C15.036 33.9631 14.8745 33.923 14.7297 33.8461C14.5849 33.7693 14.4612 33.658 14.3695 33.522C14.2779 33.3861 14.221 33.2297 14.204 33.0666C14.187 32.9036 14.2104 32.7388 14.272 32.5869C15.66 29.1509 22 27.9629 22 27.9629H8\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<path d=\"M22 9.96289V27.9629\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<path d=\"M4 1.96289V47.9629\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<\/g>\n<defs>\n<clipPath id=\"clip0_1456_1336\">\n<rect width=\"48\" height=\"48\" fill=\"white\" transform=\"translate(0 0.962891)\"\/>\n<\/clipPath>\n<\/defs>\n<\/svg>\n",
+            "visio.svg": "Visio<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"180\" height=\"141\" fill=\"none\" viewBox=\"0 0 180 141\"><path style=\"fill: var(--color-background-block);\" d=\"M178.245 2.16H1.912v137.25h176.333V2.16Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"m126.48 63.999 24.932 22.036-34.5 30.5H63.245l-9.568-8.464L1.912 139.41h176.333V32.66L126.48 64Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"M116.913 74.598v22.875l-27.056 19.062-26.61-19.062 53.666-22.875Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M17.246 17.41h7.667m15.333 0h7.667m15.333 0h7.667\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M178.245 2.16H1.912v137.25h176.333V2.16ZM1.912 32.66h176.333\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M116.913 116.535H63.246l-34.5-30.5 34.5-30.5h53.667l34.5 30.5-34.5 30.5Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M63.246 97.473V74.598l26.611-19.063 27.056 19.063v22.875l-27.056 19.062-26.61-19.062Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"m90.08 82.223-3.834 3.812 3.833 3.813\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"m90.078 82.223 3.834 3.812-3.834 3.813\"\/><\/svg>\n",
+            "wordpress-logo.svg": "Wordpress logo<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M3.412 24c0 8.15 4.736 15.193 11.604 18.53L5.195 15.621a20.51 20.51 0 0 0-1.783 8.38ZM37.9 22.962c0-2.545-.913-4.307-1.697-5.679-1.044-1.696-2.022-3.132-2.022-4.828 0-1.893 1.436-3.654 3.457-3.654.092 0 .178.01.267.016a20.513 20.513 0 0 0-13.903-5.405c-7.193 0-13.522 3.69-17.203 9.28.483.015.938.025 1.325.025 2.153 0 5.487-.261 5.487-.261 1.11-.066 1.24 1.565.132 1.696 0 0-1.115.131-2.357.196l7.498 22.302 4.506-13.514-3.208-8.789a37.578 37.578 0 0 1-2.159-.196c-1.11-.065-.98-1.761.13-1.696 0 0 3.4.261 5.424.261 2.153 0 5.487-.261 5.487-.261 1.11-.065 1.24 1.565.132 1.696 0 0-1.118.131-2.357.196l7.44 22.133 2.054-6.863c.89-2.847 1.568-4.893 1.568-6.655Z\" fill=\"currentColor\"\/><path d=\"m24.361 25.8-6.177 17.951a20.59 20.59 0 0 0 12.653-.328 1.809 1.809 0 0 1-.146-.284l-6.33-17.338ZM42.068 14.121c.088.656.138 1.36.138 2.117 0 2.09-.39 4.438-1.565 7.375l-6.29 18.183C40.474 38.226 44.59 31.596 44.59 24c0-3.58-.914-6.946-2.523-9.879Z\" fill=\"currentColor\"\/><path d=\"M24 0C10.768 0 0 10.766 0 24c0 13.235 10.767 24.001 24 24.001 13.234 0 24.003-10.766 24.003-24.001C48.003 10.766 37.234 0 24 0Zm0 46.901C11.375 46.901 1.1 36.628 1.1 24 1.1 11.373 11.374 1.1 24 1.1c12.627 0 22.9 10.273 22.9 22.9 0 12.628-10.273 22.901-22.9 22.901Z\" fill=\"currentColor\"\/><\/svg>\n",
+            "ymparistoystavallisyys.svg": "Ymparistoystavallisyys<svg width=\"53\" height=\"54\" viewBox=\"0 0 53 54\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M22.945 30.694a4.417 4.417 0 1 0 8.834 0 4.417 4.417 0 0 0-8.834 0ZM36.195 12.898a19.875 19.875 0 0 1 11.042 17.808M18.528 12.898A19.875 19.875 0 0 0 7.486 30.706M37.837 47.588a19.875 19.875 0 0 1-20.952 0\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m25.859 26.541-5.523-5.251L26.72 3.696a2.509 2.509 0 0 1 4.859 1.049l-1.725 22.304M24.512 34.074l-1.782 7.407L4.297 44.75a2.509 2.509 0 0 1-1.522-4.734l20.191-9.66M31.71 31.472l7.307-2.158 12.047 14.33a2.509 2.509 0 0 1-3.341 3.684l-18.455-12.65\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n"
+          },
+          "default_value": false,
+          "allow_null": 1,
+          "multiple": 0,
+          "ui": 1,
+          "ajax": 1,
+          "return_format": "value",
+          "placeholder": ""
         },
         {
-            "key": "field_a238fab31daaf",
-            "label": "Otsikko",
-            "name": "title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+          "key": "field_62a1ceef40213",
+          "label": "Näytä kuvake vasemmalla",
+          "name": "icon_left",
+          "type": "true_false",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "25",
+            "class": "",
+            "id": ""
+          },
+          "message": "",
+          "default_value": 0,
+          "ui": 1,
+          "ui_on_text": "",
+          "ui_off_text": ""
         },
         {
-            "key": "field_62ab14af45bb8",
-            "label": "Piilota otsikko näkyvistä",
-            "name": "hide_title",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
+          "key": "field_627bcf4c347df",
+          "label": "Otsikko",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
         },
         {
-            "key": "field_62ab14c445bb9",
-            "label": "Käytä matalaa tyyliä (Visio ja missio)",
-            "name": "style_vision_mission",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62a1cd105eb0d",
-            "label": "Näytä kahdessa palstassa",
-            "name": "two_columns",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_6264084b12327",
-            "label": "Palstat",
-            "name": "columns",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "field_627bcf4c347df",
-            "min": 0,
-            "max": 0,
-            "layout": "block",
-            "button_label": "Lisää palsta",
-            "sub_fields": [
-                {
-                    "key": "field_626408811232a",
-                    "label": "Kuvake",
-                    "name": "icon_svg",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "75",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "0": "Ei kuvaketta<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 20 20\"><path fill=\"#888\" d=\"M0 10a10 10 0 1 1 20 0 10 10 0 0 1-20 0zm16.32-4.9L5.09 16.31A8 8 0 0 0 16.32 5.09zm-1.41-1.42A8 8 0 0 0 3.68 14.91L14.91 3.68z\"\/><\/svg>",
-                        "checkmark-round.svg": "Checkmark round<svg width=\"31\" height=\"31\" viewBox=\"0 0 31 31\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M14.209 21.957a.65.65 0 01-.403-.14L7.347 16.65a.648.648 0 01.403-1.151c.146 0 .29.05.403.14l5.934 4.747 8.644-11.73a.645.645 0 011.159.287.64.64 0 01-.12.481l-9.04 12.27a.644.644 0 01-.521.263z\" fill=\"currentColor\"\/><path d=\"M15.5 30.999c-8.547 0-15.5-6.953-15.5-15.5s6.953-15.5 15.5-15.5S31 6.952 31 15.499s-6.953 15.5-15.5 15.5zm0-29.708c-7.834 0-14.208 6.374-14.208 14.208 0 7.834 6.374 14.208 14.208 14.208 7.834 0 14.208-6.374 14.208-14.208 0-7.834-6.374-14.208-14.208-14.208z\" fill=\"currentColor\"\/><\/svg>\n",
-                        "donation-charity-handshake-heart.svg": "Donation charity handshake heart<svg fill=\"none\" height=\"49\" viewBox=\"0 0 49 49\" width=\"49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-donation\"><path d=\"m.272949.59375h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-donation)\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m40.0928 39.5117-10.742 2.148\"\/><path d=\"m30.4149 29.4742-5.068 2.142c-.4006.1649-.8305.2467-1.2637.2405s-.8606-.1002-1.2563-.2765c-.4005-.1799-.7615-.4372-1.0622-.7571-.3006-.3199-.5351-.6961-.6898-1.1069-.3039-.781-.3102-1.6465-.0178-2.4319s.8631-1.436 1.6038-1.8281l5.066-2.53c.5481-.2845 1.15-.4503 1.7664-.4869.6165-.0365 1.2337.0572 1.8116.2749l10.41 4.102\"\/><path d=\"m9.27295 41.7446h3.98595l6.842 5.22c.3203.3613.7683.5842 1.2496.6215.4814.0373.9584-.1138 1.3305-.4215l9.56-7.894c.3783-.3124.62-.7599.6737-1.2475.0538-.4877-.0846-.9771-.3857-1.3645l-5.256-5.852\"\/><path d=\"m22.109 25.8122-.554-.456c-.5502-.4039-1.1941-.6612-1.8711-.7477-.6771-.0864-1.3649.0009-1.9989.2537l-8.53803 3.412\"\/><path d=\"m1.27295 44.5935h5.308c.67459.0361 1.33611-.196 1.84037-.6455.50425-.4496.81037-1.0802.85163-1.7545v-13.19c-.03872-.6761-.34374-1.3093-.84828-1.761s-1.16749-.6851-1.84372-.649h-5.308\"\/><path d=\"m47.2729 44.5935h-4.3079c-.6746.0361-1.3362-.1959-1.8404-.6455-.5043-.4495-.8104-1.0802-.8517-1.7545v-13.2c.0413-.6743.3474-1.305.8517-1.7545.5042-.4496 1.1658-.6816 1.8404-.6455h4.3079\"\/><path d=\"m23.535 19.5929-8.766-9.144c-.7699-.76985-1.278-1.76242-1.4525-2.8371-.1744-1.07468-.0063-2.17701.4805-3.15087.3674-.73508.9043-1.3723 1.5664-1.85916.662-.48685 1.4303-.80939 2.2415-.94104s1.642-.06864 2.4241.18385c.782.25248 1.4929.68721 2.074 1.26835l1.432 1.432 1.432-1.432c.581-.58114 1.2919-1.01587 2.0739-1.26835.7821-.25249 1.6129-.3155 2.4241-.18385s1.5795.45419 2.2416.94104c.662.48686 1.1989 1.12408 1.5664 1.85916.4849.97428.652 2.07617.4776 3.15042-.1743 1.07426-.6814 2.06673-1.4496 2.83755z\"\/><\/g><\/svg>\n",
-                        "headphones-customer-support-human.svg": "Headphones customer support human<svg fill=\"none\" height=\"48\" viewBox=\"0 0 49 48\" width=\"49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-headphones\"><path d=\"m.74585 0h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-headphones)\" stroke=\"currentColor\" stroke-width=\"2\"><g stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m32.7439 53.5837h1.9996c3.867 0 6.9982-2.1336 6.9982-5.9986v-4.339\"\/><path d=\"m39.7421 27.5898c1.8876-.0013 3.7148.665 5.1586 1.8811 1.4436 1.2161 2.4106 2.9037 2.7298 4.7639.3194 1.8604-.0296 3.7738-.985 5.4016-.9556 1.628-2.456 2.8654-4.236 3.4936-.3016.1068-.6242.1398-.9412.096-.3168-.0436-.6186-.1628-.88-.3474-.2614-.1844-.4746-.429-.6218-.713s-.2242-.5992-.2244-.9192z\"\/><path d=\"m9.74955 27.5898c-1.88758-.0013-3.7148.665-5.15844 1.8811s-2.41065 2.9037-2.72997 4.7639c-.31932 1.8604.02964 3.7738.98513 5.4016.9555 1.628 2.45596 2.8654 4.23594 3.4936.30154.1068.6243.1398.9412.096.3169-.0436.61868-.1628.88-.3474.26132-.1844.47456-.429.62178-.713.14724-.284.22418-.5992.22436-.9192z\"\/><path d=\"m39.7423 30.589v-3.999c0-3.9772-1.58-7.7916-4.3924-10.604-2.8124-2.8123-6.6268-4.3922-10.604-4.3922s-7.7916 1.5799-10.6039 4.3922c-2.8124 2.8124-4.39237 6.6268-4.39237 10.604v3.999\"\/><path d=\"m31.1942 39.916c-.8468.847-1.852 1.5188-2.9584 1.9774-1.1064.4584-2.2924.6942-3.49.6942s-2.3836-.2358-3.49-.6942c-1.1065-.4586-2.1117-1.1304-2.9584-1.9774\"\/><\/g><path d=\"m18.2476 30.9121c-.2762 0-.5-.224-.5-.5 0-.2762.2238-.5.5-.5\"\/><path d=\"m18.2473 30.9121c.2762 0 .5-.224.5-.5 0-.2762-.2238-.5-.5-.5\"\/><path d=\"m31.2445 30.9121c-.2762 0-.5-.224-.5-.5 0-.2762.2238-.5.5-.5\"\/><path d=\"m31.2441 30.9121c.2762 0 .5-.224.5-.5 0-.2762-.2238-.5-.5-.5\"\/><\/g><\/svg>\n",
-                        "helppokayttoisyys-2.svg": "Helppokayttoisyys 2<svg width=\"48\" height=\"49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 48 49\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 29.915c.392.202.785.402 1.18.6 7.274 3.676 6.918 2.96 13.146 2.96 2.6 0 3.922-1.692 4.69-4.17v-.016l1.89-6.308v-.012a1.975 1.975 0 0 0-1.896-2.548h-4.86a2 2 0 0 1-1.57-.768 1.961 1.961 0 0 1-.346-1.708l.874-3.298a1.676 1.676 0 0 0-.322-1.49 1.702 1.702 0 0 0-2.706.09l-4.846 7.45a2 2 0 0 1-1.62.834H15M13 19.531h2v14h-2\"\/><path d=\"M1 24.531a23 23 0 1 0 46 0 23 23 0 0 0-46 0v0Z\"\/><\/g><\/svg>\n",
-                        "helppokayttoisyys.svg": "Helppokayttoisyys<svg width=\"50\" height=\"51\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 50 51\"><path d=\"M41.695 33.693c.411 0 .818.092 1.198.27.38.178.725.439 1.016.768.29.33.52.72.678 1.15a3.954 3.954 0 0 1 0 2.712c-.157.43-.388.82-.678 1.15-.29.329-.636.59-1.016.768-.38.178-.787.27-1.198.27h-2.087c.83 0 1.627.373 2.214 1.038.587.664.917 1.566.917 2.506 0 1.958-1.403 2.362-3.13 2.362H26.042c-5.95 0-7.305-1.181-14.61-2.362V24.243C16.548 24.243 25 13.61 25 4.16c0-3.736 4.569-5.127 6.261 1.698 1.044 4.208-2.087 12.477-2.087 12.477H45.87c.83 0 1.627.374 2.214 1.038.587.665.917 1.566.917 2.506 0 1.959-1.403 4.725-3.13 4.725h-2.088c.83 0 1.627.374 2.214 1.038.587.665.917 1.566.917 2.506 0 .94-.33 1.841-.917 2.506-.587.665-1.384 1.038-2.214 1.038h-2.087Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M11.435 20.697H1v28.351h10.435v-28.35Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M6.739 44.324c-.289 0-.522-.264-.522-.59 0-.327.233-.591.522-.591\" stroke=\"currentColor\" stroke-width=\"2\"\/><path d=\"M6.738 44.324c.288 0 .522-.264.522-.59 0-.327-.234-.591-.522-.591\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
-                        "hinta-laatu-2.svg": "Hinta laatu 2<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M24 47.947v-2M35.314 43.262 33.9 41.848M40 31.947h-2M8 31.947h2M12.688 43.262l1.413-1.414M32.193 9.947H15.81M12 1.947h24M21.2 21.26 12 1.946l-5.933 6.78a2 2 0 0 0-.094 2.518l10 13.334M26.729 21.42 36 1.946l5.931 6.78a2 2 0 0 1 .094 2.518L31.715 24.993\"\/><path d=\"M13.682 30.947a10 10 0 1 0 20 0 10 10 0 0 0-20 0Z\"\/><path d=\"M19.682 30.947a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z\"\/><\/g><\/svg>\n",
-                        "hinta-laatu.svg": "Hinta laatu<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M24 46.576c12.426 0 22.5-10.073 22.5-22.5 0-12.426-10.074-22.5-22.5-22.5S1.5 11.65 1.5 24.076c0 12.427 10.074 22.5 22.5 22.5Z\"\/><path d=\"M27 33.076c-5.8 0-9-3.2-9-9s3.2-9 9-9M15 21.076h12M15 27.076h12\"\/><\/g><\/svg>\n",
-                        "kehittyminen-2.svg": "Kehittyminen 2<svg width=\"49\" height=\"49\" fill=\"none\" viewBox=\"0 0 49 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M39.117 2.72c-5 0-10 7-10 7s-5-7-10-7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M20.717 6.63a7.969 7.969 0 0 0-.6 3.09c.002 1.373.155 2.742.456 4.082-1.372.316-5.056 3.906-7.456 11.918a123.051 123.051 0 0 0-4 21h4c14-2 26-14 23.674-30.214a16.201 16.201 0 0 0 1.326-6.786 7.997 7.997 0 0 0-.57-3.032m-2.11-2.868a9.822 9.822 0 0 0-6.32-2.1 9.822 9.822 0 0 0-6.32 2.1M34.117 45.72h-6M28.941 39.193l2.176 6.528\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m31.117 14.72-2 2-2-2M24.117 42.82a32.103 32.103 0 0 1 0-18.105\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M24.617 11.72a.5.5 0 1 1 0-1M24.617 11.72a.5.5 0 1 0 0-1M33.617 11.72a.5.5 0 1 1 0-1M33.617 11.72a.5.5 0 1 0 0-1\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
-                        "kehittyminen.svg": "Kehittyminen<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"m25.619 12.37 12.18-4.66a.56.56 0 0 0 0-1.04l-12.18-4.68a2.32 2.32 0 0 0-1.56 0l-13.5 5.2 13.5 5.18c.5.2 1.059.2 1.56 0ZM34.738 15.97v-7.1M14.938 8.87v7.1M10.559 7.19v7.7M31.438 25.87a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11ZM18.238 25.87a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m20.117 25.549 4.72 4.72 4.72-4.72\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M36.838 28.61v7.16a12 12 0 1 1-24 0v-7.16\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M35.817 23.67h1.02a6.6 6.6 0 0 1 6.6 6.6v4.4a10.98 10.98 0 0 1-10.98 10.98h-.76M13.858 23.67h-1.02a6.6 6.6 0 0 0-6.6 6.6v4.4a10.98 10.98 0 0 0 10.9 10.98h.76\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M18.239 21.308a.938.938 0 1 1 0-1.876\" stroke=\"currentColor\" stroke-width=\"2\"\/><path d=\"M18.238 21.308a.938.938 0 0 0 0-1.876M31.438 21.308a.938.938 0 0 1 0-1.876M31.438 21.308a.938.938 0 0 0 0-1.876\" stroke=\"currentColor\" stroke-width=\"2\"\/><\/svg>\n",
-                        "lapinakyvyys-1.svg": "Lapinakyvyys 1<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M1.508 24.693a22.5 22.5 0 1 0 45 0 22.5 22.5 0 0 0-45 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M24.008 16.238c-5.374-.088-10.934 3.556-14.428 7.286a2.102 2.102 0 0 0 0 2.878c3.428 3.652 8.956 7.378 14.428 7.292 5.472.088 11-3.638 14.432-7.29a2.102 2.102 0 0 0 0-2.878c-3.498-3.732-9.058-7.376-14.432-7.288Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M21.008 24.963a3 3 0 1 0 6 0 3 3 0 0 0-6 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "lapinakyvyys-2.svg": "Lapinakyvyys 2<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M24.008 11.297c-8.062-.136-16.4 5.498-21.642 11.268a3.326 3.326 0 0 0 0 4.452c5.128 5.648 13.442 11.412 21.642 11.274 8.2.138 16.516-5.626 21.648-11.274a3.326 3.326 0 0 0 0-4.452c-5.248-5.77-13.586-11.404-21.648-11.268Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M31.508 24.795a7.5 7.5 0 1 1-15.001-.004 7.5 7.5 0 0 1 15 .004Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "lupaukset-pidetaan.svg": "Lupaukset pidetaan<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"m38.937 39.998-9.574 1.914M30.313 31.046l-4.52 1.907a2.848 2.848 0 0 1-2.244-.03 2.966 2.966 0 0 1-1.562-1.662 3.05 3.05 0 0 1 1.412-3.8l4.518-2.255a3.944 3.944 0 0 1 3.188-.189l9.278 3.657\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M11.838 41.99h3.2l6.082 4.656a1.66 1.66 0 0 0 2.3.18l8.52-7.036a1.684 1.684 0 0 0 .258-2.328l-4.694-5.216M22.91 27.79l-.494-.4a3.58 3.58 0 0 0-3.45-.44l-7.14 3.04\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M4.338 43.49h5.2a2.282 2.282 0 0 0 2.4-2.144V30.632a2.282 2.282 0 0 0-2.4-2.142h-5.2M45.337 43.49h-4a2.282 2.282 0 0 1-2.4-2.144V30.632a2.282 2.282 0 0 1 2.4-2.142h4M24.6 20.49l-8.762-9.147a5.184 5.184 0 0 1-.972-5.986v0a5.186 5.186 0 0 1 8.306-1.348l1.432 1.432 1.432-1.432a5.186 5.186 0 1 1 7.334 7.334L24.6 20.49Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "missio.svg": "Missio<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"154\" height=\"157\" fill=\"none\" viewBox=\"0 0 154 157\"><path style=\"fill: var(--color-background-block);\" d=\"m102.076 121.81-3.333-26.667-20-6.666-20 6.666-3.333 26.667h10l-6.666 33.333 20-26.667 19.999 26.667-6.667-33.333h10Zm-9.997-43.334-13.334 6.666-13.333-6.666V61.809l13.333-6.666 13.334 6.666v16.667Zm-53.334-3.332L25.41 81.81l-13.333-6.666V58.477l13.333-6.666 13.334 6.666v16.667Zm35.335-50 56.666 10L152.079 1.81H88.746l-4 6.666h-36l-12.666 20 31.333 6.667 6.667-10ZM41.411 93.81l-16-5.333-20 6.666-3.333 26.667h10l-6.667 33.333 20-26.667 20 26.667-6.667-33.333 2.667-28Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"m2.078 15.143 30 20 4-6.667 8.666-13.333H2.078Zm65.999-6.664L53.41 31.812l14 3.333L84.743 8.479H68.077Zm10.667 46.664 13.333 6.666v16.667l-13.333 6.666v-30Zm0 73.333 20 26.667-6.667-33.333h10l-3.333-26.667-20-6.666v39.999ZM25.41 51.81l13.333 6.667v16.667L25.41 81.81v-30Zm0 76.666 20 26.667-6.667-33.333 2.667-28-16-5.333v39.999Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"m130.744 35.144-56.666-10L88.745 1.81h63.332L82.078 111.809\"\/><path style=\"stroke: var(--color-text);\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M44.744 15.143H2.078l30 20 4-6.667m56.001 50-13.334 6.666-13.333-6.666V61.809l13.333-6.666 13.334 6.666v16.667Zm9.997 43.334-3.333-26.667-20-6.666-20 6.666-3.333 26.667h10l-6.666 33.333 20-26.667 19.999 26.667-6.667-33.333h10ZM38.745 75.144 25.41 81.81l-13.333-6.666V58.477l13.333-6.666 13.334 6.666v16.667Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"m41.411 93.81-16-5.333-20 6.666-3.333 26.667h10l-6.667 33.333 20-26.667 20 26.667-6.667-33.333\"\/><path style=\"stroke: var(--color-text);\" stroke-linejoin=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M84.746 8.479h-36l-12.666 20 31.333 6.666 6.667-10\"\/><\/svg>\n",
-                        "palveluasenne-2.svg": "Palveluasenne 2<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M24.184 47.963v-2M35.498 43.277l-1.414-1.414M40.184 31.963h-2M8.184 31.963h2M12.871 43.277l1.414-1.414M32.376 9.963H15.994M12.184 1.963h24M21.383 21.275l-9.2-19.312-5.932 6.78a2 2 0 0 0-.094 2.518l10 13.334M26.912 21.435l9.272-19.472 5.932 6.78a2 2 0 0 1 .094 2.518L31.898 25.009\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M13.865 30.963a10 10 0 1 0 20 0 10 10 0 0 0-20 0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M19.865 30.963a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "palveluasenne.svg": "Palveluasenne<svg width=\"49\" height=\"49\" viewBox=\"0 0 49 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M19.482 18.453v1.523M28.621 18.453v1.523M17.959 27.594c.508.794 2.437 2.383 6.092 2.383s5.584-1.589 6.091-2.383\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"\/><path d=\"M46.497 23.29c0-3.553-1.828-5.427-2.741-5.92h-5.17v11.84h5.17c.913-.494 2.74-2.369 2.74-5.92ZM1.8 23.29c0-3.553 1.828-5.427 2.741-5.92h5.17v11.84h-5.17c-.913-.494-2.74-2.369-2.74-5.92Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M38.39 29.21V15.57c.11-4.42-5.173-12.046-14.375-12.046-9.2 0-14.416 7.627-14.304 12.046V29.21\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"\/><path d=\"M23.117 45.632c9.495-1.57 12.759-6.71 14.341-11.454.436-1.306.934-4.325.934-5.774\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "projektinhallinta.svg": "Projektinhallinta<svg width=\"49\" height=\"49\" fill=\"none\" viewBox=\"0 0 49 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M39.838 25.276a10.559 10.559 0 0 0 3.638-2.85M45.784 16.758a10.6 10.6 0 0 0-.6-4.582M41.478 7.3a10.2 10.2 0 0 0-4.246-1.816M7.622 27.43a10.301 10.301 0 0 0-3.706 3.116M1.842 36.611a10.292 10.292 0 0 0 1.032 4.728M7.273 46.002a10.523 10.523 0 0 0 4.67 1.276M22.832 17.303v30M17.105 23.03l5.726-5.727 5.729 5.728M18.332 6.803a4.5 4.5 0 1 0 8.998 0 4.5 4.5 0 0 0-8.998 0v0Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "rotate-forward.svg": "Rotate forward<svg fill=\"none\" height=\"45\" viewBox=\"0 0 38 45\" width=\"38\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m17.5 13.2266 6-6.00004-6-6\"\/><path d=\"m36.9379 23.7266c.04.494.062 1 .062 1.5.0017 1.5179-.1891 3.03-.568 4.5\"\/><path d=\"m32.7881 13.6562c.9773 1.1616 1.8033 2.4425 2.458 3.8121\"\/><path d=\"m32.744 36.8496c-.32.3787-.6586.7467-1.016 1.104-1.0723 1.0744-2.2766 2.0085-3.584 2.78\"\/><path d=\"m20.5 43.1646c-.494.04-1 .062-1.5.062-4.7739 0-9.35227-1.8965-12.72792-5.2721-3.37566-3.3757-5.27208-7.954-5.27208-12.7279s1.89642-9.3523 5.27208-12.728c3.37565-3.37561 7.95402-5.27204 12.72792-5.27204h4.5\"\/><\/g><\/svg>\n",
-                        "target-path.svg": "Target path<svg fill=\"none\" height=\"49\" viewBox=\"0 0 48 49\" width=\"48\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><clipPath id=\"a-target\"><path d=\"m0 .726562h48v48h-48z\"\/><\/clipPath><g clip-path=\"url(#a-target)\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m40.5 25.1566c1.4083-.6696 2.6507-1.643 3.638-2.85\"\/><path d=\"m46.4459 16.6386c.1395-1.5528-.0654-3.1173-.6-4.582\"\/><path d=\"m42.14 7.18123c-1.2578-.92198-2.7104-1.54323-4.246-1.816\"\/><path d=\"m7.284 27.3105c-1.46534.7295-2.73576 1.7977-3.706 3.116\"\/><path d=\"m1.50405 36.4922c-.03667 1.6356.31711 3.2564 1.032 4.728\"\/><path d=\"m6.93604 45.8828c1.43632.7825 3.03531 1.2194 4.66996 1.276\"\/><path d=\"m22.4941 17.1836v30\"\/><path d=\"m16.7681 22.9116 5.726-5.728 5.728 5.728\"\/><path d=\"m17.994 6.68359c0 .59095.1164 1.17611.3426 1.72208.2261.54596.5576 1.04204.9754 1.4599.4179.41783.914.74933 1.4599.97553.546.2261 1.1312.3425 1.7221.3425.591 0 1.1761-.1164 1.7221-.3425.546-.2262 1.042-.5577 1.4599-.97553.4179-.41786.7493-.91394.9755-1.4599.2261-.54597.3425-1.13113.3425-1.72208 0-.59094-.1164-1.17611-.3425-1.72207-.2262-.54597-.5576-1.04204-.9755-1.45991-.4179-.41786-.9139-.74933-1.4599-.97547-.546-.22615-1.1311-.34255-1.7221-.34255-.5909 0-1.1761.1164-1.7221.34255-.5459.22614-1.042.55761-1.4599.97547-.4178.41787-.7493.91394-.9754 1.45991-.2262.54596-.3426 1.13113-.3426 1.72207z\"\/><\/g><\/svg>\n",
-                        "turvallinen-ja-tuettu-alusta.svg": "Turvallinen ja tuettu alusta<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M37.715 19.479H10.286a3.429 3.429 0 0 0-3.429 3.428v20.571a3.429 3.429 0 0 0 3.429 3.43h27.429a3.429 3.429 0 0 0 3.428-3.43v-20.57a3.429 3.429 0 0 0-3.428-3.43Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"M32.469 5.867A11.795 11.795 0 0 0 24 2.336a12 12 0 0 0-12 12v5.143M24 34.907a1.714 1.714 0 1 0 0-3.428 1.714 1.714 0 0 0 0 3.428Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n",
-                        "valittaminen.svg": "Valittaminen<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M23.9998 43.697L4.82379 23.697C3.13847 22.013 2.02612 19.8411 1.64452 17.4894C1.26291 15.1376 1.63143 12.7255 2.69779 10.595V10.595C3.50191 8.98721 4.67653 7.59352 6.12489 6.52874C7.57324 5.46396 9.25387 4.75856 11.0283 4.47067C12.8027 4.18278 14.6202 4.32063 16.3309 4.87286C18.0416 5.4251 19.5966 6.37591 20.8678 7.64697L23.9998 10.777L27.1318 7.64697C28.403 6.37591 29.958 5.4251 31.6687 4.87286C33.3794 4.32063 35.1969 4.18278 36.9713 4.47067C38.7457 4.75856 40.4263 5.46396 41.8747 6.52874C43.3231 7.59352 44.4977 8.98721 45.3018 10.595C46.3667 12.7246 46.7346 15.1354 46.3534 17.4858C45.9722 19.8361 44.8612 22.007 43.1778 23.691L23.9998 43.697Z\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<\/svg>\n",
-                        "vastuullisuus.svg": "Vastuullisuus<svg width=\"48\" height=\"49\" viewBox=\"0 0 48 49\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<g clip-path=\"url(#clip0_1456_1336)\">\n<path d=\"M8 3.96289H20C20.5304 3.96289 21.0391 4.1736 21.4142 4.54868C21.7893 4.92375 22 5.43246 22 5.96289V9.96289H42C43.1 9.96289 43.298 10.5249 42.438 11.2129L29 21.9629L44 33.9629H15.2C15.036 33.9631 14.8745 33.923 14.7297 33.8461C14.5849 33.7693 14.4612 33.658 14.3695 33.522C14.2779 33.3861 14.221 33.2297 14.204 33.0666C14.187 32.9036 14.2104 32.7388 14.272 32.5869C15.66 29.1509 22 27.9629 22 27.9629H8\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<path d=\"M22 9.96289V27.9629\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<path d=\"M4 1.96289V47.9629\" stroke=\"#7EFFE1\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/>\n<\/g>\n<defs>\n<clipPath id=\"clip0_1456_1336\">\n<rect width=\"48\" height=\"48\" fill=\"white\" transform=\"translate(0 0.962891)\"\/>\n<\/clipPath>\n<\/defs>\n<\/svg>\n",
-                        "visio.svg": "Visio<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"180\" height=\"141\" fill=\"none\" viewBox=\"0 0 180 141\"><path style=\"fill: var(--color-background-block);\" d=\"M178.245 2.16H1.912v137.25h176.333V2.16Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"m126.48 63.999 24.932 22.036-34.5 30.5H63.245l-9.568-8.464L1.912 139.41h176.333V32.66L126.48 64Z\"\/><path style=\"fill: var(--color-light-mint);\" d=\"M116.913 74.598v22.875l-27.056 19.062-26.61-19.062 53.666-22.875Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" stroke-width=\"2.667\" d=\"M17.246 17.41h7.667m15.333 0h7.667m15.333 0h7.667\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M178.245 2.16H1.912v137.25h176.333V2.16ZM1.912 32.66h176.333\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M116.913 116.535H63.246l-34.5-30.5 34.5-30.5h53.667l34.5 30.5-34.5 30.5Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"M63.246 97.473V74.598l26.611-19.063 27.056 19.063v22.875l-27.056 19.062-26.61-19.062Z\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"m90.08 82.223-3.834 3.812 3.833 3.813\"\/><path style=\"stroke: var(--color-text);\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.667\" d=\"m90.078 82.223 3.834 3.812-3.834 3.813\"\/><\/svg>\n",
-                        "wordpress-logo.svg": "Wordpress logo<svg width=\"48\" height=\"49\" fill=\"none\" viewBox=\"0 0 48 49\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M3.412 24c0 8.15 4.736 15.193 11.604 18.53L5.195 15.621a20.51 20.51 0 0 0-1.783 8.38ZM37.9 22.962c0-2.545-.913-4.307-1.697-5.679-1.044-1.696-2.022-3.132-2.022-4.828 0-1.893 1.436-3.654 3.457-3.654.092 0 .178.01.267.016a20.513 20.513 0 0 0-13.903-5.405c-7.193 0-13.522 3.69-17.203 9.28.483.015.938.025 1.325.025 2.153 0 5.487-.261 5.487-.261 1.11-.066 1.24 1.565.132 1.696 0 0-1.115.131-2.357.196l7.498 22.302 4.506-13.514-3.208-8.789a37.578 37.578 0 0 1-2.159-.196c-1.11-.065-.98-1.761.13-1.696 0 0 3.4.261 5.424.261 2.153 0 5.487-.261 5.487-.261 1.11-.065 1.24 1.565.132 1.696 0 0-1.118.131-2.357.196l7.44 22.133 2.054-6.863c.89-2.847 1.568-4.893 1.568-6.655Z\" fill=\"currentColor\"\/><path d=\"m24.361 25.8-6.177 17.951a20.59 20.59 0 0 0 12.653-.328 1.809 1.809 0 0 1-.146-.284l-6.33-17.338ZM42.068 14.121c.088.656.138 1.36.138 2.117 0 2.09-.39 4.438-1.565 7.375l-6.29 18.183C40.474 38.226 44.59 31.596 44.59 24c0-3.58-.914-6.946-2.523-9.879Z\" fill=\"currentColor\"\/><path d=\"M24 0C10.768 0 0 10.766 0 24c0 13.235 10.767 24.001 24 24.001 13.234 0 24.003-10.766 24.003-24.001C48.003 10.766 37.234 0 24 0Zm0 46.901C11.375 46.901 1.1 36.628 1.1 24 1.1 11.373 11.374 1.1 24 1.1c12.627 0 22.9 10.273 22.9 22.9 0 12.628-10.273 22.901-22.9 22.901Z\" fill=\"currentColor\"\/><\/svg>\n",
-                        "ymparistoystavallisyys.svg": "Ymparistoystavallisyys<svg width=\"53\" height=\"54\" viewBox=\"0 0 53 54\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M22.945 30.694a4.417 4.417 0 1 0 8.834 0 4.417 4.417 0 0 0-8.834 0ZM36.195 12.898a19.875 19.875 0 0 1 11.042 17.808M18.528 12.898A19.875 19.875 0 0 0 7.486 30.706M37.837 47.588a19.875 19.875 0 0 1-20.952 0\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><path d=\"m25.859 26.541-5.523-5.251L26.72 3.696a2.509 2.509 0 0 1 4.859 1.049l-1.725 22.304M24.512 34.074l-1.782 7.407L4.297 44.75a2.509 2.509 0 0 1-1.522-4.734l20.191-9.66M31.71 31.472l7.307-2.158 12.047 14.33a2.509 2.509 0 0 1-3.341 3.684l-18.455-12.65\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"\/><\/svg>\n"
-                    },
-                    "default_value": false,
-                    "allow_null": 1,
-                    "multiple": 0,
-                    "ui": 1,
-                    "ajax": 1,
-                    "return_format": "value",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_62a1ceef40213",
-                    "label": "Näytä kuvake vasemmalla",
-                    "name": "icon_left",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "25",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 1,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                },
-                {
-                    "key": "field_627bcf4c347df",
-                    "label": "Otsikko",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_6264086c12329",
-                    "label": "Tekstisisältö",
-                    "name": "content",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "basic",
-                    "media_upload": 0,
-                    "delay": 0
-                }
-            ]
+          "key": "field_6264086c12329",
+          "label": "Tekstisisältö",
+          "name": "content",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "tabs": "all",
+          "toolbar": "basic",
+          "media_upload": 0,
+          "delay": 0
         }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/title-content-columns"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1661609713
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/title-content-columns"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1661609713
 }

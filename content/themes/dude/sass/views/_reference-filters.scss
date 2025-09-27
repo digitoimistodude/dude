@@ -15,9 +15,15 @@
     padding-top: 0;
 
     @media (max-width: $container-mobile) {
+      padding-bottom: 0;
       padding-left: var(--padding-container-horizontal);
       padding-right: var(--padding-container-horizontal);
     }
+  }
+
+  @media (max-width: $container-mobile) {
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -29,7 +35,7 @@
   margin-bottom: 2rem;
 
   .filter-label {
-    color: var(--color-white);
+    color: #fff !important;
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-regular);
     margin-bottom: 1rem;
@@ -38,6 +44,7 @@
   .archive-filters {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.75rem;
     list-style: none;
     margin: 0;
     order: 2;
@@ -61,7 +68,7 @@
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-regular);
   line-height: 1;
-  margin: 0 13px 13px 0;
+  margin: 0;
   padding: 7px 15px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -95,8 +102,10 @@
 
 // Advanced filters section - always visible on desktop, collapsible on mobile
 .reference-filters-advanced {
-  background-color: #3e575f;
+  background-color: transparent;
   margin-bottom: 3rem;
+  padding-left: var(--padding-container-horizontal);
+  padding-right: var(--padding-container-horizontal);
   position: relative;
   transition: all 0.3s ease-in-out;
 
@@ -104,6 +113,7 @@
     align-items: center;
     background-color: #3e575f;
     border: 0;
+    border-radius: 0;
     color: var(--color-white);
     cursor: pointer;
     display: flex;
@@ -119,6 +129,9 @@
     &:focus {
       // stylelint-disable-next-line scss/no-global-function-names
       background-color: darken(#3e575f, 5%);
+      border: 0;
+      box-shadow: none;
+      color: var(--color-white);
     }
 
     .icon-settings {
@@ -134,7 +147,6 @@
 
     .filter-text {
       font-size: 14px;
-      text-transform: uppercase;
     }
 
     // Hide toggle button on desktop
@@ -157,28 +169,11 @@
     }
 
     .container {
-      padding-bottom: 0;
-      padding-top: 0;
+      padding: 0;
 
       @media (max-width: $container-mobile) {
         padding-left: var(--padding-container-horizontal);
         padding-right: var(--padding-container-horizontal);
-      }
-    }
-
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-
-      .filter-group {
-        flex: 1;
-        min-width: 0; // Prevent flex item from overflowing
-      }
-
-      @media (max-width: $container-mobile) {
-        flex-direction: column;
-        gap: 2rem;
       }
     }
 
@@ -188,6 +183,12 @@
       display: block !important;
       padding: 0;
       position: static;
+    }
+
+    @media (max-width: $container-mobile) {
+      .cols.cols-two {
+        gap: 2rem;
+      }
     }
   }
 
@@ -217,7 +218,7 @@
       transition: all 0.2s ease-in-out;
       user-select: none;
 
-      input[type="checkbox"] {
+      input[type='checkbox'] {
         // Make the checkbox cover the entire label but keep it visually hidden
         // while preserving the browser's default focus outline
         appearance: none;
@@ -233,16 +234,16 @@
         z-index: 1;
       }
 
-      input[type="checkbox"]:checked ~ span {
+      input[type='checkbox']:checked ~ span {
         color: var(--color-midnight);
       }
 
-      input[type="checkbox"]:checked ~ & {
+      input[type='checkbox']:checked ~ & {
         background-color: rgb(255 255 255 / 0.9);
         border-color: var(--color-white);
       }
 
-      &:has(input[type="checkbox"]:checked) {
+      &:has(input[type='checkbox']:checked) {
         background-color: rgb(255 255 255 / 0.9);
         border-color: var(--color-white);
         color: var(--color-midnight);
@@ -266,17 +267,14 @@
     order: 2;
     position: relative;
 
-    input[type="search"] {
+    input[type='search'] {
       background-color: transparent;
       border: 0;
       border-bottom: 1px solid rgb(255 255 255 / 0.4);
       border-radius: 0;
       color: var(--color-white);
       font-size: 16px;
-      padding-bottom: 13px;
-      padding-left: 36px;
-      padding-right: 12px;
-      padding-top: 12px;
+      padding: 15px 12px 13px 36px;
       transition: all 0.2s ease-in-out;
       width: 100%;
 
@@ -286,9 +284,8 @@
 
       // Custom search cancel button
       &::-webkit-search-cancel-button {
-        /* stylelint-disable-next-line */
-        -webkit-appearance: none;
-        background-image: url("../../svg/search-cancel.svg");
+        appearance: none;
+        background-image: url('../../svg/search-cancel.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 22px 22px;
@@ -336,7 +333,9 @@
 // Reference items filtering animation
 .col-reference {
   opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 
   &.filtered-out {
     opacity: 0;
@@ -374,68 +373,51 @@
     opacity: 0.9;
   }
 
-  .search-all-button,
-  .reset-filters-button {
-    border: 2px solid var(--color-white);
-    border-radius: 25px;
+  .search-all-button {
+    background-color: var(--color-mint);
+    border: 1px solid rgb(255 255 255 / 0.5);
+    border-color: var(--color-mint);
+    border-radius: 0;
+    color: var(--color-midnight);
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
-    font-weight: var(--font-weight-medium);
-    margin: 0 8px 8px 0;
-    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1;
+    margin: 0 13px 13px 0;
+    padding: 7px 15px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
 
     &:hover,
     &:focus {
-      transform: translateY(-2px);
-    }
-  }
-
-  .search-all-button {
-    background-color: var(--color-mint);
-    border-color: var(--color-mint);
-    color: var(--color-midnight);
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-white);
-      border-color: var(--color-white);
+      background-color: rgb(128 191 186 / 0.9);
+      border-color: var(--color-mint);
       color: var(--color-midnight);
-    }
-  }
-
-  .reset-filters-button {
-    background-color: var(--color-white);
-    border-color: var(--color-white);
-    color: var(--color-midnight);
-
-    &:hover,
-    &:focus {
-      background-color: transparent;
-      color: var(--color-white);
     }
   }
 }
 
 // Dark mode adjustments
-body[data-color-scheme="dark"] {
-  .reference-filters-main .filter-button {
-    &:hover,
-    &:focus,
-    &.active {
-      color: var(--color-midnight);
-    }
+body[data-color-scheme='dark'] .reference-filters-main .filter-button:hover,
+body[data-color-scheme='dark'] .reference-filters-main .filter-button:focus,
+body[data-color-scheme='dark'] .reference-filters-main .filter-button.active {
+  color: var(--color-midnight);
+}
+
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:checked + span,
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox:hover span,
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:focus + span {
+  color: var(--color-midnight);
+}
+
+@media (max-width: $container-mobile) {
+  .reference-filters-advanced {
+    margin-top: 2rem;
   }
 
-  .reference-filters-advanced {
-    .filter-solutions .filter-checkbox {
-      input[type="checkbox"]:checked + span,
-      &:hover span,
-      input[type="checkbox"]:focus + span {
-        color: var(--color-midnight);
-      }
-    }
+  .reference-filters-advanced .archive-head,
+  .reference-filters-main .archive-head {
+    margin-bottom: 0;
   }
 }

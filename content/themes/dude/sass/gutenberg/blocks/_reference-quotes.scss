@@ -96,7 +96,7 @@
     font-weight: var(--font-weight-semibold);
     gap: 1rem;
     margin-left: -#{calc(1rem + 1.6rem)};
-    padding-top: .5rem;
+    padding-top: 0.5rem;
   }
 
   .name-title {
@@ -117,8 +117,8 @@
   }
 
   .comma {
-    margin-left: -.9rem;
-    margin-right: .5rem;
+    margin-left: -0.9rem;
+    margin-right: 0.5rem;
   }
 
   @media (max-width: $container-mobile) {

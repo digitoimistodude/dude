@@ -1,54 +1,54 @@
 {
-    "key": "group_62bc4bcc3868b",
-    "title": "Valikon väri",
-    "fields": [
-        {
-            "key": "field_62bc4bd1a2e88",
-            "label": "Väri",
-            "name": "color",
-            "type": "button_group",
-            "instructions": "Huom! Sallii tyhjän! Nollaus valittua painamalla. Eli jos yläosan väri vaihtuu dark\/light-teeman mukaan, älä aseta tätä.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "dark": "Tumma",
-                "light": "Vaalea"
-            },
-            "allow_null": 1,
-            "default_value": "dark",
-            "layout": "horizontal",
-            "return_format": "value"
-        }
+  "key": "group_62bc4bcc3868b",
+  "title": "Valikon väri",
+  "fields": [
+    {
+      "key": "field_62bc4bd1a2e88",
+      "label": "Väri",
+      "name": "color",
+      "type": "button_group",
+      "instructions": "Huom! Sallii tyhjän! Nollaus valittua painamalla. Eli jos yläosan väri vaihtuu dark\/light-teeman mukaan, älä aseta tätä.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "dark": "Tumma",
+        "light": "Vaalea"
+      },
+      "allow_null": 1,
+      "default_value": "dark",
+      "layout": "horizontal",
+      "return_format": "value"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "reference"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "side",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1663069589
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "reference"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1663069589
 }

@@ -17,7 +17,7 @@
 }
 
 .job-location {
-  opacity: .72;
+  opacity: 0.72;
   text-align: right;
 }
 
@@ -41,7 +41,7 @@
   width: 100%;
 
   svg {
-    transition: all $transition-duration cubic-bezier(.19, 1, .22, 1);
+    transition: all $transition-duration cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   &:hover,

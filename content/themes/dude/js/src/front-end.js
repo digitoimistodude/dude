@@ -14,7 +14,11 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 // eslint-disable-next-line no-unused-vars
 import whatInput from 'what-input';
 import getLocalization from './modules/localization';
-import { styleExternalLinks, initExternalLinkLabels, getChildAltText } from './modules/external-link';
+import {
+  styleExternalLinks,
+  initExternalLinkLabels,
+  getChildAltText,
+} from './modules/external-link';
 import initCarousels from './modules/carousels';
 import initAnchors from './modules/anchors';
 import initBackToTop from './modules/top';

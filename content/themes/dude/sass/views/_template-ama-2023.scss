@@ -60,7 +60,7 @@ body.template-ama.template-ama-2023 {
     padding: var(--form-padding-vertical) var(--form-padding-horizontal);
     position: relative;
     text-decoration: none;
-    transition: background .55s;
+    transition: background 0.55s;
 
     // stylelint-disable-next-line
     &:focus-visible {
@@ -68,9 +68,9 @@ body.template-ama.template-ama-2023 {
     }
   }
 
-  input[type="reset"],
-  input[type="submit"],
-  input[type="button"],
+  input[type='reset'],
+  input[type='submit'],
+  input[type='button'],
   .button {
     @include button();
     background-color: var(--color-mint);
@@ -79,7 +79,7 @@ body.template-ama.template-ama-2023 {
     border-radius: 84px;
     color: var(--color-midnight);
     font-size: var(--font-size-20);
-    transition: all .18s;
+    transition: all 0.18s;
 
     &:focus,
     &:hover {
@@ -148,7 +148,7 @@ body.template-ama.template-ama-2023 {
 // Dark theme
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-borders: rgba(255 255 255 / .1);
+    --color-borders: rgba(255 255 255 / 0.1);
   }
 
   .wp-block-image figcaption {
@@ -197,11 +197,11 @@ body.template-ama.template-ama-2023 {
       &::placeholder {
         color: var(--color-mint);
         font-size: var(--font-size-18);
-        opacity: .5;
+        opacity: 0.5;
       }
     }
 
-    .form input[type="submit"] {
+    .form input[type='submit'] {
       @include button-size-large();
       background-color: var(--color-mint);
       border-color: var(--color-mint);

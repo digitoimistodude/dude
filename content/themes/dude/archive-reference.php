@@ -31,12 +31,12 @@ $target_groups_terms = get_terms( [
 
 $target_groups = [ 'all' => 'Kaikki toimialat' ];
 foreach ( $target_groups_terms as $term ) {
-  $target_groups[$term->slug] = $term->name;
+  $target_groups[ $term->slug ] = $term->name;
 }
 
 // Get current filters from URL parameters
 $current_toimiala = isset( $_GET['toimiala'] ) ? sanitize_text_field( $_GET['toimiala'] ) : 'all';
-$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', $_GET['ratkaisut'] ) ) : [ 'all' ];
+$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', $_GET['ratkaisut'] ) ) : [ 'all' ]; // phpcs:ignore
 $current_haku = isset( $_GET['haku'] ) ? sanitize_text_field( $_GET['haku'] ) : '';
 
 get_header(); ?>
@@ -51,7 +51,7 @@ get_header(); ?>
     'image'           => null,
     'use_as_bg_image' => null,
   ] );
-  
+
   // Main target group filtering
   ?>
   <section class="reference-filters-main">
@@ -67,7 +67,7 @@ get_header(); ?>
             data-value="<?php echo esc_attr( $key ); ?>"
             aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
             <?php echo esc_html( $label ); ?>
-            <?php if ( $key !== 'all' ) : ?>
+            <?php if ( 'all' !== $key ) : ?>
               <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
             <?php endif; ?>
           </button>
@@ -93,12 +93,12 @@ get_header(); ?>
           <path d="M10.1675 2.59507H0.262451V3.36007H10.1675V4.88007H10.9275V1.07007H10.1675V2.59507Z" fill="currentColor"/>
         </svg>
       </span>
-      <span class="filter-text">Suodata</span>
+      <span class="filter-text">Suodata lisää</span>
     </button>
-    
+
     <div class="advanced-filters-content" id="advanced-filters-content" hidden>
       <div class="container">
-        <div class="filter-row">
+        <div class="cols cols-two">
           <?php // Solutions/Categories filter ?>
           <div class="filter-group filter-solutions">
             <div class="archive-head">
@@ -145,7 +145,7 @@ get_header(); ?>
       </div>
     </div>
   </section>
-  
+
   <?php
 
   get_template_part( 'template-parts/blocks/references', null, [

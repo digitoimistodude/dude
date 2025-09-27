@@ -6,7 +6,14 @@
 $sass-burger-add-vendor-prefixes: true !default;
 
 // Burger
-@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+@mixin burger(
+  $width: 30px,
+  $height: 5px,
+  $gutter: 3px,
+  $color: #000,
+  $border-radius: 0,
+  $transition-duration: 0.3s
+) {
   $burger-height: $height !global;
   $burger-gutter: $gutter !global;
   margin-bottom: $height + $gutter;
@@ -29,7 +36,9 @@ $sass-burger-add-vendor-prefixes: true !default;
     }
 
     @if $sass-burger-add-vendor-prefixes {
-      transition-property: background-color, -o-transform;
+      transition-property:
+        background-color,
+        -o-transform;
     }
 
     @if $sass-burger-add-vendor-prefixes {
@@ -44,7 +53,7 @@ $sass-burger-add-vendor-prefixes: true !default;
   }
 
   &::before {
-    top: - ($height + $gutter);
+    top: -($height + $gutter);
   }
 
   &::after {
@@ -94,10 +103,10 @@ $sass-burger-add-vendor-prefixes: true !default;
   }
 
   &::after {
-    transform: translateY(- ($burger-gutter + $burger-height)) rotate(-45deg);
+    transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
 
     @if $sass-burger-add-vendor-prefixes {
-      transform: translateY(- ($burger-gutter + $burger-height)) rotate(-45deg);
+      transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
     }
   }
 

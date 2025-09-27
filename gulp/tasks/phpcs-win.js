@@ -5,13 +5,14 @@ const config = require('../config.js');
 
 // Task
 function phpcswin(cb) {
-  return src(config.phpcs.src)
+  return (
+    src(config.phpcs.src)
+      // Validate files using PHP Code Sniffer
+      .pipe(phpcsplugin(config.phpcs.win))
 
-    // Validate files using PHP Code Sniffer
-    .pipe(phpcsplugin(config.phpcs.win))
-
-    // Log all problems that was found
-    .pipe(phpcsplugin.reporter('log'));
+      // Log all problems that was found
+      .pipe(phpcsplugin.reporter('log'))
+  );
   cb();
 }
 

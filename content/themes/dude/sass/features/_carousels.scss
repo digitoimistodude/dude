@@ -15,7 +15,7 @@ button.swiper-actions:hover,
 
 // stylelint-disable
 .site-main button.swiper-actions:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .swiper-pagination {
@@ -55,7 +55,7 @@ ul.swiper-wrapper {
 .site-main .arrow-link.swiper-button-disabled[disabled]:hover,
 .site-main .arrow-link.swiper-button-disabled[disabled]:focus,
 .site-main .arrow-link.swiper-button-disabled[disabled] {
-  opacity: .2;
+  opacity: 0.2;
 
   .arrow-link-arrow::before {
     width: 70px;

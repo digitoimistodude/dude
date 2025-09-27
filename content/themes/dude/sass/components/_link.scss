@@ -7,7 +7,7 @@
   text-decoration: underline;
   text-decoration-color: var(--color-link-text);
   text-underline-offset: 6px;
-  transition: all $transition-duration cubic-bezier(.19, 1, .22, 1);
+  transition: all $transition-duration cubic-bezier(0.19, 1, 0.22, 1);
 
   &:hover,
   &:focus {

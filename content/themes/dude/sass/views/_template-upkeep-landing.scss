@@ -2,31 +2,40 @@
 @property --gradient-angle {
   inherits: false;
   initial-value: 90deg;
-  syntax: "<angle>";
+  syntax: '<angle>';
 }
 
 @mixin item-glow {
-  --color-1: rgb(32 159 170 / .592);
-  --color-2: rgb(62 200 255 / .592);
-  --color-3: rgb(126 251 255 / .592);
+  --color-1: rgb(32 159 170 / 0.592);
+  --color-2: rgb(62 200 255 / 0.592);
+  --color-3: rgb(126 251 255 / 0.592);
   position: relative;
-  transition: all .3s;
+  transition: all 0.3s;
 
   &:hover,
   &:focus {
     /* stylelint-disable-next-line */
     background-color: #1a2b37;
     /* stylelint-disable-next-line */
-    background-image: radial-gradient(circle, #18363a 0%, rgba(30, 32, 38, .536) 100%);
+    background-image: radial-gradient(
+      circle,
+      #18363a 0%,
+      rgba(30, 32, 38, 0.536) 100%
+    );
     border-color: var(--color-mint);
   }
 
   &::after,
   &::before {
     animation: rotate 2.5s linear infinite;
-    background: conic-gradient(from var(--gradient-angle), var(--color-1), var(--color-2), var(--color-3));
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--color-1),
+      var(--color-2),
+      var(--color-3)
+    );
     border-radius: inherit;
-    content: " ";
+    content: ' ';
     inset: -1px;
     position: absolute;
     z-index: -1;
@@ -38,11 +47,16 @@
 }
 
 body.page-template-template-upkeep-landing {
-
   // stylelint-disable-next-line
   background-color: #1e4348 !important;
   // stylelint-disable-next-line
-  background-image: linear-gradient(159deg, #1e4348 0%, rgba(30, 32, 38, .734) 35%, #1e4348 65%, #1e2026 100%) !important;
+  background-image: linear-gradient(
+    159deg,
+    #1e4348 0%,
+    rgba(30, 32, 38, 0.734) 35%,
+    #1e4348 65%,
+    #1e2026 100%
+  ) !important;
 
   // Override color themes
   h1,
@@ -103,24 +117,44 @@ body.page-template-template-upkeep-landing {
 
     // First layer - wider, lighter blur
     &::before {
-      background: linear-gradient(to right, #1e4348 0%, rgb(30 67 72 / .8) 30%, transparent 100%);
+      background: linear-gradient(
+        to right,
+        #1e4348 0%,
+        rgb(30 67 72 / 0.8) 30%,
+        transparent 100%
+      );
       left: 0;
 
       @supports (backdrop-filter: blur(4px)) {
         backdrop-filter: blur(4px);
         background: none;
-        mask-image: linear-gradient(to right, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / .8) 30%, rgb(0 0 0 / 0) 100%);
+        mask-image: linear-gradient(
+          to right,
+          rgb(0 0 0 / 1) 0%,
+          rgb(0 0 0 / 0.8) 30%,
+          rgb(0 0 0 / 0) 100%
+        );
       }
     }
 
     &::after {
-      background: linear-gradient(to left, #1e4348 0%, rgb(30 67 72 / .8) 30%, transparent 100%);
+      background: linear-gradient(
+        to left,
+        #1e4348 0%,
+        rgb(30 67 72 / 0.8) 30%,
+        transparent 100%
+      );
       right: 0;
 
       @supports (backdrop-filter: blur(4px)) {
         backdrop-filter: blur(4px);
         background: none;
-        mask-image: linear-gradient(to left, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / .8) 30%, rgb(0 0 0 / 0) 100%);
+        mask-image: linear-gradient(
+          to left,
+          rgb(0 0 0 / 1) 0%,
+          rgb(0 0 0 / 0.8) 30%,
+          rgb(0 0 0 / 0) 100%
+        );
       }
     }
   }
@@ -139,11 +173,12 @@ body.page-template-template-upkeep-landing {
   }
 
   .carousel-track img {
-    filter: invert(58%) sepia(8%) saturate(343%) hue-rotate(174deg) brightness(89%) contrast(87%);
+    filter: invert(58%) sepia(8%) saturate(343%) hue-rotate(174deg)
+      brightness(89%) contrast(87%);
     flex-shrink: 0;
     height: 40px;
-    opacity: .7;
-    transition: opacity .3s;
+    opacity: 0.7;
+    transition: opacity 0.3s;
   }
 
   .carousel-track img:focus,
@@ -226,7 +261,11 @@ body.page-template-template-upkeep-landing {
       // stylelint-disable-next-line
       background-color: #223948 !important;
       // stylelint-disable-next-line
-      background-image: radial-gradient(circle, #1e4348 0%, rgba(30, 32, 38, .536) 100%) !important;
+      background-image: radial-gradient(
+        circle,
+        #1e4348 0%,
+        rgba(30, 32, 38, 0.536) 100%
+      ) !important;
       border-radius: 16px;
     }
   }
@@ -243,7 +282,7 @@ body.page-template-template-upkeep-landing {
 }
 
 .upkeep-background {
-  color: rgb(255 255 255 / .02);
+  color: rgb(255 255 255 / 0.02);
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -257,7 +296,7 @@ body.page-template-template-upkeep-landing {
 
   svg {
     bottom: auto;
-    filter: drop-shadow(0 0 150px rgb(255 255 255 / .8));
+    filter: drop-shadow(0 0 150px rgb(255 255 255 / 0.8));
     height: 850px;
     left: 50%;
     margin-top: 90px;
@@ -315,9 +354,9 @@ body.page-template-template-upkeep-landing {
 
   .upsell {
     animation: fadeInOut 24s infinite;
-    opacity: .8;
+    opacity: 0.8;
     transform: scale(1);
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 
     &:nth-child(1) {
       animation-delay: 0s;
@@ -375,7 +414,7 @@ body.page-template-template-upkeep-landing {
       font-size: 16px;
       font-weight: 500;
       margin: 0;
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
@@ -398,7 +437,11 @@ body.page-template-template-upkeep-landing {
   .item-price {
     /* stylelint-disable-next-line */
     background-color: #223948;
-    background-image: radial-gradient(circle, #1e4348 0%, rgb(30 32 38 / .536) 100%);
+    background-image: radial-gradient(
+      circle,
+      #1e4348 0%,
+      rgb(30 32 38 / 0.536) 100%
+    );
     border-radius: 16px;
     margin-bottom: 40px;
     padding: 45px 40px 40px;
@@ -406,7 +449,11 @@ body.page-template-template-upkeep-landing {
     &.item-customized {
       /* stylelint-disable-next-line */
       background-color: #223948;
-      background-image: radial-gradient(circle, #1e4348 0%, rgb(30 32 38 / .536) 100%);
+      background-image: radial-gradient(
+        circle,
+        #1e4348 0%,
+        rgb(30 32 38 / 0.536) 100%
+      );
       border: 1px solid #2a595e;
       position: relative;
 
@@ -423,11 +470,11 @@ body.page-template-template-upkeep-landing {
 
     &:hover .badge,
     &:focus .badge {
-      background-color: rgb(0 0 0 / .45);
+      background-color: rgb(0 0 0 / 0.45);
     }
 
     .badge {
-      background-color: rgb(0 0 0 / .25);
+      background-color: rgb(0 0 0 / 0.25);
       border-radius: 16px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -440,7 +487,7 @@ body.page-template-template-upkeep-landing {
       padding: 10px 40px;
       position: absolute;
       top: 0;
-      transition: background-color .3s;
+      transition: background-color 0.3s;
       width: 100%;
 
       @media (max-width: 730px) {
@@ -460,7 +507,7 @@ body.page-template-template-upkeep-landing {
       .text-small {
         font-size: 24px;
         font-weight: 400;
-        opacity: .8;
+        opacity: 0.8;
       }
     }
 
@@ -484,7 +531,7 @@ body.page-template-template-upkeep-landing {
     /* stylelint-disable-next-line */
     li::marker,
     li {
-      color: rgb(255 255 255 / .8);
+      color: rgb(255 255 255 / 0.8);
       font-size: 14px;
       font-weight: 400;
     }
@@ -558,11 +605,11 @@ body.page-template-template-upkeep-landing {
     border: 1px solid #3f616a;
     border-radius: 16px;
     padding: 40px;
-    transition: all .3s;
+    transition: all 0.3s;
 
     &:hover,
     &:focus {
-      border-color: rgb(126 251 255 / .699);
+      border-color: rgb(126 251 255 / 0.699);
     }
 
     h3 {
@@ -635,7 +682,7 @@ body .site-main .block-upkeep-faq {
         display: block !important;
       }
 
-      [role="tabpanel"] + [role="tabpanel"] {
+      [role='tabpanel'] + [role='tabpanel'] {
         border-top: 1px solid #3f616a;
         padding-bottom: 0;
         padding-top: 0;
@@ -659,7 +706,7 @@ body .site-main .block-upkeep-faq {
     text-align: left;
   }
 
-  .tab-list-box button[aria-selected="true"] {
+  .tab-list-box button[aria-selected='true'] {
     background-color: rgb(30 49 55 / 0.725);
     border-color: #1e3137;
   }
@@ -674,7 +721,7 @@ body .site-main .block-upkeep-faq {
     border-color: #3f616a;
   }
 
-  .accordion-trigger[aria-expanded="true"] {
+  .accordion-trigger[aria-expanded='true'] {
     padding-bottom: 10px;
   }
 

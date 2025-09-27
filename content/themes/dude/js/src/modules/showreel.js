@@ -30,9 +30,13 @@ const initShowreel = () => {
     // eslint-disable-next-line new-cap
     // Player options
     const options = {
-      height: autoplayplayer.dataset.height ? autoplayplayer.dataset.height : 680,
+      height: autoplayplayer.dataset.height
+        ? autoplayplayer.dataset.height
+        : 680,
       width: autoplayplayer.dataset.width ? autoplayplayer.dataset.width : 1208,
-      id: autoplayplayer.dataset.videoId ? autoplayplayer.dataset.videoId : false,
+      id: autoplayplayer.dataset.videoId
+        ? autoplayplayer.dataset.videoId
+        : false,
       loop: 1,
       controls: 1,
       autoplay: 1,
@@ -64,7 +68,8 @@ const initShowreel = () => {
     const vimeoPlayButton = playButton;
 
     // Get play button label
-    const vimeoPlayButtonLabel = playButton.getElementsByClassName('play-label')[0];
+    const vimeoPlayButtonLabel =
+      playButton.getElementsByClassName('play-label')[0];
 
     // Play state function
     // eslint-disable-next-line func-names
@@ -73,9 +78,13 @@ const initShowreel = () => {
       // eslint-disable-next-line no-undef
       const handle = window.setInterval(() => {
         // Check if play button has not been clicked
-        if (!player.element.parentNode.parentNode.classList.contains('playing')) {
+        if (
+          !player.element.parentNode.parentNode.classList.contains('playing')
+        ) {
           // Ensure CTA is removed
-          player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
+          player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
+            'is-cta'
+          );
 
           player.getCurrentTime().then((currentTime) => {
             if (currentTime < 10) {
@@ -89,12 +98,16 @@ const initShowreel = () => {
         }
 
         // If we have the full player theatre on
-        if (player.element.parentNode.parentNode.classList.contains('playing')) {
+        if (
+          player.element.parentNode.parentNode.classList.contains('playing')
+        ) {
           // Get ended and add CTA
           player.getEnded().then((ended) => {
             if (ended) {
               // Show CTA in place of the player
-              player.element.parentNode.parentNode.parentNode.parentNode.classList.add('is-cta');
+              player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
+                'is-cta'
+              );
 
               // Change button text
               vimeoPlayButtonLabel.innerHTML = 'Sulje showreel';
@@ -114,9 +127,13 @@ const initShowreel = () => {
       // eslint-disable-next-line no-undef
       const handle = window.setInterval(() => {
         // Check if play button has not been clicked
-        if (!player.element.parentNode.parentNode.classList.contains('playing')) {
+        if (
+          !player.element.parentNode.parentNode.classList.contains('playing')
+        ) {
           // Ensure CTA is removed
-          player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
+          player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
+            'is-cta'
+          );
 
           player.getCurrentTime().then((currentTime) => {
             if (currentTime < 1) {
@@ -130,12 +147,16 @@ const initShowreel = () => {
         }
 
         // If we have the full player theatre on
-        if (player.element.parentNode.parentNode.classList.contains('playing')) {
+        if (
+          player.element.parentNode.parentNode.classList.contains('playing')
+        ) {
           // Get ended and add CTA
           player.getEnded().then((ended) => {
             if (ended) {
               // Show CTA in place of the player
-              player.element.parentNode.parentNode.parentNode.parentNode.classList.add('is-cta');
+              player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
+                'is-cta'
+              );
 
               // Change button text
               vimeoPlayButtonLabel.innerHTML = 'Sulje showreel';
@@ -150,7 +171,11 @@ const initShowreel = () => {
 
     // Start polling when video is playing
     // If is reference
-    if (player.element.parentNode.parentNode.parentNode.classList.contains('col-reference')) {
+    if (
+      player.element.parentNode.parentNode.parentNode.classList.contains(
+        'col-reference'
+      )
+    ) {
       player.on('play', onPlayStateFunctionReference);
     } else {
       player.on('play', onPlayStateFunction);
@@ -182,10 +207,18 @@ const initShowreel = () => {
 
       // Remove needed classes from elements
       player.element.parentNode.parentNode.classList.remove('playing');
-      player.element.parentNode.parentNode.parentNode.classList.remove('playing');
-      player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('playing');
-      player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove('playing');
-      player.element.parentNode.parentNode.parentNode.parentNode.classList.remove('is-cta');
+      player.element.parentNode.parentNode.parentNode.classList.remove(
+        'playing'
+      );
+      player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
+        'playing'
+      );
+      player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove(
+        'playing'
+      );
+      player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
+        'is-cta'
+      );
 
       // If reference video is playing, add class to body
       if (vimeoPlayButton.classList.contains('play-reference-video')) {
@@ -220,8 +253,12 @@ const initShowreel = () => {
       // Add needed classes to elements
       player.element.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.classList.add('playing');
-      player.element.parentNode.parentNode.parentNode.parentNode.classList.add('playing');
-      player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add('playing');
+      player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
+        'playing'
+      );
+      player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add(
+        'playing'
+      );
 
       // If reference video is playing, add class to body
       if (vimeoPlayButton.classList.contains('play-reference-video')) {
@@ -243,11 +280,15 @@ const initShowreel = () => {
       player.element.parentNode.parentNode.parentNode.classList.add('is-ready');
 
       // If is reference
-      if (player.element.parentNode.parentNode.parentNode.parentNode.classList.contains('col-reference')) {
+      if (
+        player.element.parentNode.parentNode.parentNode.parentNode.classList.contains(
+          'col-reference'
+        )
+      ) {
         // Start playing from start position
         player.setCurrentTime(startSecondsReference);
       } else {
-      // Start playing from start position
+        // Start playing from start position
         player.setCurrentTime(startSeconds);
       }
     });
@@ -264,7 +305,7 @@ const initShowreel = () => {
       } else {
         // Wait animation to load up
         setTimeout(() => {
-        // Get reference wrapper
+          // Get reference wrapper
           const moveToElement = playButton.closest('.cols-two');
           moveToTop.move(moveToElement);
         }, 250);

@@ -45,7 +45,9 @@ const initReferenceFilters = () => {
 
     return {
       targetGroup: currentTargetGroup,
-      solutions: urlParams.get('ratkaisut') ? urlParams.get('ratkaisut').split(',') : ['all'],
+      solutions: urlParams.get('ratkaisut')
+        ? urlParams.get('ratkaisut').split(',')
+        : ['all'],
       searchTerm: urlParams.get('haku') || '',
     };
   };
@@ -192,14 +194,19 @@ const initReferenceFilters = () => {
     const params = new URLSearchParams();
 
     // Get the appropriate base URL from the target group button
-    const targetButton = document.querySelector(`[data-value="${activeFilters.targetGroup}"]`);
+    const targetButton = document.querySelector(
+      `[data-value="${activeFilters.targetGroup}"]`
+    );
     const archiveLink = targetButton?.querySelector('.archive-link');
     if (archiveLink && archiveLink.dataset.archiveUrl) {
       baseUrl = archiveLink.dataset.archiveUrl;
     }
 
     // Add remaining filter parameters as query params
-    if (!activeFilters.solutions.includes('all') && activeFilters.solutions.length > 0) {
+    if (
+      !activeFilters.solutions.includes('all') &&
+      activeFilters.solutions.length > 0
+    ) {
       params.set('ratkaisut', activeFilters.solutions.join(','));
     }
 
@@ -208,7 +215,9 @@ const initReferenceFilters = () => {
     }
 
     // Build final URL
-    const newUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+    const newUrl = params.toString()
+      ? `${baseUrl}?${params.toString()}`
+      : baseUrl;
     window.history.pushState({ filters: activeFilters }, '', newUrl);
 
     // Apply the filters
@@ -410,13 +419,13 @@ const initReferenceFilters = () => {
         content += `
           <p>${messageText}</p>
           <button type="button" class="search-all-button" id="search-all-filters">Hae uudelleen kaikista</button>
-          <button type="button" class="reset-filters-button" id="reset-filters">Nollaa haku</button>
+          <button type="button" class="button" id="reset-filters">Nollaa haku</button>
         `;
       } else {
         // Show default no results message
         content += `
           <p>Hakuasi vastaavia referenssejä ei löydy.</p>
-          <button type="button" class="reset-filters-button" id="reset-filters">Nollaa haku</button>
+          <button type="button" class="button" id="reset-filters">Nollaa haku</button>
         `;
       }
 

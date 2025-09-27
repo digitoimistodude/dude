@@ -15,8 +15,11 @@ if (window.history.replaceState) {
 }
 
 const preLoaded = document.querySelectorAll('.pre-loaded .ama-item');
-const stopTheMadness = typeof window.stopTheMadness !== 'undefined' ?  window.stopTheMadness : false;
-const lastItem = preLoaded.length ? preLoaded[0].querySelector('.inner') : false;
+const stopTheMadness =
+  typeof window.stopTheMadness !== 'undefined' ? window.stopTheMadness : false;
+const lastItem = preLoaded.length
+  ? preLoaded[0].querySelector('.inner')
+  : false;
 const timeStamp = lastItem ? lastItem.dataset.timestamp : false;
 const drafts = typeof window.amaDrafts !== 'undefined' ? window.amaDrafts : 0;
 
@@ -55,7 +58,9 @@ const Ama = {
       this.loadingPosts = true;
 
       //const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc` : '';
-      const queryString = this.timeStamp ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc` : `?per_page=${perPage}&order=asc&after=2023-01-01T00:00:00`;
+      const queryString = this.timeStamp
+        ? `?after=${this.timeStamp}&per_page=${perPage}&order=asc`
+        : `?per_page=${perPage}&order=asc&after=2023-01-01T00:00:00`;
 
       // Get questions
       api
@@ -70,10 +75,14 @@ const Ama = {
               // eslint-disable-next-line no-param-reassign
               data.state = 'loaded';
 
-              setTimeout((id) => {
-                const currentPost = this.posts.find((post) => post.id === id);
-                currentPost.state = 'show';
-              }, 2000, data.id);
+              setTimeout(
+                (id) => {
+                  const currentPost = this.posts.find((post) => post.id === id);
+                  currentPost.state = 'show';
+                },
+                2000,
+                data.id
+              );
 
               this.posts.unshift(data);
             });
@@ -133,7 +142,8 @@ const Ama = {
       const formData = {
         question: this.question,
       };
-      api.post('wp-json/dude-ama/v1/create-question', formData)
+      api
+        .post('wp-json/dude-ama/v1/create-question', formData)
         .then((response) => {
           this.error = false;
           this.questionSent = true;
@@ -187,7 +197,9 @@ dudeAma.component('likes', {
   props: ['count', 'id'],
   data() {
     const currentCount = this.count;
-    const disableLike = window.localStorage.getItem(`dude-ama-liked-${this.id}`);
+    const disableLike = window.localStorage.getItem(
+      `dude-ama-liked-${this.id}`
+    );
     return {
       currentCount,
       disableLike,
@@ -207,7 +219,8 @@ dudeAma.component('likes', {
       }
       this.disableLike = true;
       const formData = { id: this.id };
-      api.post('wp-json/dude-ama/v1/add-like', formData)
+      api
+        .post('wp-json/dude-ama/v1/add-like', formData)
         .then(() => {
           this.currentCount += 1;
           window.localStorage.setItem(`dude-ama-liked-${this.id}`, true);

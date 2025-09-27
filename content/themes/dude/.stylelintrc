@@ -1,14 +1,7 @@
 {
   "defaultSeverity": "warning",
-  "plugins": [
-    "@ronilaukkarinen/stylelint-a11y",
-    "@ronilaukkarinen/stylelint-value-no-unknown-custom-properties",
-    "stylelint-declaration-strict-value",
-    "stylelint-order"
-  ],
-  "extends": [
-    "stylelint-config-standard-scss"
-  ],
+  "plugins": ["@ronilaukkarinen/stylelint-a11y", "@ronilaukkarinen/stylelint-value-no-unknown-custom-properties", "stylelint-declaration-strict-value", "stylelint-order"],
+  "extends": ["stylelint-config-standard-scss"],
   "customSyntax": "postcss-scss",
   "rules": {
     "order/order": [
@@ -62,8 +55,8 @@
     "selector-attribute-brackets-space-inside": "never",
     "selector-attribute-quotes": "always",
     "selector-combinator-space-after": "always",
-    "selector-combinator-space-before": "always",
-    "selector-descendant-combinator-no-non-space": true,
+    "selector-combinator-space-before": null,
+    "selector-descendant-combinator-no-non-space": null,
     "comment-whitespace-inside": "always",
     "indentation": 2,
     "linebreaks": "unix",
@@ -73,7 +66,7 @@
     "declaration-empty-line-before": null,
     "number-leading-zero": null,
     "number-no-trailing-zeros": true,
-    "value-list-comma-newline-after": "never-multi-line",
+    "value-list-comma-newline-after": null,
     "selector-list-comma-newline-after": "always",
     "declaration-colon-space-before": "never",
     "declaration-block-trailing-semicolon": "always",
@@ -132,71 +125,41 @@
     "scale-unlimited/declaration-strict-value": [
       "/color$/",
       {
-        "ignoreValues": [
-          "transparent",
-          "currentColor"
-        ]
+        "ignoreValues": ["transparent", "currentColor"]
       }
     ],
     "csstools/value-no-unknown-custom-properties": [
       true,
       {
-        "importFrom": [
-          "content/themes/dude/css/dev/global.css"
-        ]
+        "importFrom": ["content/themes/dude/css/dev/global.css"]
       }
     ],
     "rule-empty-line-before": [
       "always-multi-line",
       {
-        "except": [
-          "first-nested",
-          "after-single-line-comment"
-        ],
-        "ignore": [
-          "inside-block"
-        ]
+        "except": ["first-nested", "after-single-line-comment"],
+        "ignore": ["inside-block"]
       }
     ],
     "at-rule-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested",
-          "blockless-after-same-name-blockless",
-          "blockless-after-blockless"
-        ],
-        "ignore": [
-          "after-comment"
-        ]
+        "except": ["first-nested", "blockless-after-same-name-blockless", "blockless-after-blockless"],
+        "ignore": ["after-comment"]
       }
     ],
     "no-descending-specificity": null,
     "max-nesting-depth": [
       3,
       {
-        "ignore": [
-          "blockless-at-rules",
-          "pseudo-classes"
-        ]
+        "ignore": ["blockless-at-rules", "pseudo-classes"]
       }
     ],
     "declaration-property-unit-allowed-list": [
       {
-        "font-size": [
-          "rem",
-          "em",
-          "px"
-        ],
-        "/^animation/": [
-          "ms",
-          "s"
-        ],
-        "line-height": [
-          "px",
-          "%",
-          ""
-        ]
+        "font-size": ["rem", "em", "px"],
+        "/^animation/": ["ms", "s"],
+        "line-height": ["px", "%", ""]
       }
     ],
     "a11y/font-size-is-readable": [

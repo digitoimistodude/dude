@@ -1,98 +1,92 @@
 {
-    "key": "group_c269f586c4386",
-    "title": "Lohko: Blogaukset",
-    "fields": [
-        {
-            "key": "field_980e5264e9841",
-            "label": "Otsikko",
-            "name": "title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_62a9cff7b2b8d",
-            "label": "Näytä timantit",
-            "name": "diamond_articles",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_62a9d195b2b8e",
-            "label": "Blogaukset",
-            "name": "post_ids",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_62a9cff7b2b8d",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
-            ],
-            "elements": "",
-            "min": "",
-            "max": "",
-            "return_format": "id"
-        }
-    ],
-    "location": [
+  "key": "group_c269f586c4386",
+  "title": "Lohko: Blogaukset",
+  "fields": [
+    {
+      "key": "field_980e5264e9841",
+      "label": "Otsikko",
+      "name": "title",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_62a9cff7b2b8d",
+      "label": "Näytä timantit",
+      "name": "diamond_articles",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_62a9d195b2b8e",
+      "label": "Blogaukset",
+      "name": "post_ids",
+      "type": "relationship",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
         [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/blog-latest"
-            }
+          {
+            "field": "field_62a9cff7b2b8d",
+            "operator": "!=",
+            "value": "1"
+          }
         ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1659701602
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["post"],
+      "taxonomy": "",
+      "filters": ["search", "post_type", "taxonomy"],
+      "elements": "",
+      "min": "",
+      "max": "",
+      "return_format": "id"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/blog-latest"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1659701602
 }

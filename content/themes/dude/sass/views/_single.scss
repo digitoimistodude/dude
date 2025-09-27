@@ -1,10 +1,10 @@
 // stylelint-disable no-descending-specificity, selector-max-class, selector-max-specificity
 .block-background-petrol-gradient .vimeo-iframe-wrapper,
 .block-background-petrol-gradient img {
-  opacity: .22;
+  opacity: 0.22;
 
   @media (max-width: $container-mobile) {
-    opacity: .12;
+    opacity: 0.12;
   }
 }
 
@@ -33,7 +33,6 @@
 
 .block-editor-writing-flow,
 .block-single {
-
   // Defaults
   p,
   dd,
@@ -181,7 +180,7 @@
   .box {
     align-items: center;
     background-color: var(--color-white);
-    box-shadow: 0 2px 26px 0 rgb(22 24 38 / .07);
+    box-shadow: 0 2px 26px 0 rgb(22 24 38 / 0.07);
     display: flex;
     flex-wrap: wrap;
     gap: 1rem 2rem;
@@ -255,7 +254,7 @@
 .block-single .author-card img {
   background-color: var(--color-background-block);
   border-radius: 50%;
-  box-shadow: 4px 4px 10px 0 rgb(0 0 0 / .07);
+  box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 0.07);
   height: 74px;
   min-width: 74px;
   width: 74px;
@@ -456,7 +455,7 @@ p > img[width] {
   }
 
   // stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors
-  button[type="submit"] {
+  button[type='submit'] {
     margin-top: 1rem;
   }
 

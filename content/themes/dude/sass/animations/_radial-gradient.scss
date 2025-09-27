@@ -2,7 +2,11 @@
 .radial-gradient-absolute {
   --color-gradient-start: var(--color-midnight);
   --color-gradient-end: var(--color-dark-navy);
-  background-image: radial-gradient(at center, var(--color-gradient-start), var(--color-gradient-end));
+  background-image: radial-gradient(
+    at center,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
   height: 15000px;
   left: 0;
   opacity: 0;
@@ -22,7 +26,13 @@
   animation-iteration-count: infinite;
   animation-name: gradient;
   animation-timing-function: ease;
-  background-image: linear-gradient(-45deg, #4d4f63, var(--color-dark-navy), var(--color-midnight), #23d5ab);
+  background-image: linear-gradient(
+    -45deg,
+    #4d4f63,
+    var(--color-dark-navy),
+    var(--color-midnight),
+    #23d5ab
+  );
   background-size: 400% 400%;
 }
 

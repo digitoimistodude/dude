@@ -9,7 +9,10 @@
 
   // Slightly Deeper Browser Support
   // @source https://css-tricks.com/snippets/css/using-font-face/#slightly-deeper-browser-support
-  src: url('../../fonts/perfectdosvga437win.woff') format('woff'), url('../../fonts/perfectdosvga437win.woff2') format('woff2'), url('../../fonts/perfectdosvga437win.ttf') format('truetype');
+  src:
+    url('../../fonts/perfectdosvga437win.woff') format('woff'),
+    url('../../fonts/perfectdosvga437win.woff2') format('woff2'),
+    url('../../fonts/perfectdosvga437win.ttf') format('truetype');
 }
 
 .overlay {
@@ -20,11 +23,20 @@
   z-index: 2;
 
   &.overlay-vignette {
-    background-image: radial-gradient(ellipse at center, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / .25) 100%);
+    background-image: radial-gradient(
+      ellipse at center,
+      rgb(0 0 0 / 0) 50%,
+      rgb(0 0 0 / 0.25) 100%
+    );
   }
 
   &.overlay-scanline {
-    background-image: repeating-linear-gradient(transparent, transparent 1px, black 2px, black 2px);
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 1px,
+      black 2px,
+      black 2px
+    );
     z-index: 5;
   }
 }

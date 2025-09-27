@@ -3,7 +3,6 @@ const notify = require('gulp-notify');
 
 // General error handling
 const handleError = function () {
-
   return function (err) {
     if (typeof err !== 'undefined') {
       var notifyMessage = '';
@@ -19,12 +18,12 @@ const handleError = function () {
 
       notify({
         title: 'Gulp task failed — see console',
-        message: notifyMessage
+        message: notifyMessage,
       }).write(err);
     }
   };
 };
 
 module.exports = {
-  handleError
+  handleError,
 };
