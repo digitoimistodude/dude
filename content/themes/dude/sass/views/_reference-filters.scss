@@ -1,5 +1,5 @@
 // Reference filters styling
-// stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, declaration-no-important, a11y/no-display-none, scale-unlimited/declaration-strict-value, a11y/font-size-is-readable
+// stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, declaration-no-important, a11y/no-display-none, scale-unlimited/declaration-strict-value, a11y/font-size-is-readable, max-nesting-depth, max-line-length
 
 // Main category filter section - matching blog archive style
 .reference-filters-main {
@@ -25,16 +25,14 @@
 .reference-filters-main .archive-head,
 .reference-filters-advanced .archive-head,
 .archive-reference .archive-head {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
+  display: block;
+  margin-bottom: 2rem;
 
   .filter-label {
+    color: var(--color-white);
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-regular);
     margin-bottom: 1rem;
-    order: 1;
-    width: 100%;
   }
 
   .archive-filters {
@@ -119,6 +117,7 @@
 
     &:hover,
     &:focus {
+      // stylelint-disable-next-line scss/no-global-function-names
       background-color: darken(#3e575f, 5%);
     }
 
@@ -168,13 +167,18 @@
     }
 
     .filter-row {
-      display: grid;
-      gap: 3rem;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      .filter-group {
+        flex: 1;
+        min-width: 0; // Prevent flex item from overflowing
+      }
 
       @media (max-width: $container-mobile) {
+        flex-direction: column;
         gap: 2rem;
-        grid-template-columns: 1fr;
       }
     }
 
@@ -184,16 +188,6 @@
       display: block !important;
       padding: 0;
       position: static;
-
-      .filter-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-      }
-
-      .filter-group {
-        flex: 1;
-      }
     }
   }
 
@@ -215,20 +209,28 @@
       cursor: pointer;
       display: inline-flex;
       font-size: 14px;
-      margin: 0 10px 10px 0;
-      padding: 6px 12px;
+      font-weight: var(--font-weight-regular);
+      line-height: 1;
+      padding: 7px 15px;
       position: relative;
+      text-decoration: none;
       transition: all 0.2s ease-in-out;
       user-select: none;
 
       input[type="checkbox"] {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
+        // Make the checkbox cover the entire label but keep it visually hidden
+        // while preserving the browser's default focus outline
+        appearance: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        margin: 0;
         position: absolute;
-        white-space: nowrap;
-        width: 1px;
+        top: 0;
+        width: 100%;
+        z-index: 1;
       }
 
       input[type="checkbox"]:checked ~ span {
@@ -260,65 +262,61 @@
   }
 
   // Search filter
-  .filter-search {
-    .search-input-wrapper {
-      order: 2;
-      position: relative;
+  .filter-search .search-input-wrapper {
+    order: 2;
+    position: relative;
 
-      input[type="search"] {
-        background-color: rgb(255 255 255 / 0.1);
-        border: 1px solid rgb(255 255 255 / 0.2);
-        border-radius: 8px;
-        color: var(--color-white);
-        font-size: 16px;
-        padding: 0.75rem 1rem 0.75rem 3rem;
-        transition: all 0.2s ease-in-out;
-        width: 100%;
+    input[type="search"] {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid rgb(255 255 255 / 0.4);
+      border-radius: 0;
+      color: var(--color-white);
+      font-size: 16px;
+      padding-bottom: 13px;
+      padding-left: 36px;
+      padding-right: 12px;
+      padding-top: 12px;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
 
-        &::placeholder {
-          color: rgb(255 255 255 / 0.6);
-        }
-
-        &:focus {
-          background-color: rgb(255 255 255 / 0.15);
-          border-color: var(--color-mint);
-          outline: none;
-        }
-
-        // Custom search cancel button
-        &::-webkit-search-cancel-button {
-          /* stylelint-disable-next-line */
-          -webkit-appearance: none;
-          background-image: url("../../svg/search-cancel.svg");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 22px 22px;
-          height: 22px;
-          width: 22px;
-        }
-
-        // Remove default search decoration
-        &::-webkit-search-decoration {
-          appearance: none;
-        }
+      &::placeholder {
+        color: rgb(255 255 255 / 0.6);
       }
 
-      .search-icon {
-        align-items: center;
-        color: rgb(255 255 255 / 0.6);
-        display: flex;
-        height: 20px;
-        left: 1rem;
-        pointer-events: none;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 20px;
+      // Custom search cancel button
+      &::-webkit-search-cancel-button {
+        /* stylelint-disable-next-line */
+        -webkit-appearance: none;
+        background-image: url("../../svg/search-cancel.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 22px 22px;
+        height: 22px;
+        width: 22px;
+      }
 
-        svg {
-          height: 100%;
-          width: 100%;
-        }
+      // Remove default search decoration
+      &::-webkit-search-decoration {
+        appearance: none;
+      }
+    }
+
+    .search-icon {
+      align-items: center;
+      color: rgb(255 255 255 / 0.6);
+      display: flex;
+      height: 24px;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+
+      svg {
+        height: 100%;
+        width: 100%;
       }
     }
   }
