@@ -169,12 +169,8 @@
     }
 
     .container {
-      padding: 0;
-
-      @media (max-width: $container-mobile) {
-        padding-left: var(--padding-container-horizontal);
-        padding-right: var(--padding-container-horizontal);
-      }
+      padding-bottom: 0;
+      padding-top: 0;
     }
 
     // Show filters always on desktop
