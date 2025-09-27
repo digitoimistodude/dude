@@ -373,27 +373,14 @@
     opacity: 0.9;
   }
 
-  .search-all-button {
-    background-color: var(--color-mint);
-    border: 1px solid rgb(255 255 255 / 0.5);
-    border-color: var(--color-mint);
-    border-radius: 0;
-    color: var(--color-midnight);
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: var(--font-weight-regular);
-    line-height: 1;
-    margin: 0 13px 13px 0;
-    padding: 7px 15px;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
+  .button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
 
-    &:hover,
-    &:focus {
-      background-color: rgb(128 191 186 / 0.9);
-      border-color: var(--color-mint);
-      color: var(--color-midnight);
+    @media (max-width: $container-mobile) {
+      flex-direction: column;
     }
   }
 }

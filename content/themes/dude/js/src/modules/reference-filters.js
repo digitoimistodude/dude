@@ -227,7 +227,11 @@ const initReferenceFilters = () => {
   // Reset all filters to default state
   const resetAllFilters = () => {
     // Reset filter state
-    activeFilters = getDefaultFilters();
+    activeFilters = {
+      targetGroup: 'all',
+      solutions: ['all'],
+      searchTerm: '',
+    };
 
     // Reset UI
     // Target group buttons
@@ -251,8 +255,8 @@ const initReferenceFilters = () => {
       searchInput.value = '';
     }
 
-    // Apply filters
-    applyFilters();
+    // Update URL and apply filters
+    updateUrlAndApplyFilters();
   };
 
   // Search from all categories and target groups (keep only search term)
@@ -418,14 +422,18 @@ const initReferenceFilters = () => {
 
         content += `
           <p>${messageText}</p>
-          <button type="button" class="search-all-button" id="search-all-filters">Hae uudelleen kaikista</button>
-          <button type="button" class="button" id="reset-filters">Nollaa haku</button>
+          <div class="button-wrapper">
+            <button type="button" class="button" id="search-all-filters">Hae uudelleen kaikista</button>
+            <button type="button" class="button" id="reset-filters">Nollaa haku</button>
+          </div>
         `;
       } else {
         // Show default no results message
         content += `
           <p>Hakuasi vastaavia referenssejä ei löydy.</p>
-          <button type="button" class="button" id="reset-filters">Nollaa haku</button>
+          <div class="button-wrapper">
+            <button type="button" class="button" id="reset-filters">Nollaa haku</button>
+          </div>
         `;
       }
 
