@@ -169,8 +169,12 @@
     }
 
     .container {
-      padding-bottom: 0;
-      padding-top: 0;
+      padding: 0;
+
+      @media (min-width: $width-grid-base) {
+        padding-left: var(--padding-container-horizontal);
+        padding-right: var(--padding-container-horizontal);
+      }
     }
 
     // Show filters always on desktop
