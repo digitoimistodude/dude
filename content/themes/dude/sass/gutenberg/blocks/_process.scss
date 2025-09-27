@@ -80,11 +80,11 @@
 
   .item {
     @include list-inside-blocks();
-    padding-left: .5rem;
+    padding-left: 0.5rem;
     width: 50%;
 
     li {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
 
     li:last-child {
@@ -122,8 +122,8 @@
   }
 
   .swiper-slide {
-    opacity: .5;
-    transform: scale(.9);
+    opacity: 0.5;
+    transform: scale(0.9);
     transform-origin: 0 0;
     transition: $transition-duration all;
   }

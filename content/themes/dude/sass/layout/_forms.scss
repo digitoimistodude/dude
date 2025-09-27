@@ -1,20 +1,19 @@
 // stylelint-disable no-descending-specificity, selector-max-combinators, selector-max-compound-selectors, selector-max-class, selector-max-specificity
 .site-main,
 .site-footer {
-
   // Buttons
   .button-wrapper {
     margin-bottom: 0;
   }
 
-  div.wpforms-container-full .wpforms-form input[type="submit"],
-  div.wpforms-container-full .wpforms-form button[type="submit"],
+  div.wpforms-container-full .wpforms-form input[type='submit'],
+  div.wpforms-container-full .wpforms-form button[type='submit'],
   div.wpforms-container-full .wpforms-form .wpforms-page-button,
   button,
   .button,
-  input[type="reset"],
-  input[type="submit"],
-  input[type="button"] {
+  input[type='reset'],
+  input[type='submit'],
+  input[type='button'] {
     @include button();
 
     // Button sizes
@@ -46,7 +45,10 @@
 }
 
 // Select drop downs
-div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-field-select-style-classic select,
+div.wpforms-container-full
+  .wpforms-form
+  .wpforms-field.wpforms-field-select-style-classic
+  select,
 select {
   // doiuse-disable
   appearance: none;
@@ -80,32 +82,32 @@ select {
 }
 
 // Form input elements and textareas
-body div.wpforms-container-full .wpforms-form input[type="date"],
-body div.wpforms-container-full .wpforms-form input[type="datetime"],
-body div.wpforms-container-full .wpforms-form input[type="datetime-local"],
-body div.wpforms-container-full .wpforms-form input[type="email"],
-body div.wpforms-container-full .wpforms-form input[type="month"],
-body div.wpforms-container-full .wpforms-form input[type="number"],
-body div.wpforms-container-full .wpforms-form input[type="password"],
-body div.wpforms-container-full .wpforms-form input[type="range"],
-body div.wpforms-container-full .wpforms-form input[type="search"],
-body div.wpforms-container-full .wpforms-form input[type="tel"],
-body div.wpforms-container-full .wpforms-form input[type="text"],
-body div.wpforms-container-full .wpforms-form input[type="time"],
-body div.wpforms-container-full .wpforms-form input[type="url"],
-body div.wpforms-container-full .wpforms-form input[type="week"],
+body div.wpforms-container-full .wpforms-form input[type='date'],
+body div.wpforms-container-full .wpforms-form input[type='datetime'],
+body div.wpforms-container-full .wpforms-form input[type='datetime-local'],
+body div.wpforms-container-full .wpforms-form input[type='email'],
+body div.wpforms-container-full .wpforms-form input[type='month'],
+body div.wpforms-container-full .wpforms-form input[type='number'],
+body div.wpforms-container-full .wpforms-form input[type='password'],
+body div.wpforms-container-full .wpforms-form input[type='range'],
+body div.wpforms-container-full .wpforms-form input[type='search'],
+body div.wpforms-container-full .wpforms-form input[type='tel'],
+body div.wpforms-container-full .wpforms-form input[type='text'],
+body div.wpforms-container-full .wpforms-form input[type='time'],
+body div.wpforms-container-full .wpforms-form input[type='url'],
+body div.wpforms-container-full .wpforms-form input[type='week'],
 body div.wpforms-container-full .wpforms-form select,
 body div.wpforms-container-full .wpforms-form textarea,
 textarea,
-.block input[type="text"],
-.block input[type="tel"],
-.block input[type="url"],
-.block input[type="password"],
-.block input[type="number"],
-.block input[type="month"],
-.block input[type="week"],
-.block input[type="email"],
-.block input[type="search"] {
+.block input[type='text'],
+.block input[type='tel'],
+.block input[type='url'],
+.block input[type='password'],
+.block input[type='number'],
+.block input[type='month'],
+.block input[type='week'],
+.block input[type='email'],
+.block input[type='search'] {
   background-color: var(--color-background-input-field);
   border-color: var(--color-border-forms);
   border-radius: var(--border-radius-input-field);
@@ -123,12 +125,12 @@ textarea,
   padding-top: var(--form-padding-vertical);
   position: relative;
   text-decoration: none;
-  transition: background .55s;
+  transition: background 0.55s;
 
   &::placeholder {
     color: var(--color-placeholder);
     font-size: var(--font-size-input-fields);
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &:focus {
@@ -145,9 +147,9 @@ textarea,
 // Checkboxes
 // Learn about this technique:
 // @link https://moderncss.dev/pure-css-custom-checkbox-style/
-.site-main div.wpforms-container-full .wpforms-form input[type="checkbox"],
-.site-main div.wpforms-container-full .wpforms-form input[type="radio"],
-.block input[type="checkbox"] {
+.site-main div.wpforms-container-full .wpforms-form input[type='checkbox'],
+.site-main div.wpforms-container-full .wpforms-form input[type='radio'],
+.block input[type='checkbox'] {
   appearance: none;
   background-color: transparent;
   border: 1px solid var(--color-mint);
@@ -163,19 +165,19 @@ textarea,
 }
 
 // Round style radio buttons
-.block input[type="radio"]::before,
-.block input[type="radio"] {
+.block input[type='radio']::before,
+.block input[type='radio'] {
   border-radius: 50%;
 }
 
 // Square style checkboxes
-.block input[type="checkbox"]::before,
-.block input[type="checkbox"] {
+.block input[type='checkbox']::before,
+.block input[type='checkbox'] {
   border-radius: var(--border-radius-checkbox);
 }
 
-.block input[type="radio"]::before,
-.block input[type="checkbox"]::before {
+.block input[type='radio']::before,
+.block input[type='checkbox']::before {
   background-color: var(--color-midnight);
   background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' heighg='16'%3E%3Cg class='nc-icon-wrapper' stroke-width='3' fill='%237effe1' stroke='%237effe1'%3E%3Cpolyline fill='none' stroke='%237effe1' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1, 9 5, 13 15, 3' data-cap='butt'%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A");
   background-position: center;
@@ -183,27 +185,27 @@ textarea,
   content: '';
   height: var(--size-checkbox);
   opacity: 0;
-  transform: scale(.8);
-  transition: transform .2s;
+  transform: scale(0.8);
+  transition: transform 0.2s;
   width: var(--size-checkbox);
 }
 
-.block input[type="radio"]:checked::before,
-.block input[type="checkbox"]:checked::before {
+.block input[type='radio']:checked::before,
+.block input[type='checkbox']:checked::before {
   opacity: 1;
   transform: scale(1);
 }
 
-.block input[type="radio"]:checked,
-.block input[type="checkbox"]:checked {
+.block input[type='radio']:checked,
+.block input[type='checkbox']:checked {
   // Hide element visually on click so it creates a bouncy animation illusion
   background-color: transparent;
   border-color: transparent;
 }
 
-.block input[type="checkbox"]:hover,
-.block input[type="checkbox"] + label:hover,
-.block input[type="checkbox"]:focus,
-.block input[type="checkbox"] + label:focus {
+.block input[type='checkbox']:hover,
+.block input[type='checkbox'] + label:hover,
+.block input[type='checkbox']:focus,
+.block input[type='checkbox'] + label:focus {
   cursor: pointer;
 }

@@ -1,74 +1,74 @@
 {
-    "key": "group_a09fed253e60e",
-    "title": "Lohko: Kuva",
-    "fields": [
-        {
-            "key": "field_a47dc9fadd827",
-            "label": "Kuva",
-            "name": "image_id",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 0,
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 1,
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_66e0793d26b84",
-            "label": "Käytä kokoleveänä",
-            "name": "use_full_width",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "relevanssi_exclude": 1,
-            "message": "Käytetäänkö 100% kuvaa",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/image"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1725987226
+  "key": "group_a09fed253e60e",
+  "title": "Lohko: Kuva",
+  "fields": [
+    {
+      "key": "field_a47dc9fadd827",
+      "label": "Kuva",
+      "name": "image_id",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "relevanssi_exclude": 0,
+      "return_format": "id",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "allow_in_bindings": 1,
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_66e0793d26b84",
+      "label": "Käytä kokoleveänä",
+      "name": "use_full_width",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "relevanssi_exclude": 1,
+      "message": "Käytetäänkö 100% kuvaa",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "ui": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/image"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1725987226
 }

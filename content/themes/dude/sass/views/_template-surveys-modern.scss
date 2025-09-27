@@ -10,10 +10,10 @@ body.template-surveys-modern {
   --color-survey-body-text: var(--color-white);
   --color-success-box-body-text: var(--color-survey-body-text);
   --color-success-box-title: #7eaf56;
-  --color-background-checked: rgb(--color-mint .35);
+  --color-background-checked: rgb(--color-mint 0.35);
   --color-background-checked-checkbox: var(--color-mint);
-  --color-borders: rgb(255 255 255 / .15);
-  --color-border-main-header: rgb(255 255 255 / .15);
+  --color-borders: rgb(255 255 255 / 0.15);
+  --color-border-main-header: rgb(255 255 255 / 0.15);
   --color-error-surveys: #c56b68;
   --color-success-box-bg: transparent;
   --color-success-box-border: transparent;
@@ -23,12 +23,12 @@ body.template-surveys-modern {
   --color-links: var(--color-mint);
   --color-links-hover: #26b392;
   --color-required: var(--color-mint);
-  --transition-duration-survey: .11s;
-  --color-survey-wrapper-background: rgb(0 0 0 / .05);
+  --transition-duration-survey: 0.11s;
+  --color-survey-wrapper-background: rgb(0 0 0 / 0.05);
   --color-survey-start-button-background: #232527;
   --color-survey-start-button-text: #e3e4e6;
-  --color-background-survey-selection-hover: rgb(126 255 225 / .05);
-  --color-background-survey-selected: rgb(126 255 225 / .08);
+  --color-background-survey-selection-hover: rgb(126 255 225 / 0.05);
+  --color-background-survey-selected: rgb(126 255 225 / 0.08);
   background-attachment: fixed;
   background-color: var(--color-survey-background);
   background-position: top;
@@ -55,14 +55,25 @@ body.template-surveys-modern {
     background: transparent;
   }
 
-  form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td:first-of-type,
+  form.wpforms-form
+    .wpforms-field-net_promoter_score
+    table.modern
+    tbody
+    tr
+    td:first-of-type,
   form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td {
     border-color: var(--color-borders);
     border-radius: 0;
     color: var(--color-survey-body-text);
   }
 
-  form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td label {
+  form.wpforms-form
+    .wpforms-field-net_promoter_score
+    table.modern
+    tbody
+    tr
+    td
+    label {
     border: 0;
     margin: 0;
     outline: 0;
@@ -76,12 +87,31 @@ body.template-surveys-modern {
     }
   }
 
-  form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td label:hover::after,
-  form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td label:focus::after {
+  form.wpforms-form
+    .wpforms-field-net_promoter_score
+    table.modern
+    tbody
+    tr
+    td
+    label:hover::after,
+  form.wpforms-form
+    .wpforms-field-net_promoter_score
+    table.modern
+    tbody
+    tr
+    td
+    label:focus::after {
     border: 0;
   }
 
-  form.wpforms-form .wpforms-field-net_promoter_score table.modern tbody tr td input[type="radio"]:checked + label {
+  form.wpforms-form
+    .wpforms-field-net_promoter_score
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio']:checked
+    + label {
     background-color: var(--color-checked);
     color: var(--color-survey-background);
   }
@@ -106,13 +136,37 @@ body.template-surveys-modern {
     }
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr:nth-child(odd) th,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr:nth-child(odd) td {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr:nth-child(odd)
+    th,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr:nth-child(odd)
+    td {
     background: transparent;
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="radio"]:checked + label::before,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"]:checked + label::before {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio']:checked
+    + label::before,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='checkbox']:checked
+    + label::before {
     // stylelint-disable-next-line
     background-color: transparent !important;
     background-image: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%2303061b" stroke="%2303061b"%3E%3Cpolyline fill="none" stroke="%2303061b" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
@@ -120,8 +174,22 @@ body.template-surveys-modern {
     background-size: 15px;
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="radio"] + label,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"] + label {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio']
+    + label,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='checkbox']
+    + label {
     background-color: transparent !important;
     display: inline-flex !important;
     height: 26px !important;
@@ -140,8 +208,22 @@ body.template-surveys-modern {
     }
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="radio"] + label::before,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"] + label::before {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio']
+    + label::before,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='checkbox']
+    + label::before {
     background-color: transparent !important;
     background-position: 4px 4px;
     background-size: 25px;
@@ -151,14 +233,32 @@ body.template-surveys-modern {
     width: 26px !important;
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td label:hover::after,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td label:focus::after {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    label:hover::after,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    label:focus::after {
     border: 2px solid var(--color-survey-body-text) !important;
-    opacity: .7;
+    opacity: 0.7;
     transition: border-width var(--transition-duration-survey) linear !important;
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td label::after {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    label::after {
     background-color: transparent;
     border: 1px solid var(--color-borders);
     height: 26px;
@@ -170,8 +270,22 @@ body.template-surveys-modern {
     }
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="radio"]:checked + label::after,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"]:checked + label::after {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio']:checked
+    + label::after,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='checkbox']:checked
+    + label::after {
     background-color: var(--color-background-checked-checkbox);
   }
 
@@ -214,7 +328,8 @@ body.template-surveys-modern {
 
   .wpforms-confirmation-container-full.wpforms-confirmation-scroll,
   .wpforms-confirmation-container-full,
-  div[submit-success] > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+  div[submit-success]
+    > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
     background: var(--color-success-box-bg);
     border: 0;
     color: var(--color-survey-body-text);
@@ -343,7 +458,7 @@ body.template-surveys-modern {
   span,
   p,
   li,
-  input[type="text"] {
+  input[type='text'] {
     color: var(--color-survey-body-text);
   }
 
@@ -404,8 +519,10 @@ body.template-surveys-modern {
       transition: all var(--transition-duration-survey);
     }
 
-    table.gsurvey-likert td.gsurvey-likert-choice:not(.gsurvey-likert-selected):hover,
-    table.gsurvey-likert td.gsurvey-likert-choice:not(.gsurvey-likert-selected):focus {
+    table.gsurvey-likert
+      td.gsurvey-likert-choice:not(.gsurvey-likert-selected):hover,
+    table.gsurvey-likert
+      td.gsurvey-likert-choice:not(.gsurvey-likert-selected):focus {
       background-color: transparent !important;
     }
 
@@ -420,7 +537,7 @@ body.template-surveys-modern {
 
       @media (max-width: 1100px) {
         background-position: 1rem center !important;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
 
         input {
           margin-left: 1rem !important;
@@ -485,7 +602,7 @@ body.template-surveys-modern {
     .wpforms-field.wpforms-field-likert_scale {
       tbody tr td,
       tbody tr th {
-        border-bottom: 1px solid rgb(var(--color-borders) .5);
+        border-bottom: 1px solid rgb(var(--color-borders) 0.5);
         border-radius: 0;
       }
 
@@ -588,12 +705,12 @@ body.template-surveys-modern {
     }
 
     // Checkboxes
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       display: none !important;
     }
 
-    input[type="checkbox"] + label,
-    input[type="radio"] + label {
+    input[type='checkbox'] + label,
+    input[type='radio'] + label {
       align-items: center;
       color: var(--color-survey-body-text);
       cursor: pointer;
@@ -613,19 +730,19 @@ body.template-surveys-modern {
       }
     }
 
-    input[type="checkbox"] + label:last-child {
+    input[type='checkbox'] + label:last-child {
       margin-bottom: 0;
     }
 
-    input[type="checkbox"]:checked + label,
-    input[type="radio"]:checked + label {
+    input[type='checkbox']:checked + label,
+    input[type='radio']:checked + label {
       color: var(--color-checked);
       font-weight: var(--font-weight-regular);
       opacity: 1;
     }
 
-    input[type="checkbox"] + label::before,
-    input[type="radio"] + label::before {
+    input[type='checkbox'] + label::before,
+    input[type='radio'] + label::before {
       background: var(--color-background-checked);
       border: 0;
       border-radius: 0;
@@ -644,18 +761,18 @@ body.template-surveys-modern {
       z-index: -1;
     }
 
-    input[type="checkbox"].wpforms-likert-scale-option + label::before,
-    input[type="radio"].wpforms-likert-scale-option + label::before {
+    input[type='checkbox'].wpforms-likert-scale-option + label::before,
+    input[type='radio'].wpforms-likert-scale-option + label::before {
       background-color: transparent !important;
     }
 
-    input[type="checkbox"]:checked + label::before,
-    input[type="radio"]:checked + label::before {
+    input[type='checkbox']:checked + label::before,
+    input[type='radio']:checked + label::before {
       opacity: 1;
     }
 
     // Radio buttons
-    input[type="radio"] {
+    input[type='radio'] {
       display: none !important;
     }
 
@@ -740,7 +857,9 @@ body.template-surveys-modern {
 
     textarea,
     input,
-    input:not([type='radio']):not([type='checkbox']):not([type='submit']):not([type='button']):not([type='image']):not([type='file']) {
+    input:not([type='radio']):not([type='checkbox']):not([type='submit']):not(
+        [type='button']
+      ):not([type='image']):not([type='file']) {
       background: transparent;
       border: 0;
       border-top: 1px solid #4f4e4d;
@@ -767,7 +886,7 @@ body.template-surveys-modern {
         color: var(--color-text-survey);
         font-size: var(--font-size-paragraph);
         line-height: 150px;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         transition: all var(--transition-duration-survey);
         white-space: pre-line;
@@ -787,7 +906,7 @@ body.template-surveys-modern {
       }
 
       &:focus::placeholder {
-        opacity: .2;
+        opacity: 0.2;
       }
 
       @media (max-width: 500px) {
@@ -814,8 +933,14 @@ body.template-surveys-modern {
     }
   }
 
-  div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-has-error input,
-  div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-has-error .choices__inner {
+  div.wpforms-container-full
+    .wpforms-form
+    .wpforms-field.wpforms-has-error
+    input,
+  div.wpforms-container-full
+    .wpforms-form
+    .wpforms-field.wpforms-has-error
+    .choices__inner {
     border-bottom: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
@@ -840,8 +965,22 @@ body.template-surveys-modern {
     text-align: center;
   }
 
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="radio"].wpforms-error + label::after,
-  form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr td input[type="checkbox"].wpforms-error + label::after {
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='radio'].wpforms-error
+    + label::after,
+  form.wpforms-form
+    .wpforms-field-likert_scale
+    table.modern
+    tbody
+    tr
+    td
+    input[type='checkbox'].wpforms-error
+    + label::after {
     border-color: var(--color-error-surveys);
   }
 
@@ -866,7 +1005,7 @@ body.template-surveys-modern {
       display: block;
       height: 1px;
       left: 3rem;
-      opacity: .66;
+      opacity: 0.66;
       position: absolute;
       width: calc(100% - 6rem);
 
@@ -947,12 +1086,12 @@ body.template-surveys-modern {
     }
 
     .survey-header-description {
-      opacity: .7;
+      opacity: 0.7;
     }
 
     a {
       color: var(--color-survey-body-text);
-      opacity: .7;
+      opacity: 0.7;
       text-decoration: none;
       transition: all var(--transition-duration-survey);
     }
@@ -967,7 +1106,7 @@ body.template-surveys-modern {
     }
   }
 
-  div.wpforms-container-full .wpforms-submit-container button[type="submit"],
+  div.wpforms-container-full .wpforms-submit-container button[type='submit'],
   div.wpforms-container-full .wpforms-submit-container .wpforms-page-button,
   div.wpforms-container-full .wpforms-subimt-container button.wpforms-submit {
     background-color: var(--color-checked) !important;
@@ -986,11 +1125,15 @@ body.template-surveys-modern {
     outline: none !important;
     padding: 2px 18px !important;
     position: relative !important;
-    transition: background-color .2s ease 0s, color .2s ease 0s, border-color .2s ease 0s, opacity .2s ease 0s !important;
+    transition:
+      background-color 0.2s ease 0s,
+      color 0.2s ease 0s,
+      border-color 0.2s ease 0s,
+      opacity 0.2s ease 0s !important;
     white-space: nowrap !important;
   }
 
-  input[type="hidden"] + br {
+  input[type='hidden'] + br {
     display: none !important;
   }
 
@@ -999,8 +1142,8 @@ body.template-surveys-modern {
     padding: 0 !important;
 
     > button.wpforms-submit,
-    > button[type="submit"],
-    > input[type="submit"] {
+    > button[type='submit'],
+    > input[type='submit'] {
       background: var(--color-background-submit) !important;
       border: 0 !important;
       color: var(--color-submit) !important;

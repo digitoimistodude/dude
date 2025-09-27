@@ -48,19 +48,19 @@
 .screen-reader-text-dude.skip-link {
   @include screen-reader-text();
   font-weight: var(--font-weight-medium);
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   margin: 5px;
 }
 
 // Suppress focus ring on for mouse and touch users for visual reasons
 // stylelint-disable-next-line a11y/no-outline-none
-[data-whatinput="mouse"] *:focus,
-[data-whatinput="touch"] *:focus {
+[data-whatinput='mouse'] *:focus,
+[data-whatinput='touch'] *:focus {
   outline: none;
 }
 
 // Visually distinct focus color on keyboard
-[data-whatinput="keyboard"] {
+[data-whatinput='keyboard'] {
   // Make sure every focusable element has opacity 100%
   a:focus,
   input:focus,
@@ -90,9 +90,9 @@
 @media (prefers-reduced-motion: no-preference) {
   :focus,
   *:focus,
-  [data-whatinput="keyboard"] :focus,
-  [data-whatinput="keyboard"] a:focus {
-    transition: outline-offset .25s ease;
+  [data-whatinput='keyboard'] :focus,
+  [data-whatinput='keyboard'] a:focus {
+    transition: outline-offset 0.25s ease;
   }
 }
 
@@ -105,12 +105,12 @@
 
 // External link icon
 .external-link-icon {
-  margin-left: .7rem;
-  margin-right: .2rem;
+  margin-left: 0.7rem;
+  margin-right: 0.2rem;
 
   @media (max-width: $container-mobile) {
     height: 12px;
-    margin-left: .4rem;
+    margin-left: 0.4rem;
     transform: translateY(1px);
     width: 12px;
   }

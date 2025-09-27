@@ -3,13 +3,13 @@
 // Vars
 :root {
   --color-borders: #e8e8e8;
-  --color-faded: rgb(var(--color-midnight) .5);
+  --color-faded: rgb(var(--color-midnight) 0.5);
   --color-liked: #e2264d;
   --color-notliked: #aab8c2;
-  --color-pulse-animation-start: rgb(3 6 28 / .2);
+  --color-pulse-animation-start: rgb(3 6 28 / 0.2);
   --color-pulse-animation-finish: rgb(3 6 28 / 0);
   --color-drafts-count: #2e2e38;
-  --color-infobox: rgb(238 238 238 / .6);
+  --color-infobox: rgb(238 238 238 / 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,7 +18,7 @@
     --color-pulse-animation-start: #ddeaea33;
     --color-pulse-animation-finish: #deebea00;
     --color-drafts-count: #2e2e38;
-    --color-infobox: rgb(39 39 39 / .6);
+    --color-infobox: rgb(39 39 39 / 0.6);
   }
 
   body.template-ama .ama select,
@@ -208,10 +208,10 @@
   .container .ama-updating {
     margin-bottom: 3rem;
     margin-top: 3rem;
-    opacity: .6;
+    opacity: 0.6;
     padding-bottom: 3rem;
     position: relative;
-    transition: all .22s;
+    transition: all 0.22s;
 
     button {
       margin-left: 1rem;
@@ -340,9 +340,9 @@
   }
 
   .ama-updating button,
-  input[type="reset"],
-  input[type="submit"],
-  input[type="button"] {
+  input[type='reset'],
+  input[type='submit'],
+  input[type='button'] {
     align-items: center;
     background-color: var(--color-midnight);
     border: 0;
@@ -466,7 +466,7 @@
   }
 
   .ama-drafts {
-    border-bottom: 1px solid rgba(var(--color-borders) .7);
+    border-bottom: 1px solid rgba(var(--color-borders) 0.7);
     display: flex;
     font-weight: 500;
     justify-content: space-between;
@@ -497,7 +497,7 @@
       font-weight: var(--font-weight-bold);
       height: 42px;
       justify-content: center;
-      margin: 0 .3rem;
+      margin: 0 0.3rem;
       min-width: 42px;
       width: 42px;
 
@@ -514,7 +514,7 @@
     box-shadow: 0 0 1px 1px transparent;
     margin-bottom: 4rem;
     padding-bottom: 4rem;
-    transition: all .22s;
+    transition: all 0.22s;
 
     a {
       text-decoration: underline;
@@ -626,17 +626,17 @@
 
     &[disabled] {
       #heart {
-        animation-delay: .25s;
-        animation-duration: .3s;
+        animation-delay: 0.25s;
+        animation-duration: 0.3s;
         animation-fill-mode: forwards;
         animation-name: animate-heart;
         animation-timing-function: linear;
         fill: #e2264d;
-        transform: scale(.2);
+        transform: scale(0.2);
       }
 
       #main-circ {
-        animation-duration: .3s;
+        animation-duration: 0.3s;
         animation-fill-mode: forwards;
         animation-name: animate-circle;
         animation-timing-function: linear;
@@ -646,120 +646,120 @@
 
       #grp1 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(0, -30px);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(10px, -50px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp2 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(30px, -15px);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(60px, -15px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp3 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(30px, 0);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(60px, 10px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp4 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(30px, 15px);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(40px, 50px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp5 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(-10px, 20px);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(-60px, 30px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp6 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(-30px, 0);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(-60px, -5px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
       #grp7 {
         opacity: 1;
-        transition: .1s all .3s;
+        transition: 0.1s all 0.3s;
 
         #oval1 {
           transform: scale(0) translate(-30px, -15px);
           transform-origin: 0 0 0;
-          transition: .5s transform .3s;
+          transition: 0.5s transform 0.3s;
         }
 
         #oval2 {
           transform: scale(0) translate(-55px, -30px);
           transform-origin: 0 0 0;
-          transition: 1.5s transform .3s;
+          transition: 1.5s transform 0.3s;
         }
       }
 
@@ -782,7 +782,7 @@
 
   // stylelint-disable-next-line selector-max-specificity
   #heart {
-    animation-duration: .3s;
+    animation-duration: 0.3s;
     animation-fill-mode: forwards;
     animation-name: animate-heart-out;
     animation-timing-function: linear;
@@ -835,7 +835,7 @@
     fill: transparent;
     opacity: 1;
     stroke: #cc8ef5;
-    stroke-width: .5;
+    stroke-width: 0.5;
     transform: scale(13);
   }
 
@@ -843,7 +843,7 @@
     fill: transparent;
     opacity: 1;
     stroke: #cc8ef5;
-    stroke-width: .2;
+    stroke-width: 0.2;
     transform: scale(17);
   }
 
@@ -851,7 +851,7 @@
     fill: transparent;
     opacity: 1;
     stroke: #cc8ef5;
-    stroke-width: .1;
+    stroke-width: 0.1;
     transform: scale(18);
   }
 
@@ -866,7 +866,7 @@
 
 @keyframes animate-heart {
   0% {
-    transform: scale(.2);
+    transform: scale(0.2);
   }
 
   40% {
@@ -892,7 +892,7 @@
 .is-small {
   color: var(--color-text-block);
   font-size: 14px;
-  opacity: .7;
+  opacity: 0.7;
   transition: all 500ms;
 
   a {
@@ -908,6 +908,6 @@
 
   &:focus,
   &:hover {
-    opacity: .9;
+    opacity: 0.9;
   }
 }

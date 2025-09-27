@@ -23,7 +23,7 @@ const initAnchors = () => {
     {
       ease: 'easeInQuad',
     },
-    easeFunctions,
+    easeFunctions
   );
 
   const triggers = document.getElementsByClassName('js-trigger');

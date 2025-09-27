@@ -68,7 +68,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   bottom: 0;
   height: 680px;
   margin-top: 0;
-  opacity: .4;
+  opacity: 0.4;
   overflow: hidden;
   position: absolute;
   right: 0;
@@ -140,7 +140,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
     margin: auto 0;
   }
 
-  div[data-vimeo-initialized="true"] {
+  div[data-vimeo-initialized='true'] {
     overflow: hidden;
   }
 
@@ -152,7 +152,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   }
 
   @media (max-width: $container-mobile) {
-    opacity: .2;
+    opacity: 0.2;
   }
 }
 

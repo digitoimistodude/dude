@@ -5,7 +5,10 @@
 // </a>
 
 // stylelint-disable max-line-length
-@mixin link-with-arrow($font-size: var(--font-size-17), $font-weight: var(--font-weight-semibold)) {
+@mixin link-with-arrow(
+  $font-size: var(--font-size-17),
+  $font-weight: var(--font-weight-semibold)
+) {
   --color-link-arrow: var(--color-link-with-arrow);
   --color-link-arrow-hover: var(--color-link-with-arrow-hover);
   color: var(--color-link-arrow);
@@ -13,11 +16,11 @@
   font-size: $font-size;
   font-weight: $font-weight;
   text-decoration: none;
-  transition: color $transition-duration cubic-bezier(.25, .46, .45, .94);
+  transition: color $transition-duration cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   .arrow-link-arrow {
     display: inline-block;
-    padding-left: .5rem;
+    padding-left: 0.5rem;
     white-space: nowrap;
     width: 25px;
   }
@@ -29,7 +32,7 @@
     display: inline-block;
     height: 2px;
     position: relative;
-    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    transition: all $transition-duration cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 15px;
   }
 
@@ -45,7 +48,7 @@
     padding: 3px;
     position: relative;
     transform: rotate(-45deg);
-    transition: all $transition-duration cubic-bezier(.25, .46, .45, .94);
+    transition: all $transition-duration cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 8px;
   }
 

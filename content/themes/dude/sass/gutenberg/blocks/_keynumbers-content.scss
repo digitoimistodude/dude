@@ -41,7 +41,7 @@
     color: var(--color-text);
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-regular);
-    line-height: .9;
+    line-height: 0.9;
   }
 
   .number {
@@ -49,7 +49,7 @@
     font-family: var(--font-heading);
     font-size: var(--font-size-50);
     font-weight: var(--font-weight-semibold);
-    line-height: .8;
+    line-height: 0.8;
   }
 
   .col-numbers {
@@ -82,7 +82,7 @@
     }
 
     li {
-      padding-left: .5rem;
+      padding-left: 0.5rem;
     }
   }
 
@@ -111,7 +111,7 @@
   .additional-information li {
     color: var(--color-text);
     font-size: var(--font-size-16);
-    padding-inline-start: .4em;
+    padding-inline-start: 0.4em;
   }
 
   .button-wrapper {

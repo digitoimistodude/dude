@@ -14,7 +14,11 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 // eslint-disable-next-line no-unused-vars
 import whatInput from 'what-input';
 import getLocalization from './modules/localization';
-import { styleExternalLinks, initExternalLinkLabels, getChildAltText } from './modules/external-link';
+import {
+  styleExternalLinks,
+  initExternalLinkLabels,
+  getChildAltText,
+} from './modules/external-link';
 import initCarousels from './modules/carousels';
 import initAnchors from './modules/anchors';
 import initBackToTop from './modules/top';
@@ -33,6 +37,7 @@ import initSwupHelpers from './modules/swup-helpers';
 import initFormHelpers from './modules/form-helpers';
 import initA11ySkipLink from './modules/a11y-skip-link';
 import initUpKeepLanding from './modules/upkeep-landing';
+import initReferenceFilters from './modules/reference-filters';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -112,6 +117,9 @@ function init(target, args) {
 
   // Init skip links
   initA11ySkipLink();
+
+  // Init reference filters
+  initReferenceFilters();
 
   // Init Twitter and Instagram embeds in blog posts
   initEmbeds();

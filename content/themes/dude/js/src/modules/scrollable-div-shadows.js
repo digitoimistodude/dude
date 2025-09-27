@@ -6,7 +6,7 @@
  */
 const initScrollableDivs = () => {
   function scrolled(event, left, right) {
-    const width = (event.target.scrollWidth - event.target.clientWidth);
+    const width = event.target.scrollWidth - event.target.clientWidth;
     const scroll = event.target.scrollLeft;
 
     if (scroll === 0) {
@@ -23,7 +23,9 @@ const initScrollableDivs = () => {
   }
 
   // Find all scrollable elements
-  const scrollableElements = document.querySelectorAll('.has-horizontal-scroll');
+  const scrollableElements = document.querySelectorAll(
+    '.has-horizontal-scroll'
+  );
 
   if (typeof scrollableElements !== 'undefined') {
     scrollableElements.forEach((container) => {
@@ -35,7 +37,9 @@ const initScrollableDivs = () => {
       right.classList.add('visible');
 
       if (typeof list !== 'undefined') {
-        list.addEventListener('scroll', (event) => scrolled(event, left, right));
+        list.addEventListener('scroll', (event) =>
+          scrolled(event, left, right)
+        );
       }
     });
   }

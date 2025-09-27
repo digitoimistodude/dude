@@ -1,0 +1,18 @@
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 250,
+  "tabWidth": 2,
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": ["*.scss", "*.sass"],
+      "options": {
+        "parser": "scss",
+        "printWidth": 250,
+        "singleQuote": true
+      }
+    }
+  ]
+}

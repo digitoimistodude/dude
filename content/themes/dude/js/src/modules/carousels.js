@@ -5,9 +5,7 @@
  * @Last Modified by:   Roni Laukkarinen
  * @Last Modified time: 2023-03-13 15:29:45
  */
-import Swiper, {
-  Navigation, Pagination, A11y,
-} from 'swiper/core';
+import Swiper, { Navigation, Pagination, A11y } from 'swiper/core';
 import getLocalization from './localization';
 
 Swiper.use([Navigation, Pagination, A11y]);
@@ -50,11 +48,17 @@ const initCarousels = () => {
   // Init swipers
   for (let i = 0; i < Carousels.length; i++) {
     Carousels[i].classList.add(`swiper-container-${i}`);
-    Carousels[i].querySelector('.swiper-button-prev').classList.add(`swiper-button-prev-${i}`);
-    Carousels[i].querySelector('.swiper-button-next').classList.add(`swiper-button-next-${i}`);
+    Carousels[i]
+      .querySelector('.swiper-button-prev')
+      .classList.add(`swiper-button-prev-${i}`);
+    Carousels[i]
+      .querySelector('.swiper-button-next')
+      .classList.add(`swiper-button-next-${i}`);
 
     if (Carousels[i].querySelector('.swiper-pagination')) {
-      Carousels[i].querySelector('.swiper-pagination').classList.add(`swiper-pagination-${i}`);
+      Carousels[i]
+        .querySelector('.swiper-pagination')
+        .classList.add(`swiper-pagination-${i}`);
     }
 
     // Parameters for different kind of carousels
@@ -123,7 +127,9 @@ const initCarousels = () => {
         },
         init() {
           const swiperElement = this.$el[0];
-          const activeSlide = swiperElement.querySelectorAll('.swiper-slide-active')[0];
+          const activeSlide = swiperElement.querySelectorAll(
+            '.swiper-slide-active'
+          )[0];
           const allSlides = swiperElement.querySelectorAll('.swiper-slide');
 
           // Hide all slides except active for screen readers
@@ -137,7 +143,9 @@ const initCarousels = () => {
         slideChangeTransitionEnd() {
           // Run the same thing when slide changes
           const swiperElement = this.$el[0];
-          const activeSlide = swiperElement.querySelectorAll('.swiper-slide-active')[0];
+          const activeSlide = swiperElement.querySelectorAll(
+            '.swiper-slide-active'
+          )[0];
           const allSlides = swiperElement.querySelectorAll('.swiper-slide');
 
           // Hide all slides except active for screen readers

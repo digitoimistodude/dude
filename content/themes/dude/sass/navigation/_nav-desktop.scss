@@ -13,7 +13,7 @@ $absolute-navigation: true;
   // Dimensions, gaps and spacings
   --gap-main-level-horizontal: 5.2rem;
   --padding-main-level-horizontal: 0;
-  --padding-main-level-vertical: .6rem;
+  --padding-main-level-vertical: 0.6rem;
 
   // Colors
   --color-background-nav-desktop: var(--color-dark-navy);
@@ -117,7 +117,7 @@ $absolute-navigation: true;
   .nav-primary > ul:first-of-type > .menu-item-has-children:focus::before,
   .nav-primary > ul:first-of-type > .menu-item-has-children:hover::before {
     transform: scale(1);
-    transition: all .2s cubic-bezier(.19, 1, .22, 1);
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   @media only screen and (max-width: $width-max-mobile) {

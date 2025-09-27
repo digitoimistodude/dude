@@ -9,7 +9,9 @@
     align-items: center;
     display: flex;
     overflow: visible;
-    padding-top: calc(var(--height-navigation-mobile) + var(--padding-container-vertical));
+    padding-top: calc(
+      var(--height-navigation-mobile) + var(--padding-container-vertical)
+    );
     position: relative;
 
     @media (max-width: 768px) {
@@ -115,7 +117,11 @@
 }
 
 .has-image .container {
-  padding-bottom: calc(calc(var(--height-navigation-mobile) + var(--padding-container-vertical) / 3));
+  padding-bottom: calc(
+    calc(
+      var(--height-navigation-mobile) + var(--padding-container-vertical) / 3
+    )
+  );
 
   @media (min-width: 1180px) {
     padding-top: 22rem;
@@ -132,7 +138,6 @@
 
 .has-image.has-image-as-img h2 {
   @media (min-width: 1245px) {
-
     // This needs to be set, otherwise the long words will wrap uncontrollably
     min-width: 100rem;
   }
@@ -151,7 +156,7 @@
   max-width: none;
   min-width: 0;
   object-fit: cover;
-  opacity: .3;
+  opacity: 0.3;
   width: 100%;
 }
 
@@ -192,7 +197,8 @@
 
 // Reference version
 // stylelint-disable selector-max-class, selector-max-specificity
-.block.block-hero-content-image.has-image-as-img.block-background-reference .container {
+.block.block-hero-content-image.has-image-as-img.block-background-reference
+  .container {
   .col-content {
     padding-top: 0;
   }

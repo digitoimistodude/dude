@@ -18,13 +18,20 @@
 
 // Block padding exceptions
 // This class is useful when we have multiple blocks stacked with same background-color
-.block.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked .container {
+.block.has-unified-padding-if-stacked
+  + .block.has-unified-padding-if-stacked
+  .container {
   padding-top: 0;
 }
 
 // Exceptions
-.block.block-list.block.has-unified-padding-if-stacked + .block.block-reset-styles.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked.block-reference-quotes .container,
-.block.has-style-alt.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked.block-image-content-right .container {
+.block.block-list.block.has-unified-padding-if-stacked
+  + .block.block-reset-styles.has-unified-padding-if-stacked
+  + .block.has-unified-padding-if-stacked.block-reference-quotes
+  .container,
+.block.has-style-alt.has-unified-padding-if-stacked
+  + .block.has-unified-padding-if-stacked.block-image-content-right
+  .container {
   padding-top: var(--padding-container-vertical);
 }
 

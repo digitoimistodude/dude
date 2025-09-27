@@ -9,7 +9,14 @@
     animation: animateheading 8s ease infinite;
     background-clip: text;
     // stylelint-disable-next-line
-    background-image: linear-gradient(45deg, var(--color-heading), var(--color-hover-main-level), var(--color-gradient-shade-1), var(--color-gradient-shade-2), var(--color-heading));
+    background-image: linear-gradient(
+      45deg,
+      var(--color-heading),
+      var(--color-hover-main-level),
+      var(--color-gradient-shade-1),
+      var(--color-gradient-shade-2),
+      var(--color-heading)
+    );
     background-size: 100% 60%;
     color: var(--color-heading);
     margin: 0;
@@ -72,7 +79,12 @@
     animation: gradient 2s infinite;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
-    background-image: repeating-linear-gradient(to right, var(--color-gradient-shade-1) 0%, var(--color-gradient-shade-5) 50%, var(--color-gradient-shade-1) 100%);
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-gradient-shade-1) 0%,
+      var(--color-gradient-shade-5) 50%,
+      var(--color-gradient-shade-1) 100%
+    );
     background-position: 0 100%;
     background-size: 200% auto;
     width: 100%;
@@ -119,10 +131,10 @@
     display: flex;
     gap: var(--gap-checkbox);
 
-    &:focus input[type="radio"],
-    &:focus input[type="checkbox"],
-    &:hover input[type="radio"],
-    &:hover input[type="checkbox"] {
+    &:focus input[type='radio'],
+    &:focus input[type='checkbox'],
+    &:hover input[type='radio'],
+    &:hover input[type='checkbox'] {
       border-color: var(--color-gf-mint);
     }
   }
@@ -130,8 +142,8 @@
   // Checkboxes & radio buttons
   // Learn about this technique:
   // @link https://moderncss.dev/pure-css-custom-checkbox-style/
-  input[type="radio"],
-  input[type="checkbox"] {
+  input[type='radio'],
+  input[type='checkbox'] {
     appearance: none;
     background-color: transparent;
     border: 1px solid var(--color-gf-light-mint);
@@ -151,19 +163,19 @@
   }
 
   // Round style radio buttons
-  input[type="radio"]::before,
-  input[type="radio"] {
+  input[type='radio']::before,
+  input[type='radio'] {
     border-radius: 50%;
   }
 
   // Square style checkboxes
-  input[type="checkbox"]::before,
-  input[type="checkbox"] {
+  input[type='checkbox']::before,
+  input[type='checkbox'] {
     border-radius: var(--border-radius-checkbox);
   }
 
-  input[type="radio"]::before,
-  input[type="checkbox"]::before {
+  input[type='radio']::before,
+  input[type='checkbox']::before {
     background-color: var(--color-gf-mint);
     background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%232e2f38" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%232e2f38" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     background-position: center;
@@ -172,32 +184,32 @@
     content: '';
     height: var(--size-checkbox);
     opacity: 0;
-    transform: scale(.8);
-    transition: transform .2s;
+    transform: scale(0.8);
+    transition: transform 0.2s;
     width: var(--size-checkbox);
   }
 
-  input[type="radio"]:checked::before,
-  input[type="checkbox"]:checked::before {
+  input[type='radio']:checked::before,
+  input[type='checkbox']:checked::before {
     opacity: 1;
     transform: scale(1);
   }
 
-  input[type="radio"]:checked,
-  input[type="checkbox"]:checked {
+  input[type='radio']:checked,
+  input[type='checkbox']:checked {
     // Hide element visually on click so it creates a bouncy animation illusion
     background-color: transparent;
     border-color: transparent;
   }
 
-  input[type="radio"]:hover,
-  input[type="radio"] + label:hover,
-  input[type="radio"]:focus,
-  input[type="radio"] + label:focus,
-  input[type="checkbox"]:hover,
-  input[type="checkbox"] + label:hover,
-  input[type="checkbox"]:focus,
-  input[type="checkbox"] + label:focus {
+  input[type='radio']:hover,
+  input[type='radio'] + label:hover,
+  input[type='radio']:focus,
+  input[type='radio'] + label:focus,
+  input[type='checkbox']:hover,
+  input[type='checkbox'] + label:hover,
+  input[type='checkbox']:focus,
+  input[type='checkbox'] + label:focus {
     cursor: pointer;
   }
 
@@ -229,8 +241,8 @@
 }
 
 @media (prefers-color-scheme: light) {
-  body[data-color-scheme="light"].page-id-16266,
-  body[data-color-scheme="light"].page-template-template-marketing-campaign,
+  body[data-color-scheme='light'].page-id-16266,
+  body[data-color-scheme='light'].page-template-template-marketing-campaign,
   .page-id-16266,
   .page-template-template-marketing-campaign {
     --color-gf-light-mint: #45917f80;
@@ -240,8 +252,8 @@
       --color-mint: var(--color-paradiso);
     }
 
-    input[type="radio"]::before,
-    input[type="checkbox"]::before {
+    input[type='radio']::before,
+    input[type='checkbox']::before {
       background-color: var(--color-gf-mint);
       background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%23fff" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     }
@@ -249,8 +261,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  body[data-color-scheme="light"].page-id-16266,
-  body[data-color-scheme="light"].page-template-template-marketing-campaign {
+  body[data-color-scheme='light'].page-id-16266,
+  body[data-color-scheme='light'].page-template-template-marketing-campaign {
     --color-gf-light-mint: #45917f80;
     --color-gf-mint: var(--color-paradiso);
 
@@ -258,8 +270,8 @@
       --color-mint: var(--color-paradiso);
     }
 
-    input[type="radio"]::before,
-    input[type="checkbox"]::before {
+    input[type='radio']::before,
+    input[type='checkbox']::before {
       background-color: var(--color-gf-mint);
       background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%23fff" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     }
@@ -267,8 +279,8 @@
 }
 
 @media (prefers-color-scheme: light) {
-  body[data-color-scheme="dark"].page-id-16266,
-  body[data-color-scheme="dark"].page-template-template-marketing-campaign {
+  body[data-color-scheme='dark'].page-id-16266,
+  body[data-color-scheme='dark'].page-template-template-marketing-campaign {
     --color-gf-light-mint: #7effe180;
     --color-gf-mint: #7effe1;
 
@@ -276,8 +288,8 @@
       --color-mint: #7effe1;
     }
 
-    input[type="radio"]::before,
-    input[type="checkbox"]::before {
+    input[type='radio']::before,
+    input[type='checkbox']::before {
       background-color: var(--color-gf-mint);
       background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%232e2f38" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%232e2f38" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     }
@@ -285,8 +297,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  body[data-color-scheme="dark"].page-id-16266,
-  body[data-color-scheme="dark"].page-template-template-marketing-campaign {
+  body[data-color-scheme='dark'].page-id-16266,
+  body[data-color-scheme='dark'].page-template-template-marketing-campaign {
     --color-gf-light-mint: #7effe180;
     --color-gf-mint: #7effe1;
 
@@ -294,8 +306,8 @@
       --color-mint: #7effe1;
     }
 
-    input[type="radio"]::before,
-    input[type="checkbox"]::before {
+    input[type='radio']::before,
+    input[type='checkbox']::before {
       background-color: var(--color-gf-mint);
       background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%232e2f38" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%232e2f38" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
     }

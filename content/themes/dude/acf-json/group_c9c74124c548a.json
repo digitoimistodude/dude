@@ -1,113 +1,113 @@
 {
-    "key": "group_c9c74124c548a",
-    "title": "Lohko: Lomake",
-    "fields": [
-        {
-            "key": "field_c3b4510e1e0b6",
-            "label": "Otsikko",
-            "name": "title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_62bbf2159cac5",
-            "label": "Sisältö",
-            "name": "content",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_62bbf22d9cac6",
-            "label": "Lomake (WP Forms, kyselyt jne.)",
-            "name": "wpforms_id",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "12306": "Ennakkokysely &#8211; Työpajaan valmistavat tiedot",
-                "11358": "Yhteydenottolomake",
-                "11309": "Työhakemus",
-                "8729": "Asiakastyytyväisyyskysely",
-                "8716": "Projektityytyväisyyskysely 2021",
-                "8663": "Palaute myyntityöstä",
-                "8060": "Brändikysely 2021"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_646e0889e1468",
-            "label": "Gravity Forms -lomake (markkinointikamppikset, juhlakutsut)",
-            "name": "gravity_forms_form",
-            "aria-label": "",
-            "type": "gravity_forms_field",
-            "instructions": "Jos tämä on valittuna, yliajetaan WPForms-lomake.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "multiple": 0,
-            "allow_null": 0
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/form"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1684933461
+  "key": "group_c9c74124c548a",
+  "title": "Lohko: Lomake",
+  "fields": [
+    {
+      "key": "field_c3b4510e1e0b6",
+      "label": "Otsikko",
+      "name": "title",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_62bbf2159cac5",
+      "label": "Sisältö",
+      "name": "content",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_62bbf22d9cac6",
+      "label": "Lomake (WP Forms, kyselyt jne.)",
+      "name": "wpforms_id",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "12306": "Ennakkokysely &#8211; Työpajaan valmistavat tiedot",
+        "11358": "Yhteydenottolomake",
+        "11309": "Työhakemus",
+        "8729": "Asiakastyytyväisyyskysely",
+        "8716": "Projektityytyväisyyskysely 2021",
+        "8663": "Palaute myyntityöstä",
+        "8060": "Brändikysely 2021"
+      },
+      "default_value": false,
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_646e0889e1468",
+      "label": "Gravity Forms -lomake (markkinointikamppikset, juhlakutsut)",
+      "name": "gravity_forms_form",
+      "aria-label": "",
+      "type": "gravity_forms_field",
+      "instructions": "Jos tämä on valittuna, yliajetaan WPForms-lomake.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "multiple": 0,
+      "allow_null": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/form"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1684933461
 }

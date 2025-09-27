@@ -5,7 +5,10 @@
  * @Last Modified time: 2022-11-25 11:35:27
  */
 /* eslint-disable camelcase, prefer-arrow-callback, no-unused-vars, no-undef, vars-on-top, no-var, func-names, max-len, import/no-unresolved */
-import { setFigureWidths, setLazyLoadedFigureWidth } from './modules/gutenberg-helpers';
+import {
+  setFigureWidths,
+  setLazyLoadedFigureWidth,
+} from './modules/gutenberg-helpers';
 import initCarousels from './modules/carousels';
 
 // Declare the block you'd like to style.

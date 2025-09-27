@@ -7,7 +7,10 @@
 /* eslint-disable max-len, no-plusplus */
 function isTouchDevice() {
   // eslint-disable-next-line no-mixed-operators, no-undef
-  return ('ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch) === true;
+  return (
+    ('ontouchstart' in window ||
+      (window.DocumentTouch && document instanceof DocumentTouch)) === true
+  );
 }
 
 const initTrain = () => {
@@ -24,7 +27,10 @@ const initTrain = () => {
     trainListElement.style.cursor = 'grab';
 
     let pos = {
-      top: 0, left: 0, x: 0, y: 0,
+      top: 0,
+      left: 0,
+      x: 0,
+      y: 0,
     };
 
     // eslint-disable-next-line func-names
@@ -93,7 +99,9 @@ const initTrain = () => {
   startScrolling();
 
   function startScrolling() {
-    if (!scrollingInt) { scrollingInt = window.setInterval(animationLoop, 15); }
+    if (!scrollingInt) {
+      scrollingInt = window.setInterval(animationLoop, 15);
+    }
   }
 
   function pauseScrolling() {

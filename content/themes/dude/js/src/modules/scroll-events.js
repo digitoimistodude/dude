@@ -9,7 +9,9 @@ window.addEventListener('scroll', () => {
   const scrollPosition = window.pageYOffset;
 
   // Get all radial-gradient elements
-  const backgroundElement = document.getElementsByClassName('has-radial-gradient');
+  const backgroundElement = document.getElementsByClassName(
+    'has-radial-gradient'
+  );
 
   if (backgroundElement.length > 0) {
     if (scrollPosition > 200) {

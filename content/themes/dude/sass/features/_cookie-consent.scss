@@ -20,17 +20,17 @@
   --color-close-button: var(--color-dark-navy);
 
   // Chose these wisely
-  --cc-toggle-bg-off: rgb(255 255 255 / .2);
+  --cc-toggle-bg-off: rgb(255 255 255 / 0.2);
   --cc-toggle-bg-on: var(--color-java);
-  --cc-toggle-bg-readonly: rgb(255 255 255 / .1);
+  --cc-toggle-bg-readonly: rgb(255 255 255 / 0.1);
   --cc-toggle-knob-bg: var(--color-midnight);
   --cc-toggle-knob-bg-layer: #d6d6d6;
   --cc-toggle-knob-icon-color: var(--color-white);
   --cc-cookie-category-block-bg: var(--color-light-blue);
   --cc-cookie-category-block-bg-hover: var(--color-light-blue);
-  --cc-section-border: rgb(255 255 255 / .1);
+  --cc-section-border: rgb(255 255 255 / 0.1);
   --cc-cookie-table-border: #333;
-  --cc-overlay-bg: rgb(4 6 8 / .85);
+  --cc-overlay-bg: rgb(4 6 8 / 0.85);
   --cc-webkit-scrollbar-bg: #cfd5db;
   --cc-webkit-scrollbar-bg-hover: #9199a0;
 
@@ -61,7 +61,7 @@
   }
 }
 
-.cc_div [role="heading"] {
+.cc_div [role='heading'] {
   color: var(--cc-text);
   font-family: var(--font-paragraph);
   font-weight: var(--font-weight-semibold);
@@ -92,7 +92,7 @@
     // Hide the text on mobile
     // stylelint-disable a11y/no-display-none
     #c-txt,
-    [role="heading"] {
+    [role='heading'] {
       bottom: 0;
       margin: 0;
       overflow: hidden;
@@ -154,7 +154,7 @@
   text-decoration-color: var(--cc-text) !important;
   text-decoration-thickness: 1px !important;
   text-underline-offset: 3px !important;
-  transition: all .18s ease-in-out !important;
+  transition: all 0.18s ease-in-out !important;
 
   &:hover,
   &:focus {
@@ -180,7 +180,12 @@
 .c-bn#c-p-bn:not(:hover),
 .c-bn#c-p-bn:not(:focus) {
   background-color: var(--cc-text) !important;
-  background-image: linear-gradient(198deg, rgb(126 255 225 / .149) 5.92%, rgb(46 47 56 / .149) 56.09%, rgb(46 47 56 / .149) 109.5%) !important;
+  background-image: linear-gradient(
+    198deg,
+    rgb(126 255 225 / 0.149) 5.92%,
+    rgb(46 47 56 / 0.149) 56.09%,
+    rgb(46 47 56 / 0.149) 109.5%
+  ) !important;
   border: 0 !important;
   padding: calc(1em + 1px) calc(1.7em + 1px) !important;
 }
@@ -206,7 +211,7 @@
 
 // Close button
 #s-c-bn,
-.cc_div button[aria-label="Close"].c-bn {
+.cc_div button[aria-label='Close'].c-bn {
   background-color: transparent;
   border: 0 !important;
   color: var(--cc-text) !important;

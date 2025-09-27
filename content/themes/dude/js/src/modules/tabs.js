@@ -6,11 +6,11 @@
  */
 /* eslint-disable no-use-before-define, no-inner-declarations, no-undef, no-plusplus, default-case, func-names, max-len, no-shadow, no-param-reassign, consistent-return */
 /*
-* This content is licensed according to the W3C Software License at
-* https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-*
-* @source https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html
-*/
+ * This content is licensed according to the W3C Software License at
+ * https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ *
+ * @source https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html
+ */
 const initTabs = () => {
   // Find all tablists
   const tabLists = document.querySelectorAll('[role="tablist"]');
@@ -30,7 +30,8 @@ const initTabs = () => {
           tabs = tabList.querySelectorAll('[role="tab"]');
 
           if (tabList.nextElementSibling) {
-            panels = tabList.nextElementSibling.querySelectorAll('[role="tabpanel"]');
+            panels =
+              tabList.nextElementSibling.querySelectorAll('[role="tabpanel"]');
           }
         }
       });
@@ -64,7 +65,8 @@ const initTabs = () => {
         tabs = tabList.querySelectorAll('[role="tab"]');
 
         if (tabList.nextElementSibling) {
-          panels = tabList.nextElementSibling.querySelectorAll('[role="tabpanel"]');
+          panels =
+            tabList.nextElementSibling.querySelectorAll('[role="tabpanel"]');
         }
 
         // Bind listeners
@@ -95,23 +97,23 @@ const initTabs = () => {
       const key = event.keyCode;
 
       switch (key) {
-      case keys.end:
-        event.preventDefault();
-        // Activate last tab
-        activateTab(tabs[tabs.length - 1]);
-        break;
-      case keys.home:
-        event.preventDefault();
-        // Activate first tab
-        activateTab(tabs[0]);
-        break;
+        case keys.end:
+          event.preventDefault();
+          // Activate last tab
+          activateTab(tabs[tabs.length - 1]);
+          break;
+        case keys.home:
+          event.preventDefault();
+          // Activate first tab
+          activateTab(tabs[0]);
+          break;
 
-      // Up and down are in keydown
-      // because we need to prevent page scroll >:)
-      case keys.up:
-      case keys.down:
-        determineOrientation(event);
-        break;
+        // Up and down are in keydown
+        // because we need to prevent page scroll >:)
+        case keys.up:
+        case keys.down:
+          determineOrientation(event);
+          break;
       }
     }
 
@@ -120,13 +122,13 @@ const initTabs = () => {
       const key = event.keyCode;
 
       switch (key) {
-      case keys.left:
-      case keys.right:
-        determineOrientation(event);
-        break;
-      case keys.delete:
-        determineDeletable(event);
-        break;
+        case keys.left:
+        case keys.right:
+          determineOrientation(event);
+          break;
+        case keys.delete:
+          determineDeletable(event);
+          break;
       }
     }
 
@@ -140,7 +142,8 @@ const initTabs = () => {
       tabLists.forEach((tabList) => {
         // First let's check if they exist
         if (typeof tabLists !== 'undefined') {
-          const vertical = tabList.getAttribute('aria-orientation') === 'vertical';
+          const vertical =
+            tabList.getAttribute('aria-orientation') === 'vertical';
 
           let proceed = false;
 
@@ -188,13 +191,19 @@ const initTabs = () => {
       setFocus = setFocus || true;
 
       // If panels not found, bail
-      if (!tab.parentNode.parentNode || !tab.parentNode.parentNode.nextElementSibling) {
+      if (
+        !tab.parentNode.parentNode ||
+        !tab.parentNode.parentNode.nextElementSibling
+      ) {
         return;
       }
 
       // Deactivate all other tabs
       tabs = tab.parentNode.querySelectorAll('[role="tab"]');
-      panels = tab.parentNode.parentNode.nextElementSibling.querySelectorAll('[role="tabpanel"]');
+      panels =
+        tab.parentNode.parentNode.nextElementSibling.querySelectorAll(
+          '[role="tabpanel"]'
+        );
 
       for (let t = 0; t < tabs.length; t++) {
         tabs[t].setAttribute('tabindex', '-1');
@@ -264,7 +273,9 @@ const initTabs = () => {
     // Deletes a tab and its panel
     function deleteTab(event) {
       const { target } = event;
-      const panel = document.getElementById(target.getAttribute('aria-controls'));
+      const panel = document.getElementById(
+        target.getAttribute('aria-controls')
+      );
 
       target.parentElement.removeChild(target);
       panel.parentElement.removeChild(panel);

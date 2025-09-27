@@ -2,7 +2,9 @@
   --color-underlined: var(--color-link-underlined);
   --color-underlined-underline: var(--color-link-underlined-underline);
   --color-underlined-hover: var(--color-link-underlined-hover);
-  --color-underlined-hover-underline: var(--color-link-underlined-underline-hover);
+  --color-underlined-hover-underline: var(
+    --color-link-underlined-underline-hover
+  );
   color: var(--color-underlined);
   font-family: var(--font-heading);
   font-size: var(--font-size-16);

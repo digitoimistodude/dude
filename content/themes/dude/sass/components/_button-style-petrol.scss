@@ -1,4 +1,11 @@
 /* stylelint-disable max-line-length */
 @mixin button-style-petrol() {
-  @include button($background: var(--color-petrol), $border: var(--border-width-input-field) solid var(--color-petrol), $border-hover: var(--border-width-input-field) solid #284e53, $background-hover: #284e53, $color: var(--color-white), $hover: var(--color-white));
+  @include button(
+    $background: var(--color-petrol),
+    $border: var(--border-width-input-field) solid var(--color-petrol),
+    $border-hover: var(--border-width-input-field) solid #284e53,
+    $background-hover: #284e53,
+    $color: var(--color-white),
+    $hover: var(--color-white)
+  );
 }

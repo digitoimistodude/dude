@@ -7,7 +7,12 @@
   // Light mode hack
   &::after {
     background-color: var(--color-dark-navy);
-    background-image: linear-gradient(62deg, #7effe126 5.92%, #1c1e26 56.09%, #1c1e26 109.5%);
+    background-image: linear-gradient(
+      62deg,
+      #7effe126 5.92%,
+      #1c1e26 56.09%,
+      #1c1e26 109.5%
+    );
     content: '';
     display: block;
     height: 100%;
@@ -134,7 +139,7 @@
     > .introduction {
       font-size: var(--font-size-30);
       margin-bottom: 0;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
 
       @media (max-width: 1000px) {
         font-size: var(--font-size-24);
@@ -281,7 +286,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    row-gap: .5rem;
+    row-gap: 0.5rem;
 
     a {
       color: var(--color-white);

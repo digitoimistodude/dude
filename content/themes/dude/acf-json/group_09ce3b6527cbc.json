@@ -1,74 +1,74 @@
 {
-    "key": "group_09ce3b6527cbc",
-    "title": "Lohko: Yhteystietosivun lomake",
-    "fields": [
-        {
-            "key": "field_62bc180ffbe4e",
-            "label": "Otsikko",
-            "name": "title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_62bc1a15c5bad",
-            "label": "Lomake",
-            "name": "wpforms_id",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "multiple": 0,
-            "allow_null": 0,
-            "choices": {
-                "12306": "Ennakkokysely &#8211; Työpajaan valmistavat tiedot",
-                "11358": "Yhteydenottolomake",
-                "11309": "Työhakemus",
-                "8729": "Asiakastyytyväisyyskysely",
-                "8716": "Projektityytyväisyyskysely 2021",
-                "8663": "Palaute myyntityöstä",
-                "8060": "Brändikysely 2021"
-            },
-            "default_value": false,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "return_format": "value"
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "acf\/form-person"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": 0,
-    "modified": 1664973259
+  "key": "group_09ce3b6527cbc",
+  "title": "Lohko: Yhteystietosivun lomake",
+  "fields": [
+    {
+      "key": "field_62bc180ffbe4e",
+      "label": "Otsikko",
+      "name": "title",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_62bc1a15c5bad",
+      "label": "Lomake",
+      "name": "wpforms_id",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "multiple": 0,
+      "allow_null": 0,
+      "choices": {
+        "12306": "Ennakkokysely &#8211; Työpajaan valmistavat tiedot",
+        "11358": "Yhteydenottolomake",
+        "11309": "Työhakemus",
+        "8729": "Asiakastyytyväisyyskysely",
+        "8716": "Projektityytyväisyyskysely 2021",
+        "8663": "Palaute myyntityöstä",
+        "8060": "Brändikysely 2021"
+      },
+      "default_value": false,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "return_format": "value"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf\/form-person"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1664973259
 }

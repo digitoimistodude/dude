@@ -7,7 +7,9 @@
  */
 const initFormHelpers = () => {
   // Find all form triggers
-  const formTriggers = document.querySelectorAll('#wpforms-form-11358 .wpforms-conditional-trigger');
+  const formTriggers = document.querySelectorAll(
+    '#wpforms-form-11358 .wpforms-conditional-trigger'
+  );
 
   if (typeof formTriggers !== 'undefined') {
     // Loop through
@@ -16,14 +18,20 @@ const initFormHelpers = () => {
 
       formTrigger.addEventListener('click', () => {
         // Find first label inside form trigger
-        const formTriggerLabel = formTrigger.querySelectorAll('.wpforms-field-label-inline')[0];
+        const formTriggerLabel = formTrigger.querySelectorAll(
+          '.wpforms-field-label-inline'
+        )[0];
 
-        if (formTrigger.nextSibling.classList.contains('wpforms-conditional-hide')) {
+        if (
+          formTrigger.nextSibling.classList.contains('wpforms-conditional-hide')
+        ) {
           formTriggerLabel.innerHTML = 'Haluan kertoa vähemmän';
           formTrigger.parentNode.parentNode.parentNode.classList.add('is-open');
         } else {
           formTriggerLabel.innerHTML = 'Haluan kertoa tarkemmin';
-          formTrigger.parentNode.parentNode.parentNode.classList.remove('is-open');
+          formTrigger.parentNode.parentNode.parentNode.classList.remove(
+            'is-open'
+          );
         }
       });
     });

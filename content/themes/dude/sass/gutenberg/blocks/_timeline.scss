@@ -45,7 +45,7 @@
 
       &:hover,
       &:focus,
-      &[aria-selected="true"] {
+      &[aria-selected='true'] {
         border-color: var(--color-main);
         box-shadow: unset;
         color: var(--color-mint);
@@ -55,7 +55,7 @@
         background-color: var(--color-mint);
         border-radius: 10px;
         bottom: -5px;
-        content: "";
+        content: '';
         display: block;
         height: 10px;
         left: 50%;
@@ -66,7 +66,7 @@
         width: 10px;
       }
 
-      &[aria-selected="true"]::after {
+      &[aria-selected='true']::after {
         opacity: 1;
       }
     }
@@ -127,7 +127,7 @@
     .description {
       font-size: var(--font-size-18);
       margin-top: 2rem;
-      opacity: .8;
+      opacity: 0.8;
     }
 
     h2 {

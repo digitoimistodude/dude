@@ -5,11 +5,17 @@
   // Errors
   div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field input.user-invalid,
-  div.wpforms-container-full .wpforms-form .wpforms-field textarea.wpforms-error,
+  div.wpforms-container-full
+    .wpforms-form
+    .wpforms-field
+    textarea.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field textarea.user-invalid,
   div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-error,
   div.wpforms-container-full .wpforms-form .wpforms-field select.user-invalid,
-  div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-has-error .choices__inner {
+  div.wpforms-container-full
+    .wpforms-form
+    .wpforms-field.wpforms-has-error
+    .choices__inner {
     border-color: var(--color-error);
     color: var(--color-error);
 
@@ -21,7 +27,8 @@
 
   // Success message
   .wpforms-confirmation-container-full,
-  div[submit-success] > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
+  div[submit-success]
+    > .wpforms-confirmation-container-full:not(.wpforms-redirection-message) {
     background-color: transparent;
     background-image: none;
     border: 0;
@@ -63,7 +70,7 @@
     width: unset;
   }
 
-  div.wpforms-container-full .wpforms-form button[type="submit"] {
+  div.wpforms-container-full .wpforms-form button[type='submit'] {
     @include button-size-large();
     background-color: var(--color-mint);
     border-color: var(--color-mint);
@@ -130,7 +137,7 @@
     margin: 0 auto;
     max-width: 70rem;
 
-    button[type="submit"] {
+    button[type='submit'] {
       font-size: var(--font-size-22);
       height: 6rem;
       max-width: 100%;
@@ -145,7 +152,7 @@
   }
 
   @media (max-width: $container-mobile) {
-    div.wpforms-container-full .wpforms-form button[type="submit"] {
+    div.wpforms-container-full .wpforms-form button[type='submit'] {
       width: 100%;
     }
   }

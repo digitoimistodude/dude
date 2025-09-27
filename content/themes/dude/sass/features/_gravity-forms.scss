@@ -16,7 +16,7 @@ div.validation_error {
   }
 }
 
-body *[aria-invalid="true"] {
+body *[aria-invalid='true'] {
   border-color: var(--color-error);
 }
 
@@ -83,7 +83,7 @@ body.page-id-16266 .gform_wrapper .gform-body {
 
   // stylelint-disable selector-not-notation
   textarea,
-  input:not([type="checkbox"]):not([type="radio"]) {
+  input:not([type='checkbox']):not([type='radio']) {
     width: 100%;
   }
 

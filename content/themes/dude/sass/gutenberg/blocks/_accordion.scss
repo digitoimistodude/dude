@@ -25,7 +25,7 @@ button.accordion-trigger {
   outline: none;
   padding-bottom: 3.5rem;
   padding-left: 0;
-  padding-right: .5rem;
+  padding-right: 0.5rem;
   padding-top: 3.5rem;
   text-align: left;
   width: 100%;
@@ -74,11 +74,11 @@ button.accordion-trigger {
   }
 }
 
-.accordion-trigger[aria-expanded="true"] .accordion-icon {
+.accordion-trigger[aria-expanded='true'] .accordion-icon {
   transform: rotate(-315deg);
 }
 
-.accordion-trigger[aria-expanded="true"] {
+.accordion-trigger[aria-expanded='true'] {
   padding-bottom: 4rem;
 
   @media (min-width: $container-mobile) {

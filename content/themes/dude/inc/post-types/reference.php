@@ -19,20 +19,20 @@ class Reference extends Post_Type {
 
     // Modify all the i18ized strings here.
     $labels = [
-      'name'               => _x( 'Työt', 'post type general name', 'dude' ),
-      'singular_name'      => _x( 'Työ', 'post type singular name', 'dude' ),
-      'menu_name'          => _x( 'Työt', 'admin menu', 'dude' ),
-      'name_admin_bar'     => _x( 'Työ', 'add new on admin bar', 'dude' ),
+      'name'               => _x( 'Referenssit', 'post type general name', 'dude' ),
+      'singular_name'      => _x( 'Referenssi', 'post type singular name', 'dude' ),
+      'menu_name'          => _x( 'Referenssit', 'admin menu', 'dude' ),
+      'name_admin_bar'     => _x( 'Referenssi', 'add new on admin bar', 'dude' ),
       'add_new'            => _x( 'Lisää uusi', 'example', 'dude' ),
-      'add_new_item'       => __( 'Lisää uusi työ', 'dude' ),
-      'new_item'           => __( 'Uusi työ', 'dude' ),
-      'edit_item'          => __( 'Muokkaa työtä', 'dude' ),
-      'view_item'          => __( 'Katsele työtä', 'dude' ),
-      'all_items'          => __( 'Kaikki työt', 'dude' ),
-      'search_items'       => __( 'Etsi töitä', 'dude' ),
-      'parent_item_colon'  => __( 'Työn isäntä:', 'dude' ),
-      'not_found'          => __( 'Töitä ei löytynyt.', 'dude' ),
-      'not_found_in_trash' => __( 'Töitä ei löytynyt roskista.', 'dude' ),
+      'add_new_item'       => __( 'Lisää uusi referenssi', 'dude' ),
+      'new_item'           => __( 'Uusi referenssi', 'dude' ),
+      'edit_item'          => __( 'Muokkaa referenssiä', 'dude' ),
+      'view_item'          => __( 'Katsele referenssiä', 'dude' ),
+      'all_items'          => __( 'Kaikki referenssit', 'dude' ),
+      'search_items'       => __( 'Etsi referenssejä', 'dude' ),
+      'parent_item_colon'  => __( 'Referenssin isäntä:', 'dude' ),
+      'not_found'          => __( 'Referenssejä ei löytynyt.', 'dude' ),
+      'not_found_in_trash' => __( 'Referenssejä ei löytynyt roskista.', 'dude' ),
     ];
 
     // Definition of the post type arguments. For full list see:
@@ -53,7 +53,7 @@ class Reference extends Post_Type {
       'supports'           => [ 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes' ],
       'rewrite'            => [
         'with_front'  => false,
-        'slug'        => 'toitamme',
+        'slug'        => 'referenssit',
       ],
     ];
 

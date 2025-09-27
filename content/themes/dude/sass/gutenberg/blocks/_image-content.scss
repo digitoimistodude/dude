@@ -6,7 +6,7 @@
   figcaption {
     font-size: var(--font-size-16);
     margin-top: 2rem;
-    opacity: .7;
+    opacity: 0.7;
   }
 
   .container {
@@ -90,7 +90,7 @@
   .col-content {
     @media (min-width: 1000px) {
       background-color: var(--color-background-block-alternative);
-      box-shadow: 0 2px 39px 0 rgb(0 0 0 / .07);
+      box-shadow: 0 2px 39px 0 rgb(0 0 0 / 0.07);
       margin-left: -22px;
       padding: 10rem;
       position: relative;
