@@ -1,17 +1,9 @@
-/* eslint-disable wrap-iife */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-plusplus */
-/* eslint-disable func-names */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-shadow */
-/* eslint-disable max-len */
-/* eslint-disable no-continue */
-/* eslint-disable no-param-reassign, no-unused-vars */
+/* eslint-disable no-unused-vars, no-continue, max-len, no-param-reassign, no-use-before-define, implicit-arrow-linebreak, no-shadow, wrap-iife, func-names, no-plusplus */
 /**
  * Reference filtering functionality
  */
 
-const initReferenceFilters = function () {
+const initReferenceFilters = () => {
   // Base URLs
   const archiveBaseUrl = `${window.location.origin}/referenssit`;
   const currentUrl = window.location.origin + window.location.pathname;
@@ -24,7 +16,7 @@ const initReferenceFilters = function () {
   const advancedContent = document.getElementById('advanced-filters-content');
   const advancedSection = document.getElementById('advanced-filters');
 
-  const parseQueryParams = (queryString) => {
+  const parseQueryParams = function (queryString) {
     const params = {};
 
     if (!queryString) {
@@ -188,7 +180,6 @@ const initReferenceFilters = function () {
     // Use closure to capture the button reference
     (function (btn) {
       btn.onclick = function () {
-        console.log('Target group button clicked via onclick!');
         handleTargetGroupClick({ currentTarget: btn, preventDefault() {}, stopPropagation() {} });
       };
     })(button);
@@ -484,8 +475,6 @@ const initReferenceFilters = function () {
       noResultsMessage.className = 'no-results-message';
 
       let content = '<h2>Tyhjää täynnä</h2>';
-
-      console.log('Cross filter count:', crossFilterCount); // Debug
 
       if (crossFilterCount > 0) {
         // Show cross-filter results message - be more specific about what was found

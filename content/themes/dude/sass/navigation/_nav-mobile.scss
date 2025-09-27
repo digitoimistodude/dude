@@ -1,6 +1,6 @@
 // Site navigation mobile layout
 // The main layout for the website navigation, for the mobile version only.
-// stylelit-disable number-max-precision
+// stylelit-disable number-max-precision, max-line-length
 
 // Vars
 :root {
@@ -83,7 +83,6 @@ $hamburger-hover-transition-timing-function: linear;
   .nav-primary {
     align-items: flex-start;
     background-color: var(--color-midnight);
-    // stylelint-disable-next-line number-max-precision, max-line-length
     box-shadow:
       0 0.0625em 0.125em rgb(0 0 0 / 0.03),
       0 0.125em 0.25em rgb(0 0 0 / 0.03),

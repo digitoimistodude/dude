@@ -55,12 +55,15 @@ function init(target, args) {
   initNavigation();
 
   // Init carousels for testimonials and image galleries
-  // Timeout needed for Firefox and iOS Safari
+  // Timeout needed for Firefox and iOS Safari for some modules
   setTimeout(() => {
     initCarousels();
 
     // Init upkeep landing page
     initUpKeepLanding();
+
+    // Init reference filters
+    initReferenceFilters();
   }, 1000);
 
   // Init all possible anchor links
@@ -107,9 +110,6 @@ function init(target, args) {
 
   // Init skip links
   initA11ySkipLink();
-
-  // Init reference filters
-  initReferenceFilters();
 
   // Init Twitter and Instagram embeds in blog posts
   initEmbeds();

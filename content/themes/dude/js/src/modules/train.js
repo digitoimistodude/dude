@@ -7,10 +7,7 @@
 /* eslint-disable max-len, no-plusplus */
 function isTouchDevice() {
   // eslint-disable-next-line no-mixed-operators, no-undef
-  return (
-    ('ontouchstart' in window ||
-      (window.DocumentTouch && document instanceof DocumentTouch)) === true
-  );
+  return ('ontouchstart' in window || (window.DocumentTouch && document instanceof DocumentTouch)) === true;
 }
 
 const initTrain = () => {

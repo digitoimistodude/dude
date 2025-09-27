@@ -1,12 +1,4 @@
 <?php
-/**
- * @Author: Timi Wahalahti
- * @Date:   2022-07-29 15:17:10
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-23 12:12:30
- * @package dude
- */
-
 namespace Air_Light;
 
 $reference_ids = [];
