@@ -36,6 +36,12 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
               // Remove toggled-on class from previous sibling
               if (previousItemDropdown) {
                 previousItemDropdown.classList.remove('toggled-on');
+
+                // Set tabindex -1 on submenu links when closed
+                const subMenuLinks = subMenu.querySelectorAll('.sub-menu a, .sub-menu button');
+                subMenuLinks.forEach(link => {
+                  link.setAttribute('tabindex', '-1');
+                });
               }
 
               // Change toggle button aria-label
@@ -61,6 +67,12 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
 
             // Remove toggled-on class from previous sibling
             previousItemDropdown.classList.remove('toggled-on');
+
+            // Set tabindex -1 on submenu links when closed
+            const subMenuLinks = previousItem.querySelectorAll('.sub-menu a, .sub-menu button');
+            subMenuLinks.forEach(link => {
+              link.setAttribute('tabindex', '-1');
+            });
 
             // Change toggle button aria-label
             // eslint-disable-next-line camelcase, no-undef
@@ -117,11 +129,23 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
         if (thisDropdown && !thisDropdown.classList.contains('toggled-on')) {
           // Add toggled-on class to this dropdown
           thisDropdown.classList.add('toggled-on');
+
+          // Enable tab focus for submenu links when opened
+          const subMenuLinks = thisElement.parentNode.querySelectorAll('.sub-menu a, .sub-menu button');
+          subMenuLinks.forEach(link => {
+            link.setAttribute('tabindex', '0');
+          });
         } else {
           // Remove toggled-on class from this dropdown
           // eslint-disable-next-line no-lonely-if
           if (thisDropdown) {
             thisDropdown.classList.remove('toggled-on');
+
+            // Disable tab focus for submenu links when closed
+            const subMenuLinks = thisElement.parentNode.querySelectorAll('.sub-menu a, .sub-menu button');
+            subMenuLinks.forEach(link => {
+              link.setAttribute('tabindex', '-1');
+            });
           }
         }
       }
@@ -152,6 +176,12 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
 
           if (mainLevelDropdown) {
             mainLevelDropdown.classList.remove('toggled-on');
+
+            // Disable tab focus for submenu links when closed via Escape
+            const subMenuLinks = mainLevelItem.querySelectorAll('.sub-menu a, .sub-menu button');
+            subMenuLinks.forEach(link => {
+              link.setAttribute('tabindex', '-1');
+            });
           }
 
           if (mainLevelButton) {

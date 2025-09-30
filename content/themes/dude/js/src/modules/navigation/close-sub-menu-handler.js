@@ -45,6 +45,12 @@ function closeSubMenuHandler(items) {
         return;
       }
 
+      // Enable tab focus for submenu links when opened
+      const subMenuLinks = li.querySelectorAll('.sub-menu a, .sub-menu button');
+      subMenuLinks.forEach(link => {
+        link.setAttribute('tabindex', '0');
+      });
+
       sameLevelDropdowns.forEach((sameLevelDropdown) => {
         if (sameLevelDropdown !== li) {
           // Close all other sub level dropdowns

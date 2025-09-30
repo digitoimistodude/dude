@@ -29,6 +29,12 @@ function closeSubMenu(li) {
   // Remove the aria-expanded attribute from the dropdown-button
   dropdownButton.setAttribute('aria-expanded', 'false');
 
+  // Set tabindex -1 on submenu links to prevent tab focus when closed
+  const subMenuLinks = li.querySelectorAll('.sub-menu a, .sub-menu button');
+  subMenuLinks.forEach(link => {
+    link.setAttribute('tabindex', '-1');
+  });
+
   // Get the link text that is children of this item
   const linkText = dropdownButton.innerHTML;
 

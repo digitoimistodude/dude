@@ -62,6 +62,11 @@ const navClick = () => {
   // Convert submenus to clickable elements
   convertDropdownMenuItems(dropdownMenuItems);
 
+  // Set tabindex -1 on hidden submenu links to prevent tab focus
+  document.querySelectorAll('.js .sub-menu:not(.toggled-on) a, .js .sub-menu:not(.toggled-on) button').forEach(link => {
+    link.setAttribute('tabindex', '-1');
+  });
+
   // Define globals
   const menuItems = document.querySelectorAll('.menu-item');
   // Define focusable elements on sub-menu (.menu-item a, .dropdown button)

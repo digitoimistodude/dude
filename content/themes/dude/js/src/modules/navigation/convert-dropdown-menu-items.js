@@ -8,6 +8,12 @@ function convertDropdownMenuItems(items) {
       return;
     }
 
+    // Set tabindex -1 on all submenu links to prevent tab focus when closed
+    const subMenuLinks = li.querySelectorAll('.sub-menu a, .sub-menu button');
+    subMenuLinks.forEach(link => {
+      link.setAttribute('tabindex', '-1');
+    });
+
     // Get dropdown menu item data
     const menuItemSpan = li.querySelector('a > span');
     const menuItemLinkElement = li.querySelector('a');
