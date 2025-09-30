@@ -57,22 +57,26 @@
     margin-top: calc(-1 * var(--padding-sub-menu-vertical));
   }
 
-  // Dropdowns
+  // Dropdowns - GitHub style
   .sub-menu {
     background-color: var(--color-background-sub-menu);
-    border-top: 4px solid var(--color-blue-grayish);
-    box-shadow: 0 4px 7px 0 #002b490d;
-    left: 0;
+    border: 1px solid rgb(0 0 0 / 0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    left: 50%;
     margin-left: 0;
+    margin-top: 0;
+    max-width: 90vw;
     opacity: 0;
-    padding-bottom: 0;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 0;
+    padding: 24px;
     position: absolute;
     top: 100%;
-    transition: all .2s cubic-bezier(.19, 1, .22, 1);
-    width: var(--width-sub-menu);
+    transform: translateX(-50%) translateY(8px);
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
+    visibility: hidden;
+    width: max-content;
     z-index: 9;
 
     // If dropdown is out of viewport from the right, move it to the left
@@ -105,32 +109,130 @@
     }
   }
 
+  // GitHub-style column layout for main level dropdowns
+  .menu-items > .menu-item-has-children > .sub-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    min-width: 600px;
+
+    // Add a subtle border between columns
+    > .menu-item-has-children:not(:last-child) {
+      position: relative;
+
+      &::after {
+        background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 0.08), transparent);
+        content: '';
+        height: calc(100% - 32px);
+        position: absolute;
+        right: -20px;
+        top: 16px;
+        width: 1px;
+      }
+    }
+
+    // Each dropdown group (li with sub-menu) becomes a column
+    > .menu-item-has-children {
+      flex: 0 0 auto;
+      max-width: 280px;
+      min-width: 200px;
+
+      > .menu-item-clickable {
+        display: none; // Hide the nested dropdown toggles
+      }
+
+      // Nested sub-menus display as vertical lists
+      > .sub-menu {
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        display: block;
+        left: auto;
+        margin: 0;
+        max-width: none;
+        opacity: 1;
+        padding: 0;
+        position: static;
+        transform: none;
+        visibility: visible;
+        width: auto;
+
+        li {
+          margin: 0;
+          padding: 0;
+
+          a {
+            border-radius: 6px;
+            color: var(--color-sub-menu);
+            display: block;
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 8px 12px;
+            transition: background-color 0.15s ease;
+            white-space: normal;
+
+            &:hover,
+            &:focus {
+              background-color: rgb(0 0 0 / 0.04);
+              color: var(--color-hover-sub-menu);
+            }
+          }
+        }
+      }
+    }
+
+    // Heading items within columns
+    .menu-heading {
+      margin-bottom: 8px;
+
+      .dropdown-heading {
+        color: var(--color-main-level);
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        margin-bottom: 4px;
+        padding: 0 12px;
+        text-transform: none;
+      }
+    }
+  }
+
   // KEY RULE: Show dropdowns when toggled-on class is present (Air Light click method)
   .sub-menu.toggled-on {
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateX(-50%) translateY(0);
     visibility: visible;
     z-index: 12;
   }
 
+  // Ensure nested sub-menus in columns remain visible
+  .menu-items > .menu-item-has-children > .sub-menu.toggled-on {
+    > .menu-item-has-children > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   .menu-item-clickable {
+    align-items: center;
     background-color: transparent;
     border: 0;
-    cursor: pointer;
-    gap: var(--gap-between-dropdown-toggle);
-    justify-content: space-between;
-    pointer-events: auto;
-    position: relative;
-    text-align: left;
-    width: 100%;
     color: var(--color-main-level);
+    cursor: pointer;
+    display: inline-flex;
     font-family: var(--font-paragraph);
     font-size: var(--font-size-main-level);
     font-weight: var(--font-weight-main-level);
+    gap: var(--gap-between-dropdown-toggle);
+    justify-content: space-between;
     padding: var(--padding-main-level-vertical) var(--padding-main-level-horizontal);
+    pointer-events: auto;
+    position: relative;
+    text-align: left;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
+    width: 100%;
   }
 
   .menu-item-clickable::after {
@@ -138,7 +240,7 @@
     background-position: 50% 50%;
     content: '';
     height: 1.2rem;
-    transition: transform .35s cubic-bezier(.19, 1, .22, 1);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
     width: 1.2rem;
   }
 
