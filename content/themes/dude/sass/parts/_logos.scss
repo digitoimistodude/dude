@@ -19,6 +19,28 @@
   margin-top: 0;
   padding-left: 0;
 
+  svg.is-smaller {
+    max-height: 68px;
+    max-width: 68px;
+
+    // iPhone and other phones
+    @media (max-width: $container-ipad) {
+      max-height: 60px;
+      max-width: 90px;
+    }
+  }
+
+  svg.is-medium {
+    max-height: 80px;
+    max-width: 80px;
+
+    // iPhone and other phones
+    @media (max-width: $container-ipad) {
+      max-height: 50px;
+      max-width: 90px;
+    }
+  }
+
   svg.is-bigger {
     max-height: 110px;
     max-width: 110px;
@@ -58,8 +80,12 @@
     max-width: 90px;
     width: auto;
 
-    path:not(.do-not-fill) {
+    path:not(.text-inside):not(.do-not-fill) {
       fill: var(--color-client-logo);
+    }
+
+    path.text-inside {
+      fill: var(--color-dark-navy);
     }
 
     // iPhone and other phones
@@ -166,16 +192,22 @@
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1300px) {
     grid-column-gap: 5rem;
     grid-row-gap: 4rem;
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 960px) {
     grid-column-gap: 3rem;
     grid-row-gap: 4rem;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-column-gap: 3rem;
+    grid-row-gap: 4rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
