@@ -6,7 +6,6 @@ const initUpKeepLanding = () => {
 
   if (!carousel || !track) {
     // eslint-disable-next-line
-    console.warn('Carousel elements not found');
     return;
   }
 
@@ -18,14 +17,10 @@ const initUpKeepLanding = () => {
   track.style.webkitPerspective = '1000px';
 
   // Check for reduced motion preference
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  );
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // Calculate duration based on number of items
-  const originalItems = Array.from(track.children).filter(
-    (item) => !item.classList.contains('clone')
-  );
+  const originalItems = Array.from(track.children).filter((item) => !item.classList.contains('clone'));
   const itemCount = originalItems.length;
   // Base duration of 30s for 10 items, scale up for more items
   const duration = Math.max(30, Math.round((itemCount / 10) * 30));
@@ -110,9 +105,7 @@ const initUpKeepLanding = () => {
   handleCarouselState(prefersReducedMotion.matches);
 
   // Listen for preference changes
-  prefersReducedMotion.addEventListener('change', (e) =>
-    handleCarouselState(e.matches)
-  );
+  prefersReducedMotion.addEventListener('change', (e) => handleCarouselState(e.matches));
 
   // Add pause on hover
   carousel.addEventListener('mouseenter', () => {

@@ -1,0 +1,153 @@
+// Air Light click navigation CSS for desktop
+// stylelint-disable a11y/no-display-none, plugin/file-max-lines
+
+@media only screen and (min-width: $width-max-mobile) {
+  // Menu items
+  .menu-item > a,
+  .menu-item-clickable {
+    align-items: center;
+    color: var(--color-main-level);
+    display: inline-flex;
+    font-size: var(--font-size-main-level);
+    font-weight: var(--font-weight-main-level);
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: var(--padding-main-level-vertical);
+    padding-left: var(--padding-main-level-horizontal);
+    padding-right: var(--padding-main-level-horizontal);
+    padding-top: var(--padding-main-level-vertical);
+    white-space: nowrap;
+  }
+
+  .menu-item .sub-menu a,
+  .menu-item .sub-menu .menu-item-clickable {
+    align-items: center;
+    color: var(--color-sub-menu);
+    display: inline-flex;
+    font-size: var(--font-size-sub-menu);
+    font-weight: var(--font-weight-sub-menu);
+    line-height: 1.5;
+    padding-bottom: var(--padding-sub-menu-link-vertical);
+    padding-left: var(--padding-sub-menu-link-horizontal);
+    padding-right: var(--padding-sub-menu-link-horizontal);
+    padding-top: var(--padding-sub-menu-link-vertical);
+    white-space: normal;
+    width: 100%;
+  }
+
+  .menu-item > a:hover,
+  .menu-item > a:focus {
+    color: var(--color-hover-main-level);
+  }
+
+  .menu-item .sub-menu a:hover,
+  .menu-item .sub-menu a:focus {
+    color: var(--color-hover-sub-menu);
+  }
+
+  // Progressive enhancement: Dropdown toggle with js enabled
+  .js .sub-menu {
+    margin-top: var(--gap-dropdown);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // All dropdowns in level 2 and after
+  .js .sub-menu .sub-menu {
+    margin-top: calc(-1 * var(--padding-sub-menu-vertical));
+  }
+
+  // Dropdowns
+  .sub-menu {
+    background-color: var(--color-background-sub-menu);
+    border-top: 4px solid var(--color-blue-grayish);
+    box-shadow: 0 4px 7px 0 #002b490d;
+    left: 0;
+    margin-left: 0;
+    opacity: 0;
+    padding-bottom: 0;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0;
+    position: absolute;
+    top: 100%;
+    transition: all .2s cubic-bezier(.19, 1, .22, 1);
+    width: var(--width-sub-menu);
+    z-index: 9;
+
+    // If dropdown is out of viewport from the right, move it to the left
+    &.is-out-of-viewport {
+      left: unset;
+      right: 0;
+
+      // All dropdowns in level 2 and after
+      .sub-menu {
+        left: unset;
+        right: 100%;
+      }
+    }
+
+    // If main level is not out of viewport but if sub-menu under it is
+    .sub-menu.is-out-of-viewport {
+      left: unset;
+      right: 100%;
+    }
+
+    // All dropdowns in level 2 and after
+    .sub-menu {
+      left: 100%;
+      margin-left: 0;
+      top: 0;
+    }
+
+    li {
+      padding: 0;
+    }
+  }
+
+  // KEY RULE: Show dropdowns when toggled-on class is present (Air Light click method)
+  .sub-menu.toggled-on {
+    opacity: 1;
+    transform: translateY(0%);
+    visibility: visible;
+    z-index: 12;
+  }
+
+  .menu-item-clickable {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    gap: var(--gap-between-dropdown-toggle);
+    justify-content: space-between;
+    pointer-events: auto;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    color: var(--color-main-level);
+    font-family: var(--font-paragraph);
+    font-size: var(--font-size-main-level);
+    font-weight: var(--font-weight-main-level);
+    padding: var(--padding-main-level-vertical) var(--padding-main-level-horizontal);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .menu-item-clickable::after {
+    background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill-rule='evenodd' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M1.385 1.417L6 5.583m4.615-4.166L6 5.583'/%3E%3C/svg%3E ");
+    background-position: 50% 50%;
+    content: '';
+    height: 1.2rem;
+    transition: transform .35s cubic-bezier(.19, 1, .22, 1);
+    width: 1.2rem;
+  }
+
+  .menu-item-clickable.toggled-on::after {
+    transform: rotate(-90deg) rotateX(0deg);
+  }
+
+  // Main level dropdown toggle
+  .menu-items > .menu-item-has-children > .menu-item-clickable.toggled-on::after {
+    transform: rotate(-180deg) rotateX(0deg);
+  }
+}

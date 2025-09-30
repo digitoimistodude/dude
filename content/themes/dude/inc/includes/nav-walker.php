@@ -63,19 +63,19 @@ class Nav_Walker extends \Walker_Nav_Menu {
     $indent = str_repeat( $t, $depth );
 
     // Default class to add to the file.
-		$classes = array( 'sub-menu' );
+	$classes = array( 'sub-menu' );
 
     /**
-		 * Filters the CSS class(es) applied to a menu list element.
-		 *
-		 * @since WP 4.8.0
-		 *
-		 * @param array    $classes The CSS classes that are applied to the menu `<ul>` element.
-		 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
-		 * @param int      $depth   Depth of menu item. Used for padding.
-		 */
-		$class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+	 * Filters the CSS class(es) applied to a menu list element.
+	 *
+	 * @since WP 4.8.0
+	 *
+	 * @param array    $classes The CSS classes that are applied to the menu `<ul>` element.
+	 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
+	 * @param int      $depth   Depth of menu item. Used for padding.
+	 */
+	$class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
+	$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
     if ( isset( $args->has_dropdown ) && $args->has_dropdown ) {
       // Get the icon
@@ -85,23 +85,23 @@ class Nav_Walker extends \Walker_Nav_Menu {
       $output .= '<button class="dropdown-toggle" aria-expanded="false" aria-label="' . get_default_localization( 'Open child menu' ) . '">';
       $output .= $icon . '</button>';
 
-			/*
-			 * The `.dropdown-menu` container needs to have a labelledby
-			 * attribute which points to it's trigger link.
-			 *
-			 * Form a string for the labelledby attribute from the the latest
-			 * link with an id that was added to the $output.
-			 */
-			$labelledby = '';
-			// Find all links with an id in the output.
-			preg_match_all( '/(<a.*?id=\"|\')(.*?)\"|\'.*?>/im', $output, $matches );
-			// With pointer at end of array check if we got an ID match.
+		/*
+		 * The `.dropdown-menu` container needs to have a labelledby
+		 * attribute which points to it's trigger link.
+		 *
+		 * Form a string for the labelledby attribute from the the latest
+		 * link with an id that was added to the $output.
+		 */
+		$labelledby = '';
+		// Find all links with an id in the output.
+		preg_match_all( '/(<a.*?id=\"|\')(.*?)\"|\'.*?>/im', $output, $matches );
+		// With pointer at end of array check if we got an ID match.
 
-			if ( end( $matches[2] ) ) {
-				// Build a string to use as aria-labelledby.
-				$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
-			}
-			$output .= "{$n}{$indent}<ul$class_names $labelledby>{$n}";
+		if ( end( $matches[2] ) ) {
+			// Build a string to use as aria-labelledby.
+			$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
+		}
+		$output .= "{$n}{$indent}<ul$class_names $labelledby>{$n}";
 
     } else {
       $output .= "\n{$n}{$indent}<ul>{$n}";
@@ -144,195 +144,180 @@ class Nav_Walker extends \Walker_Nav_Menu {
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
     // Updating the CSS classes of a menu item in the WordPress Customizer preview results in all classes defined
-		// in that particular input box to come in as one big class string.
-		$split_on_spaces = function ( $class ) { // phpcs:ignore
-			return preg_split( '/\s+/', $class );
-		};
-		$classes         = $this->flatten( array_map( $split_on_spaces, $classes ) );
+	// in that particular input box to come in as one big class string.
+	$split_on_spaces = function( $class ) {
+		return preg_split( '/\s+/', $class );
+	};
+	$classes         = $this->flatten( array_map( $split_on_spaces, $classes ) );
 
     /*
-		 * Initialize some holder variables to store specially handled item
-		 * wrappers.
-		 */
-		$linkmod_classes = array();
+	 * Initialize some holder variables to store specially handled item
+	 * wrappers.
+	 */
+	$linkmod_classes = array();
 
     /*
-		 * Get an updated $classes array without linkmod classes.
-		 *
-		 * NOTE: linkmod class arrays are passed by reference and
-		 * are maybe modified before being used later in this function.
-		 */
-		$classes = self::separate_linkmods_from_classes( $classes, $linkmod_classes, $depth );
+	 * Get an updated $classes array without linkmod classes.
+	 *
+	 * NOTE: linkmod class arrays are passed by reference and
+	 * are maybe modified before being used later in this function.
+	 */
+	$classes = self::separate_linkmods_from_classes( $classes, $linkmod_classes, $depth );
 
     /**
-		 * Filters the arguments for a single nav menu item.
-		 *
-		 * @since WP 4.4.0
-		 *
-		 * @param WP_Nav_Menu_Args $args  An object of wp_nav_menu() arguments.
-		 * @param WP_Nav_Menu_Item $item  Menu item data object.
-		 * @param int              $depth Depth of menu item. Used for padding.
-		 *
-		 * @var WP_Nav_Menu_Args
-		 */
-		$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+	 * Filters the arguments for a single nav menu item.
+	 *
+	 * @since WP 4.4.0
+	 *
+	 * @param WP_Nav_Menu_Args $args  An object of wp_nav_menu() arguments.
+	 * @param WP_Nav_Menu_Item $item  Menu item data object.
+	 * @param int              $depth Depth of menu item. Used for padding.
+	 *
+	 * @var WP_Nav_Menu_Args
+	 */
+	$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
     // Add .dropdown or .active classes where they are needed.
-		if ( $this->has_children ) {
-			$classes[] = 'dropdown';
-		}
+	if ( $this->has_children ) {
+		$classes[] = 'dropdown dropdown-item';
+	}
 
-		if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) {
-			$classes[] = 'active';
-		}
+	if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) {
+		$classes[] = 'active';
+	}
 
-		// Add some additional default classes to the item.
-		$classes[] = 'dude-menu-item menu-item-' . $item->ID;
-		$classes[] = 'nav-item';
+	// Add some additional default classes to the item.
+	$classes[] = 'menu-item-' . $item->ID;
 
-		// Allow filtering the classes.
-		$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth );
+	// Allow filtering the classes.
+	$classes = apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth );
 
-		// Form a string of classes in format: class="class_names".
-		$class_names = join( ' ', $classes );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+	// Form a string of classes in format: class="class_names".
+	$class_names = join( ' ', $classes );
+	$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
     /**
-		 * Filters the ID applied to a menu item's list item element.
-		 *
-		 * @since WP 3.0.1
-		 * @since WP 4.1.0 The `$depth` parameter was added.
-		 *
-		 * @param string           $menu_id The ID that is applied to the menu item's `<li>` element.
-		 * @param WP_Nav_Menu_Item $item    The current menu item.
-		 * @param WP_Nav_Menu_Args $args    An object of wp_nav_menu() arguments.
-		 * @param int              $depth   Depth of menu item. Used for padding.
-		 */
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
-		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+	 * Filters the ID applied to a menu item's list item element.
+	 *
+	 * @since WP 3.0.1
+	 * @since WP 4.1.0 The `$depth` parameter was added.
+	 *
+	 * @param string           $menu_id The ID that is applied to the menu item's `<li>` element.
+	 * @param WP_Nav_Menu_Item $item    The current menu item.
+	 * @param WP_Nav_Menu_Args $args    An object of wp_nav_menu() arguments.
+	 * @param int              $depth   Depth of menu item. Used for padding.
+	 */
+	$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
+	$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
     // Output
     $output .= $indent . '<li' . $id . $class_names . '>';
 
     // Initialize array for holding the $atts for the link item.
 	  $atts           = array();
-		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['target'] = ! empty( $item->target ) ? $item->target : '';
+	$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+	$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 
     if ( '_blank' === $item->target && empty( $item->xfn ) ) {
-			$atts['rel'] = 'noopener noreferrer';
-		} else {
-			$atts['rel'] = ! empty( $item->xfn ) ? $item->xfn : '';
-		}
+		$atts['rel'] = 'noopener noreferrer';
+	} else {
+		$atts['rel'] = ! empty( $item->xfn ) ? $item->xfn : '';
+	}
 
     // If the item has_children add atts to <a>.
-		if ( $this->has_children && 0 === $depth ) {
-			$atts['href']          = ! empty( $item->url ) ? $item->url : '';
-			$atts['aria-haspopup'] = 'true';
-			$atts['class']         = 'dropdown nav-link';
-			$atts['id']            = 'menu-item-dropdown-' . $item->ID;
-		} else {
-			if ( true === $this->has_schema ) {
-				$atts['itemprop'] = 'url';
-			}
-
-			$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
-			// For items in dropdowns use .dropdown-item instead of .nav-link.
-			if ( $depth > 0 ) {
-				$atts['class'] = 'dropdown-item';
-			} else {
-				$atts['class'] = 'nav-link';
-			}
+	if ( $this->has_children && 0 === $depth ) {
+		$atts['href']          = ! empty( $item->url ) ? $item->url : '';
+		$atts['aria-haspopup'] = 'true';
+		$atts['class']         = 'dropdown dropdown-item nav-link';
+		$atts['id']            = 'menu-item-dropdown-' . $item->ID;
+	} else {
+		if ( true === $this->has_schema ) {
+			$atts['itemprop'] = 'url';
 		}
+
+		$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
+		// For items in dropdowns use .dropdown-item instead of .nav-link.
+		if ( $depth > 0 ) {
+			$atts['class'] = 'dropdown-item';
+		} else {
+			$atts['class'] = 'nav-link';
+		}
+	}
 
     // Aria current
     $atts['aria-current'] = $item->current ? 'page' : '';
 
     // Update atts of this item based on any custom linkmod classes.
-		$atts = self::update_atts_for_linkmod_type( $atts, $linkmod_classes );
+	$atts = self::update_atts_for_linkmod_type( $atts, $linkmod_classes );
 
     // Allow filtering of the $atts array before using it.
-		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+	$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
     // Build a string of html containing all the atts for the item.
-		$attributes = '';
-		foreach ( $atts as $attr => $value ) {
-			if ( ! empty( $value ) ) {
-				$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
-			}
+	$attributes = '';
+	foreach ( $atts as $attr => $value ) {
+		if ( ! empty( $value ) ) {
+			$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+			$attributes .= ' ' . $attr . '="' . $value . '"';
 		}
+	}
 
     // Set a typeflag to easily test if this is a linkmod or not.
-		$linkmod_type = self::get_linkmod_type( $linkmod_classes );
+	$linkmod_type = self::get_linkmod_type( $linkmod_classes );
 
-		// START appending the internal item contents to the output.
-		$item_output = isset( $args->before ) ? $args->before : '';
+	// START appending the internal item contents to the output.
+	$item_output = isset( $args->before ) ? $args->before : '';
 
     /*
-		 * This is the start of the internal nav item. Depending on what
-		 * kind of linkmod we have we may need different wrapper elements.
-		 */
-		if ( '' !== $linkmod_type ) {
-			// Is linkmod, output the required element opener.
-			$item_output .= self::linkmod_element_open( $linkmod_type, $attributes );
-		} else {
-			// With no link mod type set this must be a standard <a> tag.
+	 * This is the start of the internal nav item. Depending on what
+	 * kind of linkmod we have we may need different wrapper elements.
+	 */
+	if ( '' !== $linkmod_type ) {
+		// Is linkmod, output the required element opener.
+		$item_output .= self::linkmod_element_open( $linkmod_type, $attributes );
+	} else {
+		// With no link mod type set this must be a standard <a> tag.
       $item_output .= '<a' . $attributes . '>';
-		}
+	}
 
     /** This filter is documented in wp-includes/post-template.php */
-		$title = apply_filters( 'the_title', $item->title, $item->ID );
+	$title = apply_filters( 'the_title', $item->title, $item->ID );
 
     /**
-		* Filters a menu item's title.
-		*
-		* @since WP 4.4.0
-		*
-		* @param string           $title The menu item's title.
-		* @param WP_Nav_Menu_Item $item  The current menu item.
-		* @param WP_Nav_Menu_Args $args  An object of wp_nav_menu() arguments.
-		* @param int              $depth Depth of menu item. Used for padding.
-		*/
-		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+	* Filters a menu item's title.
+	*
+	* @since WP 4.4.0
+	*
+	* @param string           $title The menu item's title.
+	* @param WP_Nav_Menu_Item $item  The current menu item.
+	* @param WP_Nav_Menu_Args $args  An object of wp_nav_menu() arguments.
+	* @param int              $depth Depth of menu item. Used for padding.
+	*/
+	$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
-		// If the .screen-reader-text-dude class was set apply to the nav items text only.
-		if ( in_array( 'screen-reader-text-dude', $linkmod_classes, true ) ) {
-			$title         = self::wrap_for_screen_reader( $title );
-			$keys_to_unset = array_keys( $linkmod_classes, 'screen-reader-text', true );
-			foreach ( $keys_to_unset as $k ) {
-				unset( $linkmod_classes[ $k ] );
-			}
+	// If the .screen-reader-text class was set apply to the nav items text only.
+	if ( in_array( 'screen-reader-text', $linkmod_classes, true ) ) {
+		$title         = self::wrap_for_screen_reader( $title );
+		$keys_to_unset = array_keys( $linkmod_classes, 'screen-reader-text', true );
+		foreach ( $keys_to_unset as $k ) {
+			unset( $linkmod_classes[ $k ] );
 		}
+	}
 
     // Put the item contents into $output.
-		$item_output .= isset( $args->link_before ) ? $args->link_before . $title . $args->link_after : '';
-
-    // Add number of open jobs when työpaikat page on menu
-    if ( THEME_SETTINGS['page_ids']['jobs'] === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
-      $open_jobs = get_open_jobs_count();
-
-      if ( $open_jobs > 0 ) {
-        $item_output .= '<span class="open-positions-count"><span class="screen-reader-text-dude">, </span>' . $open_jobs . '<span class="screen-reader-text-dude">työpaikkaa avoinna</span></span>';
-      }
-    }
-
-    // Add "new badge" for upkeep page 18011
-    if ( 18011 === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
-      $item_output .= '<span class="screen-reader-text-dude"> (</span><span class="new-badge">Uutta</span><span class="screen-reader-text-dude">)</span>';
-    }
+	$item_output .= isset( $args->link_before ) ? $args->link_before . $title . $args->link_after : '';
 
     /*
-		 * This is the end of the internal nav item. We need to close the
-		 * correct element depending on the type of link or link mod.
-		 */
-		if ( '' !== $linkmod_type ) {
-			// Is linkmod, output the required closing element.
-			$item_output .= self::linkmod_element_close( $linkmod_type );
-		} else {
-			// With no link mod type set this must be a standard <a> tag.
-			$item_output .= '</a>';
-		}
+	 * This is the end of the internal nav item. We need to close the
+	 * correct element depending on the type of link or link mod.
+	 */
+	if ( '' !== $linkmod_type ) {
+		// Is linkmod, output the required closing element.
+		$item_output .= self::linkmod_element_close( $linkmod_type );
+	} else {
+		// With no link mod type set this must be a standard <a> tag.
+		$item_output .= '</a>';
+	}
 
     $item_output .= isset( $args->after ) ? $args->after : '';
 
@@ -383,7 +368,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			$class            = $args['menu_class'] ? ' class="menu-fallback-menu ' . esc_attr( $args['menu_class'] ) . '"' : ' class="menu-fallback-menu"';
 			$id               = $args['menu_id'] ? ' id="' . esc_attr( $args['menu_id'] ) . '"' : '';
 			$fallback_output .= '<ul' . $id . $class . '>';
-			$fallback_output .= '<li class="nav-item"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'dude' ) . '">' . esc_html__( 'Add a menu', 'dude' ) . '</a></li>';
+			$fallback_output .= '<li class="menu-item"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'air-light' ) . '">' . esc_html__( 'Add a menu', 'air-light' ) . '</a></li>';
 			$fallback_output .= '</ul>';
 
 			// Menu container closing tag.
@@ -421,7 +406,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		 * Find any custom linkmod classes and store in their holder
 		 * arrays then remove them from the main classes array.
 		 *
-		 * Supported linkmods: .disabled, .dropdown-header, .dropdown-divider, .screen-reader-text-dude
+		 * Supported linkmods: .disabled, .dropdown-header, .dropdown-divider, .screen-reader-text
 		 *
 		 * NOTE: This accepts the linkmod arrays by reference.
 		 *
@@ -441,7 +426,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 				 * holder array and and unset the item from $classes.
 				 */
 				if ( preg_match( '/^disabled|^screen-reader-text/i', $class ) ) {
-					// Test for .disabled or .screen-reader-text-dude classes.
+					// Test for .disabled or .screen-reader-text classes.
 					$linkmod_classes[] = $class;
 					unset( $classes[ $key ] );
 				} elseif ( preg_match( '/^dropdown-header|^dropdown-divider|^dropdown-item-text/i', $class ) && $depth > 0 ) {
@@ -535,7 +520,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		 */
 		private function wrap_for_screen_reader( $text = '' ) {
 			if ( $text ) {
-				$text = '<span class="screen-reader-text-dude">' . $text . '</span>';
+				$text = '<span class="screen-reader-text">' . $text . '</span>';
 			}
 			return $text;
 		}
@@ -598,7 +583,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		 *
 		 * @return array a simple array
 		 */
-		public function flatten( $array ) { // phpcs:ignore
+		public function flatten( $array ) {
 			$result = array();
 			foreach ( $array as $element ) {
 				if ( is_array( $element ) ) {

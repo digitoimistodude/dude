@@ -4,6 +4,9 @@
 // Disable some rules that are not needed here
 // stylelint-disable no-descending-specificity
 
+// Import dropdown styles
+@import 'nav-dropdown';
+
 // Settings
 $absolute-navigation: true;
 
