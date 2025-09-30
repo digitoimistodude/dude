@@ -47,6 +47,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
       <?php echo wp_kses_post( wpautop( $content ) ); ?>
 
       <p class="button-wrapper">
+        <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge">Ota yhteyttä</a>
         <button class="play-showreel" id="play-<?php echo esc_html( $vimeo_showreel_id ); ?>" type="button">
           <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
           <span class="play-label">Katso showreel</span>

@@ -7,6 +7,16 @@
   overflow: hidden;
   transition: all 400ms ease-in-out;
 
+  .button-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 5rem;
+  }
+
+  .play-showreel {
+    display: none;
+  }
+
   .content {
     max-width: 160rem;
     overflow: visible;
