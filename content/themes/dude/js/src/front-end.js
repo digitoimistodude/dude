@@ -20,7 +20,7 @@ import initEmbeds from './modules/embeds';
 import initScrollableDivs from './modules/scrollable-div-shadows';
 import initdarkModeFooterToggle from './modules/dark-mode-footer-toggle';
 import initTrain from './modules/train';
-import initShowreel from './modules/showreel';
+// import initShowreel from './modules/showreel'; // Temporarily disabled - can be re-enabled later
 import init100vhMobileFix from './modules/100vh';
 import init404 from './modules/404';
 import initSwupHelpers from './modules/swup-helpers';
@@ -78,8 +78,8 @@ function init(target, args) {
   // Init scrollable divs
   initScrollableDivs();
 
-  // Init showreel
-  initShowreel();
+  // Init showreel - temporarily disabled, can be re-enabled later
+  // initShowreel();
 
   // Init dark mode toggle
   initdarkModeFooterToggle();

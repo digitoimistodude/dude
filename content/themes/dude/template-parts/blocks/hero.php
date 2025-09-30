@@ -48,13 +48,29 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
       <p class="button-wrapper">
         <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge">Ota yhteyttä</a>
+        <?php /* Showreel temporarily disabled - can be re-enabled later
         <button class="play-showreel" id="play-<?php echo esc_html( $vimeo_showreel_id ); ?>" type="button">
           <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
           <span class="play-label">Katso showreel</span>
         </button>
+        */ ?>
       </p>
     </div>
 
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    loading="lazy"
+    class="showreel">
+    <source src="<?php echo esc_url( get_theme_file_uri( 'video/showreel-cut-web.mp4' ) ); ?>" type="video/mp4">
+    <?php // Fallback image if video doesn't load ?>
+    <img loading="eager" src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
+  </video>
+
+  <?php /* Original showreel section - commented out for potential re-enabling later
   <div class="showreel">
 
     <div class="image-poster image image-background image-background-layer">
@@ -77,6 +93,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
     </div>
   </div>
+  */ ?>
 
   </div>
 </section>

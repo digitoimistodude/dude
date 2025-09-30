@@ -1,8 +1,10 @@
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors, max-line-length, a11y/no-display-none
+
+$transition-duration-showreel: 280ms;
+/* Interactive showreel functionality - temporarily disabled, can be re-enabled later
 // This must match the iframe!
 // Check it from full screen video:
 // <iframe src="https://player.vimeo.com/video/727306829?h=df2da26021&amp;title=0&amp;portrait=0&amp;muted=1&amp;autoplay=1&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=122963" width="1208" height="680" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Dude Showreel Preview" data-ready="true"></iframe>
-$transition-duration-showreel: 280ms;
 
 :root {
   --height-showreel-layer: calc(var(--vh, 1vh) * 100);
@@ -59,7 +61,9 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
 .block-hero .is-cta .showreel.playing .vimeo-player {
   display: none;
 }
+*/
 
+// Simple video background styling for looping MP4
 .showreel {
   @include aspect-ratio(1208, 680);
   --border-radius-showreel: 0;
@@ -73,10 +77,20 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   position: absolute;
   right: 0;
   transform: translate(19vw, 10rem);
-  transition: all $transition-duration-showreel ease-in-out;
   width: 1208px;
   z-index: 0;
 
+  @media (max-width: 900px) {
+    margin-top: -10rem;
+    top: 0;
+  }
+
+  @media (max-width: $container-mobile) {
+    opacity: 0.2;
+  }
+}
+
+/* Complex interactive showreel states - temporarily disabled, can be re-enabled later
   .image-poster {
     opacity: 1;
     transition: 150ms $transition-duration-showreel ease-in-out;
@@ -143,18 +157,7 @@ body .site-main .block.block-hero .container.is-cta.playing > .content {
   div[data-vimeo-initialized='true'] {
     overflow: hidden;
   }
-
-  @media (max-width: 900px) {
-    &:not(.playing) {
-      margin-top: -10rem;
-      top: 0;
-    }
-  }
-
-  @media (max-width: $container-mobile) {
-    opacity: 0.2;
-  }
-}
+*/
 
 body .site-main .block-hero.playing {
   height: var(--height-showreel-layer);
