@@ -144,21 +144,26 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
           return;
         }
 
-        // Remove toggled-on classes from this dropdown
-        firstDropdown.classList.remove('toggled-on');
+        // Find the main level button and dropdown for closing
+        let mainLevelItem = thisElement.closest('.menu-items > .menu-item-has-children');
+        if (mainLevelItem) {
+          const mainLevelButton = mainLevelItem.querySelector(':scope > .menu-item-clickable');
+          const mainLevelDropdown = mainLevelItem.querySelector(':scope > .sub-menu');
 
-        // Set aria expanded attribute to false
-        dropdownToggleButton.setAttribute('aria-expanded', 'false');
+          if (mainLevelDropdown) {
+            mainLevelDropdown.classList.remove('toggled-on');
+          }
 
-        // Remove toggled-on
-        dropdownToggleButton.classList.remove('toggled-on');
+          if (mainLevelButton) {
+            mainLevelButton.setAttribute('aria-expanded', 'false');
+            mainLevelButton.classList.remove('toggled-on');
 
-        // Get the link label of dropdown link
-        const linkLabel = thisElement.parentNode.querySelector('.dropdown-item').innerText;
-
-        // Set aria label attribute
-        // eslint-disable-next-line camelcase, no-undef
-        dropdownToggleButton.setAttribute('aria-label', `${dude_screenReaderText.expand_for} ${linkLabel}`);
+            // Get the button text for aria-label
+            const buttonText = mainLevelButton.textContent || '';
+            // eslint-disable-next-line camelcase, no-undef
+            mainLevelButton.setAttribute('aria-label', `${dude_screenReaderText.expand_for} ${buttonText}`);
+          }
+        }
 
         // If we're on button, add aria-expanded to false
         if (thisElement.classList.contains('dropdown-toggle')) {
@@ -169,12 +174,20 @@ function a11yDropdownMenuKeyboardNavigationClick(items, focusableElements) {
           thisElement.setAttribute('aria-label', `${dude_screenReaderText.expand_for} ${linkLabel}`);
         }
 
-        // Move focus back to previous .menu-item-clickable, but only if we're not on main level
+        // Always move focus back to main level dropdown button when in submenu
         if (thisElement.parentNode.parentNode.id !== 'main-menu') {
-          // Delay toggling for NVDA for 100 ms
-          setTimeout(() => {
-            dropdownToggleButton.focus();
-          }, 100);
+          // Find the main level dropdown button for this submenu
+          // Go up the DOM tree to find the main level menu item
+          let mainLevelItem = thisElement.closest('.menu-items > .menu-item-has-children');
+          if (mainLevelItem) {
+            const mainLevelButton = mainLevelItem.querySelector(':scope > .menu-item-clickable');
+            if (mainLevelButton) {
+              // Delay toggling for NVDA for 100 ms
+              setTimeout(() => {
+                mainLevelButton.focus();
+              }, 100);
+            }
+          }
         }
       }
 

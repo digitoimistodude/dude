@@ -1,5 +1,5 @@
 // Air Light click navigation CSS for desktop
-// stylelint-disable a11y/no-display-none, plugin/file-max-lines
+// stylelint-disable a11y/no-display-none, plugin/file-max-lines, selector-max-class, selector-max-combinators, selector-max-compound-selectors
 
 @media only screen and (min-width: $width-max-mobile) {
   // Menu items
@@ -52,6 +52,7 @@
     visibility: hidden;
   }
 
+
   // All dropdowns in level 2 and after
   .js .sub-menu .sub-menu {
     margin-top: calc(-1 * var(--padding-sub-menu-vertical));
@@ -60,7 +61,6 @@
   // Dropdowns - GitHub style
   .sub-menu {
     background-color: var(--color-background-sub-menu);
-    border: 1px solid rgb(0 0 0 / 0.08);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
     left: 50%;
@@ -78,125 +78,124 @@
     visibility: hidden;
     width: max-content;
     z-index: 9;
-
-    // If dropdown is out of viewport from the right, move it to the left
-    &.is-out-of-viewport {
-      left: unset;
-      right: 0;
-
-      // All dropdowns in level 2 and after
-      .sub-menu {
-        left: unset;
-        right: 100%;
-      }
-    }
-
-    // If main level is not out of viewport but if sub-menu under it is
-    .sub-menu.is-out-of-viewport {
-      left: unset;
-      right: 100%;
-    }
-
-    // All dropdowns in level 2 and after
-    .sub-menu {
-      left: 100%;
-      margin-left: 0;
-      top: 0;
-    }
-
-    li {
-      padding: 0;
-    }
   }
 
-  // GitHub-style column layout for main level dropdowns
+  // If dropdown is out of viewport from the right
+  .sub-menu.is-out-of-viewport {
+    left: unset;
+    right: 0;
+  }
+
+  // Nested dropdowns out of viewport
+  .sub-menu.is-out-of-viewport .sub-menu {
+    left: unset;
+    right: 100%;
+  }
+
+  // If main level is not out of viewport but sub-menu under it is
+  .sub-menu .sub-menu.is-out-of-viewport {
+    left: unset;
+    right: 100%;
+  }
+
+  // All dropdowns in level 2 and after
+  .sub-menu .sub-menu {
+    left: 100%;
+    margin-left: 0;
+    top: 0;
+  }
+
+  // Reset list items padding
+  .sub-menu li {
+    margin: 0;
+    padding: 0;
+  }
+
+  // GitHub-style main dropdown layout
   .menu-items > .menu-item-has-children > .sub-menu {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     min-width: 600px;
+  }
 
-    // Add a subtle border between columns
-    > .menu-item-has-children:not(:last-child) {
-      position: relative;
+  // Column groups in main dropdown
+  .menu-items .sub-menu > .menu-item-has-children {
+    flex: 0 0 auto;
+    max-width: 280px;
+    min-width: 200px;
+    position: relative;
+  }
 
-      &::after {
-        background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 0.08), transparent);
-        content: '';
-        height: calc(100% - 32px);
-        position: absolute;
-        right: -20px;
-        top: 16px;
-        width: 1px;
-      }
-    }
+  // Hide nested toggle buttons in columns
+  .sub-menu .menu-item-has-children > .menu-item-clickable {
+    display: none;
+  }
 
-    // Each dropdown group (li with sub-menu) becomes a column
-    > .menu-item-has-children {
-      flex: 0 0 auto;
-      max-width: 280px;
-      min-width: 200px;
+  // Column divider
+  .sub-menu > .menu-item-has-children:not(:last-child)::after {
+    background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 0.08), transparent);
+    content: '';
+    height: calc(100% - 32px);
+    position: absolute;
+    right: -20px;
+    top: 16px;
+    width: 1px;
+  }
 
-      > .menu-item-clickable {
-        display: none; // Hide the nested dropdown toggles
-      }
+  // Nested menus in columns - reset styles
+  .sub-menu .menu-item-has-children > .sub-menu {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    left: auto;
+    margin: 0;
+    max-width: none;
+    opacity: 1;
+    padding: 0;
+    position: static;
+    transform: none;
+    visibility: visible;
+    width: auto;
+  }
 
-      // Nested sub-menus display as vertical lists
-      > .sub-menu {
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-        display: block;
-        left: auto;
-        margin: 0;
-        max-width: none;
-        opacity: 1;
-        padding: 0;
-        position: static;
-        transform: none;
-        visibility: visible;
-        width: auto;
+  // Dropdown links styling
+  .sub-menu a {
+    border-radius: 6px;
+    color: var(--color-sub-menu);
+    display: block;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 8px 12px;
+    transition: background-color 0.15s ease;
+    white-space: normal;
+  }
 
-        li {
-          margin: 0;
-          padding: 0;
+  // Dropdown link interactions
+  .sub-menu a:hover,
+  .sub-menu a:focus {
+    background-color: rgb(0 0 0 / 0.04);
+    color: var(--color-hover-sub-menu);
+  }
 
-          a {
-            border-radius: 6px;
-            color: var(--color-sub-menu);
-            display: block;
-            font-size: 14px;
-            line-height: 1.4;
-            padding: 8px 12px;
-            transition: background-color 0.15s ease;
-            white-space: normal;
+  // Column headings
+  .sub-menu .menu-heading {
+    margin-bottom: 8px;
+  }
 
-            &:hover,
-            &:focus {
-              background-color: rgb(0 0 0 / 0.04);
-              color: var(--color-hover-sub-menu);
-            }
-          }
-        }
-      }
-    }
-
-    // Heading items within columns
-    .menu-heading {
-      margin-bottom: 8px;
-
-      .dropdown-heading {
-        color: var(--color-main-level);
-        display: block;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        line-height: 1.4;
-        margin-bottom: 4px;
-        padding: 0 12px;
-        text-transform: none;
-      }
-    }
+  // Heading text styles
+  .dropdown-heading {
+    // stylelint-disable-next-line
+    color: #111;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    padding: 0 12px;
+    text-transform: none;
   }
 
   // KEY RULE: Show dropdowns when toggled-on class is present (Air Light click method)

@@ -13,20 +13,37 @@ $absolute-navigation: true;
 // CSS variables
 // These can be adjusted with media queries for in-between breakpoints
 :root {
-  // Dimensions, gaps and spacings
+  // Dimensions, gaps and spacings - Main level
   --gap-main-level-horizontal: 5.2rem;
   --padding-main-level-horizontal: 0;
   --padding-main-level-vertical: 0.6rem;
+  --gap-between-dropdown-toggle: 0.9375rem;
+  --gap-dropdown: 1.6rem;
 
-  // Colors
+  // Dimensions - Sub menu
+  --padding-sub-menu-vertical: 0.625rem;
+  --padding-sub-menu-link-vertical: 0.5rem;
+  --padding-sub-menu-link-horizontal: 1.25rem;
+  --width-sub-menu: 12.5rem;
+
+  // Colors - Main level
   --color-background-nav-desktop: var(--color-dark-navy);
   --color-main-level: var(--color-white);
   --color-hover-main-level: var(--color-petrol);
   --color-current: var(--color-white);
 
-  // Font styles
+  // Colors - Submenu
+  --color-sub-menu: var(--color-dark-navy);
+  --color-hover-sub-menu: var(--color-petrol);
+  --color-background-sub-menu: var(--color-white);
+
+  // Font styles - Main level
   --font-size-main-level: var(--font-size-18);
   --font-weight-main-level: var(--font-weight-medium);
+
+  // Font styles - Sub menu
+  --font-size-sub-menu: var(--font-size-16);
+  --font-weight-sub-menu: var(--font-weight-medium);
 
   @media (max-width: 1000px) {
     --font-size-main-level: var(--font-size-16);

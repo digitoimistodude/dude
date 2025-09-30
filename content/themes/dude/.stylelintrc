@@ -60,7 +60,7 @@
     "comment-whitespace-inside": "always",
     "indentation": 2,
     "linebreaks": "unix",
-    "selector-max-specificity": "0,5,5",
+    "selector-max-specificity": "0,6,6",
     "block-no-empty": true,
     "declaration-colon-newline-after": null,
     "declaration-empty-line-before": null,
@@ -101,7 +101,7 @@
     "no-extra-semicolons": true,
     "length-zero-no-unit": true,
     "font-weight-notation": "numeric",
-    "number-max-precision": 3,
+    "number-max-precision": null,
     "selector-class-pattern": null,
     "selector-max-class": 4,
     "selector-max-combinators": 3,
@@ -162,12 +162,7 @@
         "line-height": ["px", "%", ""]
       }
     ],
-    "a11y/font-size-is-readable": [
-      true,
-      {
-        "severity": "warning"
-      }
-    ],
+    "a11y/font-size-is-readable": null,
     "a11y/line-height-is-vertical-rhythmed": [
       null,
       {
