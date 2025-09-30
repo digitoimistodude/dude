@@ -177,13 +177,21 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
-    // Add .dropdown or .active classes where they are needed.
+  // Check if this menu item should be used as a heading
+	$use_as_heading = get_field( 'use_as_heading', $item );
+
+  // Add .dropdown or .active classes where they are needed.
 	if ( $this->has_children ) {
 		$classes[] = 'dropdown dropdown-item';
 	}
 
 	if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) {
 		$classes[] = 'active';
+	}
+
+	// Add heading class if this item is marked as a heading
+	if ( $use_as_heading ) {
+		$classes[] = 'menu-heading';
 	}
 
 	// Add some additional default classes to the item.
@@ -210,8 +218,14 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 	$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
+    // Add role="presentation" for heading items
+    $role_attr = '';
+    if ( $use_as_heading ) {
+        $role_attr = ' role="presentation"';
+    }
+
     // Output
-    $output .= $indent . '<li' . $id . $class_names . '>';
+    $output .= $indent . '<li' . $id . $class_names . $role_attr . '>';
 
     // Initialize array for holding the $atts for the link item.
 	  $atts           = array();
@@ -272,7 +286,11 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * This is the start of the internal nav item. Depending on what
 	 * kind of linkmod we have we may need different wrapper elements.
 	 */
-	if ( '' !== $linkmod_type ) {
+	if ( $use_as_heading ) {
+		// This is a heading, use span instead of link
+		$heading_id = sanitize_title( $item->title ) . '-heading';
+		$item_output .= '<span class="dropdown-heading" id="' . $heading_id . '">';
+	} elseif ( '' !== $linkmod_type ) {
 		// Is linkmod, output the required element opener.
 		$item_output .= self::linkmod_element_open( $linkmod_type, $attributes );
 	} else {
@@ -311,7 +329,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * This is the end of the internal nav item. We need to close the
 	 * correct element depending on the type of link or link mod.
 	 */
-	if ( '' !== $linkmod_type ) {
+	if ( $use_as_heading ) {
+		// This is a heading, close the span
+		$item_output .= '</span>';
+	} elseif ( '' !== $linkmod_type ) {
 		// Is linkmod, output the required closing element.
 		$item_output .= self::linkmod_element_close( $linkmod_type );
 	} else {

@@ -26,6 +26,9 @@ function convertDropdownMenuItems(items) {
     // Add dropdown menu item title to dropdown toggle button
     dropdownToggle.innerHTML = menuItemTitle;
 
+    // Disabled automatic main link creation
+    // This was creating duplicate links in the dropdown menu
+    /*
     // Create new nav element
     const navElement = document.createElement('li');
     navElement.classList.add('menu-item');
@@ -58,6 +61,7 @@ function convertDropdownMenuItems(items) {
     }
 
     subMenu.insertBefore(navElement, subMenuFirstChild);
+    */
   });
 }
 
