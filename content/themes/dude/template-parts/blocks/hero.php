@@ -36,7 +36,7 @@ $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
 $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 ?>
 
-<section class="block block-hero">
+<section class="block block-hero<?php if ( is_front_page() ) : ?> block-hero-front-page<?php endif; ?>">
   <div class="container has-transition-fade">
 
     <div class="content">
@@ -47,7 +47,9 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
       <?php echo wp_kses_post( wpautop( $content ) ); ?>
 
       <p class="button-wrapper">
-        <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge">Ota yhteyttä</a>
+        <?php if ( is_front_page() ) : ?>
+          <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge">Ota yhteyttä</a>
+        <?php endif; ?>
         <?php /* Showreel temporarily disabled - can be re-enabled later
         <button class="play-showreel" id="play-<?php echo esc_html( $vimeo_showreel_id ); ?>" type="button">
           <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
