@@ -128,7 +128,7 @@ get_header(); ?>
               Ota yhteyttä ja tilaa
             </p>
 
-            <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa">199 &euro; <span class="text-small">/kk</span></a></h2>
+            <h2><a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" aria-label="199 &euro;, ota yhteyttä ja tilaa"><span class="text-small" style="font-size: 16px;display: block;margin-top: 20px;margin-bottom: -5px;">alkaen</span>199 &euro; <span class="text-small">/kk</span></a></h2>
             <p>per WordPress-verkkopalvelu</p>
             <ul>
               <li>Toistaiseksi voimassaoleva ylläpitosopimus.</li>
