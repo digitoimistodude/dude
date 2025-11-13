@@ -22,6 +22,7 @@
   }
 
   @media (max-width: $container-mobile) {
+    display: none;
     margin-bottom: 0;
     padding-bottom: 0;
   }
@@ -102,10 +103,12 @@
 
 // Advanced filters section - always visible on desktop, collapsible on mobile
 .reference-filters-advanced {
+  // stylelint-disable-next-line
+  @extend .container;
   background-color: transparent;
   margin-bottom: 3rem;
-  padding-left: var(--padding-container-horizontal);
-  padding-right: var(--padding-container-horizontal);
+  padding-bottom: 0;
+  padding-top: 0;
   position: relative;
   transition: all 0.3s ease-in-out;
 
@@ -171,11 +174,6 @@
     .container {
       padding: 0;
 
-      @media (min-width: $width-grid-base) {
-        padding-left: var(--padding-container-horizontal);
-        padding-right: var(--padding-container-horizontal);
-      }
-
       @media (max-width: $container-mobile) {
         padding-left: var(--padding-container-horizontal);
         padding-right: var(--padding-container-horizontal);
@@ -194,6 +192,13 @@
       .cols.cols-two {
         gap: 2rem;
       }
+    }
+  }
+
+  // Hide mobile target groups filter on desktop
+  .filter-target-groups-mobile {
+    @media (min-width: #{$container-mobile + 1px}) {
+      display: none;
     }
   }
 

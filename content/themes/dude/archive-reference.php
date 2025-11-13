@@ -85,12 +85,34 @@ get_header(); ?>
           <path d="M10.1675 2.59507H0.262451V3.36007H10.1675V4.88007H10.9275V1.07007H10.1675V2.59507Z" fill="currentColor"/>
         </svg>
       </span>
-      <span class="filter-text">Suodata lisää</span>
+      <span class="filter-text">Suodata referenssejä</span>
     </button>
 
     <div class="advanced-filters-content" id="advanced-filters-content" hidden>
       <div class="container">
         <div class="cols cols-two">
+          <?php // Target group filter (mobile only) ?>
+          <div class="filter-group filter-target-groups-mobile">
+            <div class="archive-head">
+              <p class="filter-label">Toimiala</p>
+              <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
+              <?php foreach ( $target_groups as $key => $label ) : ?>
+                <button
+                  type="button"
+                  class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
+                  data-filter="target-group"
+                  data-value="<?php echo esc_attr( $key ); ?>"
+                  aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
+                  <?php echo esc_html( $label ); ?>
+                  <?php if ( 'all' !== $key ) : ?>
+                    <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
+                  <?php endif; ?>
+                </button>
+              <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+
           <?php // Solutions/Categories filter ?>
           <div class="filter-group filter-solutions">
             <div class="archive-head">
