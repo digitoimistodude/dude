@@ -150,6 +150,8 @@ add_action( 'wpforms_frontend_js', function() {
   wp_dequeue_script( 'wpforms-flatpickr' );
   wp_dequeue_script( 'wpforms-payment' );
   wp_dequeue_script( 'wpforms-maskedinput' );
+  wp_dequeue_script( 'wpforms-captcha' );
+  wp_dequeue_script( 'wpforms-repeater' );
 
   wp_deregister_script( 'wpforms-password-field' );
   wp_deregister_script( 'wpforms-smart-phone-field' );
@@ -162,6 +164,8 @@ add_action( 'wpforms_frontend_js', function() {
   wp_deregister_script( 'wpforms-flatpickr' );
   wp_deregister_script( 'wpforms-payment' );
   wp_deregister_script( 'wpforms-maskedinput' );
+  wp_deregister_script( 'wpforms-captcha' );
+  wp_deregister_script( 'wpforms-repeater' );
 }, 99999 );
 
 add_action( 'wpforms_frontend_css', function() {
