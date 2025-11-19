@@ -853,6 +853,14 @@ const initLeadPopup = () => {
     // Close on overlay click - reopens after delay
     overlay.addEventListener('click', () => closePopup(false));
 
+    // Close popup when contact form link is clicked
+    const contactFormLink = popup.querySelector('a[href*="ota-yhteytta"]');
+    if (contactFormLink) {
+      contactFormLink.addEventListener('click', () => {
+        closePopup(true); // Dismiss for 2 days since they're going to contact page
+      });
+    }
+
     // Load and display reactions
     const updateReactionCounts = (reactions) => {
       Object.keys(reactions).forEach((key) => {
