@@ -119,11 +119,19 @@ Config::define( 'WP_REDIS_CONFIG', [
   'prefix'            => env( 'DB_NAME' ),
   'database'          => env( 'REDIS_DATABASE' ) ?: 0,
   'maxttl'            => 43200, // max cache half day
-  'timeout'           => 1.0,
-  'read_timeout'      => 1.0,
-  'split_alloptions'  => true,
+  'timeout'           => 0.5,
+  'read_timeout'      => 0.5,
+  'retry_interval'    => 10,
+  'retries'           => 3,
+  'backoff'           => 'smart',
+  'serializer'        => 'igbinary',
   'async_flush'       => true,
+  'split_alloptions'  => true,
+  'prefetch'          => true,
+  'strict'            => false,
   'debug'             => false,
+  'save_commands'     => false,
+  'analytics'         => false,
 ] );
 
 if ( 'production' === getenv( 'WP_ENV' ) ) {
