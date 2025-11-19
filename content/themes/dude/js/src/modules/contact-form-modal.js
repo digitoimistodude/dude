@@ -332,14 +332,7 @@ const initContactFormModal = () => {
 
     // Get all focusable elements within the modal
     const getFocusableElements = () => {
-      const focusableSelectors = [
-        'a[href]',
-        'button:not([disabled])',
-        'textarea:not([disabled])',
-        'input:not([disabled])',
-        'select:not([disabled])',
-        '[tabindex]:not([tabindex="-1"])',
-      ];
+      const focusableSelectors = ['a[href]', 'button:not([disabled])', 'textarea:not([disabled])', 'input:not([disabled])', 'select:not([disabled])', '[tabindex]:not([tabindex="-1"])'];
       return modal.querySelectorAll(focusableSelectors.join(','));
     };
 
@@ -373,7 +366,7 @@ const initContactFormModal = () => {
       if (stats && stats.visitors) {
         statsContainer.classList.remove('contact-form-modal__stats--loading');
         statsContainer.innerHTML = `
-          Tämän lomakkeen avaamisprosentti on <strong>${stats.click_rate}%</strong> kaikista verkkosivustomme uniikeista kävijöistä.
+          Lomakkeen avaamisprosentti on <strong>${stats.click_rate}%</strong>. Voit muuten myös aina soittaa Juhalle numeroon 0400 443 221 tai lähettää sähköpostia suoraan moro@dude.fi.
         `;
       } else {
         statsContainer.style.display = 'none';
