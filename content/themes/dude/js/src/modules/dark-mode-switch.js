@@ -141,7 +141,10 @@ const initdarkModeToggle = () => {
       // Note: Button should be added at the end of the HTML to avoid preceding an accessibility skip-to-content link.
       // Skip-to-content links should always be the first actionable asset on a web page.
       // body.appendChild(btn);
-      document.getElementById('dark-mode-toggle').appendChild(btn);
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      if (darkModeToggle) {
+        darkModeToggle.appendChild(btn);
+      }
     };
 
     _init();
