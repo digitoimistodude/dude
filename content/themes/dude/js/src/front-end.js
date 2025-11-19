@@ -29,6 +29,7 @@ import initA11ySkipLink from './modules/a11y-skip-link';
 import initUpKeepLanding from './modules/upkeep-landing';
 import initReferenceFilters from './modules/reference-filters';
 import initLeadPopup from './modules/lead-popup';
+import initContactFormModal from './modules/contact-form-modal';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -117,6 +118,9 @@ function init(target, args) {
 
   // Init lead generation popup
   initLeadPopup();
+
+  // Init contact form modal
+  initContactFormModal();
 
   // Fit video embeds to container
   if (window.innerWidth < 768) {

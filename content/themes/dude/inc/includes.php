@@ -38,6 +38,9 @@ if ( class_exists( 'acf_field' ) ) {
 // Lead popup reactions REST API
 require get_theme_file_path( '/inc/includes/lead-popup-reactions.php' );
 
+// Contact form statistics and tracking
+require get_theme_file_path( '/inc/includes/contact-form-stats.php' );
+
 // Custom functions
 require get_theme_file_path( 'inc/functions/vimeo.php' );
 require get_theme_file_path( 'inc/functions/person.php' );

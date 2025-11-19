@@ -100,6 +100,12 @@ Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 15 ); // Limi
 Config::define( 'MAILGUN_USEAPI', true );
 
 /**
+ * API Keys
+ */
+Config::define( 'PLAUSIBLE_API_KEY', env( 'PLAUSIBLE_API_KEY' ) );
+Config::define( 'PIPEDRIVE_API_TOKEN', env( 'PIPEDRIVE_API_TOKEN' ) );
+
+/**
  * Debugging Settings
  */
 Config::define( 'WP_DEBUG_DISPLAY', false );

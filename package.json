@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0",
+    "canvas-confetti": "^1.9.4",
     "npx": "^10.2.2"
   }
 }

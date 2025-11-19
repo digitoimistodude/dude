@@ -767,6 +767,11 @@ const initLeadPopup = () => {
 
   // Show popup
   const showPopup = () => {
+    // Check if contact modal is currently open
+    if (document.getElementById('contact-form-modal')) {
+      return;
+    }
+
     const popup = createPopup();
     document.body.appendChild(popup);
 
