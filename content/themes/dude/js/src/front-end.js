@@ -28,6 +28,7 @@ import initFormHelpers from './modules/form-helpers';
 import initA11ySkipLink from './modules/a11y-skip-link';
 import initUpKeepLanding from './modules/upkeep-landing';
 import initReferenceFilters from './modules/reference-filters';
+import initLeadPopup from './modules/lead-popup';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -113,6 +114,9 @@ function init(target, args) {
 
   // Init Twitter and Instagram embeds in blog posts
   initEmbeds();
+
+  // Init lead generation popup
+  initLeadPopup();
 
   // Fit video embeds to container
   if (window.innerWidth < 768) {

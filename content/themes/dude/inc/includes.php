@@ -35,6 +35,9 @@ if ( class_exists( 'acf_field' ) ) {
   require get_theme_file_path( '/inc/includes/acf-field-gravity-forms.php' );
 }
 
+// Lead popup reactions REST API
+require get_theme_file_path( '/inc/includes/lead-popup-reactions.php' );
+
 // Custom functions
 require get_theme_file_path( 'inc/functions/vimeo.php' );
 require get_theme_file_path( 'inc/functions/person.php' );
