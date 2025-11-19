@@ -11,11 +11,13 @@ const initEmbeds = () => {
     const tagMastodon = document.createElement('script');
     tagMastodon.src = 'https://mementomori.social/embed.js';
     const firstScriptTagMastodon = document.getElementsByTagName('script')[0];
-    firstScriptTagMastodon.parentNode.insertBefore(
-      tagMastodon,
-      firstScriptTagMastodon
-    );
-    window.isMastodonIframeAPILoaded = true;
+    if (firstScriptTagMastodon && firstScriptTagMastodon.parentNode) {
+      firstScriptTagMastodon.parentNode.insertBefore(
+        tagMastodon,
+        firstScriptTagMastodon
+      );
+      window.isMastodonIframeAPILoaded = true;
+    }
   };
 
   loadMastodonAPI();
