@@ -106,7 +106,7 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'cookieconsent',
     'iframemanager',
     'wpforms-generic-utils',
-    'wpforms-custom-captcha',
+    'wpforms-captcha',
     'wpforms-repeater',
     'video-player',
   ];
