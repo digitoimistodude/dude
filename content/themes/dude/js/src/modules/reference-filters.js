@@ -510,7 +510,9 @@ const initReferenceFilters = () => {
 
       // Event listeners are handled by document.body delegation below
 
-      container.appendChild(noResultsMessage);
+      if (container) {
+        container.appendChild(noResultsMessage);
+      }
     } else if (noResultsMessage) {
       noResultsMessage.remove();
     }
