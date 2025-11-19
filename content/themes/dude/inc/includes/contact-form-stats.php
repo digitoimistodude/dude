@@ -59,9 +59,10 @@ function get_plausible_visitors() {
   }
 
   $url = sprintf(
-    'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=%s&metrics=visitors&period=custom&date=2020-01-01,%s',
+    'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=%s&metrics=pageviews&period=custom&date=2025-11-19,%s&filters=%s',
     urlencode( $site_id ),
-    gmdate( 'Y-m-d' )
+    gmdate( 'Y-m-d' ),
+    urlencode( 'event:page==/' )
   );
 
   $response = wp_remote_get( $url, [
@@ -84,12 +85,12 @@ function get_plausible_visitors() {
 
   $data = json_decode( $body, true );
 
-  if ( ! isset( $data['results']['visitors']['value'] ) ) {
+  if ( ! isset( $data['results']['pageviews']['value'] ) ) {
     error_log( 'Plausible API: Invalid response structure' );
     return null;
   }
 
-  $visitors = intval( $data['results']['visitors']['value'] );
+  $visitors = intval( $data['results']['pageviews']['value'] );
   set_transient( $cache_key, $visitors, HOUR_IN_SECONDS );
 
   return $visitors;
