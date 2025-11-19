@@ -40,7 +40,9 @@ const initCarousels = () => {
         skipLinkWrapper.classList.add('has-unified-padding-if-stacked');
         skipLinkWrapper.classList.add('is-skip-link');
         skipLinkWrapper.innerHTML = skipLinkContent;
-        carouselBlock.parentNode.insertBefore(skipLinkWrapper, carouselBlock);
+        if (carouselBlock.parentNode) {
+          carouselBlock.parentNode.insertBefore(skipLinkWrapper, carouselBlock);
+        }
       }
     }
   }
@@ -48,12 +50,17 @@ const initCarousels = () => {
   // Init swipers
   for (let i = 0; i < Carousels.length; i++) {
     Carousels[i].classList.add(`swiper-container-${i}`);
-    Carousels[i]
-      .querySelector('.swiper-button-prev')
-      .classList.add(`swiper-button-prev-${i}`);
-    Carousels[i]
-      .querySelector('.swiper-button-next')
-      .classList.add(`swiper-button-next-${i}`);
+
+    // Add classes to navigation buttons if they exist
+    const prevButton = Carousels[i].querySelector('.swiper-button-prev');
+    if (prevButton) {
+      prevButton.classList.add(`swiper-button-prev-${i}`);
+    }
+
+    const nextButton = Carousels[i].querySelector('.swiper-button-next');
+    if (nextButton) {
+      nextButton.classList.add(`swiper-button-next-${i}`);
+    }
 
     if (Carousels[i].querySelector('.swiper-pagination')) {
       Carousels[i]
