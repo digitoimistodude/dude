@@ -5,8 +5,6 @@ const initUpKeepLanding = () => {
   const track = document.getElementById('carousel-track');
 
   if (!carousel || !track) {
-    // eslint-disable-next-line
-    console.warn('Carousel elements not found');
     return;
   }
 
