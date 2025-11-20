@@ -14,6 +14,7 @@ const initLeadPopup = () => {
   const TRIGGER_DELAY = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
   const STORAGE_KEY = 'dude-lead-popup-dismissed';
   const DAYS_TO_HIDE = 2;
+  const HOURS_TO_HIDE = 1;
 
   // Check if popup should be shown
   const shouldShowPopup = () => {
@@ -819,7 +820,7 @@ const initLeadPopup = () => {
     content.addEventListener('keydown', handleTabKey);
 
     // Handle button clicks
-    const closePopup = (shouldDismissForDays = false) => {
+    const closePopup = (dismissType = 'reopen') => {
       popup.classList.remove('lead-popup--visible');
       document.body.style.overflow = '';
       content.removeEventListener('keydown', handleTabKey);
@@ -828,9 +829,13 @@ const initLeadPopup = () => {
         popup.remove();
       }, 300);
 
-      if (shouldDismissForDays) {
-        const now = new Date().getTime();
+      const now = new Date().getTime();
+
+      if (dismissType === 'days') {
         const expiryTime = now + DAYS_TO_HIDE * 24 * 60 * 60 * 1000;
+        localStorage.setItem(STORAGE_KEY, expiryTime.toString());
+      } else if (dismissType === 'hours') {
+        const expiryTime = now + HOURS_TO_HIDE * 60 * 60 * 1000;
         localStorage.setItem(STORAGE_KEY, expiryTime.toString());
       } else {
         // If just closing, show again after the trigger delay
@@ -842,24 +847,24 @@ const initLeadPopup = () => {
       }
     };
 
-    // Close icon button - reopens after delay
+    // Close icon button - hides for 1 hour
     if (closeIconBtn) {
-      closeIconBtn.addEventListener('click', () => closePopup(false));
+      closeIconBtn.addEventListener('click', () => closePopup('hours'));
     }
 
     // Trash button - hides for 2 days
     if (dismissBtn) {
-      dismissBtn.addEventListener('click', () => closePopup(true));
+      dismissBtn.addEventListener('click', () => closePopup('days'));
     }
 
     // Close on overlay click - reopens after delay
-    overlay.addEventListener('click', () => closePopup(false));
+    overlay.addEventListener('click', () => closePopup('reopen'));
 
     // Close popup when contact form link is clicked
     const contactFormLink = popup.querySelector('a[href*="ota-yhteytta"]');
     if (contactFormLink) {
       contactFormLink.addEventListener('click', () => {
-        closePopup(true); // Dismiss for 2 days since they're going to contact page
+        closePopup('days'); // Dismiss for 2 days since they're going to contact page
       });
     }
 
