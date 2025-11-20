@@ -547,7 +547,7 @@ const initContactFormModal = () => {
     }
   };
 
-  // Pre-create modal on hover/focus for instant loading
+  // Pre-create modal immediately for instant loading on click
   const preCreateModal = () => {
     // Only pre-create once and if not already created
     if (preCreatedModal || document.getElementById(MODAL_ID)) return;
@@ -565,12 +565,12 @@ const initContactFormModal = () => {
       formContainer.appendChild(script);
 
       // eslint-disable-next-line no-console
-      console.log('Modal pre-created, Pipedrive form loading in background');
+      console.log('Modal pre-created on page load, Pipedrive form loading in background');
     }
   };
 
-  contactButton.addEventListener('mouseenter', preCreateModal);
-  contactButton.addEventListener('focus', preCreateModal);
+  // Pre-create modal immediately when page loads (works with Swup.js)
+  preCreateModal();
 
   // Handle button click
   contactButton.addEventListener('click', () => {
