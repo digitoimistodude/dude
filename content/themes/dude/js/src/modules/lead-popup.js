@@ -9,7 +9,9 @@ const initLeadPopup = () => {
   popupInitialized = true;
 
   // Configuration
-  const TRIGGER_DELAY = 10000;
+  const MIN_DELAY = 10000; // 10 seconds
+  const MAX_DELAY = 80000; // 80 seconds
+  const TRIGGER_DELAY = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
   const STORAGE_KEY = 'dude-lead-popup-dismissed';
   const DAYS_TO_HIDE = 2;
 
