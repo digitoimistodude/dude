@@ -38,7 +38,19 @@ if ( empty( $title ) ) {
         <?php the_title(); ?>
       </h1>
 
-      <?php echo wp_kses_post( wpautop( $title ) );
+      <?php
+      echo wp_kses( wpautop( $title ), [
+        'h2'     => [],
+        'h3'     => [],
+        'p'      => [],
+        'span'   => [
+          'style' => [],
+          'class' => [],
+        ],
+        'strong' => [],
+        'em'     => [],
+        'br'     => [],
+      ] );
 
       echo wp_kses_post( wpautop( $content ) );
 
