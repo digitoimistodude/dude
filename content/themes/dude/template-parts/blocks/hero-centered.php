@@ -44,7 +44,7 @@ if ( empty( $title ) ) {
         'h3'     => [],
         'p'      => [],
         'span'   => [
-          'style' => true,
+          'style' => [],
           'class' => [],
         ],
         'strong' => [],

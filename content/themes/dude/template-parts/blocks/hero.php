@@ -43,6 +43,9 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
       <h1 id="content">
         <?php
         echo wp_kses( $title, [
+          'h2'     => [],
+          'h3'     => [],
+          'p'      => [],
           'span' => [
             'style' => [],
             'class' => [],

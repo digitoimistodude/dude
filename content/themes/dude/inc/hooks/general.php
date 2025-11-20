@@ -169,3 +169,9 @@ function two_factor_force_email_provider_for_user( $enabled_providers ) {
 
 // Disable WordPress scaling down (-scaled) images
 add_filter( 'big_image_size_threshold', '__return_false' );
+
+// Allow display CSS property in inline styles for ACF fields
+add_filter( 'safe_style_css', function( $styles ) {
+  $styles[] = 'display';
+  return $styles;
+} );
