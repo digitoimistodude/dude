@@ -140,6 +140,9 @@ if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
       $image_url = str_replace( 'dude.test', 'dude.fi', $image_url );
     }
 
+    // Use origin.dude.fi for fetching to avoid CF double-proxying, Ref: DEV-619
+    $image_url = preg_replace( '#^https?://(www\.)?dude\.fi/#', 'https://origin.dude.fi/', $image_url );
+
     return 'https://cdn.dude.fi/cdn-cgi/image/' . implode( ',', $args_url ) . "/{$image_url}";
   } // End build_image_cf_cdn_url
 }
