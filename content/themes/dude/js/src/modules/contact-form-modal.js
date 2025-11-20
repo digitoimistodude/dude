@@ -371,19 +371,29 @@ const initContactFormModal = () => {
     return modal;
   };
 
+  // Pre-created modal reference
+  let preCreatedModal = null;
+
   // Show modal
   const showModal = () => {
-    // Remove existing modal if present
-    const existingModal = document.getElementById(MODAL_ID);
-    if (existingModal) {
-      existingModal.remove();
+    // Use pre-created modal if available, otherwise create new one
+    let modal;
+    if (preCreatedModal) {
+      modal = preCreatedModal;
+      preCreatedModal = null; // Clear reference after use
+    } else {
+      // Remove existing modal if present
+      const existingModal = document.getElementById(MODAL_ID);
+      if (existingModal) {
+        existingModal.remove();
+      }
+
+      modal = createModal();
+      document.body.appendChild(modal);
     }
 
     // Store the currently focused element to return focus later
     const previouslyFocusedElement = document.activeElement;
-
-    const modal = createModal();
-    document.body.appendChild(modal);
 
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
@@ -394,7 +404,6 @@ const initContactFormModal = () => {
     }, 10);
 
     // Focus trap implementation
-    const content = modal.querySelector('.contact-form-modal__content');
     const closeBtn = modal.querySelector('.contact-form-modal__close');
     const overlay = modal.querySelector('.contact-form-modal__overlay');
 
@@ -474,10 +483,22 @@ const initContactFormModal = () => {
     };
     document.addEventListener('keydown', handleEscape);
 
-    // Reload Pipedrive form script, Ref: DEV-619
+    // Handle form loading, Ref: DEV-619
     const formContainer = modal.querySelector('.pipedriveWebForms');
-    if (formContainer) {
-      // Remove any existing script to force reload
+    const loader = modal.querySelector('.contact-form-modal__form-loader');
+
+    // Check if form iframe already exists (from pre-creation)
+    const existingIframe = formContainer.querySelector('iframe');
+    if (existingIframe) {
+      // Form already loaded, hide loader immediately
+      if (loader) {
+        loader.classList.add('contact-form-modal__form-loader--hidden');
+      }
+      formContainer.classList.add('pipedriveWebForms--loaded');
+      // eslint-disable-next-line no-console
+      console.log('Pipedrive form already loaded from pre-creation');
+    } else if (formContainer) {
+      // Form not loaded yet, remove any existing script to force reload
       const existingScripts = formContainer.querySelectorAll('script');
       existingScripts.forEach(s => s.remove());
 
@@ -494,8 +515,7 @@ const initContactFormModal = () => {
 
       formContainer.appendChild(script);
 
-      // Wait for iframe with timeout, Ref: DEV-619
-      const loader = modal.querySelector('.contact-form-modal__form-loader');
+      // Wait for iframe with timeout
       const checkIframe = setInterval(() => {
         const iframe = formContainer.querySelector('iframe');
         if (iframe) {
@@ -527,21 +547,30 @@ const initContactFormModal = () => {
     }
   };
 
-  // Preload Pipedrive script on hover/focus for faster loading
-  let scriptPreloaded = false;
-  const preloadPipedriveScript = () => {
-    if (scriptPreloaded) return;
-    scriptPreloaded = true;
+  // Pre-create modal on hover/focus for instant loading
+  const preCreateModal = () => {
+    // Only pre-create once and if not already created
+    if (preCreatedModal || document.getElementById(MODAL_ID)) return;
 
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'script';
-    link.href = 'https://webforms.pipedrive.com/f/loader';
-    document.head.appendChild(link);
+    // Create modal but don't show it (don't add visible class)
+    preCreatedModal = createModal();
+    document.body.appendChild(preCreatedModal);
+
+    // Start loading the Pipedrive form in the background
+    const formContainer = preCreatedModal.querySelector('.pipedriveWebForms');
+    if (formContainer) {
+      const script = document.createElement('script');
+      script.src = 'https://webforms.pipedrive.com/f/loader';
+      script.async = true;
+      formContainer.appendChild(script);
+
+      // eslint-disable-next-line no-console
+      console.log('Modal pre-created, Pipedrive form loading in background');
+    }
   };
 
-  contactButton.addEventListener('mouseenter', preloadPipedriveScript);
-  contactButton.addEventListener('focus', preloadPipedriveScript);
+  contactButton.addEventListener('mouseenter', preCreateModal);
+  contactButton.addEventListener('focus', preCreateModal);
 
   // Handle button click
   contactButton.addEventListener('click', () => {
