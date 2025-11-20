@@ -41,7 +41,17 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
     <div class="content">
       <h1 id="content">
-        <?php echo esc_html( $title ); ?>
+        <?php
+        echo wp_kses( $title, [
+          'span' => [
+            'style' => [],
+            'class' => [],
+          ],
+          'strong' => [],
+          'em'     => [],
+          'br'     => [],
+        ] );
+        ?>
       </h1>
 
       <?php echo wp_kses_post( wpautop( $content ) ); ?>
