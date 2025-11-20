@@ -6,6 +6,25 @@
     font-size: var(--font-size-62);
   }
 
+  // Dark mode support
+  [data-color-scheme='dark'] & {
+    background-color: var(--color-petrol);
+
+    h2 {
+      color: var(--color-white);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not([data-color-scheme='light']) & {
+      background-color: var(--color-petrol);
+
+      h2 {
+        color: var(--color-white);
+      }
+    }
+  }
+
   ul,
   li {
     list-style: none;
