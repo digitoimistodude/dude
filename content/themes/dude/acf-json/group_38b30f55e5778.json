@@ -1,90 +1,118 @@
 {
-  "key": "group_38b30f55e5778",
-  "title": "Lohko: Kuvakaruselli",
-  "fields": [
-    {
-      "key": "field_6f75a62464839",
-      "label": "Otsikko",
-      "name": "title",
-      "type": "text",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "placeholder": "",
-      "prepend": "",
-      "append": "",
-      "maxlength": ""
-    },
-    {
-      "key": "field_630a3354a328b",
-      "label": "Näytä aktiivinen kuva isompana",
-      "name": "make_active_bigger",
-      "type": "true_false",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "message": "",
-      "default_value": 0,
-      "ui": 1,
-      "ui_on_text": "",
-      "ui_off_text": ""
-    },
-    {
-      "key": "field_62a829ab344d8",
-      "label": "Kuvat",
-      "name": "images",
-      "type": "gallery",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "return_format": "id",
-      "preview_size": "medium",
-      "insert": "append",
-      "library": "all",
-      "min": "",
-      "max": "",
-      "min_width": "",
-      "min_height": "",
-      "min_size": "",
-      "max_width": "",
-      "max_height": "",
-      "max_size": "",
-      "mime_types": ""
-    }
-  ],
-  "location": [
-    [
-      {
-        "param": "block",
-        "operator": "==",
-        "value": "acf\/carousel"
-      }
-    ]
-  ],
-  "menu_order": 0,
-  "position": "normal",
-  "style": "default",
-  "label_placement": "top",
-  "instruction_placement": "label",
-  "hide_on_screen": "",
-  "active": true,
-  "description": "",
-  "show_in_rest": 0,
-  "modified": 1661612932
+    "key": "group_38b30f55e5778",
+    "title": "Lohko: Kuvakaruselli",
+    "fields": [
+        {
+            "key": "field_691f4ceb69f6e",
+            "label": "Tyyli",
+            "name": "carousel_style",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Katso tehtävä <a href=\"https:\/\/linear.app\/dude\/issue\/KVLT-72\/tyylivariaatio-kuvakaruselli-lohkoon\" target=\"_blank\">KVLT-72<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "default": "Oletus",
+                "alt": "Matala"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_6f75a62464839",
+            "label": "Otsikko",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_630a3354a328b",
+            "label": "Näytä aktiivinen kuva isompana",
+            "name": "make_active_bigger",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_62a829ab344d8",
+            "label": "Kuvat",
+            "name": "images",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/carousel"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1763659154
 }

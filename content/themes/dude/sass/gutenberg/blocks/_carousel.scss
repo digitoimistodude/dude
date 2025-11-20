@@ -61,6 +61,32 @@
       flex-wrap: wrap;
     }
   }
+
+  // Alt carousel style
+  &.carousel-style-alt {
+    .container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .head {
+      margin: 0;
+      padding: 3rem 0;
+    }
+
+    .swiper-wrapper {
+      @media (min-width: $width-max-mobile) {
+        max-height: 750px;
+      }
+    }
+
+    .swiper-slide img {
+      @media (min-width: $width-max-mobile) {
+        height: 750px;
+        object-fit: cover;
+      }
+    }
+  }
 }
 
 // stylelint-disable-next-line
