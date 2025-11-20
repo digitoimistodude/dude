@@ -933,10 +933,36 @@ const initLeadPopup = () => {
     document.addEventListener('keydown', handleEscape);
   };
 
+  // Check if we're on the front page (page-id-7)
+  const isFrontPage = () => document.body.classList.contains('page-id-7');
+
+  // Don't show popup on front page (contact button is already there)
+  if (isFrontPage()) {
+    return;
+  }
+
   // Trigger popup after delay
   popupTimeout = setTimeout(() => {
     showPopup();
   }, TRIGGER_DELAY);
+
+  // Monitor for swup.js page transitions
+  if (typeof document !== 'undefined') {
+    document.addEventListener('swup:contentReplaced', () => {
+      // Clear existing timeout if navigating to front page
+      if (isFrontPage() && popupTimeout) {
+        clearTimeout(popupTimeout);
+        popupTimeout = null;
+
+        // Remove popup if it's currently visible
+        const existingPopup = document.getElementById('lead-popup');
+        if (existingPopup) {
+          existingPopup.remove();
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  }
 };
 
 export default initLeadPopup;
