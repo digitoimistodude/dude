@@ -463,6 +463,8 @@ const initContactFormModal = () => {
         if (previouslyFocusedElement) {
           previouslyFocusedElement.focus();
         }
+        // Pre-create modal again for next time
+        preCreateModal();
       }, 300);
     };
 
