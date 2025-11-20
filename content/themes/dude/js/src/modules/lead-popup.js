@@ -939,17 +939,14 @@ const initLeadPopup = () => {
            document.body.classList.contains('page-id-4487'); // Contact page
   };
 
-  // Don't show popup on front page or contact page
-  if (shouldSkipPopup()) {
-    return;
+  // Trigger popup after delay if not on excluded page
+  if (!shouldSkipPopup()) {
+    popupTimeout = setTimeout(() => {
+      showPopup();
+    }, TRIGGER_DELAY);
   }
 
-  // Trigger popup after delay
-  popupTimeout = setTimeout(() => {
-    showPopup();
-  }, TRIGGER_DELAY);
-
-  // Monitor for swup.js page transitions
+  // Always monitor for swup.js page transitions (even if starting on excluded page)
   if (typeof document !== 'undefined') {
     document.addEventListener('swup:contentReplaced', () => {
       // Clear any existing timeout
