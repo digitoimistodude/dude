@@ -9,6 +9,7 @@
     "@swup/scroll-plugin": "^1.3.0",
     "@vimeo/player": "^2.18.0",
     "airbnb-browser-shims": "^3.3.0",
+    "canvas-confetti": "^1.9.4",
     "hamburgers": "^1.2.1",
     "moveto": "^1.8.2",
     "reframe.js": "^4.0.0",

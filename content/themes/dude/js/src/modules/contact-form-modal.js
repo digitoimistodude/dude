@@ -435,23 +435,45 @@ const initContactFormModal = () => {
     };
     document.addEventListener('keydown', handleEscape);
 
-    // Reload Pipedrive form script
+    // Reload Pipedrive form script, Ref: DEV-619
     const formContainer = modal.querySelector('.pipedriveWebForms');
     if (formContainer) {
+      // Remove any existing script to force reload
+      const existingScripts = formContainer.querySelectorAll('script');
+      existingScripts.forEach(s => s.remove());
+
+      // Create new script element
       const script = document.createElement('script');
       script.src = 'https://webforms.pipedrive.com/f/loader';
       script.async = true;
+
+      // Add error handling
+      script.onerror = () => {
+        // eslint-disable-next-line no-console
+        console.error('Failed to load Pipedrive form script');
+      };
+
       formContainer.appendChild(script);
 
-      // Log when iframe loads
+      // Wait for iframe with timeout, Ref: DEV-619
       const checkIframe = setInterval(() => {
         const iframe = formContainer.querySelector('iframe');
         if (iframe) {
           clearInterval(checkIframe);
           // eslint-disable-next-line no-console
-          console.log('Pipedrive form iframe loaded');
+          console.log('Pipedrive form iframe loaded successfully');
         }
       }, 100);
+
+      // Timeout after 10 seconds
+      setTimeout(() => {
+        clearInterval(checkIframe);
+        const iframe = formContainer.querySelector('iframe');
+        if (!iframe) {
+          // eslint-disable-next-line no-console
+          console.error('Pipedrive form failed to load within 10 seconds');
+        }
+      }, 10000);
     }
   };
 
