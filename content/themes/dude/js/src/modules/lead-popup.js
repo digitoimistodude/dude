@@ -933,11 +933,14 @@ const initLeadPopup = () => {
     document.addEventListener('keydown', handleEscape);
   };
 
-  // Check if we're on the front page (page-id-7)
-  const isFrontPage = () => document.body.classList.contains('page-id-7');
+  // Check if we're on a page where popup should be skipped
+  const shouldSkipPopup = () => {
+    return document.body.classList.contains('page-id-7') || // Front page
+           document.body.classList.contains('page-id-4487'); // Contact page
+  };
 
-  // Don't show popup on front page (contact button is already there)
-  if (isFrontPage()) {
+  // Don't show popup on front page or contact page
+  if (shouldSkipPopup()) {
     return;
   }
 
@@ -949,18 +952,34 @@ const initLeadPopup = () => {
   // Monitor for swup.js page transitions
   if (typeof document !== 'undefined') {
     document.addEventListener('swup:contentReplaced', () => {
-      // Clear existing timeout if navigating to front page
-      if (isFrontPage() && popupTimeout) {
+      // Clear any existing timeout
+      if (popupTimeout) {
         clearTimeout(popupTimeout);
         popupTimeout = null;
-
-        // Remove popup if it's currently visible
-        const existingPopup = document.getElementById('lead-popup');
-        if (existingPopup) {
-          existingPopup.remove();
-          document.body.style.overflow = '';
-        }
       }
+
+      // Remove popup if it's currently visible
+      const existingPopup = document.getElementById('lead-popup');
+      if (existingPopup) {
+        existingPopup.remove();
+        document.body.style.overflow = '';
+      }
+
+      // If we're on an excluded page, don't start the timer
+      if (shouldSkipPopup()) {
+        return;
+      }
+
+      // Check if popup should be shown (not dismissed)
+      if (!shouldShowPopup()) {
+        return;
+      }
+
+      // Start the popup timer on pages where it should show with new random delay
+      const newDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+      popupTimeout = setTimeout(() => {
+        showPopup();
+      }, newDelay);
     });
   }
 };
