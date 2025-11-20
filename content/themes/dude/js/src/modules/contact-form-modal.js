@@ -169,6 +169,35 @@ const initContactFormModal = () => {
 
       .contact-form-modal__form {
         margin-top: 2rem;
+        position: relative;
+      }
+
+      .contact-form-modal__form-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 0;
+        gap: 1rem;
+        color: #dcdde0;
+        font-size: 16px;
+      }
+
+      .contact-form-modal__form-loader--hidden {
+        display: none;
+      }
+
+      .contact-form-modal__form-loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(126, 255, 225, 0.2);
+        border-top-color: #7effe1;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
 
       .contact-form-modal__form .pipedriveWebForms {
@@ -176,6 +205,12 @@ const initContactFormModal = () => {
         max-width: none !important;
         margin: 0 !important;
         padding: 0 !important;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-form-modal__form .pipedriveWebForms--loaded {
+        opacity: 1;
       }
 
       .contact-form-modal__form .pipedriveWebForms > div {
@@ -324,6 +359,10 @@ const initContactFormModal = () => {
           </li>
         </ul>
         <div class="contact-form-modal__form">
+          <div class="contact-form-modal__form-loader">
+            <div class="contact-form-modal__form-loader-spinner"></div>
+            <p>Ladataan lomaketta...</p>
+          </div>
           <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/1C922tUo90oeWhck1VhXZFdy1KWojGVSTwWxvxu5eswakOcepyDnWl7MtQDYOBcBl"><script src="https://webforms.pipedrive.com/f/loader"></script></div>
         </div>
       </div>
@@ -456,10 +495,18 @@ const initContactFormModal = () => {
       formContainer.appendChild(script);
 
       // Wait for iframe with timeout, Ref: DEV-619
+      const loader = modal.querySelector('.contact-form-modal__form-loader');
       const checkIframe = setInterval(() => {
         const iframe = formContainer.querySelector('iframe');
         if (iframe) {
           clearInterval(checkIframe);
+
+          // Hide loader and show form with fade in
+          if (loader) {
+            loader.classList.add('contact-form-modal__form-loader--hidden');
+          }
+          formContainer.classList.add('pipedriveWebForms--loaded');
+
           // eslint-disable-next-line no-console
           console.log('Pipedrive form iframe loaded successfully');
         }
@@ -472,10 +519,29 @@ const initContactFormModal = () => {
         if (!iframe) {
           // eslint-disable-next-line no-console
           console.error('Pipedrive form failed to load within 10 seconds');
+          if (loader && !formContainer.classList.contains('pipedriveWebForms--loaded')) {
+            loader.innerHTML = '<p style="color: #dcdde0;">Lomakkeen lataus epäonnistui. Yritä uudelleen tai ota yhteyttä suoraan.</p>';
+          }
         }
       }, 10000);
     }
   };
+
+  // Preload Pipedrive script on hover/focus for faster loading
+  let scriptPreloaded = false;
+  const preloadPipedriveScript = () => {
+    if (scriptPreloaded) return;
+    scriptPreloaded = true;
+
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'script';
+    link.href = 'https://webforms.pipedrive.com/f/loader';
+    document.head.appendChild(link);
+  };
+
+  contactButton.addEventListener('mouseenter', preloadPipedriveScript);
+  contactButton.addEventListener('focus', preloadPipedriveScript);
 
   // Handle button click
   contactButton.addEventListener('click', () => {
