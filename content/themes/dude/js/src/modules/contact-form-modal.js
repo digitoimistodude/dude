@@ -165,8 +165,6 @@ const initContactFormModal = () => {
       .contact-form-modal__alternative-contacts svg {
         flex-shrink: 0;
         color: #7effe1;
-        stroke: #7effe1;
-        fill: #7effe1;
       }
 
       .contact-form-modal__form {

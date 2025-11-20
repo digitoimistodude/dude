@@ -789,8 +789,8 @@ const initLeadPopup = () => {
             </button>
           </div>
         </div>
-        <button type="button" class="lead-popup__trash" data-action="dismiss" aria-label="Roskiin tämmöset!">
-          <span class="lead-popup__trash-text">Roskiin tämmöset!</span>
+        <button type="button" class="lead-popup__trash" data-action="dismiss" aria-label="Älä näytä enää">
+          <span class="lead-popup__trash-text">Älä näytä enää</span>
           🗑️
         </button>
       </div>
