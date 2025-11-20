@@ -1,41 +1,59 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
-let popupInitialized = false;
+let stylesInjected = false;
 let popupTimeout = null;
 
+// Configuration constants
+const MIN_DELAY = 10000; // 10 seconds
+const MAX_DELAY = 80000; // 80 seconds
+const STORAGE_KEY = 'dude-lead-popup-dismissed';
+const DAYS_TO_HIDE = 2;
+const HOURS_TO_HIDE = 1;
+
+// Check if popup should be shown
+const shouldShowPopup = () => {
+  const dismissedUntil = localStorage.getItem(STORAGE_KEY);
+  if (!dismissedUntil) return true;
+
+  const now = new Date().getTime();
+  if (now > parseInt(dismissedUntil, 10)) {
+    // Storage expired, remove it
+    localStorage.removeItem(STORAGE_KEY);
+    return true;
+  }
+  return false;
+};
+
+// Check if we're on a page where popup should be skipped
+const shouldSkipPopup = () => {
+  return document.body.classList.contains('page-id-7') || // Front page
+         document.body.classList.contains('page-id-4487'); // Contact page
+};
+
 const initLeadPopup = () => {
-  // Prevent multiple initializations (for Swup.js page transitions)
-  if (popupInitialized) return;
-  popupInitialized = true;
+  // Clear any existing timeout from previous page
+  if (popupTimeout) {
+    clearTimeout(popupTimeout);
+    popupTimeout = null;
+  }
 
-  // Configuration
-  const MIN_DELAY = 10000; // 10 seconds
-  const MAX_DELAY = 80000; // 80 seconds
-  const TRIGGER_DELAY = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
-  const STORAGE_KEY = 'dude-lead-popup-dismissed';
-  const DAYS_TO_HIDE = 2;
-  const HOURS_TO_HIDE = 1;
+  // Remove popup if it's currently visible
+  const existingPopup = document.getElementById('lead-popup');
+  if (existingPopup) {
+    existingPopup.remove();
+    document.body.style.overflow = '';
+  }
 
-  // Check if popup should be shown
-  const shouldShowPopup = () => {
-    const dismissedUntil = localStorage.getItem(STORAGE_KEY);
-    if (!dismissedUntil) return true;
-
-    const now = new Date().getTime();
-    if (now > parseInt(dismissedUntil, 10)) {
-      // Storage expired, remove it
-      localStorage.removeItem(STORAGE_KEY);
-      return true;
-    }
-    return false;
-  };
-
-  // Don't show if user dismissed for 2 days
+  // Don't show if user dismissed
   if (!shouldShowPopup()) return;
 
-  // Inject styles
+  // Don't show on excluded pages
+  if (shouldSkipPopup()) return;
+
+  // Inject styles (only once)
   const injectStyles = () => {
-    if (document.getElementById('lead-popup-styles')) return;
+    if (stylesInjected) return;
+    stylesInjected = true;
 
     const style = document.createElement('style');
     style.id = 'lead-popup-styles';
@@ -933,52 +951,14 @@ const initLeadPopup = () => {
     document.addEventListener('keydown', handleEscape);
   };
 
-  // Check if we're on a page where popup should be skipped
-  const shouldSkipPopup = () => {
-    return document.body.classList.contains('page-id-7') || // Front page
-           document.body.classList.contains('page-id-4487'); // Contact page
-  };
+  // Inject styles
+  injectStyles();
 
-  // Trigger popup after delay if not on excluded page
-  if (!shouldSkipPopup()) {
-    popupTimeout = setTimeout(() => {
-      showPopup();
-    }, TRIGGER_DELAY);
-  }
-
-  // Always monitor for swup.js page transitions (even if starting on excluded page)
-  if (typeof document !== 'undefined') {
-    document.addEventListener('swup:contentReplaced', () => {
-      // Clear any existing timeout
-      if (popupTimeout) {
-        clearTimeout(popupTimeout);
-        popupTimeout = null;
-      }
-
-      // Remove popup if it's currently visible
-      const existingPopup = document.getElementById('lead-popup');
-      if (existingPopup) {
-        existingPopup.remove();
-        document.body.style.overflow = '';
-      }
-
-      // If we're on an excluded page, don't start the timer
-      if (shouldSkipPopup()) {
-        return;
-      }
-
-      // Check if popup should be shown (not dismissed)
-      if (!shouldShowPopup()) {
-        return;
-      }
-
-      // Start the popup timer on pages where it should show with new random delay
-      const newDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
-      popupTimeout = setTimeout(() => {
-        showPopup();
-      }, newDelay);
-    });
-  }
+  // Trigger popup after random delay
+  const delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+  popupTimeout = setTimeout(() => {
+    showPopup();
+  }, delay);
 };
 
 export default initLeadPopup;
