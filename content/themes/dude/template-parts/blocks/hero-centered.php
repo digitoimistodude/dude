@@ -39,18 +39,19 @@ if ( empty( $title ) ) {
       </h1>
 
       <?php
-      echo wp_kses( wpautop( $title ), [
+      $allowed_html = [
         'h2'     => [],
         'h3'     => [],
         'p'      => [],
         'span'   => [
-          'style' => [],
+          'style' => true,
           'class' => [],
         ],
         'strong' => [],
         'em'     => [],
         'br'     => [],
-      ] );
+      ];
+      echo wp_kses( $title, $allowed_html );
 
       echo wp_kses_post( wpautop( $content ) );
 
