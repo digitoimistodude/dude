@@ -134,20 +134,31 @@ const initContactFormModal = () => {
         }
       }
 
-      .contact-form-modal__stats {
+      .contact-form-modal__alternative-contacts {
         margin: 0 0 2rem;
         font-size: 16px;
         color: #fff;
-        line-height: 1.6;
+        line-height: 1.8;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
 
-      .contact-form-modal__stats strong {
+      .contact-form-modal__alternative-contacts a {
         color: #7effe1;
-        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: opacity 0.2s ease;
       }
 
-      .contact-form-modal__stats--loading {
-        opacity: 0.6;
+      .contact-form-modal__alternative-contacts a:hover {
+        opacity: 0.8;
+      }
+
+      .contact-form-modal__alternative-contacts svg {
+        flex-shrink: 0;
       }
 
       .contact-form-modal__form {
@@ -285,9 +296,20 @@ const initContactFormModal = () => {
         <button type="button" class="contact-form-modal__close" aria-label="Sulje">
           ×
         </button>
-        <h2 id="contact-modal-heading" class="contact-form-modal__heading">Ota yhteyttä</h2>
-        <p class="contact-form-modal__stats contact-form-modal__stats--loading">
-          Ladataan tilastoja...
+        <h2 id="contact-modal-heading" class="contact-form-modal__heading">Jätä yhteydenottopyyntö</h2>
+        <p class="contact-form-modal__alternative-contacts">
+          <a href="tel:0400443221">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="transparent" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Soita Juhalle 0400 443 221
+          </a>
+          <a href="https://wa.me/358400443221" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="transparent" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Lähetä WhatsAppia
+          </a>
+          <a href="mailto:moro@dude.fi">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="transparent" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Lähetä sähköpostia moro@dude.fi
+          </a>
         </p>
         <div class="contact-form-modal__form">
           <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/1C922tUo90oeWhck1VhXZFdy1KWojGVSTwWxvxu5eswakOcepyDnWl7MtQDYOBcBl"><script src="https://webforms.pipedrive.com/f/loader"></script></div>
@@ -360,16 +382,10 @@ const initContactFormModal = () => {
 
     document.addEventListener('keydown', handleFocusTrap);
 
-    // Load and display statistics
-    const statsContainer = modal.querySelector('.contact-form-modal__stats');
+    // Log statistics to console (dev only)
     fetchStats().then((stats) => {
       if (stats && stats.visitors) {
-        statsContainer.classList.remove('contact-form-modal__stats--loading');
-        statsContainer.innerHTML = `
-          Lomakkeen avaamisprosentti on <strong>${stats.click_rate}%</strong>. Voit muuten myös aina soittaa Juhalle numeroon 0400 443 221 tai lähettää sähköpostia suoraan moro@dude.fi.
-        `;
-      } else {
-        statsContainer.style.display = 'none';
+        console.log(`Contact form modal opened - Opening rate: ${stats.click_rate}% (${stats.clicks} clicks / ${stats.visitors} homepage views)`);
       }
     });
 
