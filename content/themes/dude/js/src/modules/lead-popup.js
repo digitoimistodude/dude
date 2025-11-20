@@ -9,6 +9,7 @@ const MAX_DELAY = 80000; // 80 seconds
 const STORAGE_KEY = 'dude-lead-popup-dismissed';
 const DAYS_TO_HIDE = 2;
 const HOURS_TO_HIDE = 1;
+const REACTION_HIDE_DAYS = 60; // 2 months
 
 // Check if popup should be shown
 const shouldShowPopup = () => {
@@ -962,6 +963,16 @@ const initLeadPopup = () => {
           if (result && result.reactions) {
             updateReactionCounts(result.reactions);
           }
+
+          // Hide popup for 2 months after any reaction
+          const now = new Date().getTime();
+          const expiryTime = now + REACTION_HIDE_DAYS * 24 * 60 * 60 * 1000;
+          localStorage.setItem(STORAGE_KEY, expiryTime.toString());
+
+          // Close popup after reaction
+          setTimeout(() => {
+            closePopup('days');
+          }, 500);
         }
       });
     });
