@@ -386,7 +386,7 @@ get_header(); ?>
 
                       <div id="question-4" role="region" aria-labelledby="question-4" class="accordion-panel">
                         <div>
-                          <p>Jos pääsemme sopimukseen, emme vleoita siirrosta erikseen! Siirto- ja asennustyöhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, nimipalvelintietueiden kääntötyö ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
+                          <p>Jos pääsemme sopimukseen, emme veloita siirrosta erikseen! Siirto- ja asennustyöhön kuuluu muunmuassa verkkosivujen paketointi eri ympäristöihin, varmuuskopiointi, siirtotyö, asennus uudelle palvelimelle, testaus, verkkotunnusten haltuunotto, nimipalvelun haltuunotto, nimipalvelintietueiden kääntötyö ja julkaisu uudelle palvelimelle. Työ on yleensä valmis viikon sisällä tilauksesta.</p>
                         </div>
                       </div><!-- .accordion-panel -->
 
