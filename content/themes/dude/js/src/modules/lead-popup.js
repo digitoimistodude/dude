@@ -45,10 +45,23 @@ const initLeadPopup = () => {
   }
 
   // Don't show if user dismissed
-  if (!shouldShowPopup()) return;
+  if (!shouldShowPopup()) {
+    // Dev logging
+    if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+      console.log('Lead popup blocked: user has dismissed it');
+    }
+    return;
+  }
 
   // Don't show on excluded pages
-  if (shouldSkipPopup()) return;
+  if (shouldSkipPopup()) {
+    // Dev logging
+    if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+      const pageType = document.body.classList.contains('page-id-7') ? 'front page' : 'contact page';
+      console.log(`Lead popup blocked: on ${pageType}`);
+    }
+    return;
+  }
 
   // Inject styles (only once)
   const injectStyles = () => {
@@ -852,11 +865,23 @@ const initLeadPopup = () => {
       if (dismissType === 'days') {
         const expiryTime = now + DAYS_TO_HIDE * 24 * 60 * 60 * 1000;
         localStorage.setItem(STORAGE_KEY, expiryTime.toString());
+        // Dev logging
+        if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+          console.log(`Lead popup dismissed for ${DAYS_TO_HIDE} days`);
+        }
       } else if (dismissType === 'hours') {
         const expiryTime = now + HOURS_TO_HIDE * 60 * 60 * 1000;
         localStorage.setItem(STORAGE_KEY, expiryTime.toString());
+        // Dev logging
+        if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+          console.log(`Lead popup dismissed for ${HOURS_TO_HIDE} hour`);
+        }
       } else {
         // If just closing, show again after the trigger delay
+        // Dev logging
+        if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+          console.log('Lead popup closed, will reappear after delay on next page or after current page timer');
+        }
         setTimeout(() => {
           if (shouldShowPopup()) {
             showPopup();
@@ -956,6 +981,12 @@ const initLeadPopup = () => {
 
   // Trigger popup after random delay
   const delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+
+  // Dev logging
+  if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
+    console.log(`Lead popup will trigger in ${(delay / 1000).toFixed(1)} seconds`);
+  }
+
   popupTimeout = setTimeout(() => {
     showPopup();
   }, delay);
