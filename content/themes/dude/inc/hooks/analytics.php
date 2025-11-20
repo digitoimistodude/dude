@@ -18,7 +18,6 @@ function head_analytics_scripts() { ?>
     <script data-swup-ignore-script defer src="https://umami.dude.fi/script.js" data-website-id="a744b4bb-3b8a-42a7-a6b5-0951b5996afa"></script>
     <script data-swup-ignore-script src="https://analytics.ahrefs.com/analytics.js" data-key="Q6R+r37sIUxbXX0sqwgVGQ" async></script>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
-    <script data-swup-ignore-script data-src="https://leadbooster-chat.pipedrive.com/assets/loader.js" data-cookiecategory="analytics" async></script>
   <?php endif; ?>
 
   <script>
@@ -92,7 +91,9 @@ function air_cookie_js_analytics() {
   }
 
   ob_start(); ?>
+<?php /*
 window.pipedriveLeadboosterConfig = {base: 'leadbooster-chat.pipedrive.com',companyId: 7297292,playbookUuid: '9c38fe13-4ddb-4df8-9978-bfbded9d9ba7',version: 2};(function () {var w = window;if (w.LeadBooster) {console.warn('LeadBooster already exists');} else {w.LeadBooster = {q: [],on: function (n, h) {this.q.push({ t: 'o', n: n, h: h });},trigger: function (n) {this.q.push({ t: 't', n: n });},};}})();
+*/ ?>
 
 (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lYNOR8xvpWe4WQJZ');
 
