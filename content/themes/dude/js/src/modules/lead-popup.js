@@ -5,11 +5,14 @@ let popupTimeout = null;
 
 // Configuration constants
 const MIN_DELAY = 10000; // 10 seconds
-const MAX_DELAY = 80000; // 80 seconds
+const MAX_DELAY = 30000; // 30 seconds
 const STORAGE_KEY = 'dude-lead-popup-dismissed';
 const DAYS_TO_HIDE = 2;
 const HOURS_TO_HIDE = 1;
 const REACTION_HIDE_DAYS = 60; // 2 months
+
+// Track if popup has been shown this session (persists across swup navigations)
+let popupShownThisSession = false;
 
 // Check if popup should be shown
 const shouldShowPopup = () => {
@@ -32,13 +35,11 @@ const shouldSkipPopup = () => {
 };
 
 const initLeadPopup = () => {
-  // Clear any existing timeout from previous page
-  if (popupTimeout) {
-    clearTimeout(popupTimeout);
-    popupTimeout = null;
-  }
+  // Debug logging (temporary - remove after testing)
+  // eslint-disable-next-line no-console
+  console.log('[Lead Popup] initLeadPopup called, popupTimeout:', popupTimeout ? 'exists' : 'null');
 
-  // Remove popup if it's currently visible
+  // Remove popup if it's currently visible (page changed while popup was open)
   const existingPopup = document.getElementById('lead-popup');
   if (existingPopup) {
     existingPopup.remove();
@@ -47,20 +48,27 @@ const initLeadPopup = () => {
 
   // Don't show if user dismissed
   if (!shouldShowPopup()) {
-    // Dev logging
-    if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
-      console.log('Lead popup blocked: user has dismissed it');
-    }
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] blocked: user has dismissed it');
     return;
   }
 
-  // Don't show on excluded pages
+  // Don't show on excluded pages, but don't cancel the timer - it will check again when it fires
   if (shouldSkipPopup()) {
-    // Dev logging
-    if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
-      const pageType = document.body.classList.contains('page-id-7') ? 'front page' : 'contact page';
-      console.log(`Lead popup blocked: on ${pageType}`);
+    const pageType = document.body.classList.contains('page-id-7') ? 'front page' : 'contact page';
+    // eslint-disable-next-line no-console
+    console.log(`[Lead Popup] on ${pageType}, popupTimeout:`, popupTimeout ? 'exists - returning' : 'null - will start timer');
+    // Don't return - let the timer keep running so popup shows when user navigates to valid page
+    // Only skip starting a NEW timer if one already exists
+    if (popupTimeout) {
+      return;
     }
+  }
+
+  // If a timer is already running, don't reset it (preserves timer across swup navigations)
+  if (popupTimeout) {
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] timer already running, not resetting');
     return;
   }
 
@@ -750,6 +758,7 @@ const initLeadPopup = () => {
   // Create popup HTML
   const createPopup = () => {
     const popup = document.createElement('div');
+    popup.id = 'lead-popup';
     popup.className = 'lead-popup';
     popup.setAttribute('role', 'dialog');
     popup.setAttribute('aria-labelledby', 'popup-heading');
@@ -802,13 +811,25 @@ const initLeadPopup = () => {
 
   // Show popup
   const showPopup = () => {
-    // Check if contact modal is currently open
-    if (document.getElementById('contact-form-modal')) {
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] showPopup() called');
+
+    // Check if contact modal is currently open (visible)
+    const contactModal = document.getElementById('contact-form-modal');
+    if (contactModal && contactModal.classList.contains('contact-form-modal--visible')) {
+      // eslint-disable-next-line no-console
+      console.log('[Lead Popup] Contact modal is visible, aborting');
       return;
     }
 
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] Creating popup element');
     const popup = createPopup();
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] Appending popup to body');
     document.body.appendChild(popup);
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] Popup appended, element:', popup);
 
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
@@ -878,16 +899,17 @@ const initLeadPopup = () => {
           console.log(`Lead popup dismissed for ${HOURS_TO_HIDE} hour`);
         }
       } else {
-        // If just closing, show again after the trigger delay
+        // If just closing via overlay/escape, show again after a new random delay
+        const newDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
         // Dev logging
         if (window.location.hostname.includes('.test') || window.location.hostname === 'localhost') {
-          console.log('Lead popup closed, will reappear after delay on next page or after current page timer');
+          console.log(`Lead popup closed, will reappear in ${(newDelay / 1000).toFixed(1)} seconds`);
         }
-        setTimeout(() => {
-          if (shouldShowPopup()) {
+        popupTimeout = setTimeout(() => {
+          if (shouldShowPopup() && !shouldSkipPopup()) {
             showPopup();
           }
-        }, TRIGGER_DELAY);
+        }, newDelay);
       }
     };
 
@@ -998,7 +1020,39 @@ const initLeadPopup = () => {
     console.log(`Lead popup will trigger in ${(delay / 1000).toFixed(1)} seconds`);
   }
 
+  // eslint-disable-next-line no-console
+  console.log(`[Lead Popup] Starting timer for ${(delay / 1000).toFixed(1)} seconds`);
+
   popupTimeout = setTimeout(() => {
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] Timer fired!');
+    // Clear the timeout reference since it's now firing
+    popupTimeout = null;
+
+    // Check conditions again at the moment of showing
+    if (!shouldShowPopup()) {
+      // eslint-disable-next-line no-console
+      console.log('[Lead Popup] Timer fired but popup was dismissed in the meantime');
+      return;
+    }
+
+    if (shouldSkipPopup()) {
+      // On excluded page, set a new timer to check again soon
+      // eslint-disable-next-line no-console
+      console.log('[Lead Popup] Timer fired on excluded page, will retry in 5 seconds');
+      popupTimeout = setTimeout(() => {
+        popupTimeout = null;
+        if (shouldShowPopup() && !shouldSkipPopup()) {
+          // eslint-disable-next-line no-console
+          console.log('[Lead Popup] Retry timer fired, showing popup');
+          showPopup();
+        }
+      }, 5000);
+      return;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log('[Lead Popup] Showing popup now');
     showPopup();
   }, delay);
 };
