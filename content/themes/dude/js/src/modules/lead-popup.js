@@ -35,9 +35,8 @@ const shouldSkipPopup = () => {
 };
 
 const initLeadPopup = () => {
-  // Debug logging (temporary - remove after testing)
-  // eslint-disable-next-line no-console
-  console.log('[Lead Popup] initLeadPopup called, popupTimeout:', popupTimeout ? 'exists' : 'null');
+  // Temporarily disabled
+  return;
 
   // Remove popup if it's currently visible (page changed while popup was open)
   const existingPopup = document.getElementById('lead-popup');
