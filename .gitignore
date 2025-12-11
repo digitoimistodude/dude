@@ -27,6 +27,7 @@ access.log
 error.log
 logs/
 log/
+logs/
 
 # Special git hooks
 !.githooks
