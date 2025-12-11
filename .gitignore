@@ -22,6 +22,7 @@ content/autoptimize_404_handler.php
 package-lock.json
 access.log
 error.log
+logs/
 log/
 
 # Special git hooks

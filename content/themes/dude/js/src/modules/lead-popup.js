@@ -4,6 +4,7 @@ let stylesInjected = false;
 let popupTimeout = null;
 
 // Configuration constants
+const ENABLED = true; // Set to false to disable the lead popup
 const MIN_DELAY = 10000; // 10 seconds
 const MAX_DELAY = 30000; // 30 seconds
 const STORAGE_KEY = 'dude-lead-popup-dismissed';
@@ -35,8 +36,8 @@ const shouldSkipPopup = () => {
 };
 
 const initLeadPopup = () => {
-  // Temporarily disabled
-  return;
+  // Check if popup is enabled
+  if (!ENABLED) return;
 
   // Remove popup if it's currently visible (page changed while popup was open)
   const existingPopup = document.getElementById('lead-popup');
