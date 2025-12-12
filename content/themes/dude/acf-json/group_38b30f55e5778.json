@@ -49,7 +49,7 @@
         },
         {
             "key": "field_630a3354a328b",
-            "label": "Näytä aktiivinen kuva isompana",
+            "label": "Näytä isommat kuvat",
             "name": "make_active_bigger",
             "aria-label": "",
             "type": "true_false",
@@ -63,9 +63,10 @@
             },
             "message": "",
             "default_value": 0,
-            "ui": 1,
+            "allow_in_bindings": 1,
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "ui": 1
         },
         {
             "key": "field_62a829ab344d8",
@@ -114,5 +115,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1763659154
+    "display_title": "",
+    "modified": 1765557747
 }
