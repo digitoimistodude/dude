@@ -296,6 +296,11 @@ body.template-surveys-modern {
     overflow: hidden;
     table-layout: fixed;
     width: 100%;
+
+    tr,
+    td {
+      border: 0 !important;
+    }
   }
 
   .wpforms-required-label {
