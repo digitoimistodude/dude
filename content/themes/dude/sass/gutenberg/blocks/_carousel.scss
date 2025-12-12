@@ -6,25 +6,6 @@
     font-size: var(--font-size-62);
   }
 
-  // Dark mode support
-  [data-color-scheme='dark'] & {
-    background-color: var(--color-petrol);
-
-    h2 {
-      color: var(--color-white);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:not([data-color-scheme='light']) & {
-      background-color: var(--color-petrol);
-
-      h2 {
-        color: var(--color-white);
-      }
-    }
-  }
-
   ul,
   li {
     list-style: none;
@@ -59,34 +40,6 @@
 
     @media (max-width: $container-mobile) {
       flex-wrap: wrap;
-    }
-  }
-
-  // Alt carousel style
-  &.carousel-style-alt {
-    background-color: transparent;
-
-    .container {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    .head {
-      margin: 0;
-      padding: 3rem 0;
-    }
-
-    .swiper-wrapper {
-      @media (min-width: $width-max-mobile) {
-        max-height: 750px;
-      }
-    }
-
-    .swiper-slide img {
-      @media (min-width: $width-max-mobile) {
-        height: 750px;
-        object-fit: cover;
-      }
     }
   }
 }
