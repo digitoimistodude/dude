@@ -981,7 +981,7 @@ const initLeadPopup = () => {
           </div>
         </div>
         <div class="lead-popup__cta">
-          <a href="https://www.dude.fi/duden-brandikysely" class="lead-popup__cta-button no-external-link-indicator" data-action="cta" target="_blank" rel="noopener noreferrer" aria-label="Siirry kyselyyn (avautuu uuteen ikkunaan)">Siirry kyselyyn <svg width="15" height="13" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 13" aria-hidden="true"><path d="M1 5.75a.75.75 0 000 1.5v-1.5zm13.53 1.28a.75.75 0 000-1.06L9.757 1.197a.75.75 0 10-1.06 1.06L12.939 6.5l-4.242 4.243a.75.75 0 001.06 1.06L14.53 7.03zM1 7.25h13v-1.5H1v1.5z" fill="currentColor"/></svg></a>
+          <a href="https://www.dude.fi/duden-brandikysely" class="lead-popup__cta-button no-external-link-indicator" data-action="cta" data-no-swup target="_blank" rel="noopener noreferrer" aria-label="Siirry kyselyyn (avautuu uuteen ikkunaan)">Siirry kyselyyn <svg width="15" height="13" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 13" aria-hidden="true"><path d="M1 5.75a.75.75 0 000 1.5v-1.5zm13.53 1.28a.75.75 0 000-1.06L9.757 1.197a.75.75 0 10-1.06 1.06L12.939 6.5l-4.242 4.243a.75.75 0 001.06 1.06L14.53 7.03zM1 7.25h13v-1.5H1v1.5z" fill="currentColor"/></svg></a>
         </div>
       </div>
     `;
