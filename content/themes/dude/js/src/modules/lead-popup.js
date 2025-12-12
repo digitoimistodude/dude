@@ -6,8 +6,8 @@ let popupTimeout = null;
 // Configuration constants
 const ENABLED = true; // Set to false to disable the lead popup
 const POPUP_VARIANT = 'survey'; // 'classic' for original popup, 'survey' for brand survey popup
-const MIN_DELAY = 10000; // 10 seconds
-const MAX_DELAY = 15000; // 15 seconds
+const MIN_DELAY = 5000; // 5 seconds
+const MAX_DELAY = 12000; // 12 seconds
 const STORAGE_KEY = 'dude-lead-popup-dismissed';
 const DAYS_TO_HIDE = 14; // 2 weeks
 const HOURS_TO_HIDE = 14 * 24; // 2 weeks (in hours)
