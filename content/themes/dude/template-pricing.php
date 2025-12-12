@@ -16,7 +16,7 @@ get_header(); ?>
         <h1 id="content">Investoi parempaan<br>digitaaliseen läsnäoloon</h1>
         <p class="ingress">Kaikki palvelumme ovat räätälöityjä ja suunniteltu kestämään aikaa. Teemme ratkaisuja, jotka toimivat useita vuosia ja tukevat liiketoimintasi kasvua. Investointi, joka maksaa itsensä takaisin päivä päivältä.</p>
         <p class="button-wrapper">
-          <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint">Ota yhteyttä</a>
+          <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge">Ota yhteyttä</a>
         </p>
       </div>
     </div>
@@ -579,16 +579,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Make contact buttons trigger the contact modal
+  // Make contact buttons trigger the contact modal (created by contact-form-modal.js)
   const contactButtons = document.querySelectorAll('.pricing-contact-button');
   contactButtons.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
 
-      // Try to find and click an existing contact modal trigger
-      const existingTrigger = document.querySelector('button[aria-label="Avaa yhteydenottolomake"]');
-      if (existingTrigger) {
-        existingTrigger.click();
+      // Find the hero button that was converted to modal trigger by contact-form-modal.js
+      const heroModalTrigger = document.querySelector('.block-pricing-hero .button-mint.button-huge');
+      if (heroModalTrigger && heroModalTrigger.tagName === 'BUTTON') {
+        heroModalTrigger.click();
         return;
       }
 
