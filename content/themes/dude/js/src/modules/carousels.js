@@ -63,9 +63,7 @@ const initCarousels = () => {
     }
 
     if (Carousels[i].querySelector('.swiper-pagination')) {
-      Carousels[i]
-        .querySelector('.swiper-pagination')
-        .classList.add(`swiper-pagination-${i}`);
+      Carousels[i].querySelector('.swiper-pagination').classList.add(`swiper-pagination-${i}`);
     }
 
     // Parameters for different kind of carousels
@@ -134,9 +132,7 @@ const initCarousels = () => {
         },
         init() {
           const swiperElement = this.$el[0];
-          const activeSlide = swiperElement.querySelectorAll(
-            '.swiper-slide-active'
-          )[0];
+          const activeSlide = swiperElement.querySelectorAll('.swiper-slide-active')[0];
           const allSlides = swiperElement.querySelectorAll('.swiper-slide');
 
           // Hide all slides except active for screen readers
@@ -150,9 +146,7 @@ const initCarousels = () => {
         slideChangeTransitionEnd() {
           // Run the same thing when slide changes
           const swiperElement = this.$el[0];
-          const activeSlide = swiperElement.querySelectorAll(
-            '.swiper-slide-active'
-          )[0];
+          const activeSlide = swiperElement.querySelectorAll('.swiper-slide-active')[0];
           const allSlides = swiperElement.querySelectorAll('.swiper-slide');
 
           // Hide all slides except active for screen readers
