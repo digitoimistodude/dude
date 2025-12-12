@@ -702,7 +702,7 @@ const initLeadPopup = () => {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('/content/themes/dude/images/popup-bg.jpg') center / cover no-repeat;
+        background: url('/content/themes/dude/img/popup-bg.jpg') center / cover no-repeat;
         border-radius: 10px;
         pointer-events: none;
       }
