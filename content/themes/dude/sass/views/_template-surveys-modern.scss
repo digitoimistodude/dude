@@ -136,7 +136,9 @@ body.template-surveys-modern {
 
   form.wpforms-form .wpforms-field-likert_scale table.modern tbody tr th {
     @media (max-width: 700px) {
-      font-size: 12px;
+      background-color: transparent !important;
+      font-size: 18px !important;
+      margin: 30px 10px 10px 10px !important;
     }
   }
 
@@ -301,6 +303,16 @@ body.template-surveys-modern {
     td {
       border: 0 !important;
     }
+  }
+
+  // Override WPForms mobile borders
+  form.wpforms-form .wpforms-field-likert_scale table tbody tr {
+    border: 0 !important;
+  }
+
+  form.wpforms-form .wpforms-field-likert_scale table tbody tr td {
+    border: 0 !important;
+    border-bottom: 0 !important;
   }
 
   .wpforms-required-label {
