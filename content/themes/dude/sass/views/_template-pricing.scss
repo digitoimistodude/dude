@@ -130,7 +130,7 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 
 .landing-pricing .category-info h2 {
   font-family: var(--font-heading);
-  font-size: var(--font-size-32);
+  font-size: 32px;
   font-weight: 500;
   letter-spacing: -0.42px;
   line-height: 1.4;
@@ -368,7 +368,7 @@ body.page-template-template-pricing .site-footer .certificates > ul {
   width: 100%;
 }
 
-// FAQ section
+// FAQ section - uses block-upkeep-faq styles from _template-upkeep-landing.scss
 .landing-pricing .block-pricing-faq {
   padding-bottom: 0;
   padding-top: var(--padding-block);
@@ -376,10 +376,11 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 
 .landing-pricing .faq-layout {
   display: flex;
-  gap: 25px;
+  gap: 100px;
 
   @media (max-width: 900px) {
     flex-direction: column;
+    gap: 25px;
   }
 }
 
@@ -408,66 +409,4 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 
 .landing-pricing .faq-items {
   flex: 1;
-}
-
-.landing-pricing .block-pricing-faq .accordion-item {
-  border-bottom: 1px solid rgb(255 255 255 / 20%);
-  padding: 35px 0;
-}
-
-.landing-pricing .block-pricing-faq .accordion-item:first-child {
-  padding-top: 0;
-}
-
-.landing-pricing .block-pricing-faq .accordion-trigger {
-  background: transparent;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  font-size: var(--font-size-20);
-  font-weight: 500;
-  justify-content: space-between;
-  line-height: 1.7;
-  padding: 0;
-  text-align: left;
-  width: 100%;
-}
-
-.landing-pricing .block-pricing-faq .accordion-title {
-  align-items: center;
-  display: flex;
-  gap: 16px;
-}
-
-.landing-pricing .block-pricing-faq .accordion-icon {
-  background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%237effe1" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  display: inline-flex;
-  flex-shrink: 0;
-  height: 24px;
-  min-width: 24px;
-  transition: transform $transition-duration;
-  width: 24px;
-}
-
-.landing-pricing .block-pricing-faq .accordion-trigger[aria-expanded='true'] .accordion-icon {
-  transform: rotate(-315deg);
-}
-
-.landing-pricing .block-pricing-faq .accordion-panel {
-  display: none;
-  padding-top: 20px;
-}
-
-.landing-pricing .block-pricing-faq .accordion-panel[aria-hidden='false'] {
-  display: block;
-}
-
-.landing-pricing .block-pricing-faq .accordion-panel p {
-  color: rgb(255 255 255 / 80%);
-  font-size: var(--font-size-16);
-  line-height: 1.7;
 }
