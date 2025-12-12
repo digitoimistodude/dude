@@ -286,9 +286,9 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 }
 
 .landing-pricing .cta-box {
-  background: linear-gradient(90deg, #223948 0%, #223948 100%);
+  background-color: #223948;
   // stylelint-disable-next-line scale-unlimited/declaration-strict-value
-  background-image: radial-gradient(circle at center, #1e4348 0%, rgba(30, 32, 38, 0.536) 100%);
+  background-image: radial-gradient(ellipse at center, rgba(30, 67, 72, 1) 0%, rgba(30, 32, 38, 0.537) 100%);
   border-radius: 16px;
   display: flex;
   overflow: hidden;
