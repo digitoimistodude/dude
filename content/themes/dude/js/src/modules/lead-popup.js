@@ -5,11 +5,12 @@ let popupTimeout = null;
 
 // Configuration constants
 const ENABLED = true; // Set to false to disable the lead popup
+const POPUP_VARIANT = 'survey'; // 'classic' for original popup, 'survey' for brand survey popup
 const MIN_DELAY = 10000; // 10 seconds
-const MAX_DELAY = 30000; // 30 seconds
+const MAX_DELAY = 15000; // 15 seconds
 const STORAGE_KEY = 'dude-lead-popup-dismissed';
-const DAYS_TO_HIDE = 2;
-const HOURS_TO_HIDE = 1;
+const DAYS_TO_HIDE = 14; // 2 weeks
+const HOURS_TO_HIDE = 14 * 24; // 2 weeks (in hours)
 const REACTION_HIDE_DAYS = 60; // 2 months
 
 // Track if popup has been shown this session (persists across swup navigations)
@@ -683,6 +684,153 @@ const initLeadPopup = () => {
       .lead-popup__reaction--active .lead-popup__reaction-count {
         color: #fff !important;
       }
+
+      /* Survey variant styles */
+      .lead-popup--survey .lead-popup__content {
+        max-width: 626px;
+        overflow: hidden;
+        border-radius: 10px;
+        padding: 55px 50px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(138.4deg, #1e4348 0%, #1c1e26 62.5%);
+      }
+
+      .lead-popup--survey .lead-popup__content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/content/themes/dude/images/popup-bg.jpg') center / cover no-repeat;
+        border-radius: 10px;
+        pointer-events: none;
+      }
+
+      @media (max-width: 767px) {
+        .lead-popup--survey .lead-popup__content {
+          padding: 40px 30px;
+        }
+      }
+
+      .lead-popup--survey .lead-popup__close {
+        top: 24px;
+        right: 24px;
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        font-size: 14px;
+        color: #fff;
+        z-index: 1;
+      }
+
+      .lead-popup--survey .lead-popup__close:hover,
+      .lead-popup--survey .lead-popup__close:focus {
+        color: #7effe1;
+        background-color: transparent;
+      }
+
+      .lead-popup--survey .lead-popup__close:focus-visible {
+        outline-color: #7effe1;
+        outline-offset: 4px;
+        background-color: transparent;
+      }
+
+      .lead-popup--survey .lead-popup__text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        color: #fff;
+        z-index: 1;
+      }
+
+      .lead-popup--survey .lead-popup__heading {
+        margin: 0;
+        padding-right: 30px;
+        font-family: var(--font-heading);
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: 0.64px;
+        color: #fff;
+      }
+
+      @media (max-width: 767px) {
+        .lead-popup--survey .lead-popup__heading {
+          font-size: 24px;
+        }
+      }
+
+      .lead-popup--survey .lead-popup__body {
+        margin-bottom: 0;
+        color: #fff;
+      }
+
+      .lead-popup--survey .lead-popup__body p {
+        margin: 0;
+        font-family: var(--font-paragraph);
+        font-weight: 500;
+        line-height: 1.7;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      .lead-popup--survey .lead-popup__cta {
+        position: relative;
+        display: flex;
+        margin-top: 40px;
+        z-index: 1;
+      }
+
+      .lead-popup--survey .lead-popup__cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 32px;
+        background-color: #7effe1;
+        border: none;
+        border-radius: 40px;
+        font-family: var(--font-heading);
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 34px;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .lead-popup--survey .lead-popup__cta-button svg {
+        width: 15px;
+        height: 13px;
+        flex-shrink: 0;
+        transform: rotate(-45deg);
+      }
+
+      .lead-popup--survey .lead-popup__cta-button:hover,
+      .lead-popup--survey .lead-popup__cta-button:focus {
+        background-color: #7effe1;
+        box-shadow: 0 0 0 3px #7effe1;
+        color: #000;
+      }
+
+      .lead-popup--survey .lead-popup__cta-button:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .lead-popup--survey .lead-popup__cta-button:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      @media (max-width: 767px) {
+        .lead-popup--survey .lead-popup__cta-button {
+          font-size: 18px;
+          padding: 12px 24px;
+        }
+      }
     `;
     document.head.appendChild(style);
   };
@@ -809,6 +957,38 @@ const initLeadPopup = () => {
     return popup;
   };
 
+  // Create survey popup HTML (new brand survey variant)
+  const createSurveyPopup = () => {
+    const popup = document.createElement('div');
+    popup.id = 'lead-popup';
+    popup.className = 'lead-popup lead-popup--survey';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-labelledby', 'popup-heading');
+    popup.setAttribute('aria-modal', 'true');
+
+    popup.innerHTML = `
+      <div class="lead-popup__overlay"></div>
+      <div class="lead-popup__content" tabindex="-1">
+        <button type="button" class="lead-popup__close" aria-label="Sulje" data-action="close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" aria-hidden="true" width="14" height="14" fill="currentColor">
+            <path d="M14 1.41L12.59 0 7 5.59 1.41 0 0 1.41 5.59 7 0 12.59 1.41 14 7 8.41 12.59 14 14 12.59 8.41 7z"/>
+          </svg>
+        </button>
+        <div class="lead-popup__text">
+          <h2 id="popup-heading" class="lead-popup__heading">Vastaa brändikyselyymme ja tue mielenterveystyötä!</h2>
+          <div class="lead-popup__body">
+            <p>Millaisena näet Duden tällä hetkellä? Voisiko jokin olla toisin? Onko menty metsään vai onnistuttu? Kerro meille vastaamalla kyselyyn! Lahjoitamme jokaisesta vastauksesta euron MIELI ry:lle.</p>
+          </div>
+        </div>
+        <div class="lead-popup__cta">
+          <a href="https://www.dude.fi/duden-brandikysely" class="lead-popup__cta-button" data-action="cta" target="_blank" rel="noopener noreferrer" aria-label="Siirry kyselyyn (avautuu uuteen ikkunaan)">Siirry kyselyyn <svg width="15" height="13" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 13" aria-hidden="true"><path d="M1 5.75a.75.75 0 000 1.5v-1.5zm13.53 1.28a.75.75 0 000-1.06L9.757 1.197a.75.75 0 10-1.06 1.06L12.939 6.5l-4.242 4.243a.75.75 0 001.06 1.06L14.53 7.03zM1 7.25h13v-1.5H1v1.5z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+    `;
+
+    return popup;
+  };
+
   // Show popup
   const showPopup = () => {
     // eslint-disable-next-line no-console
@@ -824,7 +1004,7 @@ const initLeadPopup = () => {
 
     // eslint-disable-next-line no-console
     console.log('[Lead Popup] Creating popup element');
-    const popup = createPopup();
+    const popup = POPUP_VARIANT === 'survey' ? createSurveyPopup() : createPopup();
     // eslint-disable-next-line no-console
     console.log('[Lead Popup] Appending popup to body');
     document.body.appendChild(popup);
@@ -848,6 +1028,7 @@ const initLeadPopup = () => {
     // Get button references
     const closeIconBtn = popup.querySelector('[data-action="close-icon"]');
     const dismissBtn = popup.querySelector('[data-action="dismiss"]');
+    const ctaBtn = popup.querySelector('[data-action="cta"]');
     const overlay = popup.querySelector('.lead-popup__overlay');
 
     // Focus the container to move focus into the popup (no visible focus ring)
@@ -923,6 +1104,11 @@ const initLeadPopup = () => {
       dismissBtn.addEventListener('click', () => closePopup('days'));
     }
 
+    // CTA button (survey variant) - hides for 2 days when user clicks to go to survey
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', () => closePopup('days'));
+    }
+
     // Close on overlay click - reopens after delay
     overlay.addEventListener('click', () => closePopup('reopen'));
 
@@ -944,47 +1130,48 @@ const initLeadPopup = () => {
       });
     };
 
-    // Fetch initial reaction counts
-    fetchReactions().then((reactions) => {
-      updateReactionCounts(reactions);
-    });
+    // Classic variant: Fetch initial reaction counts
+    if (POPUP_VARIANT === 'classic') {
+      fetchReactions().then((reactions) => {
+        updateReactionCounts(reactions);
+      });
 
-    // Mark user's previous reactions as active
-    const userReactions = getUserReactions();
-    userReactions.forEach((reaction) => {
-      const btn = popup.querySelector(`[data-reaction="${reaction}"]`);
-      if (btn) {
-        btn.classList.add('lead-popup__reaction--active');
-      }
-    });
-
-    // Handle reaction clicks
-    const reactionButtons = popup.querySelectorAll('.lead-popup__reaction');
-    reactionButtons.forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const reaction = btn.getAttribute('data-reaction');
-        const isActive = btn.classList.contains('lead-popup__reaction--active');
-
-        if (isActive) {
-          // Remove reaction
-          btn.classList.remove('lead-popup__reaction--active');
-          removeUserReaction(reaction);
-
-          // Send remove to API
-          const result = await modifyReaction(reaction, 'remove');
-          if (result && result.reactions) {
-            updateReactionCounts(result.reactions);
-          }
-        } else {
-          // Add reaction
+      // Mark user's previous reactions as active
+      const userReactions = getUserReactions();
+      userReactions.forEach((reaction) => {
+        const btn = popup.querySelector(`[data-reaction="${reaction}"]`);
+        if (btn) {
           btn.classList.add('lead-popup__reaction--active');
-          saveUserReaction(reaction);
+        }
+      });
 
-          // Send add to API
-          const result = await modifyReaction(reaction, 'add');
-          if (result && result.reactions) {
-            updateReactionCounts(result.reactions);
-          }
+      // Handle reaction clicks
+      const reactionButtons = popup.querySelectorAll('.lead-popup__reaction');
+      reactionButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const reaction = btn.getAttribute('data-reaction');
+          const isActive = btn.classList.contains('lead-popup__reaction--active');
+
+          if (isActive) {
+            // Remove reaction
+            btn.classList.remove('lead-popup__reaction--active');
+            removeUserReaction(reaction);
+
+            // Send remove to API
+            const result = await modifyReaction(reaction, 'remove');
+            if (result && result.reactions) {
+              updateReactionCounts(result.reactions);
+            }
+          } else {
+            // Add reaction
+            btn.classList.add('lead-popup__reaction--active');
+            saveUserReaction(reaction);
+
+            // Send add to API
+            const result = await modifyReaction(reaction, 'add');
+            if (result && result.reactions) {
+              updateReactionCounts(result.reactions);
+            }
 
           // Hide popup for 2 months after any reaction
           const now = new Date().getTime();
@@ -998,6 +1185,7 @@ const initLeadPopup = () => {
         }
       });
     });
+    }
 
     // Close on Escape key - reopens after delay
     const handleEscape = (e) => {
