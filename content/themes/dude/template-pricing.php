@@ -9,9 +9,6 @@ get_header(); ?>
 
 <main class="site-main landing-pricing">
 
-  <!-- Hidden trigger for contact modal initialization -->
-  <a href="<?php echo esc_url( get_permalink( 4487 ) ); ?>" class="button button-mint button-huge" style="display:none !important;" aria-hidden="true">Ota yhteyttä</a>
-
   <section class="block block-pricing-hero has-unified-padding-if-stacked">
     <div class="container">
       <div class="content">
