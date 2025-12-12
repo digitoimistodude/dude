@@ -42,6 +42,34 @@
       flex-wrap: wrap;
     }
   }
+
+  // Alt carousel style
+  &.carousel-style-alt {
+    background-color: transparent;
+
+    .container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .swiper-controls {
+      padding: 3rem 0;
+    }
+
+    .swiper-wrapper {
+      @media (min-width: $width-max-mobile) {
+        max-height: 650px;
+      }
+    }
+
+    .swiper-slide img {
+      @media (min-width: $width-max-mobile) {
+        height: 650px;
+        object-fit: cover;
+        object-position: center center;
+      }
+    }
+  }
 }
 
 // stylelint-disable-next-line
