@@ -102,7 +102,6 @@ $hamburger-hover-transition-timing-function: linear;
     top: 0;
     transform: scaleY(0);
     transform-origin: top;
-    transition: transform 180ms cubic-bezier(0.14, 0, 0.42, 1.38);
     width: 100vw;
     z-index: 1;
   }
