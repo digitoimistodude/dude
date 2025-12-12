@@ -442,7 +442,7 @@ get_header(); ?>
     </div>
   </section>
 
-  <section class="block block-pricing-faq has-unified-padding-if-stacked">
+  <section class="block block-pricing-faq block-upkeep-faq has-unified-padding-if-stacked">
     <div class="container">
       <div class="faq-layout">
         <div class="faq-intro">
