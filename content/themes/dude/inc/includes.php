@@ -31,9 +31,8 @@ if ( file_exists( get_theme_file_path( '/inc/includes/post-type.php' ) ) ) {
   require get_theme_file_path( '/inc/includes/post-type.php' );
 }
 
-if ( class_exists( 'acf_field' ) ) {
-  require get_theme_file_path( '/inc/includes/acf-field-gravity-forms.php' );
-}
+// Include ACF field type for Gravity Forms - loaded via acf/include_field_types hook inside the file
+require get_theme_file_path( '/inc/includes/acf-field-gravity-forms.php' );
 
 // Lead popup reactions REST API
 require get_theme_file_path( '/inc/includes/lead-popup-reactions.php' );
