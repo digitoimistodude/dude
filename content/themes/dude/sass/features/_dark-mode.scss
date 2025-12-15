@@ -663,3 +663,24 @@
     }
   }
 }
+
+// Dark mode support for carousel, Ref: KVLT-71
+[data-color-scheme='dark'] .block-carousel {
+  &:not(.carousel-style-alt) {
+    background-color: var(--color-petrol);
+  }
+
+  h2 {
+    color: var(--color-white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-color-scheme='light']) .block-carousel:not(.carousel-style-alt) {
+    background-color: var(--color-petrol);
+
+    h2 {
+      color: var(--color-white);
+    }
+  }
+}

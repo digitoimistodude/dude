@@ -52,7 +52,7 @@ $picture_cdn_srcset = [
 ];
 ?>
 
-<section class="block block-carousel is-carousel<?php if ( 'alt' === $carousel_style ) { echo ' carousel-style-alt'; } ?>">
+<section class="block block-carousel has-unified-padding-if-stacked is-carousel<?php if ( 'alt' === $carousel_style ) { echo ' carousel-style-alt'; } ?>">
   <div class="container">
 
     <div class="swiper swiper-container<?php if ( $make_active_bigger || 'alt' === $carousel_style ) { echo ' is-full-width'; } ?>">
