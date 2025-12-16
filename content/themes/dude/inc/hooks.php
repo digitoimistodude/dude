@@ -135,10 +135,11 @@ function salesperson_rest_api() {
   ];
 
   register_rest_route( 'dude/v1', '/salesperson', [
-    'methods'   => 'GET',
-    'callback'  => function( $data ) use ( $dashboard_widget ) { // phpcs:disable
+    'methods'             => 'GET',
+    'callback'            => function( $data ) use ( $dashboard_widget ) { // phpcs:disable
       return $dashboard_widget;
     },
+    'permission_callback' => '__return_true',
   ] );
 } // end salesperson_rest_api
 
