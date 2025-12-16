@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dude/pricing-hero",
+  "version": "1.0.0",
+  "title": "Hinnasto: Hero",
+  "category": "dude",
+  "icon": "money-alt",
+  "description": "Hinnaston hero-osio otsikolla ja ingressillä",
+  "keywords": ["pricing", "hero", "hinnasto"],
+  "supports": {
+    "html": false,
+    "align": ["full"],
+    "anchor": true
+  },
+  "attributes": {
+    "prefix": {
+      "type": "string",
+      "default": "Hinnasto"
+    },
+    "title": {
+      "type": "string",
+      "default": "Investoi parempaan<br>digitaaliseen läsnäoloon"
+    },
+    "ingress": {
+      "type": "string",
+      "default": "Kaikki palvelumme ovat räätälöityjä ja suunniteltu kestämään aikaa. Teemme ratkaisuja, jotka toimivat useita vuosia ja tukevat liiketoimintasi kasvua. Investointi, joka maksaa itsensä takaisin päivä päivältä."
+    },
+    "showButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Ota yhteyttä"
+    }
+  },
+  "textdomain": "dude",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php"
+}
