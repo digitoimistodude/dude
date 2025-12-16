@@ -336,6 +336,7 @@ add_action( 'after_setup_theme', function() {
       'category'          => 'dude',
       'mode'              => 'preview',
       'align'             => 'full',
+      'api_version'       => 3,
       'post_types'        => [
         'page',
         'job',

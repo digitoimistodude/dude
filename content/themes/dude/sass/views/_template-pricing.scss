@@ -34,15 +34,16 @@ body.page-template-template-pricing .landing-pricing section {
   max-width: 1000px;
 }
 
-.landing-pricing .block-pricing-hero .prefix {
+.landing-pricing .block-pricing-hero h1.prefix {
   color: var(--color-mint);
   font-size: var(--font-size-14);
+  font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 27px;
   text-transform: uppercase;
 }
 
-.landing-pricing .block-pricing-hero h1 {
+.landing-pricing .block-pricing-hero h2 {
   font-size: clamp(48px, 6vw, 90px);
   font-weight: 700;
   letter-spacing: -0.9px;
@@ -73,6 +74,11 @@ body.page-template-template-pricing .landing-pricing section {
   font-weight: 600;
   padding: 20px 41px;
   transition: all $transition-duration;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-18);
+    padding: 16px 32px;
+  }
 }
 
 .landing-pricing .block-pricing-hero .button-mint:hover,
@@ -86,11 +92,10 @@ body.page-template-template-pricing .landing-pricing section {
 // Pricing categories section (native blocks)
 .landing-pricing .block-pricing-category {
   padding-bottom: 0;
-  padding-top: 0;
+  padding-top: calc(var(--padding-block) + 42px);
 
-  // First category block gets top padding
-  &:first-of-type {
-    padding-top: calc(var(--padding-block) + 42px);
+  @media (max-width: $container-mobile) {
+    padding-top: var(--padding-block);
   }
 
   .container {
@@ -102,17 +107,10 @@ body.page-template-template-pricing .landing-pricing section {
 .landing-pricing .pricing-category {
   display: flex;
   gap: 40px;
-  margin-bottom: 80px;
 
   @media (max-width: 900px) {
     flex-direction: column;
   }
-}
-
-// Last category before CTA
-.landing-pricing .block-pricing-category:has(+ .block-pricing-cta) .pricing-category,
-.landing-pricing .block-pricing-category:last-of-type .pricing-category {
-  margin-bottom: 0;
 }
 
 .landing-pricing .category-info {
@@ -132,11 +130,20 @@ body.page-template-template-pricing .landing-pricing section {
   letter-spacing: -0.42px;
   line-height: 1.4;
   margin-bottom: 27px;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-24);
+    margin-bottom: 20px;
+  }
 }
 
 .landing-pricing .category-info p {
   font-size: var(--font-size-20);
   line-height: 1.7;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-16);
+  }
 }
 
 .landing-pricing .category-items {
@@ -158,6 +165,10 @@ body.page-template-template-pricing .landing-pricing section {
   text-align: left;
   transition: all $transition-duration;
   width: 100%;
+
+  @media (max-width: $container-mobile) {
+    padding: 20px 24px;
+  }
 }
 
 .landing-pricing .pricing-accordion-item:hover,
@@ -222,9 +233,12 @@ body.page-template-template-pricing .landing-pricing section {
 .landing-pricing .item-header h3 {
   font-size: var(--font-size-24);
   font-weight: 500;
-  line-height: 40px;
-  margin: 0;
   line-height: 1.32;
+  margin: 0;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-18);
+  }
 }
 
 .landing-pricing .item-header .badge {
@@ -317,12 +331,20 @@ body.page-template-template-pricing .landing-pricing section {
   letter-spacing: -0.42px;
   line-height: 1.38;
   margin-bottom: 26px;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-28);
+  }
 }
 
 .landing-pricing .cta-content > p {
   font-size: var(--font-size-24);
   line-height: 1.7;
   margin-bottom: 26px;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-16);
+  }
 }
 
 .landing-pricing .contact-methods {
@@ -348,6 +370,10 @@ body.page-template-template-pricing .landing-pricing section {
 .landing-pricing .contact-methods span {
   font-size: var(--font-size-20);
   line-height: 1.7;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-16);
+  }
 }
 
 .landing-pricing .contact-methods a {
@@ -402,6 +428,10 @@ body.page-template-template-pricing .landing-pricing section {
   letter-spacing: 0.38px;
   line-height: 1.5;
   margin-bottom: 25px;
+
+  @media (max-width: $container-mobile) {
+    font-size: var(--font-size-24);
+  }
 }
 
 .landing-pricing .faq-intro p {

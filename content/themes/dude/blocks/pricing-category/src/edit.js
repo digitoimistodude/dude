@@ -15,7 +15,8 @@ import { useState } from '@wordpress/element';
 
 export default function Edit( { attributes, setAttributes } ) {
   const { categoryTitle, categoryDescription, items } = attributes;
-  const [ expandedItem, setExpandedItem ] = useState( null );
+  const [ expandedSidebarItem, setExpandedSidebarItem ] = useState( null );
+  const [ expandedPreviewItem, setExpandedPreviewItem ] = useState( null );
 
   const blockProps = useBlockProps( {
     className: 'block block-pricing-category has-unified-padding-if-stacked',
@@ -56,6 +57,10 @@ export default function Edit( { attributes, setAttributes } ) {
     setAttributes( { items: newItems } );
   };
 
+  const togglePreviewItem = ( index ) => {
+    setExpandedPreviewItem( expandedPreviewItem === index ? null : index );
+  };
+
   const updateFeature = ( itemIndex, featureIndex, value ) => {
     const newItems = [ ...items ];
     const newFeatures = [ ...newItems[ itemIndex ].features ];
@@ -91,8 +96,8 @@ export default function Edit( { attributes, setAttributes } ) {
           <PanelBody
             key={ item.id || index }
             title={ item.title || `Tuote ${ index + 1 }` }
-            initialOpen={ expandedItem === index }
-            onToggle={ () => setExpandedItem( expandedItem === index ? null : index ) }
+            initialOpen={ expandedSidebarItem === index }
+            onToggle={ () => setExpandedSidebarItem( expandedSidebarItem === index ? null : index ) }
           >
             <TextControl
               label={ __( 'Otsikko', 'dude' ) }
@@ -205,26 +210,51 @@ export default function Edit( { attributes, setAttributes } ) {
                     { __( 'Lisää tuotteita sivupalkista.', 'dude' ) }
                   </p>
                 ) }
-                { items.map( ( item, index ) => (
-                  <div
-                    key={ item.id || index }
-                    className={ `pricing-accordion-item${ item.isPopular ? ' is-popular' : '' }` }
-                  >
-                    <div className="item-main">
-                      <div className="item-content">
-                        <div className="item-header">
-                          <h3>{ item.title }</h3>
-                          { item.isPopular && <span className="badge">Suosituin</span> }
+                { items.map( ( item, index ) => {
+                  const isExpanded = expandedPreviewItem === index;
+                  return (
+                    <div
+                      key={ item.id || index }
+                      className={ `pricing-accordion-item${ item.isPopular ? ' is-popular' : '' }` }
+                      aria-expanded={ isExpanded ? 'true' : 'false' }
+                      onClick={ () => togglePreviewItem( index ) }
+                      onKeyDown={ ( e ) => {
+                        if ( e.key === 'Enter' || e.key === ' ' ) {
+                          e.preventDefault();
+                          togglePreviewItem( index );
+                        }
+                      } }
+                      role="button"
+                      tabIndex={ 0 }
+                    >
+                      <div className="item-main">
+                        <div className="item-content">
+                          <div className="item-header">
+                            <h3>{ item.title }</h3>
+                            { item.isPopular && <span className="badge">Suosituin</span> }
+                          </div>
+                          <div className="item-meta">
+                            <span className="price">{ item.price }</span>
+                            <span className="description">{ item.shortDescription }</span>
+                          </div>
                         </div>
-                        <div className="item-meta">
-                          <span className="price">{ item.price }</span>
-                          <span className="description">{ item.shortDescription }</span>
-                        </div>
+                        <span className="icon" aria-hidden="true"></span>
                       </div>
-                      <span className="icon" aria-hidden="true"></span>
+                      { isExpanded && (
+                        <div className="accordion-content">
+                          <p>{ item.content }</p>
+                          { item.features && item.features.length > 0 && (
+                            <ul>
+                              { item.features.map( ( feature, fIndex ) => (
+                                <li key={ fIndex }>{ feature }</li>
+                              ) ) }
+                            </ul>
+                          ) }
+                        </div>
+                      ) }
                     </div>
-                  </div>
-                ) ) }
+                  );
+                } ) }
               </div>
             </div>
           </div>

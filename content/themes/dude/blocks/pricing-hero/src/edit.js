@@ -44,9 +44,9 @@ export default function Edit( { attributes, setAttributes } ) {
       <section { ...blockProps }>
         <div className="container">
           <div className="content">
-            <p className="prefix">{ prefix }</p>
+            <h1 className="prefix">{ prefix }</h1>
             <RichText
-              tagName="h1"
+              tagName="h2"
               value={ title }
               onChange={ ( value ) => setAttributes( { title: value } ) }
               placeholder={ __( 'Kirjoita otsikko...', 'dude' ) }
