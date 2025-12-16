@@ -83,13 +83,19 @@ body.page-template-template-pricing .landing-pricing section {
   color: var(--color-button-hover);
 }
 
-// Pricing categories section
-.landing-pricing .block-pricing-categories {
-  padding-bottom: var(--padding-block);
-  padding-top: calc(var(--padding-block) + 42px);
+// Pricing categories section (native blocks)
+.landing-pricing .block-pricing-category {
+  padding-bottom: 0;
+  padding-top: 0;
+
+  // First category block gets top padding
+  &:first-of-type {
+    padding-top: calc(var(--padding-block) + 42px);
+  }
 
   .container {
     padding-bottom: 0;
+    padding-top: 0;
   }
 }
 
@@ -103,7 +109,9 @@ body.page-template-template-pricing .landing-pricing section {
   }
 }
 
-.landing-pricing .pricing-category:last-child {
+// Last category before CTA
+.landing-pricing .block-pricing-category:has(+ .block-pricing-cta) .pricing-category,
+.landing-pricing .block-pricing-category:last-of-type .pricing-category {
   margin-bottom: 0;
 }
 

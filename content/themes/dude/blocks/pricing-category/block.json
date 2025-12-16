@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dude/pricing-category",
+  "version": "1.0.0",
+  "title": "Hinnasto: Kategoria",
+  "category": "dude",
+  "icon": "tag",
+  "description": "Hinnaston kategoria haitarielementeillä",
+  "keywords": ["pricing", "category", "accordion", "hinnasto"],
+  "supports": {
+    "html": false,
+    "align": ["full"],
+    "anchor": true
+  },
+  "attributes": {
+    "categoryTitle": {
+      "type": "string",
+      "default": "Kategoria"
+    },
+    "categoryDescription": {
+      "type": "string",
+      "default": "Kategorian kuvaus."
+    },
+    "items": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "textdomain": "dude",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php"
+}

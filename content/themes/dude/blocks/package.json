@@ -5,9 +5,9 @@
   "scripts": {
     "build:pricing-hero": "cd pricing-hero && wp-scripts build src/index.js --output-path=build",
     "build:pricing-cta": "cd pricing-cta && wp-scripts build src/index.js --output-path=build",
-    "build": "npm run build:pricing-hero && npm run build:pricing-cta",
-    "start:pricing-hero": "cd pricing-hero && wp-scripts start src/index.js --output-path=build",
-    "start:pricing-cta": "cd pricing-cta && wp-scripts start src/index.js --output-path=build"
+    "build:pricing-category": "cd pricing-category && wp-scripts build src/index.js --output-path=build",
+    "build:pricing-faq": "cd pricing-faq && wp-scripts build src/index.js --output-path=build",
+    "build": "npm run build:pricing-hero && npm run build:pricing-cta && npm run build:pricing-category && npm run build:pricing-faq"
   },
   "devDependencies": {
     "@wordpress/scripts": "^28.0.0"

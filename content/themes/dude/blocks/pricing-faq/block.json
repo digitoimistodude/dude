@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dude/pricing-faq",
+  "version": "1.0.0",
+  "title": "Hinnasto: UKK",
+  "category": "dude",
+  "icon": "editor-help",
+  "description": "Hinnaston usein kysytyt kysymykset",
+  "keywords": ["pricing", "faq", "ukk", "hinnasto", "kysymykset"],
+  "supports": {
+    "html": false,
+    "align": ["full"],
+    "anchor": true
+  },
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "default": "Hyvä tietää"
+    },
+    "sectionDescription": {
+      "type": "string",
+      "default": "Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset."
+    },
+    "items": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "textdomain": "dude",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php"
+}

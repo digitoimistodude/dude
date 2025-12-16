@@ -462,6 +462,25 @@ add_action( 'after_setup_theme', function() {
         'core/verse',
         'core/video',
       ],
+      'page' => [
+        // Native Gutenberg blocks for pricing page
+        'dude/pricing-hero',
+        'dude/pricing-cta',
+        'dude/pricing-category',
+        'dude/pricing-faq',
+        // Core blocks
+        'core/heading',
+        'core/paragraph',
+        'core/list',
+        'core/buttons',
+        'core/image',
+        'core/columns',
+        'core/column',
+        'core/separator',
+        'core/spacer',
+        'core/html',
+        'core/block',
+      ],
     ],
 
     // If you want to use classic editor somewhere, define it here
