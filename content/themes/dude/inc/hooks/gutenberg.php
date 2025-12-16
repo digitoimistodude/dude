@@ -120,18 +120,9 @@ function enqueue_pricing_gradient_toggle() {
   wp_enqueue_script(
     'dude-pricing-gradient-toggle',
     get_theme_file_uri( '/js/admin/pricing-gradient-toggle.js' ),
-    [ 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-compose' ],
+    [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
     filemtime( get_theme_file_path( '/js/admin/pricing-gradient-toggle.js' ) ),
     true
   );
-
-  // Add inline styles for gradient background in editor
-  $gradient_styles = '
-  .editor-styles-wrapper.has-pricing-gradient {
-    background-color: #1e4348 !important;
-    background-image: linear-gradient(129deg, #1e4348 0%, #1c1e26 42%) !important;
-  }
-  ';
-  wp_add_inline_style( 'block-editor-styles', $gradient_styles );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_pricing_gradient_toggle' );

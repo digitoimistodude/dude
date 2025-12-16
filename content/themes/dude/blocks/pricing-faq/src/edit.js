@@ -14,7 +14,8 @@ import { useState } from '@wordpress/element';
 
 export default function Edit( { attributes, setAttributes } ) {
   const { sectionTitle, sectionDescription, items } = attributes;
-  const [ expandedItem, setExpandedItem ] = useState( null );
+  const [ expandedSidebarItem, setExpandedSidebarItem ] = useState( null );
+  const [ expandedPreviewItem, setExpandedPreviewItem ] = useState( null );
 
   const blockProps = useBlockProps( {
     className: 'block block-pricing-faq block-upkeep-faq has-unified-padding-if-stacked',
@@ -51,12 +52,16 @@ export default function Edit( { attributes, setAttributes } ) {
     setAttributes( { items: newItems } );
   };
 
+  const togglePreviewItem = ( index ) => {
+    setExpandedPreviewItem( expandedPreviewItem === index ? null : index );
+  };
+
   return (
     <>
       <InspectorControls>
         <PanelBody title={ __( 'UKK-asetukset', 'dude' ) }>
           <p style={ { color: '#757575', fontSize: '12px' } }>
-            { __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää ja muokkaa kysymyksiä alla.', 'dude' ) }
+            { __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää ja muokkaa kysymyksiä alla. Klikkaa kysymystä lohkossa nähdäksesi vastauksen.', 'dude' ) }
           </p>
         </PanelBody>
 
@@ -64,8 +69,8 @@ export default function Edit( { attributes, setAttributes } ) {
           <PanelBody
             key={ item.id || index }
             title={ item.question || `Kysymys ${ index + 1 }` }
-            initialOpen={ expandedItem === index }
-            onToggle={ () => setExpandedItem( expandedItem === index ? null : index ) }
+            initialOpen={ expandedSidebarItem === index }
+            onToggle={ () => setExpandedSidebarItem( expandedSidebarItem === index ? null : index ) }
           >
             <TextControl
               label={ __( 'Kysymys', 'dude' ) }
@@ -138,17 +143,37 @@ export default function Edit( { attributes, setAttributes } ) {
                     { __( 'Lisää kysymyksiä sivupalkista.', 'dude' ) }
                   </p>
                 ) }
-                { items.map( ( item, index ) => (
-                  <div key={ item.id || index } className="accordion-item">
-                    <h3>
-                      <button className="accordion-trigger" aria-expanded="false">
-                        <span className="accordion-title">
-                          { item.question }<span className="accordion-icon"></span>
-                        </span>
-                      </button>
-                    </h3>
-                  </div>
-                ) ) }
+                { items.map( ( item, index ) => {
+                  const isExpanded = expandedPreviewItem === index;
+                  return (
+                    <div key={ item.id || index } className="accordion-item">
+                      <h3>
+                        <button
+                          className="accordion-trigger"
+                          aria-expanded={ isExpanded ? 'true' : 'false' }
+                          onClick={ ( e ) => {
+                            e.preventDefault();
+                            togglePreviewItem( index );
+                          } }
+                          type="button"
+                        >
+                          <span className="accordion-title">
+                            { item.question }
+                            <span className="accordion-icon"></span>
+                          </span>
+                        </button>
+                      </h3>
+                      <div
+                        className="accordion-panel"
+                        style={ { display: isExpanded ? 'block' : 'none' } }
+                      >
+                        <div>
+                          <p>{ item.answer }</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                } ) }
               </div>
             </div>
           </div>
