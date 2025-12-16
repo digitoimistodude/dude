@@ -102,3 +102,6 @@
 
 // Other features needed on editor side
 @import 'gutenberg/editor';
+
+// Pricing page blocks in editor (without .landing-pricing parent)
+@import 'views/template-pricing-editor';
