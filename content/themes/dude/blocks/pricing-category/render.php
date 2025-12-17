@@ -4,20 +4,17 @@
  *
  * @package dude
  * @param array    $attributes Block attributes.
- * @param string   $content    Block default content.
+ * @param string   $content    Block default content (InnerBlocks).
  * @param WP_Block $block      Block instance.
  */
 
-$category_title       = $attributes['categoryTitle'] ?? 'Kategoria';
-$category_description = $attributes['categoryDescription'] ?? '';
-$items                = $attributes['items'] ?? [];
+$items = $attributes['items'] ?? [];
 ?>
 <section <?php echo get_block_wrapper_attributes( [ 'class' => 'block block-pricing-category has-unified-padding-if-stacked' ] ); ?>>
   <div class="container">
     <div class="pricing-category">
       <div class="category-info">
-        <h2><?php echo wp_kses_post( $category_title ); ?></h2>
-        <p><?php echo wp_kses_post( $category_description ); ?></p>
+        <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
       </div>
       <div class="category-items">
         <div class="pricing-accordion">

@@ -214,7 +214,7 @@ body {
 .is-root-container > .wp-block.block-editor-rich-text__editable,
 .is-root-container > .block-editor-rich-text__editable,
 .is-root-container .wp-block.wp-block-quote,
-.is-root-container .wp-block[data-type^='core'],
+.is-root-container .wp-block[data-type^='core']:not([data-type='core/heading']),
 .is-root-container [contenteditable] p {
   font-family: var(--font-paragraph);
 
@@ -222,6 +222,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   max-width: $width-max-article;
+
+  // stylelint-disable-next-line value-keyword-case
+  text-rendering: geometricPrecision;
+}
+
+// Headings should use heading font
+.is-root-container .wp-block[data-type='core/heading'] {
+  font-family: var(--font-heading);
+
+  // Font smoothing
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 
   // stylelint-disable-next-line value-keyword-case
   text-rendering: geometricPrecision;

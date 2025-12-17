@@ -29,7 +29,7 @@
 @import 'base/accessibility';
 
 // Gutenberg editor specific webfonts
-@import 'gutenberg/variables/font-face';
+@import 'gutenberg-acf/variables/font-face';
 
 // Animations
 @import 'animations/radial-gradient';
@@ -39,11 +39,11 @@
 @import 'components/components';
 
 // Gutenberg layout outside blocks
-@import 'gutenberg/layout/content';
-@import 'gutenberg/layout/button';
+@import 'gutenberg-acf/layout/content';
+@import 'gutenberg-acf/layout/button';
 
 // Gutenberg blocks
-@import 'gutenberg/blocks';
+@import 'gutenberg-acf/blocks';
 
 // Navigation
 @import 'navigation/nav-desktop';
@@ -98,10 +98,10 @@
 @import 'parts/logos';
 
 // Gutenberg formatting
-@import 'gutenberg/formatting';
+@import 'gutenberg-acf/formatting';
 
 // Other features needed on editor side
-@import 'gutenberg/editor';
+@import 'gutenberg-acf/editor';
 
 // Pricing page blocks in editor (without .landing-pricing parent)
 @import 'views/template-pricing-editor';

@@ -14,14 +14,6 @@
     "anchor": true
   },
   "attributes": {
-    "title": {
-      "type": "string",
-      "default": "Kiinnostuitko? Ota yhteyttä!"
-    },
-    "description": {
-      "type": "string",
-      "default": "Kerro meille projektistasi, niin palataan asiaan pikimmiten."
-    },
     "phoneText": {
       "type": "string",
       "default": "Soita Juhalle <a href=\"tel:+358400443221\">0400 443 221</a> tai lähetä WhatsAppia"
@@ -37,5 +29,6 @@
   },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
+  "style": "file:./build/style-index.css",
   "render": "file:./render.php"
 }

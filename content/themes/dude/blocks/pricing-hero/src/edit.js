@@ -1,72 +1,47 @@
 import { __ } from '@wordpress/i18n';
-import {
-  useBlockProps,
-  RichText,
-  InspectorControls,
-} from '@wordpress/block-editor';
-import {
-  PanelBody,
-  TextControl,
-  ToggleControl,
-} from '@wordpress/components';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import './style.scss';
 
-export default function Edit( { attributes, setAttributes } ) {
-  const { prefix, title, ingress, showButton, buttonText } = attributes;
+const TEMPLATE = [
+  [ 'core/heading', {
+    level: 1,
+    content: 'Hinnasto',
+    placeholder: __( 'Esiotsikko...', 'dude' ),
+    className: 'prefix',
+  } ],
+  [ 'core/heading', {
+    level: 2,
+    content: 'Investoi parempaan<br>digitaaliseen läsnäoloon',
+    placeholder: __( 'Kirjoita otsikko...', 'dude' ),
+  } ],
+  [ 'core/paragraph', {
+    content: 'Kaikki palvelumme ovat räätälöityjä ja suunniteltu kestämään aikaa. Teemme ratkaisuja, jotka toimivat useita vuosia ja tukevat liiketoimintasi kasvua. Investointi, joka maksaa itsensä takaisin päivä päivältä.',
+    placeholder: __( 'Kirjoita ingressi...', 'dude' ),
+    className: 'ingress',
+  } ],
+  [ 'core/buttons', {}, [
+    [ 'core/button', {
+      text: 'Ota yhteyttä',
+      className: 'is-style-mint',
+    } ],
+  ] ],
+];
 
+export default function Edit() {
   const blockProps = useBlockProps( {
-    className: 'block block-pricing-hero has-unified-padding-if-stacked',
+    className: 'block block-pricing-hero',
   } );
 
   return (
-    <>
-      <InspectorControls>
-        <PanelBody title={ __( 'Asetukset', 'dude' ) }>
-          <TextControl
-            label={ __( 'Etuliite', 'dude' ) }
-            value={ prefix }
-            onChange={ ( value ) => setAttributes( { prefix: value } ) }
+    <section { ...blockProps }>
+      <div className="container">
+        <div className="content">
+          <InnerBlocks
+            template={ TEMPLATE }
+            templateLock="all"
           />
-          <ToggleControl
-            label={ __( 'Näytä painike', 'dude' ) }
-            checked={ showButton }
-            onChange={ ( value ) => setAttributes( { showButton: value } ) }
-          />
-          { showButton && (
-            <TextControl
-              label={ __( 'Painikkeen teksti', 'dude' ) }
-              value={ buttonText }
-              onChange={ ( value ) => setAttributes( { buttonText: value } ) }
-            />
-          ) }
-        </PanelBody>
-      </InspectorControls>
-
-      <section { ...blockProps }>
-        <div className="container">
-          <div className="content">
-            <h1 className="prefix">{ prefix }</h1>
-            <RichText
-              tagName="h2"
-              value={ title }
-              onChange={ ( value ) => setAttributes( { title: value } ) }
-              placeholder={ __( 'Kirjoita otsikko...', 'dude' ) }
-              allowedFormats={ [ 'core/bold', 'core/italic' ] }
-            />
-            <RichText
-              tagName="p"
-              className="ingress"
-              value={ ingress }
-              onChange={ ( value ) => setAttributes( { ingress: value } ) }
-              placeholder={ __( 'Kirjoita ingressi...', 'dude' ) }
-            />
-            { showButton && (
-              <p className="button-wrapper">
-                <span className="button button-mint button-huge">{ buttonText }</span>
-              </p>
-            ) }
-          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

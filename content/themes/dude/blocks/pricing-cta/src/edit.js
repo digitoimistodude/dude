@@ -1,19 +1,32 @@
 import { __ } from '@wordpress/i18n';
 import {
   useBlockProps,
-  RichText,
+  InnerBlocks,
   InspectorControls,
 } from '@wordpress/block-editor';
 import {
   PanelBody,
   TextControl,
 } from '@wordpress/components';
+import './style.scss';
+
+const TEMPLATE = [
+  [ 'core/heading', {
+    level: 2,
+    content: 'Kiinnostuitko? Ota yhteyttä!',
+    placeholder: __( 'Kirjoita otsikko...', 'dude' ),
+  } ],
+  [ 'core/paragraph', {
+    content: 'Kerro meille projektistasi, niin palataan asiaan pikimmiten.',
+    placeholder: __( 'Kirjoita kuvaus...', 'dude' ),
+  } ],
+];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { title, description, phoneText, emailText, formText } = attributes;
+  const { phoneText, emailText, formText } = attributes;
 
   const blockProps = useBlockProps( {
-    className: 'block block-pricing-cta has-unified-padding-if-stacked',
+    className: 'block block-pricing-cta',
   } );
 
   return (
@@ -43,18 +56,9 @@ export default function Edit( { attributes, setAttributes } ) {
         <div className="container">
           <div className="cta-box">
             <div className="cta-content">
-              <RichText
-                tagName="h2"
-                value={ title }
-                onChange={ ( value ) => setAttributes( { title: value } ) }
-                placeholder={ __( 'Otsikko...', 'dude' ) }
-                allowedFormats={ [ 'core/bold', 'core/italic' ] }
-              />
-              <RichText
-                tagName="p"
-                value={ description }
-                onChange={ ( value ) => setAttributes( { description: value } ) }
-                placeholder={ __( 'Kuvaus...', 'dude' ) }
+              <InnerBlocks
+                template={ TEMPLATE }
+                templateLock="all"
               />
               <ul className="contact-methods">
                 <li>
@@ -70,9 +74,6 @@ export default function Edit( { attributes, setAttributes } ) {
                   <span>{ formText }</span>
                 </li>
               </ul>
-            </div>
-            <div className="cta-image" aria-hidden="true">
-              <span style={ { color: '#999', fontSize: '14px' } }>{ __( 'Kuva ladataan asetuksista', 'dude' ) }</span>
             </div>
           </div>
         </div>

@@ -4,20 +4,17 @@
  *
  * @package dude
  * @param array    $attributes Block attributes.
- * @param string   $content    Block default content.
+ * @param string   $content    Block default content (InnerBlocks).
  * @param WP_Block $block      Block instance.
  */
 
-$section_title       = $attributes['sectionTitle'] ?? 'Hyvä tietää';
-$section_description = $attributes['sectionDescription'] ?? '';
-$items               = $attributes['items'] ?? [];
+$items = $attributes['items'] ?? [];
 ?>
-<section <?php echo get_block_wrapper_attributes( [ 'class' => 'block block-pricing-faq block-upkeep-faq has-unified-padding-if-stacked' ] ); ?>>
+<section <?php echo get_block_wrapper_attributes( [ 'class' => 'block block-pricing-faq block-upkeep-faq' ] ); ?>>
   <div class="container">
     <div class="faq-layout">
       <div class="faq-intro">
-        <h2><?php echo wp_kses_post( $section_title ); ?></h2>
-        <p><?php echo wp_kses_post( $section_description ); ?></p>
+        <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
       </div>
       <div class="faq-items">
         <div class="accordion" data-allow-multiple data-allow-toggle>

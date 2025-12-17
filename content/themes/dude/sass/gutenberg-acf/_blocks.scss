@@ -1,0 +1,78 @@
+// List of all blocks: https://wordpress.org/support/article/blocks/
+// Core blocks only meant for article content
+.block-single,
+.editor-styles-wrapper,
+.article-content,
+.block-single-question,
+.block-single .article-content {
+  @import 'gutenberg-acf/blocks/core-blockquote';
+  @import 'gutenberg-acf/blocks/core-code';
+  @import 'gutenberg-acf/blocks/core-columns';
+  @import 'gutenberg-acf/blocks/core-cover';
+  @import 'gutenberg-acf/blocks/core-embed';
+  @import 'gutenberg-acf/blocks/core-separator';
+  @import 'gutenberg-acf/blocks/core-heading';
+  @import 'gutenberg-acf/blocks/core-image';
+  @import 'gutenberg-acf/blocks/core-list';
+  @import 'gutenberg-acf/blocks/core-paragraph';
+  @import 'gutenberg-acf/blocks/core-preformatted';
+  @import 'gutenberg-acf/blocks/core-pullquote';
+  @import 'gutenberg-acf/blocks/core-table';
+  @import 'gutenberg-acf/blocks/core-verse';
+  @import 'gutenberg-acf/blocks/core-video';
+
+  // Custom Gutenberg block styles
+  @import 'gutenberg-acf/blocks/boxed';
+  @import 'gutenberg-acf/blocks/button';
+  @import 'gutenberg-acf/blocks/button-file';
+
+  // Add here those ACF Gutenberg blocks you want to use inside article-content
+  // @import 'gutenberg-acf/blocks/your-new-acf-block';
+}
+
+// Blocks only meant for outside article-content
+.editor-styles-wrapper,
+.site-main {
+  // Error block styles
+  @import 'gutenberg-acf/blocks/error';
+
+  // ACF blocks
+  @import 'gutenberg-acf/blocks/video-autoplay';
+  @import 'gutenberg-acf/blocks/open-source';
+  @import 'gutenberg-acf/blocks/badges';
+  @import 'gutenberg-acf/blocks/form-person';
+  @import 'gutenberg-acf/blocks/form';
+  @import 'gutenberg-acf/blocks/icon-list-cols';
+  @import 'gutenberg-acf/blocks/job-techniques';
+  @import 'gutenberg-acf/blocks/hero-jobs';
+  @import 'gutenberg-acf/blocks/images';
+  @import 'gutenberg-acf/blocks/title-content-cols-30';
+  @import 'gutenberg-acf/blocks/jobs';
+  @import 'gutenberg-acf/blocks/title-images';
+  @import 'gutenberg-acf/blocks/timeline';
+  @import 'gutenberg-acf/blocks/carousel';
+  @import 'gutenberg-acf/blocks/image';
+  @import 'gutenberg-acf/blocks/persons';
+  @import 'gutenberg-acf/blocks/reference-quote-long';
+  @import 'gutenberg-acf/blocks/reference-quote-short';
+  @import 'gutenberg-acf/blocks/image-content';
+  @import 'gutenberg-acf/blocks/faq-accordion';
+  @import 'gutenberg-acf/blocks/keynumbers-content';
+  @import 'gutenberg-acf/blocks/hero-centered';
+  @import 'gutenberg-acf/blocks/image-list';
+  @import 'gutenberg-acf/blocks/process';
+  @import 'gutenberg-acf/blocks/accordion';
+  @import 'gutenberg-acf/blocks/references';
+  @import 'gutenberg-acf/blocks/reference-list';
+  @import 'gutenberg-acf/blocks/list';
+  @import 'gutenberg-acf/blocks/title-content-50-50';
+  @import 'gutenberg-acf/blocks/hero-content-image';
+  @import 'gutenberg-acf/blocks/blog-latest';
+  @import 'gutenberg-acf/blocks/cta-big';
+  @import 'gutenberg-acf/blocks/title-content-columns';
+  @import 'gutenberg-acf/blocks/cta-small';
+  @import 'gutenberg-acf/blocks/reference-quotes';
+  @import 'gutenberg-acf/blocks/hero';
+  @import 'gutenberg-acf/blocks/content';
+
+}
