@@ -14,14 +14,6 @@
     "anchor": true
   },
   "attributes": {
-    "sectionTitle": {
-      "type": "string",
-      "default": "Hyvä tietää"
-    },
-    "sectionDescription": {
-      "type": "string",
-      "default": "Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset."
-    },
     "items": {
       "type": "array",
       "default": []
@@ -29,5 +21,6 @@
   },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
+  "style": "file:./build/style-index.css",
   "render": "file:./render.php"
 }

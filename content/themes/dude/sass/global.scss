@@ -97,10 +97,10 @@
 @import 'parts/logos';
 
 // Gutenberg layout outside blocks
-@import 'gutenberg/layout/content';
+@import 'gutenberg-acf/layout/content';
 
-// Gutenberg blocks
-@import 'gutenberg/blocks';
+// ACF Gutenberg blocks
+@import 'gutenberg-acf/blocks';
 
 // Gutenberg formatting
-@import 'gutenberg/formatting';
+@import 'gutenberg-acf/formatting';

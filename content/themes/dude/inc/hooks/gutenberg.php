@@ -50,7 +50,7 @@ function use_block_editor_for_post_type( $use_block_editor, $post_type ) {
 } // end use_block_editor_for_post_type
 
 /**
- * Enqueue block editor JavaScript and CSS
+ * Enqueue block editor JavaScript
  */
 function register_block_editor_assets() {
 
@@ -69,16 +69,6 @@ function register_block_editor_assets() {
     $dependencies,
     filemtime( get_theme_file_path( get_asset_file( 'gutenberg-editor.js' ) ) ),
     'all'
-  );
-
-  // Enqueue optional editor only styles
-  wp_enqueue_style(
-    'block-editor-styles',
-    get_theme_file_uri( get_asset_file( 'gutenberg-editor-styles.css' ) ),
-    [],
-    filemtime( get_theme_file_path( get_asset_file( 'gutenberg-editor-styles.css' ) ) ),
-    'all',
-    true
   );
 } // end register_block_editor_assets
 

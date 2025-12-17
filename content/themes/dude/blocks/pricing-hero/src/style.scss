@@ -1,5 +1,4 @@
 // Pricing Hero block styles
-// Loaded on both frontend and editor
 
 .block-pricing-hero {
   padding-bottom: 0;
@@ -14,8 +13,11 @@
     max-width: 1000px;
   }
 
-  h1.prefix {
+  // Style the prefix heading (h1 with .prefix class)
+  h1.prefix,
+  h1.wp-block-heading.prefix {
     color: var(--color-mint);
+    font-family: var(--font-heading);
     font-size: var(--font-size-14);
     font-weight: 500;
     letter-spacing: 1px;
@@ -23,7 +25,10 @@
     text-transform: uppercase;
   }
 
-  h2 {
+  // Style the main heading (h2)
+  h2,
+  h2.wp-block-heading {
+    font-family: var(--font-heading);
     font-size: clamp(48px, 6vw, 90px);
     font-weight: 700;
     letter-spacing: -0.9px;
@@ -31,7 +36,10 @@
     margin-bottom: 27px;
   }
 
-  .ingress {
+  // Style the ingress paragraph
+  p.ingress,
+  p.wp-block-paragraph.ingress {
+    font-family: var(--font-body);
     font-size: var(--font-size-30);
     line-height: 1.7;
     max-width: 900px;
@@ -41,15 +49,19 @@
     }
   }
 
-  .button-wrapper {
+  // Style the buttons wrapper
+  .wp-block-buttons {
     margin-top: 25px;
   }
 
-  .button-mint {
+  // Mint button style
+  .wp-block-button.is-style-mint .wp-block-button__link,
+  .wp-block-button.is-style-mint > a {
     background-color: var(--color-mint);
     border: 1px solid var(--color-mint);
     border-radius: 84px;
     color: var(--color-dark-navy);
+    font-family: var(--font-body);
     font-size: var(--font-size-24);
     font-weight: 600;
     padding: 20px 41px;

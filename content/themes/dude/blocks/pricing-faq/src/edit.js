@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import {
   useBlockProps,
-  RichText,
+  InnerBlocks,
   InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -11,14 +11,27 @@ import {
   TextareaControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import './style.scss';
+
+const TEMPLATE = [
+  [ 'core/heading', {
+    level: 2,
+    content: 'Hyvä tietää',
+    placeholder: __( 'Osion otsikko...', 'dude' ),
+  } ],
+  [ 'core/paragraph', {
+    content: 'Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset.',
+    placeholder: __( 'Osion kuvaus...', 'dude' ),
+  } ],
+];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { sectionTitle, sectionDescription, items } = attributes;
+  const { items } = attributes;
   const [ expandedSidebarItem, setExpandedSidebarItem ] = useState( null );
   const [ expandedPreviewItem, setExpandedPreviewItem ] = useState( null );
 
   const blockProps = useBlockProps( {
-    className: 'block block-pricing-faq block-upkeep-faq has-unified-padding-if-stacked',
+    className: 'block block-pricing-faq block-upkeep-faq',
   } );
 
   const addItem = () => {
@@ -123,17 +136,9 @@ export default function Edit( { attributes, setAttributes } ) {
         <div className="container">
           <div className="faq-layout">
             <div className="faq-intro">
-              <RichText
-                tagName="h2"
-                value={ sectionTitle }
-                onChange={ ( value ) => setAttributes( { sectionTitle: value } ) }
-                placeholder={ __( 'Osion otsikko...', 'dude' ) }
-              />
-              <RichText
-                tagName="p"
-                value={ sectionDescription }
-                onChange={ ( value ) => setAttributes( { sectionDescription: value } ) }
-                placeholder={ __( 'Osion kuvaus...', 'dude' ) }
+              <InnerBlocks
+                template={ TEMPLATE }
+                templateLock="all"
               />
             </div>
             <div className="faq-items">

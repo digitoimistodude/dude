@@ -1,0 +1,111 @@
+// Pricing CTA block styles
+// Core blocks handle their own typography
+
+.block-pricing-cta {
+  padding-bottom: 0;
+  padding-top: var(--padding-block);
+}
+
+.cta-box {
+  background-color: #223948;
+  background-image: radial-gradient(ellipse at center, #1e4348 0%, rgba(30, 32, 38, 0.54) 100%);
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.cta-content {
+  padding: 70px;
+  width: 768px;
+
+  @media (max-width: 900px) {
+    padding: 40px;
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 30px;
+  }
+
+  // Style heading inside CTA
+  h2,
+  h2.wp-block-heading {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-42);
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    line-height: 1.38;
+    margin-bottom: 26px;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-28);
+    }
+  }
+
+  // Style paragraph inside CTA
+  > p,
+  > .wp-block-paragraph {
+    font-size: var(--font-size-24);
+    line-height: 1.7;
+    margin-bottom: 26px;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-16);
+    }
+  }
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+  }
+
+  svg {
+    color: var(--color-mint);
+    flex-shrink: 0;
+  }
+
+  span {
+    font-size: var(--font-size-20);
+    line-height: 1.7;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-16);
+    }
+  }
+
+  a {
+    color: var(--color-mint);
+    text-decoration: underline;
+  }
+}
+
+.cta-image {
+  position: absolute;
+  right: 80px;
+  top: -203px;
+  width: 473px;
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}

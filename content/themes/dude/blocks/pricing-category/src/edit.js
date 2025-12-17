@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import {
   useBlockProps,
-  RichText,
+  InnerBlocks,
   InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -12,9 +12,22 @@ import {
   ToggleControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import './style.scss';
+
+const TEMPLATE = [
+  [ 'core/heading', {
+    level: 2,
+    content: 'Kategoria',
+    placeholder: __( 'Kategorian otsikko...', 'dude' ),
+  } ],
+  [ 'core/paragraph', {
+    content: 'Kategorian kuvaus.',
+    placeholder: __( 'Kategorian kuvaus...', 'dude' ),
+  } ],
+];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { categoryTitle, categoryDescription, items } = attributes;
+  const { items } = attributes;
   const [ expandedSidebarItem, setExpandedSidebarItem ] = useState( null );
   const [ expandedPreviewItem, setExpandedPreviewItem ] = useState( null );
 
@@ -190,17 +203,9 @@ export default function Edit( { attributes, setAttributes } ) {
         <div className="container">
           <div className="pricing-category">
             <div className="category-info">
-              <RichText
-                tagName="h2"
-                value={ categoryTitle }
-                onChange={ ( value ) => setAttributes( { categoryTitle: value } ) }
-                placeholder={ __( 'Kategorian otsikko...', 'dude' ) }
-              />
-              <RichText
-                tagName="p"
-                value={ categoryDescription }
-                onChange={ ( value ) => setAttributes( { categoryDescription: value } ) }
-                placeholder={ __( 'Kategorian kuvaus...', 'dude' ) }
+              <InnerBlocks
+                template={ TEMPLATE }
+                templateLock="all"
               />
             </div>
             <div className="category-items">
