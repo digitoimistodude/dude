@@ -83,10 +83,13 @@
       img {
         display: block;
         height: auto;
-        width: auto;
+        max-width: calc(100vw - 2rem);
+        width: 100%;
 
         @media (min-width: $width-max-mobile) {
           height: 650px;
+          max-width: none;
+          width: auto;
         }
       }
     }
@@ -98,6 +101,10 @@
       margin-right: auto;
       max-width: $width-grid-base;
       padding: 3rem var(--padding-container-horizontal) 6rem;
+
+      @media (max-width: $width-max-mobile) {
+        padding-bottom: 0;
+      }
 
       button {
         background-color: transparent;
