@@ -43,30 +43,68 @@
     }
   }
 
-  // Alt carousel style
+  // Alt carousel style - uses native CSS scroll instead of Swiper
   &.carousel-style-alt {
     background-color: transparent;
 
     .container {
+      max-width: 100%;
+      overflow: visible;
+      padding-left: 0;
+      padding-right: 0;
       padding-top: 0;
-      padding-bottom: 0;
     }
 
-    .swiper-controls {
-      padding: 3rem 0;
-    }
+    .scroll-carousel {
+      overflow-x: auto;
+      overflow-y: visible;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
 
-    .swiper-wrapper {
-      @media (min-width: $width-max-mobile) {
-        max-height: 650px;
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
 
-    .swiper-slide img {
-      @media (min-width: $width-max-mobile) {
-        height: 650px;
-        object-fit: cover;
-        object-position: center center;
+    .scroll-carousel-track {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      // Align first slide with container content edge (same as arrows)
+      padding-left: max(var(--padding-container-horizontal), calc((100vw - #{$width-grid-base}) / 2 + var(--padding-container-horizontal)));
+      padding-right: max(var(--padding-container-horizontal), calc((100vw - #{$width-grid-base}) / 2 + var(--padding-container-horizontal)));
+    }
+
+    .scroll-carousel-item {
+      flex-shrink: 0;
+      margin: 0;
+
+      img {
+        display: block;
+        height: auto;
+        width: auto;
+
+        @media (min-width: $width-max-mobile) {
+          height: 650px;
+        }
+      }
+    }
+
+    .scroll-carousel-controls {
+      display: flex;
+      gap: 3.7rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: $width-grid-base;
+      padding: 3rem var(--padding-container-horizontal) 6rem;
+
+      button {
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: var(--color-dark-navy);
+        padding: 0;
       }
     }
   }

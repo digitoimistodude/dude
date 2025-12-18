@@ -55,12 +55,36 @@ $picture_cdn_srcset = [
 ];
 ?>
 
-<section class="block block-carousel has-unified-padding-if-stacked is-carousel<?php if ( 'alt' === $carousel_style ) { echo ' carousel-style-alt'; } ?>">
+<?php if ( 'alt' === $carousel_style ) : ?>
+<section class="block block-carousel has-unified-padding-if-stacked carousel-style-alt">
+  <div class="container">
+    <div class="scroll-carousel">
+      <ul class="scroll-carousel-track">
+        <?php foreach ( $images as $image_id ) : ?>
+          <li class="scroll-carousel-item">
+            <?php get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset ); ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+
+    <div class="scroll-carousel-controls">
+      <button class="scroll-carousel-prev arrow-link arrow-link-prev" type="button">
+        <span class="arrow-link-arrow"></span>
+      </button>
+
+      <button class="scroll-carousel-next arrow-link arrow-link-next" type="button">
+        <span class="arrow-link-arrow"></span>
+      </button>
+    </div>
+  </div>
+</section>
+<?php else : ?>
+<section class="block block-carousel has-unified-padding-if-stacked is-carousel">
   <div class="container">
 
-    <div class="swiper swiper-container<?php if ( $make_active_bigger || 'alt' === $carousel_style ) { echo ' is-full-width'; } ?>">
+    <div class="swiper swiper-container<?php if ( $make_active_bigger ) { echo ' is-full-width'; } ?>">
 
-      <?php if ( 'alt' !== $carousel_style ) : ?>
       <header class="head">
         <?php if ( ! empty( $title ) ) : ?>
           <h2>
@@ -78,7 +102,6 @@ $picture_cdn_srcset = [
           </button>
         </div>
       </header>
-      <?php endif; ?>
 
       <ul class="images swiper-wrapper">
         <?php foreach ( $images as $image_id ) : ?>
@@ -88,19 +111,8 @@ $picture_cdn_srcset = [
         <?php endforeach; ?>
       </ul>
       <div class="swiper-scrollbar"></div>
-
-      <?php if ( 'alt' === $carousel_style ) : ?>
-      <div class="swiper-controls">
-        <button class="swiper-actions swiper-button-prev arrow-link arrow-link-prev">
-          <span class="arrow-link-arrow"></span>
-        </button>
-
-        <button class="swiper-actions swiper-button-next arrow-link arrow-link-next">
-          <span class="arrow-link-arrow"></span>
-        </button>
-      </div>
-      <?php endif; ?>
     </div>
 
   </div>
 </section>
+<?php endif; ?>
