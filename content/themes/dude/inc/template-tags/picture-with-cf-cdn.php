@@ -132,6 +132,10 @@ if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
 
     $args_url = [];
     foreach ( $args as $key => $value ) {
+      // Skip null/false values to allow excluding params like gravity and fit
+      if ( null === $value || false === $value ) {
+        continue;
+      }
       $args_url[] = "{$key}={$value}";
     }
 
