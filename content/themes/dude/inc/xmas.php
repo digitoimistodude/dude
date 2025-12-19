@@ -56,42 +56,33 @@ function dude_xmas_get_visitors() {
 }
 
 function dude_xmas_get_total_visitors() {
-  // Cache for 60 seconds to avoid hitting Plausible rate limit (600/hour)
-  $cached = get_transient( 'dude_xmas_total_visitors' );
-  if ( false !== $cached ) {
-    return rest_ensure_response( array( 'total' => $cached ) );
+  // Track unique visitors ourselves using hashed IPs
+  // Baseline: 189 visitors before we started tracking (Dec 19, 2025)
+  $baseline = 189;
+
+  // Get visitor IP
+  $ip = '';
+  if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+    $ip = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] )[0];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
   }
 
-  $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
-  if ( empty( $api_key ) ) {
-    return rest_ensure_response( array( 'total' => 0 ) );
+  // Hash IP for privacy
+  $ip_hash = md5( $ip . 'xmas2025salt' );
+
+  // Get existing visitors
+  $visitors = get_option( 'dude_xmas_unique_visitors_2025', array() );
+
+  // Add this visitor if not already tracked
+  if ( ! empty( $ip ) && ! in_array( $ip_hash, $visitors, true ) ) {
+    $visitors[] = $ip_hash;
+    update_option( 'dude_xmas_unique_visitors_2025', $visitors, false );
   }
 
-  // Get total unique visitors since xmas campaign started (Dec 19, 2025)
-  $today = date( 'Y-m-d' );
-  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=custom&date=2025-12-19,' . $today . '&metrics=visitors', array(
-    'headers' => array(
-      'Authorization' => 'Bearer ' . $api_key,
-    ),
-    'timeout' => 5,
-  ) );
-
-  if ( is_wp_error( $response ) ) {
-    return rest_ensure_response( array( 'total' => 0 ) );
-  }
-
-  $body = wp_remote_retrieve_body( $response );
-  $data = json_decode( $body, true );
-
-  // Check for rate limit error
-  if ( isset( $data['error'] ) ) {
-    return rest_ensure_response( array( 'total' => 0 ) );
-  }
-
-  $total = isset( $data['results']['visitors']['value'] ) ? intval( $data['results']['visitors']['value'] ) : 0;
-
-  // Cache for 60 seconds
-  set_transient( 'dude_xmas_total_visitors', $total, 60 );
+  $total = $baseline + count( $visitors );
 
   return rest_ensure_response( array( 'total' => $total ) );
 }
