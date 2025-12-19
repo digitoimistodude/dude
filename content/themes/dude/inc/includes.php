@@ -44,3 +44,6 @@ require get_theme_file_path( '/inc/includes/contact-form-stats.php' );
 require get_theme_file_path( 'inc/functions/vimeo.php' );
 require get_theme_file_path( 'inc/functions/person.php' );
 require get_theme_file_path( 'inc/functions/jobs.php' );
+
+// Xmas Pikkujoulu 2025
+require get_theme_file_path( 'inc/xmas.php' );

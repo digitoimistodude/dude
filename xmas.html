@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Duden Pikkujoulut 2025</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    .game {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+    }
+
+    .hud {
+      background: #000;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #4a4a6a;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .hud-title {
+      color: #f8d878;
+      font-size: 11px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .hud-btn {
+      background: #2a2a4a;
+      border: 3px solid #6a6a8a;
+      color: #fff;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 9px;
+      cursor: pointer;
+    }
+
+    .hud-btn:hover, .hud-btn.active {
+      background: #f8d878;
+      color: #000;
+      border-color: #f8d878;
+    }
+
+    .screen {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg, #0a1428 0%, #1a2848 30%, #2a3858 50%, #a0c0e0 70%, #d0e8f8 85%, #e8f4fc 100%);
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 8%; right: 12%;
+      width: 50px; height: 50px;
+      background: #f8f8d0;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #f8f8a0, 0 0 60px #f8f8a060;
+      z-index: 1;
+    }
+
+    /* Outside trees */
+    .outside-tree {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .outside-tree::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 60px solid #1a5020;
+    }
+
+    .outside-tree::after {
+      content: '';
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 45px solid #208028;
+    }
+
+    .tree-trunk-out {
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 16px;
+      background: #4a3020;
+    }
+
+    .tree-snow-cap {
+      position: absolute;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 8px;
+      background: #e8f0f8;
+      border-radius: 4px;
+    }
+
+    /* Falling snow */
+    .outside-snow {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      animation: snowfall 25s linear infinite;
+      z-index: 5;
+    }
+
+    @keyframes snowfall {
+      0% { transform: translateY(-50px) translateX(0); opacity: 0; }
+      3% { opacity: 0.7; }
+      25% { transform: translateY(25vh) translateX(8px); opacity: 0.6; }
+      50% { transform: translateY(50vh) translateX(12px); opacity: 0.6; }
+      75% { transform: translateY(75vh) translateX(18px); opacity: 0.5; }
+      97% { opacity: 0.4; }
+      100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
+    }
+
+    /* Cabin */
+    .cabin-frame {
+      position: relative;
+      width: 90%;
+      max-width: 700px;
+      aspect-ratio: 1/1;
+      max-height: calc(100vh - 100px);
+      z-index: 10;
+    }
+
+    .roof {
+      position: absolute;
+      top: -45px;
+      left: -35px;
+      right: -35px;
+      height: 55px;
+      z-index: 30;
+    }
+
+    .roof-main {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 45px;
+      background: linear-gradient(180deg, #8b4513 0%, #6b3510 50%, #5a2a0a 100%);
+      clip-path: polygon(0% 100%, 5% 0%, 95% 0%, 100% 100%);
+    }
+
+    .roof-snow {
+      position: absolute;
+      bottom: 36px;
+      left: 4%; right: 4%;
+      height: 16px;
+      background: #e8f0f8;
+      clip-path: polygon(0% 0%, 3% 100%, 12% 50%, 22% 100%, 35% 60%, 48% 100%, 62% 50%, 75% 100%, 88% 60%, 97% 100%, 100% 0%);
+    }
+
+    .room {
+      position: absolute;
+      inset: 0;
+      background: #d4b896;
+      border: 6px solid #2a1a0a;
+      overflow: hidden;
+    }
+
+    /* Walls */
+    .wall-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55px;
+      background: linear-gradient(180deg, #6a4828 0%, #785830 50%, #8a6838 100%);
+      border-bottom: 5px solid #4a3018;
+      z-index: 20;
+    }
+
+    .wall-left {
+      position: absolute;
+      top: 55px; left: 0; bottom: 25px;
+      width: 35px;
+      background: linear-gradient(90deg, #6a4828 0%, #785830 100%);
+      border-right: 4px solid #4a3018;
+      z-index: 20;
+    }
+
+    .wall-right {
+      position: absolute;
+      top: 55px; right: 0; bottom: 25px;
+      width: 35px;
+      background: linear-gradient(90deg, #785830 0%, #6a4828 100%);
+      border-left: 4px solid #4a3018;
+      z-index: 20;
+    }
+
+    .wall-bottom {
+      position: absolute;
+      bottom: 0; left: 35px; right: 35px;
+      height: 25px;
+      background: linear-gradient(180deg, #785830 0%, #5a4020 100%);
+      border-top: 3px solid #4a3018;
+      z-index: 20;
+    }
+
+    .floor {
+      position: absolute;
+      top: 55px; left: 35px; right: 35px; bottom: 25px;
+      background: repeating-linear-gradient(90deg, #c8a070 0px, #c8a070 45px, #b89060 45px, #b89060 90px);
+    }
+
+    .floor::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0px, transparent 43px, #a07848 43px, #a07848 45px);
+    }
+
+    /* Windows */
+    .window {
+      position: absolute;
+      top: 4px;
+      width: 110px;
+      height: 65px;
+      background: linear-gradient(180deg, #1a2848 0%, #2a3858 30%, #a0c0e0 70%, #d0e8f8 100%);
+      border: 6px solid #4a3018;
+      z-index: 25;
+      overflow: hidden;
+    }
+
+    .window-left { left: 80px; }
+    .window-right { right: 80px; }
+
+    .window::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 4px; height: 100%;
+      background: #4a3018;
+      z-index: 2;
+    }
+
+    .window::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0;
+      width: 100%; height: 4px;
+      background: #4a3018;
+      z-index: 2;
+    }
+
+    .window-moon {
+      position: absolute;
+      top: 4px; right: 5px;
+      width: 8px; height: 8px;
+      background: #f8f8d0;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #f8f8a0;
+    }
+
+    .snowflake {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: snow 3s linear infinite;
+    }
+
+    @keyframes snow {
+      0% { transform: translateY(-10px); opacity: 0; }
+      10% { opacity: 0.8; }
+      100% { transform: translateY(55px); opacity: 0; }
+    }
+
+    /* Fireplace */
+    .fireplace {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 110px;
+      z-index: 26;
+    }
+
+    .fireplace-stone {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(135deg, #787878 25%, #686868 25%, #686868 50%, #787878 50%, #787878 75%, #686868 75%);
+      background-size: 16px 16px;
+      border: 5px solid #484848;
+    }
+
+    .fireplace-opening {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 58px;
+      background: #100404;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .fire {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 46px;
+    }
+
+    .flame {
+      position: absolute;
+      bottom: 0;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 0.15s ease-in-out infinite alternate;
+    }
+
+    .flame1 { left: 10px; width: 38px; height: 40px; background: linear-gradient(#f80, #ff0); }
+    .flame2 { left: 0; width: 22px; height: 30px; background: linear-gradient(#f60, #fa0); animation-delay: 0.05s; }
+    .flame3 { right: 0; width: 22px; height: 32px; background: linear-gradient(#f60, #fa0); animation-delay: 0.1s; }
+
+    @keyframes flicker {
+      from { transform: scaleY(1) scaleX(1); }
+      to { transform: scaleY(1.1) scaleX(0.9); }
+    }
+
+    .fire-glow {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(255,128,0,0.25) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .mantle {
+      position: absolute;
+      top: 12px;
+      left: -10px;
+      width: calc(100% + 20px);
+      height: 22px;
+      background: linear-gradient(180deg, #a07050 0%, #785838 100%);
+      border: 5px solid #4a3018;
+    }
+
+    .stockings {
+      position: absolute;
+      top: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 27;
+    }
+
+    .stocking { width: 16px; height: 32px; }
+    .stocking-top { width: 100%; height: 7px; background: #fff; border: 2px solid #ddd; }
+    .stocking-foot { width: 100%; height: 25px; border-radius: 0 0 6px 4px; }
+    .stocking:nth-child(odd) .stocking-foot { background: #d02020; }
+    .stocking:nth-child(even) .stocking-foot { background: #20a020; }
+
+    /* Clock on wall */
+    .clock {
+      position: absolute;
+      top: 12px;
+      right: 160px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #705028 0%, #503818 100%);
+      border: 4px solid #402010;
+      border-radius: 50%;
+      z-index: 26;
+    }
+
+    .clock-face {
+      position: absolute;
+      inset: 3px;
+      background: radial-gradient(circle, #f8f8f0 0%, #e8e8e0 100%);
+      border-radius: 50%;
+      border: 2px solid #201008;
+    }
+
+    .clock-face::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 3px; height: 10px;
+      background: #201008;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(-30deg);
+    }
+
+    .clock-face::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 3px; height: 7px;
+      background: #201008;
+      transform-origin: bottom center;
+      transform: translate(-50%, -100%) rotate(60deg);
+    }
+
+    /* Wreath on wall */
+    .wreath {
+      position: absolute;
+      top: 12px;
+      left: 160px;
+      width: 40px;
+      height: 40px;
+      z-index: 26;
+    }
+
+    .wreath-ring {
+      width: 100%;
+      height: 100%;
+      border: 9px solid #208020;
+      border-radius: 50%;
+    }
+
+    .wreath-bow {
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 12px;
+      background: #d02020;
+      clip-path: polygon(0% 50%, 20% 0%, 50% 40%, 80% 0%, 100% 50%, 80% 100%, 50% 60%, 20% 100%);
+    }
+
+    /* Tree */
+    .tree {
+      position: absolute;
+      bottom: 36px;
+      right: 50px;
+      width: 110px;
+      height: 145px;
+      z-index: 18;
+    }
+
+    .tree-layer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .tree-l1 { bottom: 78%; width: 44px; height: 42px; background: linear-gradient(90deg, #1a6818 0%, #28a028 50%, #1a6818 100%); }
+    .tree-l2 { bottom: 52%; width: 66px; height: 48px; background: linear-gradient(90deg, #186018 0%, #209020 50%, #186018 100%); }
+    .tree-l3 { bottom: 22%; width: 90px; height: 54px; background: linear-gradient(90deg, #145814 0%, #188018 50%, #145814 100%); }
+
+    .tree-trunk {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 32px;
+      background: linear-gradient(90deg, #603010 0%, #805020 50%, #603010 100%);
+      border: 3px solid #4a2008;
+    }
+
+    .tree-star {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 22px;
+      background: #f8d800;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation: starPulse 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes starPulse {
+      from { filter: drop-shadow(0 0 4px #f8d800); }
+      to { filter: drop-shadow(0 0 12px #f8f800); }
+    }
+
+    .ornament {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.3);
+    }
+
+    .orn-red { background: radial-gradient(circle at 30% 30%, #ff6060, #c00); }
+    .orn-blue { background: radial-gradient(circle at 30% 30%, #6060ff, #00c); }
+    .orn-gold { background: radial-gradient(circle at 30% 30%, #ffe060, #c90); }
+
+    .tree-light {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: blink 0.8s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Presents */
+    .presents {
+      position: absolute;
+      bottom: 38px;
+      right: 48px;
+      z-index: 17;
+    }
+
+    .present {
+      position: absolute;
+      border: 3px solid rgba(0,0,0,0.3);
+    }
+
+    .present::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 25%;
+      height: 100%;
+    }
+
+    .p1 { bottom: 0; left: 0; width: 36px; height: 32px; background: linear-gradient(135deg, #f03030, #c01818); }
+    .p1::before { background: #f8d800; }
+    .p2 { bottom: 0; left: 42px; width: 32px; height: 26px; background: linear-gradient(135deg, #3070f0, #1850c0); }
+    .p2::before { background: #fff; }
+    .p3 { bottom: 30px; left: 18px; width: 28px; height: 24px; background: linear-gradient(135deg, #30d050, #18a030); }
+    .p3::before { background: #f080a0; }
+
+    /* Couch */
+    .couch {
+      position: absolute;
+      bottom: 36px;
+      left: 46px;
+      width: 150px;
+      height: 78px;
+      z-index: 16;
+    }
+
+    .couch-back {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: 40px;
+      background: linear-gradient(180deg, #b03838 0%, #902828 100%);
+      border: 4px solid #601010;
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .couch-seat {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      height: 36px;
+      background: linear-gradient(180deg, #c84848 0%, #a83838 100%);
+      border: 4px solid #601010;
+      border-radius: 5px;
+    }
+
+    .couch-arm {
+      position: absolute;
+      bottom: 10px;
+      width: 18px;
+      height: 52px;
+      background: linear-gradient(180deg, #a83838, #883030);
+      border: 4px solid #601010;
+      border-radius: 5px;
+    }
+
+    .couch-arm-l { left: -5px; }
+    .couch-arm-r { right: -5px; }
+
+    .couch-legs { position: absolute; bottom: 0; width: 12px; height: 12px; background: #402020; }
+    .couch-leg-l { left: 18px; }
+    .couch-leg-r { right: 18px; }
+
+    .pillow {
+      position: absolute;
+      top: 38px;
+      width: 30px;
+      height: 22px;
+      border-radius: 5px;
+      border: 2px solid rgba(0,0,0,0.2);
+    }
+
+    .pillow-1 { left: 22px; background: linear-gradient(135deg, #40b060, #208838); transform: rotate(-8deg); }
+    .pillow-2 { right: 22px; background: linear-gradient(135deg, #f0b030, #c89020); transform: rotate(6deg); }
+
+    /* Coffee table */
+    .table {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 56px;
+      z-index: 15;
+    }
+
+    .table-top {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 16px;
+      background: linear-gradient(180deg, #b09070 0%, #907050 100%);
+      border: 3px solid #604020;
+      border-radius: 4px;
+    }
+
+    .table-leg {
+      position: absolute;
+      top: 14px;
+      width: 10px;
+      height: 28px;
+      background: linear-gradient(90deg, #604020 0%, #806040 50%, #604020 100%);
+      border: 3px solid #503018;
+    }
+
+    .table-leg-l { left: 16px; }
+    .table-leg-r { right: 16px; }
+
+    .mug {
+      position: absolute;
+      top: -20px;
+      width: 18px;
+      height: 20px;
+      background: linear-gradient(90deg, #c03030, #e05050, #c03030);
+      border-radius: 0 0 5px 5px;
+      border: 3px solid #902020;
+    }
+
+    .mug::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: -8px;
+      width: 8px;
+      height: 11px;
+      border: 3px solid #902020;
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .mug-1 { left: 16px; }
+    .mug-2 { left: 52px; }
+    .mug-3 { right: 16px; }
+
+    .steam {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 10px;
+      background: rgba(255,255,255,0.6);
+      animation: steam 2s ease-out infinite;
+      border-radius: 3px;
+    }
+
+    @keyframes steam {
+      0% { opacity: 0.7; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+    }
+
+    /* Rug */
+    .rug {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 70px;
+      background: radial-gradient(ellipse, #b01818 0%, #801010 100%);
+      border: 8px solid #d8a020;
+      border-radius: 5px;
+      z-index: 5;
+    }
+
+    .rug::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 4px solid #d8a020;
+      border-radius: 3px;
+    }
+
+    /* Bookshelf */
+    .bookshelf {
+      position: absolute;
+      top: 65px;
+      left: 50px;
+      width: 80px;
+      height: 100px;
+      background: linear-gradient(90deg, #604020 0%, #785030 50%, #604020 100%);
+      border: 4px solid #402818;
+      z-index: 12;
+    }
+
+    .shelf { position: absolute; left: 0; width: 100%; height: 5px; background: #402010; }
+    .shelf-1 { top: 32%; }
+    .shelf-2 { top: 64%; }
+
+    .books { position: absolute; left: 5px; right: 5px; display: flex; align-items: flex-end; gap: 3px; }
+    .books-1 { bottom: 68%; height: 28%; }
+    .books-2 { bottom: 36%; height: 26%; }
+    .books-3 { bottom: 4%; height: 30%; }
+
+    .book { flex-shrink: 0; border-radius: 1px; }
+
+    /* Lamp */
+    .lamp {
+      position: absolute;
+      bottom: 36px;
+      left: 200px;
+      width: 28px;
+      height: 65px;
+      z-index: 14;
+    }
+
+    .lamp-shade {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 30px;
+      background: linear-gradient(180deg, #f8e8a0 0%, #d8c880 100%);
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      border: 3px solid #c8b860;
+    }
+
+    .lamp-pole {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 30px;
+      background: #806040;
+    }
+
+    .lamp-base {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 10px;
+      background: #604020;
+      border-radius: 3px;
+    }
+
+    /* Plant */
+    .plant {
+      position: absolute;
+      bottom: 36px;
+      right: 200px;
+      width: 32px;
+      height: 55px;
+      z-index: 14;
+    }
+
+    .pot {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 22px;
+      background: linear-gradient(180deg, #c06020 0%, #904010 100%);
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      border: 3px solid #703008;
+    }
+
+    .leaves {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 12px;
+      height: 26px;
+      background: #208028;
+      border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+    }
+
+    .leaf-1 { transform: rotate(-30deg); left: -8px; }
+    .leaf-2 { transform: rotate(0deg); left: 0; }
+    .leaf-3 { transform: rotate(30deg); left: 8px; }
+
+    /* Characters */
+    .character {
+      position: absolute;
+      z-index: 22;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .character:hover {
+      transform: scale(1.4);
+      z-index: 50;
+    }
+
+    .char-sprite {
+      position: relative;
+      width: 72px;
+      height: 102px;
+      image-rendering: pixelated;
+    }
+
+    .char-pixels {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: transparent;
+    }
+
+    .char-shadow {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 16px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+    }
+
+    .char-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.9);
+      border: 3px solid #f8d878;
+      padding: 8px 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+      z-index: 100;
+      border-radius: 4px;
+    }
+
+    .character:hover .char-tooltip { opacity: 1; }
+
+    .char-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #f8d878;
+    }
+
+    .char-name { color: #f8d878; font-size: 9px; display: block; }
+    .char-title { color: #aaa; font-size: 8px; margin-top: 4px; }
+
+    /* Santa */
+    .santa {
+      position: absolute;
+      z-index: 24;
+    }
+
+    .santa-sprite {
+      position: relative;
+      width: 88px;
+      height: 120px;
+      image-rendering: pixelated;
+    }
+
+    .santa-pixels {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: transparent;
+    }
+
+    .santa-shadow {
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 18px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
+    }
+
+    /* UI */
+    .msg-btn {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: linear-gradient(180deg, #c02040 0%, #901030 100%);
+      border: 4px solid #f8d878;
+      color: #fff;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 10px;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 0 #600818;
+    }
+
+    .msg-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #600818; }
+    .msg-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #600818; }
+
+    .dialog {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(180deg, #1a1a2e 0%, #0a0a18 100%);
+      border-top: 4px solid #f8d878;
+      padding: 16px;
+      z-index: 150;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .dialog.open { transform: translateY(0); }
+
+    .dialog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .dialog-title { color: #f8d878; font-size: 11px; }
+
+    .dialog-close {
+      background: none;
+      border: 3px solid #f8d878;
+      color: #f8d878;
+      width: 28px; height: 28px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog-close:hover { background: #f8d878; color: #000; }
+
+    .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+    .form-group { flex: 1; }
+    .form-group.small { flex: 0 0 120px; }
+    .form-group label { display: block; color: #f8d878; font-size: 8px; margin-bottom: 6px; }
+    .form-group input { width: 100%; padding: 10px; background: #0a0a18; border: 3px solid #4a4a6a; color: #fff; font-family: inherit; font-size: 10px; }
+    .form-group input:focus { outline: none; border-color: #f8d878; }
+
+    .btn-send {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(180deg, #c02040 0%, #901030 100%);
+      border: 4px solid #f8d878;
+      color: #fff;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .btn-send:hover { background: linear-gradient(180deg, #f8d878 0%, #c8a858 100%); color: #000; }
+
+    .messages { margin-top: 14px; max-height: 150px; overflow-y: auto; background: #0a0a18; border: 3px solid #4a4a6a; }
+    .msg { padding: 10px; border-bottom: 1px solid #2a2a4a; font-size: 9px; }
+    .msg:last-child { border-bottom: none; }
+    .msg-author { color: #f8d878; }
+    .msg-text { color: #ddd; margin-top: 4px; line-height: 1.6; }
+    .msg-time { color: #666; font-size: 7px; margin-top: 4px; }
+    .no-msgs { text-align: center; color: #666; padding: 20px; font-size: 9px; }
+
+    .toast {
+      position: fixed;
+      top: 60px; left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #0a0a18;
+      border: 4px solid #f8d878;
+      padding: 12px 24px;
+      color: #fff;
+      font-size: 10px;
+      z-index: 200;
+      transition: transform 0.3s;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.error { border-color: #c02040; }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .hud-title { font-size: 8px; }
+      .hud-btn { padding: 6px 10px; font-size: 8px; }
+      .cabin-frame { width: 95%; aspect-ratio: 3/4; }
+      .roof { top: -30px; left: -22px; right: -22px; height: 38px; }
+      .roof-main { height: 32px; }
+      .roof-snow { bottom: 26px; height: 12px; }
+      .wall-top { height: 40px; }
+      .wall-left, .wall-right { width: 26px; top: 40px; }
+      .wall-bottom { height: 20px; left: 26px; right: 26px; }
+      .floor { top: 40px; left: 26px; right: 26px; bottom: 20px; }
+      .window { width: 44px; height: 28px; top: 5px; }
+      .window-left { left: 44px; }
+      .window-right { right: 44px; }
+      .fireplace { width: 60px; height: 48px; }
+      .fireplace-stone { height: 36px; }
+      .fireplace-opening { width: 30px; height: 22px; }
+      .fire { width: 24px; height: 18px; }
+      .mantle { height: 10px; top: 5px; }
+      .stockings { top: 15px; gap: 3px; }
+      .stocking { width: 6px; height: 12px; }
+      .clock { width: 20px; height: 20px; top: 8px; right: 100px; }
+      .wreath { width: 20px; height: 20px; top: 8px; left: 100px; }
+      .wreath-ring { border-width: 5px; }
+      .tree { width: 55px; height: 72px; right: 30px; bottom: 24px; }
+      .tree-l1 { width: 22px; height: 22px; }
+      .tree-l2 { width: 34px; height: 26px; }
+      .tree-l3 { width: 46px; height: 30px; }
+      .tree-trunk { width: 12px; height: 16px; }
+      .tree-star { width: 11px; height: 11px; }
+      .ornament { width: 6px; height: 6px; }
+      .tree-light { width: 4px; height: 4px; }
+      .presents { right: 28px; bottom: 24px; }
+      .p1 { width: 20px; height: 17px; }
+      .p2 { width: 17px; height: 14px; left: 22px; }
+      .p3 { width: 16px; height: 13px; left: 10px; bottom: 16px; }
+      .couch { width: 80px; height: 42px; left: 30px; bottom: 24px; }
+      .couch-back { height: 20px; }
+      .couch-seat { height: 20px; bottom: 6px; }
+      .couch-arm { width: 10px; height: 28px; bottom: 6px; }
+      .couch-legs { width: 8px; height: 8px; }
+      .pillow { width: 18px; height: 13px; top: 20px; }
+      .table { width: 60px; height: 30px; bottom: 26px; }
+      .table-top { height: 8px; }
+      .table-leg { width: 6px; height: 16px; top: 7px; }
+      .mug { width: 10px; height: 12px; top: -12px; }
+      .rug { width: 110px; height: 38px; bottom: 30px; border-width: 4px; }
+      .bookshelf { display: none; }
+      .lamp { display: none; }
+      .plant { display: none; }
+      .fire-glow { width: 120px; height: 90px; top: 38px; }
+      .char-sprite { width: 56px; height: 80px; }
+      .char-pixels { width: 5px; height: 5px; }
+      .char-shadow { width: 36px; height: 12px; }
+      .santa-sprite { width: 55px; height: 80px; }
+      .santa-pixels { width: 5px; height: 5px; }
+      .santa-shadow { width: 40px; height: 12px; }
+      .form-row { flex-direction: column; }
+      .form-group.small { flex: 1; }
+      .msg-btn { padding: 10px 16px; font-size: 9px; bottom: 12px; right: 12px; }
+      .moon { width: 35px; height: 35px; }
+      .outside-tree { transform: scale(0.7); }
+    }
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <div class="game">
+    <div class="hud">
+      <div class="hud-title">DUDEN PIKKUJOULUT 2025</div>
+      <button class="hud-btn" id="soundBtn">MUSIIKKI POIS</button>
+    </div>
+
+    <div class="screen" id="screen">
+      <div class="moon"></div>
+
+      <!-- Cabin -->
+      <div class="cabin-frame">
+        <div class="roof">
+          <div class="roof-main"></div>
+          <div class="roof-snow"></div>
+        </div>
+
+        <div class="room" id="room">
+          <div class="wall-top"></div>
+          <div class="wall-left"></div>
+          <div class="wall-right"></div>
+          <div class="wall-bottom"></div>
+          <div class="floor"></div>
+
+          <!-- Windows -->
+          <div class="window window-left">
+            <div class="window-moon"></div>
+          </div>
+          <div class="window window-right"></div>
+
+          <!-- Fireplace -->
+          <div class="fireplace">
+            <div class="mantle"></div>
+            <div class="fireplace-stone">
+              <div class="fireplace-opening">
+                <div class="fire">
+                  <div class="flame flame1"></div>
+                  <div class="flame flame2"></div>
+                  <div class="flame flame3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="stockings">
+              <div class="stocking"><div class="stocking-top"></div><div class="stocking-foot"></div></div>
+              <div class="stocking"><div class="stocking-top"></div><div class="stocking-foot"></div></div>
+              <div class="stocking"><div class="stocking-top"></div><div class="stocking-foot"></div></div>
+              <div class="stocking"><div class="stocking-top"></div><div class="stocking-foot"></div></div>
+            </div>
+          </div>
+          <div class="fire-glow"></div>
+
+          <!-- Wall decorations -->
+          <div class="clock"><div class="clock-face"></div></div>
+          <div class="wreath"><div class="wreath-ring"></div><div class="wreath-bow"></div></div>
+
+          <!-- Bookshelf -->
+          <div class="bookshelf" id="bookshelf">
+            <div class="shelf shelf-1"></div>
+            <div class="shelf shelf-2"></div>
+            <div class="books books-1" id="books1"></div>
+            <div class="books books-2" id="books2"></div>
+            <div class="books books-3" id="books3"></div>
+          </div>
+
+          <!-- Lamp -->
+          <div class="lamp">
+            <div class="lamp-shade"></div>
+            <div class="lamp-pole"></div>
+            <div class="lamp-base"></div>
+          </div>
+
+          <!-- Plant -->
+          <div class="plant">
+            <div class="pot"></div>
+            <div class="leaves">
+              <div class="leaf leaf-1"></div>
+              <div class="leaf leaf-2"></div>
+              <div class="leaf leaf-3"></div>
+            </div>
+          </div>
+
+          <!-- Rug -->
+          <div class="rug"></div>
+
+          <!-- Couch -->
+          <div class="couch">
+            <div class="couch-back"></div>
+            <div class="couch-arm couch-arm-l"></div>
+            <div class="couch-arm couch-arm-r"></div>
+            <div class="couch-seat">
+              <div class="pillow pillow-1"></div>
+              <div class="pillow pillow-2"></div>
+            </div>
+            <div class="couch-legs couch-leg-l"></div>
+            <div class="couch-legs couch-leg-r"></div>
+          </div>
+
+          <!-- Table -->
+          <div class="table">
+            <div class="table-top">
+              <div class="mug mug-1"><div class="steam"></div></div>
+              <div class="mug mug-2"><div class="steam" style="animation-delay:0.7s"></div></div>
+              <div class="mug mug-3"><div class="steam" style="animation-delay:1.4s"></div></div>
+            </div>
+            <div class="table-leg table-leg-l"></div>
+            <div class="table-leg table-leg-r"></div>
+          </div>
+
+          <!-- Tree -->
+          <div class="tree" id="tree">
+            <div class="tree-star"></div>
+            <div class="tree-layer tree-l1"></div>
+            <div class="tree-layer tree-l2"></div>
+            <div class="tree-layer tree-l3"></div>
+            <div class="tree-trunk"></div>
+          </div>
+
+          <!-- Presents -->
+          <div class="presents">
+            <div class="present p1"></div>
+            <div class="present p2"></div>
+            <div class="present p3"></div>
+          </div>
+
+          <!-- Santa -->
+          <div class="santa" id="santa" style="bottom: 34px; left: 50%; transform: translateX(-50%);">
+            <div class="santa-sprite">
+              <div class="santa-pixels" id="santaPixels"></div>
+            </div>
+            <div class="santa-shadow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="msg-btn" id="msgBtn">TERVEISET</button>
+
+  <div class="dialog" id="dialog">
+    <div class="dialog-header">
+      <span class="dialog-title">JOULUPUKIN KUUMA LINJA</span>
+      <button class="dialog-close" id="closeBtn">X</button>
+    </div>
+    <form id="msgForm">
+      <div class="form-row">
+        <div class="form-group small">
+          <label>NIMESI</label>
+          <input type="text" id="author" maxlength="50" placeholder="Nimi" required>
+        </div>
+        <div class="form-group">
+          <label>VIESTISI</label>
+          <input type="text" id="message" maxlength="500" placeholder="Hyvää joulua!" required>
+        </div>
+      </div>
+      <input type="text" id="website" name="website" style="position:absolute;left:-9999px;opacity:0;height:0;" tabindex="-1" autocomplete="off">
+      <button type="submit" class="btn-send">LÄHETÄ</button>
+    </form>
+    <div class="messages" id="messages">
+      <div class="no-msgs">Ladataan...</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <audio id="music1" preload="auto">
+    <source src="https://www.dude.fi/media/pixel-santas-workshop.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="music2" preload="auto">
+    <source src="https://www.dude.fi/media/pixel-sleigh-dreams.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    (function() {
+      var team = [
+        { name: 'Roni', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick' },
+        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'short', eyes: 'small', brows: 'thin' },
+        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'medium', eyes: 'normal', brows: 'normal' },
+        { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal' },
+        { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick' },
+        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true },
+        { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal' },
+        { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true },
+        { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal' },
+        { name: 'Maria', title: 'Developer', x: 14, y: 82, hair: '#4a3525', skin: '#ffd5c0', shirt: '#60a040', pants: '#3a4535', style: 'medium', eyes: 'big', brows: 'thin', female: true },
+        { name: 'Miska', title: 'Developer', x: 44, y: 66, hair: '#5a4a40', skin: '#ffd0b0', shirt: '#805030', pants: '#4a4035', style: 'short', eyes: 'small', brows: 'thick' },
+        { name: 'Nadya', title: 'Developer', x: 78, y: 50, hair: '#1a1515', skin: '#d4a080', shirt: '#c03060', pants: '#4a3040', style: 'long', eyes: 'big', brows: 'thin', female: true },
+        { name: 'Otto', title: 'Developer', x: 30, y: 78, hair: '#4a4035', skin: '#ffd5c0', shirt: '#a0a030', pants: '#3a3a30', style: 'short', eyes: 'normal', brows: 'normal' },
+        { name: 'William', title: 'Developer', x: 64, y: 74, hair: '#3a3530', skin: '#ffd0b0', shirt: '#6040a0', pants: '#3a3045', style: 'medium', eyes: 'wide', brows: 'normal' }
+      ];
+
+      function isMobile() {
+        return window.innerWidth <= 600;
+      }
+
+      function createSprite(p) {
+        var hair = p.hair;
+        var skin = p.skin;
+        var shirt = p.shirt;
+        var pants = p.pants;
+        var style = p.style;
+        var eyes = p.eyes || 'normal';
+        var brows = p.brows || 'normal';
+        var hasBeard = style == 'beard';
+        var s = isMobile() ? 5 : 6;
+        var px = [];
+
+        var skinLight = lightenColor(skin, 20);
+        var skinDark = darkenColor(skin, 25);
+        var hairDark = darkenColor(hair, 20);
+        var shirtDark = darkenColor(shirt, 20);
+        var shirtLight = lightenColor(shirt, 15);
+
+        var hairDef = {
+          long: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[1,2],[2,2],[8,2],[9,2],[1,3],[9,3],[1,4],[9,4],[1,5],[9,5],[1,6],[9,6]],
+          curly: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,0],[8,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[1,2],[9,2],[2,2],[8,2]],
+          beard: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1]],
+          medium: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[2,2],[8,2]],
+          short: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1]]
+        };
+
+        (hairDef[style] || hairDef.short).forEach(function(xy) {
+          var hc = (xy[0] < 5) ? hairDark : hair;
+          px.push({x:xy[0],y:xy[1],c:hc});
+        });
+
+        [[3,2],[4,2],[5,2],[6,2],[7,2]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skinLight}); });
+        [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+
+        if (brows == 'thick') {
+          px.push({x:3,y:3,c:hairDark});
+          px.push({x:7,y:3,c:hairDark});
+        } else if (brows == 'thin') {
+          px.push({x:3,y:3,c:darkenColor(skin,10)});
+          px.push({x:7,y:3,c:darkenColor(skin,10)});
+        }
+
+        [[2,4],[3,4],[4,4],[6,4],[7,4],[8,4]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+
+        if (eyes == 'big') {
+          px.push({x:3,y:4,c:'#fff'});
+          px.push({x:7,y:4,c:'#fff'});
+          px.push({x:4,y:4,c:'#334'});
+          px.push({x:6,y:4,c:'#334'});
+        } else if (eyes == 'small') {
+          px.push({x:4,y:4,c:'#223'});
+          px.push({x:6,y:4,c:'#223'});
+        } else if (eyes == 'wide') {
+          px.push({x:3,y:4,c:'#223'});
+          px.push({x:4,y:4,c:'#223'});
+          px.push({x:6,y:4,c:'#223'});
+          px.push({x:7,y:4,c:'#223'});
+        } else {
+          px.push({x:4,y:4,c:'#fff'});
+          px.push({x:6,y:4,c:'#fff'});
+          px.push({x:4,y:4,c:'#334'});
+          px.push({x:6,y:4,c:'#334'});
+        }
+
+        [[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+        px.push({x:5,y:5,c:skinDark});
+
+        [[3,6],[4,6],[6,6],[7,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+        px.push({x:5,y:6,c:'#c08080'});
+
+        if (hasBeard) {
+          [[2,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
+          [[2,6],[3,6],[7,6],[8,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
+          [[3,7],[4,7],[5,7],[6,7],[7,7]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
+        }
+
+        var bY = hasBeard ? 8 : 7;
+
+        [[4,0],[5,0],[6,0]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:skin}); });
+        [[3,1],[4,1],[5,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirtLight}); });
+        [[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirt}); });
+        px.push({x:1,y:bY+2,c:skin});
+        px.push({x:9,y:bY+2,c:skin});
+        [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirtDark}); });
+        px.push({x:1,y:bY+3,c:skin});
+        px.push({x:9,y:bY+3,c:skin});
+
+        var pY = bY + 4;
+        [[3,0],[4,0],[5,0],[6,0],[7,0]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:pants}); });
+        [[3,1],[4,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:darkenColor(pants,10)}); });
+        [[3,2],[4,2],[6,2],[7,2]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:'#1a1a1a'}); });
+
+        return px.map(function(p) { return (p.x*s)+'px '+(p.y*s)+'px 0 '+p.c; }).join(',');
+      }
+
+      function createSantaSprite() {
+        var s = isMobile() ? 5 : 8;
+        var px = [];
+        var red = '#d02020';
+        var redDark = '#a01818';
+        var white = '#f0f0f0';
+        var skin = '#ffd5c0';
+        var skinDark = '#e8c0a8';
+        var belt = '#2a2a2a';
+        var gold = '#d8a020';
+
+        // Hat
+        [[4,0],[5,0],[6,0]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
+        [[3,1],[4,1],[5,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
+        px.push({x:7,y:0,c:white}); // pompom
+        [[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+
+        // Face
+        [[3,3],[4,3],[5,3],[6,3],[7,3]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+        [[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+        px.push({x:4,y:4,c:'#334'});
+        px.push({x:6,y:4,c:'#334'});
+        [[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
+        px.push({x:5,y:5,c:'#c08080'}); // nose
+
+        // Beard
+        [[1,5],[9,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+        [[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+        [[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+        [[3,8],[4,8],[5,8],[6,8],[7,8]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+
+        // Body (red coat)
+        [[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
+        [[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
+        px.push({x:0,y:10,c:skin}); // hand
+        px.push({x:10,y:10,c:skin}); // hand
+
+        // Belt
+        [[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:belt}); });
+        px.push({x:5,y:11,c:gold}); // buckle
+        px.push({x:0,y:11,c:skin});
+        px.push({x:10,y:11,c:skin});
+
+        // Lower coat
+        [[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:redDark}); });
+        [[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
+
+        // Legs
+        [[3,14],[4,14],[6,14],[7,14]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:'#1a1a1a'}); });
+        [[3,15],[4,15],[6,15],[7,15]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:'#1a1a1a'}); });
+
+        return px.map(function(p) { return (p.x*s)+'px '+(p.y*s)+'px 0 '+p.c; }).join(',');
+      }
+
+      function lightenColor(hex, percent) {
+        var num = parseInt(hex.slice(1), 16);
+        var r = Math.min(255, (num >> 16) + Math.round(255 * percent / 100));
+        var g = Math.min(255, ((num >> 8) & 0x00FF) + Math.round(255 * percent / 100));
+        var b = Math.min(255, (num & 0x0000FF) + Math.round(255 * percent / 100));
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+
+      function darkenColor(hex, percent) {
+        var num = parseInt(hex.slice(1), 16);
+        var r = Math.max(0, (num >> 16) - Math.round(255 * percent / 100));
+        var g = Math.max(0, ((num >> 8) & 0x00FF) - Math.round(255 * percent / 100));
+        var b = Math.max(0, (num & 0x0000FF) - Math.round(255 * percent / 100));
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+
+      var room = document.getElementById('room');
+      var screen = document.getElementById('screen');
+
+      function renderCharacters() {
+        var existing = room.querySelectorAll('.character');
+        for (var i = 0; i < existing.length; i++) {
+          existing[i].remove();
+        }
+
+        team.forEach(function(p) {
+          var el = document.createElement('div');
+          el.className = 'character';
+          el.style.left = p.x + '%';
+          el.style.top = p.y + '%';
+          el.innerHTML =
+            '<div class="char-sprite">' +
+              '<div class="char-pixels" style="box-shadow:' + createSprite(p) + '"></div>' +
+            '</div>' +
+            '<div class="char-shadow"></div>' +
+            '<div class="char-tooltip">' +
+              '<span class="char-name">' + p.name + '</span>' +
+              '<span class="char-title">' + p.title + '</span>' +
+            '</div>';
+          room.appendChild(el);
+        });
+
+        // Render Santa
+        document.getElementById('santaPixels').style.boxShadow = createSantaSprite();
+      }
+
+      renderCharacters();
+
+      var resizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(renderCharacters, 200);
+      });
+
+      // Stars
+      for (var st = 0; st < 50; st++) {
+        var star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 45 + '%';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        screen.appendChild(star);
+      }
+
+      // Outside trees
+      var treePositions = [
+        { left: '3%', bottom: '58%', scale: 1 },
+        { left: '10%', bottom: '62%', scale: 0.8 },
+        { right: '5%', bottom: '60%', scale: 0.9 },
+        { right: '12%', bottom: '56%', scale: 0.7 },
+        { left: '20%', bottom: '65%', scale: 0.5 },
+        { right: '20%', bottom: '63%', scale: 0.6 }
+      ];
+
+      treePositions.forEach(function(pos) {
+        var treeEl = document.createElement('div');
+        treeEl.className = 'outside-tree';
+        if (pos.left) treeEl.style.left = pos.left;
+        if (pos.right) treeEl.style.right = pos.right;
+        treeEl.style.bottom = pos.bottom;
+        treeEl.style.transform = 'scale(' + pos.scale + ')';
+        treeEl.innerHTML = '<div class="tree-snow-cap"></div><div class="tree-trunk-out"></div>';
+        screen.appendChild(treeEl);
+      });
+
+      // Outside falling snow - peaceful slow fall
+      for (var os = 0; os < 40; os++) {
+        var snowEl = document.createElement('div');
+        snowEl.className = 'outside-snow';
+        snowEl.style.left = Math.random() * 100 + '%';
+        snowEl.style.top = '-20px';
+        snowEl.style.animationDelay = Math.random() * 20 + 's';
+        snowEl.style.animationDuration = (20 + Math.random() * 15) + 's';
+        screen.appendChild(snowEl);
+      }
+
+      // Tree ornaments
+      var tree = document.getElementById('tree');
+      var ornPos = [
+        {x:35,y:38,c:'red'},{x:60,y:35,c:'blue'},{x:25,y:55,c:'gold'},{x:70,y:52,c:'red'},
+        {x:40,y:65,c:'blue'},{x:58,y:68,c:'gold'},{x:20,y:78,c:'red'},{x:75,y:75,c:'blue'}
+      ];
+      ornPos.forEach(function(o) {
+        var el = document.createElement('div');
+        el.className = 'ornament orn-' + o.c;
+        el.style.left = o.x + '%';
+        el.style.top = o.y + '%';
+        tree.appendChild(el);
+      });
+
+      var lightCols = ['#f00','#ff0','#0f0','#0ff','#f0f'];
+      for (var li = 0; li < 14; li++) {
+        var lightEl = document.createElement('div');
+        lightEl.className = 'tree-light';
+        var col = lightCols[li % 5];
+        lightEl.style.cssText = 'left:' + (15+Math.random()*70) + '%;top:' + (28+Math.random()*58) + '%;background:' + col + ';box-shadow:0 0 5px ' + col + ';animation-delay:' + (li*0.12) + 's';
+        tree.appendChild(lightEl);
+      }
+
+      // Books
+      var bookCols = ['#c33','#36c','#3a5','#d82','#84a','#da2'];
+      ['books1','books2','books3'].forEach(function(id) {
+        var row = document.getElementById(id);
+        if (!row) return;
+        for (var bi = 0; bi < 6; bi++) {
+          var bookEl = document.createElement('div');
+          bookEl.className = 'book';
+          bookEl.style.width = (4 + Math.random() * 5) + 'px';
+          bookEl.style.height = (60 + Math.random() * 40) + '%';
+          bookEl.style.background = bookCols[Math.floor(Math.random() * bookCols.length)];
+          row.appendChild(bookEl);
+        }
+      });
+
+      // Window snow
+      document.querySelectorAll('.window').forEach(function(win) {
+        for (var wi = 0; wi < 6; wi++) {
+          var flake = document.createElement('div');
+          flake.className = 'snowflake';
+          flake.style.left = (10 + Math.random() * 80) + '%';
+          flake.style.animationDelay = (Math.random() * 3) + 's';
+          flake.style.animationDuration = (2 + Math.random() * 2) + 's';
+          win.appendChild(flake);
+        }
+      });
+
+      // Dialog
+      var dialog = document.getElementById('dialog');
+      document.getElementById('msgBtn').onclick = function() { dialog.classList.add('open'); };
+      document.getElementById('closeBtn').onclick = function() { dialog.classList.remove('open'); };
+
+      document.getElementById('msgForm').onsubmit = function(e) {
+        e.preventDefault();
+        var authorVal = document.getElementById('author').value.trim();
+        var messageVal = document.getElementById('message').value.trim();
+        if (!authorVal || !messageVal) return;
+
+        fetch('/wp-json/xmas/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ author: authorVal, message: messageVal, website: document.getElementById('website').value })
+        })
+        .then(function(res) {
+          if (res.ok) {
+            showToast('Tervehdys lähetetty!');
+            document.getElementById('msgForm').reset();
+            loadMessages();
+          } else {
+            return res.json().then(function(err) {
+              showToast(err.message || 'Virhe!', true);
+            });
+          }
+        })
+        .catch(function() {
+          showToast('Yhteysvirhe!', true);
+        });
+      };
+
+      function loadMessages() {
+        fetch('/wp-json/xmas/v1/messages')
+          .then(function(res) {
+            if (res.ok) return res.json();
+            throw new Error();
+          })
+          .then(function(msgs) {
+            var el = document.getElementById('messages');
+            if (msgs.length == 0) {
+              el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            } else {
+              el.innerHTML = msgs.map(function(m) {
+                return '<div class="msg">' +
+                  '<span class="msg-author">' + esc(m.author) + ':</span>' +
+                  '<span class="msg-text">' + esc(m.message) + '</span>' +
+                  '<div class="msg-time">' + fmt(m.timestamp) + '</div>' +
+                '</div>';
+              }).join('');
+            }
+          })
+          .catch(function() {
+            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmainen tervehtijai</div>';
+          });
+      }
+
+      function esc(s) {
+        var d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      function fmt(t) {
+        if (!t) return '';
+        var date = new Date(t);
+        return date.getDate() + '.' + (date.getMonth() + 1) + '. ' +
+          ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+      }
+
+      loadMessages();
+      var poll = setInterval(loadMessages, 6000);
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          clearInterval(poll);
+        } else {
+          loadMessages();
+          poll = setInterval(loadMessages, 6000);
+        }
+      });
+
+      // Music - playlist with shuffle
+      var tracks = [document.getElementById('music1'), document.getElementById('music2')];
+      var soundBtn = document.getElementById('soundBtn');
+      var playing = false;
+      var currentTrack = Math.floor(Math.random() * 2); // Random start
+      var autoplayAttempted = false;
+
+      function playTrack(index) {
+        tracks.forEach(function(t, i) {
+          if (i == index) {
+            t.volume = 0.3;
+            t.play().then(function() {
+              playing = true;
+              soundBtn.classList.add('active');
+              soundBtn.textContent = 'MUSIIKKI POIS';
+            }).catch(function() {
+              playing = false;
+              soundBtn.textContent = 'MUSIIKKI';
+            });
+          } else {
+            t.pause();
+            t.currentTime = 0;
+          }
+        });
+      }
+
+      // When track ends, play the other one
+      tracks.forEach(function(t, i) {
+        t.addEventListener('ended', function() {
+          if (playing) {
+            currentTrack = (i + 1) % 2;
+            playTrack(currentTrack);
+          }
+        });
+      });
+
+      function startMusic() {
+        playTrack(currentTrack);
+      }
+
+      // Try autoplay immediately
+      startMusic();
+
+      // Also try on ANY user interaction (click, touch, key)
+      function tryAutoplay() {
+        if (!playing && !autoplayAttempted) {
+          autoplayAttempted = true;
+          startMusic();
+        }
+      }
+
+      document.addEventListener('click', tryAutoplay, { once: true });
+      document.addEventListener('touchstart', tryAutoplay, { once: true });
+      document.addEventListener('keydown', tryAutoplay, { once: true });
+      document.addEventListener('scroll', tryAutoplay, { once: true });
+
+      soundBtn.onclick = function(e) {
+        e.stopPropagation();
+        if (playing) {
+          tracks.forEach(function(t) { t.pause(); });
+          playing = false;
+          soundBtn.classList.remove('active');
+          soundBtn.textContent = 'MUSIIKKI';
+        } else {
+          playing = false; // Reset so playTrack sets it
+          playTrack(currentTrack);
+        }
+      };
+
+      function showToast(msg, err) {
+        var el = document.getElementById('toast');
+        el.textContent = msg;
+        el.className = 'toast show' + (err ? ' error' : '');
+        setTimeout(function() { el.classList.remove('show'); }, 3000);
+      }
+    })();
+  </script>
+</body>
+</html>
