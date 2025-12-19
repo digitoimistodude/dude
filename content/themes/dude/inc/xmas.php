@@ -18,6 +18,12 @@ add_action( 'rest_api_init', function () {
     'callback'            => 'dude_xmas_get_visitors',
     'permission_callback' => '__return_true',
   ) );
+
+  register_rest_route( 'xmas/v1', '/like', array(
+    'methods'             => 'POST',
+    'callback'            => 'dude_xmas_like_message',
+    'permission_callback' => '__return_true',
+  ) );
 } );
 
 function dude_xmas_get_visitors() {
@@ -60,13 +66,24 @@ function dude_xmas_get_messages() {
   }
 
   $messages = get_option( 'dude_xmas_messages_2025', array() );
-  $messages = array_slice( array_reverse( $messages ), 0, 50 );
+  $likes = get_option( 'dude_xmas_likes_2025', array() );
 
-  // Remove IP hashes from response
-  $messages = array_map( function( $msg ) {
+  // Add like counts to messages and remove IP
+  $messages = array_map( function( $msg ) use ( $likes ) {
     unset( $msg['ip'] );
+    $msg['likes'] = isset( $likes[ $msg['id'] ] ) ? $likes[ $msg['id'] ] : 0;
     return $msg;
   }, $messages );
+
+  // Sort by likes (desc), then by timestamp (desc)
+  usort( $messages, function( $a, $b ) {
+    if ( $a['likes'] !== $b['likes'] ) {
+      return $b['likes'] - $a['likes'];
+    }
+    return strtotime( $b['timestamp'] ) - strtotime( $a['timestamp'] );
+  } );
+
+  $messages = array_slice( $messages, 0, 50 );
 
   // Cache for 5 seconds
   set_transient( 'dude_xmas_messages_cache', $messages, 5 );
@@ -139,6 +156,100 @@ function dude_xmas_post_message( WP_REST_Request $request ) {
 
   unset( $new_message['ip'] );
   return rest_ensure_response( $new_message );
+}
+
+function dude_xmas_get_client_ip() {
+  if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+    return sanitize_text_field( wp_unslash( $_SERVER['HTTP_CF_CONNECTING_IP'] ) );
+  } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+    $ips = explode( ',', sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) );
+    return trim( $ips[0] );
+  } elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+    return sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) );
+  }
+  return '';
+}
+
+function dude_xmas_check_rate_limit( $action = 'like' ) {
+  $ip = dude_xmas_get_client_ip();
+  $salt = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'xmas2025';
+  $ip_hash = md5( $ip . $salt );
+  $rate_key = 'xmas_rate_' . $action . '_' . $ip_hash;
+
+  $attempts = get_transient( $rate_key );
+  if ( false === $attempts ) {
+    $attempts = 1;
+  } else {
+    $attempts++;
+  }
+
+  // Max 10 likes per minute
+  if ( $attempts > 10 ) {
+    return false;
+  }
+
+  set_transient( $rate_key, $attempts, MINUTE_IN_SECONDS );
+  return true;
+}
+
+function dude_xmas_like_message( WP_REST_Request $request ) {
+  // Origin check
+  $origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? $_SERVER['HTTP_ORIGIN'] : '';
+  $referer = isset( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '';
+  $allowed = strpos( $origin, 'dude.fi' ) !== false || strpos( $referer, 'dude.fi' ) !== false;
+  if ( ! $allowed && ! empty( $origin ) ) {
+    return new WP_Error( 'forbidden', 'Kielletty', array( 'status' => 403 ) );
+  }
+
+  // Rate limit
+  if ( ! dude_xmas_check_rate_limit( 'like' ) ) {
+    return new WP_Error( 'rate_limit', 'Liikaa pyyntöjä, odota hetki', array( 'status' => 429 ) );
+  }
+
+  $params = $request->get_json_params();
+  $message_id = isset( $params['id'] ) ? sanitize_text_field( $params['id'] ) : '';
+
+  if ( empty( $message_id ) || ! preg_match( '/^[a-f0-9]+$/', $message_id ) ) {
+    return new WP_Error( 'invalid_id', 'Virheellinen viestin ID', array( 'status' => 400 ) );
+  }
+
+  // Check message exists
+  $messages = get_option( 'dude_xmas_messages_2025', array() );
+  $found = false;
+  foreach ( $messages as $msg ) {
+    if ( $msg['id'] === $message_id ) {
+      $found = true;
+      break;
+    }
+  }
+
+  if ( ! $found ) {
+    return new WP_Error( 'not_found', 'Viestiä ei löytynyt', array( 'status' => 404 ) );
+  }
+
+  // Check if already liked (per IP + message, hashed)
+  $ip = dude_xmas_get_client_ip();
+  $salt = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'xmas2025';
+  $like_key = 'xmas_liked_' . md5( $ip . $message_id . $salt );
+
+  if ( get_transient( $like_key ) ) {
+    return new WP_Error( 'already_liked', 'Olet jo tykännyt tästä', array( 'status' => 429 ) );
+  }
+
+  $likes = get_option( 'dude_xmas_likes_2025', array() );
+  $likes[ $message_id ] = isset( $likes[ $message_id ] ) ? $likes[ $message_id ] + 1 : 1;
+  update_option( 'dude_xmas_likes_2025', $likes );
+
+  // Remember this like for 24 hours
+  set_transient( $like_key, true, DAY_IN_SECONDS );
+
+  // Clear cache
+  delete_transient( 'dude_xmas_messages_cache' );
+
+  return rest_ensure_response( array(
+    'id'    => $message_id,
+    'likes' => $likes[ $message_id ],
+  ) );
 }
 
 // Admin page for managing xmas messages
