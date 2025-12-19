@@ -70,8 +70,9 @@ function dude_xmas_get_total_visitors() {
     $ip = $_SERVER['REMOTE_ADDR'] ?? '';
   }
 
-  // Hash IP for privacy
-  $ip_hash = md5( $ip . 'xmas2025salt' );
+  // Hash IP for privacy (use WP secure key)
+  $salt = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'xmas2025';
+  $ip_hash = md5( $ip . $salt );
 
   // Get existing visitors
   $visitors = get_option( 'dude_xmas_unique_visitors_2025', array() );
