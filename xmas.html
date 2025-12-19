@@ -1926,43 +1926,24 @@
 
       function likeMessage(id, btn) {
         if (hasLiked(id)) return;
+        // Instant update - no waiting
+        markAsLiked(id);
         btn.disabled = true;
-        // Optimistic UI - update immediately
         btn.classList.add('liked');
         btn.querySelector('svg').setAttribute('fill', 'currentColor');
         var countSpan = btn.querySelector('span');
-        var oldCount = countSpan ? parseInt(countSpan.textContent) || 0 : 0;
+        var newCount = (countSpan ? parseInt(countSpan.textContent) || 0 : 0) + 1;
         if (countSpan) {
-          countSpan.textContent = oldCount + 1;
+          countSpan.textContent = newCount;
         } else {
-          btn.insertAdjacentHTML('beforeend', '<span>1</span>');
-          countSpan = btn.querySelector('span');
+          btn.insertAdjacentHTML('beforeend', '<span>' + newCount + '</span>');
         }
-
+        // Fire and forget - API call in background
         fetch('https://www.dude.fi/wp-json/xmas/v1/like', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: id })
-        })
-        .then(function(res) {
-          if (res.ok) return res.json();
-          throw new Error();
-        })
-        .then(function(data) {
-          markAsLiked(id);
-          countSpan.textContent = data.likes;
-        })
-        .catch(function() {
-          // Revert on error
-          btn.disabled = false;
-          btn.classList.remove('liked');
-          btn.querySelector('svg').setAttribute('fill', 'none');
-          if (oldCount > 0) {
-            countSpan.textContent = oldCount;
-          } else {
-            countSpan.remove();
-          }
-        });
+        }).catch(function() {});
       }
 
       function loadMessages() {
