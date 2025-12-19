@@ -2384,7 +2384,7 @@
         fetch('https://www.dude.fi/wp-json/xmas/v1/visitors')
           .then(function(res) { return res.json(); })
           .then(function(data) {
-            var count = data.visitors || 0;
+            var count = Math.max(1, data.visitors || 0); // At least 1 (you!)
             document.getElementById('visitorCount').textContent = count;
             document.getElementById('visitorWord').textContent = count === 1 ? 'tonttu' : 'tonttua';
           })
