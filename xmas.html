@@ -1971,8 +1971,9 @@
         var messageVal = document.getElementById('message').value.trim();
         if (!authorVal || !messageVal) return;
 
-        // Show own message as floating bubble instantly
+        // Show own message as floating bubble instantly and update lastSeenTime to prevent duplicate
         showFloatingMessage(authorVal, messageVal, new Date().toISOString(), true);
+        lastSeenTime = Date.now();
 
         fetch('https://www.dude.fi/wp-json/xmas/v1/messages', {
           method: 'POST',
