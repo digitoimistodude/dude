@@ -37,10 +37,14 @@
 
     .marquee-content {
       display: flex;
-      animation: marquee 12s linear infinite;
       white-space: nowrap;
+      width: fit-content;
       will-change: transform;
       backface-visibility: hidden;
+    }
+
+    .marquee-content[data-animated="true"] {
+      animation: marquee var(--marquee-duration, 20s) linear infinite;
     }
 
     .marquee-content span {
@@ -1302,7 +1306,7 @@
 
     /* Mobile */
     @media (max-width: 600px) {
-      .marquee-content { animation-duration: 10s; }
+      .marquee-content { --marquee-duration: 10s; }
       .hud-title { font-size: 8px; }
       .hud-btn { padding: 6px 10px; font-size: 8px; }
       .total-visitors { display: none; }
@@ -1471,8 +1475,7 @@
 <body>
   <div class="game">
     <div class="marquee-bar">
-      <div class="marquee-content">
-        <span>🎄 Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
+      <div class="marquee-content" id="marqueeTrack">
         <span>🎄 Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
       </div>
     </div>
@@ -2498,6 +2501,24 @@
         }, delay);
       }
       scheduleCEOSpeech();
+
+      // Marquee - clone content for seamless loop
+      (function initMarquee() {
+        var track = document.getElementById('marqueeTrack');
+        if (!track) return;
+
+        // Clone the span to fill the track
+        var original = track.querySelector('span');
+        if (!original) return;
+
+        // Add clone
+        var clone = original.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+
+        // Start animation
+        track.setAttribute('data-animated', 'true');
+      })();
 
     })();
   </script>
