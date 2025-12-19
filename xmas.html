@@ -1615,20 +1615,20 @@
   <script>
     (function() {
       var team = [
-        { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
-        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Lisälaskutusta!', 'Töihin tontut!'] },
-        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
+        { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'goatee', eyes: 'normal', brows: 'thick', glasses: true, says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
+        { name: 'Juha', title: 'CEO', x: 45, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Lisälaskutusta!', 'Töihin tontut!'] },
+        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', glasses: true, says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
         { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
         { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Koodi toimii!', 'Refaktoroidaan!', 'Nice!', 'Kippis!'] },
         { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#4ab8b8', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'verylong', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Jee!'] },
         { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal', says: ['Design on!', 'Pikselit!', 'Figma time!', 'Kaunis!'] },
-        { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Värit kohdalleen!', 'Tyylii!', 'Kaunista!', 'Jess!'] },
-        { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal', says: ['Toimii!', 'Bueno!', 'Kippis!', 'Mahtavaa!'] },
+        { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c03020', skin: '#ffe5d5', shirt: '#2a2a2a', pants: '#1a1a1a', style: 'long', eyes: 'big', brows: 'thin', glasses: true, female: true, says: ['Värit kohdalleen!', 'Tyylii!', 'Kaunista!', 'Jess!'] },
+        { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal', glasses: true, says: ['Toimii!', 'Bueno!', 'Kippis!', 'Mahtavaa!'] },
         { name: 'Maria', title: 'Developer', x: 14, y: 82, hair: '#4a3525', skin: '#ffd5c0', shirt: '#60a040', pants: '#3a4535', style: 'medium', eyes: 'big', brows: 'thin', female: true, says: ['Koodataan!', 'Hyvää joulua!', 'Kahvia!', 'Nice!'] },
         { name: 'Miska', title: 'Developer', x: 44, y: 66, hair: '#5a4a40', skin: '#ffd0b0', shirt: '#805030', pants: '#4a4035', style: 'short', eyes: 'small', brows: 'thick', says: ['Mergeen!', 'Kippis!', 'Toimii!', 'Fixattu!'] },
         { name: 'Nadya', title: 'Developer', x: 78, y: 50, hair: '#1a1515', skin: '#d4a080', shirt: '#c03060', pants: '#4a3040', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Deployed!', 'Works!', 'Kippis!', 'Hyvää joulua!'] },
         { name: 'Otto', title: 'Developer', x: 30, y: 78, hair: '#4a4035', skin: '#ffd5c0', shirt: '#a0a030', pants: '#3a3a30', style: 'short', eyes: 'normal', brows: 'normal', says: ['Koodataan!', 'Testit vihreenä!', 'Kahvia!', 'Nice!'] },
-        { name: 'William', title: 'Developer', x: 64, y: 74, hair: '#3a3530', skin: '#ffd0b0', shirt: '#6040a0', pants: '#3a3045', style: 'medium', eyes: 'wide', brows: 'normal', says: ['Shipped!', 'Let\'s go!', 'Kippis!', 'Toimii!'] }
+        { name: 'William', title: 'Developer', x: 64, y: 74, hair: '#3a3530', skin: '#ffd0b0', shirt: '#6040a0', pants: '#3a3045', style: 'medium', eyes: 'wide', brows: 'normal', glasses: true, says: ['Shipped!', 'Let\'s go!', 'Kippis!', 'Toimii!'] }
       ];
 
       function isMobile() {
@@ -1643,6 +1643,8 @@
         var style = p.style;
         var eyes = p.eyes || 'normal';
         var hasBeard = style == 'beard';
+        var hasGoatee = style == 'goatee';
+        var hasGlasses = p.glasses;
         var isFemale = p.female;
         var s = isMobile() ? 4 : 7;
         var px = [];
@@ -1654,7 +1656,7 @@
 
         // Face rows 2-5
         px.push({x:2,y:2,c:skin},{x:3,y:2,c:skin},{x:4,y:2,c:skin},{x:5,y:2,c:skin},{x:6,y:2,c:skin},{x:7,y:2,c:skin});
-        // Eyes row 3 - TWO SEPARATE EYES with gap in middle
+        // Eyes row 3
         px.push({x:2,y:3,c:skin},{x:3,y:3,c:'#333'},{x:4,y:3,c:skin},{x:5,y:3,c:skin},{x:6,y:3,c:'#333'},{x:7,y:3,c:skin});
         // Nose/cheeks row 4
         px.push({x:2,y:4,c:skin},{x:3,y:4,c:skin},{x:4,y:4,c:skin},{x:5,y:4,c:skin},{x:6,y:4,c:skin},{x:7,y:4,c:skin});
@@ -1671,8 +1673,14 @@
           px.push({x:3,y:6,c:hair},{x:4,y:6,c:hair},{x:5,y:6,c:hair},{x:6,y:6,c:hair});
         }
 
+        // Goatee (chin only, no side beard)
+        if (hasGoatee) {
+          px.push({x:4,y:5,c:hair},{x:5,y:5,c:hair}); // lower face
+          px.push({x:4,y:6,c:hair},{x:5,y:6,c:hair}); // chin
+        }
+
         // Long hair sides
-        if (style == 'long' || style == 'verylong' || isFemale) {
+        if (style == 'long' || style == 'verylong' || style == 'goatee' || isFemale) {
           px.push({x:1,y:2,c:hair},{x:8,y:2,c:hair});
           px.push({x:1,y:3,c:hair},{x:8,y:3,c:hair});
           px.push({x:1,y:4,c:hair},{x:8,y:4,c:hair});
