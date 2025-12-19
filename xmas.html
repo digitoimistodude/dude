@@ -12,6 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }; plausible('pageview', { u: 'https://dude.fi/xmas' });</script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -939,6 +940,37 @@
     .char-name { color: #f8d878; font-size: 9px; display: block; }
     .char-title { color: #aaa; font-size: 8px; margin-top: 4px; }
 
+    /* Round glasses overlay */
+    .char-glasses {
+      position: absolute;
+      top: 17px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2px;
+      z-index: 5;
+    }
+    .char-glasses-lens {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #604020;
+      border-radius: 50%;
+      background: transparent;
+    }
+    .char-glasses-bridge {
+      width: 4px;
+      height: 2px;
+      background: #604020;
+      align-self: center;
+      margin: 0 -2px;
+    }
+
+    @media (max-width: 600px) {
+      .char-glasses { top: 11px; }
+      .char-glasses-lens { width: 8px; height: 6px; border-width: 1px; }
+      .char-glasses-bridge { width: 2px; height: 1px; }
+    }
+
     /* Speech bubbles */
     .speech-bubble {
       position: absolute;
@@ -1268,7 +1300,7 @@
 
     /* Mobile */
     @media (max-width: 600px) {
-      .marquee-content { animation-duration: 20s; }
+      .marquee-content { animation-duration: 10s; }
       .hud-title { font-size: 8px; }
       .hud-btn { padding: 6px 10px; font-size: 8px; }
       .total-visitors { display: none; }
@@ -1615,7 +1647,7 @@
   <script>
     (function() {
       var team = [
-        { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'goatee', eyes: 'normal', brows: 'thick', glasses: true, says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
+        { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'verylong', eyes: 'normal', brows: 'thick', glasses: true, goatee: true, says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
         { name: 'Juha', title: 'CEO', x: 45, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Lisälaskutusta!', 'Töihin tontut!'] },
         { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', glasses: true, says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
         { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
@@ -1643,7 +1675,7 @@
         var style = p.style;
         var eyes = p.eyes || 'normal';
         var hasBeard = style == 'beard';
-        var hasGoatee = style == 'goatee';
+        var hasGoatee = p.goatee;
         var hasGlasses = p.glasses;
         var isFemale = p.female;
         var s = isMobile() ? 4 : 7;
@@ -1680,7 +1712,7 @@
         }
 
         // Long hair sides
-        if (style == 'long' || style == 'verylong' || style == 'goatee' || isFemale) {
+        if (style == 'long' || style == 'verylong' || isFemale) {
           px.push({x:1,y:2,c:hair},{x:8,y:2,c:hair});
           px.push({x:1,y:3,c:hair},{x:8,y:3,c:hair});
           px.push({x:1,y:4,c:hair},{x:8,y:4,c:hair});
@@ -1776,9 +1808,11 @@
           el.className = 'character';
           el.style.left = p.x + '%';
           el.style.top = p.y + '%';
+          var glassesHtml = p.glasses ? '<div class="char-glasses"><div class="char-glasses-lens"></div><div class="char-glasses-bridge"></div><div class="char-glasses-lens"></div></div>' : '';
           el.innerHTML =
             '<div class="char-sprite">' +
               '<div class="char-pixels" style="box-shadow:' + createSprite(p) + '"></div>' +
+              glassesHtml +
             '</div>' +
             '<div class="char-shadow"></div>' +
             '<div class="char-tooltip">' +
@@ -2012,7 +2046,7 @@
             }
           })
           .catch(function() {
-            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            // Don't clear messages on error - keep existing content
           });
       }
 
@@ -2238,8 +2272,9 @@
         setTimeout(function() { el.remove(); }, 12500);
       }
 
-      // Track last message ID to show new ones floating
-      var lastMsgId = null;
+      // Track last seen timestamp to show new ones floating
+      var lastSeenTime = null;
+      var seenMsgIds = {};
       var originalLoadMessages = loadMessages;
 
       loadMessages = function() {
@@ -2254,14 +2289,23 @@
               el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
             } else {
               // Check for new messages and show them floating
-              if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
-                // Find new messages
+              if (lastSeenTime) {
                 for (var i = 0; i < msgs.length; i++) {
-                  if (msgs[i].id == lastMsgId) break;
-                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
+                  var msgTime = new Date(msgs[i].timestamp).getTime();
+                  if (msgTime > lastSeenTime && !seenMsgIds[msgs[i].id]) {
+                    seenMsgIds[msgs[i].id] = true;
+                    showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
+                  }
                 }
               }
-              lastMsgId = msgs.length > 0 ? msgs[0].id : null;
+              // Update lastSeenTime to the newest message timestamp
+              var maxTime = 0;
+              for (var j = 0; j < msgs.length; j++) {
+                var t = new Date(msgs[j].timestamp).getTime();
+                if (t > maxTime) maxTime = t;
+                seenMsgIds[msgs[j].id] = true;
+              }
+              lastSeenTime = maxTime;
 
               el.innerHTML = msgs.map(function(m) {
                 var isLiked = hasLiked(m.id);
@@ -2284,7 +2328,7 @@
             }
           })
           .catch(function() {
-            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            // Don't clear messages on error - keep existing content
           });
       };
 
@@ -2347,6 +2391,36 @@
       }
       loadTotalVisitors();
       setInterval(loadTotalVisitors, 60000); // Update every minute
+
+      // Randomly show older messages floating
+      var allMessages = [];
+      function cacheMessages() {
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
+          .then(function(res) { return res.json(); })
+          .then(function(msgs) { allMessages = msgs; })
+          .catch(function() {});
+      }
+      cacheMessages();
+      setInterval(cacheMessages, 30000); // Refresh cache every 30s
+
+      function showRandomOldMessage() {
+        if (allMessages.length < 2) return;
+        // Pick a random message (not the newest)
+        var idx = Math.floor(Math.random() * (allMessages.length - 1)) + 1;
+        var msg = allMessages[idx];
+        if (msg) {
+          showFloatingMessage(msg.author, msg.message, msg.timestamp);
+        }
+      }
+      // Show a random old message every 8-15 seconds
+      function scheduleRandomMessage() {
+        var delay = 8000 + Math.random() * 7000;
+        setTimeout(function() {
+          showRandomOldMessage();
+          scheduleRandomMessage();
+        }, delay);
+      }
+      scheduleRandomMessage();
 
       // Character speech bubbles
       function showSpeechBubble() {
@@ -2477,7 +2551,7 @@
             }
           })
           .catch(function() {
-            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            // Don't clear messages on error - keep existing content
           });
       };
     })();
