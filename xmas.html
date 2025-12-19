@@ -1168,38 +1168,6 @@
       font-weight: bold;
     }
 
-    /* Desktop: sidebar layout like Twitch */
-    @media (min-width: 601px) {
-      .game {
-        flex-direction: row;
-      }
-      .game-main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-      }
-      .dialog {
-        position: relative;
-        width: 360px;
-        flex-shrink: 0;
-        transform: none;
-        border-left: 4px solid #f8d878;
-      }
-      .dialog.closed {
-        display: none;
-      }
-      .msg-btn.desktop-toggle {
-        display: block;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-      }
-      .game-main .screen {
-        flex: 1;
-      }
-    }
-
     .dialog {
       background: linear-gradient(180deg, #1a1a2e 0%, #0a0a18 100%);
       padding: 16px;
@@ -1216,6 +1184,35 @@
     }
 
     .dialog.open { transform: translateX(0); }
+
+    /* Desktop: sidebar layout like Twitch */
+    @media (min-width: 601px) {
+      .game {
+        flex-direction: row;
+      }
+      .game-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .dialog {
+        position: relative;
+        width: 360px;
+        flex-shrink: 0;
+        transform: none !important;
+        border-left: 4px solid #f8d878;
+        top: auto;
+        right: auto;
+        bottom: auto;
+      }
+      .dialog.closed {
+        display: none;
+      }
+      .game-main .screen {
+        flex: 1;
+      }
+    }
 
     .dialog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .dialog-title { color: #f8d878; font-size: 11px; }
