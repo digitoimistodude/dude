@@ -67,8 +67,9 @@ function dude_xmas_get_total_visitors() {
     return rest_ensure_response( array( 'total' => 0 ) );
   }
 
-  // Get total unique visitors this week
-  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=7d&metrics=visitors', array(
+  // Get total unique visitors since xmas campaign started (Dec 19, 2025)
+  $today = date( 'Y-m-d' );
+  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=custom&date=2025-12-19,' . $today . '&metrics=visitors', array(
     'headers' => array(
       'Authorization' => 'Bearer ' . $api_key,
     ),
