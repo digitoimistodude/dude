@@ -32,7 +32,7 @@ function dude_xmas_get_visitors() {
     return rest_ensure_response( array( 'visitors' => 0 ) );
   }
 
-  $response = wp_remote_get( 'https://plausible.io/api/v1/stats/realtime/visitors?site_id=dude.fi', array(
+  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/realtime/visitors?site_id=dude.fi', array(
     'headers' => array(
       'Authorization' => 'Bearer ' . $api_key,
     ),

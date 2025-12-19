@@ -28,8 +28,20 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 4px solid #4a4a6a;
+      border-top: 4px solid transparent;
       flex-shrink: 0;
       z-index: 50;
+      transition: border-top-color 0.3s;
+    }
+
+    .hud.notify {
+      border-top-color: #e02020;
+      animation: hudFlash 0.5s ease-in-out 3;
+    }
+
+    @keyframes hudFlash {
+      0%, 100% { border-top-color: #e02020; }
+      50% { border-top-color: #ff6060; }
     }
 
     .hud-title {
@@ -163,6 +175,7 @@
       position: relative;
       width: 90%;
       max-width: 700px;
+      min-width: 420px;
       aspect-ratio: 1/1;
       max-height: calc(100vh - 100px);
       z-index: 10;
@@ -256,9 +269,9 @@
     /* Windows */
     .window {
       position: absolute;
-      top: 4px;
-      width: 110px;
-      height: 65px;
+      top: 8px;
+      width: 100px;
+      height: 42px;
       background: linear-gradient(180deg, #1a2848 0%, #2a3858 30%, #a0c0e0 70%, #d0e8f8 100%);
       border: 6px solid #4a3018;
       z-index: 25;
@@ -408,8 +421,8 @@
     /* Clock on wall */
     .clock {
       position: absolute;
-      top: 12px;
-      right: 160px;
+      top: 7px;
+      right: 200px;
       width: 40px;
       height: 40px;
       background: linear-gradient(135deg, #705028 0%, #503818 100%);
@@ -449,8 +462,8 @@
     /* Wreath on wall */
     .wreath {
       position: absolute;
-      top: 12px;
-      left: 160px;
+      top: 7px;
+      left: 200px;
       width: 40px;
       height: 40px;
       z-index: 26;
@@ -851,21 +864,21 @@
     }
 
     .character:hover {
-      transform: scale(1.4);
+      transform: scale(1.15);
       z-index: 50;
     }
 
     .char-sprite {
       position: relative;
-      width: 50px;
-      height: 75px;
+      width: 70px;
+      height: 100px;
       image-rendering: pixelated;
     }
 
     .char-pixels {
       position: absolute;
-      width: 5px;
-      height: 5px;
+      width: 7px;
+      height: 7px;
       background: transparent;
     }
 
@@ -874,8 +887,8 @@
       bottom: -4px;
       left: 50%;
       transform: translateX(-50%);
-      width: 45px;
-      height: 14px;
+      width: 55px;
+      height: 16px;
       background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
     }
 
@@ -961,6 +974,7 @@
     .santa {
       position: absolute;
       z-index: 24;
+      cursor: pointer;
     }
 
     .santa-sprite {
@@ -975,6 +989,45 @@
       width: 7px;
       height: 7px;
       background: transparent;
+    }
+
+    .santa-scroll {
+      position: absolute;
+      bottom: 25px;
+      right: -20px;
+      width: 24px;
+      height: 32px;
+      background: linear-gradient(180deg, #f8f0d8 0%, #e8d8c0 100%);
+      border: 2px solid #a89070;
+      border-radius: 2px;
+      opacity: 0;
+      transform: rotate(-10deg) scale(0.5);
+      transition: all 0.3s ease;
+      z-index: 25;
+    }
+
+    .santa-scroll::before {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px;
+      height: 2px;
+      background: #a89070;
+      box-shadow: 0 5px 0 #a89070, 0 10px 0 #a89070, 0 15px 0 #a89070, 0 20px 0 #a89070;
+    }
+
+    .santa.reading .santa-scroll {
+      opacity: 1;
+      transform: rotate(-10deg) scale(1);
+    }
+
+    .santa.reading .santa-sprite {
+      animation: santaRead 0.8s ease-in-out;
+    }
+
+    @keyframes santaRead {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-3px); }
+      75% { transform: translateY(2px); }
     }
 
     .santa-shadow {
@@ -1008,7 +1061,7 @@
 
     .visitors {
       position: fixed;
-      bottom: 16px;
+      bottom: 12px;
       left: 16px;
       background: rgba(0,0,0,0.8);
       border: 3px solid #208030;
@@ -1045,18 +1098,18 @@
 
     .dialog {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      top: 0; right: 0; bottom: 0;
+      width: 360px;
       background: linear-gradient(180deg, #1a1a2e 0%, #0a0a18 100%);
-      border-top: 4px solid #f8d878;
+      border-left: 4px solid #f8d878;
       padding: 16px;
       z-index: 150;
-      transform: translateY(100%);
+      transform: translateX(100%);
       transition: transform 0.3s;
-      max-height: 60vh;
       overflow-y: auto;
     }
 
-    .dialog.open { transform: translateY(0); }
+    .dialog.open { transform: translateX(0); }
 
     .dialog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .dialog-title { color: #f8d878; font-size: 11px; }
@@ -1187,57 +1240,86 @@
       .msg-btn { padding: 10px 16px; font-size: 9px; bottom: 12px; right: 12px; }
       .moon { width: 35px; height: 35px; }
       .outside-tree { transform: scale(0.7); }
+      .dialog { top: auto; bottom: 0; left: 0; right: 0; width: auto; max-height: 60vh; border-left: none; border-top: 4px solid #f8d878; transform: translateY(100%); }
+      .dialog.open { transform: translateY(0); }
     }
 
     audio { display: none; }
 
     /* Floating messages */
     .float-msg {
-      position: absolute;
-      background: rgba(0,0,0,0.85);
-      border: 3px solid #f8d878;
-      border-radius: 8px;
-      padding: 8px 12px;
-      max-width: 200px;
-      z-index: 100;
-      animation: floatUp 6s ease-out forwards;
+      position: fixed;
+      background: #fff;
+      border: 4px solid #333;
+      border-radius: 16px;
+      padding: 12px 16px;
+      max-width: 280px;
+      z-index: 90;
+      animation: floatUp 12s ease-out forwards;
       pointer-events: none;
+      bottom: 15%;
     }
 
+    .float-msg.left { left: 20px; }
+    .float-msg.right { right: 20px; }
+
     .float-msg-author {
-      color: #f8d878;
-      font-size: 7px;
+      color: #333;
+      font-size: 9px;
+      font-weight: bold;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .float-msg-text {
-      color: #fff;
-      font-size: 8px;
-      line-height: 1.4;
+      color: #000;
+      font-size: 10px;
+      line-height: 1.5;
       word-wrap: break-word;
+    }
+
+    .float-msg-time {
+      color: #888;
+      font-size: 7px;
+      margin-top: 6px;
+      display: block;
     }
 
     .float-msg::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -24px;
       left: 20px;
-      border: 6px solid transparent;
-      border-top-color: #f8d878;
+      border: 12px solid transparent;
+      border-top-color: #333;
     }
 
+    .float-msg::before {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 24px;
+      border: 8px solid transparent;
+      border-top-color: #fff;
+      z-index: 1;
+    }
+
+    .float-msg.right::after { left: auto; right: 20px; }
+    .float-msg.right::before { left: auto; right: 24px; }
+
     @keyframes floatUp {
-      0% { opacity: 0; transform: translateY(0) scale(0.8); }
-      10% { opacity: 1; transform: translateY(-10px) scale(1); }
-      80% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-150px) scale(0.9); }
+      0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+      5% { opacity: 1; transform: translateY(0) scale(1); }
+      60% { opacity: 1; transform: translateY(-200px); }
+      100% { opacity: 0; transform: translateY(-350px); }
     }
 
     @media (max-width: 600px) {
-      .float-msg { max-width: 140px; padding: 6px 10px; }
-      .float-msg-author { font-size: 6px; }
-      .float-msg-text { font-size: 7px; }
+      .float-msg { max-width: 160px; padding: 8px 12px; left: 10px !important; right: auto !important; bottom: 20%; }
+      .float-msg-author { font-size: 7px; }
+      .float-msg-text { font-size: 8px; }
+      .float-msg-time { font-size: 6px; }
+      .float-msg.right { left: auto !important; right: 10px !important; }
     }
   </style>
 </head>
@@ -1370,6 +1452,7 @@
             <div class="santa-sprite">
               <div class="santa-pixels" id="santaPixels"></div>
             </div>
+            <div class="santa-scroll"></div>
             <div class="santa-shadow"></div>
           </div>
         </div>
@@ -1420,9 +1503,9 @@
   <script>
     (function() {
       var team = [
-        { name: 'Roni', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
-        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'short', eyes: 'small', brows: 'thin', says: ['Töihin siitä!', 'Budjetissa pysytään!', 'Strategia!', 'Hyvää joulua!'] },
-        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'medium', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
+        { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
+        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Ihanaa!', 'Lisälaskutusta!', 'Töihin tontut!'] },
+        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
         { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
         { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Koodi toimii!', 'Refaktoroidaan!', 'Nice!', 'Kippis!'] },
         { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Ihanaa!'] },
@@ -1449,7 +1532,7 @@
         var eyes = p.eyes || 'normal';
         var hasBeard = style == 'beard';
         var isFemale = p.female;
-        var s = isMobile() ? 4 : 5;
+        var s = isMobile() ? 4 : 7;
         var px = [];
 
         // Simpler 10x16 sprite for better iOS compatibility
@@ -1586,6 +1669,19 @@
 
       renderCharacters();
 
+      // Santa click handler
+      document.getElementById('santa').addEventListener('click', function() {
+        var santa = document.getElementById('santa');
+        var existing = santa.querySelector('.speech-bubble');
+        if (existing) existing.remove();
+
+        var bubble = document.createElement('div');
+        bubble.className = 'speech-bubble';
+        bubble.textContent = 'Git commit... eiku hyvää joulua!';
+        santa.appendChild(bubble);
+        setTimeout(function() { bubble.remove(); }, 3500);
+      });
+
       var resizeTimeout;
       window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
@@ -1695,7 +1791,7 @@
         var messageVal = document.getElementById('message').value.trim();
         if (!authorVal || !messageVal) return;
 
-        fetch('/wp-json/xmas/v1/messages', {
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ author: authorVal, message: messageVal, website: document.getElementById('website').value })
@@ -1717,7 +1813,7 @@
       };
 
       function loadMessages() {
-        fetch('/wp-json/xmas/v1/messages')
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
           .then(function(res) {
             if (res.ok) return res.json();
             throw new Error();
@@ -1791,7 +1887,7 @@
           current.play().then(function() {
             playing = true;
             soundBtn.classList.add('active');
-            soundBtn.textContent = 'POIS';
+            soundBtn.textContent = 'MUSIIKKI POIS';
           }).catch(function() {
             soundBtn.textContent = 'MUSIIKKI';
           });
@@ -1804,7 +1900,7 @@
         toggleMusic();
       };
 
-      // Auto-start music on first interaction (desktop)
+      // Auto-start music - try immediately, then on any interaction
       var autoStarted = false;
       function tryAutoStart() {
         if (autoStarted || playing) return;
@@ -1812,13 +1908,27 @@
         current.play().then(function() {
           playing = true;
           soundBtn.classList.add('active');
-          soundBtn.textContent = 'POIS';
-        }).catch(function() {});
+          soundBtn.textContent = 'MUSIIKKI POIS';
+          removeAutoListeners();
+        }).catch(function() {
+          autoStarted = false; // Allow retry on next interaction
+        });
+      }
+      function removeAutoListeners() {
         document.removeEventListener('click', tryAutoStart);
         document.removeEventListener('keydown', tryAutoStart);
+        document.removeEventListener('mousemove', tryAutoStart);
+        document.removeEventListener('touchstart', tryAutoStart);
+        document.removeEventListener('scroll', tryAutoStart);
       }
+      // Try immediately on load
+      tryAutoStart();
+      // Fallback: try on any user interaction
       document.addEventListener('click', tryAutoStart);
       document.addEventListener('keydown', tryAutoStart);
+      document.addEventListener('mousemove', tryAutoStart, { once: true });
+      document.addEventListener('touchstart', tryAutoStart);
+      document.addEventListener('scroll', tryAutoStart, { once: true });
 
       function showToast(msg, err) {
         var el = document.getElementById('toast');
@@ -1827,19 +1937,45 @@
         setTimeout(function() { el.classList.remove('show'); }, 3000);
       }
 
-      // Floating messages in room
-      function showFloatingMessage(author, message) {
-        var room = document.getElementById('room');
+      // Floating messages - alternate left/right
+      var floatSide = 0;
+      function showFloatingMessage(author, message, timestamp, isOwn) {
         var el = document.createElement('div');
-        el.className = 'float-msg';
-        // Random position in room
-        el.style.left = (20 + Math.random() * 50) + '%';
-        el.style.bottom = (30 + Math.random() * 30) + '%';
+        el.className = 'float-msg ' + (floatSide % 2 === 0 ? 'left' : 'right');
+        floatSide++;
+
+        var timeStr = '';
+        if (timestamp) {
+          var now = new Date();
+          var then = new Date(timestamp);
+          var diff = Math.floor((now - then) / 1000);
+          if (diff < 60) timeStr = 'juuri nyt';
+          else if (diff < 3600) timeStr = Math.floor(diff / 60) + ' min sitten';
+          else if (diff < 86400) timeStr = Math.floor(diff / 3600) + ' h sitten';
+          else timeStr = Math.floor(diff / 86400) + ' pv sitten';
+        }
+
         el.innerHTML = '<span class="float-msg-author">' + esc(author) + '</span>' +
-                       '<span class="float-msg-text">' + esc(message.substring(0, 80)) + (message.length > 80 ? '...' : '') + '</span>';
-        room.appendChild(el);
-        // Remove after animation
-        setTimeout(function() { el.remove(); }, 6500);
+                       '<span class="float-msg-text">' + esc(message.substring(0, 80)) + (message.length > 80 ? '...' : '') + '</span>' +
+                       (timeStr ? '<span class="float-msg-time">' + timeStr + '</span>' : '');
+        document.body.appendChild(el);
+
+        // Santa reads the message
+        var santa = document.getElementById('santa');
+        santa.classList.add('reading');
+        setTimeout(function() { santa.classList.remove('reading'); }, 2500);
+
+        // Flash HUD notification only for messages from others
+        if (!isOwn) {
+          var hud = document.querySelector('.hud');
+          hud.classList.remove('notify');
+          void hud.offsetWidth; // trigger reflow to restart animation
+          hud.classList.add('notify');
+          setTimeout(function() { hud.classList.remove('notify'); }, 2000);
+        }
+
+        // Remove after animation (12s)
+        setTimeout(function() { el.remove(); }, 12500);
       }
 
       // Track last message ID to show new ones floating
@@ -1847,7 +1983,7 @@
       var originalLoadMessages = loadMessages;
 
       loadMessages = function() {
-        fetch('/wp-json/xmas/v1/messages')
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
           .then(function(res) {
             if (res.ok) return res.json();
             throw new Error();
@@ -1862,7 +1998,7 @@
                 // Find new messages
                 for (var i = 0; i < msgs.length; i++) {
                   if (msgs[i].id == lastMsgId) break;
-                  showFloatingMessage(msgs[i].author, msgs[i].message);
+                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
                 }
               }
               lastMsgId = msgs.length > 0 ? msgs[0].id : null;
@@ -1890,9 +2026,9 @@
         if (!authorVal || !messageVal) return;
 
         // Show floating immediately for own message
-        showFloatingMessage(authorVal, messageVal);
+        showFloatingMessage(authorVal, messageVal, new Date().toISOString(), true);
 
-        fetch('/wp-json/xmas/v1/messages', {
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ author: authorVal, message: messageVal, website: document.getElementById('website').value })
@@ -1915,7 +2051,7 @@
 
       // Visitor counter - polls every 5 seconds
       function loadVisitors() {
-        fetch('/wp-json/xmas/v1/visitors')
+        fetch('https://www.dude.fi/wp-json/xmas/v1/visitors')
           .then(function(res) { return res.json(); })
           .then(function(data) {
             var count = data.visitors || 0;
@@ -1962,6 +2098,35 @@
       }
       scheduleSpeech();
 
+      // CEO speaks faster (every 2-4 seconds)
+      function showCEOBubble() {
+        var ceoIndex = team.findIndex(function(p) { return p.sayFast; });
+        if (ceoIndex === -1) return;
+
+        var chars = document.querySelectorAll('.character');
+        if (chars.length <= ceoIndex) return;
+
+        var charEl = chars[ceoIndex];
+        var existing = charEl.querySelector('.speech-bubble');
+        if (existing) existing.remove();
+
+        var phrase = team[ceoIndex].says[Math.floor(Math.random() * team[ceoIndex].says.length)];
+        var bubble = document.createElement('div');
+        bubble.className = 'speech-bubble';
+        bubble.textContent = phrase;
+        charEl.appendChild(bubble);
+        setTimeout(function() { bubble.remove(); }, 3500);
+      }
+
+      function scheduleCEOSpeech() {
+        var delay = 2000 + Math.random() * 2000;
+        setTimeout(function() {
+          showCEOBubble();
+          scheduleCEOSpeech();
+        }, delay);
+      }
+      scheduleCEOSpeech();
+
       // Random message popping from existing messages
       var allMessages = [];
       function storeMessages(msgs) {
@@ -1971,7 +2136,7 @@
       function showRandomMessage() {
         if (allMessages.length == 0) return;
         var msg = allMessages[Math.floor(Math.random() * allMessages.length)];
-        showFloatingMessage(msg.author, msg.message);
+        showFloatingMessage(msg.author, msg.message, msg.timestamp);
       }
 
       // Show random message every 8-15 seconds
@@ -1987,7 +2152,7 @@
       // Update loadMessages to store messages
       var oldLoadMessages = loadMessages;
       loadMessages = function() {
-        fetch('/wp-json/xmas/v1/messages')
+        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
           .then(function(res) {
             if (res.ok) return res.json();
             throw new Error();
@@ -2001,7 +2166,7 @@
               if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
                 for (var i = 0; i < msgs.length; i++) {
                   if (msgs[i].id == lastMsgId) break;
-                  showFloatingMessage(msgs[i].author, msgs[i].message);
+                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
                 }
               }
               lastMsgId = msgs.length > 0 ? msgs[0].id : null;
