@@ -856,16 +856,16 @@
 
     .char-sprite {
       position: relative;
-      width: 72px;
-      height: 102px;
+      width: 50px;
+      height: 75px;
       image-rendering: pixelated;
     }
 
     .char-pixels {
       position: absolute;
-      width: 6px;
-      height: 6px;
-      background: transparent;
+      width: 5px;
+      height: 5px;
+      background: #000;
     }
 
     .char-shadow {
@@ -873,8 +873,8 @@
       bottom: -4px;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
-      height: 16px;
+      width: 45px;
+      height: 14px;
       background: radial-gradient(ellipse, rgba(0,0,0,0.4) 0%, transparent 70%);
     }
 
@@ -917,16 +917,16 @@
 
     .santa-sprite {
       position: relative;
-      width: 88px;
-      height: 120px;
+      width: 60px;
+      height: 95px;
       image-rendering: pixelated;
     }
 
     .santa-pixels {
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: transparent;
+      width: 7px;
+      height: 7px;
+      background: #000;
     }
 
     .santa-shadow {
@@ -1038,7 +1038,7 @@
     @media (max-width: 600px) {
       .hud-title { font-size: 8px; }
       .hud-btn { padding: 6px 10px; font-size: 8px; }
-      .cabin-frame { width: 95%; aspect-ratio: 3/4; }
+      .cabin-frame { width: 95%; aspect-ratio: 1/1; }
       .roof { top: -30px; left: -22px; right: -22px; height: 38px; }
       .roof-main { height: 32px; }
       .roof-snow { bottom: 26px; height: 12px; }
@@ -1046,18 +1046,23 @@
       .wall-left, .wall-right { width: 26px; top: 40px; }
       .wall-bottom { height: 20px; left: 26px; right: 26px; }
       .floor { top: 40px; left: 26px; right: 26px; bottom: 20px; }
-      .window { width: 44px; height: 28px; top: 5px; }
-      .window-left { left: 44px; }
-      .window-right { right: 44px; }
-      .fireplace { width: 60px; height: 48px; }
-      .fireplace-stone { height: 36px; }
-      .fireplace-opening { width: 30px; height: 22px; }
-      .fire { width: 24px; height: 18px; }
-      .mantle { height: 10px; top: 5px; }
-      .stockings { top: 15px; gap: 3px; }
-      .stocking { width: 6px; height: 12px; }
-      .clock { width: 20px; height: 20px; top: 8px; right: 100px; }
-      .wreath { width: 20px; height: 20px; top: 8px; left: 100px; }
+      .window { width: 70px; height: 42px; top: 6px; }
+      .window-left { left: 32px; }
+      .window-right { right: 32px; }
+      .fireplace { width: 100px; height: 70px; }
+      .fireplace-stone { height: 55px; }
+      .fireplace-opening { width: 50px; height: 36px; }
+      .fire { width: 36px; height: 28px; }
+      .flame1 { width: 28px; height: 26px; left: 4px; }
+      .flame2 { width: 16px; height: 20px; }
+      .flame3 { width: 16px; height: 22px; }
+      .mantle { height: 14px; top: 6px; }
+      .stockings { top: 20px; gap: 4px; }
+      .stocking { width: 10px; height: 18px; }
+      .stocking-top { height: 5px; }
+      .stocking-foot { height: 13px; }
+      .clock { width: 24px; height: 24px; top: 8px; right: 115px; }
+      .wreath { width: 24px; height: 24px; top: 8px; left: 115px; }
       .wreath-ring { border-width: 5px; }
       .tree { width: 55px; height: 72px; right: 30px; bottom: 24px; }
       .tree-l1 { width: 22px; height: 22px; }
@@ -1085,13 +1090,13 @@
       .bookshelf { display: none; }
       .lamp { display: none; }
       .plant { display: none; }
-      .fire-glow { width: 120px; height: 90px; top: 38px; }
-      .char-sprite { width: 56px; height: 80px; }
-      .char-pixels { width: 5px; height: 5px; }
-      .char-shadow { width: 36px; height: 12px; }
-      .santa-sprite { width: 55px; height: 80px; }
+      .fire-glow { width: 150px; height: 100px; top: 55px; }
+      .char-sprite { width: 44px; height: 64px; }
+      .char-pixels { width: 4px; height: 4px; }
+      .char-shadow { width: 30px; height: 8px; }
+      .santa-sprite { width: 45px; height: 70px; }
       .santa-pixels { width: 5px; height: 5px; }
-      .santa-shadow { width: 40px; height: 12px; }
+      .santa-shadow { width: 36px; height: 10px; }
       .form-row { flex-direction: column; }
       .form-group.small { flex: 1; }
       .msg-btn { padding: 10px 16px; font-size: 9px; bottom: 12px; right: 12px; }
@@ -1100,6 +1105,55 @@
     }
 
     audio { display: none; }
+
+    /* Floating messages */
+    .float-msg {
+      position: absolute;
+      background: rgba(0,0,0,0.85);
+      border: 3px solid #f8d878;
+      border-radius: 8px;
+      padding: 8px 12px;
+      max-width: 200px;
+      z-index: 100;
+      animation: floatUp 6s ease-out forwards;
+      pointer-events: none;
+    }
+
+    .float-msg-author {
+      color: #f8d878;
+      font-size: 7px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .float-msg-text {
+      color: #fff;
+      font-size: 8px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .float-msg::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 20px;
+      border: 6px solid transparent;
+      border-top-color: #f8d878;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(0) scale(0.8); }
+      10% { opacity: 1; transform: translateY(-10px) scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-150px) scale(0.9); }
+    }
+
+    @media (max-width: 600px) {
+      .float-msg { max-width: 140px; padding: 6px 10px; }
+      .float-msg-author { font-size: 6px; }
+      .float-msg-text { font-size: 7px; }
+    }
   </style>
 </head>
 <body>
@@ -1303,144 +1357,93 @@
         var pants = p.pants;
         var style = p.style;
         var eyes = p.eyes || 'normal';
-        var brows = p.brows || 'normal';
         var hasBeard = style == 'beard';
-        var s = isMobile() ? 5 : 6;
+        var isFemale = p.female;
+        var s = isMobile() ? 4 : 5;
         var px = [];
 
-        var skinLight = lightenColor(skin, 20);
-        var skinDark = darkenColor(skin, 25);
-        var hairDark = darkenColor(hair, 20);
-        var shirtDark = darkenColor(shirt, 20);
-        var shirtLight = lightenColor(shirt, 15);
+        // Simpler 10x16 sprite for better iOS compatibility
+        // Hair row 0-1
+        px.push({x:3,y:0,c:hair},{x:4,y:0,c:hair},{x:5,y:0,c:hair},{x:6,y:0,c:hair});
+        px.push({x:2,y:1,c:hair},{x:3,y:1,c:hair},{x:4,y:1,c:hair},{x:5,y:1,c:hair},{x:6,y:1,c:hair},{x:7,y:1,c:hair});
 
-        var hairDef = {
-          long: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[1,2],[2,2],[8,2],[9,2],[1,3],[9,3],[1,4],[9,4],[1,5],[9,5],[1,6],[9,6]],
-          curly: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,0],[8,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[1,2],[9,2],[2,2],[8,2]],
-          beard: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1]],
-          medium: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[2,2],[8,2]],
-          short: [[3,0],[4,0],[5,0],[6,0],[7,0],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1]]
-        };
+        // Face rows 2-5
+        px.push({x:2,y:2,c:skin},{x:3,y:2,c:skin},{x:4,y:2,c:skin},{x:5,y:2,c:skin},{x:6,y:2,c:skin},{x:7,y:2,c:skin});
+        // Eyes row 3 - TWO SEPARATE EYES with gap in middle
+        px.push({x:2,y:3,c:skin},{x:3,y:3,c:'#333'},{x:4,y:3,c:skin},{x:5,y:3,c:skin},{x:6,y:3,c:'#333'},{x:7,y:3,c:skin});
+        // Nose/cheeks row 4
+        px.push({x:2,y:4,c:skin},{x:3,y:4,c:skin},{x:4,y:4,c:skin},{x:5,y:4,c:skin},{x:6,y:4,c:skin},{x:7,y:4,c:skin});
+        if (isFemale) { px.push({x:3,y:4,c:'#ffb0a0'},{x:6,y:4,c:'#ffb0a0'}); }
+        // Mouth row 5 - small centered mouth
+        px.push({x:2,y:5,c:skin},{x:3,y:5,c:skin},{x:6,y:5,c:skin},{x:7,y:5,c:skin});
+        var mouthCol = isFemale ? '#cc4444' : '#995544';
+        px.push({x:4,y:5,c:mouthCol},{x:5,y:5,c:mouthCol});
 
-        (hairDef[style] || hairDef.short).forEach(function(xy) {
-          var hc = (xy[0] < 5) ? hairDark : hair;
-          px.push({x:xy[0],y:xy[1],c:hc});
-        });
-
-        [[3,2],[4,2],[5,2],[6,2],[7,2]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skinLight}); });
-        [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-
-        if (brows == 'thick') {
-          px.push({x:3,y:3,c:hairDark});
-          px.push({x:7,y:3,c:hairDark});
-        } else if (brows == 'thin') {
-          px.push({x:3,y:3,c:darkenColor(skin,10)});
-          px.push({x:7,y:3,c:darkenColor(skin,10)});
-        }
-
-        [[2,4],[3,4],[4,4],[6,4],[7,4],[8,4]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-
-        if (eyes == 'big') {
-          px.push({x:3,y:4,c:'#fff'});
-          px.push({x:7,y:4,c:'#fff'});
-          px.push({x:4,y:4,c:'#334'});
-          px.push({x:6,y:4,c:'#334'});
-        } else if (eyes == 'small') {
-          px.push({x:4,y:4,c:'#223'});
-          px.push({x:6,y:4,c:'#223'});
-        } else if (eyes == 'wide') {
-          px.push({x:3,y:4,c:'#223'});
-          px.push({x:4,y:4,c:'#223'});
-          px.push({x:6,y:4,c:'#223'});
-          px.push({x:7,y:4,c:'#223'});
-        } else {
-          px.push({x:4,y:4,c:'#fff'});
-          px.push({x:6,y:4,c:'#fff'});
-          px.push({x:4,y:4,c:'#334'});
-          px.push({x:6,y:4,c:'#334'});
-        }
-
-        [[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-        px.push({x:5,y:5,c:skinDark});
-
-        [[3,6],[4,6],[6,6],[7,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-        px.push({x:5,y:6,c:'#c08080'});
-
+        // Beard overlay
         if (hasBeard) {
-          [[2,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
-          [[2,6],[3,6],[7,6],[8,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
-          [[3,7],[4,7],[5,7],[6,7],[7,7]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:hair}); });
+          px.push({x:2,y:4,c:hair},{x:7,y:4,c:hair});
+          px.push({x:2,y:5,c:hair},{x:3,y:5,c:hair},{x:4,y:5,c:hair},{x:5,y:5,c:hair},{x:6,y:5,c:hair},{x:7,y:5,c:hair});
+          px.push({x:3,y:6,c:hair},{x:4,y:6,c:hair},{x:5,y:6,c:hair},{x:6,y:6,c:hair});
         }
 
-        var bY = hasBeard ? 8 : 7;
+        // Long hair sides
+        if (style == 'long' || isFemale) {
+          px.push({x:1,y:2,c:hair},{x:8,y:2,c:hair});
+          px.push({x:1,y:3,c:hair},{x:8,y:3,c:hair});
+          px.push({x:1,y:4,c:hair},{x:8,y:4,c:hair});
+        }
 
-        [[4,0],[5,0],[6,0]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:skin}); });
-        [[3,1],[4,1],[5,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirtLight}); });
-        [[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirt}); });
-        px.push({x:1,y:bY+2,c:skin});
-        px.push({x:9,y:bY+2,c:skin});
-        [[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3]].forEach(function(xy) { px.push({x:xy[0],y:bY+xy[1],c:shirtDark}); });
-        px.push({x:1,y:bY+3,c:skin});
-        px.push({x:9,y:bY+3,c:skin});
+        // Neck
+        var nY = hasBeard ? 7 : 6;
+        px.push({x:4,y:nY,c:skin},{x:5,y:nY,c:skin});
 
-        var pY = bY + 4;
-        [[3,0],[4,0],[5,0],[6,0],[7,0]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:pants}); });
-        [[3,1],[4,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:darkenColor(pants,10)}); });
-        [[3,2],[4,2],[6,2],[7,2]].forEach(function(xy) { px.push({x:xy[0],y:pY+xy[1],c:'#1a1a1a'}); });
+        // Shirt
+        var sY = nY + 1;
+        px.push({x:3,y:sY,c:shirt},{x:4,y:sY,c:shirt},{x:5,y:sY,c:shirt},{x:6,y:sY,c:shirt});
+        px.push({x:2,y:sY+1,c:shirt},{x:3,y:sY+1,c:shirt},{x:4,y:sY+1,c:shirt},{x:5,y:sY+1,c:shirt},{x:6,y:sY+1,c:shirt},{x:7,y:sY+1,c:shirt});
+        px.push({x:1,y:sY+1,c:skin},{x:8,y:sY+1,c:skin}); // hands
+        px.push({x:2,y:sY+2,c:shirt},{x:3,y:sY+2,c:shirt},{x:4,y:sY+2,c:shirt},{x:5,y:sY+2,c:shirt},{x:6,y:sY+2,c:shirt},{x:7,y:sY+2,c:shirt});
+
+        // Pants
+        var pY = sY + 3;
+        px.push({x:3,y:pY,c:pants},{x:4,y:pY,c:pants},{x:5,y:pY,c:pants},{x:6,y:pY,c:pants});
+        px.push({x:3,y:pY+1,c:pants},{x:4,y:pY+1,c:pants},{x:5,y:pY+1,c:pants},{x:6,y:pY+1,c:pants});
+        // Shoes
+        px.push({x:3,y:pY+2,c:'#222'},{x:4,y:pY+2,c:'#222'},{x:5,y:pY+2,c:'#222'},{x:6,y:pY+2,c:'#222'});
 
         return px.map(function(p) { return (p.x*s)+'px '+(p.y*s)+'px 0 '+p.c; }).join(',');
       }
 
       function createSantaSprite() {
-        var s = isMobile() ? 5 : 8;
+        var s = isMobile() ? 5 : 7;
         var px = [];
-        var red = '#d02020';
-        var redDark = '#a01818';
+        var red = '#c81818';
         var white = '#f0f0f0';
         var skin = '#ffd5c0';
-        var skinDark = '#e8c0a8';
-        var belt = '#2a2a2a';
+        var belt = '#1a1a1a';
         var gold = '#d8a020';
 
+        // Simpler Santa - 8x14 grid
         // Hat
-        [[4,0],[5,0],[6,0]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
-        [[3,1],[4,1],[5,1],[6,1],[7,1]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
-        px.push({x:7,y:0,c:white}); // pompom
-        [[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-
+        px.push({x:3,y:0,c:red},{x:4,y:0,c:red},{x:5,y:0,c:white});
+        px.push({x:2,y:1,c:red},{x:3,y:1,c:red},{x:4,y:1,c:red},{x:5,y:1,c:red});
+        px.push({x:1,y:2,c:white},{x:2,y:2,c:white},{x:3,y:2,c:white},{x:4,y:2,c:white},{x:5,y:2,c:white},{x:6,y:2,c:white});
         // Face
-        [[3,3],[4,3],[5,3],[6,3],[7,3]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-        [[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-        px.push({x:4,y:4,c:'#334'});
-        px.push({x:6,y:4,c:'#334'});
-        [[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:skin}); });
-        px.push({x:5,y:5,c:'#c08080'}); // nose
-
+        px.push({x:1,y:3,c:skin},{x:2,y:3,c:skin},{x:3,y:3,c:skin},{x:4,y:3,c:skin},{x:5,y:3,c:skin},{x:6,y:3,c:skin});
+        px.push({x:1,y:4,c:skin},{x:2,y:4,c:'#222'},{x:3,y:4,c:skin},{x:4,y:4,c:skin},{x:5,y:4,c:'#222'},{x:6,y:4,c:skin});
+        px.push({x:3,y:4,c:'#e09090'},{x:4,y:4,c:'#e09090'}); // nose
         // Beard
-        [[1,5],[9,5]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-        [[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-        [[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-        [[3,8],[4,8],[5,8],[6,8],[7,8]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-
-        // Body (red coat)
-        [[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
-        [[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:red}); });
-        px.push({x:0,y:10,c:skin}); // hand
-        px.push({x:10,y:10,c:skin}); // hand
-
-        // Belt
-        [[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:belt}); });
-        px.push({x:5,y:11,c:gold}); // buckle
-        px.push({x:0,y:11,c:skin});
-        px.push({x:10,y:11,c:skin});
-
-        // Lower coat
-        [[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:redDark}); });
-        [[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:white}); });
-
-        // Legs
-        [[3,14],[4,14],[6,14],[7,14]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:'#1a1a1a'}); });
-        [[3,15],[4,15],[6,15],[7,15]].forEach(function(xy) { px.push({x:xy[0],y:xy[1],c:'#1a1a1a'}); });
+        px.push({x:0,y:5,c:white},{x:1,y:5,c:white},{x:2,y:5,c:white},{x:3,y:5,c:white},{x:4,y:5,c:white},{x:5,y:5,c:white},{x:6,y:5,c:white},{x:7,y:5,c:white});
+        px.push({x:1,y:6,c:white},{x:2,y:6,c:white},{x:3,y:6,c:white},{x:4,y:6,c:white},{x:5,y:6,c:white},{x:6,y:6,c:white});
+        px.push({x:2,y:7,c:white},{x:3,y:7,c:white},{x:4,y:7,c:white},{x:5,y:7,c:white});
+        // Body
+        px.push({x:1,y:8,c:red},{x:2,y:8,c:red},{x:3,y:8,c:red},{x:4,y:8,c:red},{x:5,y:8,c:red},{x:6,y:8,c:red});
+        px.push({x:0,y:8,c:skin},{x:7,y:8,c:skin}); // hands
+        px.push({x:1,y:9,c:belt},{x:2,y:9,c:belt},{x:3,y:9,c:gold},{x:4,y:9,c:gold},{x:5,y:9,c:belt},{x:6,y:9,c:belt});
+        px.push({x:1,y:10,c:red},{x:2,y:10,c:red},{x:3,y:10,c:red},{x:4,y:10,c:red},{x:5,y:10,c:red},{x:6,y:10,c:red});
+        px.push({x:1,y:11,c:white},{x:2,y:11,c:white},{x:3,y:11,c:white},{x:4,y:11,c:white},{x:5,y:11,c:white},{x:6,y:11,c:white});
+        // Boots
+        px.push({x:1,y:12,c:'#111'},{x:2,y:12,c:'#111'},{x:5,y:12,c:'#111'},{x:6,y:12,c:'#111'});
 
         return px.map(function(p) { return (p.x*s)+'px '+(p.y*s)+'px 0 '+p.c; }).join(',');
       }
@@ -1673,73 +1676,42 @@
         }
       });
 
-      // Music - playlist with shuffle
-      var tracks = [document.getElementById('music1'), document.getElementById('music2')];
+      // Music - simple iOS compatible
+      var music1 = document.getElementById('music1');
+      var music2 = document.getElementById('music2');
       var soundBtn = document.getElementById('soundBtn');
       var playing = false;
-      var currentTrack = Math.floor(Math.random() * 2); // Random start
-      var autoplayAttempted = false;
+      var current = Math.random() > 0.5 ? music1 : music2;
 
-      function playTrack(index) {
-        tracks.forEach(function(t, i) {
-          if (i == index) {
-            t.volume = 0.3;
-            t.play().then(function() {
-              playing = true;
-              soundBtn.classList.add('active');
-              soundBtn.textContent = 'MUSIIKKI POIS';
-            }).catch(function() {
-              playing = false;
-              soundBtn.textContent = 'MUSIIKKI';
-            });
-          } else {
-            t.pause();
-            t.currentTime = 0;
-          }
-        });
-      }
+      music1.volume = 0.3;
+      music2.volume = 0.3;
 
-      // When track ends, play the other one
-      tracks.forEach(function(t, i) {
-        t.addEventListener('ended', function() {
-          if (playing) {
-            currentTrack = (i + 1) % 2;
-            playTrack(currentTrack);
-          }
-        });
-      });
+      // When track ends, play the other
+      music1.onended = function() { if (playing) { current = music2; music2.play(); } };
+      music2.onended = function() { if (playing) { current = music1; music1.play(); } };
 
-      function startMusic() {
-        playTrack(currentTrack);
-      }
-
-      // Try autoplay immediately
-      startMusic();
-
-      // Also try on ANY user interaction (click, touch, key)
-      function tryAutoplay() {
-        if (!playing && !autoplayAttempted) {
-          autoplayAttempted = true;
-          startMusic();
-        }
-      }
-
-      document.addEventListener('click', tryAutoplay, { once: true });
-      document.addEventListener('touchstart', tryAutoplay, { once: true });
-      document.addEventListener('keydown', tryAutoplay, { once: true });
-      document.addEventListener('scroll', tryAutoplay, { once: true });
-
-      soundBtn.onclick = function(e) {
-        e.stopPropagation();
+      function toggleMusic() {
         if (playing) {
-          tracks.forEach(function(t) { t.pause(); });
+          music1.pause();
+          music2.pause();
           playing = false;
           soundBtn.classList.remove('active');
           soundBtn.textContent = 'MUSIIKKI';
         } else {
-          playing = false; // Reset so playTrack sets it
-          playTrack(currentTrack);
+          current.play().then(function() {
+            playing = true;
+            soundBtn.classList.add('active');
+            soundBtn.textContent = 'POIS';
+          }).catch(function() {
+            soundBtn.textContent = 'MUSIIKKI';
+          });
         }
+      }
+
+      // Simple button - one tap toggles
+      soundBtn.onclick = function(e) {
+        e.preventDefault();
+        toggleMusic();
       };
 
       function showToast(msg, err) {
@@ -1748,6 +1720,92 @@
         el.className = 'toast show' + (err ? ' error' : '');
         setTimeout(function() { el.classList.remove('show'); }, 3000);
       }
+
+      // Floating messages in room
+      function showFloatingMessage(author, message) {
+        var room = document.getElementById('room');
+        var el = document.createElement('div');
+        el.className = 'float-msg';
+        // Random position in room
+        el.style.left = (20 + Math.random() * 50) + '%';
+        el.style.bottom = (30 + Math.random() * 30) + '%';
+        el.innerHTML = '<span class="float-msg-author">' + esc(author) + '</span>' +
+                       '<span class="float-msg-text">' + esc(message.substring(0, 80)) + (message.length > 80 ? '...' : '') + '</span>';
+        room.appendChild(el);
+        // Remove after animation
+        setTimeout(function() { el.remove(); }, 6500);
+      }
+
+      // Track last message ID to show new ones floating
+      var lastMsgId = null;
+      var originalLoadMessages = loadMessages;
+
+      loadMessages = function() {
+        fetch('/wp-json/xmas/v1/messages')
+          .then(function(res) {
+            if (res.ok) return res.json();
+            throw new Error();
+          })
+          .then(function(msgs) {
+            var el = document.getElementById('messages');
+            if (msgs.length == 0) {
+              el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            } else {
+              // Check for new messages and show them floating
+              if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
+                // Find new messages
+                for (var i = 0; i < msgs.length; i++) {
+                  if (msgs[i].id == lastMsgId) break;
+                  showFloatingMessage(msgs[i].author, msgs[i].message);
+                }
+              }
+              lastMsgId = msgs.length > 0 ? msgs[0].id : null;
+
+              el.innerHTML = msgs.map(function(m) {
+                return '<div class="msg">' +
+                  '<span class="msg-author">' + esc(m.author) + ':</span>' +
+                  '<span class="msg-text">' + esc(m.message) + '</span>' +
+                  '<div class="msg-time">' + fmt(m.timestamp) + '</div>' +
+                '</div>';
+              }).join('');
+            }
+          })
+          .catch(function() {
+            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+          });
+      };
+
+      // Also show own message floating when sent
+      var originalFormSubmit = document.getElementById('msgForm').onsubmit;
+      document.getElementById('msgForm').onsubmit = function(e) {
+        e.preventDefault();
+        var authorVal = document.getElementById('author').value.trim();
+        var messageVal = document.getElementById('message').value.trim();
+        if (!authorVal || !messageVal) return;
+
+        // Show floating immediately for own message
+        showFloatingMessage(authorVal, messageVal);
+
+        fetch('/wp-json/xmas/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ author: authorVal, message: messageVal, website: document.getElementById('website').value })
+        })
+        .then(function(res) {
+          if (res.ok) {
+            showToast('Tervehdys lähetetty!');
+            document.getElementById('msgForm').reset();
+            loadMessages();
+          } else {
+            return res.json().then(function(err) {
+              showToast(err.message || 'Virhe!', true);
+            });
+          }
+        })
+        .catch(function() {
+          showToast('Yhteysvirhe!', true);
+        });
+      };
     })();
   </script>
 </body>
