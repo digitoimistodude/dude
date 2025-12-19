@@ -280,6 +280,7 @@ function dude_xmas_admin_page() {
   }
 
   $messages = get_option( 'dude_xmas_messages_2025', array() );
+  $likes = get_option( 'dude_xmas_likes_2025', array() );
   $messages = array_reverse( $messages );
   ?>
   <div class="wrap">
@@ -292,18 +293,21 @@ function dude_xmas_admin_page() {
           <th style="width:150px">Aika</th>
           <th style="width:150px">Nimi</th>
           <th>Viesti</th>
+          <th style="width:60px">❤️</th>
           <th style="width:100px">Toiminnot</th>
         </tr>
       </thead>
       <tbody>
         <?php if ( empty( $messages ) ) : ?>
-          <tr><td colspan="4">Ei viestejä.</td></tr>
+          <tr><td colspan="5">Ei viestejä.</td></tr>
         <?php else : ?>
           <?php foreach ( $messages as $msg ) : ?>
+            <?php $like_count = isset( $likes[ $msg['id'] ] ) ? $likes[ $msg['id'] ] : 0; ?>
             <tr>
               <td><?php echo esc_html( date( 'd.m.Y H:i', strtotime( $msg['timestamp'] ) ) ); ?></td>
               <td><strong><?php echo esc_html( $msg['author'] ); ?></strong></td>
               <td><?php echo esc_html( $msg['message'] ); ?></td>
+              <td><?php echo esc_html( $like_count ); ?></td>
               <td>
                 <a href="<?php echo wp_nonce_url( admin_url( 'admin.php?page=xmas-messages&delete=' . $msg['id'] ), 'xmas_delete_' . $msg['id'] ); ?>"
                    onclick="return confirm('Poistetaanko viesti?');"

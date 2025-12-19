@@ -1196,7 +1196,7 @@
     .btn-send:hover { background: linear-gradient(180deg, #f8d878 0%, #c8a858 100%); color: #000; }
 
     .messages { margin-top: 14px; flex: 1; overflow-y: auto; background: #0a0a18; border: 3px solid #4a4a6a; }
-    .msg { padding: 10px; border-bottom: 1px solid #2a2a4a; font-size: 9px; }
+    .msg { padding: 10px; border-bottom: 1px solid #2a2a4a; font-size: 9px; line-height: 1.38; }
     .msg:last-child { border-bottom: none; }
     .msg-author { color: #f8d878; margin-right: 3px; }
     .msg-text { color: #ddd; margin-top: 4px; line-height: 1.6; }
@@ -1900,6 +1900,55 @@
         });
       };
 
+      // Heart likes - localStorage tracking
+      function getLikedMessages() {
+        try {
+          return JSON.parse(localStorage.getItem('xmas_likes_2025') || '[]');
+        } catch (e) { return []; }
+      }
+
+      function hasLiked(id) {
+        return getLikedMessages().indexOf(id) !== -1;
+      }
+
+      function markAsLiked(id) {
+        var liked = getLikedMessages();
+        if (liked.indexOf(id) === -1) {
+          liked.push(id);
+          try {
+            localStorage.setItem('xmas_likes_2025', JSON.stringify(liked));
+          } catch (e) {}
+        }
+      }
+
+      function likeMessage(id, btn) {
+        if (hasLiked(id)) return;
+        btn.disabled = true;
+        fetch('https://www.dude.fi/wp-json/xmas/v1/like', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id })
+        })
+        .then(function(res) {
+          if (res.ok) return res.json();
+          throw new Error();
+        })
+        .then(function(data) {
+          markAsLiked(id);
+          btn.classList.add('liked');
+          btn.querySelector('svg').setAttribute('fill', 'currentColor');
+          var countSpan = btn.querySelector('span');
+          if (countSpan) {
+            countSpan.textContent = data.likes;
+          } else {
+            btn.insertAdjacentHTML('beforeend', '<span>' + data.likes + '</span>');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+        });
+      }
+
       function loadMessages() {
         fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
           .then(function(res) {
@@ -1912,16 +1961,27 @@
               el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
             } else {
               el.innerHTML = msgs.map(function(m) {
+                var isLiked = hasLiked(m.id);
+                var likeCount = m.likes || 0;
                 return '<div class="msg">' +
                   '<span class="msg-author">' + esc(m.author) + ':</span>' +
                   '<span class="msg-text">' + esc(m.message) + '</span>' +
-                  '<div class="msg-time">' + fmt(m.timestamp) + '</div>' +
+                  '<div class="msg-footer">' +
+                    '<span class="msg-time">' + fmt(m.timestamp) + '</span>' +
+                    '<button class="msg-heart' + (isLiked ? ' liked' : '') + '" data-id="' + esc(m.id) + '" ' + (isLiked ? 'disabled' : '') + '>' +
+                      '<svg viewBox="0 0 24 24" fill="' + (isLiked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>' +
+                      (likeCount > 0 ? '<span>' + likeCount + '</span>' : '') +
+                    '</button>' +
+                  '</div>' +
                 '</div>';
               }).join('');
+              el.querySelectorAll('.msg-heart:not([disabled])').forEach(function(btn) {
+                btn.onclick = function() { likeMessage(btn.dataset.id, btn); };
+              });
             }
           })
           .catch(function() {
-            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmainen tervehtijai</div>';
+            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
           });
       }
 
@@ -2169,12 +2229,23 @@
               lastMsgId = msgs.length > 0 ? msgs[0].id : null;
 
               el.innerHTML = msgs.map(function(m) {
+                var isLiked = hasLiked(m.id);
+                var likeCount = m.likes || 0;
                 return '<div class="msg">' +
                   '<span class="msg-author">' + esc(m.author) + ':</span>' +
                   '<span class="msg-text">' + esc(m.message) + '</span>' +
-                  '<div class="msg-time">' + fmt(m.timestamp) + '</div>' +
+                  '<div class="msg-footer">' +
+                    '<span class="msg-time">' + fmt(m.timestamp) + '</span>' +
+                    '<button class="msg-heart' + (isLiked ? ' liked' : '') + '" data-id="' + esc(m.id) + '" ' + (isLiked ? 'disabled' : '') + '>' +
+                      '<svg viewBox="0 0 24 24" fill="' + (isLiked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>' +
+                      (likeCount > 0 ? '<span>' + likeCount + '</span>' : '') +
+                    '</button>' +
+                  '</div>' +
                 '</div>';
               }).join('');
+              el.querySelectorAll('.msg-heart:not([disabled])').forEach(function(btn) {
+                btn.onclick = function() { likeMessage(btn.dataset.id, btn); };
+              });
             }
           })
           .catch(function() {
