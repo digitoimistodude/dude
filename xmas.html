@@ -26,6 +26,34 @@
       display: flex; flex-direction: column;
     }
 
+    .marquee-bar {
+      background: #1a1a2e;
+      border-bottom: 2px solid #4a4a6a;
+      overflow: hidden;
+      flex-shrink: 0;
+      z-index: 51;
+    }
+
+    .marquee-content {
+      display: flex;
+      animation: marquee 40s linear infinite;
+      white-space: nowrap;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .marquee-content span {
+      color: #f8d878;
+      font-size: 10px;
+      padding: 6px 50px;
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
     .hud {
       background: #000;
       padding: 8px 16px;
@@ -848,12 +876,12 @@
       position: absolute;
       z-index: 22;
       cursor: pointer;
-      transition: transform 0.15s;
+      transition: filter 0.15s;
     }
 
     .character:hover {
-      transform: scale(1.08);
       z-index: 50;
+      filter: drop-shadow(0 0 8px rgba(248, 216, 120, 0.8));
     }
 
     .char-sprite {
@@ -872,7 +900,7 @@
 
     .char-shadow {
       position: absolute;
-      bottom: -4px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 55px;
@@ -1261,7 +1289,7 @@
       .fire-glow { width: 150px; height: 100px; top: 55px; }
       .char-sprite { width: 44px; height: 64px; }
       .char-pixels { width: 4px; height: 4px; }
-      .char-shadow { width: 30px; height: 8px; }
+      .char-shadow { width: 30px; height: 8px; bottom: 6px; }
       .santa-sprite { width: 45px; height: 70px; }
       .santa-pixels { width: 5px; height: 5px; }
       .santa-shadow { width: 36px; height: 10px; }
@@ -1290,8 +1318,7 @@
       bottom: 15%;
     }
 
-    .float-msg.left { left: 20px; }
-    .float-msg.right { right: 20px; }
+    /* Position set via inline style for randomization */
 
     .float-msg-author {
       color: #333;
@@ -1345,11 +1372,10 @@
     }
 
     @media (max-width: 600px) {
-      .float-msg { max-width: 160px; padding: 8px 12px; left: 10px !important; right: auto !important; bottom: 20%; }
+      .float-msg { max-width: 160px; padding: 8px 12px; bottom: 20%; }
       .float-msg-author { font-size: 7px; }
       .float-msg-text { font-size: 8px; }
       .float-msg-time { font-size: 6px; }
-      .float-msg.right { left: auto !important; right: 10px !important; }
     }
   </style>
 </head>
@@ -1542,7 +1568,7 @@
         { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
         { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
         { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Koodi toimii!', 'Refaktoroidaan!', 'Nice!', 'Kippis!'] },
-        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Jee!'] },
+        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#4ab8b8', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'verylong', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Jee!'] },
         { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal', says: ['Design on!', 'Pikselit!', 'Figma time!', 'Kaunis!'] },
         { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Värit kohdalleen!', 'Tyylii!', 'Kaunista!', 'Jess!'] },
         { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal', says: ['Toimii!', 'Bueno!', 'Kippis!', 'Mahtavaa!'] },
@@ -1594,10 +1620,15 @@
         }
 
         // Long hair sides
-        if (style == 'long' || isFemale) {
+        if (style == 'long' || style == 'verylong' || isFemale) {
           px.push({x:1,y:2,c:hair},{x:8,y:2,c:hair});
           px.push({x:1,y:3,c:hair},{x:8,y:3,c:hair});
           px.push({x:1,y:4,c:hair},{x:8,y:4,c:hair});
+        }
+        if (style == 'verylong') {
+          px.push({x:1,y:5,c:hair},{x:8,y:5,c:hair});
+          px.push({x:1,y:6,c:hair},{x:8,y:6,c:hair});
+          px.push({x:1,y:7,c:hair},{x:8,y:7,c:hair});
         }
 
         // Neck
@@ -1975,7 +2006,34 @@
       var floatSide = 0;
       function showFloatingMessage(author, message, timestamp, isOwn) {
         var el = document.createElement('div');
-        el.className = 'float-msg ' + (floatSide % 2 === 0 ? 'left' : 'right');
+        el.className = 'float-msg';
+
+        // Randomize position - on desktop avoid center (30-70%), on mobile anywhere
+        var isMobile = window.innerWidth <= 600;
+        var pos, side;
+        if (isMobile) {
+          // Mobile: anywhere from 5% to 60% from left
+          pos = 5 + Math.random() * 55;
+          el.style.left = pos + '%';
+        } else {
+          // Desktop: left side (5-28%) or right side (62-90%), avoid center
+          if (floatSide % 2 === 0) {
+            pos = 5 + Math.random() * 23;
+            el.style.left = pos + '%';
+            side = 'left';
+          } else {
+            pos = 5 + Math.random() * 28;
+            el.style.right = pos + '%';
+            side = 'right';
+          }
+        }
+        // Randomize bottom position too (10-25%)
+        el.style.bottom = (10 + Math.random() * 15) + '%';
+
+        // Handle bubble tail for right-side bubbles
+        if (side === 'right') {
+          el.classList.add('right');
+        }
         floatSide++;
 
         var timeStr = '';
