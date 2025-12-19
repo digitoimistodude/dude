@@ -33,12 +33,6 @@ add_action( 'rest_api_init', function () {
 } );
 
 function dude_xmas_get_visitors() {
-  // Check cache first (5 second cache to avoid hammering Plausible)
-  $cached = get_transient( 'dude_xmas_visitors_cache' );
-  if ( $cached !== false ) {
-    return rest_ensure_response( array( 'visitors' => $cached ) );
-  }
-
   $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
   if ( empty( $api_key ) ) {
     return rest_ensure_response( array( 'visitors' => 0 ) );
@@ -58,19 +52,10 @@ function dude_xmas_get_visitors() {
   $body = wp_remote_retrieve_body( $response );
   $visitors = intval( $body );
 
-  // Cache for 5 seconds
-  set_transient( 'dude_xmas_visitors_cache', $visitors, 5 );
-
   return rest_ensure_response( array( 'visitors' => $visitors ) );
 }
 
 function dude_xmas_get_total_visitors() {
-  // Cache for 5 minutes to avoid hammering Plausible
-  $cached = get_transient( 'dude_xmas_total_visitors_cache' );
-  if ( $cached !== false ) {
-    return rest_ensure_response( array( 'total' => $cached ) );
-  }
-
   $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
   if ( empty( $api_key ) ) {
     return rest_ensure_response( array( 'total' => 0 ) );
@@ -91,9 +76,6 @@ function dude_xmas_get_total_visitors() {
   $body = wp_remote_retrieve_body( $response );
   $data = json_decode( $body, true );
   $total = isset( $data['results']['visitors']['value'] ) ? intval( $data['results']['visitors']['value'] ) : 0;
-
-  // Cache for 5 minutes
-  set_transient( 'dude_xmas_total_visitors_cache', $total, 5 * MINUTE_IN_SECONDS );
 
   return rest_ensure_response( array( 'total' => $total ) );
 }
