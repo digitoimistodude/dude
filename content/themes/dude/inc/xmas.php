@@ -130,8 +130,6 @@ function dude_xmas_get_messages() {
     return strtotime( $b['timestamp'] ) - strtotime( $a['timestamp'] );
   } );
 
-  $messages = array_slice( $messages, 0, 50 );
-
   // Cache for 5 seconds
   set_transient( 'dude_xmas_messages_cache', $messages, 5 );
 
