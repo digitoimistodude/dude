@@ -1112,6 +1112,26 @@
       font-weight: bold;
     }
 
+    .total-visitors {
+      position: fixed;
+      bottom: 11px;
+      left: 225px;
+      background: rgba(0,0,0,0.8);
+      border: 3px solid #f8d878;
+      padding: 4px 12px 8px 12px;
+      z-index: 100;
+      border-radius: 4px;
+    }
+
+    .total-visitors-text {
+      color: #f8d878;
+      font-size: 8px;
+    }
+
+    #totalCount {
+      font-weight: bold;
+    }
+
     .dialog {
       position: fixed;
       top: 0; right: 0; bottom: 0;
@@ -1248,8 +1268,10 @@
 
     /* Mobile */
     @media (max-width: 600px) {
+      .marquee-content { animation-duration: 20s; }
       .hud-title { font-size: 8px; }
       .hud-btn { padding: 6px 10px; font-size: 8px; }
+      .total-visitors { display: none; }
       .cabin-frame { width: 95%; aspect-ratio: 1/1; }
       .roof { top: -30px; left: -22px; right: -22px; height: 38px; }
       .roof-main { height: 32px; }
@@ -1550,6 +1572,10 @@
   <div class="visitors" id="visitors">
     <div class="visitors-icon"></div>
     <span class="visitors-text"><span class="visitors-count" id="visitorCount">-</span> <span id="visitorWord">tonttua</span> paikalla</span>
+  </div>
+
+  <div class="total-visitors" id="totalVisitors">
+    <span class="total-visitors-text"><span id="totalCount">-</span> tonttua käynyt kurkkimassa</span>
   </div>
 
   <div class="dialog" id="dialog">
@@ -1990,9 +2016,13 @@
 
       function fmt(t) {
         if (!t) return '';
-        var date = new Date(t);
-        return date.getDate() + '.' + (date.getMonth() + 1) + '. ' +
-          ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+        var now = new Date();
+        var then = new Date(t);
+        var diff = Math.floor((now - then) / 1000);
+        if (diff < 60) return 'juuri nyt';
+        if (diff < 3600) return Math.floor(diff / 60) + ' min sitten';
+        if (diff < 86400) return Math.floor(diff / 3600) + ' h sitten';
+        return Math.floor(diff / 86400) + ' pv sitten';
       }
 
       loadMessages();
@@ -2296,6 +2326,19 @@
 
       loadVisitors();
       setInterval(loadVisitors, 5000);
+
+      // Total visitors counter
+      function loadTotalVisitors() {
+        fetch('https://www.dude.fi/wp-json/xmas/v1/total-visitors')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            var total = data.total || 0;
+            document.getElementById('totalCount').textContent = total;
+          })
+          .catch(function() {});
+      }
+      loadTotalVisitors();
+      setInterval(loadTotalVisitors, 60000); // Update every minute
 
       // Character speech bubbles
       function showSpeechBubble() {

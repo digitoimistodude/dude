@@ -24,6 +24,12 @@ add_action( 'rest_api_init', function () {
     'callback'            => 'dude_xmas_like_message',
     'permission_callback' => '__return_true',
   ) );
+
+  register_rest_route( 'xmas/v1', '/total-visitors', array(
+    'methods'             => 'GET',
+    'callback'            => 'dude_xmas_get_total_visitors',
+    'permission_callback' => '__return_true',
+  ) );
 } );
 
 function dude_xmas_get_visitors() {
@@ -56,6 +62,40 @@ function dude_xmas_get_visitors() {
   set_transient( 'dude_xmas_visitors_cache', $visitors, 5 );
 
   return rest_ensure_response( array( 'visitors' => $visitors ) );
+}
+
+function dude_xmas_get_total_visitors() {
+  // Cache for 5 minutes to avoid hammering Plausible
+  $cached = get_transient( 'dude_xmas_total_visitors_cache' );
+  if ( $cached !== false ) {
+    return rest_ensure_response( array( 'total' => $cached ) );
+  }
+
+  $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
+  if ( empty( $api_key ) ) {
+    return rest_ensure_response( array( 'total' => 0 ) );
+  }
+
+  // Get total unique visitors since Dec 19, 2025 (filter by xmas page)
+  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=custom&date=2025-12-19,' . date( 'Y-m-d' ) . '&metrics=visitors&filters=' . urlencode( 'event:page~xmas' ), array(
+    'headers' => array(
+      'Authorization' => 'Bearer ' . $api_key,
+    ),
+    'timeout' => 5,
+  ) );
+
+  if ( is_wp_error( $response ) ) {
+    return rest_ensure_response( array( 'total' => 0 ) );
+  }
+
+  $body = wp_remote_retrieve_body( $response );
+  $data = json_decode( $body, true );
+  $total = isset( $data['results']['visitors']['value'] ) ? intval( $data['results']['visitors']['value'] ) : 0;
+
+  // Cache for 5 minutes
+  set_transient( 'dude_xmas_total_visitors_cache', $total, 5 * MINUTE_IN_SECONDS );
+
+  return rest_ensure_response( array( 'total' => $total ) );
 }
 
 function dude_xmas_get_messages() {
