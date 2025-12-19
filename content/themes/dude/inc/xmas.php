@@ -227,21 +227,11 @@ function dude_xmas_like_message( WP_REST_Request $request ) {
     return new WP_Error( 'not_found', 'Viestiä ei löytynyt', array( 'status' => 404 ) );
   }
 
-  // Check if already liked (per IP + message, hashed)
-  $ip = dude_xmas_get_client_ip();
-  $salt = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'xmas2025';
-  $like_key = 'xmas_liked_' . md5( $ip . $message_id . $salt );
-
-  if ( get_transient( $like_key ) ) {
-    return new WP_Error( 'already_liked', 'Olet jo tykännyt tästä', array( 'status' => 429 ) );
-  }
-
+  // No IP-based duplicate check - rely on client-side localStorage
+  // This allows multiple people on the same network to like messages
   $likes = get_option( 'dude_xmas_likes_2025', array() );
   $likes[ $message_id ] = isset( $likes[ $message_id ] ) ? $likes[ $message_id ] + 1 : 1;
   update_option( 'dude_xmas_likes_2025', $likes );
-
-  // Remember this like for 24 hours
-  set_transient( $like_key, true, DAY_IN_SECONDS );
 
   // Clear cache
   delete_transient( 'dude_xmas_messages_cache' );

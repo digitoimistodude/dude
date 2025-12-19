@@ -1212,9 +1212,12 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      transition: color 0.15s;
+      transition: color 0.1s, transform 0.1s;
+      position: relative;
+      top: 1px;
     }
     .msg-heart:hover { color: #e05080; }
+    .msg-heart:active { transform: scale(1.3); color: #e05080; }
     .msg-heart.liked { color: #e05080; }
     .msg-heart svg { width: 12px; height: 12px; }
     .msg-heart.liked svg { fill: #e05080; }
@@ -1924,6 +1927,18 @@
       function likeMessage(id, btn) {
         if (hasLiked(id)) return;
         btn.disabled = true;
+        // Optimistic UI - update immediately
+        btn.classList.add('liked');
+        btn.querySelector('svg').setAttribute('fill', 'currentColor');
+        var countSpan = btn.querySelector('span');
+        var oldCount = countSpan ? parseInt(countSpan.textContent) || 0 : 0;
+        if (countSpan) {
+          countSpan.textContent = oldCount + 1;
+        } else {
+          btn.insertAdjacentHTML('beforeend', '<span>1</span>');
+          countSpan = btn.querySelector('span');
+        }
+
         fetch('https://www.dude.fi/wp-json/xmas/v1/like', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1935,17 +1950,18 @@
         })
         .then(function(data) {
           markAsLiked(id);
-          btn.classList.add('liked');
-          btn.querySelector('svg').setAttribute('fill', 'currentColor');
-          var countSpan = btn.querySelector('span');
-          if (countSpan) {
-            countSpan.textContent = data.likes;
-          } else {
-            btn.insertAdjacentHTML('beforeend', '<span>' + data.likes + '</span>');
-          }
+          countSpan.textContent = data.likes;
         })
         .catch(function() {
+          // Revert on error
           btn.disabled = false;
+          btn.classList.remove('liked');
+          btn.querySelector('svg').setAttribute('fill', 'none');
+          if (oldCount > 0) {
+            countSpan.textContent = oldCount;
+          } else {
+            countSpan.remove();
+          }
         });
       }
 
