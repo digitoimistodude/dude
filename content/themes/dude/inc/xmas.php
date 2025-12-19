@@ -56,13 +56,19 @@ function dude_xmas_get_visitors() {
 }
 
 function dude_xmas_get_total_visitors() {
+  // Cache for 60 seconds to avoid hitting Plausible rate limit (600/hour)
+  $cached = get_transient( 'dude_xmas_total_visitors' );
+  if ( false !== $cached ) {
+    return rest_ensure_response( array( 'total' => $cached ) );
+  }
+
   $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
   if ( empty( $api_key ) ) {
     return rest_ensure_response( array( 'total' => 0 ) );
   }
 
-  // Get total unique visitors today
-  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=day&metrics=visitors', array(
+  // Get total unique visitors this week
+  $response = wp_remote_get( 'https://analytics.dude.fi/api/v1/stats/aggregate?site_id=dude.fi&period=7d&metrics=visitors', array(
     'headers' => array(
       'Authorization' => 'Bearer ' . $api_key,
     ),
@@ -75,7 +81,16 @@ function dude_xmas_get_total_visitors() {
 
   $body = wp_remote_retrieve_body( $response );
   $data = json_decode( $body, true );
+
+  // Check for rate limit error
+  if ( isset( $data['error'] ) ) {
+    return rest_ensure_response( array( 'total' => 0 ) );
+  }
+
   $total = isset( $data['results']['visitors']['value'] ) ? intval( $data['results']['visitors']['value'] ) : 0;
+
+  // Cache for 60 seconds
+  set_transient( 'dude_xmas_total_visitors', $total, 60 );
 
   return rest_ensure_response( array( 'total' => $total ) );
 }

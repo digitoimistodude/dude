@@ -2400,9 +2400,17 @@
           .then(function(res) { return res.json(); })
           .then(function(data) {
             var total = data.total || 0;
-            document.getElementById('totalCount').textContent = total;
+            var el = document.getElementById('totalVisitors');
+            if (total > 0) {
+              document.getElementById('totalCount').textContent = total;
+              el.style.display = '';
+            } else {
+              el.style.display = 'none';
+            }
           })
-          .catch(function() {});
+          .catch(function() {
+            document.getElementById('totalVisitors').style.display = 'none';
+          });
       }
       loadTotalVisitors();
       setInterval(loadTotalVisitors, 60000); // Update every minute
