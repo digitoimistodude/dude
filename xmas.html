@@ -1168,18 +1168,51 @@
       font-weight: bold;
     }
 
+    /* Desktop: sidebar layout like Twitch */
+    @media (min-width: 601px) {
+      .game {
+        flex-direction: row;
+      }
+      .game-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .dialog {
+        position: relative;
+        width: 360px;
+        flex-shrink: 0;
+        transform: none;
+        border-left: 4px solid #f8d878;
+      }
+      .dialog.closed {
+        display: none;
+      }
+      .msg-btn.desktop-toggle {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+      }
+      .game-main .screen {
+        flex: 1;
+      }
+    }
+
     .dialog {
+      background: linear-gradient(180deg, #1a1a2e 0%, #0a0a18 100%);
+      padding: 16px;
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      /* Mobile defaults */
       position: fixed;
       top: 0; right: 0; bottom: 0;
       width: 360px;
-      background: linear-gradient(180deg, #1a1a2e 0%, #0a0a18 100%);
       border-left: 4px solid #f8d878;
-      padding: 16px;
-      z-index: 150;
       transform: translateX(100%);
       transition: transform 0.3s;
-      display: flex;
-      flex-direction: column;
     }
 
     .dialog.open { transform: translateX(0); }
@@ -1474,6 +1507,7 @@
 </head>
 <body>
   <div class="game">
+    <div class="game-main">
     <div class="marquee-bar">
       <div class="marquee-content" id="marqueeTrack">
         <span>🎄 Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
@@ -1615,24 +1649,24 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <button class="msg-btn" id="msgBtn">TERVEISET</button>
+    <button class="msg-btn" id="msgBtn">TERVEISET</button>
 
-  <div class="visitors" id="visitors">
-    <div class="visitors-icon"></div>
-    <span class="visitors-text"><span class="visitors-count" id="visitorCount">1</span> <span id="visitorWord">tonttu</span> paikalla</span>
-  </div>
-
-  <div class="total-visitors" id="totalVisitors">
-    <span class="total-visitors-text"><span id="totalCount">...</span> tonttua käynyt kurkkimassa</span>
-  </div>
-
-  <div class="dialog" id="dialog">
-    <div class="dialog-header">
-      <span class="dialog-title">JOULUPUKIN KUUMA LINJA</span>
-      <button class="dialog-close" id="closeBtn">X</button>
+    <div class="visitors" id="visitors">
+      <div class="visitors-icon"></div>
+      <span class="visitors-text"><span class="visitors-count" id="visitorCount">1</span> <span id="visitorWord">tonttu</span> paikalla</span>
     </div>
+
+    <div class="total-visitors" id="totalVisitors">
+      <span class="total-visitors-text"><span id="totalCount">...</span> tonttua käynyt kurkkimassa</span>
+    </div>
+    </div><!-- /.game-main -->
+
+    <div class="dialog" id="dialog">
+      <div class="dialog-header">
+        <span class="dialog-title">JOULUPUKIN KUUMA LINJA</span>
+        <button class="dialog-close" id="closeBtn">X</button>
+      </div>
     <form id="msgForm">
       <div class="form-row">
         <div class="form-group small">
@@ -1651,7 +1685,8 @@
       <div class="no-msgs">Ladataan...</div>
     </div>
     <div class="dialog-footer">Tekoälyä ON käytetty. <a href="https://github.com/digitoimistodude/dude" target="_blank">Tästä GitHubiin.</a></div>
-  </div>
+    </div><!-- /.dialog -->
+  </div><!-- /.game -->
 
   <div class="toast" id="toast"></div>
 
@@ -1961,11 +1996,51 @@
 
       // Dialog
       var dialog = document.getElementById('dialog');
-      document.getElementById('msgBtn').onclick = function() { dialog.classList.add('open'); };
-      document.getElementById('closeBtn').onclick = function() { dialog.classList.remove('open'); };
-      // Close dialog when clicking outside
+      var msgBtn = document.getElementById('msgBtn');
+      var closeBtn = document.getElementById('closeBtn');
+
+      // Desktop: open by default, toggle with button
+      // Mobile: closed by default, open with button
+      function isDesktop() {
+        return window.innerWidth > 600;
+      }
+
+      function updateDialogState() {
+        if (isDesktop()) {
+          // Desktop: sidebar mode - use 'closed' class
+          dialog.classList.remove('open');
+          if (!dialog.classList.contains('closed')) {
+            // Open by default on desktop
+          }
+        } else {
+          // Mobile: overlay mode - use 'open' class
+          dialog.classList.remove('closed');
+        }
+      }
+
+      // Initial state
+      updateDialogState();
+      window.addEventListener('resize', updateDialogState);
+
+      msgBtn.onclick = function() {
+        if (isDesktop()) {
+          dialog.classList.toggle('closed');
+        } else {
+          dialog.classList.add('open');
+        }
+      };
+
+      closeBtn.onclick = function() {
+        if (isDesktop()) {
+          dialog.classList.add('closed');
+        } else {
+          dialog.classList.remove('open');
+        }
+      };
+
+      // Close dialog when clicking outside (mobile only)
       document.addEventListener('click', function(e) {
-        if (dialog.classList.contains('open') && !dialog.contains(e.target) && e.target.id !== 'msgBtn') {
+        if (!isDesktop() && dialog.classList.contains('open') && !dialog.contains(e.target) && e.target.id !== 'msgBtn') {
           dialog.classList.remove('open');
         }
       });
