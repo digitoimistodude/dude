@@ -2418,9 +2418,9 @@
           showFloatingMessage(msg.author, msg.message, msg.timestamp);
         }
       }
-      // Show a random old message every 8-15 seconds
+      // Show a random old message every 12-20 seconds
       function scheduleRandomMessage() {
-        var delay = 8000 + Math.random() * 7000;
+        var delay = 12000 + Math.random() * 8000;
         setTimeout(function() {
           showRandomOldMessage();
           scheduleRandomMessage();
@@ -2497,22 +2497,6 @@
       function storeMessages(msgs) {
         allMessages = msgs || [];
       }
-
-      function showRandomMessage() {
-        if (allMessages.length == 0) return;
-        var msg = allMessages[Math.floor(Math.random() * allMessages.length)];
-        showFloatingMessage(msg.author, msg.message, msg.timestamp);
-      }
-
-      // Show random message every 8-15 seconds
-      function scheduleRandomMessage() {
-        var delay = 8000 + Math.random() * 7000;
-        setTimeout(function() {
-          showRandomMessage();
-          scheduleRandomMessage();
-        }, delay);
-      }
-      scheduleRandomMessage();
 
       // Update loadMessages to store messages
       var oldLoadMessages = loadMessages;
