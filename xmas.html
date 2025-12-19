@@ -1943,6 +1943,12 @@
       var dialog = document.getElementById('dialog');
       document.getElementById('msgBtn').onclick = function() { dialog.classList.add('open'); };
       document.getElementById('closeBtn').onclick = function() { dialog.classList.remove('open'); };
+      // Close dialog when clicking outside
+      document.addEventListener('click', function(e) {
+        if (dialog.classList.contains('open') && !dialog.contains(e.target) && e.target.id !== 'msgBtn') {
+          dialog.classList.remove('open');
+        }
+      });
 
       document.getElementById('msgForm').onsubmit = function(e) {
         e.preventDefault();
