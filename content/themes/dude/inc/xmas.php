@@ -115,11 +115,20 @@ function dude_xmas_get_messages() {
     return $msg;
   }, $messages );
 
-  // Sort by likes (desc), then by timestamp (desc)
+  // Sort: 10+ likes stick to top, then newest first
   usort( $messages, function( $a, $b ) {
-    if ( $a['likes'] !== $b['likes'] ) {
-      return $b['likes'] - $a['likes'];
+    $a_popular = $a['likes'] >= 10;
+    $b_popular = $b['likes'] >= 10;
+    // Popular messages (10+ likes) go to top
+    if ( $a_popular && ! $b_popular ) return -1;
+    if ( $b_popular && ! $a_popular ) return 1;
+    // Among popular, sort by likes desc
+    if ( $a_popular && $b_popular ) {
+      if ( $a['likes'] !== $b['likes'] ) {
+        return $b['likes'] - $a['likes'];
+      }
     }
+    // Otherwise sort by timestamp desc (newest first)
     return strtotime( $b['timestamp'] ) - strtotime( $a['timestamp'] );
   } );
 
