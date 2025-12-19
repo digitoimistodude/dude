@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Duden Pikkujoulut 2025</title>
+  <meta property="og:title" content="Duden Pikkujoulut 2025">
+  <meta property="og:description" content="Tervetuloa Duden virtuaalisiin pikkujouluihin!">
+  <meta property="og:image" content="https://i.imgur.com/oCR7kvz.png">
+  <meta property="og:url" content="https://tontut.dude.fi">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
@@ -28,26 +33,16 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 4px solid #4a4a6a;
-      border-top: 4px solid transparent;
       flex-shrink: 0;
       z-index: 50;
-      transition: border-top-color 0.3s;
-    }
-
-    .hud.notify {
-      border-top-color: #e02020;
-      animation: hudFlash 0.5s ease-in-out 3;
-    }
-
-    @keyframes hudFlash {
-      0%, 100% { border-top-color: #e02020; }
-      50% { border-top-color: #ff6060; }
     }
 
     .hud-title {
       color: #f8d878;
       font-size: 11px;
       text-shadow: 2px 2px #000;
+      position: relative;
+      top: 2px;
     }
 
     .hud-btn {
@@ -418,46 +413,39 @@
     .stocking:nth-child(odd) .stocking-foot { background: #d02020; }
     .stocking:nth-child(even) .stocking-foot { background: #20a020; }
 
-    /* Clock on wall */
-    .clock {
+    /* Dartboard on wall */
+    .dartboard {
       position: absolute;
       top: 7px;
       right: 200px;
       width: 40px;
       height: 40px;
-      background: linear-gradient(135deg, #705028 0%, #503818 100%);
-      border: 4px solid #402010;
+      background: #1a1a1a;
+      border: 3px solid #402010;
       border-radius: 50%;
       z-index: 26;
     }
 
-    .clock-face {
+    .dartboard-rings {
       position: absolute;
-      inset: 3px;
-      background: radial-gradient(circle, #f8f8f0 0%, #e8e8e0 100%);
+      inset: 2px;
       border-radius: 50%;
-      border: 2px solid #201008;
+      background:
+        radial-gradient(circle, #d02020 0%, #d02020 8%, #20a020 8%, #20a020 20%, #f0e8d0 20%, #f0e8d0 32%, #1a1a1a 32%, #1a1a1a 44%, #f0e8d0 44%, #f0e8d0 56%, #d02020 56%, #d02020 68%, #20a020 68%, #20a020 80%, #1a1a1a 80%);
     }
 
-    .clock-face::before {
-      content: '';
+    .dart {
       position: absolute;
-      top: 50%; left: 50%;
-      width: 3px; height: 10px;
-      background: #201008;
+      width: 3px;
+      height: 12px;
+      background: linear-gradient(180deg, #c0c0c0 0%, #808080 40%, #d02020 40%, #d02020 70%, #f0e080 70%);
+      z-index: 27;
       transform-origin: bottom center;
-      transform: translate(-50%, -100%) rotate(-30deg);
     }
 
-    .clock-face::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 3px; height: 7px;
-      background: #201008;
-      transform-origin: bottom center;
-      transform: translate(-50%, -100%) rotate(60deg);
-    }
+    .dart-1 { top: 8px; right: 206px; transform: rotate(-15deg); }
+    .dart-2 { top: 12px; right: 198px; transform: rotate(10deg); }
+    .dart-3 { top: 6px; right: 192px; transform: rotate(5deg); }
 
     /* Wreath on wall */
     .wreath {
@@ -864,7 +852,7 @@
     }
 
     .character:hover {
-      transform: scale(1.15);
+      transform: scale(1.08);
       z-index: 50;
     }
 
@@ -1106,7 +1094,8 @@
       z-index: 150;
       transform: translateX(100%);
       transition: transform 0.3s;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
 
     .dialog.open { transform: translateX(0); }
@@ -1128,6 +1117,36 @@
 
     .dialog-close:hover { background: #f8d878; color: #000; }
 
+    .dialog-footer {
+      margin-top: 6px;
+      padding-top: 12px;
+      font-size: 7px;
+      color: #666;
+      text-align: center;
+    }
+
+    .dialog-footer a {
+      color: #f8d878;
+      text-decoration: none;
+    }
+
+    .dialog-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .hud-logo {
+      color: #7effe1;
+      margin-right: 8px;
+      vertical-align: middle;
+      display: inline-block;
+      position: relative;
+      top: -2px;
+    }
+
+    .hud-logo:hover {
+      color: #fff;
+    }
+
     .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
     .form-group { flex: 1; }
     .form-group.small { flex: 0 0 120px; }
@@ -1148,7 +1167,7 @@
 
     .btn-send:hover { background: linear-gradient(180deg, #f8d878 0%, #c8a858 100%); color: #000; }
 
-    .messages { margin-top: 14px; max-height: 150px; overflow-y: auto; background: #0a0a18; border: 3px solid #4a4a6a; }
+    .messages { margin-top: 14px; flex: 1; overflow-y: auto; background: #0a0a18; border: 3px solid #4a4a6a; }
     .msg { padding: 10px; border-bottom: 1px solid #2a2a4a; font-size: 9px; }
     .msg:last-child { border-bottom: none; }
     .msg-author { color: #f8d878; }
@@ -1167,9 +1186,16 @@
       font-size: 10px;
       z-index: 200;
       transition: transform 0.3s;
+      opacity: 0;
+      visibility: hidden;
     }
 
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
     .toast.error { border-color: #c02040; }
 
     /* Mobile */
@@ -1199,7 +1225,11 @@
       .stocking { width: 10px; height: 18px; }
       .stocking-top { height: 5px; }
       .stocking-foot { height: 13px; }
-      .clock { width: 24px; height: 24px; top: 8px; right: 115px; }
+      .dartboard { width: 24px; height: 24px; top: 8px; right: 115px; }
+      .dart { height: 8px; width: 2px; }
+      .dart-1 { top: 10px; right: 118px; }
+      .dart-2 { top: 13px; right: 112px; }
+      .dart-3 { top: 9px; right: 108px; }
       .wreath { width: 24px; height: 24px; top: 8px; left: 115px; }
       .wreath-ring { border-width: 5px; }
       .tree { width: 55px; height: 72px; right: 30px; bottom: 24px; }
@@ -1326,7 +1356,7 @@
 <body>
   <div class="game">
     <div class="hud">
-      <div class="hud-title">DUDEN PIKKUJOULUT 2025</div>
+      <div class="hud-title"><a href="https://www.dude.fi" target="_blank" class="hud-logo" title="Dude.fi"><svg width="55" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2267.72 453.54"><path fill="currentColor" d="M950.26 211.64c0 37.66-12.7 111.12-97.79 111.12-85.61 0-98.4-73.47-98.4-111.12V5.23H590.91v217.92c0 138.73 97.78 221.55 261.55 221.55 163.39 0 260.93-82.82 260.93-221.55V5.23H950.26v206.41zM2264.41 127.17V5.23h-505.2v439.48h505.2V322.76h-345.08v-48.71h286.91v-98.17h-286.91v-48.71zM317.21 5.23H3v439.48h314.21c108.81 0 219.87-87.76 219.87-219.74 0-132.83-111.06-219.74-219.87-219.74zm-39.84 317.53H166.14v-195.4h111.23c57.58 0 97.7 45.79 97.7 97.61 0 52.51-40.12 97.79-97.7 97.79zM1485.51 5.23H1171.3v439.48h314.21c108.81 0 219.87-87.76 219.87-219.74 0-132.83-111.06-219.74-219.87-219.74zm-39.84 317.53h-111.23v-195.4h111.23c57.58 0 97.7 45.79 97.7 97.61 0 52.51-40.12 97.79-97.7 97.79z"/></svg></a> PIKKUJOULUT 2025</div>
       <button class="hud-btn" id="soundBtn">MUSIIKKI POIS</button>
     </div>
 
@@ -1375,7 +1405,10 @@
           <div class="fire-glow"></div>
 
           <!-- Wall decorations -->
-          <div class="clock"><div class="clock-face"></div></div>
+          <div class="dartboard"><div class="dartboard-rings"></div></div>
+          <div class="dart dart-1"></div>
+          <div class="dart dart-2"></div>
+          <div class="dart dart-3"></div>
           <div class="wreath"><div class="wreath-ring"></div><div class="wreath-bow"></div></div>
 
           <!-- Bookshelf -->
@@ -1464,7 +1497,7 @@
 
   <div class="visitors" id="visitors">
     <div class="visitors-icon"></div>
-    <span class="visitors-text"><span class="visitors-count" id="visitorCount">-</span> tonttua paikalla</span>
+    <span class="visitors-text"><span class="visitors-count" id="visitorCount">-</span> <span id="visitorWord">tonttua</span> paikalla</span>
   </div>
 
   <div class="dialog" id="dialog">
@@ -1489,6 +1522,7 @@
     <div class="messages" id="messages">
       <div class="no-msgs">Ladataan...</div>
     </div>
+    <div class="dialog-footer">Tekoälyä ON käytetty. <a href="https://github.com/digitoimistodude/dude" target="_blank">Tästä GitHubiin.</a></div>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -1504,11 +1538,11 @@
     (function() {
       var team = [
         { name: 'Rolle', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
-        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Ihanaa!', 'Lisälaskutusta!', 'Töihin tontut!'] },
+        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'beard', eyes: 'small', brows: 'thin', sayFast: true, says: ['Hyvää joulua!', 'Strategia!', 'Missä on glögi?', 'Lisälaskutusta!', 'Töihin tontut!'] },
         { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'beard', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
         { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
         { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Koodi toimii!', 'Refaktoroidaan!', 'Nice!', 'Kippis!'] },
-        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Ihanaa!'] },
+        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Jee!'] },
         { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal', says: ['Design on!', 'Pikselit!', 'Figma time!', 'Kaunis!'] },
         { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Värit kohdalleen!', 'Tyylii!', 'Kaunista!', 'Jess!'] },
         { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal', says: ['Toimii!', 'Bueno!', 'Kippis!', 'Mahtavaa!'] },
@@ -2056,6 +2090,7 @@
           .then(function(data) {
             var count = data.visitors || 0;
             document.getElementById('visitorCount').textContent = count;
+            document.getElementById('visitorWord').textContent = count === 1 ? 'tonttu' : 'tonttua';
           })
           .catch(function() {});
       }
@@ -2119,7 +2154,7 @@
       }
 
       function scheduleCEOSpeech() {
-        var delay = 2000 + Math.random() * 2000;
+        var delay = 5000 + Math.random() * 5000;
         setTimeout(function() {
           showCEOBubble();
           scheduleCEOSpeech();
