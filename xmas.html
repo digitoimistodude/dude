@@ -1250,6 +1250,8 @@
     .messages { margin-top: 14px; flex: 1; overflow-y: auto; background: #0a0a18; border: 3px solid #4a4a6a; }
     .msg { padding: 10px; border-bottom: 1px solid #2a2a4a; font-size: 9px; line-height: 1.38; }
     .msg:last-child { border-bottom: none; }
+    .msg.new-highlight { background: rgba(248, 216, 120, 0.15); border-left: 3px solid #f8d878; animation: newMsgFade 8s forwards; }
+    @keyframes newMsgFade { 0% { background: rgba(248, 216, 120, 0.15); } 100% { background: transparent; } }
     .msg-author { color: #f8d878; margin-right: 3px; }
     .msg-text { color: #ddd; margin-top: 4px; line-height: 1.6; }
     .msg-time { color: #666; font-size: 7px; margin-top: 4px; display: inline; }
@@ -1437,6 +1439,19 @@
 
     .float-msg.right::after { left: auto; right: 20px; }
     .float-msg.right::before { left: auto; right: 24px; }
+
+    /* New (live) messages - gold border with glow */
+    .float-msg.new {
+      border-color: #f8d878;
+      box-shadow: 0 0 20px rgba(248, 216, 120, 0.6);
+      animation: floatUp 12s ease-out forwards, newPulse 1s ease-in-out 3;
+    }
+    .float-msg.new::after { border-top-color: #f8d878; }
+
+    @keyframes newPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(248, 216, 120, 0.6); }
+      50% { box-shadow: 0 0 35px rgba(248, 216, 120, 0.9); }
+    }
 
     @keyframes floatUp {
       0% { opacity: 0; transform: translateY(50px) scale(0.9); }
@@ -2212,9 +2227,9 @@
 
       // Floating messages - alternate left/right
       var floatSide = 0;
-      function showFloatingMessage(author, message, timestamp, isOwn) {
+      function showFloatingMessage(author, message, timestamp, isNew) {
         var el = document.createElement('div');
-        el.className = 'float-msg';
+        el.className = 'float-msg' + (isNew ? ' new' : '');
 
         // Randomize position - on desktop avoid center (30-70%), on mobile anywhere
         var isMobile = window.innerWidth <= 600;
@@ -2294,13 +2309,23 @@
             if (msgs.length == 0) {
               el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
             } else {
-              // Check for new messages and show them floating
+              // Check for new messages and show them floating + prepend to list
+              var addedNew = false;
               if (lastSeenTime) {
                 for (var i = 0; i < msgs.length; i++) {
                   var msgTime = new Date(msgs[i].timestamp).getTime();
                   if (msgTime > lastSeenTime && !seenMsgIds[msgs[i].id]) {
                     seenMsgIds[msgs[i].id] = true;
-                    showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
+                    showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp, true);
+                    // Prepend to shoutbox immediately
+                    var newMsgHtml = '<div class="msg new-highlight">' +
+                      '<span class="msg-author">' + esc(msgs[i].author) + ':</span>' +
+                      '<span class="msg-text">' + esc(msgs[i].message) + '</span>' +
+                      '<div class="msg-footer"><span class="msg-time">juuri nyt</span>' +
+                      '<button class="msg-heart" data-id="' + esc(msgs[i].id) + '">' +
+                      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button></div></div>';
+                    el.insertAdjacentHTML('afterbegin', newMsgHtml);
+                    addedNew = true;
                   }
                 }
               }
@@ -2313,7 +2338,8 @@
               }
               lastSeenTime = maxTime;
 
-              el.innerHTML = msgs.map(function(m) {
+              // Only rebuild full list if no new messages were prepended
+              if (!addedNew) el.innerHTML = msgs.map(function(m) {
                 var isLiked = hasLiked(m.id);
                 var likeCount = m.likes || 0;
                 return '<div class="msg">' +
@@ -2515,7 +2541,7 @@
               if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
                 for (var i = 0; i < msgs.length; i++) {
                   if (msgs[i].id == lastMsgId) break;
-                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp);
+                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp, true);
                 }
               }
               lastMsgId = msgs.length > 0 ? msgs[0].id : null;
