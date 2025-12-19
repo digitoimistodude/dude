@@ -6,6 +6,7 @@
   <title>Duden Pikkujoulut 2025</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -865,7 +866,7 @@
       position: absolute;
       width: 5px;
       height: 5px;
-      background: #000;
+      background: transparent;
     }
 
     .char-shadow {
@@ -909,6 +910,53 @@
     .char-name { color: #f8d878; font-size: 9px; display: block; }
     .char-title { color: #aaa; font-size: 8px; margin-top: 4px; }
 
+    /* Speech bubbles */
+    .speech-bubble {
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 3px solid #333;
+      border-radius: 12px;
+      padding: 6px 10px;
+      color: #000;
+      font-size: 8px;
+      white-space: nowrap;
+      z-index: 100;
+      animation: bubblePop 3s ease-out forwards;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 8px solid transparent;
+      border-top-color: #333;
+    }
+
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #fff;
+      margin-top: -3px;
+      z-index: 1;
+    }
+
+    @keyframes bubblePop {
+      0% { opacity: 0; transform: translateX(-50%) scale(0.5); }
+      10% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+      20% { transform: translateX(-50%) scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
     /* Santa */
     .santa {
       position: absolute;
@@ -926,7 +974,7 @@
       position: absolute;
       width: 7px;
       height: 7px;
-      background: #000;
+      background: transparent;
     }
 
     .santa-shadow {
@@ -957,6 +1005,43 @@
 
     .msg-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #600818; }
     .msg-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #600818; }
+
+    .visitors {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(0,0,0,0.8);
+      border: 3px solid #208030;
+      padding: 8px 12px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 4px;
+    }
+
+    .visitors-icon {
+      width: 10px;
+      height: 10px;
+      background: #30d040;
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .visitors-text {
+      color: #30d040;
+      font-size: 8px;
+    }
+
+    .visitors-count {
+      color: #30d040;
+      font-weight: bold;
+    }
 
     .dialog {
       position: fixed;
@@ -1294,6 +1379,11 @@
 
   <button class="msg-btn" id="msgBtn">TERVEISET</button>
 
+  <div class="visitors" id="visitors">
+    <div class="visitors-icon"></div>
+    <span class="visitors-text"><span class="visitors-count" id="visitorCount">-</span> tonttua paikalla</span>
+  </div>
+
   <div class="dialog" id="dialog">
     <div class="dialog-header">
       <span class="dialog-title">JOULUPUKIN KUUMA LINJA</span>
@@ -1330,20 +1420,20 @@
   <script>
     (function() {
       var team = [
-        { name: 'Roni', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick' },
-        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'short', eyes: 'small', brows: 'thin' },
-        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'medium', eyes: 'normal', brows: 'normal' },
-        { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal' },
-        { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick' },
-        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true },
-        { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal' },
-        { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true },
-        { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal' },
-        { name: 'Maria', title: 'Developer', x: 14, y: 82, hair: '#4a3525', skin: '#ffd5c0', shirt: '#60a040', pants: '#3a4535', style: 'medium', eyes: 'big', brows: 'thin', female: true },
-        { name: 'Miska', title: 'Developer', x: 44, y: 66, hair: '#5a4a40', skin: '#ffd0b0', shirt: '#805030', pants: '#4a4035', style: 'short', eyes: 'small', brows: 'thick' },
-        { name: 'Nadya', title: 'Developer', x: 78, y: 50, hair: '#1a1515', skin: '#d4a080', shirt: '#c03060', pants: '#4a3040', style: 'long', eyes: 'big', brows: 'thin', female: true },
-        { name: 'Otto', title: 'Developer', x: 30, y: 78, hair: '#4a4035', skin: '#ffd5c0', shirt: '#a0a030', pants: '#3a3a30', style: 'short', eyes: 'normal', brows: 'normal' },
-        { name: 'William', title: 'Developer', x: 64, y: 74, hair: '#3a3530', skin: '#ffd0b0', shirt: '#6040a0', pants: '#3a3045', style: 'medium', eyes: 'wide', brows: 'normal' }
+        { name: 'Roni', title: 'CTO', x: 12, y: 38, hair: '#4a3020', skin: '#ffd5c0', shirt: '#c03030', pants: '#2040a0', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Kippis!', 'Hyvää joulua!', 'Onks glögii?', 'Torille!'] },
+        { name: 'Juha', title: 'CEO', x: 84, y: 36, hair: '#4a4a50', skin: '#ffe0cc', shirt: '#2050c0', pants: '#303050', style: 'short', eyes: 'small', brows: 'thin', says: ['Töihin siitä!', 'Budjetissa pysytään!', 'Strategia!', 'Hyvää joulua!'] },
+        { name: 'Arto', title: 'Senior Dev', x: 18, y: 52, hair: '#5a4030', skin: '#ffd0b0', shirt: '#208030', pants: '#304030', style: 'medium', eyes: 'normal', brows: 'normal', says: ['PHP on paras!', 'WordPress ftw!', 'Kippis!', 'Debugataan!'] },
+        { name: 'Elias', title: 'Senior Dev', x: 58, y: 40, hair: '#2a2020', skin: '#ffd5c0', shirt: '#8040a0', pants: '#3a3a4a', style: 'curly', eyes: 'wide', brows: 'normal', says: ['Toimii!', 'Git push!', 'Kahvia!', 'Joulupukki!'] },
+        { name: 'Tuomas', title: 'Senior Dev', x: 32, y: 56, hair: '#6a5040', skin: '#ffd0b0', shirt: '#d06020', pants: '#4a4035', style: 'beard', eyes: 'normal', brows: 'thick', says: ['Koodi toimii!', 'Refaktoroidaan!', 'Nice!', 'Kippis!'] },
+        { name: 'Jenni', title: 'Developer', x: 10, y: 68, hair: '#8a5040', skin: '#ffe5d5', shirt: '#c04080', pants: '#4a3545', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Hyvää joulua!', 'Mahtavaa!', 'Koodataan!', 'Ihanaa!'] },
+        { name: 'Joni', title: 'Designer', x: 86, y: 44, hair: '#2a2520', skin: '#ffd5c0', shirt: '#20a0a0', pants: '#2a4545', style: 'short', eyes: 'normal', brows: 'normal', says: ['Design on!', 'Pikselit!', 'Figma time!', 'Kaunis!'] },
+        { name: 'Sanna', title: 'Designer', x: 24, y: 34, hair: '#c4a040', skin: '#ffe5d5', shirt: '#d0a020', pants: '#504420', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Värit kohdalleen!', 'Tyylii!', 'Kaunista!', 'Jess!'] },
+        { name: 'Luka', title: 'Developer', x: 70, y: 54, hair: '#3a3030', skin: '#e8c0a0', shirt: '#3040c0', pants: '#2a2a4a', style: 'medium', eyes: 'normal', brows: 'normal', says: ['Toimii!', 'Bueno!', 'Kippis!', 'Mahtavaa!'] },
+        { name: 'Maria', title: 'Developer', x: 14, y: 82, hair: '#4a3525', skin: '#ffd5c0', shirt: '#60a040', pants: '#3a4535', style: 'medium', eyes: 'big', brows: 'thin', female: true, says: ['Koodataan!', 'Hyvää joulua!', 'Kahvia!', 'Nice!'] },
+        { name: 'Miska', title: 'Developer', x: 44, y: 66, hair: '#5a4a40', skin: '#ffd0b0', shirt: '#805030', pants: '#4a4035', style: 'short', eyes: 'small', brows: 'thick', says: ['Mergeen!', 'Kippis!', 'Toimii!', 'Fixattu!'] },
+        { name: 'Nadya', title: 'Developer', x: 78, y: 50, hair: '#1a1515', skin: '#d4a080', shirt: '#c03060', pants: '#4a3040', style: 'long', eyes: 'big', brows: 'thin', female: true, says: ['Deployed!', 'Works!', 'Kippis!', 'Hyvää joulua!'] },
+        { name: 'Otto', title: 'Developer', x: 30, y: 78, hair: '#4a4035', skin: '#ffd5c0', shirt: '#a0a030', pants: '#3a3a30', style: 'short', eyes: 'normal', brows: 'normal', says: ['Koodataan!', 'Testit vihreenä!', 'Kahvia!', 'Nice!'] },
+        { name: 'William', title: 'Developer', x: 64, y: 74, hair: '#3a3530', skin: '#ffd0b0', shirt: '#6040a0', pants: '#3a3045', style: 'medium', eyes: 'wide', brows: 'normal', says: ['Shipped!', 'Let\'s go!', 'Kippis!', 'Toimii!'] }
       ];
 
       function isMobile() {
@@ -1714,6 +1804,22 @@
         toggleMusic();
       };
 
+      // Auto-start music on first interaction (desktop)
+      var autoStarted = false;
+      function tryAutoStart() {
+        if (autoStarted || playing) return;
+        autoStarted = true;
+        current.play().then(function() {
+          playing = true;
+          soundBtn.classList.add('active');
+          soundBtn.textContent = 'POIS';
+        }).catch(function() {});
+        document.removeEventListener('click', tryAutoStart);
+        document.removeEventListener('keydown', tryAutoStart);
+      }
+      document.addEventListener('click', tryAutoStart);
+      document.addEventListener('keydown', tryAutoStart);
+
       function showToast(msg, err) {
         var el = document.getElementById('toast');
         el.textContent = msg;
@@ -1805,6 +1911,108 @@
         .catch(function() {
           showToast('Yhteysvirhe!', true);
         });
+      };
+
+      // Visitor counter - polls every 5 seconds
+      function loadVisitors() {
+        fetch('/wp-json/xmas/v1/visitors')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            var count = data.visitors || 0;
+            document.getElementById('visitorCount').textContent = count;
+          })
+          .catch(function() {});
+      }
+
+      loadVisitors();
+      setInterval(loadVisitors, 5000);
+
+      // Character speech bubbles
+      function showSpeechBubble() {
+        var chars = document.querySelectorAll('.character');
+        if (chars.length == 0) return;
+
+        var charIndex = Math.floor(Math.random() * chars.length);
+        var charEl = chars[charIndex];
+        var personData = team[charIndex];
+
+        // Remove any existing bubble on this character
+        var existing = charEl.querySelector('.speech-bubble');
+        if (existing) existing.remove();
+
+        // Pick random phrase
+        var phrase = personData.says[Math.floor(Math.random() * personData.says.length)];
+
+        var bubble = document.createElement('div');
+        bubble.className = 'speech-bubble';
+        bubble.textContent = phrase;
+        charEl.appendChild(bubble);
+
+        // Remove after animation
+        setTimeout(function() { bubble.remove(); }, 3500);
+      }
+
+      // Show speech bubble every 4-8 seconds
+      function scheduleSpeech() {
+        var delay = 4000 + Math.random() * 4000;
+        setTimeout(function() {
+          showSpeechBubble();
+          scheduleSpeech();
+        }, delay);
+      }
+      scheduleSpeech();
+
+      // Random message popping from existing messages
+      var allMessages = [];
+      function storeMessages(msgs) {
+        allMessages = msgs || [];
+      }
+
+      function showRandomMessage() {
+        if (allMessages.length == 0) return;
+        var msg = allMessages[Math.floor(Math.random() * allMessages.length)];
+        showFloatingMessage(msg.author, msg.message);
+      }
+
+      // Show random message every 8-15 seconds
+      function scheduleRandomMessage() {
+        var delay = 8000 + Math.random() * 7000;
+        setTimeout(function() {
+          showRandomMessage();
+          scheduleRandomMessage();
+        }, delay);
+      }
+      scheduleRandomMessage();
+
+      // Update loadMessages to store messages
+      var oldLoadMessages = loadMessages;
+      loadMessages = function() {
+        fetch('/wp-json/xmas/v1/messages')
+          .then(function(res) {
+            if (res.ok) return res.json();
+            throw new Error();
+          })
+          .then(function(msgs) {
+            storeMessages(msgs);
+            var el = document.getElementById('messages');
+            if (msgs.length == 0) {
+              el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+            } else {
+              if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
+                for (var i = 0; i < msgs.length; i++) {
+                  if (msgs[i].id == lastMsgId) break;
+                  showFloatingMessage(msgs[i].author, msgs[i].message);
+                }
+              }
+              lastMsgId = msgs.length > 0 ? msgs[0].id : null;
+              el.innerHTML = msgs.map(function(m) {
+                return '<div class="msg"><span class="msg-author">' + esc(m.author) + ':</span><span class="msg-text">' + esc(m.message) + '</span><div class="msg-time">' + fmt(m.timestamp) + '</div></div>';
+              }).join('');
+            }
+          })
+          .catch(function() {
+            document.getElementById('messages').innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
+          });
       };
     })();
   </script>

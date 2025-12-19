@@ -12,7 +12,45 @@ add_action( 'rest_api_init', function () {
     'callback'            => 'dude_xmas_post_message',
     'permission_callback' => '__return_true',
   ) );
+
+  register_rest_route( 'xmas/v1', '/visitors', array(
+    'methods'             => 'GET',
+    'callback'            => 'dude_xmas_get_visitors',
+    'permission_callback' => '__return_true',
+  ) );
 } );
+
+function dude_xmas_get_visitors() {
+  // Check cache first (5 second cache to avoid hammering Plausible)
+  $cached = get_transient( 'dude_xmas_visitors_cache' );
+  if ( $cached !== false ) {
+    return rest_ensure_response( array( 'visitors' => $cached ) );
+  }
+
+  $api_key = defined( 'PLAUSIBLE_API_KEY' ) ? PLAUSIBLE_API_KEY : '';
+  if ( empty( $api_key ) ) {
+    return rest_ensure_response( array( 'visitors' => 0 ) );
+  }
+
+  $response = wp_remote_get( 'https://plausible.io/api/v1/stats/realtime/visitors?site_id=dude.fi', array(
+    'headers' => array(
+      'Authorization' => 'Bearer ' . $api_key,
+    ),
+    'timeout' => 5,
+  ) );
+
+  if ( is_wp_error( $response ) ) {
+    return rest_ensure_response( array( 'visitors' => 0 ) );
+  }
+
+  $body = wp_remote_retrieve_body( $response );
+  $visitors = intval( $body );
+
+  // Cache for 5 seconds
+  set_transient( 'dude_xmas_visitors_cache', $visitors, 5 );
+
+  return rest_ensure_response( array( 'visitors' => $visitors ) );
+}
 
 function dude_xmas_get_messages() {
   // Try to get cached response first (cache for 5 seconds to reduce DB load)
@@ -101,4 +139,70 @@ function dude_xmas_post_message( WP_REST_Request $request ) {
 
   unset( $new_message['ip'] );
   return rest_ensure_response( $new_message );
+}
+
+// Admin page for managing xmas messages
+add_action( 'admin_menu', function() {
+  add_menu_page(
+    'Pikkujouluterveiset',
+    'Pikkujoulut',
+    'manage_options',
+    'xmas-messages',
+    'dude_xmas_admin_page',
+    'dashicons-carrot',
+    30
+  );
+} );
+
+function dude_xmas_admin_page() {
+  // Handle delete action
+  if ( isset( $_GET['delete'] ) && isset( $_GET['_wpnonce'] ) ) {
+    if ( wp_verify_nonce( $_GET['_wpnonce'], 'xmas_delete_' . $_GET['delete'] ) ) {
+      $messages = get_option( 'dude_xmas_messages_2025', array() );
+      $messages = array_filter( $messages, function( $msg ) {
+        return $msg['id'] !== $_GET['delete'];
+      } );
+      update_option( 'dude_xmas_messages_2025', array_values( $messages ) );
+      delete_transient( 'dude_xmas_messages_cache' );
+      echo '<div class="notice notice-success"><p>Viesti poistettu!</p></div>';
+    }
+  }
+
+  $messages = get_option( 'dude_xmas_messages_2025', array() );
+  $messages = array_reverse( $messages );
+  ?>
+  <div class="wrap">
+    <h1>Pikkujouluterveiset 2025</h1>
+    <p>Yhteensä <?php echo count( $messages ); ?> viestiä</p>
+
+    <table class="wp-list-table widefat fixed striped">
+      <thead>
+        <tr>
+          <th style="width:150px">Aika</th>
+          <th style="width:150px">Nimi</th>
+          <th>Viesti</th>
+          <th style="width:100px">Toiminnot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ( empty( $messages ) ) : ?>
+          <tr><td colspan="4">Ei viestejä.</td></tr>
+        <?php else : ?>
+          <?php foreach ( $messages as $msg ) : ?>
+            <tr>
+              <td><?php echo esc_html( date( 'd.m.Y H:i', strtotime( $msg['timestamp'] ) ) ); ?></td>
+              <td><strong><?php echo esc_html( $msg['author'] ); ?></strong></td>
+              <td><?php echo esc_html( $msg['message'] ); ?></td>
+              <td>
+                <a href="<?php echo wp_nonce_url( admin_url( 'admin.php?page=xmas-messages&delete=' . $msg['id'] ), 'xmas_delete_' . $msg['id'] ); ?>"
+                   onclick="return confirm('Poistetaanko viesti?');"
+                   class="button button-small button-link-delete">Poista</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+  <?php
 }
