@@ -1472,8 +1472,8 @@
   <div class="game">
     <div class="marquee-bar">
       <div class="marquee-content">
-        <span>Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
-        <span>Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
+        <span>Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
+        <span>Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
       </div>
     </div>
     <div class="hud">
@@ -1971,6 +1971,9 @@
         var messageVal = document.getElementById('message').value.trim();
         if (!authorVal || !messageVal) return;
 
+        // Show own message as floating bubble instantly
+        showFloatingMessage(authorVal, messageVal, new Date().toISOString(), true);
+
         fetch('https://www.dude.fi/wp-json/xmas/v1/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -2088,17 +2091,7 @@
         return Math.floor(diff / 86400) + ' pv sitten';
       }
 
-      loadMessages();
-      var poll = setInterval(loadMessages, 6000);
-
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          clearInterval(poll);
-        } else {
-          loadMessages();
-          poll = setInterval(loadMessages, 6000);
-        }
-      });
+      // Initial load and polling setup moved to after loadMessages override
 
       // Music - simple iOS compatible
       var music1 = document.getElementById('music1');
@@ -2280,8 +2273,8 @@
         santa.classList.add('reading');
         setTimeout(function() { santa.classList.remove('reading'); }, 2500);
 
-        // Flash HUD notification only for messages from others
-        if (!isOwn) {
+        // Flash HUD notification only for new messages from others
+        if (isNew) {
           var hud = document.querySelector('.hud');
           hud.classList.remove('notify');
           void hud.offsetWidth; // trigger reflow to restart animation
@@ -2305,6 +2298,8 @@
             throw new Error();
           })
           .then(function(msgs) {
+            // Store for random old messages
+            allMessages = msgs;
             var el = document.getElementById('messages');
             if (msgs.length == 0) {
               el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
@@ -2364,37 +2359,19 @@
           });
       };
 
-      // Also show own message floating when sent
-      var originalFormSubmit = document.getElementById('msgForm').onsubmit;
-      document.getElementById('msgForm').onsubmit = function(e) {
-        e.preventDefault();
-        var authorVal = document.getElementById('author').value.trim();
-        var messageVal = document.getElementById('message').value.trim();
-        if (!authorVal || !messageVal) return;
+      // Start message loading and polling (after override is defined)
+      var allMessages = [];
+      loadMessages();
+      var poll = setInterval(loadMessages, 6000);
 
-        // Show floating immediately for own message
-        showFloatingMessage(authorVal, messageVal, new Date().toISOString(), true);
-
-        fetch('https://www.dude.fi/wp-json/xmas/v1/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ author: authorVal, message: messageVal, website: document.getElementById('website').value })
-        })
-        .then(function(res) {
-          if (res.ok) {
-            showToast('Tervehdys lähetetty!');
-            document.getElementById('msgForm').reset();
-            loadMessages();
-          } else {
-            return res.json().then(function(err) {
-              showToast(err.message || 'Virhe!', true);
-            });
-          }
-        })
-        .catch(function() {
-          showToast('Yhteysvirhe!', true);
-        });
-      };
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          clearInterval(poll);
+        } else {
+          loadMessages();
+          poll = setInterval(loadMessages, 6000);
+        }
+      });
 
       // Visitor counter - polls every 5 seconds
       function loadVisitors() {
@@ -2424,17 +2401,7 @@
       loadTotalVisitors();
       setInterval(loadTotalVisitors, 60000); // Update every minute
 
-      // Randomly show older messages floating
-      var allMessages = [];
-      function cacheMessages() {
-        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
-          .then(function(res) { return res.json(); })
-          .then(function(msgs) { allMessages = msgs; })
-          .catch(function() {});
-      }
-      cacheMessages();
-      setInterval(cacheMessages, 30000); // Refresh cache every 30s
-
+      // Randomly show older messages floating (allMessages populated by loadMessages)
       function showRandomOldMessage() {
         if (allMessages.length < 2) return;
         // Pick a random message (not the newest)
@@ -2518,58 +2485,6 @@
       }
       scheduleCEOSpeech();
 
-      // Random message popping from existing messages
-      var allMessages = [];
-      function storeMessages(msgs) {
-        allMessages = msgs || [];
-      }
-
-      // Update loadMessages to store messages
-      var oldLoadMessages = loadMessages;
-      loadMessages = function() {
-        fetch('https://www.dude.fi/wp-json/xmas/v1/messages')
-          .then(function(res) {
-            if (res.ok) return res.json();
-            throw new Error();
-          })
-          .then(function(msgs) {
-            storeMessages(msgs);
-            var el = document.getElementById('messages');
-            if (msgs.length == 0) {
-              el.innerHTML = '<div class="no-msgs">Ole ensimmäinen tervehtijä!</div>';
-            } else {
-              if (lastMsgId && msgs.length > 0 && msgs[0].id != lastMsgId) {
-                for (var i = 0; i < msgs.length; i++) {
-                  if (msgs[i].id == lastMsgId) break;
-                  showFloatingMessage(msgs[i].author, msgs[i].message, msgs[i].timestamp, true);
-                }
-              }
-              lastMsgId = msgs.length > 0 ? msgs[0].id : null;
-              el.innerHTML = msgs.map(function(m) {
-                var isLiked = hasLiked(m.id);
-                var likeCount = m.likes || 0;
-                return '<div class="msg">' +
-                  '<span class="msg-author">' + esc(m.author) + ':</span>' +
-                  '<span class="msg-text">' + esc(m.message) + '</span>' +
-                  '<div class="msg-footer">' +
-                    '<span class="msg-time">' + fmt(m.timestamp) + '</span>' +
-                    '<button class="msg-heart' + (isLiked ? ' liked' : '') + '" data-id="' + esc(m.id) + '" ' + (isLiked ? 'disabled' : '') + '>' +
-                      '<svg viewBox="0 0 24 24" fill="' + (isLiked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>' +
-                      (likeCount > 0 ? '<span>' + likeCount + '</span>' : '') +
-                    '</button>' +
-                  '</div>' +
-                '</div>';
-              }).join('');
-              // Add click handlers for hearts
-              el.querySelectorAll('.msg-heart:not([disabled])').forEach(function(btn) {
-                btn.onclick = function() { likeMessage(btn.dataset.id, btn); };
-              });
-            }
-          })
-          .catch(function() {
-            // Don't clear messages on error - keep existing content
-          });
-      };
     })();
   </script>
 </body>
