@@ -44,7 +44,7 @@
     }
 
     .marquee-content[data-animated="true"] {
-      animation: marquee var(--marquee-duration, 30s) linear infinite;
+      animation: marquee var(--marquee-duration, 45s) linear infinite;
     }
 
     .marquee-content span {
@@ -1044,6 +1044,193 @@
       100% { opacity: 0; }
     }
 
+    /* Character click animations */
+    .character.anim-wave .char-sprite {
+      animation: charWave 0.6s ease-in-out;
+    }
+    .character.anim-jump .char-sprite {
+      animation: charJump 0.5s ease-out;
+    }
+    .character.anim-drink .char-sprite {
+      animation: charDrink 0.8s ease-in-out;
+    }
+    .character.anim-dance .char-sprite {
+      animation: charDance 0.6s ease-in-out;
+    }
+    @keyframes charWave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+      75% { transform: rotate(-5deg); }
+    }
+    @keyframes charJump {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-18px); }
+    }
+    @keyframes charDrink {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      30% { transform: rotate(-15deg) translateY(-5px); }
+      50% { transform: rotate(-20deg) translateY(-8px); }
+      70% { transform: rotate(-15deg) translateY(-5px); }
+    }
+    @keyframes charDance {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-5px) rotate(-5deg); }
+      50% { transform: translateX(5px) rotate(5deg); }
+      75% { transform: translateX(-3px) rotate(-3deg); }
+    }
+
+    /* Idle animations for characters */
+    .character.idle-sway .char-sprite {
+      animation: idleSway 3s ease-in-out infinite;
+    }
+    .character.idle-breathe .char-sprite {
+      animation: idleBreathe 2.5s ease-in-out infinite;
+    }
+    @keyframes idleSway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(2deg); }
+    }
+    @keyframes idleBreathe {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.02); }
+    }
+
+    /* Santa sleigh flying across moon */
+    .sleigh-shadow {
+      position: absolute;
+      width: 80px;
+      height: 30px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .sleigh-shadow.flying {
+      animation: sleighFly 3s ease-in-out forwards;
+    }
+    @keyframes sleighFly {
+      0% { opacity: 0; left: -100px; top: 60px; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { opacity: 0; left: 110%; top: 20px; }
+    }
+
+    /* Floor mat in front of fireplace */
+    .floor-mat {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 20px;
+      background: linear-gradient(90deg, #8B4513 0%, #A0522D 20%, #8B4513 40%, #A0522D 60%, #8B4513 80%, #A0522D 100%);
+      border-radius: 3px;
+      z-index: 15;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .floor-mat::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      right: 5px;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, #654321 0px, #654321 4px, transparent 4px, transparent 8px);
+    }
+
+    /* Sleeping cat in corner */
+    .corner-cat {
+      position: absolute;
+      bottom: 32px;
+      right: 15px;
+      width: 35px;
+      height: 20px;
+      z-index: 18;
+      cursor: pointer;
+    }
+    .cat-body {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 15px;
+      background: #555;
+      border-radius: 50% 50% 40% 40%;
+    }
+    .cat-head {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 14px;
+      height: 12px;
+      background: #555;
+      border-radius: 50%;
+    }
+    .cat-ear {
+      position: absolute;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 6px solid #555;
+    }
+    .cat-ear.left { left: 1px; }
+    .cat-ear.right { right: 1px; }
+    .cat-tail {
+      position: absolute;
+      bottom: 5px;
+      right: -8px;
+      width: 15px;
+      height: 5px;
+      background: #555;
+      border-radius: 0 10px 10px 0;
+      transform-origin: left center;
+      animation: tailWag 2s ease-in-out infinite;
+    }
+    @keyframes tailWag {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(10deg); }
+    }
+    .cat-zzz {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      font-size: 10px;
+      opacity: 0;
+      animation: zzz 2s ease-in-out infinite;
+    }
+    @keyframes zzz {
+      0%, 100% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-5px); }
+    }
+    .corner-cat:hover .cat-body,
+    .corner-cat:hover .cat-head { background: #666; }
+    .corner-cat.awake .cat-zzz { display: none; }
+    .corner-cat.awake .cat-body { animation: catStretch 1s ease-out; }
+    @keyframes catStretch {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(1.2) scaleY(0.8); }
+      100% { transform: scaleX(1); }
+    }
+
+    /* Christmas countdown */
+    .xmas-countdown {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid #f8d878;
+      padding: 8px 12px;
+      font-size: 10px;
+      color: #fff;
+      z-index: 100;
+      text-align: center;
+    }
+    .countdown-label { color: #f8d878; font-size: 8px; }
+    .countdown-time { font-size: 14px; margin-top: 4px; font-weight: bold; }
+    .countdown-done { color: #4f4; font-size: 12px; }
+
     /* Santa */
     .santa {
       position: absolute;
@@ -1590,6 +1777,9 @@
           </div>
           <div class="fire-glow"></div>
 
+          <!-- Floor mat in front of fireplace -->
+          <div class="floor-mat"></div>
+
           <!-- Wall decorations -->
           <div class="dartboard"><div class="dartboard-rings"></div></div>
           <div class="dart dart-1"></div>
@@ -1674,7 +1864,35 @@
             <div class="santa-scroll"></div>
             <div class="santa-shadow"></div>
           </div>
+
+          <!-- Sleeping cat -->
+          <div class="corner-cat" id="cornerCat">
+            <div class="cat-head">
+              <div class="cat-ear left"></div>
+              <div class="cat-ear right"></div>
+            </div>
+            <div class="cat-body"></div>
+            <div class="cat-tail"></div>
+            <div class="cat-zzz">z</div>
+          </div>
         </div>
+      </div>
+
+      <!-- Sleigh shadow for moon click -->
+      <div class="sleigh-shadow" id="sleighShadow">
+        <svg viewBox="0 0 80 30" fill="rgba(0,0,0,0.7)">
+          <ellipse cx="20" cy="22" rx="8" ry="4"/>
+          <ellipse cx="35" cy="22" rx="6" ry="3"/>
+          <path d="M10 18 Q5 15 10 10 L55 8 Q60 8 58 15 L55 20 Q50 22 10 20 Z"/>
+          <circle cx="60" cy="12" r="5"/>
+          <path d="M58 8 Q70 5 75 10"/>
+        </svg>
+      </div>
+
+      <!-- Christmas countdown -->
+      <div class="xmas-countdown" id="xmasCountdown">
+        <div class="countdown-label">JOULUUN</div>
+        <div class="countdown-time" id="countdownTime">--:--:--</div>
       </div>
     </div>
 
@@ -2658,6 +2876,122 @@
         // Start animation
         track.setAttribute('data-animated', 'true');
       })();
+
+      // Character click animations
+      var charAnimations = ['anim-wave', 'anim-jump', 'anim-drink', 'anim-dance'];
+      document.addEventListener('click', function(e) {
+        var charEl = e.target.closest('.character');
+        if (!charEl) return;
+
+        // Remove any existing animation
+        charAnimations.forEach(function(c) { charEl.classList.remove(c); });
+
+        // Add random animation
+        var anim = charAnimations[Math.floor(Math.random() * charAnimations.length)];
+        charEl.classList.add(anim);
+
+        // Remove after animation completes
+        setTimeout(function() {
+          charEl.classList.remove(anim);
+        }, 800);
+      });
+
+      // Idle animations for characters
+      function startIdleAnimations() {
+        var chars = document.querySelectorAll('.character');
+        chars.forEach(function(charEl, i) {
+          // Alternate between sway and breathe
+          var idleClass = i % 2 === 0 ? 'idle-sway' : 'idle-breathe';
+          // Delay start so they're not all in sync
+          setTimeout(function() {
+            charEl.classList.add(idleClass);
+          }, i * 500);
+        });
+      }
+      setTimeout(startIdleAnimations, 3000);
+
+      // Moon click - Santa sleigh flies across
+      var moon = document.querySelector('.moon');
+      var sleigh = document.getElementById('sleighShadow');
+      if (moon && sleigh) {
+        moon.style.cursor = 'pointer';
+        moon.addEventListener('click', function() {
+          sleigh.classList.remove('flying');
+          void sleigh.offsetWidth; // Trigger reflow
+          sleigh.classList.add('flying');
+          setTimeout(function() {
+            sleigh.classList.remove('flying');
+          }, 3100);
+        });
+      }
+
+      // Cat click - wakes up briefly
+      var cat = document.getElementById('cornerCat');
+      if (cat) {
+        cat.addEventListener('click', function() {
+          cat.classList.add('awake');
+          setTimeout(function() {
+            cat.classList.remove('awake');
+          }, 2000);
+        });
+      }
+
+      // Christmas countdown
+      function updateCountdown() {
+        var now = new Date();
+        var xmas = new Date(now.getFullYear(), 11, 25, 0, 0, 0); // Dec 25
+        if (now >= xmas) {
+          xmas.setFullYear(xmas.getFullYear() + 1);
+        }
+
+        var diff = xmas - now;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        var el = document.getElementById('countdownTime');
+        var label = document.querySelector('.countdown-label');
+
+        // Check if it's Christmas Day
+        var isXmasDay = now.getMonth() === 11 && now.getDate() === 25;
+        if (isXmasDay) {
+          el.innerHTML = '🎄 HYVÄÄ JOULUA! 🎄';
+          el.classList.add('countdown-done');
+          label.textContent = '';
+          // Trigger confetti or special effect
+          if (!window.xmasConfettiShown) {
+            window.xmasConfettiShown = true;
+            triggerXmasConfetti();
+          }
+        } else if (days > 0) {
+          el.textContent = days + ' pv ' + hours + ' h ' + mins + ' min';
+        } else {
+          el.textContent = hours + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }
+      }
+
+      function triggerXmasConfetti() {
+        // Simple confetti burst
+        for (var i = 0; i < 50; i++) {
+          var confetti = document.createElement('div');
+          confetti.style.cssText = 'position:fixed;width:10px;height:10px;background:' +
+            ['#f00','#0f0','#ff0','#f8d878','#fff'][Math.floor(Math.random()*5)] +
+            ';left:' + Math.random()*100 + '%;top:-10px;z-index:9999;pointer-events:none;' +
+            'animation:confettiFall ' + (2+Math.random()*2) + 's ease-out forwards;' +
+            'animation-delay:' + (Math.random()*0.5) + 's;';
+          document.body.appendChild(confetti);
+          setTimeout(function() { confetti.remove(); }, 5000);
+        }
+      }
+
+      // Add confetti keyframes
+      var confettiStyle = document.createElement('style');
+      confettiStyle.textContent = '@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}';
+      document.head.appendChild(confettiStyle);
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
     })();
   </script>
