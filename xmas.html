@@ -1217,7 +1217,7 @@
     /* Christmas countdown */
     .xmas-countdown {
       position: absolute;
-      top: 10px;
+      bottom: 10px;
       right: 10px;
       background: rgba(0,0,0,0.7);
       border: 2px solid #f8d878;
@@ -1226,9 +1226,56 @@
       color: #fff;
       z-index: 100;
       text-align: center;
+      display: grid;
+      gap: 3px;
     }
-    .countdown-label { color: #f8d878; font-size: 8px; }
-    .countdown-time { font-size: 14px; margin-top: 4px; font-weight: bold; }
+    @media (max-width: 1070px) {
+      .xmas-countdown {
+        top: 10px;
+        bottom: auto;
+      }
+    }
+    @media (max-width: 600px) {
+      .xmas-countdown {
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+      }
+    }
+    .countdown-label { color: #f8d878; font-size: 8px; margin-bottom: 4px; }
+    .countdown-time {
+      display: flex;
+      gap: 2px;
+      justify-content: center;
+      align-items: center;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .countdown-num {
+      font-size: 18px;
+      font-weight: bold;
+      font-family: monospace;
+    }
+    .countdown-lbl {
+      font-size: 8px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+    .countdown-sep {
+      font-size: 16px;
+      font-weight: 300;
+      margin: 0 2px;
+      position: relative;
+      top: -2px;
+      opacity: 0.6;
+    }
     .countdown-done { color: #4f4; font-size: 12px; }
 
     /* Santa */
@@ -2964,10 +3011,15 @@
             window.xmasConfettiShown = true;
             triggerXmasConfetti();
           }
-        } else if (days > 0) {
-          el.textContent = days + ' pv ' + hours + ' h ' + mins + ' min';
         } else {
-          el.textContent = hours + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+          el.innerHTML =
+            '<span class="countdown-unit"><span class="countdown-num">' + String(days).padStart(2, '0') + '</span><span class="countdown-lbl">p</span></span>' +
+            '<span class="countdown-sep">:</span>' +
+            '<span class="countdown-unit"><span class="countdown-num">' + String(hours).padStart(2, '0') + '</span><span class="countdown-lbl">t</span></span>' +
+            '<span class="countdown-sep">:</span>' +
+            '<span class="countdown-unit"><span class="countdown-num">' + String(mins).padStart(2, '0') + '</span><span class="countdown-lbl">m</span></span>' +
+            '<span class="countdown-sep">:</span>' +
+            '<span class="countdown-unit"><span class="countdown-num">' + String(secs).padStart(2, '0') + '</span><span class="countdown-lbl">s</span></span>';
         }
       }
 
