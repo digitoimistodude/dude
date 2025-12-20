@@ -458,13 +458,25 @@ function dude_xmas_banner_styles() {
     background: #1a1a2e;
     border-bottom: 2px solid #4a4a6a;
     overflow: hidden;
-    position: relative;
-    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
   }
-  .is-animating .xmas-banner,
-  .is-leaving .xmas-banner {
+  body {
+    padding-top: 26px;
+  }
+  html.is-animating .xmas-banner,
+  html.is-leaving .xmas-banner,
+  html.is-rendering .xmas-banner {
     opacity: 1 !important;
     visibility: visible !important;
+    transform: none !important;
+  }
+  .xmas-banner-inner {
+    display: flex;
+    overflow: hidden;
   }
   .xmas-banner a {
     display: flex;
@@ -483,18 +495,68 @@ function dude_xmas_banner_styles() {
     font-family: 'Press Start 2P', monospace;
     flex-shrink: 0;
   }
+  .xmas-banner-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #1a1a2e;
+    border: none;
+    border-left: 2px solid #4a4a6a;
+    color: #f8d878;
+    padding: 0 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    z-index: 10;
+  }
+  .xmas-banner-close:hover {
+    background: #2a2a4e;
+  }
+  .xmas-banner.hidden {
+    display: none;
+  }
+  body.xmas-banner-hidden {
+    padding-top: 0 !important;
+  }
   @keyframes xmasBannerScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
   </style>
   <script>
+  (function() {
+    if (localStorage.getItem('xmas-banner-dismissed-2025')) {
+      document.documentElement.classList.add('xmas-banner-hidden');
+      var style = document.createElement('style');
+      style.textContent = '.xmas-banner{display:none!important}body{padding-top:0!important}';
+      document.head.appendChild(style);
+    }
+  })();
   document.addEventListener('DOMContentLoaded', function() {
-    var banner = document.querySelector('.xmas-banner a');
-    if (banner) {
-      var textLen = banner.textContent.length;
+    var banner = document.querySelector('.xmas-banner');
+    var link = banner ? banner.querySelector('a') : null;
+    var closeBtn = banner ? banner.querySelector('.xmas-banner-close') : null;
+
+    if (localStorage.getItem('xmas-banner-dismissed-2025')) {
+      if (banner) banner.classList.add('hidden');
+      document.body.classList.add('xmas-banner-hidden');
+      return;
+    }
+
+    if (link) {
+      var textLen = link.textContent.length;
       var duration = Math.max(15, Math.min(60, textLen * 0.15));
-      banner.style.setProperty('--banner-duration', duration + 's');
+      link.style.setProperty('--banner-duration', duration + 's');
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        banner.classList.add('hidden');
+        document.body.classList.add('xmas-banner-hidden');
+        localStorage.setItem('xmas-banner-dismissed-2025', '1');
+      });
     }
   });
   </script>
@@ -513,13 +575,14 @@ function dude_xmas_banner_output() {
   }
   ?>
   <div class="xmas-banner">
-    <a href="https://tontut.dude.fi" target="_blank" rel="noopener">
-      <div class="xmas-banner-inner">
+    <div class="xmas-banner-inner">
+      <a href="https://tontut.dude.fi" target="_blank" rel="noopener">
         <?php for ( $i = 0; $i < 10; $i++ ) : ?>
           <span class="xmas-banner-text"><?php echo esc_html( $message ); ?></span>
         <?php endfor; ?>
-      </div>
-    </a>
+      </a>
+    </div>
+    <button class="xmas-banner-close" aria-label="Sulje">&times;</button>
   </div>
   <?php
 }
