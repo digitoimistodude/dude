@@ -1567,6 +1567,10 @@
       .dialog.closed {
         display: none;
       }
+      body.chat-closed .xmas-countdown {
+        bottom: 70px;
+        right: 15px;
+      }
       .game-main .screen {
         flex: 1;
       }
@@ -2439,6 +2443,7 @@
       msgBtn.onclick = function() {
         if (isDesktop()) {
           dialog.classList.toggle('closed');
+          document.body.classList.toggle('chat-closed', dialog.classList.contains('closed'));
         } else {
           dialog.classList.add('open');
         }
@@ -2447,6 +2452,7 @@
       closeBtn.onclick = function() {
         if (isDesktop()) {
           dialog.classList.add('closed');
+          document.body.classList.add('chat-closed');
         } else {
           dialog.classList.remove('open');
         }
@@ -2649,11 +2655,13 @@
           music1.pause();
           music2.pause();
           playing = false;
+          localStorage.setItem('xmas-music-muted', '1');
           updateSoundIcon();
         } else {
           current.play().then(function() {
             playing = true;
             audioReady = true;
+            localStorage.removeItem('xmas-music-muted');
             updateSoundIcon();
           }).catch(function() {
             updateSoundIcon();
@@ -2668,9 +2676,11 @@
       };
 
       // Auto-start music - try immediately, then on any interaction
+      // Skip if user previously muted
+      var userMuted = localStorage.getItem('xmas-music-muted');
       var autoStarted = false;
       function tryAutoStart() {
-        if (autoStarted || playing) return;
+        if (autoStarted || playing || userMuted) return;
         autoStarted = true;
         current.play().then(function() {
           playing = true;
