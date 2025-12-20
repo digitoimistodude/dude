@@ -107,6 +107,7 @@ add_action( 'after_setup_theme', function() {
       'www.dude.fi',
       'handbook.dude.fi',
       'dude.vaiheessa.fi',
+      'tontut.dude.fi',
     ],
 
     /**

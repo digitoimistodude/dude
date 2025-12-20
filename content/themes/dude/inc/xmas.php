@@ -293,6 +293,18 @@ add_action( 'admin_menu', function() {
 } );
 
 function dude_xmas_admin_page() {
+  // Handle settings save
+  if ( isset( $_POST['xmas_banner_save'] ) && isset( $_POST['_wpnonce'] ) ) {
+    if ( wp_verify_nonce( $_POST['_wpnonce'], 'xmas_banner_settings' ) ) {
+      update_option( 'dude_xmas_banner_enabled', isset( $_POST['xmas_banner_enabled'] ) ? 1 : 0 );
+      update_option( 'dude_xmas_banner_enabled_xmas', isset( $_POST['xmas_banner_enabled_xmas'] ) ? 1 : 0 );
+      update_option( 'dude_xmas_banner_message', sanitize_text_field( $_POST['xmas_banner_message'] ) );
+      update_option( 'dude_xmas_banner_message_xmas', sanitize_text_field( $_POST['xmas_banner_message_xmas'] ) );
+      update_option( 'dude_xmas_banner_end', sanitize_text_field( $_POST['xmas_banner_end'] ) );
+      echo '<div class="notice notice-success"><p>Asetukset tallennettu!</p></div>';
+    }
+  }
+
   // Handle delete action
   if ( isset( $_GET['delete'] ) && isset( $_GET['_wpnonce'] ) ) {
     if ( wp_verify_nonce( $_GET['_wpnonce'], 'xmas_delete_' . $_GET['delete'] ) ) {
@@ -306,12 +318,60 @@ function dude_xmas_admin_page() {
     }
   }
 
+  $banner_enabled = get_option( 'dude_xmas_banner_enabled', 0 );
+  $banner_enabled_xmas = get_option( 'dude_xmas_banner_enabled_xmas', 0 );
+  $banner_message = get_option( 'dude_xmas_banner_message', 'Dude-pukin kuuma linja on auki! Voit jättää terveisesi jouluaattoon asti.' );
+  $banner_message_xmas = get_option( 'dude_xmas_banner_message_xmas', 'Dude vietti pikkujouluja ja luki terveisiä' );
+  $banner_end = get_option( 'dude_xmas_banner_end', '2025-12-25T00:00' );
+
   $messages = get_option( 'dude_xmas_messages_2025', array() );
   $likes = get_option( 'dude_xmas_likes_2025', array() );
   $messages = array_reverse( $messages );
   ?>
   <div class="wrap">
-    <h1>Pikkujouluterveiset 2025</h1>
+    <h1>Pikkujoulut 2025</h1>
+
+    <h2>Sivuston banneri</h2>
+    <form method="post">
+      <?php wp_nonce_field( 'xmas_banner_settings' ); ?>
+      <table class="form-table">
+        <tr>
+          <th>dude.fi</th>
+          <td>
+            <label>
+              <input type="checkbox" name="xmas_banner_enabled" value="1" <?php checked( $banner_enabled, 1 ); ?>>
+              Näytä banneri dude.fi-sivustolla
+            </label>
+            <br><br>
+            <input type="text" name="xmas_banner_message" value="<?php echo esc_attr( $banner_message ); ?>" class="large-text">
+            <p class="description">Koko banneria klikkaamalla pääsee osoitteeseen tontut.dude.fi.</p>
+          </td>
+        </tr>
+        <tr>
+          <th>tontut.dude.fi</th>
+          <td>
+            <label>
+              <input type="checkbox" name="xmas_banner_enabled_xmas" value="1" <?php checked( $banner_enabled_xmas, 1 ); ?>>
+              Näytä banneri tontut.dude.fi/xmas-sivulla
+            </label>
+            <br><br>
+            <input type="text" name="xmas_banner_message_xmas" value="<?php echo esc_attr( $banner_message_xmas ); ?>" class="large-text">
+          </td>
+        </tr>
+        <tr>
+          <th>Piilota automaattisesti</th>
+          <td>
+            <input type="datetime-local" name="xmas_banner_end" value="<?php echo esc_attr( $banner_end ); ?>">
+            <p class="description">Molemmat bannerit piilotetaan automaattisesti tämän ajankohdan jälkeen.</p>
+          </td>
+        </tr>
+      </table>
+      <p><button type="submit" name="xmas_banner_save" class="button button-primary">Tallenna asetukset</button></p>
+    </form>
+
+    <hr>
+
+    <h2>Terveiset</h2>
     <p>Yhteensä <?php echo count( $messages ); ?> viestiä</p>
 
     <table class="wp-list-table widefat fixed striped">
@@ -345,6 +405,121 @@ function dude_xmas_admin_page() {
         <?php endif; ?>
       </tbody>
     </table>
+  </div>
+  <?php
+}
+
+// REST API endpoint for banner settings
+add_action( 'rest_api_init', function() {
+  register_rest_route( 'xmas/v1', '/banner', array(
+    'methods'             => 'GET',
+    'callback'            => 'dude_xmas_get_banner',
+    'permission_callback' => '__return_true',
+  ) );
+} );
+
+function dude_xmas_get_banner() {
+  $enabled = get_option( 'dude_xmas_banner_enabled', 0 );
+  $enabled_xmas = get_option( 'dude_xmas_banner_enabled_xmas', 0 );
+  $message = get_option( 'dude_xmas_banner_message', 'Dude-pukin kuuma linja on auki! Voit jättää terveisesi jouluaattoon asti.' );
+  $message_xmas = get_option( 'dude_xmas_banner_message_xmas', 'Dude vietti pikkujouluja ja luki terveisiä' );
+  $end = get_option( 'dude_xmas_banner_end', '2025-12-25T00:00' );
+
+  // Check if banner has expired
+  $end_time = strtotime( $end );
+  if ( $end_time && time() > $end_time ) {
+    $enabled = 0;
+    $enabled_xmas = 0;
+  }
+
+  return rest_ensure_response( array(
+    'enabled'      => (bool) $enabled,
+    'enabled_xmas' => (bool) $enabled_xmas,
+    'message'      => $message,
+    'message_xmas' => $message_xmas,
+    'end'          => $end,
+  ) );
+}
+
+// Frontend banner on dude.fi
+add_action( 'wp_head', 'dude_xmas_banner_styles' );
+function dude_xmas_banner_styles() {
+  $enabled = get_option( 'dude_xmas_banner_enabled', 0 );
+  $end = get_option( 'dude_xmas_banner_end', '2025-12-25T00:00' );
+  $end_time = strtotime( $end );
+
+  if ( ! $enabled || ( $end_time && time() > $end_time ) ) {
+    return;
+  }
+  ?>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  .xmas-banner {
+    background: #1a1a2e;
+    border-bottom: 2px solid #4a4a6a;
+    overflow: hidden;
+    position: relative;
+    z-index: 9999;
+  }
+  .is-animating .xmas-banner,
+  .is-leaving .xmas-banner {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .xmas-banner a {
+    display: flex;
+    text-decoration: none;
+    white-space: nowrap;
+    width: fit-content;
+    animation: xmasBannerScroll var(--banner-duration, 30s) linear infinite;
+  }
+  .xmas-banner:hover a {
+    animation-play-state: paused;
+  }
+  .xmas-banner-text {
+    color: #f8d878;
+    font-size: 10px;
+    padding: 6px 50px;
+    font-family: 'Press Start 2P', monospace;
+    flex-shrink: 0;
+  }
+  @keyframes xmasBannerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  </style>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var banner = document.querySelector('.xmas-banner a');
+    if (banner) {
+      var textLen = banner.textContent.length;
+      var duration = Math.max(15, Math.min(60, textLen * 0.15));
+      banner.style.setProperty('--banner-duration', duration + 's');
+    }
+  });
+  </script>
+  <?php
+}
+
+add_action( 'wp_body_open', 'dude_xmas_banner_output' );
+function dude_xmas_banner_output() {
+  $enabled = get_option( 'dude_xmas_banner_enabled', 0 );
+  $message = get_option( 'dude_xmas_banner_message', 'Dude-pukin kuuma linja on auki! Voit jättää terveisesi jouluaattoon asti.' );
+  $end = get_option( 'dude_xmas_banner_end', '2025-12-25T00:00' );
+  $end_time = strtotime( $end );
+
+  if ( ! $enabled || ( $end_time && time() > $end_time ) ) {
+    return;
+  }
+  ?>
+  <div class="xmas-banner">
+    <a href="https://tontut.dude.fi" target="_blank" rel="noopener">
+      <div class="xmas-banner-inner">
+        <?php for ( $i = 0; $i < 10; $i++ ) : ?>
+          <span class="xmas-banner-text"><?php echo esc_html( $message ); ?></span>
+        <?php endfor; ?>
+      </div>
+    </a>
   </div>
   <?php
 }
