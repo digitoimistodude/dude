@@ -15,7 +15,6 @@ function head_analytics_scripts() { ?>
   </script>
 
   <?php if ( 'production' === wp_get_environment_type() ) : ?>
-    <script data-swup-ignore-script defer src="https://umami.dude.fi/script.js" data-website-id="a744b4bb-3b8a-42a7-a6b5-0951b5996afa"></script>
     <script data-swup-ignore-script src="https://analytics.ahrefs.com/analytics.js" data-key="Q6R+r37sIUxbXX0sqwgVGQ" async></script>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
   <?php endif; ?>
