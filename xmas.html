@@ -637,7 +637,7 @@
     .gift {
       position: absolute;
       cursor: pointer;
-      z-index: 25;
+      z-index: 99;
       transition: transform 0.2s;
     }
     .gift:hover { transform: scale(1.1); }
@@ -696,6 +696,7 @@
       font-size: 24px;
       animation: contentPop 0.5s 0.2s ease-out forwards;
       white-space: nowrap;
+      z-index: 99;
     }
     @keyframes contentPop {
       0% { transform: translate(-50%, -50%) scale(0); }
@@ -714,6 +715,7 @@
       white-space: nowrap;
       opacity: 0;
       animation: msgFade 3s 0.3s ease-out forwards;
+      z-index: 99;
     }
     @keyframes msgFade {
       0% { opacity: 0; transform: translateX(-50%) translateY(10px); }

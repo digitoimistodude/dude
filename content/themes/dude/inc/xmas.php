@@ -441,6 +441,22 @@ function dude_xmas_get_banner() {
   ) );
 }
 
+// Critical banner padding - must load first to prevent layout shift
+add_action( 'wp_head', 'dude_xmas_banner_critical_css', 1 );
+function dude_xmas_banner_critical_css() {
+  $enabled = get_option( 'dude_xmas_banner_enabled', 0 );
+  $end = get_option( 'dude_xmas_banner_end', '2025-12-25T00:00' );
+  $end_time = strtotime( $end );
+
+  if ( ! $enabled || ( $end_time && time() > $end_time ) ) {
+    return;
+  }
+  ?>
+  <script>if(!localStorage.getItem('xmas-banner-dismissed-2025')){document.write('<style>#page{padding-top:26px!important}</style>')}</script>
+  <noscript><style>#page{padding-top:26px!important}</style></noscript>
+  <?php
+}
+
 // Frontend banner on dude.fi
 add_action( 'wp_head', 'dude_xmas_banner_styles' );
 function dude_xmas_banner_styles() {
@@ -463,9 +479,6 @@ function dude_xmas_banner_styles() {
     left: 0;
     right: 0;
     z-index: 99999;
-  }
-  body {
-    padding-top: 26px;
   }
   html.is-animating .xmas-banner,
   html.is-leaving .xmas-banner,
@@ -516,7 +529,7 @@ function dude_xmas_banner_styles() {
   .xmas-banner.hidden {
     display: none;
   }
-  body.xmas-banner-hidden {
+  .xmas-banner-hidden #page {
     padding-top: 0 !important;
   }
   @keyframes xmasBannerScroll {
@@ -529,7 +542,7 @@ function dude_xmas_banner_styles() {
     if (localStorage.getItem('xmas-banner-dismissed-2025')) {
       document.documentElement.classList.add('xmas-banner-hidden');
       var style = document.createElement('style');
-      style.textContent = '.xmas-banner{display:none!important}body{padding-top:0!important}';
+      style.textContent = '.xmas-banner{display:none!important}#page{padding-top:0!important}';
       document.head.appendChild(style);
     }
   })();
@@ -540,7 +553,7 @@ function dude_xmas_banner_styles() {
 
     if (localStorage.getItem('xmas-banner-dismissed-2025')) {
       if (banner) banner.classList.add('hidden');
-      document.body.classList.add('xmas-banner-hidden');
+      document.documentElement.classList.add('xmas-banner-hidden');
       return;
     }
 
@@ -554,7 +567,7 @@ function dude_xmas_banner_styles() {
       closeBtn.addEventListener('click', function(e) {
         e.preventDefault();
         banner.classList.add('hidden');
-        document.body.classList.add('xmas-banner-hidden');
+        document.documentElement.classList.add('xmas-banner-hidden');
         localStorage.setItem('xmas-banner-dismissed-2025', '1');
       });
     }
