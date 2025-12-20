@@ -2217,20 +2217,23 @@
       music1.volume = 0.3;
       music2.volume = 0.3;
 
-      // Sound button states
-      var iconPlaying = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200zM360 26.7V373.3h26.7V26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3zM306.7 106.7V320h26.6V80h-26.6zM253.3 160v106.7H280V133.3h-26.7z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM120 320h26.7v26.7H120zM146.7 346.7h26.7v26.7h-26.7z"/></svg>MUSIIKKI POIS';
-      var iconMuted = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160zM253.3 133.3H280V160h-26.7zM360 133.3h26.7V160H360zM280 160h26.7v26.7H280zM333.3 160H360v26.7h-26.7z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM306.7 186.7h26.7v26.7h-26.7zM120 320h26.7v26.7H120zM280 213.3h26.7V240H280z"/><path fill="currentColor" d="M333.3 213.3H360V240h-26.7zM146.7 346.7h26.7v26.7h-26.7zM253.3 240H280v26.7h-26.7zM360 240h26.7v26.7H360z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200z"/></svg>MUSIIKKI';
-      var iconLoading = '<span class="sound-loading">Ladataan joulutunnelmaa...</span>';
+      // Sound button states (icon + MUSIIKKI label, aria-labels for screen readers)
+      var iconPlaying = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200zM360 26.7V373.3h26.7V26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3zM306.7 106.7V320h26.6V80h-26.6zM253.3 160v106.7H280V133.3h-26.7z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM120 320h26.7v26.7H120zM146.7 346.7h26.7v26.7h-26.7z"/></svg>MUSIIKKI';
+      var iconMuted = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160zM253.3 133.3H280V160h-26.7zM360 133.3h26.7V160H360zM280 160h26.7v26.7H280zM333.3 160H360v26.7h-26.7z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM306.7 186.7h26.7v26.7h-26.7zM120 320h26.7v26.7H120zM280 213.3h26.7V240H280z"/><path fill="currentColor" d="M333.3 213.3H360V240h-26.7zM146.7 346.7h26.7v26.7h-26.7zM253.3 240H280v26.7h-26.7zM360 240h26.7v26.7H360z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200z"/></svg>MUSIIKKI';
+      var iconLoading = '<span class="sound-loading">Ladataan...</span>';
 
       function updateSoundIcon() {
         if (!audioReady) {
           soundBtn.innerHTML = iconLoading;
+          soundBtn.setAttribute('aria-label', 'Ladataan musiikkia');
           soundBtn.classList.remove('active');
         } else if (playing) {
           soundBtn.innerHTML = iconPlaying;
+          soundBtn.setAttribute('aria-label', 'Mykistä musiikki');
           soundBtn.classList.add('active');
         } else {
           soundBtn.innerHTML = iconMuted;
+          soundBtn.setAttribute('aria-label', 'Toista musiikki');
           soundBtn.classList.remove('active');
         }
       }
