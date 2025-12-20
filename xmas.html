@@ -2633,8 +2633,12 @@
       }
       music1.addEventListener('canplaythrough', checkAudioReady);
       music2.addEventListener('canplaythrough', checkAudioReady);
-      // Also check immediately in case already loaded
-      checkAudioReady();
+
+      // Check if already loaded (cached)
+      if (music1.readyState >= 3 || music2.readyState >= 3) {
+        audioReady = true;
+      }
+      updateSoundIcon();
 
       // When track ends, play the other
       music1.onended = function() { if (playing) { current = music2; music2.play(); } };
