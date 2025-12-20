@@ -416,14 +416,17 @@ const initReferenceFilters = () => {
       }
     }
 
-    // Check for cross-filter results if no current results and we have any filters applied
-    let crossFilterCount = 0;
-    if (visibleCount === 0 && (activeFilters.targetGroup !== 'all' || activeFilters.solutions.indexOf('all') === -1 || activeFilters.searchTerm)) {
-      crossFilterCount = countCrossFilterResults();
-    }
+    // Only handle no-results if we're on a page with reference items
+    if (referenceItems.length > 0) {
+      // Check for cross-filter results if no current results and we have any filters applied
+      let crossFilterCount = 0;
+      if (visibleCount === 0 && (activeFilters.targetGroup !== 'all' || activeFilters.solutions.indexOf('all') === -1 || activeFilters.searchTerm)) {
+        crossFilterCount = countCrossFilterResults();
+      }
 
-    // Show message if no results
-    handleNoResults(visibleCount, crossFilterCount);
+      // Show message if no results
+      handleNoResults(visibleCount, crossFilterCount);
+    }
   };
 
   // Count results that would show if we ignored restrictive filters

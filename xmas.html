@@ -86,12 +86,30 @@
       font-family: inherit;
       font-size: 9px;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .hud-btn:hover, .hud-btn.active {
       background: #f8d878;
       color: #000;
       border-color: #f8d878;
+    }
+
+    /* Sound icon loading animation */
+    .sound-loading {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .sound-loading::before {
+      content: '♪';
+      animation: note-bounce 0.8s ease-in-out infinite;
+    }
+    @keyframes note-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(-2px); opacity: 1; }
     }
 
     .screen {
@@ -1518,12 +1536,14 @@
     <div class="game-main">
     <div class="marquee-bar">
       <div class="marquee-content" id="marqueeTrack">
-        <span>🎄 Dude viettää pikkujouluja 19.12.2025 ja lukee viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
+        <span>🎄 Dude vietti pikkujouluja 19.12.2025 ja luki viestejä porukalla - joten laittakaa terveisiä tulemaan! Dudet lomailee 22.12.2025–4.1.2026 välisen ajan. Joulupukin kuuma linja on auki jouluun asti, joten jättäkää ihmeessä terveisiä tulemaan niin käydään kurkkimassa pyhien yli. Tuki palvelee pyhien yli osoitteesta tuki@dude.fi.</span>
       </div>
     </div>
     <div class="hud">
       <div class="hud-title"><a href="https://www.dude.fi" target="_blank" class="hud-logo" title="Dude.fi"><svg width="55" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2267.72 453.54"><path fill="currentColor" d="M950.26 211.64c0 37.66-12.7 111.12-97.79 111.12-85.61 0-98.4-73.47-98.4-111.12V5.23H590.91v217.92c0 138.73 97.78 221.55 261.55 221.55 163.39 0 260.93-82.82 260.93-221.55V5.23H950.26v206.41zM2264.41 127.17V5.23h-505.2v439.48h505.2V322.76h-345.08v-48.71h286.91v-98.17h-286.91v-48.71zM317.21 5.23H3v439.48h314.21c108.81 0 219.87-87.76 219.87-219.74 0-132.83-111.06-219.74-219.87-219.74zm-39.84 317.53H166.14v-195.4h111.23c57.58 0 97.7 45.79 97.7 97.61 0 52.51-40.12 97.79-97.7 97.79zM1485.51 5.23H1171.3v439.48h314.21c108.81 0 219.87-87.76 219.87-219.74 0-132.83-111.06-219.74-219.87-219.74zm-39.84 317.53h-111.23v-195.4h111.23c57.58 0 97.7 45.79 97.7 97.61 0 52.51-40.12 97.79-97.7 97.79z"/></svg></a> PIKKUJOULUT 2025</div>
-      <button class="hud-btn" id="soundBtn">MUSIIKKI POIS</button>
+      <button class="hud-btn" id="soundBtn">
+        <span class="sound-loading">Ladataan joulutunnelmaa...</span>
+      </button>
     </div>
 
     <div class="screen" id="screen">
@@ -2165,6 +2185,8 @@
       }
 
       function esc(s) {
+        // First, convert any already-escaped &lt;3 back to <3 (from PHP sanitization)
+        s = s.replace(/&lt;3/g, '<3');
         var d = document.createElement('div');
         d.textContent = s;
         // Convert <3 to heart emoji (after escaping for XSS safety)
@@ -2189,10 +2211,41 @@
       var music2 = document.getElementById('music2');
       var soundBtn = document.getElementById('soundBtn');
       var playing = false;
+      var audioReady = false;
       var current = Math.random() > 0.5 ? music1 : music2;
 
       music1.volume = 0.3;
       music2.volume = 0.3;
+
+      // Sound button states
+      var iconPlaying = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200zM360 26.7V373.3h26.7V26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3zM306.7 106.7V320h26.6V80h-26.6zM253.3 160v106.7H280V133.3h-26.7z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM120 320h26.7v26.7H120zM146.7 346.7h26.7v26.7h-26.7z"/></svg>MUSIIKKI POIS';
+      var iconMuted = '<svg width="14" height="14" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M146.7 26.7h26.7v26.7h-26.7zM120 53.3h26.7V80H120zM93.3 80H120v26.7H93.3z"/><path fill="currentColor" d="M93.3 240V106.6h-80V293.4h80.1V240zm-26.6-80v106.7H40V133.3h26.7V160zM253.3 133.3H280V160h-26.7zM360 133.3h26.7V160H360zM280 160h26.7v26.7H280zM333.3 160H360v26.7h-26.7z"/><path fill="currentColor" d="M93.3 293.3H120V320H93.3zM306.7 186.7h26.7v26.7h-26.7zM120 320h26.7v26.7H120zM280 213.3h26.7V240H280z"/><path fill="currentColor" d="M333.3 213.3H360V240h-26.7zM146.7 346.7h26.7v26.7h-26.7zM253.3 240H280v26.7h-26.7zM360 240h26.7v26.7H360z"/><path fill="currentColor" d="M173.3 0v26.7H200V373.3h-26.7V400h53.4V0H200z"/></svg>MUSIIKKI';
+      var iconLoading = '<span class="sound-loading">Ladataan joulutunnelmaa...</span>';
+
+      function updateSoundIcon() {
+        if (!audioReady) {
+          soundBtn.innerHTML = iconLoading;
+          soundBtn.classList.remove('active');
+        } else if (playing) {
+          soundBtn.innerHTML = iconPlaying;
+          soundBtn.classList.add('active');
+        } else {
+          soundBtn.innerHTML = iconMuted;
+          soundBtn.classList.remove('active');
+        }
+      }
+
+      // Check when audio is ready
+      function checkAudioReady() {
+        if (music1.readyState >= 3 || music2.readyState >= 3) {
+          audioReady = true;
+          updateSoundIcon();
+        }
+      }
+      music1.addEventListener('canplaythrough', checkAudioReady);
+      music2.addEventListener('canplaythrough', checkAudioReady);
+      // Also check immediately in case already loaded
+      checkAudioReady();
 
       // When track ends, play the other
       music1.onended = function() { if (playing) { current = music2; music2.play(); } };
@@ -2203,15 +2256,14 @@
           music1.pause();
           music2.pause();
           playing = false;
-          soundBtn.classList.remove('active');
-          soundBtn.textContent = 'MUSIIKKI';
+          updateSoundIcon();
         } else {
           current.play().then(function() {
             playing = true;
-            soundBtn.classList.add('active');
-            soundBtn.textContent = 'MUSIIKKI POIS';
+            audioReady = true;
+            updateSoundIcon();
           }).catch(function() {
-            soundBtn.textContent = 'MUSIIKKI';
+            updateSoundIcon();
           });
         }
       }
@@ -2229,8 +2281,8 @@
         autoStarted = true;
         current.play().then(function() {
           playing = true;
-          soundBtn.classList.add('active');
-          soundBtn.textContent = 'MUSIIKKI POIS';
+          audioReady = true;
+          updateSoundIcon();
           removeAutoListeners();
         }).catch(function() {
           autoStarted = false; // Allow retry on next interaction
