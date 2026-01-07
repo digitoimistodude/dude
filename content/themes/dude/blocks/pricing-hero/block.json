@@ -4,7 +4,7 @@
   "name": "dude/pricing-hero",
   "version": "1.0.0",
   "title": "Hinnasto: Hero",
-  "category": "dude",
+  "category": "dude-native",
   "icon": "money-alt",
   "description": "Hinnaston hero-osio otsikolla ja ingressillä",
   "keywords": ["pricing", "hero", "hinnasto"],

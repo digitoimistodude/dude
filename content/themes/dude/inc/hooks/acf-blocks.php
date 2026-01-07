@@ -9,15 +9,6 @@
 
 namespace Air_Light;
 
-function acf_blocks_add_category_in_gutenberg( $categories, $post ) {
-  return array_merge( $categories, [
-    [
-      'slug'  => 'dude',
-      'title' => __( 'Theme blocks', 'dude' ),
-    ],
-  ] );
-} // end acf_blocks_add_category_in_gutenberg
-
 function acf_blocks_init() {
   if ( ! function_exists( 'acf_register_block_type' ) ) {
     return;
