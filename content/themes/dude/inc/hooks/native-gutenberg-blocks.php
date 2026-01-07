@@ -8,17 +8,21 @@
 namespace Air_Light;
 
 /**
- * Register native Gutenberg block category
+ * Register native Gutenberg block categories
  */
 function register_block_categories( $categories ) {
   return array_merge(
-    $categories,
     [
       [
-        'slug'  => 'dude',
-        'title' => __( 'Duden lohkot', 'dude' ),
+        'slug'  => 'dude-native',
+        'title' => __( 'Duden natiivilohkot', 'dude' ),
       ],
-    ]
+      [
+        'slug'  => 'dude',
+        'title' => __( 'Duden ACF-lohkot', 'dude' ),
+      ],
+    ],
+    $categories
   );
 }
 add_filter( 'block_categories_all', __NAMESPACE__ . '\register_block_categories', 10, 1 );

@@ -4,7 +4,7 @@
   "name": "dude/pricing-category",
   "version": "1.0.0",
   "title": "Hinnasto: Kategoria",
-  "category": "dude",
+  "category": "dude-native",
   "icon": "tag",
   "description": "Hinnaston kategoria haitarielementeillä",
   "keywords": ["pricing", "category", "accordion", "hinnasto"],

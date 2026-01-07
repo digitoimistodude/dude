@@ -60,7 +60,6 @@ add_filter( 'block_editor_settings_all', __NAMESPACE__ . '\remove_gutenberg_inli
 
 // ACF blocks
 require get_theme_file_path( 'inc/hooks/acf-blocks.php' );
-add_filter( 'block_categories_all', __NAMESPACE__ . '\acf_blocks_add_category_in_gutenberg', 10, 2 );
 add_action( 'acf/init', __NAMESPACE__ . '\acf_blocks_init' );
 
 // Native Gutenberg blocks

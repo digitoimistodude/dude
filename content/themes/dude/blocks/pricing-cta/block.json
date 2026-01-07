@@ -4,7 +4,7 @@
   "name": "dude/pricing-cta",
   "version": "1.0.0",
   "title": "Hinnasto: CTA-laatikko",
-  "category": "dude",
+  "category": "dude-native",
   "icon": "megaphone",
   "description": "Hinnaston toimintakehoitelaatikko yhteystiedoilla",
   "keywords": ["pricing", "cta", "contact", "hinnasto"],
