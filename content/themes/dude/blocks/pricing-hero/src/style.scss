@@ -1,5 +1,4 @@
 // Pricing Hero block styles
-
 .block-pricing-hero {
   padding-bottom: 0;
   padding-top: var(--padding-container-vertical);
@@ -34,12 +33,14 @@
     letter-spacing: -0.9px;
     line-height: 1.1;
     margin-bottom: 27px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   // Style the ingress paragraph
   p.ingress,
   p.wp-block-paragraph.ingress {
-    font-family: var(--font-body);
+    font-family: var(--font-paragraph);
     font-size: var(--font-size-30);
     line-height: 1.7;
     max-width: 900px;
@@ -61,16 +62,11 @@
     border: 1px solid var(--color-mint);
     border-radius: 84px;
     color: var(--color-dark-navy);
-    font-family: var(--font-body);
+    font-family: var(--font-paragraph);
     font-size: var(--font-size-24);
     font-weight: 600;
     padding: 20px 41px;
     transition: all 0.18s;
-
-    @media (max-width: 600px) {
-      font-size: var(--font-size-18);
-      padding: 16px 32px;
-    }
 
     &:hover,
     &:focus {
@@ -78,6 +74,11 @@
       border-color: var(--color-button-background-hover);
       box-shadow: 0 0 0 3px var(--color-button-background-hover);
       color: var(--color-button-hover);
+    }
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-18);
+      padding: 16px 32px;
     }
   }
 }
