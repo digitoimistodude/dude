@@ -1,26 +1,71 @@
 // Pricing Category block styles
 // Loaded on both frontend and editor
-
 .block-pricing-category {
   padding-bottom: 0;
   padding-top: calc(var(--padding-block) + 42px);
-
-  @media (max-width: 600px) {
-    padding-top: var(--padding-block);
-  }
 
   .container {
     padding-bottom: 0;
     padding-top: 0;
   }
+
+  @media (max-width: 600px) {
+    padding-top: var(--padding-block);
+  }
 }
 
+// Frontend: flex layout with .category-info and .category-items wrappers
+// Editor: grid layout since InnerBlocks renders flat
 .pricing-category {
-  display: flex;
+  display: grid;
   gap: 40px;
+  grid-template-columns: 433px 1fr;
+  grid-template-rows: auto auto 1fr;
 
   @media (max-width: 900px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  // Frontend wrappers span full grid
+  .category-info {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  .category-items {
+    grid-column: 2;
+    grid-row: 1 / -1;
+
+    @media (max-width: 900px) {
+      grid-column: 1;
+    }
+  }
+
+  // Editor: position blocks in grid
+  > [data-type="core/heading"] {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  > [data-type="core/paragraph"] {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  > [data-type="dude/pricing-item"] {
+    grid-column: 2;
+
+    @media (max-width: 900px) {
+      grid-column: 1;
+    }
+  }
+
+  > .block-list-appender {
+    grid-column: 2;
+
+    @media (max-width: 900px) {
+      grid-column: 1;
+    }
   }
 }
 
@@ -28,10 +73,6 @@
   flex-shrink: 0;
   padding-bottom: 27px;
   width: 433px;
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
 
   // Style heading inside category info (core/heading)
   h2,
@@ -59,6 +100,10 @@
       font-size: var(--font-size-16);
     }
   }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 }
 
 .category-items {
@@ -73,17 +118,13 @@
 
 .pricing-accordion-item {
   background: transparent;
-  border: 1px solid rgb(126 255 225 / 15%);
+  border: 1px solid rgb(126 255 225 / 0.15);
   border-radius: 12px;
   cursor: pointer;
   padding: 24px 32px;
   text-align: left;
   transition: all 0.18s;
   width: 100%;
-
-  @media (max-width: 600px) {
-    padding: 20px 24px;
-  }
 
   &:hover,
   &:focus {
@@ -129,18 +170,22 @@
       width: 10px;
     }
   }
+
+  @media (max-width: 600px) {
+    padding: 20px 24px;
+  }
 }
 
 .accordion-content {
   p {
-    color: rgb(255 255 255 / 80%);
+    color: rgb(255 255 255 / 0.8);
     font-size: var(--font-size-16);
     line-height: 1.7;
     margin: 0;
   }
 
   ul {
-    color: rgb(255 255 255 / 80%);
+    color: rgb(255 255 255 / 0.8);
     font-size: var(--font-size-16);
     line-height: 1.7;
     margin: 16px 0 0;
@@ -194,12 +239,6 @@
   display: flex;
   gap: 12px;
 
-  @media (max-width: 600px) {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 4px;
-  }
-
   .price {
     color: var(--color-mint);
     font-size: var(--font-size-16);
@@ -211,12 +250,18 @@
   }
 
   .description {
-    color: rgb(255 255 255 / 60%);
+    color: rgb(255 255 255 / 0.6);
     font-size: var(--font-size-16);
     font-weight: 500;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-14);
     }
+  }
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 }
