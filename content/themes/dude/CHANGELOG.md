@@ -2,6 +2,10 @@
 
 * Add proxyUrl (devpackages 2.4.5)
 * Fix config.styles.src that causes gutenberg styles not to compile (devpackages 2.4.6)
+* Update PHP SVG paths for new `assets/svg/` structure
+* Move `package.json` and npm config to theme directory
+* Add `@digitoimistodude/code-quality-checks` with husky pre-commit hooks
+* Add `npm run test` script with lint:styles, lint:js, lint:php, format:check
 
 ### 8.3.7: 2022-04-11
 
