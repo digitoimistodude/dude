@@ -191,22 +191,22 @@
   }
 
   .block.block-icon-list-cols .container ul {
-    list-style-image: url('../../svg/checkmark-round-light-mode.svg');
+    list-style-image: url('../svg/checkmark-round-light-mode.svg');
 
     @media (max-width: $container-mobile) {
-      list-style-image: url('../../svg/checkmark-round-light-mode.svg');
+      list-style-image: url('../svg/checkmark-round-light-mode.svg');
     }
   }
 
   .block.block-list ul {
-    list-style-image: url('../../svg/list-line.svg');
+    list-style-image: url('../svg/list-line.svg');
   }
 
   .block.block-image-list ul {
-    list-style-image: url('../../svg/list-line-large.svg');
+    list-style-image: url('../svg/list-line-large.svg');
 
     @media (max-width: $container-mobile) {
-      list-style-image: url('../../svg/list-line.svg');
+      list-style-image: url('../svg/list-line.svg');
     }
   }
 
@@ -431,10 +431,10 @@
   }
 
   .block.block-image-list ul {
-    list-style-image: url('../../svg/list-line-large-dark-mode.svg');
+    list-style-image: url('../svg/list-line-large-dark-mode.svg');
 
     @media (max-width: $container-mobile) {
-      list-style-image: url('../../svg/list-line-dark-mode.svg');
+      list-style-image: url('../svg/list-line-dark-mode.svg');
     }
   }
 
@@ -524,15 +524,15 @@
   }
 
   .block.block-icon-list-cols .container ul {
-    list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+    list-style-image: url('../svg/checkmark-round-dark-mode.svg');
 
     @media (max-width: $container-mobile) {
-      list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+      list-style-image: url('../svg/checkmark-round-dark-mode.svg');
     }
   }
 
   .block.block-list ul {
-    list-style-image: url('../../svg/list-line-dark-mode.svg');
+    list-style-image: url('../svg/list-line-dark-mode.svg');
   }
 
   .site-main .accordion-icon {

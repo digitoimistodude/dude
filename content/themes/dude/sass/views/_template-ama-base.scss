@@ -44,7 +44,7 @@
 
 // Header
 .ama-header {
-  background-image: url('../../img/ama-desktop-hero.jpg');
+  background-image: url('../img/ama-desktop-hero.jpg');
   background-size: cover;
 
   .ama-header-text {
@@ -121,7 +121,7 @@
   }
 
   @media (max-width: 720px) {
-    background-image: url('../../img/ama-mobile-hero.jpg');
+    background-image: url('../img/ama-mobile-hero.jpg');
     background-position: bottom;
   }
 }

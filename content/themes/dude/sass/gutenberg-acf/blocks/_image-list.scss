@@ -21,11 +21,11 @@
   ul {
     display: grid;
     gap: 4rem;
-    list-style-image: url('../../svg/list-line-large.svg');
+    list-style-image: url('../svg/list-line-large.svg');
 
     @media (max-width: $container-mobile) {
       gap: 2rem;
-      list-style-image: url('../../svg/list-line.svg');
+      list-style-image: url('../svg/list-line.svg');
     }
   }
 

@@ -5,12 +5,12 @@
   ul {
     display: grid;
     gap: 2rem;
-    list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+    list-style-image: url('../svg/checkmark-round-dark-mode.svg');
     margin: 0;
 
     @media (max-width: $container-mobile) {
       gap: 2rem;
-      list-style-image: url('../../svg/checkmark-round-dark-mode.svg');
+      list-style-image: url('../svg/checkmark-round-dark-mode.svg');
     }
   }
 

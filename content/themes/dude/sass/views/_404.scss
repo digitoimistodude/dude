@@ -10,9 +10,9 @@
   // Slightly Deeper Browser Support
   // @source https://css-tricks.com/snippets/css/using-font-face/#slightly-deeper-browser-support
   src:
-    url('../../fonts/perfectdosvga437win.woff') format('woff'),
-    url('../../fonts/perfectdosvga437win.woff2') format('woff2'),
-    url('../../fonts/perfectdosvga437win.ttf') format('truetype');
+    url('../fonts/perfectdosvga437win.woff') format('woff'),
+    url('../fonts/perfectdosvga437win.woff2') format('woff2'),
+    url('../fonts/perfectdosvga437win.ttf') format('truetype');
 }
 
 .overlay {

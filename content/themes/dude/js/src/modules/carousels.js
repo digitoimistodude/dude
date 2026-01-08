@@ -5,7 +5,7 @@
  * @Last Modified by:   Roni Laukkarinen
  * @Last Modified time: 2023-03-13 15:29:45
  */
-import Swiper, { Navigation, Pagination, A11y } from 'swiper/core';
+import Swiper, { Navigation, Pagination, A11y } from 'swiper';
 import getLocalization from './localization';
 
 Swiper.use([Navigation, Pagination, A11y]);
