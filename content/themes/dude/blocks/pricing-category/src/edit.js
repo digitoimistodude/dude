@@ -55,7 +55,7 @@ export default function Edit() {
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
-    { className: 'pricing-category' },
+    { className: 'pricing-category is-layout-grid' },
     {
       template: TEMPLATE,
       allowedBlocks: ALLOWED_BLOCKS,
