@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import {
   useBlockProps,
-  InnerBlocks,
+  useInnerBlocksProps,
   InspectorControls,
 } from '@wordpress/block-editor';
 import {
@@ -33,6 +33,14 @@ export default function Edit( { attributes, setAttributes } ) {
   const blockProps = useBlockProps( {
     className: 'block block-pricing-faq block-upkeep-faq',
   } );
+
+  const innerBlocksProps = useInnerBlocksProps(
+    { className: 'faq-intro-inner is-layout-grid' },
+    {
+      template: TEMPLATE,
+      templateLock: 'all',
+    }
+  );
 
   const addItem = () => {
     const newItems = [
@@ -136,10 +144,7 @@ export default function Edit( { attributes, setAttributes } ) {
         <div className="container">
           <div className="faq-layout">
             <div className="faq-intro">
-              <InnerBlocks
-                template={ TEMPLATE }
-                templateLock="all"
-              />
+              <div { ...innerBlocksProps } />
             </div>
             <div className="faq-items">
               <div className="accordion">
