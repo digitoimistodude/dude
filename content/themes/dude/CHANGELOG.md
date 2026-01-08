@@ -6,6 +6,7 @@
 * Move `package.json` and npm config to theme directory
 * Add `@digitoimistodude/code-quality-checks` with husky pre-commit hooks
 * Add `npm run test` script with lint:styles, lint:js, lint:php, format:check
+* Fix swup v4 API compatibility (use `hooks.on` instead of `on`)
 
 ### 8.3.7: 2022-04-11
 
