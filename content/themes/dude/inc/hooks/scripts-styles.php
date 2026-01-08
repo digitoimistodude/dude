@@ -88,7 +88,7 @@ function enqueue_theme_scripts() {
 function get_asset_file( $filename ) {
   $filetype = pathinfo( $filename )['extension'];
 
-  return "assets/{$filetype}/{$filename}";
+  return "assets/dist/{$filetype}/{$filename}";
 } // end get_asset_file
 
 /**

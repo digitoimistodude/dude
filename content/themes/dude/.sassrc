@@ -1,6 +1,6 @@
 {
   "includePaths": [
-    "sass",
+    "assets/src/sass",
     "node_modules",
     "../../../node_modules"
   ],
