@@ -13,14 +13,9 @@
     "align": ["full"],
     "anchor": true
   },
-  "attributes": {
-    "items": {
-      "type": "array",
-      "default": []
-    }
-  },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/style-index.css",
   "style": "file:./build/style-index.css",
   "render": "file:./render.php"
 }
