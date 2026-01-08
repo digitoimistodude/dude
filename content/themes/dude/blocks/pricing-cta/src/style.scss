@@ -105,6 +105,11 @@
   }
 
   @media (max-width: 1200px) {
-    display: none;
+    display: none; // stylelint-disable-line a11y/no-display-none
+  }
+
+  // Hide in editor (positioned absolutely, doesn't work well)
+  .editor-styles-wrapper & {
+    display: none; // stylelint-disable-line a11y/no-display-none
   }
 }
