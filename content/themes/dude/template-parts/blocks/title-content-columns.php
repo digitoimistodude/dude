@@ -76,7 +76,7 @@ if ( $hide_title ) {
         <div class="col<?php if ( $column['icon_left'] ) echo ' is-icon-left' ?>">
             <?php if ( ! empty( $column['icon_svg'] ) ) : ?>
               <div class="icon">
-                <?php $icon_path = get_theme_file_path( "svg/foruser/{$column['icon_svg']}" );
+                <?php $icon_path = get_theme_file_path( "assets/svg/foruser/{$column['icon_svg']}" );
                 if ( file_exists( $icon_path ) ) include $icon_path; ?>
               </div>
             <?php endif; ?>

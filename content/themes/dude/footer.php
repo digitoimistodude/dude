@@ -85,28 +85,28 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
     <div class="certificates">
       <ul aria-label="Logot ja sertifikaatit">
         <li>
-          <a aria-label="Ulkoinen sivusto: Vierityspalkki" class="no-external-link-indicator" href="https://vierityspalkki.fi/toimistot/digitoimisto-dude"><?php include get_theme_file_path( '/svg/certificates/certificate-vierityspalkki-new.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Vierityspalkki" class="no-external-link-indicator" href="https://vierityspalkki.fi/toimistot/digitoimisto-dude"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-vierityspalkki-new.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: ite wiki" class="no-external-link-indicator" href="https://www.itewiki.fi/digitoimisto-dude"><?php include get_theme_file_path( '/svg/certificates/certificate-itewiki.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: ite wiki" class="no-external-link-indicator" href="https://www.itewiki.fi/digitoimisto-dude"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-itewiki.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: Koodia Suomesta" class="no-external-link-indicator" href="https://koodiasuomesta.fi/"><?php include get_theme_file_path( '/svg/certificates/certificate-koodiasuomesta.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Koodia Suomesta" class="no-external-link-indicator" href="https://koodiasuomesta.fi/"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-koodiasuomesta.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: .fi-verkkotunnusvälittäjä" class="no-external-link-indicator" href="https://www.traficom.fi/fi/viestinta/fi-verkkotunnukset/etsi-verkkotunnusvalittaja"><?php include get_theme_file_path( '/svg/certificates/certificate-fivalittaja.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: .fi-verkkotunnusvälittäjä" class="no-external-link-indicator" href="https://www.traficom.fi/fi/viestinta/fi-verkkotunnukset/etsi-verkkotunnusvalittaja"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-fivalittaja.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: Green Web Foundation" class="no-external-link-indicator" href="https://www.thegreenwebfoundation.org/green-web-check/?url=https%3A%2F%2Fwww.dude.fi"><?php include get_theme_file_path( '/svg/certificates/certificate-greenwebfoundation.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Green Web Foundation" class="no-external-link-indicator" href="https://www.thegreenwebfoundation.org/green-web-check/?url=https%3A%2F%2Fwww.dude.fi"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-greenwebfoundation.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: Suomen avoimien tietojärjestelmien keskus-COSS ry" class="no-external-link-indicator" href="https://coss.fi/blogi/dudella-avoin-lahdekoodi-ja-aktiivinen-osallistuminen-yhteison-toimintaan-ovat-osa-menestysta/"><?php include get_theme_file_path( '/svg/certificates/certificate-coss.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Suomen avoimien tietojärjestelmien keskus-COSS ry" class="no-external-link-indicator" href="https://coss.fi/blogi/dudella-avoin-lahdekoodi-ja-aktiivinen-osallistuminen-yhteison-toimintaan-ovat-osa-menestysta/"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-coss.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: Luotettava kumppani" class="no-external-link-indicator" href="https://zeckit.com/selvitys/FI/2548021-5?lang=fi"><?php include get_theme_file_path( '/svg/certificates/certificate-luotettavakumppani-no-box.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: Luotettava kumppani" class="no-external-link-indicator" href="https://zeckit.com/selvitys/FI/2548021-5?lang=fi"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-luotettavakumppani-no-box.svg' ); ?></a>
         </li>
         <li>
-          <a aria-label="Ulkoinen sivusto: AAA-luottoluokitus" class="no-external-link-indicator" href="https://www.bisnode.fi/aaa-kauppa/products/25480215"><?php include get_theme_file_path( '/svg/certificates/certificate-aaa-2023.svg' ); ?></a>
+          <a aria-label="Ulkoinen sivusto: AAA-luottoluokitus" class="no-external-link-indicator" href="https://www.bisnode.fi/aaa-kauppa/products/25480215"><?php include get_theme_file_path( 'assets/svg/certificates/certificate-aaa-2023.svg' ); ?></a>
         </li>
       </ul>
     </div>

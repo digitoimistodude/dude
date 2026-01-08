@@ -56,7 +56,7 @@ $logos = [
       <?php foreach ( $logos as $key => $url ) : ?>
         <li>
           <a href="<?php echo esc_url( $url ) ?>" class="no-external-link-indicator">
-            <?php include get_theme_file_path( "/svg/stack/${key}.svg" ); ?>
+            <?php include get_theme_file_path( "assets/svg/stack/${key}.svg" ); ?>
           </a>
         </li>
       <?php endforeach; ?>

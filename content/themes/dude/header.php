@@ -55,7 +55,7 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="facebook-domain-verification" content="x7eavmx0oavfz2pm9ad0rqi5egt1zw" />
   <link rel="profile" href="http://gmpg.org/xfn/11">
-  <link rel="icon" href="<?php echo esc_html( get_template_directory_uri() ); ?>/svg/dynamic-favicon.svg">
+  <link rel="icon" href="<?php echo esc_html( get_template_directory_uri() ); ?>/assets/svg/dynamic-favicon.svg">
 
   <?php wp_head();
 
@@ -86,7 +86,7 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
 
         <p class="site-phone">
           <a href="tel:<?php echo esc_html( str_replace( ' ', '', $sales_phone ) ); ?>">
-            <?php include get_theme_file_path( '/svg/phone.svg' ); ?>
+            <?php include get_theme_file_path( 'assets/svg/phone.svg' ); ?>
             <span>Kilauta</span>
           </a>
         </p>

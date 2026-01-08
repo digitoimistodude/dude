@@ -164,7 +164,7 @@ if ( empty( $title ) || empty( $reference_ids ) ) {
 
       <ul class="logos" aria-describedby="asiakkaitamme">
         <?php foreach ( $logos as $logo ) {
-          $logo_path = get_theme_file_path( "svg/logos/{$logo}.svg" );
+          $logo_path = get_theme_file_path( "assets/svg/logos/{$logo}.svg" );
           if ( ! file_exists( $logo_path ) ) {
             continue;
           } ?>

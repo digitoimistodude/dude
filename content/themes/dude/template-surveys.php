@@ -44,7 +44,7 @@ $hero_content = get_post_meta( get_the_id(), 'hero_content', true );
             </div>
 
             <div class="survey-header--logo">
-              <?php include get_theme_file_path( '/svg/logo.svg' ); ?>
+              <?php include get_theme_file_path( 'assets/svg/logo.svg' ); ?>
               <p class="survey-header--logo-tagline"><a href="<?php echo esc_url( get_home_url() ); ?>">www.dude.fi</a></p>
             </div>
           </header>
