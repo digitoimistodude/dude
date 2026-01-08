@@ -131,7 +131,7 @@ function init(target, args) {
 // When document has been completely loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Do things when content is replaced via Swup
-swup.on('contentReplaced', init);
+// Do things when content is replaced via Swup (v4 API)
+swup.hooks.on('content:replace', init);
 
 // Do things after page has loaded
