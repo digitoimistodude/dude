@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import './style.scss';
 
 const TEMPLATE = [
@@ -32,15 +32,18 @@ export default function Edit() {
     className: 'block block-pricing-hero',
   } );
 
+  const innerBlocksProps = useInnerBlocksProps(
+    { className: 'content is-layout-grid' },
+    {
+      template: TEMPLATE,
+      templateLock: 'all',
+    }
+  );
+
   return (
     <section { ...blockProps }>
       <div className="container">
-        <div className="content">
-          <InnerBlocks
-            template={ TEMPLATE }
-            templateLock="all"
-          />
-        </div>
+        <div { ...innerBlocksProps } />
       </div>
     </section>
   );
