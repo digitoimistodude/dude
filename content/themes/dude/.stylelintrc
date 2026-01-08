@@ -155,13 +155,7 @@
         "ignore": ["blockless-at-rules", "pseudo-classes"]
       }
     ],
-    "declaration-property-unit-allowed-list": [
-      {
-        "font-size": ["rem", "em", "px"],
-        "/^animation/": ["ms", "s"],
-        "line-height": ["px", "%", ""]
-      }
-    ],
+    "declaration-property-unit-allowed-list": null,
     "a11y/font-size-is-readable": [
       true,
       {
