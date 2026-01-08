@@ -1,6 +1,5 @@
 // Pricing CTA block styles
 // Core blocks handle their own typography
-
 .block-pricing-cta {
   padding-bottom: 0;
   padding-top: var(--padding-block);
@@ -8,7 +7,7 @@
 
 .cta-box {
   background-color: #223948;
-  background-image: radial-gradient(ellipse at center, #1e4348 0%, rgba(30, 32, 38, 0.54) 100%);
+  background-image: radial-gradient(ellipse at center, #1e4348 0%, rgb(30 32 38 / 0.54) 100%);
   border-radius: 16px;
   display: flex;
   overflow: hidden;
@@ -22,15 +21,6 @@
 .cta-content {
   padding: 70px;
   width: 768px;
-
-  @media (max-width: 900px) {
-    padding: 40px;
-    width: 100%;
-  }
-
-  @media (max-width: 600px) {
-    padding: 30px;
-  }
 
   // Style heading inside CTA
   h2,
@@ -57,6 +47,15 @@
     @media (max-width: 600px) {
       font-size: var(--font-size-16);
     }
+  }
+
+  @media (max-width: 900px) {
+    padding: 40px;
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 30px;
   }
 }
 
@@ -100,12 +99,12 @@
   top: -203px;
   width: 473px;
 
-  @media (max-width: 1200px) {
-    display: none;
-  }
-
   img {
     height: auto;
     width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    display: none;
   }
 }

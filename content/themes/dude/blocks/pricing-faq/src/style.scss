@@ -1,6 +1,5 @@
 // Pricing FAQ block styles
 // Core blocks handle intro typography
-
 .block-pricing-faq {
   padding-bottom: 0;
   padding-top: var(--padding-block);
@@ -19,10 +18,6 @@
 .faq-intro {
   flex-shrink: 0;
   width: 416px;
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
 
   // Style heading inside FAQ intro
   h2,
@@ -45,6 +40,10 @@
     font-size: var(--font-size-16);
     font-weight: 500;
     line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
   }
 }
 
