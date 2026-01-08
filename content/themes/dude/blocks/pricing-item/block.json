@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dude/pricing-item",
+  "version": "1.0.0",
+  "title": "Hinnasto: Tuote",
+  "category": "dude-native",
+  "icon": "tag",
+  "description": "Yksittäinen tuote hinnastokategoriassa",
+  "keywords": ["pricing", "item", "product", "tuote"],
+  "parent": ["dude/pricing-category"],
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Tuotteen nimi"
+    },
+    "isPopular": {
+      "type": "boolean",
+      "default": false
+    },
+    "price": {
+      "type": "string",
+      "default": "0 €"
+    },
+    "shortDescription": {
+      "type": "string",
+      "default": "Lyhyt kuvaus"
+    },
+    "content": {
+      "type": "string",
+      "default": "Pidempi kuvaus tuotteesta."
+    },
+    "features": {
+      "type": "array",
+      "default": ["Ominaisuus 1", "Ominaisuus 2"]
+    }
+  },
+  "textdomain": "dude",
+  "editorScript": "file:./build/index.js",
+  "render": "file:./render.php"
+}
