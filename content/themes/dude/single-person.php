@@ -97,7 +97,7 @@ get_header(); ?>
           <?php foreach ( $social_media as $social ) : ?>
             <li>
               <a<?php if ( 'mastodon' === strtolower( $social['name'] ) ) echo ' rel="me"'; ?> href="<?php echo esc_url( $social['value'] ) ?>" class="no-external-link-indicator">
-                <?php include get_theme_file_path( 'svg/social/' . strtolower( str_replace( '.', '-', $social['name'] ) ) . '.svg' ) ?>
+                <?php include get_theme_file_path( 'assets/svg/social/' . strtolower( str_replace( '.', '-', $social['name'] ) ) . '.svg' ) ?>
                 <span class="screen-reader-text-dude">
                   <?php echo esc_html( $social['name'] ) ?>
                 </span>

@@ -54,7 +54,7 @@ add_action( 'after_setup_theme', function() {
      * Logo and featured image
      */
     'default_featured_image'  => null,
-    'logo'                    => '/svg/logo.svg',
+    'logo'                    => '/assets/svg/logo.svg',
 
     /**
      * Some hardcoded page ID's that are not related to custom settings.

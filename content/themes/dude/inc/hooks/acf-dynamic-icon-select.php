@@ -32,7 +32,7 @@ function acf_dynamic_select_for_icon( $field ) {
   // add icons from "svg/foruser" directory.
   $field['choices'] = get_icons_for_user( [
     'show_preview' => $field['ui'],
-    'icon_path'    => '/svg/foruser/',
+    'icon_path'    => '/assets/svg/foruser/',
     'show_empty'   => $field['allow_null'],
   ]);
 

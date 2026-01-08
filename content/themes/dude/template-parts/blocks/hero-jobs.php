@@ -66,6 +66,6 @@ if ( empty( $title ) ) {
       </div>
     <?php endif;
 
-    include get_theme_file_path( '/svg/logo-big-white.svg' ); ?>
+    include get_theme_file_path( 'assets/svg/logo-big-white.svg' ); ?>
   </div>
 </section>

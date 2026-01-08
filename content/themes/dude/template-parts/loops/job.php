@@ -27,7 +27,7 @@ if ( empty( $data['permalink'] ) || empty( $data['title'] ) ) {
   <a class="job-link" href="<?php echo esc_url( $data['permalink'] ) ?>">
     <span class="job-title">
       <?php echo esc_html( $data['title'] ) ?>
-      <?php include get_theme_file_path( '/svg/arrow-right.svg' ); ?>
+      <?php include get_theme_file_path( 'assets/svg/arrow-right.svg' ); ?>
     </span>
 
     <?php if ( isset( $data['location'] ) && ! empty( $data['location'] ) ) : ?>

@@ -64,7 +64,7 @@ get_header(); ?>
     <?php if ( $post_is_old ) : ?>
       <div class="notification-box">
         <div class="box">
-          <?php include get_theme_file_path( '/svg/info.svg' ); ?>
+          <?php include get_theme_file_path( 'assets/svg/info.svg' ); ?>
           <p>Tämä kirjoitus saattaa sisältää vanhentunutta tietoa, sillä se on julkaistu yli <?php echo esc_html( $post_is_years_old ); ?> vuotta sitten.</p>
         </div>
       </div>

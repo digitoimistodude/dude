@@ -108,7 +108,7 @@ $questions = array_reverse( $questions );
         <header class="ama-header">
           <div class="container">
             <div class="ama-header-logo" aria-hidden="true">
-              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( '/svg/logo-ama-2023.svg' ); ?></a>
+              <a href="https://www.dude.fi" aria-label="Siirry Dude.fi -pääsivulle"><?php include get_theme_file_path( 'assets/svg/logo-ama-2023.svg' ); ?></a>
             </div>
 
             <div class="ama-header-text">
