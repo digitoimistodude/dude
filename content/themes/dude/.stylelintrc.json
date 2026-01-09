@@ -1,11 +1,3 @@
 {
-  "extends": "@digitoimistodude/stylelint-config",
-  "rules": {
-    "csstools/value-no-unknown-custom-properties": [
-      true,
-      {
-        "importFrom": ["assets/dist/css/global.css"]
-      }
-    ]
-  }
+  "extends": "@digitoimistodude/stylelint-config"
 }
