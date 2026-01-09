@@ -24,7 +24,7 @@ foreach ( $block->inner_blocks as $inner_block ) {
 ?>
 <section <?php echo get_block_wrapper_attributes( [ 'class' => 'block block-pricing-category has-unified-padding-if-stacked' ] ); ?>>
   <div class="container">
-    <div class="pricing-category">
+    <div class="pricing-category is-layout-grid">
       <div class="category-info">
         <?php echo $category_info_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
       </div>

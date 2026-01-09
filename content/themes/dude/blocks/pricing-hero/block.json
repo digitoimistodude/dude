@@ -39,6 +39,5 @@
   },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
-  "style": "file:./build/style-index.css",
-  "render": "file:./render.php"
+  "style": "file:./build/style-index.css"
 }
