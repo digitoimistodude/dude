@@ -73,7 +73,7 @@
     "test": "npm run lint:styles && npm run lint:js && npm run lint:php && npm run format:check",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,php}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,php}\"",
-    "prepare": "cd ../../.. && husky content/themes/dude/.husky"
+    "prepare": "cd ../../.. && husky"
   },
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0",
