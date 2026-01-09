@@ -3,7 +3,9 @@
  * Configuration overrides for WP_ENV === 'production'
  */
 
+// phpcs:ignore Universal.UseStatements.DisallowUseClass.FoundWithoutAlias
 use Roots\WPConfig\Config;
+
 /**
  * You should try to keep staging as close to production as possible. However,
  * should you need to, you can always override production configuration values
@@ -19,6 +21,7 @@ Config::define( 'WP_DEBUG_DISPLAY', false );
 Config::define( 'WP_DISABLE_FATAL_ERROR_HANDLER', false );
 Config::define( 'SCRIPT_DEBUG', false );
 
+// phpcs:ignore WordPress.PHP.IniSet.display_errors_Disallowed
 ini_set( 'display_errors', '0' );
 
 // Enable plugin and theme updates and installation from the admin
