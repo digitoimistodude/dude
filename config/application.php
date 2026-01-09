@@ -8,7 +8,9 @@
  * can.
  */
 
+// phpcs:ignore Universal.UseStatements.DisallowUseClass.FoundWithoutAlias
 use Roots\WPConfig\Config;
+// phpcs:ignore Universal.UseStatements.DisallowUseFunction.FoundWithoutAlias
 use function Env\env;
 
 /**
@@ -111,6 +113,7 @@ Config::define( 'PIPEDRIVE_API_TOKEN', env( 'PIPEDRIVE_API_TOKEN' ) );
 Config::define( 'WP_DEBUG_DISPLAY', false );
 Config::define( 'WP_DEBUG_LOG', env( 'WP_DEBUG_LOG' ) ?? false );
 Config::define( 'SCRIPT_DEBUG', false );
+// phpcs:ignore WordPress.PHP.IniSet.display_errors_Disallowed
 ini_set( 'display_errors', '0' );
 
 /**

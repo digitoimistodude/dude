@@ -19,9 +19,10 @@
      <!-- Check all files in this directory and the directories below it. -->
      <file>.</file>
 
-     <!-- Exclude wp and content directories -->
+     <!-- Exclude wp, content, and media directories -->
      <exclude-pattern>wp/*</exclude-pattern>
      <exclude-pattern>content/languages/*</exclude-pattern>
+     <exclude-pattern>media/*</exclude-pattern>
 
      <!-- Use Dude Coding Standards -->
      <rule ref="DCS"/>

@@ -6,7 +6,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.6",
     "@babel/eslint-parser": "^7.18.2",
-    "@digitoimistodude/code-quality-checks": "^2.1.0",
+    "@digitoimistodude/code-quality-checks": "^2.1.2",
     "@digitoimistodude/stylelint-config": "^1.0.0",
     "@hint/hint-axe": "^4.4.13",
     "@hint/hint-button-type": "^3.0.15",

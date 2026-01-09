@@ -3,6 +3,7 @@
  * Configuration overrides for WP_ENV === 'development'
  */
 
+// phpcs:ignore Universal.UseStatements.DisallowUseClass.FoundWithoutAlias
 use Roots\WPConfig\Config;
 
 $root_dir = dirname( dirname( __DIR__ ) );
