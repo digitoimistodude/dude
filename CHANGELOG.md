@@ -8,6 +8,7 @@
 * Fix editor paragraph styles to match front-end, Ref: DEV-567
 * Add dude-coding-standards for phpcs, Ref: DEV-567
 * Update code-quality-checks to 2.1.2, Ref: DEV-567
+* Add consolidated editor typography overrides for headings and lists, Ref: DEV-567
 
 ### 7.0.1: 2026-01-08
 

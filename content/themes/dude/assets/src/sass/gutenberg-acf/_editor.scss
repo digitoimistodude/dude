@@ -72,21 +72,53 @@ body {
   // Prevent horizontal scrolling
   overflow-x: hidden;
 
-  // Override WordPress default paragraph margins to match front-end
-  .block-editor-block-list__layout p,
-  .is-root-container p {
-    margin-bottom: 2.9rem;
-    margin-top: 2.9rem;
-  }
+  // Override WordPress editor margins to match front-end typography
+  // Consolidated rule for all typography elements (scalable approach)
+  .block-editor-block-list__layout,
+  .is-root-container {
+    // Headings
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: var(--margin-between-paragraphs);
+      margin-top: var(--margin-between-paragraphs);
 
-  .block-editor-block-list__layout p:first-child,
-  .is-root-container p:first-child {
-    margin-top: 0;
-  }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
 
-  .block-editor-block-list__layout p:last-child,
-  .is-root-container p:last-child {
-    margin-bottom: 0;
+    // Paragraphs
+    p {
+      margin-bottom: 2.9rem;
+      margin-top: 2.9rem;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Lists
+    ul,
+    ol {
+      margin-bottom: var(--margin-between-paragraphs);
+      margin-top: var(--margin-between-paragraphs);
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   // Force certain font styles on editor
