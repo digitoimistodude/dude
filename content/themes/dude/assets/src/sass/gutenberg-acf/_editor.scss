@@ -72,6 +72,23 @@ body {
   // Prevent horizontal scrolling
   overflow-x: hidden;
 
+  // Override WordPress default paragraph margins to match front-end
+  .block-editor-block-list__layout p,
+  .is-root-container p {
+    margin-bottom: 2.9rem;
+    margin-top: 2.9rem;
+  }
+
+  .block-editor-block-list__layout p:first-child,
+  .is-root-container p:first-child {
+    margin-top: 0;
+  }
+
+  .block-editor-block-list__layout p:last-child,
+  .is-root-container p:last-child {
+    margin-bottom: 0;
+  }
+
   // Force certain font styles on editor
   .prefix {
     @include prefix();
