@@ -10,6 +10,7 @@
 * Update code-quality-checks to 2.1.2, Ref: DEV-567
 * Add consolidated editor typography overrides for headings and lists, Ref: DEV-567
 * Fix editor vs front-end margin consistency in pricing blocks, Ref: DEV-567
+* Remove redundant autoprefixer from postcss.config.js, Ref: DEV-567
 
 ### 7.0.1: 2026-01-08
 
