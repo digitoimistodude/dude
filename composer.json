@@ -162,7 +162,8 @@
   },
   "require-dev": {
     "rarst/laps": "*",
-    "wpackagist-plugin/query-monitor": "*"
+    "wpackagist-plugin/query-monitor": "*",
+    "digitoimistodude/dude-coding-standards": "^1.0"
   },
   "extra": {
     "dropin-paths": {
