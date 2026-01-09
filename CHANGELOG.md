@@ -55,6 +55,7 @@
 * Add example attributes to pricing blocks for editor previews, Ref: DEV-567
 * Fix pricing blocks structure for front-end rendering, Ref: DEV-567
 * Fix editor paragraph styles to match front-end, Ref: DEV-567
+* Add dude-coding-standards for phpcs, Ref: DEV-567
 
 ### 7.0.1: 2026-01-08
 
