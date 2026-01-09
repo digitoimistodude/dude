@@ -11,6 +11,8 @@
 * Add consolidated editor typography overrides for headings and lists, Ref: DEV-567
 * Fix editor vs front-end margin consistency in pricing blocks, Ref: DEV-567
 * Remove redundant autoprefixer from postcss.config.js, Ref: DEV-567
+* Fix pricing-category button styles overridden by global form styles, Ref: DEV-567
+* Update stylelint-config to 1.0.2 with auto-detect global.css path, Ref: DEV-567
 
 ### 7.0.1: 2026-01-08
 

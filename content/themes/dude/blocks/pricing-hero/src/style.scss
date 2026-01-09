@@ -5,11 +5,15 @@
 
   .container {
     padding-bottom: 0;
-    padding-top: 54px;
+    padding-top: 3.375rem;
+
+    @media (max-width: 1200px) {
+      padding-top: 7.5rem;
+    }
   }
 
   .content {
-    max-width: 1000px;
+    max-width: 62.5rem;
   }
 
   // Style the prefix heading (h1 with .prefix class)
@@ -20,7 +24,7 @@
     font-size: var(--font-size-14);
     font-weight: 500;
     letter-spacing: 1px;
-    margin: 0 0 27px;
+    margin: 0 0 1.6875rem;
     text-transform: uppercase;
   }
 
@@ -28,11 +32,11 @@
   h2,
   h2.wp-block-heading {
     font-family: var(--font-heading);
-    font-size: clamp(48px, 6vw, 90px);
+    font-size: clamp(3rem, 6vw, 5.625rem);
     font-weight: 700;
-    letter-spacing: -0.9px;
+    letter-spacing: -0.05625rem;
     line-height: 1.1;
-    margin: 0 0 27px;
+    margin: 0 0 1.6875rem;
   }
 
   // Style the ingress paragraph
@@ -42,7 +46,7 @@
     font-size: var(--font-size-30);
     line-height: 1.7;
     margin: 0;
-    max-width: 900px;
+    max-width: 56.25rem;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-22);
@@ -51,33 +55,6 @@
 
   // Style the buttons wrapper
   .wp-block-buttons {
-    margin: 25px 0 0;
-  }
-
-  // Mint button style
-  .wp-block-button.is-style-mint .wp-block-button__link,
-  .wp-block-button.is-style-mint > a {
-    background-color: var(--color-mint);
-    border: 1px solid var(--color-mint);
-    border-radius: 84px;
-    color: var(--color-dark-navy);
-    font-family: var(--font-paragraph);
-    font-size: var(--font-size-24);
-    font-weight: 600;
-    padding: 20px 41px;
-    transition: all 0.18s;
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-button-background-hover);
-      border-color: var(--color-button-background-hover);
-      box-shadow: 0 0 0 3px var(--color-button-background-hover);
-      color: var(--color-button-hover);
-    }
-
-    @media (max-width: 600px) {
-      font-size: var(--font-size-18);
-      padding: 16px 32px;
-    }
+    margin: 1.5625rem 0 0;
   }
 }

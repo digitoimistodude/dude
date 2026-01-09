@@ -2,7 +2,7 @@
 // Loaded on both frontend and editor
 .block-pricing-category {
   padding-bottom: 0;
-  padding-top: calc(var(--padding-block) + 42px);
+  padding-top: calc(var(--padding-block) + 2.625rem);
 
   .container {
     padding-bottom: 0;
@@ -18,13 +18,9 @@
 // Editor: grid layout since InnerBlocks renders flat
 .pricing-category {
   display: grid;
-  gap: 40px;
-  grid-template-columns: 433px 1fr;
+  gap: 2.5rem;
+  grid-template-columns: 27.0625rem 1fr;
   grid-template-rows: auto auto 1fr;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
 
   // Frontend wrappers span full grid
   .category-info {
@@ -42,17 +38,17 @@
   }
 
   // Editor: position blocks in grid
-  > [data-type="core/heading"] {
+  > [data-type='core/heading'] {
     grid-column: 1;
     grid-row: 1;
   }
 
-  > [data-type="core/paragraph"] {
+  > [data-type='core/paragraph'] {
     grid-column: 1;
     grid-row: 2;
   }
 
-  > [data-type="dude/pricing-item"] {
+  > [data-type='dude/pricing-item'] {
     grid-column: 2;
 
     @media (max-width: 900px) {
@@ -67,12 +63,16 @@
       grid-column: 1;
     }
   }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .category-info {
   flex-shrink: 0;
-  padding-bottom: 27px;
-  width: 433px;
+  padding-bottom: 1.6875rem;
+  width: 27.0625rem;
 
   // Style heading inside category info (core/heading)
   h2,
@@ -80,13 +80,13 @@
     font-family: var(--font-heading);
     font-size: var(--font-size-32);
     font-weight: 500;
-    letter-spacing: -0.42px;
+    letter-spacing: -0.02625rem;
     line-height: 1.4;
-    margin: 0 0 27px;
+    margin: 0 0 1.6875rem;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-24);
-      margin: 0 0 20px;
+      margin: 0 0 1.25rem;
     }
   }
 
@@ -114,15 +114,15 @@
 .pricing-accordion {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .pricing-accordion-item {
   background: transparent;
   border: 1px solid rgb(126 255 225 / 0.15);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   cursor: pointer;
-  padding: 24px 32px;
+  padding: 1.5rem 2rem;
   text-align: left;
   transition: all 0.18s;
   width: 100%;
@@ -132,15 +132,33 @@
     border-color: var(--color-mint);
   }
 
-  .item-main {
+  // Reset global button styles from _forms.scss
+  button.item-main {
     align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    cursor: pointer;
     display: flex;
+    font-family: inherit;
+    font-size: inherit;
     justify-content: space-between;
+    padding: 0;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
   }
 
   .accordion-content {
     display: none;
-    padding-top: 16px;
+    padding-top: 1rem;
   }
 
   &[aria-expanded='true'] .accordion-content {
@@ -155,9 +173,9 @@
     align-items: center;
     display: flex;
     flex-shrink: 0;
-    height: 32px;
+    height: 2rem;
     justify-content: center;
-    width: 32px;
+    width: 2rem;
 
     &::after {
       border: 2px solid #fff;
@@ -165,15 +183,15 @@
       border-top: 0;
       content: '';
       display: block;
-      height: 10px;
+      height: 0.625rem;
       transform: rotate(45deg);
       transition: transform 0.18s;
-      width: 10px;
+      width: 0.625rem;
     }
   }
 
   @media (max-width: 600px) {
-    padding: 20px 24px;
+    padding: 1.25rem 1.5rem;
   }
 }
 
@@ -189,30 +207,30 @@
     color: rgb(255 255 255 / 0.8);
     font-size: var(--font-size-16);
     line-height: 1.7;
-    margin: 16px 0 0;
-    padding-left: 20px;
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
   }
 }
 
 .accordion-cta {
-  margin-top: 16px;
+  margin-top: 1rem;
 
   .button {
-    margin-top: 26px;
+    margin-top: 1.625rem;
   }
 }
 
 .item-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .item-header {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 1rem;
 
   h3 {
     font-size: var(--font-size-24);
@@ -227,18 +245,18 @@
 
   .badge {
     background-color: var(--color-mint);
-    border-radius: 100px;
+    border-radius: 6.25rem;
     color: #1c1e26;
     font-size: var(--font-size-14);
     font-weight: 500;
-    padding: 4px 12px;
+    padding: 0.25rem 0.75rem;
   }
 }
 
 .item-meta {
   align-items: center;
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
 
   .price {
     color: var(--color-mint);
