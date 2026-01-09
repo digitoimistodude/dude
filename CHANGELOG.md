@@ -1,4 +1,10 @@
-### 2.1.0: 2026-01-08
+### 7.0.2: 2026-01-09
+
+* Set up husky pre-commit hooks for dudestack, Ref: DEV-567
+* Fix pricing gradient toggle JS path after assets restructure, Ref: DEV-567
+* Update WordPress to 6.9
+
+### 7.0.1: 2026-01-08
 
 * Set up husky pre-commit hooks for code quality checks, Ref: DEV-567
 * Implement @digitoimistodude/code-quality-checks package, Ref: DEV-567
@@ -9,7 +15,7 @@
 * Add native Gutenberg blocks for pricing page, Ref: DEV-567
 * Downgrade stylelint to v15 for compatibility, Ref: DEV-567
 
-### 2.0.0: 2025-09-17
+### 7.0.0: 2025-09-17
 
 * Open dude.fi CHANGELOG.md
 * Caniuse-lite: Update browserslist db to @latest
