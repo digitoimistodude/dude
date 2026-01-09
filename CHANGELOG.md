@@ -3,6 +3,7 @@
 * Set up husky pre-commit hooks for dudestack, Ref: DEV-567
 * Fix pricing gradient toggle JS path after assets restructure, Ref: DEV-567
 * Update WordPress to 6.9
+* Add example attributes to pricing blocks for editor previews, Ref: DEV-567
 
 ### 7.0.1: 2026-01-08
 

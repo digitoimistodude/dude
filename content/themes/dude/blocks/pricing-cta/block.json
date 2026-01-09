@@ -13,6 +13,13 @@
     "align": ["full"],
     "anchor": true
   },
+  "example": {
+    "attributes": {
+      "phoneText": "Soita Juhalle 0400 443 221",
+      "emailText": "Lähetä sähköpostia moro@dude.fi",
+      "formText": "Täytä yhteydenottolomake"
+    }
+  },
   "attributes": {
     "phoneText": {
       "type": "string",
