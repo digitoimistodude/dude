@@ -30,7 +30,7 @@
     font-weight: 500;
     letter-spacing: -0.42px;
     line-height: 1.38;
-    margin-bottom: 26px;
+    margin: 0 0 26px;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-28);
@@ -42,7 +42,7 @@
   > .wp-block-paragraph {
     font-size: var(--font-size-24);
     line-height: 1.7;
-    margin-bottom: 26px;
+    margin: 0 0 26px;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-16);

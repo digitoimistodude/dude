@@ -82,11 +82,11 @@
     font-weight: 500;
     letter-spacing: -0.42px;
     line-height: 1.4;
-    margin-bottom: 27px;
+    margin: 0 0 27px;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-24);
-      margin-bottom: 20px;
+      margin: 0 0 20px;
     }
   }
 
@@ -95,6 +95,7 @@
   .wp-block-paragraph {
     font-size: var(--font-size-20);
     line-height: 1.7;
+    margin: 0;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-16);

@@ -27,7 +27,7 @@
     font-weight: 500;
     letter-spacing: 0.38px;
     line-height: 1.5;
-    margin-bottom: 25px;
+    margin: 0 0 25px;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-24);
@@ -40,6 +40,7 @@
     font-size: var(--font-size-16);
     font-weight: 500;
     line-height: 1.7;
+    margin: 0;
   }
 
   @media (max-width: 900px) {
