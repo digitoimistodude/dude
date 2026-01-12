@@ -37,9 +37,9 @@
     }
   }
 
-  // Style paragraph inside CTA
-  > p,
-  > .wp-block-paragraph {
+  // Style paragraph inside CTA (works for both front-end and editor)
+  p,
+  .wp-block-paragraph {
     font-size: var(--font-size-24);
     line-height: 1.7;
     margin: 0 0 26px;
@@ -105,11 +105,6 @@
   }
 
   @media (max-width: 1200px) {
-    display: none; // stylelint-disable-line a11y/no-display-none
-  }
-
-  // Hide in editor (positioned absolutely, doesn't work well)
-  .editor-styles-wrapper & {
     display: none; // stylelint-disable-line a11y/no-display-none
   }
 }

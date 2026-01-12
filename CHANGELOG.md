@@ -1,3 +1,7 @@
+### 7.0.3: 2026-01-12
+
+* Convert pricing blocks to static and fix editor/front-end style consistency, Ref: DEV-567
+
 ### 7.0.2: 2026-01-09
 
 * Set up husky pre-commit hooks for dudestack, Ref: DEV-567

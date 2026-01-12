@@ -116,3 +116,13 @@ function enqueue_pricing_gradient_toggle() {
   );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_pricing_gradient_toggle' );
+
+/**
+ * Register block pattern category for Dude patterns
+ */
+function register_block_pattern_categories() {
+  register_block_pattern_category( 'dude', [
+    'label' => __( 'Dude', 'flavor' ),
+  ] );
+}
+add_action( 'init', __NAMESPACE__ . '\register_block_pattern_categories' );

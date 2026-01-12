@@ -14,41 +14,32 @@
   }
 }
 
-// Frontend: flex layout with .category-info and .category-items wrappers
-// Editor: grid layout since InnerBlocks renders flat
+// Grid layout for both editor and front-end (static block)
 .pricing-category {
   display: grid;
   gap: 2.5rem;
   grid-template-columns: 27.0625rem 1fr;
   grid-template-rows: auto auto 1fr;
 
-  // Frontend wrappers span full grid
-  .category-info {
-    grid-column: 1;
-    grid-row: 1 / -1;
-  }
-
-  .category-items {
-    grid-column: 2;
-    grid-row: 1 / -1;
-
-    @media (max-width: 900px) {
-      grid-column: 1;
-    }
-  }
-
-  // Editor: position blocks in grid
-  > [data-type='core/heading'] {
+  // Heading - left column, first row (editor + front-end)
+  > [data-type='core/heading'],
+  > h2,
+  > .wp-block-heading {
     grid-column: 1;
     grid-row: 1;
   }
 
-  > [data-type='core/paragraph'] {
+  // Paragraph - left column, second row (editor + front-end)
+  > [data-type='core/paragraph'],
+  > p,
+  > .wp-block-paragraph {
     grid-column: 1;
     grid-row: 2;
   }
 
-  > [data-type='dude/pricing-item'] {
+  // Pricing items - right column (editor + front-end)
+  > [data-type='dude/pricing-item'],
+  > .wp-block-dude-pricing-item {
     grid-column: 2;
 
     @media (max-width: 900px) {
@@ -56,6 +47,7 @@
     }
   }
 
+  // Editor block appender
   > .block-list-appender {
     grid-column: 2;
 
@@ -69,52 +61,33 @@
   }
 }
 
-.category-info {
-  flex-shrink: 0;
-  padding-bottom: 1.6875rem;
-  width: 27.0625rem;
+// Category heading typography (first column)
+.pricing-category > h2,
+.pricing-category > .wp-block-heading,
+.pricing-category > [data-type='core/heading'] h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-32);
+  font-weight: 500;
+  letter-spacing: -0.02625rem;
+  line-height: 1.4;
+  margin: 0;
 
-  // Style heading inside category info (core/heading)
-  h2,
-  h2.wp-block-heading {
-    font-family: var(--font-heading);
-    font-size: var(--font-size-32);
-    font-weight: 500;
-    letter-spacing: -0.02625rem;
-    line-height: 1.4;
-    margin: 0 0 1.6875rem;
-
-    @media (max-width: 600px) {
-      font-size: var(--font-size-24);
-      margin: 0 0 1.25rem;
-    }
-  }
-
-  // Style paragraph inside category info (core/paragraph)
-  p,
-  .wp-block-paragraph {
-    font-size: var(--font-size-20);
-    line-height: 1.7;
-    margin: 0;
-
-    @media (max-width: 600px) {
-      font-size: var(--font-size-16);
-    }
-  }
-
-  @media (max-width: 900px) {
-    width: 100%;
+  @media (max-width: 600px) {
+    font-size: var(--font-size-24);
   }
 }
 
-.category-items {
-  flex: 1;
-}
+// Category description typography (first column)
+.pricing-category > p,
+.pricing-category > .wp-block-paragraph,
+.pricing-category > [data-type='core/paragraph'] p {
+  font-size: var(--font-size-20);
+  line-height: 1.7;
+  margin: 0;
 
-.pricing-accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  @media (max-width: 600px) {
+    font-size: var(--font-size-16);
+  }
 }
 
 .pricing-accordion-item {
@@ -132,21 +105,25 @@
     border-color: var(--color-mint);
   }
 
-  // Reset global button styles from _forms.scss
-  button.item-main {
+  // Base item-main styles (applies to both editor div and front-end button)
+  .item-main {
     align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  // Reset global button styles from _forms.scss (front-end only)
+  button.item-main {
     appearance: none;
     background: transparent;
     border: 0;
     box-shadow: none;
     color: inherit;
-    cursor: pointer;
-    display: flex;
     font-family: inherit;
     font-size: inherit;
-    justify-content: space-between;
     padding: 0;
-    width: 100%;
 
     &:hover,
     &:focus {
