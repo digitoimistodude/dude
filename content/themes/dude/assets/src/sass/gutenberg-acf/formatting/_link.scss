@@ -1,8 +1,8 @@
 // stylelint-disable no-descending-specificity
-// Default links everywhere
+// Default links everywhere (exclude button links)
 .site-main,
 .block-editor-rich-text__editable {
-  a {
+  a:not(.wp-block-button__link) {
     @include link();
   }
 }
