@@ -1,15 +1,15 @@
 // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity, selector-max-compound-selectors, max-line-length, a11y/no-display-none
+:root {
+  --height-showreel-layer: calc(var(--vh, 1vh) * 100);
+}
 
 $transition-duration-showreel: 280ms;
 /* Interactive showreel functionality - temporarily disabled, can be re-enabled later
 // This must match the iframe!
 // Check it from full screen video:
-// <iframe src="https://player.vimeo.com/video/727306829?h=df2da26021&amp;title=0&amp;portrait=0&amp;muted=1&amp;autoplay=1&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=122963" width="1208" height="680" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Dude Showreel Preview" data-ready="true"></iframe>
+// <iframe src="https://player.vimeo.com/video/727306829?h=df2da26021&amp;title=0&amp;portrait=0&amp;muted=1&amp;autoplay=1&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=122963" width="1208" height="680" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" title="Dude Showreel Preview" data-ready="true"></iframe> */
 
-:root {
-  --height-showreel-layer: calc(var(--vh, 1vh) * 100);
-}
-
+/*
 // Default CTA state
 body .site-main .block-hero .video-cta.container {
   align-items: center;

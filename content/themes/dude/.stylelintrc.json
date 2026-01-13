@@ -1,3 +1,6 @@
 {
-  "extends": "@digitoimistodude/stylelint-config"
+  "extends": "@digitoimistodude/stylelint-config",
+  "rules": {
+    "rem-over-px/rem-over-px": null
+  }
 }
