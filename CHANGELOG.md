@@ -1,3 +1,7 @@
+### 7.0.4: 2026-01-13
+
+* Fix pricing-hero h2 font-size and add editor styles, Ref: DEV-567
+
 ### 7.0.3: 2026-01-12
 
 * Convert pricing blocks to static and fix editor/front-end style consistency, Ref: DEV-567
