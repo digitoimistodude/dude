@@ -26,7 +26,11 @@ registerBlockType( metadata.name, {
               <RichText.Content tagName="span" className="description" value={ shortDescription } />
             </div>
           </div>
-          <span className="icon" aria-hidden="true"></span>
+          <span className="icon" aria-hidden="true">
+            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M.666.667l8 8 8-8" stroke="#7EFFE1" strokeWidth="1.333" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
         </button>
         <div className="accordion-content" hidden>
           { content && <p>{ content }</p> }
