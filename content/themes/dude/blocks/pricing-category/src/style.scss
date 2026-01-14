@@ -17,8 +17,8 @@
 // Grid layout for both editor and front-end (static block)
 .pricing-category {
   display: grid;
-  gap: 2.5rem;
-  grid-template-columns: 27.0625rem 1fr;
+  gap: 65px;
+  grid-template-columns: 470px 1fr;
   grid-template-rows: auto auto 1fr;
 
   // Heading - left column, first row (editor + front-end)
@@ -95,7 +95,7 @@
   border: 1px solid rgb(126 255 225 / 0.15);
   border-radius: 0.75rem;
   cursor: pointer;
-  padding: 1.5rem 2rem;
+  padding: 32px;
   text-align: left;
   transition: all 0.18s;
   width: 100%;
@@ -120,7 +120,7 @@
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: inherit;
+    color: inherit; // stylelint-disable-line scale-unlimited/declaration-strict-value
     font-family: inherit;
     font-size: inherit;
     padding: 0;
@@ -142,33 +142,27 @@
     display: block;
   }
 
-  &[aria-expanded='true'] .icon::after {
-    transform: rotate(-135deg);
+  &[aria-expanded='true'] .icon svg {
+    transform: rotate(180deg);
   }
 
   .icon {
     align-items: center;
     display: flex;
     flex-shrink: 0;
-    height: 2rem;
+    height: 18px;
     justify-content: center;
-    width: 2rem;
+    width: 18px;
 
-    &::after {
-      border: 2px solid #fff;
-      border-left: 0;
-      border-top: 0;
-      content: '';
-      display: block;
-      height: 0.625rem;
-      transform: rotate(45deg);
+    svg {
+      height: auto;
       transition: transform 0.18s;
-      width: 0.625rem;
+      width: 18px;
     }
   }
 
   @media (max-width: 600px) {
-    padding: 1.25rem 1.5rem;
+    padding: 24px;
   }
 }
 
@@ -223,7 +217,7 @@
   .badge {
     background-color: var(--color-mint);
     border-radius: 6.25rem;
-    color: #1c1e26;
+    color: var(--color-midnight);
     font-size: var(--font-size-14);
     font-weight: 500;
     padding: 0.25rem 0.75rem;
