@@ -90,63 +90,80 @@
   }
 }
 
+// Accordion item wrapper
 .pricing-accordion-item {
   background: transparent;
   border: 1px solid rgb(126 255 225 / 0.15);
   border-radius: 0.75rem;
-  cursor: pointer;
-  padding: 32px;
   text-align: left;
   transition: all 0.18s;
   width: 100%;
 
   &:hover,
-  &:focus {
+  &:focus-within {
     border-color: var(--color-mint);
   }
 
-  // Base item-main styles (applies to both editor div and front-end button)
-  .item-main {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  // Reset h3 wrapper
+  > h3 {
+    margin: 0;
   }
 
-  // Reset global button styles from _forms.scss (front-end only)
-  button.item-main {
+  // Accordion trigger button (accessible pattern)
+  .accordion-trigger {
+    align-items: center;
     appearance: none;
     background: transparent;
     border: 0;
     box-shadow: none;
     color: inherit; // stylelint-disable-line scale-unlimited/declaration-strict-value
+    cursor: pointer;
+    display: flex;
     font-family: inherit;
     font-size: inherit;
-    padding: 0;
+    font-weight: inherit;
+    justify-content: space-between;
+    padding: 32px;
+    text-align: left;
+    width: 100%;
 
     &:hover,
     &:focus {
       background: transparent;
       border: 0;
       box-shadow: none;
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      padding: 24px;
     }
   }
 
-  .accordion-content {
-    display: none;
-    padding-top: 1rem;
+  // Accordion title wrapper
+  .accordion-title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  &[aria-expanded='true'] .accordion-content {
-    display: block;
+  // Accordion panel (hidden by default)
+  .accordion-panel {
+    padding: 0 32px 32px;
+
+    @media (max-width: 600px) {
+      padding: 0 24px 24px;
+    }
   }
 
-  &[aria-expanded='true'] .icon svg {
+  // Expanded state - rotate icon
+  .accordion-trigger[aria-expanded='true'] .accordion-icon svg {
     transform: rotate(180deg);
   }
 
-  .icon {
+  // Accordion icon
+  .accordion-icon {
     align-items: center;
     display: flex;
     flex-shrink: 0;
@@ -160,13 +177,10 @@
       width: 18px;
     }
   }
-
-  @media (max-width: 600px) {
-    padding: 24px;
-  }
 }
 
-.accordion-content {
+// Accordion panel content styles
+.accordion-panel {
   p {
     color: rgb(255 255 255 / 0.8);
     font-size: var(--font-size-16);
@@ -203,11 +217,10 @@
   flex-wrap: wrap;
   gap: 1rem;
 
-  h3 {
+  .item-name {
     font-size: var(--font-size-24);
     font-weight: 500;
     line-height: 1.32;
-    margin: 0;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-18);
