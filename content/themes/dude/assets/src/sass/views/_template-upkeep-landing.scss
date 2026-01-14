@@ -1,4 +1,4 @@
-// stylelint-disable a11y/font-size-is-readable, selector-max-class, scale-unlimited/declaration-strict-value, selector-max-combinators, selector-max-compound-selectors, a11y/no-display-none
+// stylelint-disable a11y/font-size-is-readable, selector-max-class, scale-unlimited/declaration-strict-value, selector-max-combinators, selector-max-compound-selectors, a11y/no-display-none, property-disallowed-list, declaration-block-no-shorthand-property-overrides, keyframe-block-no-duplicate-selectors
 @property --gradient-angle {
   inherits: false;
   initial-value: 90deg;

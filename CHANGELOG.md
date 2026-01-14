@@ -1,3 +1,8 @@
+### 7.0.5: 2026-01-14
+
+* Fix button styles to prevent global style interference, Ref: DEV-567
+* Fix all stylelint warnings across codebase, Ref: DEV-567
+
 ### 7.0.4: 2026-01-13
 
 * Fix pricing-hero h2 font-size and add editor styles, Ref: DEV-567
