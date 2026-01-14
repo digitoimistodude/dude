@@ -74,6 +74,7 @@
     padding: 20px 41px;
     transition: all 0.18s;
 
+    // stylelint-disable-next-line
     &:hover,
     &:focus {
       background-color: var(--color-button-background-hover);

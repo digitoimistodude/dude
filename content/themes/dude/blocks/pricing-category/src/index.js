@@ -13,7 +13,7 @@ registerBlockType( 'dude/pricing-category', {
     return (
       <section { ...blockProps }>
         <div className="container">
-          <div className="pricing-category">
+          <div className="pricing-category accordion" data-allow-multiple data-allow-toggle>
             <InnerBlocks.Content />
           </div>
         </div>
