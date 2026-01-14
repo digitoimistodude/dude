@@ -136,10 +136,8 @@
   * Correct the text style of placeholders in Chrome, Edge, and Safari.
   */
 
-// stylelint-disable-next-line
-::input-placeholder {
-  // stylelint-disable-next-line
-  color: inherit;
+::placeholder {
+  color: inherit; // stylelint-disable-line scale-unlimited/declaration-strict-value
   opacity: 0.54;
 }
 

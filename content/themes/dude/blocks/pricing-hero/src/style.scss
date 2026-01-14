@@ -14,7 +14,7 @@
   }
 
   .content {
-    max-width: 62.5rem;
+    max-width: 1000px;
   }
 
   // Style the prefix heading (h1 with .prefix class)
@@ -49,7 +49,7 @@
     font-size: var(--font-size-30);
     line-height: 1.7;
     margin: 0;
-    max-width: 56.25rem;
+    max-width: 930px;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-22);
