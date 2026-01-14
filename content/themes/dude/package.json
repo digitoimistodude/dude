@@ -67,7 +67,7 @@
     "watch:block-item": "wp-scripts start blocks/pricing-item/src/index.js --output-path=blocks/pricing-item/build",
     "watch:block-cta": "wp-scripts start blocks/pricing-cta/src/index.js --output-path=blocks/pricing-cta/build",
     "watch:block-faq": "wp-scripts start blocks/pricing-faq/src/index.js --output-path=blocks/pricing-faq/build",
-    "lint:styles": "stylelint 'assets/src/sass/**/*.scss'",
+    "lint:styles": "stylelint 'assets/src/sass/**/*.scss' 'blocks/*/src/**/*.scss'",
     "lint:js": "eslint 'assets/src/js/**/*.js' 'blocks/*/src/**/*.js'",
     "lint:php": "phpcs --standard=../../../phpcs.xml *.php inc/**/*.php template-parts/**/*.php",
     "test": "npm run lint:styles && npm run lint:js && npm run lint:php && npm run format:check",
