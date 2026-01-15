@@ -25,7 +25,7 @@ registerBlockType( metadata.name, {
     const panelId = itemId;
 
     const blockProps = useBlockProps.save( {
-      className: `accordion-item pricing-accordion-item${ isPopular ? ' is-popular' : '' }`,
+      className: `pricing-accordion-item${ isPopular ? ' is-popular' : '' }`,
     } );
 
     return (

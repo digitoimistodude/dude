@@ -1,5 +1,67 @@
 // Pricing Category block styles
 // Loaded on both frontend and editor
+
+// Editor-specific overrides to reset WordPress defaults
+// stylelint-disable selector-class-pattern, no-descending-specificity
+.editor-styles-wrapper .block-pricing-category {
+  // Reset paragraph margins
+  p,
+  .wp-block-paragraph {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  // Reset heading margins
+  h2,
+  h3 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  // Reset button styles in accordion - need high specificity to override global button.accordion-trigger
+  .pricing-accordion-item button.accordion-trigger {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    justify-content: space-between;
+    margin: 0;
+    padding: 32px;
+    text-align: left;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  // Accordion panel in editor - override global accordion styles
+  .pricing-accordion-item .accordion-panel {
+    padding: 0 32px 32px;
+
+    > div {
+      padding-bottom: 0;
+      padding-right: 0;
+    }
+  }
+
+  // Reset list styles
+  ul {
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+  }
+}
+// stylelint-enable selector-class-pattern, no-descending-specificity
 .block-pricing-category {
   padding-bottom: 0;
   padding-top: calc(var(--padding-block) + 2.625rem);
@@ -14,59 +76,41 @@
   }
 }
 
-// Grid layout for both editor and front-end (static block)
+// Grid layout for both editor and front-end
 .pricing-category {
   display: grid;
   gap: 65px;
   grid-template-columns: 470px 1fr;
-  grid-template-rows: auto auto 1fr;
-
-  // Heading - left column, first row (editor + front-end)
-  > [data-type='core/heading'],
-  > h2,
-  > .wp-block-heading {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  // Paragraph - left column, second row (editor + front-end)
-  > [data-type='core/paragraph'],
-  > p,
-  > .wp-block-paragraph {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  // Pricing items - right column (editor + front-end)
-  > [data-type='dude/pricing-item'],
-  > .wp-block-dude-pricing-item {
-    grid-column: 2;
-
-    @media (max-width: 900px) {
-      grid-column: 1;
-    }
-  }
-
-  // Editor block appender
-  > .block-list-appender {
-    grid-column: 2;
-
-    @media (max-width: 900px) {
-      grid-column: 1;
-    }
-  }
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
-// Category heading typography (first column)
-.pricing-category > h2,
-.pricing-category > .wp-block-heading,
-.pricing-category > [data-type='core/heading'] h2 {
+// Category info wrapper (left column)
+.category-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// Category items wrapper (right column)
+.category-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  // Editor block appender
+  > .block-list-appender {
+    margin-top: 0;
+  }
+}
+
+// Category heading typography
+.category-title,
+.category-info h2 {
   font-family: var(--font-heading);
-  font-size: var(--font-size-32);
+  font-size: var(--font-size-28);
   font-weight: 500;
   letter-spacing: -0.02625rem;
   line-height: 1.4;
@@ -77,10 +121,9 @@
   }
 }
 
-// Category description typography (first column)
-.pricing-category > p,
-.pricing-category > .wp-block-paragraph,
-.pricing-category > [data-type='core/paragraph'] p {
+// Category description typography
+.category-description,
+.category-info p {
   font-size: var(--font-size-20);
   line-height: 1.7;
   margin: 0;
@@ -90,8 +133,8 @@
   }
 }
 
-// Accordion item wrapper
-.pricing-accordion-item {
+// Accordion item wrapper - use .block-pricing-category for higher specificity over global accordion styles
+.block-pricing-category .pricing-accordion-item {
   background: transparent;
   border: 1px solid rgb(126 255 225 / 0.15);
   border-radius: 0.75rem;
@@ -109,8 +152,8 @@
     margin: 0;
   }
 
-  // Accordion trigger button (accessible pattern)
-  .accordion-trigger {
+  // Accordion trigger button (accessible pattern) - use button for specificity over global styles
+  button.accordion-trigger {
     align-items: center;
     appearance: none;
     background: transparent;
@@ -152,23 +195,44 @@
   .accordion-panel {
     padding: 0 32px 32px;
 
+    // Override global accordion panel padding
+    > div {
+      padding-bottom: 0;
+      padding-right: 0;
+    }
+
     @media (max-width: 600px) {
       padding: 0 24px 24px;
     }
   }
 
-  // Expanded state - rotate icon
-  .accordion-trigger[aria-expanded='true'] .accordion-icon svg {
-    transform: rotate(180deg);
+  // Expanded state - override global expanded padding
+  button.accordion-trigger[aria-expanded='true'] {
+    padding: 32px;
+
+    @media (max-width: 600px) {
+      padding: 24px;
+    }
   }
 
-  // Accordion icon
+  // Expanded state - rotate icon (override global -315deg)
+  button.accordion-trigger[aria-expanded='true'] .accordion-icon {
+    transform: rotate(0deg);
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Accordion icon - override global background-image with our SVG
   .accordion-icon {
     align-items: center;
+    background-image: none;
     display: flex;
     flex-shrink: 0;
     height: 18px;
     justify-content: center;
+    min-width: 18px;
     width: 18px;
 
     svg {
@@ -179,9 +243,10 @@
   }
 }
 
-// Accordion panel content styles
-.accordion-panel {
-  p {
+// Accordion panel content styles - high specificity to override .site-main .accordion-panel > div
+.block-pricing-category .pricing-accordion-item .accordion-panel > div {
+  p,
+  li {
     color: rgb(255 255 255 / 0.8);
     font-size: var(--font-size-16);
     line-height: 1.7;
@@ -197,7 +262,7 @@
   }
 }
 
-.accordion-cta {
+.block-pricing-category .accordion-cta {
   margin-top: 1rem;
 
   .button {
@@ -205,17 +270,17 @@
   }
 }
 
-.item-content {
+.block-pricing-category .item-content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.item-header {
+.block-pricing-category .item-header {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 
   .item-name {
     font-size: var(--font-size-24);
@@ -232,12 +297,12 @@
     border-radius: 6.25rem;
     color: var(--color-midnight);
     font-size: var(--font-size-14);
-    font-weight: 500;
-    padding: 0.25rem 0.75rem;
+    font-weight: 600;
+    padding: 2px 14px;
   }
 }
 
-.item-meta {
+.block-pricing-category .item-meta {
   align-items: center;
   display: flex;
   gap: 0.75rem;

@@ -1,3 +1,8 @@
+### 7.0.6: 2026-01-15
+
+* Restructure pricing-category with proper wrapper elements (category-info, category-items), Ref: DEV-567
+* Align pricing-item editor HTML structure with front-end output, Ref: DEV-567
+
 ### 7.0.5: 2026-01-14
 
 * Fix button styles to prevent global style interference, Ref: DEV-567
