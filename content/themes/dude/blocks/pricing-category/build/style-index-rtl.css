@@ -63,10 +63,16 @@
 .pricing-category {
   display: grid;
   gap: 65px;
-  grid-template-columns: 470px 1fr;
+  grid-template-columns: minmax(0, 470px) minmax(0, 1fr);
 }
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
   .pricing-category {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  }
+}
+@media (max-width: 1050px) {
+  .pricing-category {
+    gap: 32px;
     grid-template-columns: 1fr;
   }
 }
@@ -74,7 +80,7 @@
 .category-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .category-items {
@@ -166,14 +172,28 @@
 .block-pricing-category .pricing-accordion-item .accordion-panel {
   padding: 0 32px 32px;
 }
-.block-pricing-category .pricing-accordion-item .accordion-panel > div {
-  padding-bottom: 0;
-  padding-left: 0;
-}
 @media (max-width: 600px) {
   .block-pricing-category .pricing-accordion-item .accordion-panel {
     padding: 0 24px 24px;
   }
+}
+.block-pricing-category .pricing-accordion-item .accordion-panel > div {
+  padding-bottom: 0;
+  padding-left: 0;
+}
+.block-pricing-category .pricing-accordion-item .accordion-panel > div p,
+.block-pricing-category .pricing-accordion-item .accordion-panel > div li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-16);
+  line-height: 1.7;
+  margin: 0;
+}
+.block-pricing-category .pricing-accordion-item .accordion-panel > div ul {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-16);
+  line-height: 1.7;
+  margin: 1rem 0 0;
+  padding-right: 1.25rem;
 }
 .block-pricing-category .pricing-accordion-item button.accordion-trigger[aria-expanded=true] {
   padding: 32px;
@@ -201,23 +221,8 @@
 }
 .block-pricing-category .pricing-accordion-item .accordion-icon svg {
   height: auto;
-  transition: transform 0.18s;
+  transition: transform 100ms;
   width: 18px;
-}
-
-.block-pricing-category .pricing-accordion-item .accordion-panel > div p,
-.block-pricing-category .pricing-accordion-item .accordion-panel > div li {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: var(--font-size-16);
-  line-height: 1.7;
-  margin: 0;
-}
-.block-pricing-category .pricing-accordion-item .accordion-panel > div ul {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: var(--font-size-16);
-  line-height: 1.7;
-  margin: 1rem 0 0;
-  padding-right: 1.25rem;
 }
 
 .block-pricing-category .accordion-cta {

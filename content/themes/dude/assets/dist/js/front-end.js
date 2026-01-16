@@ -11694,13 +11694,13 @@ const initAccordions = ()=>{
         const triggers = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-trigger'));
         const panels = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-panel'));
         accordion.addEventListener('click', (event)=>{
-            const { target } = event;
-            if (target.classList.contains('accordion-trigger')) {
+            const trigger = event.target.closest('.accordion-trigger');
+            if (trigger) {
                 // Check if the current toggle is expanded.
-                const isExpanded = target.getAttribute('aria-expanded') == 'true';
+                const isExpanded = trigger.getAttribute('aria-expanded') == 'true';
                 const active = accordion.querySelector('[aria-expanded="true"]');
                 // without allowMultiple, close the open accordion
-                if (!allowMultiple && active && active !== target) {
+                if (!allowMultiple && active && active !== trigger) {
                     // Set the expanded state on the triggering element
                     active.setAttribute('aria-expanded', 'false');
                     // Hide the accordion sections, using aria-controls to specify the desired section
@@ -11710,34 +11710,32 @@ const initAccordions = ()=>{
                 }
                 if (!isExpanded) {
                     // Set the expanded state on the triggering element
-                    target.setAttribute('aria-expanded', 'true');
+                    trigger.setAttribute('aria-expanded', 'true');
                     // Hide the accordion sections, using aria-controls to specify the desired section
-                    document.getElementById(target.getAttribute('aria-controls')).removeAttribute('hidden');
+                    document.getElementById(trigger.getAttribute('aria-controls')).removeAttribute('hidden');
                     // If toggling is not allowed, set disabled state on trigger
-                    if (!allowToggle) target.setAttribute('aria-disabled', 'true');
+                    if (!allowToggle) trigger.setAttribute('aria-disabled', 'true');
                 } else if (allowToggle && isExpanded) {
                     // Set the expanded state on the triggering element
-                    target.setAttribute('aria-expanded', 'false');
+                    trigger.setAttribute('aria-expanded', 'false');
                     // Hide the accordion sections, using aria-controls to specify the desired section
-                    document.getElementById(target.getAttribute('aria-controls')).setAttribute('hidden', '');
+                    document.getElementById(trigger.getAttribute('aria-controls')).setAttribute('hidden', '');
                 }
                 event.preventDefault();
             }
         });
         // Bind keyboard behaviors on the main accordion container
         accordion.addEventListener('keydown', (event)=>{
-            const { target } = event;
+            const trigger = event.target.closest('.accordion-trigger');
             const key = event.which.toString();
-            const isExpanded = target.getAttribute('aria-expanded') == 'true';
-            const allowToggle = allowMultiple || accordion.hasAttribute('data-allow-toggle');
             // 33 = Page Up, 34 = Page Down
             const ctrlModifier = event.ctrlKey && key.match(/33|34/);
             // Is this coming from an accordion header?
-            if (target.classList.contains('accordion-trigger')) {
+            if (trigger) {
                 // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
                 // 38 = Up, 40 = Down
                 if (key.match(/38|40/) || ctrlModifier) {
-                    const index = triggers.indexOf(target);
+                    const index = triggers.indexOf(trigger);
                     const direction = key.match(/34|40/) ? 1 : -1;
                     const { length } = triggers;
                     const newIndex = (index + length + direction) % length;

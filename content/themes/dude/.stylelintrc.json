@@ -3,6 +3,7 @@
   "rules": {
     "rem-over-px/rem-over-px": null,
     "property-disallowed-list": null,
-    "scale-unlimited/declaration-strict-value": null
+    "scale-unlimited/declaration-strict-value": null,
+    "selector-max-compound-selectors": 5
   }
 }

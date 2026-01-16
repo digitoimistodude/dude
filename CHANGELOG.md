@@ -1,3 +1,7 @@
+### 7.0.7: 2026-01-16
+
+* Fix accordion click handler to work with nested elements using `closest()`, Ref: DEV-567
+
 ### 7.0.6: 2026-01-15
 
 * Restructure pricing-category with proper wrapper elements (category-info, category-items), Ref: DEV-567
