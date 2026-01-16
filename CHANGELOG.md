@@ -1,5 +1,6 @@
 ### 7.0.7: 2026-01-16
 
+* Refactor pricing-cta block for inline editing with core/image inner block, Ref: DEV-567
 * Add theme.json with 1400px content size for native block widths, Ref: DEV-567
 * Update `$width-grid-base` from 1440px to 1400px, Ref: DEV-567
 * Fix pricing page background gradient to match Figma (linear from top-left), Ref: DEV-567

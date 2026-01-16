@@ -15,9 +15,9 @@
   },
   "example": {
     "attributes": {
-      "phoneText": "Soita Juhalle 0400 443 221",
-      "emailText": "Lähetä sähköpostia moro@dude.fi",
-      "formText": "Täytä yhteydenottolomake"
+      "phoneText": "Soita Juhalle <a href=\"tel:+358400443221\">0400 443 221</a>",
+      "emailText": "Lähetä sähköpostia <a href=\"mailto:moro@dude.fi\">moro@dude.fi</a>",
+      "formText": "<a href=\"/yhteystiedot/\">Täytä yhteydenottolomake →</a>"
     }
   },
   "attributes": {
@@ -31,23 +31,7 @@
     },
     "formText": {
       "type": "string",
-      "default": "Täytä yhteydenottolomake →"
-    },
-    "formUrl": {
-      "type": "string",
-      "default": "/yhteystiedot/"
-    },
-    "imageId": {
-      "type": "number",
-      "default": 0
-    },
-    "imageUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "imageAlt": {
-      "type": "string",
-      "default": ""
+      "default": "<a href=\"/yhteystiedot/\">Täytä yhteydenottolomake →</a>"
     }
   },
   "textdomain": "dude",
