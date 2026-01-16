@@ -1,6 +1,8 @@
 ### 7.0.7: 2026-01-16
 
-* Update pricing page background gradient to match Figma (linear + radial layers), Ref: DEV-567
+* Add theme.json with 1400px content size for native block widths, Ref: DEV-567
+* Update `$width-grid-base` from 1440px to 1400px, Ref: DEV-567
+* Fix pricing page background gradient to match Figma (linear from top-left), Ref: DEV-567
 * Fix accordion click handler to work with nested elements using `closest()`, Ref: DEV-567
 
 ### 7.0.6: 2026-01-15
