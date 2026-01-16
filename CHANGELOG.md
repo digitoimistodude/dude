@@ -1,5 +1,6 @@
 ### 7.0.7: 2026-01-16
 
+* Update pricing page background gradient to match Figma (linear + radial layers), Ref: DEV-567
 * Fix accordion click handler to work with nested elements using `closest()`, Ref: DEV-567
 
 ### 7.0.6: 2026-01-15

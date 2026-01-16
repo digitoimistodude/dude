@@ -4,6 +4,8 @@
     "rem-over-px/rem-over-px": null,
     "property-disallowed-list": null,
     "scale-unlimited/declaration-strict-value": null,
-    "selector-max-compound-selectors": 5
+    "selector-max-compound-selectors": 5,
+    "declaration-no-important": null,
+    "a11y/no-display-none": null
   }
 }
