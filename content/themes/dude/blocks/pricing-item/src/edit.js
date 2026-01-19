@@ -19,7 +19,6 @@ export default function Edit( { attributes, setAttributes } ) {
 
   const blockProps = useBlockProps( {
     className: `pricing-accordion-item${ isPopular ? ' is-popular' : '' }`,
-    'aria-expanded': isExpanded ? 'true' : 'false',
   } );
 
   const updateFeature = ( index, value ) => {
@@ -35,6 +34,14 @@ export default function Edit( { attributes, setAttributes } ) {
   const removeFeature = ( index ) => {
     const newFeatures = features.filter( ( _, i ) => i !== index );
     setAttributes( { features: newFeatures } );
+  };
+
+  const toggleExpanded = ( e ) => {
+    // Don't toggle when clicking on editable fields
+    if ( e.target.closest( '[contenteditable="true"]' ) ) {
+      return;
+    }
+    setIsExpanded( ! isExpanded );
   };
 
   return (
@@ -80,60 +87,62 @@ export default function Edit( { attributes, setAttributes } ) {
       </InspectorControls>
 
       <div { ...blockProps }>
-        <div
-          className="item-main"
-          onClick={ () => setIsExpanded( ! isExpanded ) }
-          onKeyDown={ ( e ) => {
-            if ( e.key === 'Enter' || e.key === ' ' ) {
-              e.preventDefault();
-              setIsExpanded( ! isExpanded );
-            }
-          } }
-          role="button"
-          tabIndex={ 0 }
-        >
-          <div className="item-content">
-            <div className="item-header">
-              <RichText
-                tagName="h3"
-                value={ title }
-                onChange={ ( value ) => setAttributes( { title: value } ) }
-                placeholder={ __( 'Tuotteen nimi...', 'dude' ) }
-                onClick={ ( e ) => e.stopPropagation() }
-              />
-              { isPopular && <span className="badge">Suosituin</span> }
-            </div>
-            <div className="item-meta">
-              <RichText
-                tagName="span"
-                className="price"
-                value={ price }
-                onChange={ ( value ) => setAttributes( { price: value } ) }
-                placeholder={ __( 'Hinta...', 'dude' ) }
-                onClick={ ( e ) => e.stopPropagation() }
-              />
-              <RichText
-                tagName="span"
-                className="description"
-                value={ shortDescription }
-                onChange={ ( value ) => setAttributes( { shortDescription: value } ) }
-                placeholder={ __( 'Lyhyt kuvaus...', 'dude' ) }
-                onClick={ ( e ) => e.stopPropagation() }
-              />
-            </div>
-          </div>
-          <span className="icon" aria-hidden="true"></span>
-        </div>
+        <h3>
+          <button
+            className="accordion-trigger"
+            type="button"
+            aria-expanded={ isExpanded ? 'true' : 'false' }
+            onClick={ toggleExpanded }
+          >
+            <span className="accordion-title">
+              <span className="item-content">
+                <span className="item-header">
+                  <RichText
+                    tagName="span"
+                    className="item-name"
+                    value={ title }
+                    onChange={ ( value ) => setAttributes( { title: value } ) }
+                    placeholder={ __( 'Tuotteen nimi...', 'dude' ) }
+                  />
+                  { isPopular && <span className="badge">Suosituin</span> }
+                </span>
+                <span className="item-meta">
+                  <RichText
+                    tagName="span"
+                    className="price"
+                    value={ price }
+                    onChange={ ( value ) => setAttributes( { price: value } ) }
+                    placeholder={ __( 'Hinta...', 'dude' ) }
+                  />
+                  <RichText
+                    tagName="span"
+                    className="description"
+                    value={ shortDescription }
+                    onChange={ ( value ) => setAttributes( { shortDescription: value } ) }
+                    placeholder={ __( 'Lyhyt kuvaus...', 'dude' ) }
+                  />
+                </span>
+              </span>
+              <span className="accordion-icon">
+                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M.666.667l8 8 8-8" stroke="#7EFFE1" strokeWidth="1.333" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </span>
+          </button>
+        </h3>
         { isExpanded && (
-          <div className="accordion-content">
-            <p>{ content }</p>
-            { features && features.length > 0 && (
-              <ul>
-                { features.map( ( feature, index ) => (
-                  <li key={ index }>{ feature }</li>
-                ) ) }
-              </ul>
-            ) }
+          <div className="accordion-panel">
+            <div>
+              { content && <p>{ content }</p> }
+              { features && features.length > 0 && (
+                <ul>
+                  { features.map( ( feature, index ) => (
+                    <li key={ index }>{ feature }</li>
+                  ) ) }
+                </ul>
+              ) }
+            </div>
           </div>
         ) }
       </div>

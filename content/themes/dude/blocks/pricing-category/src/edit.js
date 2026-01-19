@@ -3,6 +3,7 @@ import {
   useBlockProps,
   useInnerBlocksProps,
   InspectorControls,
+  RichText,
 } from '@wordpress/block-editor';
 import {
   PanelBody,
@@ -10,17 +11,6 @@ import {
 import './style.scss';
 
 const TEMPLATE = [
-  [ 'core/heading', {
-    level: 2,
-    content: 'Räätälöidyt WordPress-sivustot',
-    placeholder: __( 'Kategorian otsikko...', 'dude' ),
-    className: 'category-title',
-  } ],
-  [ 'core/paragraph', {
-    content: 'Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi.',
-    placeholder: __( 'Kategorian kuvaus...', 'dude' ),
-    className: 'category-description',
-  } ],
   [ 'dude/pricing-item', {
     title: 'Pieni sivusto',
     isPopular: false,
@@ -47,15 +37,17 @@ const TEMPLATE = [
   } ],
 ];
 
-const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'dude/pricing-item' ];
+const ALLOWED_BLOCKS = [ 'dude/pricing-item' ];
 
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+  const { title, description } = attributes;
+
   const blockProps = useBlockProps( {
     className: 'block block-pricing-category has-unified-padding-if-stacked',
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
-    { className: 'pricing-category is-layout-grid' },
+    { className: 'category-items accordion' },
     {
       template: TEMPLATE,
       allowedBlocks: ALLOWED_BLOCKS,
@@ -74,7 +66,25 @@ export default function Edit() {
 
       <section { ...blockProps }>
         <div className="container">
-          <div { ...innerBlocksProps } />
+          <div className="pricing-category">
+            <div className="category-info">
+              <RichText
+                tagName="h2"
+                className="category-title"
+                value={ title }
+                onChange={ ( value ) => setAttributes( { title: value } ) }
+                placeholder={ __( 'Kategorian otsikko...', 'dude' ) }
+              />
+              <RichText
+                tagName="p"
+                className="category-description"
+                value={ description }
+                onChange={ ( value ) => setAttributes( { description: value } ) }
+                placeholder={ __( 'Kategorian kuvaus...', 'dude' ) }
+              />
+            </div>
+            <div { ...innerBlocksProps } />
+          </div>
         </div>
       </section>
     </>
