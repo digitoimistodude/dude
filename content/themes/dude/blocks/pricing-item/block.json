@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "dude/pricing-item",
   "version": "1.0.0",
-  "title": "Hinnasto: Tuote",
+  "title": "Tuote",
   "category": "dude-native",
   "icon": "tag",
   "description": "Yksittäinen tuote hinnastokategoriassa",

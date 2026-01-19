@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "dude/pricing-cta",
   "version": "1.0.0",
-  "title": "Hinnasto: CTA-laatikko",
+  "title": "CTA-laatikko",
   "category": "dude-native",
   "icon": "megaphone",
   "description": "Hinnaston toimintakehoitelaatikko yhteystiedoilla",

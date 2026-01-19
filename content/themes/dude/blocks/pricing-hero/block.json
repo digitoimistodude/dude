@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "dude/pricing-hero",
   "version": "1.0.0",
-  "title": "Hinnasto: Hero",
+  "title": "Hero",
   "category": "dude-native",
   "icon": "money-alt",
   "description": "Hinnaston hero-osio otsikolla ja ingressillä",

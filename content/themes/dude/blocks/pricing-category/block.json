@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "dude/pricing-category",
   "version": "1.0.0",
-  "title": "Hinnasto: Kategoria",
+  "title": "Kategoria",
   "category": "dude-native",
   "icon": "tag",
   "description": "Hinnaston kategoria haitarielementeillä",
