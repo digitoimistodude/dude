@@ -18,14 +18,12 @@
     margin-top: 0;
   }
 
-  // Reset button styles in accordion - need high specificity to override global button.accordion-trigger
-  .pricing-accordion-item button.accordion-trigger {
+  // Editor uses div.accordion-trigger (not button) to allow RichText editing
+  .pricing-accordion-item .accordion-trigger {
     align-items: center;
-    appearance: none;
     background: transparent;
     border: 0;
     box-shadow: none;
-    cursor: pointer;
     display: flex;
     font-family: inherit;
     font-size: inherit;
@@ -36,13 +34,20 @@
     text-align: left;
     width: 100%;
 
-    &:hover,
-    &:focus {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      outline: none;
+    @media (max-width: 600px) {
+      padding: 24px;
     }
+  }
+
+  // Override global pointer-events: none to allow clicking in editor
+  .pricing-accordion-item .accordion-title {
+    pointer-events: auto;
+  }
+
+  // Make accordion icon clickable in editor
+  .pricing-accordion-item .accordion-icon {
+    cursor: pointer;
+    pointer-events: auto;
   }
 
   // Accordion panel in editor - override global accordion styles
@@ -104,11 +109,15 @@
 .category-items {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 18px;
 
   // Editor block appender
   > .block-list-appender {
     margin-top: 0;
+  }
+
+  @media (max-width: 600px) {
+    gap: 10px;
   }
 }
 
