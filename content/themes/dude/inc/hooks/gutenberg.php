@@ -109,9 +109,9 @@ add_action( 'init', __NAMESPACE__ . '\register_pricing_gradient_meta' );
 function enqueue_pricing_gradient_toggle() {
   wp_enqueue_script(
     'dude-pricing-gradient-toggle',
-    get_theme_file_uri( '/js/admin/pricing-gradient-toggle.js' ),
+    get_theme_file_uri( '/assets/src/js/admin/pricing-gradient-toggle.js' ),
     [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
-    filemtime( get_theme_file_path( '/js/admin/pricing-gradient-toggle.js' ) ),
+    filemtime( get_theme_file_path( '/assets/src/js/admin/pricing-gradient-toggle.js' ) ),
     true
   );
 }
