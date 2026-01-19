@@ -35,7 +35,7 @@ export default function Edit( { attributes, setAttributes } ) {
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
-    { className: 'faq-intro-inner is-layout-grid' },
+    {},
     {
       template: TEMPLATE,
       templateLock: 'all',

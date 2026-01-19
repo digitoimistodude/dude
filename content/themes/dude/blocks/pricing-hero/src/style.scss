@@ -1,5 +1,6 @@
 // Pricing Hero block styles
-.block-pricing-hero {
+// Using .block.block-pricing-hero for higher specificity to override editor defaults
+.block.block-pricing-hero {
   padding-bottom: 0;
   padding-top: var(--padding-container-vertical);
 
@@ -17,8 +18,9 @@
   }
 
   // Style the prefix heading (h1 with .prefix class)
+  // stylelint-disable-next-line no-descending-specificity
   h1.prefix,
-  h1.wp-block-heading.prefix {
+  .wp-block-heading.prefix {
     color: var(--color-mint);
     font-family: var(--font-heading);
     font-size: var(--font-size-14);
@@ -29,7 +31,7 @@
   }
 
   // Style the main heading (h2)
-  h2,
+  // stylelint-disable-next-line no-descending-specificity
   h2.wp-block-heading {
     font-family: var(--font-heading);
     font-size: clamp(3rem, 6vw, 5.625rem);
@@ -40,8 +42,9 @@
   }
 
   // Style the ingress paragraph
+  // stylelint-disable-next-line no-descending-specificity
   p.ingress,
-  p.wp-block-paragraph.ingress {
+  .wp-block-paragraph.ingress {
     font-family: var(--font-paragraph);
     font-size: var(--font-size-30);
     line-height: 1.7;
@@ -56,5 +59,32 @@
   // Style the buttons wrapper
   .wp-block-buttons {
     margin: 1.5625rem 0 0;
+  }
+
+  // Button styles for .is-style-mint (works in both editor and front-end)
+  // Target both editor (div) and front-end (a) button elements
+  .wp-block-button.is-style-mint .wp-block-button__link,
+  .wp-block-button.is-style-mint [contenteditable] {
+    background-color: var(--color-mint);
+    border: 1px solid var(--color-mint);
+    border-radius: 84px;
+    color: var(--color-dark-navy);
+    font-size: var(--font-size-24);
+    font-weight: 600;
+    padding: 20px 41px;
+    transition: all 0.18s;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-18);
+      padding: 16px 32px;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-button-background-hover);
+      border-color: var(--color-button-background-hover);
+      box-shadow: 0 0 0 3px var(--color-button-background-hover);
+      color: var(--color-button-hover);
+    }
   }
 }

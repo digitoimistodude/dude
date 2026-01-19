@@ -3,10 +3,13 @@ import {
   useBlockProps,
   useInnerBlocksProps,
   InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
 } from '@wordpress/block-editor';
 import {
   PanelBody,
   TextControl,
+  Button,
 } from '@wordpress/components';
 import './style.scss';
 
@@ -23,19 +26,35 @@ const TEMPLATE = [
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { phoneText, emailText, formText } = attributes;
+  const { phoneText, emailText, formText, formUrl, imageId, imageUrl, imageAlt } = attributes;
 
   const blockProps = useBlockProps( {
     className: 'block block-pricing-cta',
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
-    { className: 'cta-inner is-layout-grid' },
+    { className: 'cta-text' },
     {
       template: TEMPLATE,
       templateLock: 'all',
     }
   );
+
+  const onSelectImage = ( media ) => {
+    setAttributes( {
+      imageId: media.id,
+      imageUrl: media.url,
+      imageAlt: media.alt || '',
+    } );
+  };
+
+  const onRemoveImage = () => {
+    setAttributes( {
+      imageId: 0,
+      imageUrl: '',
+      imageAlt: '',
+    } );
+  };
 
   return (
     <>
@@ -57,6 +76,43 @@ export default function Edit( { attributes, setAttributes } ) {
             value={ formText }
             onChange={ ( value ) => setAttributes( { formText: value } ) }
           />
+          <TextControl
+            label={ __( 'Lomake-linkki', 'dude' ) }
+            value={ formUrl }
+            onChange={ ( value ) => setAttributes( { formUrl: value } ) }
+          />
+        </PanelBody>
+        <PanelBody title={ __( 'Kuva', 'dude' ) }>
+          <MediaUploadCheck>
+            <MediaUpload
+              onSelect={ onSelectImage }
+              allowedTypes={ [ 'image' ] }
+              value={ imageId }
+              render={ ( { open } ) => (
+                <>
+                  { imageUrl ? (
+                    <div>
+                      <img
+                        src={ imageUrl }
+                        alt={ imageAlt }
+                        style={ { maxWidth: '100%', marginBottom: '10px' } }
+                      />
+                      <Button onClick={ open } variant="secondary" style={ { marginRight: '8px' } }>
+                        { __( 'Vaihda kuva', 'dude' ) }
+                      </Button>
+                      <Button onClick={ onRemoveImage } isDestructive variant="secondary">
+                        { __( 'Poista', 'dude' ) }
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button onClick={ open } variant="secondary">
+                      { __( 'Valitse kuva', 'dude' ) }
+                    </Button>
+                  ) }
+                </>
+              ) }
+            />
+          </MediaUploadCheck>
         </PanelBody>
       </InspectorControls>
 
@@ -80,6 +136,11 @@ export default function Edit( { attributes, setAttributes } ) {
                 </li>
               </ul>
             </div>
+            { imageUrl && (
+              <div className="cta-image" aria-hidden="true">
+                <img src={ imageUrl } alt={ imageAlt } />
+              </div>
+            ) }
           </div>
         </div>
       </section>

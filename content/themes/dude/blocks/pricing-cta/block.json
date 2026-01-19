@@ -32,10 +32,26 @@
     "formText": {
       "type": "string",
       "default": "Täytä yhteydenottolomake →"
+    },
+    "formUrl": {
+      "type": "string",
+      "default": "/yhteystiedot/"
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
-  "style": "file:./build/style-index.css",
-  "render": "file:./render.php"
+  "editorStyle": "file:./build/style-index.css",
+  "style": "file:./build/style-index.css"
 }

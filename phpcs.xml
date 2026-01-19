@@ -23,6 +23,7 @@
      <exclude-pattern>wp/*</exclude-pattern>
      <exclude-pattern>content/languages/*</exclude-pattern>
      <exclude-pattern>media/*</exclude-pattern>
+     <exclude-pattern>*/blocks/*/build/*</exclude-pattern>
 
      <!-- Use Dude Coding Standards -->
      <rule ref="DCS"/>

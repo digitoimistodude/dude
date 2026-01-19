@@ -21,27 +21,4 @@ body.page-template-template-pricing .landing-pricing section {
   background: transparent !important;
 }
 
-// Button styles for pricing hero (core/button with .is-style-mint)
-.landing-pricing .wp-block-button.is-style-mint .wp-block-button__link {
-  background-color: var(--color-mint);
-  border: 1px solid var(--color-mint);
-  border-radius: 84px;
-  color: var(--color-dark-navy);
-  font-size: var(--font-size-24);
-  font-weight: 600;
-  padding: 20px 41px;
-  transition: all $transition-duration;
-
-  @media (max-width: $container-mobile) {
-    font-size: var(--font-size-18);
-    padding: 16px 32px;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--color-button-background-hover);
-    border-color: var(--color-button-background-hover);
-    box-shadow: 0 0 0 3px var(--color-button-background-hover);
-    color: var(--color-button-hover);
-  }
-}
+// Button styles for .is-style-mint moved to blocks/pricing-hero/src/style.scss

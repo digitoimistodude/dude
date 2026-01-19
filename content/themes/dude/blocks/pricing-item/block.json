@@ -40,6 +40,5 @@
     }
   },
   "textdomain": "dude",
-  "editorScript": "file:./build/index.js",
-  "render": "file:./render.php"
+  "editorScript": "file:./build/index.js"
 }
