@@ -80,9 +80,14 @@
 .pricing-category {
   display: grid;
   gap: 65px;
-  grid-template-columns: 470px 1fr;
+  grid-template-columns: minmax(0, 470px) minmax(0, 1fr);
 
-  @media (max-width: 900px) {
+  @media (max-width: 1300px) {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  }
+
+  @media (max-width: 1050px) {
+    gap: 32px;
     grid-template-columns: 1fr;
   }
 }
@@ -91,7 +96,7 @@
 .category-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 // Category items wrapper (right column)
@@ -195,14 +200,28 @@
   .accordion-panel {
     padding: 0 32px 32px;
 
-    // Override global accordion panel padding
-    > div {
-      padding-bottom: 0;
-      padding-right: 0;
-    }
-
     @media (max-width: 600px) {
       padding: 0 24px 24px;
+    }
+  }
+
+  .accordion-panel > div {
+    padding-bottom: 0;
+    padding-right: 0;
+    p,
+    li {
+      color: rgb(255 255 255 / 0.8);
+      font-size: var(--font-size-16);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    ul {
+      color: rgb(255 255 255 / 0.8);
+      font-size: var(--font-size-16);
+      line-height: 1.7;
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
     }
   }
 
@@ -237,28 +256,9 @@
 
     svg {
       height: auto;
-      transition: transform 0.18s;
+      transition: transform 100ms;
       width: 18px;
     }
-  }
-}
-
-// Accordion panel content styles - high specificity to override .site-main .accordion-panel > div
-.block-pricing-category .pricing-accordion-item .accordion-panel > div {
-  p,
-  li {
-    color: rgb(255 255 255 / 0.8);
-    font-size: var(--font-size-16);
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  ul {
-    color: rgb(255 255 255 / 0.8);
-    font-size: var(--font-size-16);
-    line-height: 1.7;
-    margin: 1rem 0 0;
-    padding-left: 1.25rem;
   }
 }
 
