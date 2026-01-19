@@ -24,6 +24,8 @@
 - Add blocks SCSS to stylelint scope, Ref: DEV-567
 - Update pricing-category grid layout (470px/65px gap), Ref: DEV-567
 - Implement accessible accordion pattern for pricing blocks, Ref: DEV-567
+- Fix all stylelint warnings across codebase, Ref: DEV-567
+- Silence Sass deprecation warnings and fix placeholder pseudo-element, Ref: DEV-567
 
 ### 7.0.4: 2026-01-13
 
