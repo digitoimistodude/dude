@@ -101,7 +101,7 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 // Pricing categories section
 .landing-pricing .block-pricing-categories {
   padding-bottom: var(--padding-block);
-  padding-top: var(--padding-block);
+  padding-top: calc(var(--padding-block) + 42px);
 
   .container {
     padding-bottom: 0;
@@ -134,7 +134,7 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 
 .landing-pricing .category-info h2 {
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: var(--font-size-32);
   font-weight: 500;
   letter-spacing: -0.42px;
   line-height: 1.4;
@@ -211,7 +211,7 @@ body.page-template-template-pricing .site-footer .certificates > ul {
 }
 
 .landing-pricing .accordion-cta .button {
-  margin-top: 8px;
+  margin-top: 26px;
 }
 
 .landing-pricing .item-content {
