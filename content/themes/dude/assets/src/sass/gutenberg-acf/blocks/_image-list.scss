@@ -1,0 +1,44 @@
+.block-image-list {
+  background-color: var(--color-light-mint);
+
+  .cols {
+    display: grid;
+    gap: 7.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    @media (max-width: $container-ipad) {
+      gap: 3rem;
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .image {
+    @media (max-width: $container-ipad) {
+      @include aspect-ratio(4, 3);
+    }
+  }
+
+  ul {
+    display: grid;
+    gap: 4rem;
+    list-style-image: url('../../svg/list-line-large.svg');
+
+    @media (max-width: $container-mobile) {
+      gap: 2rem;
+      list-style-image: url('../../svg/list-line.svg');
+    }
+  }
+
+  span {
+    color: var(--color-petrol);
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp-calc($container-mobile, 1600px, 16px, 36px);
+    margin-left: 2.2rem;
+    word-break: keep-all;
+
+    @media (max-width: $container-mobile) {
+      margin-left: 2rem;
+    }
+  }
+}

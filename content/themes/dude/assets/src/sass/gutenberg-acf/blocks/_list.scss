@@ -1,0 +1,64 @@
+.block-list {
+  background-color: var(--color-background-block);
+
+  ul {
+    // User input values
+    --grid-column-gap: 11.1rem;
+    --grid-row-gap: 2.6rem;
+    --grid-column-count: 3;
+    --grid-item-min-width: 100px;
+
+    // Calculated values
+    --gap-count: calc(var(--grid-column-count) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--grid-column-gap));
+    --grid-item-max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+    // Grid
+    display: grid;
+    grid-column-gap: var(--grid-column-gap);
+    grid-row-gap: var(--grid-row-gap);
+    grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item-min-width), var(--grid-item-max-width)), 1fr));
+    justify-content: space-between;
+    list-style-image: url('../../svg/list-line.svg');
+
+    @media (max-width: 1190px) {
+      --grid-column-count: 2;
+      --grid-column-gap: 8rem;
+    }
+
+    @media (max-width: 800px) {
+      --grid-column-gap: 6.4rem;
+    }
+
+    @media (max-width: $container-mobile) {
+      --grid-row-gap: var(--padding-container-horizontal);
+      --grid-column-gap: var(--grid-row-gap);
+      --grid-column-count: 1;
+    }
+  }
+
+  span {
+    color: var(--color-text);
+    display: block;
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-semibold);
+    margin-left: 1.8rem;
+    white-space: pre-wrap;
+
+    @media (max-width: $container-mobile) {
+      margin-left: 2rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    li {
+      white-space: nowrap;
+    }
+  }
+}
+
+.block-title-content-50-50 + .block-list > .container {
+  // We're using important here because specific dark mode overrides this and for this combo padding is too much
+  // stylelint-disable-next-line
+  padding-top: 0 !important;
+}

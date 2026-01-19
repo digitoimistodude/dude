@@ -1,0 +1,420 @@
+// Reference filters styling
+// stylelint-disable selector-max-specificity, selector-id-pattern, selector-max-combinators, selector-max-compound-selectors, declaration-no-important, a11y/no-display-none, scale-unlimited/declaration-strict-value, a11y/font-size-is-readable, max-nesting-depth, max-line-length
+
+// Main category filter section - matching blog archive style
+.reference-filters-main {
+  background-color: transparent;
+  padding: 2rem 0;
+
+  .arcive-head {
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    padding-bottom: 0;
+    padding-top: 0;
+
+    @media (max-width: $container-mobile) {
+      padding-bottom: 0;
+      padding-left: var(--padding-container-horizontal);
+      padding-right: var(--padding-container-horizontal);
+    }
+  }
+
+  @media (max-width: $container-mobile) {
+    display: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+// Archive head with label and filters
+.reference-filters-main .archive-head,
+.reference-filters-advanced .archive-head,
+.archive-reference .archive-head {
+  display: block;
+  margin-bottom: 2rem;
+
+  .filter-label {
+    color: #fff !important;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 1rem;
+  }
+
+  .archive-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    order: 2;
+    padding: 0;
+  }
+}
+
+.reference-filters-main + .block.block-references > .container,
+.reference-filters-advanced + .block.block-references > .container {
+  padding-top: 0;
+}
+
+// Target group filter buttons - main filtering
+.reference-filters-main .filter-button,
+.filter-button.filter-target-group {
+  background-color: transparent !important;
+  border: 1px solid var(--color-mint) !important;
+  border-radius: 0 !important;
+  color: var(--color-mint) !important;
+  cursor: pointer;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+  margin: 0;
+  padding: 7px 15px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  .archive-link {
+    display: none;
+  }
+
+  // Hover state
+  &:hover,
+  &:focus {
+    background-color: rgb(128 191 186 / 0.1) !important;
+    border-color: var(--color-mint) !important;
+    box-shadow: none;
+    color: var(--color-mint) !important;
+  }
+
+  // Active/selected state - filled
+  &.active {
+    background-color: var(--color-mint) !important;
+    border-color: var(--color-mint) !important;
+    box-shadow: none;
+    color: var(--color-midnight) !important;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+}
+
+// Advanced filters section - always visible on desktop, collapsible on mobile
+.reference-filters-advanced {
+  // stylelint-disable-next-line
+  @extend .container;
+  background-color: transparent;
+  margin-bottom: 3rem;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+
+  .filter-toggle-advanced {
+    align-items: center;
+    background-color: #3e575f;
+    border: 0;
+    border-radius: 0;
+    color: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    gap: 0.75rem;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      // stylelint-disable-next-line scss/no-global-function-names
+      background-color: darken(#3e575f, 5%);
+      border: 0;
+      box-shadow: none;
+      color: var(--color-white);
+    }
+
+    .icon-settings {
+      display: flex;
+      height: 17px;
+      width: 15px;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .filter-text {
+      font-size: 14px;
+    }
+
+    // Hide toggle button on desktop
+    @media (min-width: #{$container-mobile + 1px}) {
+      display: none;
+    }
+  }
+
+  .advanced-filters-content {
+    background-color: #3e575f;
+    padding: 2rem 0;
+
+    .filter-label {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    .container {
+      padding: 0;
+
+      @media (max-width: $container-mobile) {
+        padding-left: var(--padding-container-horizontal);
+        padding-right: var(--padding-container-horizontal);
+      }
+    }
+
+    // Show filters always on desktop
+    @media (min-width: #{$container-mobile + 1px}) {
+      background-color: transparent;
+      display: block !important;
+      padding: 0;
+      position: static;
+    }
+
+    @media (max-width: $container-mobile) {
+      .cols.cols-two {
+        gap: 2rem;
+      }
+    }
+  }
+
+  // Hide mobile target groups filter on desktop
+  .filter-target-groups-mobile {
+    @media (min-width: #{$container-mobile + 1px}) {
+      display: none;
+    }
+  }
+
+  // Solutions/Categories filter
+  .filter-solutions {
+    .filter-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      order: 2;
+    }
+
+    .filter-checkbox {
+      align-items: center;
+      background-color: transparent;
+      border: 1px solid rgb(255 255 255 / 0.5);
+      border-radius: 0;
+      color: var(--color-white);
+      cursor: pointer;
+      display: inline-flex;
+      font-size: 14px;
+      font-weight: var(--font-weight-regular);
+      line-height: 1;
+      padding: 7px 15px;
+      position: relative;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+
+      input[type='checkbox'] {
+        // Make the checkbox cover the entire label but keep it visually hidden
+        // while preserving the browser's default focus outline
+        appearance: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+
+      input[type='checkbox']:checked ~ span {
+        color: var(--color-midnight);
+      }
+
+      input[type='checkbox']:checked ~ & {
+        background-color: rgb(255 255 255 / 0.9);
+        border-color: var(--color-white);
+      }
+
+      &:has(input[type='checkbox']:checked) {
+        background-color: rgb(255 255 255 / 0.9);
+        border-color: var(--color-white);
+        color: var(--color-midnight);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: rgb(255 255 255 / 0.1);
+        border-color: var(--color-white);
+      }
+
+      span {
+        display: block;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  // Search filter
+  .filter-search .search-input-wrapper {
+    order: 2;
+    position: relative;
+
+    input[type='search'] {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid rgb(255 255 255 / 0.4);
+      border-radius: 0;
+      color: var(--color-white);
+      font-size: 16px;
+      padding: 15px 12px 13px 36px;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+
+      &::placeholder {
+        color: rgb(255 255 255 / 0.6);
+      }
+
+      // Custom search cancel button
+      &::-webkit-search-cancel-button {
+        appearance: none;
+        background-image: url('../../svg/search-cancel.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 22px 22px;
+        height: 22px;
+        width: 22px;
+      }
+
+      // Remove default search decoration
+      &::-webkit-search-decoration {
+        appearance: none;
+      }
+    }
+
+    .search-icon {
+      align-items: center;
+      color: rgb(255 255 255 / 0.6);
+      display: flex;
+      height: 24px;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  // Show on desktop always
+  @media (min-width: #{$container-mobile + 1px}) {
+    background-color: transparent;
+    display: block;
+  }
+
+  // On mobile, start hidden but can be toggled
+  @media (max-width: $container-mobile) {
+    display: block;
+  }
+}
+
+// Reference items filtering animation
+.col-reference {
+  opacity: 1;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+
+  &.filtered-out {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  &.filtered-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// No results message
+.no-results-message {
+  grid-column: 1 / -1;
+  padding: 4rem 2rem;
+  text-align: center;
+
+  h2 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin: 0 0 1rem;
+
+    @media (max-width: $container-mobile) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    color: var(--color-white);
+    font-size: 18px;
+    margin: 0 0 2rem;
+    opacity: 0.9;
+  }
+
+  .button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+
+    @media (max-width: $container-mobile) {
+      flex-direction: column;
+    }
+  }
+}
+
+// Dark mode adjustments
+body[data-color-scheme='dark'] .reference-filters-main .filter-button:hover,
+body[data-color-scheme='dark'] .reference-filters-main .filter-button:focus,
+body[data-color-scheme='dark'] .reference-filters-main .filter-button.active {
+  color: var(--color-midnight);
+}
+
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:checked + span,
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox:hover span,
+body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:focus + span {
+  color: var(--color-midnight);
+}
+
+@media (max-width: $container-mobile) {
+  .reference-filters-advanced {
+    margin-top: 2rem;
+  }
+
+  .reference-filters-advanced .archive-head,
+  .reference-filters-main .archive-head {
+    margin-bottom: 0;
+  }
+}

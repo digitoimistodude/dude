@@ -11,8 +11,8 @@ browserSync.init({
   proxy: proxyUrl,
   files: [
     `${themeDir}/**/*.php`,
-    `${themeDir}/assets/css/**/*.css`,
-    `${themeDir}/assets/js/**/*.js`,
+    `${themeDir}/assets/dist/css/**/*.css`,
+    `${themeDir}/assets/dist/js/**/*.js`,
     `${themeDir}/blocks/*/build/**/*.css`,
     `${themeDir}/blocks/*/build/**/*.js`,
   ],
