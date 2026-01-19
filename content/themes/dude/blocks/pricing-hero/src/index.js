@@ -2,6 +2,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import Edit from './edit';
 import './style.scss';
+import './editor.scss';
 
 registerBlockType( 'dude/pricing-hero', {
   edit: Edit,

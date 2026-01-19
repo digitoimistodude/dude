@@ -1,0 +1,29 @@
+// Editor-specific styles for Pricing Hero block
+// These use editor wrapper selectors for higher specificity
+
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators
+
+.editor-styles-wrapper .block.block-pricing-hero {
+  // Style the main heading (h2) - override editor defaults
+  h2.wp-block-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(4.8rem, 6vw, 9rem);
+    font-weight: 700;
+    letter-spacing: -0.09rem;
+    line-height: 1.1;
+    margin: 0 0 2.7rem;
+  }
+
+  // Button styles for editor
+  .wp-block-button.is-style-mint .wp-block-button__link,
+  .wp-block-button.is-style-mint [contenteditable="true"],
+  .wp-block-button.is-style-mint .rich-text {
+    background-color: var(--color-mint);
+    border: 1px solid var(--color-mint);
+    border-radius: 84px;
+    color: var(--color-dark-navy);
+    font-size: var(--font-size-24);
+    font-weight: 600;
+    padding: 20px 41px;
+  }
+}
