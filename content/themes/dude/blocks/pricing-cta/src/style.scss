@@ -93,7 +93,9 @@
   }
 }
 
-.cta-image {
+// Core image block styling
+.cta-image-block,
+.wp-block-image.cta-image-block {
   position: absolute;
   right: 80px;
   top: -203px;
