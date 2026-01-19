@@ -1,3 +1,4 @@
+// stylelint-disable selector-max-class, selector-max-specificity
 .block-carousel {
   background-color: var(--color-light-mint);
 
@@ -48,22 +49,19 @@
     background-color: transparent;
 
     .container {
-<<<<<<< HEAD
       max-width: 100%;
       overflow: visible;
+      padding-bottom: 0;
       padding-left: 0;
       padding-right: 0;
-=======
-      padding-bottom: 0;
->>>>>>> bb3d694 (Fix all stylelint warnings across codebase, Ref: DEV-567)
       padding-top: 0;
     }
 
     .scroll-carousel {
+      -webkit-overflow-scrolling: touch;
       overflow-x: auto;
       overflow-y: visible;
       scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
 
       &::-webkit-scrollbar {
         display: none;
@@ -106,10 +104,6 @@
       max-width: $width-grid-base;
       padding: 3rem var(--padding-container-horizontal) 6rem;
 
-      @media (max-width: $width-max-mobile) {
-        padding-bottom: 0;
-      }
-
       button {
         background-color: transparent;
         border: 0;
@@ -117,11 +111,14 @@
         color: var(--color-dark-navy);
         padding: 0;
       }
+
+      @media (max-width: $width-max-mobile) {
+        padding-bottom: 0;
+      }
     }
   }
 }
 
-// stylelint-disable-next-line
 .block.block-image-list + .is-skip-link + .block.block-carousel .container {
   padding-top: 0;
 }
