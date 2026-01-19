@@ -124,6 +124,7 @@
 // Category heading typography
 .category-title,
 .category-info h2 {
+  color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: var(--font-size-28);
   font-weight: 500;
@@ -139,6 +140,7 @@
 // Category description typography
 .category-description,
 .category-info p {
+  color: var(--color-paragraph);
   font-size: var(--font-size-20);
   line-height: 1.7;
   margin: 0;
