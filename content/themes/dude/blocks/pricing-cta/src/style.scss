@@ -3,6 +3,10 @@
 .block-pricing-cta {
   padding-bottom: 0;
   padding-top: var(--padding-block);
+
+  > .container {
+    overflow: visible !important;
+  }
 }
 
 .cta-box {
@@ -10,7 +14,7 @@
   background-image: radial-gradient(ellipse at center, #1e4348 0%, rgb(30 32 38 / 0.54) 100%);
   border-radius: 16px;
   display: flex;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 
   @media (max-width: 900px) {
@@ -22,6 +26,19 @@
   padding: 70px;
   width: 768px;
 
+  // Reset inner wrapper (editor adds this)
+  .cta-inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Reset block wrapper margins in editor
+  .cta-text,
+  .cta-inner > div {
+    margin: 0;
+    padding: 0;
+  }
+
   // Style heading inside CTA
   h2,
   h2.wp-block-heading {
@@ -31,6 +48,7 @@
     letter-spacing: -0.42px;
     line-height: 1.38;
     margin: 0 0 26px;
+    padding: 0;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-28);
@@ -39,10 +57,12 @@
 
   // Style paragraph inside CTA (works for both front-end and editor)
   p,
+  p:last-child,
   .wp-block-paragraph {
     font-size: var(--font-size-24);
     line-height: 1.7;
     margin: 0 0 26px;
+    padding: 0;
 
     @media (max-width: 600px) {
       font-size: var(--font-size-16);
@@ -66,6 +86,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-inline-start: 0;
 
   li {
     align-items: center;
@@ -95,16 +116,10 @@
 
 // Image wrapper (editor only)
 .cta-image-wrapper {
+  bottom: -10px;
   position: absolute;
-  right: 80px;
-  top: -203px;
+  right: 0;
   width: 473px;
-
-  .cta-image-block {
-    margin: 0;
-    position: static;
-    width: 100%;
-  }
 
   @media (max-width: 1200px) {
     display: none; // stylelint-disable-line a11y/no-display-none
@@ -113,10 +128,10 @@
 
 // Image block styling (front-end - direct child of cta-box)
 .cta-box > .cta-image-block {
+  bottom: -10px;
   margin: 0;
   position: absolute;
   right: 80px;
-  top: -203px;
   width: 473px;
 
   @media (max-width: 1200px) {
