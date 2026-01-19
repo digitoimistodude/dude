@@ -32,6 +32,17 @@
     "formText": {
       "type": "string",
       "default": "<a href=\"/yhteystiedot/\">Täytä yhteydenottolomake →</a>"
+    },
+    "imageId": {
+      "type": "number"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": "https://www.dude.fi/media/juha-2023.png"
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "dude",

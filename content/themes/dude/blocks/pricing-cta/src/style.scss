@@ -93,20 +93,38 @@
   }
 }
 
-// Core image block styling
-.cta-image-block,
-.wp-block-image.cta-image-block {
+// Image wrapper (editor only)
+.cta-image-wrapper {
   position: absolute;
   right: 80px;
   top: -203px;
   width: 473px;
 
-  img {
-    height: auto;
+  .cta-image-block {
+    margin: 0;
+    position: static;
     width: 100%;
   }
 
   @media (max-width: 1200px) {
     display: none; // stylelint-disable-line a11y/no-display-none
   }
+}
+
+// Image block styling (front-end - direct child of cta-box)
+.cta-box > .cta-image-block {
+  margin: 0;
+  position: absolute;
+  right: 80px;
+  top: -203px;
+  width: 473px;
+
+  @media (max-width: 1200px) {
+    display: none; // stylelint-disable-line a11y/no-display-none
+  }
+}
+
+.cta-image-block img {
+  height: auto;
+  width: 100%;
 }
