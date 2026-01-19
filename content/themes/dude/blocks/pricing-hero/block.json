@@ -13,6 +13,30 @@
     "align": ["full"],
     "anchor": true
   },
+  "example": {
+    "innerBlocks": [
+      {
+        "name": "core/heading",
+        "attributes": {
+          "level": 1,
+          "content": "Hinnasto"
+        }
+      },
+      {
+        "name": "core/heading",
+        "attributes": {
+          "level": 2,
+          "content": "Investoi parempaan digitaaliseen läsnäoloon"
+        }
+      },
+      {
+        "name": "core/paragraph",
+        "attributes": {
+          "content": "Kaikki palvelumme ovat räätälöityjä ja suunniteltu kestämään aikaa."
+        }
+      }
+    ]
+  },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
   "style": "file:./build/style-index.css",

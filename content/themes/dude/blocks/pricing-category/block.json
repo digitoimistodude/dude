@@ -13,6 +13,18 @@
     "align": ["full"],
     "anchor": true
   },
+  "example": {
+    "innerBlocks": [
+      {
+        "name": "dude/pricing-item",
+        "attributes": {
+          "title": "Esimerkkituote",
+          "price": "500 €",
+          "shortDescription": "Lyhyt kuvaus tuotteesta"
+        }
+      }
+    ]
+  },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
   "editorStyle": "file:./build/style-index.css",

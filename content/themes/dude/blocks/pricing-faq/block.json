@@ -13,6 +13,16 @@
     "align": ["full"],
     "anchor": true
   },
+  "example": {
+    "attributes": {
+      "items": [
+        {
+          "question": "Kuinka kauan projekti kestää?",
+          "answer": "Projektin kesto riippuu laajuudesta."
+        }
+      ]
+    }
+  },
   "attributes": {
     "items": {
       "type": "array",

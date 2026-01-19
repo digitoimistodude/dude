@@ -49,6 +49,11 @@
 - Fix pricing-category button styles overridden by global form styles, Ref: DEV-567
 - Update stylelint-config to 1.0.2 with auto-detect global.css path, Ref: DEV-567
 
+* Set up husky pre-commit hooks for dudestack, Ref: DEV-567
+* Fix pricing gradient toggle JS path after assets restructure, Ref: DEV-567
+* Update WordPress to 6.9
+* Add example attributes to pricing blocks for editor previews, Ref: DEV-567
+
 ### 7.0.1: 2026-01-08
 
 - Set up husky pre-commit hooks for code quality checks, Ref: DEV-567
