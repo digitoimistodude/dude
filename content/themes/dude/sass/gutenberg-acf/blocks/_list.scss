@@ -19,7 +19,7 @@
     grid-row-gap: var(--grid-row-gap);
     grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item-min-width), var(--grid-item-max-width)), 1fr));
     justify-content: space-between;
-    list-style-image: url('../../svg/list-line.svg');
+    list-style-image: url('../svg/list-line.svg');
 
     @media (max-width: 1190px) {
       --grid-column-count: 2;

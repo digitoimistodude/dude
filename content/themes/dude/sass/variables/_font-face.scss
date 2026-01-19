@@ -1,12 +1,12 @@
 // Self-hosted fonts
 // Remember to add these also to gutenberg/variables/_font-family.scss
 // with correct paths
-@include fontface('Inter', '../../fonts/inter-400', 400);
-@include fontface('Inter', '../../fonts/inter-400-italic', 400, italic);
-@include fontface('Inter', '../../fonts/inter-500', 500);
-@include fontface('Inter', '../../fonts/inter-600', 600);
-@include fontface('Inter', '../../fonts/inter-700', 700);
-@include fontface('Circular', '../../fonts/circular-500', 500);
-@include fontface('Circular', '../../fonts/circular-600', 600);
-@include fontface('Circular', '../../fonts/circular-700', 700);
-@include fontface('SF Mono', '../../fonts/sfmono-regular', 400);
+@include fontface('Inter', '../fonts/inter-400', 400);
+@include fontface('Inter', '../fonts/inter-400-italic', 400, italic);
+@include fontface('Inter', '../fonts/inter-500', 500);
+@include fontface('Inter', '../fonts/inter-600', 600);
+@include fontface('Inter', '../fonts/inter-700', 700);
+@include fontface('Circular', '../fonts/circular-500', 500);
+@include fontface('Circular', '../fonts/circular-600', 600);
+@include fontface('Circular', '../fonts/circular-700', 700);
+@include fontface('SF Mono', '../fonts/sfmono-regular', 400);

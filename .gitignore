@@ -59,6 +59,12 @@ tiedostot
 media
 media/*
 
+# Parcel
+.parcel-cache/
+
+# Source maps (optional - generated during build)
+*.map
+
 # Misc
 *.codekit
 db-sync
