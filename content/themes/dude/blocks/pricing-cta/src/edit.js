@@ -3,7 +3,6 @@ import {
   useBlockProps,
   useInnerBlocksProps,
   RichText,
-  MediaPlaceholder,
 } from '@wordpress/block-editor';
 import './style.scss';
 
@@ -17,10 +16,15 @@ const TEMPLATE = [
     content: 'Kerro meille projektistasi, niin palataan asiaan pikimmiten.',
     placeholder: __( 'Kirjoita kuvaus...', 'dude' ),
   } ],
+  [ 'core/image', {
+    id: 14859,
+    url: 'https://www.dude.fi/media/juha-2023.png',
+    className: 'cta-image',
+  } ],
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { phoneText, emailText, formText, imageUrl, imageAlt } = attributes;
+  const { phoneText, emailText, formText } = attributes;
 
   const blockProps = useBlockProps( {
     className: 'block block-pricing-cta',
@@ -33,14 +37,6 @@ export default function Edit( { attributes, setAttributes } ) {
       templateLock: false,
     }
   );
-
-  const onSelectImage = ( media ) => {
-    setAttributes( {
-      imageId: media.id,
-      imageUrl: media.url,
-      imageAlt: media.alt || '',
-    } );
-  };
 
   return (
     <section { ...blockProps }>
@@ -82,21 +78,6 @@ export default function Edit( { attributes, setAttributes } ) {
                 />
               </li>
             </ul>
-          </div>
-          <div className="cta-image-wrapper">
-            { imageUrl ? (
-              <figure className="cta-image-block">
-                <img src={ imageUrl } alt={ imageAlt } />
-              </figure>
-            ) : (
-              <MediaPlaceholder
-                icon="format-image"
-                labels={ { title: __( 'Kuva', 'dude' ) } }
-                onSelect={ onSelectImage }
-                accept="image/*"
-                allowedTypes={ [ 'image' ] }
-              />
-            ) }
           </div>
         </div>
       </div>

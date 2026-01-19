@@ -125,32 +125,21 @@ ul.contact-methods {
   }
 }
 
-// Image wrapper (editor only)
-.cta-image-wrapper {
-  bottom: -10px;
-  position: absolute;
-  right: 0;
-  width: 473px;
-
-  @media (max-width: 1200px) {
-    display: none; // stylelint-disable-line a11y/no-display-none
-  }
-}
-
-// Image block styling (front-end - direct child of cta-box)
-.cta-box > .cta-image-block {
+// Image block styling - targets core/image inside cta-text
+.cta-text .wp-block-image,
+.cta-inner .wp-block-image {
   bottom: -10px;
   margin: 0;
   position: absolute;
-  right: 80px;
+  right: -350px;
   width: 473px;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
 
   @media (max-width: 1200px) {
     display: none; // stylelint-disable-line a11y/no-display-none
   }
-}
-
-.cta-image-block img {
-  height: auto;
-  width: 100%;
 }
