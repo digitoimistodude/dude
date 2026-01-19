@@ -6,7 +6,7 @@ import './style.scss';
 registerBlockType( 'dude/pricing-cta', {
   edit: Edit,
   save: ( { attributes } ) => {
-    const { phoneText, emailText, formText, imageUrl, imageAlt } = attributes;
+    const { phoneText, emailText, formText } = attributes;
 
     const blockProps = useBlockProps.save( {
       className: 'block block-pricing-cta',
@@ -35,11 +35,6 @@ registerBlockType( 'dude/pricing-cta', {
                 </li>
               </ul>
             </div>
-            { imageUrl && (
-              <figure className="cta-image-block">
-                <img src={ imageUrl } alt={ imageAlt || '' } />
-              </figure>
-            ) }
           </div>
         </div>
       </section>

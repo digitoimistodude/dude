@@ -84,7 +84,9 @@
   }
 }
 
-.contact-methods {
+// stylelint-disable-next-line selector-max-class
+.block-pricing-cta .contact-methods,
+.editor-styles-wrapper .block-pricing-cta .contact-methods {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -120,32 +122,22 @@
   }
 }
 
-// Image wrapper (editor only)
-.cta-image-wrapper {
-  bottom: -10px;
-  position: absolute;
-  right: 0;
-  width: 473px;
-
-  @media (max-width: 1200px) {
-    display: none; // stylelint-disable-line a11y/no-display-none
-  }
-}
-
-// Image block styling (front-end - direct child of cta-box)
-.cta-box > .cta-image-block {
+// Image block styling (core/image with .cta-image-block class)
+// stylelint-disable-next-line selector-max-class
+.block-pricing-cta .cta-image-block,
+.block-pricing-cta .wp-block-image.cta-image-block {
   bottom: -10px;
   margin: 0;
   position: absolute;
   right: 80px;
   width: 473px;
 
+  img {
+    height: auto;
+    width: 100%;
+  }
+
   @media (max-width: 1200px) {
     display: none; // stylelint-disable-line a11y/no-display-none
   }
-}
-
-.cta-image-block img {
-  height: auto;
-  width: 100%;
 }
