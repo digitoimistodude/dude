@@ -5,11 +5,6 @@
   background-color: transparent !important;
   padding-bottom: 0;
   padding-top: 0;
-
-  > .container {
-    padding-bottom: 0;
-    padding-top: 0;
-  }
 }
 
 .block-pricing-faq .faq-layout {
@@ -157,7 +152,7 @@
 }
 
 .block-pricing-faq .accordion-trigger[aria-expanded='true'] .accordion-icon {
-  transform: rotate(45deg);
+  transform: rotate(45deg) !important;
 }
 
 .block-pricing-faq .accordion-panel {
