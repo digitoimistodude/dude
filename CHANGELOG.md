@@ -1,3 +1,7 @@
+### 7.0.8: 2026-01-19
+
+* Fix pricing-cta image positioning (move outside cta-content for correct absolute positioning), Ref: DEV-567
+
 ### 7.0.7: 2026-01-16
 
 * Refactor pricing-cta block for inline editing with core/image inner block, Ref: DEV-567
