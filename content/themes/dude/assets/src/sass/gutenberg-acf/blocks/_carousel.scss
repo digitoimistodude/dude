@@ -48,10 +48,14 @@
     background-color: transparent;
 
     .container {
+<<<<<<< HEAD
       max-width: 100%;
       overflow: visible;
       padding-left: 0;
       padding-right: 0;
+=======
+      padding-bottom: 0;
+>>>>>>> bb3d694 (Fix all stylelint warnings across codebase, Ref: DEV-567)
       padding-top: 0;
     }
 

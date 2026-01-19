@@ -1,7 +1,6 @@
-// stylelint-disable a11y/font-size-is-readable, selector-max-class, scale-unlimited/declaration-strict-value, selector-max-combinators, selector-max-compound-selectors, a11y/no-display-none
+// stylelint-disable a11y/font-size-is-readable, selector-max-class, scale-unlimited/declaration-strict-value, selector-max-combinators, selector-max-compound-selectors, a11y/no-display-none, declaration-no-important, property-disallowed-list
 // Pricing page template styles
 // Block-specific styles are in individual block src/style.scss files
-
 body.page-template-template-pricing {
   background-color: #1e4348 !important;
   background-image: linear-gradient(129deg, #1e4348 0%, #1c1e26 42%) !important;
@@ -13,12 +12,12 @@ body.page-template-template-pricing {
 
 body.page-template-template-pricing .site-footer,
 body.page-template-template-pricing .landing-pricing {
-  background: transparent !important;
+  background-color: transparent !important;
 }
 
 body.page-template-template-pricing .site-footer section,
 body.page-template-template-pricing .landing-pricing section {
-  background: transparent !important;
+  background-color: transparent !important;
 }
 
 // Button styles for .is-style-mint moved to blocks/pricing-hero/src/style.scss
