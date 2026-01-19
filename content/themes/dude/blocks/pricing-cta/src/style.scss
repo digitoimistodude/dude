@@ -17,6 +17,11 @@
   overflow: visible;
   position: relative;
 
+  // Reset editor figure margin
+  figure {
+    margin: 0;
+  }
+
   @media (max-width: 900px) {
     flex-direction: column;
   }
