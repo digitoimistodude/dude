@@ -36,14 +36,6 @@ export default function Edit( { attributes, setAttributes } ) {
     setAttributes( { features: newFeatures } );
   };
 
-  const toggleExpanded = ( e ) => {
-    // Don't toggle when clicking on editable fields
-    if ( e.target.closest( '[contenteditable="true"]' ) ) {
-      return;
-    }
-    setIsExpanded( ! isExpanded );
-  };
-
   return (
     <>
       <InspectorControls>
@@ -87,12 +79,10 @@ export default function Edit( { attributes, setAttributes } ) {
       </InspectorControls>
 
       <div { ...blockProps }>
-        <h3>
-          <button
+        <div className="accordion-header">
+          <div
             className="accordion-trigger"
-            type="button"
             aria-expanded={ isExpanded ? 'true' : 'false' }
-            onClick={ toggleExpanded }
           >
             <span className="accordion-title">
               <span className="item-content">
@@ -123,14 +113,26 @@ export default function Edit( { attributes, setAttributes } ) {
                   />
                 </span>
               </span>
-              <span className="accordion-icon">
+              <span
+                className="accordion-icon"
+                onClick={ () => setIsExpanded( ! isExpanded ) }
+                onKeyDown={ ( e ) => {
+                  if ( e.key === 'Enter' || e.key === ' ' ) {
+                    e.preventDefault();
+                    setIsExpanded( ! isExpanded );
+                  }
+                } }
+                role="button"
+                tabIndex={ 0 }
+                aria-label={ isExpanded ? __( 'Sulje', 'dude' ) : __( 'Avaa', 'dude' ) }
+              >
                 <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M.666.667l8 8 8-8" stroke="#7EFFE1" strokeWidth="1.333" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
             </span>
-          </button>
-        </h3>
+          </div>
+        </div>
         { isExpanded && (
           <div className="accordion-panel">
             <div>
