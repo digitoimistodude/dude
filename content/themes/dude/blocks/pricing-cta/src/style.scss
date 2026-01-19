@@ -47,6 +47,7 @@
   // Style heading inside CTA
   h2,
   h2.wp-block-heading {
+    color: var(--color-heading);
     font-family: var(--font-heading);
     font-size: var(--font-size-42);
     font-weight: 500;
@@ -64,6 +65,7 @@
   p,
   p:last-child,
   .wp-block-paragraph {
+    color: var(--color-paragraph);
     font-size: var(--font-size-24);
     line-height: 1.7;
     margin: 0 0 26px;
@@ -84,20 +86,22 @@
   }
 }
 
-.contact-methods {
+.contact-methods,
+ul.contact-methods {
   display: flex;
   flex-direction: column;
   gap: 8px;
   list-style: none;
   margin: 0;
-  padding: 0;
-  padding-inline-start: 0;
+  padding: 0 !important;
+  padding-inline-start: 0 !important;
 
   li {
     align-items: center;
+    color: var(--color-text);
     display: flex;
     gap: 8px;
-    padding-inline-start: 0;
+    padding-inline-start: 0 !important;
   }
 
   svg {
@@ -106,6 +110,7 @@
   }
 
   span {
+    color: var(--color-text);
     font-size: var(--font-size-20);
     line-height: 1.7;
 
