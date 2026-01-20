@@ -124,6 +124,11 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
 
 if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
   function build_image_cf_cdn_url( $image_url, $args = [] ) {
+    // Early return if no image URL provided
+    if ( empty( $image_url ) ) {
+      return '';
+    }
+
     unset( $args['classes'] );
 
     if ( ! isset( $args['format'] ) ) {
