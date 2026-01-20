@@ -45,6 +45,11 @@ if ( 'light' === $navigation_color && ! is_archive() ) {
 if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true ) ) {
   $body_class[] = 'job-filled';
 }
+
+// Add pricing gradient body class if meta is enabled
+if ( get_post_meta( get_the_ID(), '_show_pricing_gradient', true ) ) {
+  $body_class[] = 'has-pricing-gradient';
+}
 ?>
 
 <!doctype html>
