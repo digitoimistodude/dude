@@ -1,5 +1,6 @@
 ### 7.0.9: 2026-01-20
 
+* Restore `carousel-style-alt` scroll carousel code that was accidentally removed during asset restructure, Ref: DEV-567
 * Add editor-specific white color overrides to pricing blocks (fixes grey text in WP 6.9 editor), Ref: DEV-567
 
 ### 7.0.8: 2026-01-19
