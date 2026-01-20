@@ -62,8 +62,8 @@ foreach ( $persons as $person ) {
   $social_media_count = get_post_meta( $person['person_id'], 'social_media', true );
   for ( $i = 0; $i < $social_media_count; $i++ ) {
     $person_tmp['social_media'][] = [
-      'name' => get_post_meta( $person['person_id'], "social_media_${i}_name", true ),
-      'value' => get_post_meta( $person['person_id'], "social_media_${i}_value", true ),
+      'name' => get_post_meta( $person['person_id'], "social_media_{$i}_name", true ),
+      'value' => get_post_meta( $person['person_id'], "social_media_{$i}_value", true ),
     ];
   }
 
