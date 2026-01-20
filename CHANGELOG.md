@@ -1,3 +1,7 @@
+### 7.0.9: 2026-01-20
+
+* Add editor-specific white color overrides to pricing blocks (fixes grey text in WP 6.9 editor), Ref: DEV-567
+
 ### 7.0.8: 2026-01-19
 
 - Fix pricing-cta image positioning (move outside cta-content for correct absolute positioning), Ref: DEV-567

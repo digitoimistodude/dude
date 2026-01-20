@@ -1,4 +1,28 @@
 // Pricing CTA block styles
+// Editor-specific overrides - force white colors since editor can't detect dark gradient
+// stylelint-disable-next-line selector-class-pattern
+.editor-styles-wrapper .block-pricing-cta {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .wp-block-heading {
+    color: #fff;
+  }
+
+  p,
+  .wp-block-paragraph {
+    color: rgb(255 255 255 / 0.8);
+  }
+
+  li,
+  span {
+    color: rgb(255 255 255 / 0.8);
+  }
+}
+
 // Core blocks handle their own typography
 .block-pricing-cta {
   padding-bottom: 0;

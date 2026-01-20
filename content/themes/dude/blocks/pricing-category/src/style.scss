@@ -1,9 +1,29 @@
 // Pricing Category block styles
 // Loaded on both frontend and editor
 
-// Editor-specific overrides to reset WordPress defaults
+// Editor-specific overrides to reset WordPress defaults and force white colors
 // stylelint-disable selector-class-pattern, no-descending-specificity
 .editor-styles-wrapper .block-pricing-category {
+  // Force white colors since editor can't detect dark gradient
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .wp-block-heading,
+  .category-title,
+  .item-name,
+  .accordion-trigger {
+    color: #fff;
+  }
+
+  p,
+  .wp-block-paragraph,
+  .category-description {
+    color: rgb(255 255 255 / 0.8);
+  }
+
   // Reset paragraph margins
   p,
   .wp-block-paragraph {
@@ -176,7 +196,7 @@
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: inherit; // stylelint-disable-line scale-unlimited/declaration-strict-value
+    color: var(--color-heading);
     cursor: pointer;
     display: flex;
     font-family: inherit;
@@ -295,6 +315,7 @@
   gap: 2rem;
 
   .item-name {
+    color: var(--color-heading);
     font-size: var(--font-size-24);
     font-weight: 500;
     line-height: 1.32;
