@@ -307,3 +307,21 @@ body {
   // stylelint-disable-next-line
   background-image: none !important;
 }
+
+// Pricing page post title should be white
+.editor-styles-wrapper.has-pricing-gradient .editor-post-title {
+  // stylelint-disable-next-line
+  color: #fff !important;
+}
+
+// ACF blocks should have full width in editor
+// stylelint-disable-next-line selector-not-notation
+.block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)):has(.acf-block-preview) {
+  max-width: 100%;
+}
+
+// Remove global padding for ACF blocks
+:where(.editor-styles-wrapper) .has-global-padding:has(.acf-block-preview) {
+  padding-left: 0;
+  padding-right: 0;
+}
