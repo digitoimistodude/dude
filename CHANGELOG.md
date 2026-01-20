@@ -1,5 +1,6 @@
 ### 7.0.9: 2026-01-20
 
+* Fix CTA image positioning in editor by resetting position context on parent wrappers, Ref: DEV-567
 * Add separate "Pakota dark mode" admin setting for forcing dark mode without gradient, Ref: DEV-567
 * Rename `pricing-gradient-toggle.js` to `gradient-toggle.js`, Ref: DEV-567
 * Fix button text color in editor by narrowing span selector, Ref: DEV-567

@@ -28,16 +28,25 @@
     text-decoration-color: var(--color-mint) !important;
   }
 
+  // Reset position context on editor wrappers so image positions relative to .cta-box
+  .cta-text,
+  .cta-inner,
+  .cta-inner.block-editor-block-list__layout {
+    position: static !important;
+  }
+
   // Make image block selectable and position correctly in editor
+  // The block-editor-block-list__block class has position: relative, override it
+  .cta-image.block-editor-block-list__block,
   .cta-image,
   .cta-image.wp-block-image {
     bottom: 0;
     margin: 0;
     pointer-events: auto;
-    position: absolute;
+    position: absolute !important;
     right: 80px;
     width: 473px;
-    z-index: 10;
+    z-index: 1;
 
     img {
       height: auto;
