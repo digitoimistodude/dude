@@ -189,6 +189,108 @@ const initCarousels = () => {
       },
     });
   }
+
+  // Init scroll carousels (alt style - no Swiper)
+  const scrollCarousels = document.querySelectorAll('.carousel-style-alt .scroll-carousel');
+  scrollCarousels.forEach((carousel) => {
+    const container = carousel.closest('.carousel-style-alt');
+    const prevBtn = container.querySelector('.scroll-carousel-prev');
+    const nextBtn = container.querySelector('.scroll-carousel-next');
+    const items = carousel.querySelectorAll('.scroll-carousel-item');
+
+    if (!prevBtn || !nextBtn || !items.length) return;
+
+    // Prevent image dragging
+    carousel.querySelectorAll('img').forEach((img) => {
+      img.setAttribute('draggable', 'false');
+    });
+
+    // Find current visible item index based on scroll position
+    const getCurrentIndex = () => {
+      const scrollLeft = carousel.scrollLeft;
+      let currentIndex = 0;
+      let accumulatedWidth = 0;
+
+      for (let i = 0; i < items.length; i++) {
+        if (scrollLeft < accumulatedWidth + items[i].offsetWidth / 2) {
+          currentIndex = i;
+          break;
+        }
+        accumulatedWidth += items[i].offsetWidth + 40; // 40 = gap
+        currentIndex = i;
+      }
+      return currentIndex;
+    };
+
+    // Scroll to specific item with fast animation
+    const scrollToItem = (index) => {
+      if (index < 0) index = 0;
+      if (index >= items.length) index = items.length - 1;
+
+      let targetScroll = 0;
+      for (let i = 0; i < index; i++) {
+        targetScroll += items[i].offsetWidth + 40;
+      }
+
+      // Fast 150ms animation
+      const start = carousel.scrollLeft;
+      const distance = targetScroll - start;
+      const duration = 150;
+      const startTime = performance.now();
+
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = progress * (2 - progress);
+        carousel.scrollLeft = start + distance * ease;
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+    };
+
+    prevBtn.addEventListener('click', () => {
+      const current = getCurrentIndex();
+      scrollToItem(current - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const current = getCurrentIndex();
+      scrollToItem(current + 1);
+    });
+
+    // Mouse drag support
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.style.cursor = 'grab';
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      e.preventDefault();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  });
 };
 
 export default initCarousels;
