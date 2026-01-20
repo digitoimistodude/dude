@@ -19,7 +19,7 @@
   }
 
   li,
-  span {
+  .contact-methods span {
     color: rgb(255 255 255 / 0.8) !important;
   }
 
@@ -29,7 +29,8 @@
   }
 
   // Make image block selectable and position correctly in editor
-  .wp-block-image {
+  .cta-image,
+  .cta-image.wp-block-image {
     bottom: 0;
     margin: 0;
     pointer-events: auto;

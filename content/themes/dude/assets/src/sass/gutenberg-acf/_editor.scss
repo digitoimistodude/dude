@@ -391,12 +391,11 @@ body.is-dark-theme .editor-styles-wrapper {
     color: #fff !important;
   }
 
-  // All paragraphs and text
+  // All paragraphs and text (exclude buttons)
   p,
   .wp-block-paragraph,
   li,
-  span,
-  .rich-text {
+  .rich-text:not(.wp-block-button__link) {
     // stylelint-disable-next-line
     color: rgb(255 255 255 / 0.8) !important;
   }
