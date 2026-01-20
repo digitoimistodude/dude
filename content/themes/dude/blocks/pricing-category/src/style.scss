@@ -2,7 +2,7 @@
 // Loaded on both frontend and editor
 
 // Editor-specific overrides to reset WordPress defaults and force white colors
-// stylelint-disable selector-class-pattern, no-descending-specificity
+// stylelint-disable selector-class-pattern, no-descending-specificity, declaration-no-important
 .editor-styles-wrapper .block-pricing-category {
   // Force white colors since editor can't detect dark gradient
   h1,
@@ -13,15 +13,18 @@
   h6,
   .wp-block-heading,
   .category-title,
-  .item-name,
   .accordion-trigger {
-    color: #fff;
+    color: #fff !important;
+  }
+
+  .item-header .item-name {
+    color: #fff !important;
   }
 
   p,
   .wp-block-paragraph,
   .category-description {
-    color: rgb(255 255 255 / 0.8);
+    color: rgb(255 255 255 / 0.8) !important;
   }
 
   // Reset paragraph margins
