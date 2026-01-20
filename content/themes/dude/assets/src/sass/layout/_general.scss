@@ -16,6 +16,12 @@
   background-color: var(--color-background-block);
 }
 
+// Transparent backgrounds when gradient is active
+.has-petrol-gradient-background .block,
+.has-petrol-gradient-background .site-main:not(.archive-reference) {
+  background-color: transparent;
+}
+
 // Block padding exceptions
 // This class is useful when we have multiple blocks stacked with same background-color
 .block.has-unified-padding-if-stacked
