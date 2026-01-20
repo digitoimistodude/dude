@@ -100,6 +100,16 @@ function register_pricing_gradient_meta() {
       return current_user_can( 'edit_posts' );
     },
   ] );
+
+  register_post_meta( '', '_force_dark_mode', [
+    'show_in_rest'  => true,
+    'single'        => true,
+    'type'          => 'boolean',
+    'default'       => false,
+    'auth_callback' => function() {
+      return current_user_can( 'edit_posts' );
+    },
+  ] );
 }
 add_action( 'init', __NAMESPACE__ . '\register_pricing_gradient_meta' );
 
@@ -109,13 +119,27 @@ add_action( 'init', __NAMESPACE__ . '\register_pricing_gradient_meta' );
 function enqueue_pricing_gradient_toggle() {
   wp_enqueue_script(
     'dude-pricing-gradient-toggle',
-    get_theme_file_uri( '/assets/src/js/admin/pricing-gradient-toggle.js' ),
+    get_theme_file_uri( '/assets/src/js/admin/gradient-toggle.js' ),
     [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
-    filemtime( get_theme_file_path( '/assets/src/js/admin/pricing-gradient-toggle.js' ) ),
+    filemtime( get_theme_file_path( '/assets/src/js/admin/gradient-toggle.js' ) ),
     true
   );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_pricing_gradient_toggle' );
+
+/**
+ * Enqueue force dark mode toggle script for block editor
+ */
+function enqueue_force_dark_mode_toggle() {
+  wp_enqueue_script(
+    'dude-force-dark-mode-toggle',
+    get_theme_file_uri( '/assets/src/js/admin/force-dark-mode-toggle.js' ),
+    [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
+    filemtime( get_theme_file_path( '/assets/src/js/admin/force-dark-mode-toggle.js' ) ),
+    true
+  );
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_force_dark_mode_toggle' );
 
 /**
  * Register block pattern category for Dude patterns

@@ -46,10 +46,16 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
   $body_class[] = 'job-filled';
 }
 
-// Add pricing gradient body class and force dark mode if meta is enabled
+// Add pricing gradient body class if meta is enabled
 $has_petrol_gradient = get_post_meta( get_the_ID(), '_show_pricing_gradient', true );
 if ( $has_petrol_gradient ) {
   $body_class[] = 'has-petrol-gradient-background';
+}
+
+// Check if force dark mode is enabled
+$force_dark_mode = get_post_meta( get_the_ID(), '_force_dark_mode', true );
+if ( $force_dark_mode ) {
+  $body_class[] = 'force-dark-mode';
 }
 ?>
 
@@ -79,7 +85,7 @@ if ( $has_petrol_gradient ) {
   <?php endif; ?>
 </head>
 
-<body <?php body_class( $body_class ); ?><?php echo $has_petrol_gradient ? ' data-color-scheme="dark"' : ''; ?> style="margin: 0 !important;">
+<body <?php body_class( $body_class ); ?><?php echo ( $has_petrol_gradient || $force_dark_mode ) ? ' data-color-scheme="dark"' : ''; ?> style="margin: 0 !important;">
   <a class="skip-link screen-reader-text-dude js-trigger" href="#content"><?php echo esc_html( get_default_localization( 'Skip to content' ) ); ?></a>
 
   <?php wp_body_open(); ?>

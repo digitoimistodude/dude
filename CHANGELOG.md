@@ -1,5 +1,8 @@
 ### 7.0.9: 2026-01-20
 
+* Add separate "Pakota dark mode" admin setting for forcing dark mode without gradient, Ref: DEV-567
+* Rename `pricing-gradient-toggle.js` to `gradient-toggle.js`, Ref: DEV-567
+* Fix button text color in editor by narrowing span selector, Ref: DEV-567
 * Force dark mode in JS when petrol gradient is active and prevent toggle from switching, Ref: DEV-567
 * Connect pricing gradient toggle to front-end by using `has-petrol-gradient-background` body class based on post meta, Ref: DEV-567
 * Fix editor text visibility by adding dark theme color overrides for `is-dark-theme` body class, Ref: DEV-567

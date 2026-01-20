@@ -38,6 +38,7 @@
 
     // Explicitly check for boolean true, not just truthy
     const showGradient = meta._show_pricing_gradient === true;
+    const forceDarkMode = meta._force_dark_mode === true;
 
     // Apply/remove class to editor wrapper
     useEffect( function() {

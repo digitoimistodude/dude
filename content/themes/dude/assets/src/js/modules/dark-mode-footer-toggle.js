@@ -10,8 +10,8 @@ const initdarkModeFooterToggle = () => {
   const { body } = document;
   const colorMode = localStorage.getItem('data-color-scheme');
 
-  // Force dark mode if petrol gradient background is active
-  const forceDarkMode = body.classList.contains('has-petrol-gradient-background');
+  // Force dark mode if petrol gradient background or force-dark-mode is active
+  const forceDarkMode = body.classList.contains('has-petrol-gradient-background') || body.classList.contains('force-dark-mode');
 
   // Get toggles
   if (document.querySelector('input[name="colorModeToggle"]')) {
