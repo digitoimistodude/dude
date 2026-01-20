@@ -281,7 +281,7 @@
   // Accordion icon - override global background-image with our SVG
   .accordion-icon {
     align-items: center;
-    background-image: none !important;
+    background-image: none;
     display: flex;
     flex-shrink: 0;
     height: 18px;
