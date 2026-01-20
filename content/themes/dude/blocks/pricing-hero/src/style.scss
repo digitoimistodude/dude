@@ -1,22 +1,28 @@
 // Pricing Hero block styles
 // Editor-specific overrides - force white colors since editor can't detect dark gradient
-// stylelint-disable-next-line selector-class-pattern
-.editor-styles-wrapper .block-pricing-hero {
+// Using high specificity to override .block.block-pricing-hero styles
+// stylelint-disable selector-class-pattern, no-descending-specificity
+.editor-styles-wrapper .block.block-pricing-hero {
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
+  h1.wp-block-heading,
+  h2.wp-block-heading,
   .wp-block-heading {
-    color: #fff;
+    color: #fff !important;
   }
 
   p,
-  .wp-block-paragraph {
-    color: rgb(255 255 255 / 0.8);
+  p.ingress,
+  .wp-block-paragraph,
+  .wp-block-paragraph.ingress {
+    color: rgb(255 255 255 / 0.8) !important;
   }
 }
+// stylelint-enable selector-class-pattern, no-descending-specificity
 
 // Using .block.block-pricing-hero for higher specificity to override editor defaults
 .block.block-pricing-hero {
