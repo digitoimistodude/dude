@@ -31,12 +31,12 @@ if ( empty( $images ) ) {
   return;
 }
 
-// For alt carousel, disable cropping entirely (no gravity/fit) so images scale without being cut
+// Disable cropping entirely (no fit) so images scale without being cut
 $picture_cdn_args = [
   'width'   => '1400',
   'height'  => '840',
-  'gravity' => 'alt' === $carousel_style ? null : 'auto',
-  'fit'     => 'alt' === $carousel_style ? null : 'cover',
+  'gravity' => 'auto',
+  'fit'     => null,
 ];
 
 $picture_cdn_srcset = [
