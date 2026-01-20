@@ -1,5 +1,6 @@
 ### 7.0.9: 2026-01-20
 
+* Force dark mode by setting `data-color-scheme="dark"` on body when petrol gradient is active, Ref: DEV-567
 * Connect pricing gradient toggle to front-end by using `has-petrol-gradient-background` body class based on post meta, Ref: DEV-567
 * Fix editor text visibility by adding dark theme color overrides for `is-dark-theme` body class, Ref: DEV-567
 * Restore `carousel-style-alt` scroll carousel code that was accidentally removed during asset restructure, Ref: DEV-567
