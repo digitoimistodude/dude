@@ -56,3 +56,30 @@ add_action( 'init', __NAMESPACE__ . '\register_native_gutenberg_blocks' );
 
 // Note: Block editor assets are automatically enqueued via block.json's editorScript property
 // when register_block_type() is called with the block folder path. No manual enqueue needed.
+
+/**
+ * Override block style versions with filemtime for proper cache busting
+ */
+function native_block_cache_busting( $ver, $handle ) {
+  // Check if this is one of our native block styles
+  $block_handles = [
+    'dude-pricing-hero-style',
+    'dude-pricing-category-style',
+    'dude-pricing-item-style',
+    'dude-pricing-cta-style',
+    'dude-pricing-faq-style',
+  ];
+
+  if ( in_array( $handle, $block_handles, true ) ) {
+    // Extract block name from handle (e.g., 'dude-pricing-hero-style' -> 'pricing-hero')
+    $block_name = str_replace( [ 'dude-', '-style' ], '', $handle );
+    $style_file = get_theme_file_path( '/blocks/' . $block_name . '/build/style-index.css' );
+
+    if ( file_exists( $style_file ) ) {
+      return filemtime( $style_file );
+    }
+  }
+
+  return $ver;
+}
+add_filter( 'style_loader_ver', __NAMESPACE__ . '\native_block_cache_busting', 10, 2 );
