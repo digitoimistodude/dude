@@ -10,12 +10,18 @@ const initdarkModeFooterToggle = () => {
   const { body } = document;
   const colorMode = localStorage.getItem('data-color-scheme');
 
+  // Force dark mode if petrol gradient background is active
+  const forceDarkMode = body.classList.contains('has-petrol-gradient-background');
+
   // Get toggles
   if (document.querySelector('input[name="colorModeToggle"]')) {
     document
       .querySelectorAll('input[name="colorModeToggle"]')
       .forEach((colorModeToggle) => {
-        if (colorMode !== null) {
+        if (forceDarkMode) {
+          // Force dark mode when gradient is active
+          body.setAttribute('data-color-scheme', 'dark');
+        } else if (colorMode !== null) {
           body.setAttribute('data-color-scheme', colorMode);
           colorModeToggle.value.includes(colorMode)
             ? (colorModeToggle.checked = true)
@@ -27,6 +33,12 @@ const initdarkModeFooterToggle = () => {
 
         // On radio button change
         colorModeToggle.addEventListener('change', (event) => {
+          // Don't allow changing if gradient is active
+          if (forceDarkMode) {
+            body.setAttribute('data-color-scheme', 'dark');
+            return;
+          }
+
           const colorModeButtonState = event.target.value;
 
           // Set body attribute
