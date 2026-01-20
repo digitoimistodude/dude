@@ -24,6 +24,18 @@ body {
   margin: 0;
 }
 
+// WordPress editor dark theme support
+body.is-dark-theme .editor-styles-wrapper {
+  // Override color variables for dark editor theme
+  --color-heading: #fff;
+  --color-paragraph: #dcdde0;
+  --color-text: #fff;
+  --color-text-block: #fff;
+
+  // Ensure text color is applied
+  color: #dcdde0;
+}
+
 // Use ACF defined font styles in ACF fields
 .wpseo-metabox-root *,
 .acf-fields *:has(:not([class^='acf-'])) {
@@ -66,11 +78,46 @@ body {
   // Import gravity forms inside Gutenberg editor
   @import 'features/wpforms';
 
+  // Dark mode color variables for editor (ensures visibility on dark backgrounds)
+  --color-heading: var(--color-white);
+  --color-paragraph: var(--color-iron);
+  --color-text: var(--color-white);
+  --color-text-block: var(--color-white);
+
   // Background
   background-color: var(--color-background-block);
 
+  // Ensure all text is visible on dark background
+  color: var(--color-paragraph);
+
   // Prevent horizontal scrolling
   overflow-x: hidden;
+
+  // Placeholders should be visible
+  [data-rich-text-placeholder] {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.5) !important;
+  }
+
+  .block-editor-rich-text__editable[data-empty='true']::before,
+  .rich-text[data-empty='true']::before {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.5) !important;
+  }
+
+  // Post title should be white
+  .editor-post-title,
+  .editor-post-title__input,
+  .wp-block-post-title {
+    // stylelint-disable-next-line
+    color: #fff !important;
+  }
+
+  // Block appender placeholder
+  .block-editor-default-block-appender__content {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.5) !important;
+  }
 
   // Override WordPress editor margins to match front-end typography
   // Using :where() for zero specificity so block-specific styles can override
@@ -308,15 +355,31 @@ body {
   background-image: none !important;
 }
 
-// Pricing page post title should be white
-.editor-styles-wrapper.has-pricing-gradient .editor-post-title {
-  // stylelint-disable-next-line
-  color: #fff !important;
-}
-
-// Force white colors for all blocks on pricing page (dark gradient background)
+// Force white colors for all elements on pricing page (dark gradient background)
 // stylelint-disable-next-line no-duplicate-selectors
 .editor-styles-wrapper.has-pricing-gradient {
+  // Override CSS variables for dark background
+  --color-heading: #fff;
+  --color-paragraph: rgb(255 255 255 / 0.8);
+  --color-text: rgb(255 255 255 / 0.8);
+
+  // Post title
+  .editor-post-title,
+  .editor-post-title__input,
+  .wp-block-post-title {
+    // stylelint-disable-next-line
+    color: #fff !important;
+  }
+
+  // Placeholders
+  [data-rich-text-placeholder],
+  .block-editor-rich-text__editable[data-empty='true']::before,
+  .rich-text[data-empty='true']::before {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.5) !important;
+  }
+
+  // All headings
   h1,
   h2,
   h3,
@@ -328,10 +391,21 @@ body {
     color: #fff !important;
   }
 
+  // All paragraphs and text
   p,
-  .wp-block-paragraph {
+  .wp-block-paragraph,
+  li,
+  span,
+  .rich-text {
     // stylelint-disable-next-line
     color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  // Block appender and inserter
+  .block-editor-default-block-appender__content,
+  .block-editor-inserter__toggle {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.5) !important;
   }
 }
 
