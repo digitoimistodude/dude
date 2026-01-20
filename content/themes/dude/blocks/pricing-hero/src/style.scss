@@ -49,10 +49,10 @@
   .container {
     overflow: visible;
     padding-bottom: 0;
-    padding-top: 3.375rem;
+    padding-top: 34px;
 
     @media (max-width: 1200px) {
-      padding-top: 7.5rem;
+      padding-top: 75px;
     }
   }
 
@@ -69,20 +69,21 @@
     font-size: var(--font-size-14);
     font-weight: 500;
     letter-spacing: 1px;
-    margin: 0 0 1.6875rem;
+    margin: 0 0 17px;
     text-transform: uppercase;
   }
 
   // Style the main heading (h2)
+  // Using px values because rem base differs between admin (16px) and frontend (10px)
   // stylelint-disable-next-line no-descending-specificity
   h2.wp-block-heading {
     color: var(--color-heading);
     font-family: var(--font-heading);
-    font-size: clamp(4.8rem, 6vw, 9rem);
+    font-size: clamp(48px, 6vw, 90px);
     font-weight: 700;
-    letter-spacing: -0.09rem;
+    letter-spacing: -0.9px;
     line-height: 1.1;
-    margin: 0 0 2.7rem;
+    margin: 0 0 27px;
   }
 
   // Style the ingress paragraph
@@ -103,7 +104,7 @@
 
   // Style the buttons wrapper
   .wp-block-buttons {
-    margin: 1.5625rem 0 0;
+    margin: 16px 0 0;
   }
 
   // Button styles for .is-style-mint (works in both editor and front-end)

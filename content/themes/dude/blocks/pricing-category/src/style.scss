@@ -85,14 +85,14 @@
 
   // Reset list styles
   ul {
-    margin: 1rem 0 0;
-    padding-left: 1.25rem;
+    margin: 10px 0 0;
+    padding-left: 13px;
   }
 }
 // stylelint-enable selector-class-pattern, no-descending-specificity
 .block-pricing-category {
   padding-bottom: 0;
-  padding-top: calc(var(--padding-block) + 2.625rem);
+  padding-top: calc(var(--padding-block) + 26px);
 
   .container {
     overflow: visible;
@@ -125,7 +125,7 @@
 .category-info {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 20px;
 }
 
 // Category items wrapper (right column)
@@ -151,7 +151,7 @@
   font-family: var(--font-heading);
   font-size: var(--font-size-28);
   font-weight: 500;
-  letter-spacing: -0.02625rem;
+  letter-spacing: -0.26px;
   line-height: 1.4;
   margin: 0;
 
@@ -177,7 +177,7 @@
 .block-pricing-category .pricing-accordion-item {
   background: transparent;
   border: 1px solid rgb(126 255 225 / 0.15);
-  border-radius: 0.75rem;
+  border-radius: 12px;
   text-align: left;
   transition: all 0.18s;
   width: 100%;
@@ -255,8 +255,8 @@
       color: rgb(255 255 255 / 0.8);
       font-size: var(--font-size-16);
       line-height: 1.7;
-      margin: 1rem 0 0;
-      padding-left: 1.25rem;
+      margin: 10px 0 0;
+      padding-left: 13px;
     }
   }
 
@@ -298,24 +298,24 @@
 }
 
 .block-pricing-category .accordion-cta {
-  margin-top: 1rem;
+  margin-top: 10px;
 
   .button {
-    margin-top: 1.625rem;
+    margin-top: 16px;
   }
 }
 
 .block-pricing-category .item-content {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 5px;
 }
 
 .block-pricing-category .item-header {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 20px;
 
   .item-name {
     color: var(--color-heading);
@@ -330,7 +330,7 @@
 
   .badge {
     background-color: var(--color-mint);
-    border-radius: 6.25rem;
+    border-radius: 63px;
     color: var(--color-midnight);
     font-size: var(--font-size-14);
     font-weight: 600;
@@ -341,7 +341,7 @@
 .block-pricing-category .item-meta {
   align-items: center;
   display: flex;
-  gap: 0.75rem;
+  gap: 8px;
 
   .price {
     color: var(--color-mint);
