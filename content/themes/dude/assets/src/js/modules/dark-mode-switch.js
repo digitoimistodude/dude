@@ -66,6 +66,11 @@ const initdarkModeToggle = () => {
     const _modeText = (bool) => (bool ? light : dark);
 
     const _clicked = (_) => {
+      // Don't allow switching if petrol gradient is active (must stay dark)
+      if (body.classList.contains('has-petrol-gradient-background')) {
+        return;
+      }
+
       // Note: aria-clicked state is purposefully not linked to the mode setting.
       // Initially: The mode may be light or dark, but aria-clicked state is always false.
       _setAttr(
@@ -119,7 +124,15 @@ const initdarkModeToggle = () => {
     };
 
     const _init = (_) => {
+      // Force dark mode if petrol gradient background is active
+      const forceDarkMode = body.classList.contains('has-petrol-gradient-background');
+
       _getMode();
+
+      // Override mode if gradient is active
+      if (forceDarkMode) {
+        mode = false; // false = dark mode
+      }
 
       // Note: color-scheme cannot be set with CSS variables
       // This setting is ignored where unsupported
