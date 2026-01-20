@@ -314,6 +314,27 @@ body {
   color: #fff !important;
 }
 
+// Force white colors for all blocks on pricing page (dark gradient background)
+// stylelint-disable-next-line no-duplicate-selectors
+.editor-styles-wrapper.has-pricing-gradient {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .wp-block-heading {
+    // stylelint-disable-next-line
+    color: #fff !important;
+  }
+
+  p,
+  .wp-block-paragraph {
+    // stylelint-disable-next-line
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+}
+
 // ACF blocks should have full width in editor
 // stylelint-disable-next-line selector-not-notation
 .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)):has(.acf-block-preview) {
