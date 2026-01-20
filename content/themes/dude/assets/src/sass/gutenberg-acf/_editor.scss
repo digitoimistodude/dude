@@ -339,16 +339,16 @@ body.is-dark-theme .editor-styles-wrapper {
 }
 
 // Pricing page gradient background toggle (controlled via post meta)
-.editor-styles-wrapper.has-pricing-gradient {
+.editor-styles-wrapper.has-petrol-gradient-background {
   // stylelint-disable-next-line
   background-color: #1c1e26 !important;
   // stylelint-disable-next-line
   background-image: linear-gradient(160deg, #1e4348 0%, #1c1e26 50%) !important;
 }
 
-.editor-styles-wrapper.has-pricing-gradient .block,
-.editor-styles-wrapper.has-pricing-gradient .wp-block,
-.editor-styles-wrapper.has-pricing-gradient section {
+.editor-styles-wrapper.has-petrol-gradient-background .block,
+.editor-styles-wrapper.has-petrol-gradient-background .wp-block,
+.editor-styles-wrapper.has-petrol-gradient-background section {
   // stylelint-disable-next-line
   background-color: transparent !important;
   // stylelint-disable-next-line
@@ -357,7 +357,7 @@ body.is-dark-theme .editor-styles-wrapper {
 
 // Force white colors for all elements on pricing page (dark gradient background)
 // stylelint-disable-next-line no-duplicate-selectors
-.editor-styles-wrapper.has-pricing-gradient {
+.editor-styles-wrapper.has-petrol-gradient-background {
   // Override CSS variables for dark background
   --color-heading: #fff;
   --color-paragraph: rgb(255 255 255 / 0.8);

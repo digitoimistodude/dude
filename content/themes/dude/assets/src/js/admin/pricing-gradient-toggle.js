@@ -54,9 +54,9 @@
 
         wrappers.forEach( function( wrapper ) {
           if ( showGradient ) {
-            wrapper.classList.add( 'has-pricing-gradient' );
+            wrapper.classList.add( 'has-petrol-gradient-background' );
           } else {
-            wrapper.classList.remove( 'has-pricing-gradient' );
+            wrapper.classList.remove( 'has-petrol-gradient-background' );
           }
         } );
 

@@ -48,7 +48,7 @@ if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true
 
 // Add pricing gradient body class if meta is enabled
 if ( get_post_meta( get_the_ID(), '_show_pricing_gradient', true ) ) {
-  $body_class[] = 'has-pricing-gradient';
+  $body_class[] = 'has-petrol-gradient-background';
 }
 ?>
 

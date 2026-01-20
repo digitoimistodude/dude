@@ -1,7 +1,7 @@
 // Pricing page template styles
 // Block-specific styles are in individual block src/style.scss files
 // Gradient is controlled via _show_pricing_gradient post meta
-body.has-pricing-gradient {
+body.has-petrol-gradient-background {
   background-color: #1c1e26 !important;
   background-image: linear-gradient(160deg, #1e4348 0%, #1c1e26 50%) !important;
 
@@ -10,13 +10,13 @@ body.has-pricing-gradient {
   }
 }
 
-body.has-pricing-gradient .site-footer,
-body.has-pricing-gradient .landing-pricing {
+body.has-petrol-gradient-background .site-footer,
+body.has-petrol-gradient-background .landing-pricing {
   background-color: transparent !important;
 }
 
-body.has-pricing-gradient .site-footer section,
-body.has-pricing-gradient .landing-pricing section {
+body.has-petrol-gradient-background .site-footer section,
+body.has-petrol-gradient-background .landing-pricing section {
   background-color: transparent !important;
 }
 
