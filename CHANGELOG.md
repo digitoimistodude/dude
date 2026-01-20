@@ -1,5 +1,6 @@
 ### 7.0.9: 2026-01-20
 
+* Remove `fit=cover` from carousel images to prevent cropping, Ref: KVLT-161
 * Fix CTA image positioning in editor by resetting position context on parent wrappers, Ref: DEV-567
 * Add separate "Pakota dark mode" admin setting for forcing dark mode without gradient, Ref: DEV-567
 * Rename `pricing-gradient-toggle.js` to `gradient-toggle.js`, Ref: DEV-567
