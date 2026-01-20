@@ -1,27 +1,50 @@
 // Pricing CTA block styles
 // Editor-specific overrides - force white colors since editor can't detect dark gradient
-// stylelint-disable-next-line selector-class-pattern
-.editor-styles-wrapper .block-pricing-cta {
+// stylelint-disable selector-class-pattern, no-descending-specificity, declaration-no-important
+.editor-styles-wrapper .block.block-pricing-cta {
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
+  h2.wp-block-heading,
   .wp-block-heading {
-    color: #fff;
+    color: #fff !important;
   }
 
   p,
   .wp-block-paragraph {
-    color: rgb(255 255 255 / 0.8);
+    color: rgb(255 255 255 / 0.8) !important;
   }
 
   li,
   span {
-    color: rgb(255 255 255 / 0.8);
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  a {
+    color: var(--color-mint) !important;
+    text-decoration-color: var(--color-mint) !important;
+  }
+
+  // Make image block selectable and position correctly in editor
+  .wp-block-image {
+    bottom: 0;
+    margin: 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 80px;
+    width: 473px;
+    z-index: 10;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
   }
 }
+// stylelint-enable selector-class-pattern, no-descending-specificity, declaration-no-important
 
 // Core blocks handle their own typography
 .block-pricing-cta {
@@ -152,10 +175,10 @@ ul.contact-methods {
 // Image block styling - targets core/image inside cta-text
 .cta-text .wp-block-image,
 .cta-inner .wp-block-image {
-  bottom: -10px;
+  bottom: 0;
   margin: 0;
   position: absolute;
-  right: -350px;
+  right: 80px;
   width: 473px;
 
   img {
