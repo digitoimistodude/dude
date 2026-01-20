@@ -21,6 +21,12 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
   remove_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
 
   $image_data = wp_get_attachment_image_src( $image_id, 'full' );
+
+  // Early return if image not found
+  if ( ! $image_data ) {
+    return;
+  }
+
   $image_url = $image_data[0];
 
   $crop_dimensions = get_post_meta( $image_id, '_wpsmartcrop_enabled', true ) ? get_post_meta( $image_id, '_wpsmartcrop_image_focus', true ) : [];
