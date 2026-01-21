@@ -1,3 +1,7 @@
+### 7.0.10: 2026-01-21
+
+* Add WordPress blocks eslint config with JSX support, Ref: DEV-567
+
 ### 7.0.9: 2026-01-20
 
 * Remove `fit=cover` from carousel images to prevent cropping, Ref: KVLT-161
