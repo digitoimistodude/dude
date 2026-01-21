@@ -21,37 +21,27 @@ registerBlockType( 'dude/pricing-faq', {
             </div>
             <div className="faq-items">
               <div className="accordion" data-allow-multiple data-allow-toggle>
-                { items && items.map( ( item, index ) => {
-                  const faqId = `faq-block-${ index + 1 }`;
-                  return (
-                    <div key={ index } className="accordion-item">
-                      <h3>
-                        <button
-                          aria-expanded="false"
-                          className="accordion-trigger"
-                          aria-controls={ faqId }
-                          id={ `accordion-${ faqId }` }
-                        >
-                          <span className="accordion-title">
-                            { item.question }
-                            <span className="accordion-icon"></span>
-                          </span>
-                        </button>
-                      </h3>
-                      <div
-                        id={ faqId }
-                        role="region"
-                        aria-labelledby={ `accordion-${ faqId }` }
-                        className="accordion-panel"
-                        hidden
-                      >
-                        <div>
-                          <p>{ item.answer }</p>
+                { items &&
+                  items.map( ( item, index ) => {
+                    const faqId = `faq-block-${ index + 1 }`;
+                    return (
+                      <div key={ index } className="accordion-item">
+                        <h3>
+                          <button aria-expanded="false" className="accordion-trigger" aria-controls={ faqId } id={ `accordion-${ faqId }` }>
+                            <span className="accordion-title">
+                              { item.question }
+                              <span className="accordion-icon"></span>
+                            </span>
+                          </button>
+                        </h3>
+                        <div id={ faqId } role="region" aria-labelledby={ `accordion-${ faqId }` } className="accordion-panel" hidden>
+                          <div>
+                            <p>{ item.answer }</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                } ) }
+                    );
+                  } ) }
               </div>
             </div>
           </div>

@@ -1,28 +1,25 @@
 import { __ } from '@wordpress/i18n';
-import {
-  useBlockProps,
-  useInnerBlocksProps,
-  InspectorControls,
-} from '@wordpress/block-editor';
-import {
-  PanelBody,
-  Button,
-  TextControl,
-  TextareaControl,
-} from '@wordpress/components';
+import { useBlockProps, useInnerBlocksProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, Button, TextControl, TextareaControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import './style.scss';
 
 const TEMPLATE = [
-  [ 'core/heading', {
-    level: 2,
-    content: 'Hyvä tietää',
-    placeholder: __( 'Osion otsikko...', 'dude' ),
-  } ],
-  [ 'core/paragraph', {
-    content: 'Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset.',
-    placeholder: __( 'Osion kuvaus...', 'dude' ),
-  } ],
+  [
+    'core/heading',
+    {
+      level: 2,
+      content: 'Hyvä tietää',
+      placeholder: __( 'Osion otsikko…', 'dude' ),
+    },
+  ],
+  [
+    'core/paragraph',
+    {
+      content: 'Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset.',
+      placeholder: __( 'Osion kuvaus…', 'dude' ),
+    },
+  ],
 ];
 
 export default function Edit( { attributes, setAttributes } ) {
@@ -68,7 +65,9 @@ export default function Edit( { attributes, setAttributes } ) {
   const moveItem = ( index, direction ) => {
     const newItems = [ ...items ];
     const newIndex = index + direction;
-    if ( newIndex < 0 || newIndex >= items.length ) return;
+    if ( newIndex < 0 || newIndex >= items.length ) {
+      return;
+    }
     [ newItems[ index ], newItems[ newIndex ] ] = [ newItems[ newIndex ], newItems[ index ] ];
     setAttributes( { items: newItems } );
   };
@@ -81,49 +80,22 @@ export default function Edit( { attributes, setAttributes } ) {
     <>
       <InspectorControls>
         <PanelBody title={ __( 'UKK-asetukset', 'dude' ) }>
-          <p style={ { color: '#757575', fontSize: '12px' } }>
-            { __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää ja muokkaa kysymyksiä alla. Klikkaa kysymystä lohkossa nähdäksesi vastauksen.', 'dude' ) }
-          </p>
+          <p style={ { color: '#757575', fontSize: '12px' } }>{ __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää ja muokkaa kysymyksiä alla. Klikkaa kysymystä lohkossa nähdäksesi vastauksen.', 'dude' ) }</p>
         </PanelBody>
 
         { items.map( ( item, index ) => (
-          <PanelBody
-            key={ item.id || index }
-            title={ item.question || `Kysymys ${ index + 1 }` }
-            initialOpen={ expandedSidebarItem === index }
-            onToggle={ () => setExpandedSidebarItem( expandedSidebarItem === index ? null : index ) }
-          >
-            <TextControl
-              label={ __( 'Kysymys', 'dude' ) }
-              value={ item.question }
-              onChange={ ( value ) => updateItem( index, 'question', value ) }
-            />
-            <TextareaControl
-              label={ __( 'Vastaus', 'dude' ) }
-              value={ item.answer }
-              onChange={ ( value ) => updateItem( index, 'answer', value ) }
-              rows={ 4 }
-            />
+          <PanelBody key={ item.id || index } title={ item.question || `Kysymys ${ index + 1 }` } initialOpen={ expandedSidebarItem === index } onToggle={ () => setExpandedSidebarItem( expandedSidebarItem === index ? null : index ) }>
+            <TextControl label={ __( 'Kysymys', 'dude' ) } value={ item.question } onChange={ ( value ) => updateItem( index, 'question', value ) } />
+            <TextareaControl label={ __( 'Vastaus', 'dude' ) } value={ item.answer } onChange={ ( value ) => updateItem( index, 'answer', value ) } rows={ 4 } />
 
             <div style={ { display: 'flex', gap: '8px', marginTop: '16px', borderTop: '1px solid #ddd', paddingTop: '16px' } }>
-              <Button
-                variant="secondary"
-                onClick={ () => moveItem( index, -1 ) }
-                disabled={ index === 0 }
-              >
+              <Button variant="secondary" onClick={ () => moveItem( index, -1 ) } disabled={ index === 0 }>
                 { __( 'Ylös', 'dude' ) }
               </Button>
-              <Button
-                variant="secondary"
-                onClick={ () => moveItem( index, 1 ) }
-                disabled={ index === items.length - 1 }
-              >
+              <Button variant="secondary" onClick={ () => moveItem( index, 1 ) } disabled={ index === items.length - 1 }>
                 { __( 'Alas', 'dude' ) }
               </Button>
-              <Button
-                isDestructive
-                onClick={ () => removeItem( index ) }
-              >
+              <Button isDestructive onClick={ () => removeItem( index ) }>
                 { __( 'Poista', 'dude' ) }
               </Button>
             </div>
@@ -131,10 +103,7 @@ export default function Edit( { attributes, setAttributes } ) {
         ) ) }
 
         <PanelBody>
-          <Button
-            variant="primary"
-            onClick={ addItem }
-          >
+          <Button variant="primary" onClick={ addItem }>
             { __( '+ Lisää kysymys', 'dude' ) }
           </Button>
         </PanelBody>
@@ -148,11 +117,7 @@ export default function Edit( { attributes, setAttributes } ) {
             </div>
             <div className="faq-items">
               <div className="accordion">
-                { items.length === 0 && (
-                  <p style={ { color: '#999', fontStyle: 'italic' } }>
-                    { __( 'Lisää kysymyksiä sivupalkista.', 'dude' ) }
-                  </p>
-                ) }
+                { items.length === 0 && <p style={ { color: '#999', fontStyle: 'italic' } }>{ __( 'Lisää kysymyksiä sivupalkista.', 'dude' ) }</p> }
                 { items.map( ( item, index ) => {
                   const isExpanded = expandedPreviewItem === index;
                   return (
@@ -173,10 +138,7 @@ export default function Edit( { attributes, setAttributes } ) {
                           </span>
                         </button>
                       </h3>
-                      <div
-                        className="accordion-panel"
-                        style={ { display: isExpanded ? 'block' : 'none' } }
-                      >
+                      <div className="accordion-panel" style={ { display: isExpanded ? 'block' : 'none' } }>
                         <div>
                           <p>{ item.answer }</p>
                         </div>
