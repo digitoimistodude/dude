@@ -8,81 +8,200 @@ import {
   PanelBody,
   Button,
   TextControl,
-  TextareaControl,
   ToggleControl,
+  SelectControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
-export default function Edit( { attributes, setAttributes } ) {
-  const { title, isPopular, price, shortDescription, content, features } = attributes;
-  const [ isExpanded, setIsExpanded ] = useState( false );
+export default function Edit({ attributes, setAttributes }) {
+  const {
+    title,
+    isPopular,
+    price,
+    shortDescription,
+    content,
+    features,
+    featuresTitle,
+    showGradientBox,
+    gradientBoxHeading,
+    gradientBoxItems,
+    gradientBoxListType,
+    gradientBoxButtonText,
+    gradientBoxButtonUrl,
+  } = attributes;
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const blockProps = useBlockProps( {
-    className: `pricing-accordion-item${ isPopular ? ' is-popular' : '' }`,
-  } );
+  const blockProps = useBlockProps({
+    className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`,
+  });
 
-  const updateFeature = ( index, value ) => {
-    const newFeatures = [ ...features ];
-    newFeatures[ index ] = value;
-    setAttributes( { features: newFeatures } );
+  const updateFeature = (index, value) => {
+    const newFeatures = [...features];
+    newFeatures[index] = { text: value };
+    setAttributes({ features: newFeatures });
   };
 
   const addFeature = () => {
-    setAttributes( { features: [ ...features, 'Uusi ominaisuus' ] } );
+    setAttributes({ features: [...features, { text: 'Uusi ominaisuus' }] });
   };
 
-  const removeFeature = ( index ) => {
-    const newFeatures = features.filter( ( _, i ) => i !== index );
-    setAttributes( { features: newFeatures } );
+  const removeFeature = (index) => {
+    const newFeatures = features.filter((_, i) => i !== index);
+    setAttributes({ features: newFeatures });
+  };
+
+  const updateGradientBoxItem = (index, value) => {
+    const newItems = [...gradientBoxItems];
+    newItems[index] = { text: value };
+    setAttributes({ gradientBoxItems: newItems });
+  };
+
+  const addGradientBoxItem = () => {
+    setAttributes({
+      gradientBoxItems: [...gradientBoxItems, { text: 'Uusi kohta' }],
+    });
+  };
+
+  const removeGradientBoxItem = (index) => {
+    const newItems = gradientBoxItems.filter((_, i) => i !== index);
+    setAttributes({ gradientBoxItems: newItems });
   };
 
   return (
     <>
       <InspectorControls>
-        <PanelBody title={ __( 'Tuotteen asetukset', 'dude' ) }>
+        <PanelBody title={__('Tuotteen asetukset', 'dude')}>
           <ToggleControl
-            label={ __( 'Suosituin', 'dude' ) }
-            checked={ isPopular }
-            onChange={ ( value ) => setAttributes( { isPopular: value } ) }
-          />
-          <TextareaControl
-            label={ __( 'Sisältö (avattu)', 'dude' ) }
-            value={ content }
-            onChange={ ( value ) => setAttributes( { content: value } ) }
+            label={__('Suosituin', 'dude')}
+            checked={isPopular}
+            onChange={(value) => setAttributes({ isPopular: value })}
           />
 
-          <p><strong>{ __( 'Ominaisuudet', 'dude' ) }</strong></p>
-          { features.map( ( feature, index ) => (
-            <div key={ index } style={ { display: 'flex', gap: '8px', marginBottom: '8px' } }>
+          <TextControl
+            label={__('Ominaisuuksien otsikko (valinnainen)', 'dude')}
+            value={featuresTitle}
+            onChange={(value) => setAttributes({ featuresTitle: value })}
+            help={__('Näytetään ennen ominaisuuslistaa', 'dude')}
+          />
+
+          <p>
+            <strong>{__('Ominaisuudet', 'dude')}</strong>
+          </p>
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                gap: '8px',
+                marginBottom: '8px',
+              }}
+            >
               <TextControl
-                value={ feature }
-                onChange={ ( value ) => updateFeature( index, value ) }
-                style={ { flex: 1 } }
+                value={feature.text || feature}
+                onChange={(value) => updateFeature(index, value)}
+                style={{ flex: 1 }}
               />
               <Button
                 isDestructive
                 variant="secondary"
-                onClick={ () => removeFeature( index ) }
-                style={ { flexShrink: 0 } }
+                onClick={() => removeFeature(index)}
+                style={{ flexShrink: 0 }}
               >
-                { __( 'X', 'dude' ) }
+                {__('X', 'dude')}
               </Button>
             </div>
-          ) ) }
-          <Button
-            variant="secondary"
-            onClick={ addFeature }
-          >
-            { __( '+ Lisää ominaisuus', 'dude' ) }
+          ))}
+          <Button variant="secondary" onClick={addFeature}>
+            {__('+ Lisää ominaisuus', 'dude')}
           </Button>
+
+          <hr style={{ margin: '16px 0' }} />
+
+          <ToggleControl
+            label={__('Näytä gradientti-laatikko', 'dude')}
+            checked={showGradientBox}
+            onChange={(value) => setAttributes({ showGradientBox: value })}
+            help={__(
+              'Lisää oikealle puolelle gradientti-laatikko lisäsisällölle',
+              'dude'
+            )}
+          />
         </PanelBody>
+
+        {showGradientBox && (
+          <PanelBody
+            title={__('Gradientti-laatikko asetukset', 'dude')}
+            initialOpen={false}
+          >
+            <SelectControl
+              label={__('Listan tyyppi', 'dude')}
+              value={gradientBoxListType}
+              options={[
+                { label: 'Bullet-lista', value: 'bullet' },
+                { label: 'Checkbox-lista', value: 'checkbox' },
+              ]}
+              onChange={(value) =>
+                setAttributes({ gradientBoxListType: value })
+              }
+            />
+
+            <p>
+              <strong>{__('Listan kohteet', 'dude')}</strong>
+            </p>
+            {gradientBoxItems.map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  display: 'flex',
+                  gap: '8px',
+                  marginBottom: '8px',
+                }}
+              >
+                <TextControl
+                  value={item.text || item}
+                  onChange={(value) => updateGradientBoxItem(index, value)}
+                  style={{ flex: 1 }}
+                />
+                <Button
+                  isDestructive
+                  variant="secondary"
+                  onClick={() => removeGradientBoxItem(index)}
+                  style={{ flexShrink: 0 }}
+                >
+                  {__('X', 'dude')}
+                </Button>
+              </div>
+            ))}
+            <Button variant="secondary" onClick={addGradientBoxItem}>
+              {__('+ Lisää kohta', 'dude')}
+            </Button>
+
+            <hr style={{ margin: '16px 0' }} />
+
+            <TextControl
+              label={__('Painikkeen teksti', 'dude')}
+              value={gradientBoxButtonText}
+              onChange={(value) =>
+                setAttributes({ gradientBoxButtonText: value })
+              }
+            />
+            <TextControl
+              label={__('Painikkeen URL', 'dude')}
+              value={gradientBoxButtonUrl}
+              onChange={(value) =>
+                setAttributes({ gradientBoxButtonUrl: value })
+              }
+              type="url"
+            />
+          </PanelBody>
+        )}
       </InspectorControls>
 
-      <div { ...blockProps }>
+      <div {...blockProps}>
         <div className="accordion-header">
           <div
             className="accordion-trigger"
-            aria-expanded={ isExpanded ? 'true' : 'false' }
+            aria-expanded={isExpanded ? 'true' : 'false'}
           >
             <span className="accordion-title">
               <span className="item-content">
@@ -90,63 +209,145 @@ export default function Edit( { attributes, setAttributes } ) {
                   <RichText
                     tagName="span"
                     className="item-name"
-                    value={ title }
-                    onChange={ ( value ) => setAttributes( { title: value } ) }
-                    placeholder={ __( 'Tuotteen nimi...', 'dude' ) }
+                    value={title}
+                    onChange={(value) => setAttributes({ title: value })}
+                    placeholder={__('Tuotteen nimi…', 'dude')}
                   />
-                  { isPopular && <span className="badge">Suosituin</span> }
+                  {isPopular && <span className="badge">Suosituin</span>}
                 </span>
                 <span className="item-meta">
                   <RichText
                     tagName="span"
                     className="price"
-                    value={ price }
-                    onChange={ ( value ) => setAttributes( { price: value } ) }
-                    placeholder={ __( 'Hinta...', 'dude' ) }
+                    value={price}
+                    onChange={(value) => setAttributes({ price: value })}
+                    placeholder={__('Hinta…', 'dude')}
                   />
                   <RichText
                     tagName="span"
                     className="description"
-                    value={ shortDescription }
-                    onChange={ ( value ) => setAttributes( { shortDescription: value } ) }
-                    placeholder={ __( 'Lyhyt kuvaus...', 'dude' ) }
+                    value={shortDescription}
+                    onChange={(value) =>
+                      setAttributes({
+                        shortDescription: value,
+                      })
+                    }
+                    placeholder={__('Lyhyt kuvaus…', 'dude')}
                   />
                 </span>
               </span>
               <span
                 className="accordion-icon"
-                onClick={ () => setIsExpanded( ! isExpanded ) }
-                onKeyDown={ ( e ) => {
-                  if ( e.key === 'Enter' || e.key === ' ' ) {
+                onClick={() => setIsExpanded(!isExpanded)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    setIsExpanded( ! isExpanded );
+                    setIsExpanded(!isExpanded);
                   }
-                } }
+                }}
                 role="button"
-                tabIndex={ 0 }
-                aria-label={ isExpanded ? __( 'Sulje', 'dude' ) : __( 'Avaa', 'dude' ) }
+                tabIndex={0}
+                aria-label={
+                  isExpanded ? __('Sulje', 'dude') : __('Avaa', 'dude')
+                }
               >
-                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M.666.667l8 8 8-8" stroke="#7EFFE1" strokeWidth="1.333" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  width="18"
+                  height="10"
+                  viewBox="0 0 18 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M.666.667l8 8 8-8"
+                    stroke="#7EFFE1"
+                    strokeWidth="1.333"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </span>
             </span>
           </div>
         </div>
-        { isExpanded && (
+        {isExpanded && (
           <div className="accordion-panel">
-            <div>
-              { content && <p>{ content }</p> }
-              { features && features.length > 0 && (
-                <ul>
-                  { features.map( ( feature, index ) => (
-                    <li key={ index }>{ feature }</li>
-                  ) ) }
-                </ul>
-              ) }
+            <div
+              className={`panel-layout${showGradientBox ? ' has-gradient-box' : ''}`}
+            >
+              <div className="panel-main">
+                <RichText
+                  tagName="p"
+                  className="item-description"
+                  value={content}
+                  onChange={(value) => setAttributes({ content: value })}
+                  placeholder={__('Pidempi kuvaus…', 'dude')}
+                  allowedFormats={['core/link']}
+                />
+                {featuresTitle && (
+                  <p className="features-title">{featuresTitle}</p>
+                )}
+                {features && features.length > 0 && (
+                  <ul>
+                    {features.map((feature, index) => (
+                      <li key={index}>
+                        <RichText
+                          tagName="span"
+                          value={feature.text || feature}
+                          onChange={(value) => updateFeature(index, value)}
+                          allowedFormats={['core/link']}
+                          placeholder={__('Ominaisuus…', 'dude')}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              {showGradientBox && (
+                <div className="panel-gradient-box">
+                  <RichText
+                    tagName="h4"
+                    className="gradient-box-heading"
+                    value={gradientBoxHeading}
+                    onChange={(value) =>
+                      setAttributes({
+                        gradientBoxHeading: value,
+                      })
+                    }
+                    placeholder={__('Laatikon otsikko…', 'dude')}
+                    allowedFormats={[]}
+                  />
+                  {gradientBoxItems && gradientBoxItems.length > 0 && (
+                    <ul className={`list-${gradientBoxListType}`}>
+                      {gradientBoxItems.map((item, index) => (
+                        <li key={index}>
+                          <RichText
+                            tagName="span"
+                            value={item.text || item}
+                            onChange={(value) =>
+                              updateGradientBoxItem(index, value)
+                            }
+                            allowedFormats={['core/link']}
+                            placeholder={__('Kohta…', 'dude')}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {gradientBoxButtonText && gradientBoxButtonUrl && (
+                    <a
+                      href={gradientBoxButtonUrl}
+                      className="button button-mint"
+                    >
+                      {gradientBoxButtonText}
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
-        ) }
+        )}
       </div>
     </>
   );
