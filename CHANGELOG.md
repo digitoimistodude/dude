@@ -1,5 +1,8 @@
 ### 7.0.10: 2026-01-21
 
+* Add GitHub Actions workflow for linting (ESLint, Stylelint, PHPCS), Ref: DEV-567
+* Format all block files with ESLint/Prettier to fix code style inconsistencies, Ref: DEV-567
+* Configure Prettier with WordPress standards and override `parenSpacing` to false for 2-space indents, Ref: DEV-567
 * Add WordPress blocks eslint config with JSX support, Ref: DEV-567
 
 ### 7.0.9: 2026-01-20
