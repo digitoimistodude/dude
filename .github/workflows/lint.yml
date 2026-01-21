@@ -1,0 +1,51 @@
+name: Lint
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: content/themes/dude/package-lock.json
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+
+      - name: Install Node dependencies
+        working-directory: content/themes/dude
+        run: npm ci
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Run ESLint
+        working-directory: content/themes/dude
+        run: npm run lint:js
+
+      - name: Run Stylelint
+        working-directory: content/themes/dude
+        run: npm run lint:styles
+
+      - name: Run PHPCS
+        working-directory: content/themes/dude
+        run: npm run lint:php
+
+      - name: Check code formatting
+        working-directory: content/themes/dude
+        run: npm run format:check
