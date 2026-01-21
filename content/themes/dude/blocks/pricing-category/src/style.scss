@@ -88,6 +88,55 @@
     margin: 10px 0 0;
     padding-left: 13px;
   }
+
+  // Two-column layout for gradient box
+  .panel-layout.has-gradient-box {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  // Gradient box in editor
+  .panel-gradient-box {
+    background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
+    border-radius: 12px;
+    padding: 24px;
+
+    .gradient-box-heading {
+      color: #fff !important;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+
+      li {
+        color: rgb(255 255 255 / 0.8) !important;
+        font-size: var(--font-size-16);
+        line-height: 1.7;
+        margin-bottom: 8px;
+        padding-left: 28px;
+        position: relative;
+      }
+    }
+  }
+
+  // Gradient box list bullets
+  .panel-gradient-box ul li::before {
+    color: var(--color-mint);
+    content: "•";
+    font-size: var(--font-size-20);
+    left: 10px;
+    position: absolute;
+  }
+
+  .panel-gradient-box .list-checkbox li::before {
+    content: "✓";
+    font-size: var(--font-size-18);
+    font-weight: 700;
+  }
 }
 // stylelint-enable selector-class-pattern, no-descending-specificity
 .block-pricing-category {
@@ -256,7 +305,112 @@
       font-size: var(--font-size-16);
       line-height: 1.7;
       margin: 10px 0 0;
-      padding-left: 13px;
+      padding-left: 17px;
+    }
+  }
+
+  // Two-column layout wrapper
+  .panel-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &.has-gradient-box {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+
+      @media (max-width: 1050px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  // Left column
+  .panel-main {
+    .item-description {
+      color: rgb(255 255 255 / 0.8);
+      font-size: var(--font-size-16);
+      line-height: 1.7;
+      margin: 0 0 10px;
+    }
+
+    .features-title {
+      color: var(--color-heading);
+      font-size: var(--font-size-16);
+      font-weight: 600;
+      margin: 16px 0 8px;
+    }
+  }
+
+  // Panel main links
+  .panel-main a {
+    color: var(--color-mint);
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  // Right gradient box
+  .panel-gradient-box {
+    background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
+    border-radius: 12px;
+    padding: 24px;
+
+    .gradient-box-heading {
+      color: var(--color-heading);
+      font-size: var(--font-size-20);
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0 0 16px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+
+      li {
+        color: rgb(255 255 255 / 0.8);
+        font-size: var(--font-size-16);
+        line-height: 1.7;
+        margin-bottom: 8px;
+        padding-left: 28px;
+        position: relative;
+      }
+    }
+
+    .button-mint {
+      display: inline-block;
+    }
+  }
+
+  // Gradient box list bullets
+  .panel-gradient-box ul li::before {
+    color: var(--color-mint);
+    content: "•";
+    font-size: var(--font-size-20);
+    left: 10px;
+    position: absolute;
+  }
+
+  .panel-gradient-box .list-checkbox li::before {
+    content: "✓";
+    font-size: var(--font-size-18);
+    font-weight: 700;
+  }
+
+  // Gradient box links
+  .panel-gradient-box a {
+    color: var(--color-mint);
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
     }
   }
 
