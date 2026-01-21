@@ -1,5 +1,12 @@
 ### 7.0.10: 2026-01-21
 
+* Add two-column layout with optional gradient box to pricing-item block, Ref: DEV-567
+* Add RichText support with links to pricing-item content and features, Ref: DEV-567
+* Add optional features title field to pricing-item block, Ref: DEV-567
+* Add gradient box with heading, list (bullet/checkbox), and CTA button to pricing-item, Ref: DEV-567
+* Add deprecation system to pricing-item block for backward compatibility with v1 format, Ref: DEV-567
+* Update pricing-category styles with gradient box and two-column responsive layout, Ref: DEV-567
+* Fix stylelint warnings by reducing selector nesting depth and adding focus states, Ref: DEV-567
 * Add GitHub Actions workflow for linting (ESLint, Stylelint, PHPCS), Ref: DEV-567
 * Format all block files with ESLint/Prettier to fix code style inconsistencies, Ref: DEV-567
 * Configure Prettier with WordPress standards and override `parenSpacing` to false for 2-space indents, Ref: DEV-567
