@@ -12,7 +12,7 @@ const initBackToTop = () => {
   const moveToTop = new MoveTo({ duration: 300, easing: 'easeOutQuart' });
   const topButton = document.getElementById('top');
   const focusableElements = document.querySelectorAll(
-    'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])',
   );
 
   function trackScroll() {

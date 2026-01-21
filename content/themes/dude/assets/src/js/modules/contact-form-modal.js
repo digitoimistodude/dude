@@ -502,7 +502,7 @@ const initContactFormModal = () => {
     } else if (formContainer) {
       // Form not loaded yet, remove any existing script to force reload
       const existingScripts = formContainer.querySelectorAll('script');
-      existingScripts.forEach(s => s.remove());
+      existingScripts.forEach((s) => s.remove());
 
       // Create new script element
       const script = document.createElement('script');

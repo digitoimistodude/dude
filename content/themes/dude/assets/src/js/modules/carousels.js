@@ -207,7 +207,7 @@ const initCarousels = () => {
 
     // Find current visible item index based on scroll position
     const getCurrentIndex = () => {
-      const scrollLeft = carousel.scrollLeft;
+      const { scrollLeft } = carousel;
       let currentIndex = 0;
       let accumulatedWidth = 0;
 

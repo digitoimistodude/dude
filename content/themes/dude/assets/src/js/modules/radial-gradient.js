@@ -12,7 +12,7 @@ document.addEventListener('mousemove', (event) => {
 
   // Get all radial-gradient elements
   const backgroundElement = document.getElementsByClassName(
-    'radial-gradient-absolute'
+    'radial-gradient-absolute',
   );
 
   if (backgroundElement.length > 0) {
@@ -20,15 +20,14 @@ document.addEventListener('mousemove', (event) => {
     for (let i = 0; i < backgroundElement.length; i++) {
       // Get CSS vars
       const colorGradientStart = getComputedStyle(
-        backgroundElement[i]
+        backgroundElement[i],
       ).getPropertyValue('--color-gradient-start');
       const colorGradientEnd = getComputedStyle(
-        backgroundElement[i]
+        backgroundElement[i],
       ).getPropertyValue('--color-gradient-end');
 
       // Set colors on hover
-      backgroundElement[i].style.backgroundImage =
-        `radial-gradient(at ${mouseXpercentage}% ${mouseYpercentage}%, ${colorGradientStart}, ${colorGradientEnd})`;
+      backgroundElement[i].style.backgroundImage = `radial-gradient(at ${mouseXpercentage}% ${mouseYpercentage}%, ${colorGradientStart}, ${colorGradientEnd})`;
     }
   }
 });

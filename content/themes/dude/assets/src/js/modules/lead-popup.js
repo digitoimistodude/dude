@@ -14,7 +14,7 @@ const HOURS_TO_HIDE = 14 * 24; // 2 weeks (in hours)
 const REACTION_HIDE_DAYS = 60; // 2 months
 
 // Track if popup has been shown this session (persists across swup navigations)
-let popupShownThisSession = false;
+const popupShownThisSession = false;
 
 // Check if popup should be shown
 const shouldShowPopup = () => {
@@ -31,10 +31,9 @@ const shouldShowPopup = () => {
 };
 
 // Check if we're on a page where popup should be skipped
-const shouldSkipPopup = () => {
-  return document.body.classList.contains('page-id-7') || // Front page
-         document.body.classList.contains('page-id-4487'); // Contact page
-};
+const shouldSkipPopup = () => document.body.classList.contains('page-id-7') // Front page
+         || document.body.classList.contains('page-id-4487') // Contact page
+;
 
 const initLeadPopup = () => {
   // Check if popup is enabled
@@ -1173,18 +1172,18 @@ const initLeadPopup = () => {
               updateReactionCounts(result.reactions);
             }
 
-          // Hide popup for 2 months after any reaction
-          const now = new Date().getTime();
-          const expiryTime = now + REACTION_HIDE_DAYS * 24 * 60 * 60 * 1000;
-          localStorage.setItem(STORAGE_KEY, expiryTime.toString());
+            // Hide popup for 2 months after any reaction
+            const now = new Date().getTime();
+            const expiryTime = now + REACTION_HIDE_DAYS * 24 * 60 * 60 * 1000;
+            localStorage.setItem(STORAGE_KEY, expiryTime.toString());
 
-          // Close popup after reaction
-          setTimeout(() => {
-            closePopup('days');
-          }, 500);
-        }
+            // Close popup after reaction
+            setTimeout(() => {
+              closePopup('days');
+            }, 500);
+          }
+        });
       });
-    });
     }
 
     // Close on Escape key - reopens after delay

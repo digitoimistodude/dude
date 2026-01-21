@@ -46,7 +46,10 @@ const initNavigation = () => {
     // Close focused dropdowns when pressing esc
     $('.menu-item a, .dropdown button').on('keyup', function (e) {
       // Checking are menu items open or not
-      const isSubMenuDropdownOpen = $(this).parent().parent().parent().find('.sub-menu').prev('.dropdown-toggle').attr('aria-expanded');
+      const isSubMenuDropdownOpen = $(this).parent().parent().parent()
+        .find('.sub-menu')
+        .prev('.dropdown-toggle')
+        .attr('aria-expanded');
       const isMainMenuDropdownOpen = $(this).closest('.menu-item').find('.dropdown-toggle').attr('aria-expanded');
       const areWeInDropdown = $(this).parent().parent().hasClass('sub-menu');
 
@@ -121,7 +124,7 @@ const initNavigation = () => {
 
       $(this).attr(
         'aria-label',
-        $(this).attr('aria-label') === `${dude_screenReaderText.collapse_for} ${$(this).prev().text()}` ? `${dude_screenReaderText.expand_for} ${$(this).prev().text()}` : `${dude_screenReaderText.collapse_for} ${$(this).prev().text()}`
+        $(this).attr('aria-label') === `${dude_screenReaderText.collapse_for} ${$(this).prev().text()}` ? `${dude_screenReaderText.expand_for} ${$(this).prev().text()}` : `${dude_screenReaderText.collapse_for} ${$(this).prev().text()}`,
       );
     });
 
@@ -135,75 +138,87 @@ const initNavigation = () => {
       }
 
       switch (e.code) {
-        case 'ArrowLeft': // Left key
-          e.stopPropagation();
+      case 'ArrowLeft': // Left key
+        e.stopPropagation();
 
-          if ($(this).hasClass('dropdown-toggle')) {
-            $(this).prev('a').trigger('focus');
-          } else if ($(this).parent().prev().children('button.dropdown-toggle').length) {
-            $(this).parent().prev().children('button.dropdown-toggle').trigger('focus');
-          } else {
-            $(this).parent().prev().children('a').trigger('focus');
-          }
+        if ($(this).hasClass('dropdown-toggle')) {
+          $(this).prev('a').trigger('focus');
+        } else if ($(this).parent().prev().children('button.dropdown-toggle').length) {
+          $(this).parent().prev().children('button.dropdown-toggle')
+            .trigger('focus');
+        } else {
+          $(this).parent().prev().children('a')
+            .trigger('focus');
+        }
 
-          if ($(this).is('ul ul ul.sub-menu.toggled-on li:first-child a')) {
-            $(this).parents('ul.sub-menu.toggled-on li').children('button.dropdown-toggle').trigger('focus');
-          }
+        if ($(this).is('ul ul ul.sub-menu.toggled-on li:first-child a')) {
+          $(this).parents('ul.sub-menu.toggled-on li').children('button.dropdown-toggle').trigger('focus');
+        }
 
-          break;
+        break;
 
-        case 'ArrowRight': // Right key
-          e.stopPropagation();
+      case 'ArrowRight': // Right key
+        e.stopPropagation();
 
-          if ($(this).next('button.dropdown-toggle').length) {
-            $(this).next('button.dropdown-toggle').trigger('focus');
-          } else if ($(this).parent().next().find('input').length) {
-            $(this).parent().next().find('input').trigger('focus');
-          } else {
-            $(this).parent().next().children('a').trigger('focus');
-          }
+        if ($(this).next('button.dropdown-toggle').length) {
+          $(this).next('button.dropdown-toggle').trigger('focus');
+        } else if ($(this).parent().next().find('input').length) {
+          $(this).parent().next().find('input')
+            .trigger('focus');
+        } else {
+          $(this).parent().next().children('a')
+            .trigger('focus');
+        }
 
-          if ($(this).is('ul.sub-menu .dropdown-toggle.toggled-on')) {
-            $(this).parent().find('ul.sub-menu li:first-child a').trigger('focus');
-          }
+        if ($(this).is('ul.sub-menu .dropdown-toggle.toggled-on')) {
+          $(this).parent().find('ul.sub-menu li:first-child a').trigger('focus');
+        }
 
-          break;
+        break;
 
-        case 'ArrowDown': // Down key
-          e.stopPropagation();
+      case 'ArrowDown': // Down key
+        e.stopPropagation();
 
-          if ($(this).next().length) {
-            $(this).next().find('li:first-child a').first().trigger('focus');
-          } else if ($(this).parent().next().find('input').length) {
-            $(this).parent().next().find('input').trigger('focus');
-          } else {
-            $(this).parent().next().children('a').trigger('focus');
-          }
+        if ($(this).next().length) {
+          $(this).next().find('li:first-child a').first()
+            .trigger('focus');
+        } else if ($(this).parent().next().find('input').length) {
+          $(this).parent().next().find('input')
+            .trigger('focus');
+        } else {
+          $(this).parent().next().children('a')
+            .trigger('focus');
+        }
 
-          if ($(this).is('ul.sub-menu a') && $(this).next('button.dropdown-toggle').length) {
-            $(this).parent().next().children('a').trigger('focus');
-          }
+        if ($(this).is('ul.sub-menu a') && $(this).next('button.dropdown-toggle').length) {
+          $(this).parent().next().children('a')
+            .trigger('focus');
+        }
 
-          if ($(this).is('ul.sub-menu .dropdown-toggle') && $(this).parent().next().children('.dropdown-toggle').length) {
-            $(this).parent().next().children('.dropdown-toggle').trigger('focus');
-          }
+        if ($(this).is('ul.sub-menu .dropdown-toggle') && $(this).parent().next().children('.dropdown-toggle').length) {
+          $(this).parent().next().children('.dropdown-toggle')
+            .trigger('focus');
+        }
 
-          break;
+        break;
 
-        case 'ArrowUp': // Up key
-          e.stopPropagation();
+      case 'ArrowUp': // Up key
+        e.stopPropagation();
 
-          if ($(this).parent().prev().length) {
-            $(this).parent().prev().children('a').trigger('focus');
-          } else {
-            $(this).parents('ul').first().prev('.dropdown-toggle.toggled-on').trigger('focus');
-          }
+        if ($(this).parent().prev().length) {
+          $(this).parent().prev().children('a')
+            .trigger('focus');
+        } else {
+          $(this).parents('ul').first().prev('.dropdown-toggle.toggled-on')
+            .trigger('focus');
+        }
 
-          if ($(this).is('ul.sub-menu .dropdown-toggle') && $(this).parent().prev().children('.dropdown-toggle').length) {
-            $(this).parent().prev().children('.dropdown-toggle').trigger('focus');
-          }
+        if ($(this).is('ul.sub-menu .dropdown-toggle') && $(this).parent().prev().children('.dropdown-toggle').length) {
+          $(this).parent().prev().children('.dropdown-toggle')
+            .trigger('focus');
+        }
 
-          break;
+        break;
       }
     });
 
@@ -245,7 +260,7 @@ const initNavigation = () => {
         // Change screen reader open/close labels
         $('#nav-toggle-label').text(
           // eslint-disable-next-line no-undef
-          $('#nav-toggle-label').text() === dude_screenReaderText.expand_toggle ? dude_screenReaderText.collapse_toggle : dude_screenReaderText.expand_toggle
+          $('#nav-toggle-label').text() === dude_screenReaderText.expand_toggle ? dude_screenReaderText.collapse_toggle : dude_screenReaderText.expand_toggle,
         );
 
         $(this).attr('aria-label', $(this).attr('aria-label') === dude_screenReaderText.expand_toggle ? dude_screenReaderText.collapse_toggle : dude_screenReaderText.expand_toggle);
@@ -402,7 +417,7 @@ const initNavigation = () => {
         mobileNav();
       }
     });
-  })(jQuery);
+  }(jQuery));
 };
 
 export default initNavigation;

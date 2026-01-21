@@ -68,8 +68,7 @@ const initShowreel = () => {
     const vimeoPlayButton = playButton;
 
     // Get play button label
-    const vimeoPlayButtonLabel =
-      playButton.getElementsByClassName('play-label')[0];
+    const vimeoPlayButtonLabel = playButton.getElementsByClassName('play-label')[0];
 
     // Play state function
     // eslint-disable-next-line func-names
@@ -83,7 +82,7 @@ const initShowreel = () => {
         ) {
           // Ensure CTA is removed
           player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
-            'is-cta'
+            'is-cta',
           );
 
           player.getCurrentTime().then((currentTime) => {
@@ -106,7 +105,7 @@ const initShowreel = () => {
             if (ended) {
               // Show CTA in place of the player
               player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
-                'is-cta'
+                'is-cta',
               );
 
               // Change button text
@@ -132,7 +131,7 @@ const initShowreel = () => {
         ) {
           // Ensure CTA is removed
           player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
-            'is-cta'
+            'is-cta',
           );
 
           player.getCurrentTime().then((currentTime) => {
@@ -155,7 +154,7 @@ const initShowreel = () => {
             if (ended) {
               // Show CTA in place of the player
               player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
-                'is-cta'
+                'is-cta',
               );
 
               // Change button text
@@ -173,7 +172,7 @@ const initShowreel = () => {
     // If is reference
     if (
       player.element.parentNode.parentNode.parentNode.classList.contains(
-        'col-reference'
+        'col-reference',
       )
     ) {
       player.on('play', onPlayStateFunctionReference);
@@ -208,16 +207,16 @@ const initShowreel = () => {
       // Remove needed classes from elements
       player.element.parentNode.parentNode.classList.remove('playing');
       player.element.parentNode.parentNode.parentNode.classList.remove(
-        'playing'
+        'playing',
       );
       player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
-        'playing'
+        'playing',
       );
       player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.remove(
-        'playing'
+        'playing',
       );
       player.element.parentNode.parentNode.parentNode.parentNode.classList.remove(
-        'is-cta'
+        'is-cta',
       );
 
       // If reference video is playing, add class to body
@@ -254,10 +253,10 @@ const initShowreel = () => {
       player.element.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.classList.add('playing');
       player.element.parentNode.parentNode.parentNode.parentNode.classList.add(
-        'playing'
+        'playing',
       );
       player.element.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add(
-        'playing'
+        'playing',
       );
 
       // If reference video is playing, add class to body
@@ -282,7 +281,7 @@ const initShowreel = () => {
       // If is reference
       if (
         player.element.parentNode.parentNode.parentNode.parentNode.classList.contains(
-          'col-reference'
+          'col-reference',
         )
       ) {
         // Start playing from start position

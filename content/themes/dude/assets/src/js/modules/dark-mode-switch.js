@@ -13,7 +13,7 @@ const supportsES6 = (function () {
     // console.log('No ES6');
     return false;
   }
-})();
+}());
 
 const supportsLocalStorage = (function () {
   try {
@@ -25,7 +25,7 @@ const supportsLocalStorage = (function () {
     // console.log('localStorage unavailable');
     return false;
   }
-})();
+}());
 
 const initdarkModeToggle = () => {
   // Define toggle
@@ -48,7 +48,7 @@ const initdarkModeToggle = () => {
     window,
     document,
     supportsES6,
-    supportsLocalStorage
+    supportsLocalStorage,
   ) {
     if (!supportsES6) return;
 
@@ -76,7 +76,7 @@ const initdarkModeToggle = () => {
       _setAttr(
         btn,
         'aria-clicked',
-        btn.getAttribute('aria-clicked') === 'false'
+        btn.getAttribute('aria-clicked') === 'false',
       );
 
       mode = mode === false;
@@ -112,8 +112,8 @@ const initdarkModeToggle = () => {
     const _getMode = (_) => {
       // Get the OS mode setting
       mode = !(
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
+        window.matchMedia
+        && window.matchMedia('(prefers-color-scheme: dark)').matches
       );
 
       // Override OS mode with the locally stored value.
@@ -161,7 +161,7 @@ const initdarkModeToggle = () => {
     };
 
     _init();
-  })(window, document, supportsES6, supportsLocalStorage);
+  }(window, document, supportsES6, supportsLocalStorage));
 };
 
 export default initdarkModeToggle;

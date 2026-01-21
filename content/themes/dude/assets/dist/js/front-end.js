@@ -2803,7 +2803,7 @@ const initCarousels = ()=>{
         });
         // Find current visible item index based on scroll position
         const getCurrentIndex = ()=>{
-            const scrollLeft = carousel.scrollLeft;
+            const { scrollLeft } = carousel;
             let currentIndex = 0;
             let accumulatedWidth = 0;
             for(let i = 0; i < items.length; i++){
@@ -16058,7 +16058,7 @@ const DAYS_TO_HIDE = 14; // 2 weeks
 const HOURS_TO_HIDE = 336; // 2 weeks (in hours)
 const REACTION_HIDE_DAYS = 60; // 2 months
 // Track if popup has been shown this session (persists across swup navigations)
-let popupShownThisSession = false;
+const popupShownThisSession = false;
 // Check if popup should be shown
 const shouldShowPopup = ()=>{
     const dismissedUntil = localStorage.getItem(STORAGE_KEY);
@@ -16072,10 +16072,9 @@ const shouldShowPopup = ()=>{
     return false;
 };
 // Check if we're on a page where popup should be skipped
-const shouldSkipPopup = ()=>{
-    return document.body.classList.contains('page-id-7') || // Front page
-    document.body.classList.contains('page-id-4487'); // Contact page
-};
+const shouldSkipPopup = ()=>document.body.classList.contains('page-id-7') // Front page
+     || document.body.classList.contains('page-id-4487') // Contact page
+;
 const initLeadPopup = ()=>{
     // Check if popup is enabled
     if (!ENABLED) return;

@@ -8,7 +8,7 @@
 const initFormHelpers = () => {
   // Find all form triggers
   const formTriggers = document.querySelectorAll(
-    '#wpforms-form-11358 .wpforms-conditional-trigger'
+    '#wpforms-form-11358 .wpforms-conditional-trigger',
   );
 
   if (typeof formTriggers !== 'undefined') {
@@ -19,7 +19,7 @@ const initFormHelpers = () => {
       formTrigger.addEventListener('click', () => {
         // Find first label inside form trigger
         const formTriggerLabel = formTrigger.querySelectorAll(
-          '.wpforms-field-label-inline'
+          '.wpforms-field-label-inline',
         )[0];
 
         if (
@@ -30,7 +30,7 @@ const initFormHelpers = () => {
         } else {
           formTriggerLabel.innerHTML = 'Haluan kertoa tarkemmin';
           formTrigger.parentNode.parentNode.parentNode.classList.remove(
-            'is-open'
+            'is-open',
           );
         }
       });

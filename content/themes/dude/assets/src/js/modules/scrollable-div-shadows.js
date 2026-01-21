@@ -24,7 +24,7 @@ const initScrollableDivs = () => {
 
   // Find all scrollable elements
   const scrollableElements = document.querySelectorAll(
-    '.has-horizontal-scroll'
+    '.has-horizontal-scroll',
   );
 
   if (typeof scrollableElements !== 'undefined') {
@@ -37,9 +37,7 @@ const initScrollableDivs = () => {
       right.classList.add('visible');
 
       if (typeof list !== 'undefined') {
-        list.addEventListener('scroll', (event) =>
-          scrolled(event, left, right)
-        );
+        list.addEventListener('scroll', (event) => scrolled(event, left, right));
       }
     });
   }

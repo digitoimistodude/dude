@@ -56,7 +56,7 @@ export function getChildAltText(link) {
   }
 
   const childImgs = children.filter(
-    (child) => child.tagName.toLowerCase() === 'img'
+    (child) => child.tagName.toLowerCase() === 'img',
   );
 
   // If there are other elements than img elements, no need to add aria-label
@@ -86,16 +86,14 @@ export function styleExternalLinks() {
 
   const links = document.querySelectorAll('a');
 
-  const externalLinks = [...links].filter((link) =>
-    isLinkExternal(link.href, localDomains)
-  );
+  const externalLinks = [...links].filter((link) => isLinkExternal(link.href, localDomains));
 
   // eslint-disable-next-line consistent-return
   externalLinks.forEach((externalLink) => {
     // Abort mission if there is only img element inside of link
     if (
-      externalLink.childElementCount === 1 &&
-      externalLink.children[0].tagName.toLowerCase() === 'img'
+      externalLink.childElementCount === 1
+      && externalLink.children[0].tagName.toLowerCase() === 'img'
     ) {
       return false;
     }
@@ -104,10 +102,9 @@ export function styleExternalLinks() {
       const textContent = externalLink.textContent.trim().length
         ? externalLink.textContent.trim()
         : getChildAltText(externalLink);
-      const ariaLabel =
-        externalLink.target === '_blank'
-          ? `${textContent}: ${getLocalization('external_link')}, ${getLocalization('target_blank')}`
-          : `${textContent}: ${getLocalization('external_link')}`;
+      const ariaLabel = externalLink.target === '_blank'
+        ? `${textContent}: ${getLocalization('external_link')}, ${getLocalization('target_blank')}`
+        : `${textContent}: ${getLocalization('external_link')}`;
       externalLink.setAttribute('aria-label', ariaLabel);
     }
 
@@ -119,14 +116,12 @@ export function styleExternalLinks() {
     ];
 
     if (
-      !classExceptions.some((className) =>
-        externalLink.classList.contains(className)
-      )
+      !classExceptions.some((className) => externalLink.classList.contains(className))
     ) {
       // Add SVG arrow icon
       externalLink.insertAdjacentHTML(
         'beforeend',
-        '<svg class="external-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 9"><path d="M4.499 1.497h4v4m0-4l-7 7" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>'
+        '<svg class="external-link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 9"><path d="M4.499 1.497h4v4m0-4l-7 7" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
       );
     }
   });

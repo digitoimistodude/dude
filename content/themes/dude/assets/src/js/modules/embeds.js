@@ -14,7 +14,7 @@ const initEmbeds = () => {
     if (firstScriptTagMastodon && firstScriptTagMastodon.parentNode) {
       firstScriptTagMastodon.parentNode.insertBefore(
         tagMastodon,
-        firstScriptTagMastodon
+        firstScriptTagMastodon,
       );
       window.isMastodonIframeAPILoaded = true;
     }

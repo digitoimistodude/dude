@@ -10,7 +10,7 @@ window.addEventListener('scroll', () => {
 
   // Get all radial-gradient elements
   const backgroundElement = document.getElementsByClassName(
-    'has-radial-gradient'
+    'has-radial-gradient',
   );
 
   if (backgroundElement.length > 0) {

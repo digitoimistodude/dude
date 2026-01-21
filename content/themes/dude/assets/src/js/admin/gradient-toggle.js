@@ -1,4 +1,4 @@
-( function( wp ) {
+(function (wp) {
   const { registerPlugin } = wp.plugins;
   // Use wp.editor instead of wp.editPost (deprecated in WP 6.6)
   const { PluginDocumentSettingPanel } = wp.editor || wp.editPost;
@@ -7,147 +7,145 @@
   const { useEffect, useRef } = wp.element;
 
   // Helper to find ALL editor wrappers (handles both direct DOM and iframe)
-  var getAllEditorWrappers = function() {
-    var wrappers = [];
+  const getAllEditorWrappers = function () {
+    const wrappers = [];
 
     // Try direct DOM first
-    var directWrapper = document.querySelector( '.editor-styles-wrapper' );
-    if ( directWrapper ) {
-      wrappers.push( directWrapper );
+    const directWrapper = document.querySelector('.editor-styles-wrapper');
+    if (directWrapper) {
+      wrappers.push(directWrapper);
     }
 
     // Try iframe (WP 6.3+)
-    var iframe = document.querySelector( 'iframe[name="editor-canvas"]' );
-    if ( iframe && iframe.contentDocument ) {
-      var iframeWrapper = iframe.contentDocument.querySelector( '.editor-styles-wrapper' );
-      if ( iframeWrapper ) {
-        wrappers.push( iframeWrapper );
+    const iframe = document.querySelector('iframe[name="editor-canvas"]');
+    if (iframe && iframe.contentDocument) {
+      const iframeWrapper = iframe.contentDocument.querySelector('.editor-styles-wrapper');
+      if (iframeWrapper) {
+        wrappers.push(iframeWrapper);
       }
     }
 
     return wrappers;
   };
 
-  const PricingGradientPanel = function() {
-    const meta = useSelect( function( select ) {
-      return select( 'core/editor' ).getEditedPostAttribute( 'meta' ) || {};
-    }, [] );
+  const PricingGradientPanel = function () {
+    const meta = useSelect((select) => select('core/editor').getEditedPostAttribute('meta') || {}, []);
 
-    const { editPost } = useDispatch( 'core/editor' );
-    const lastAppliedState = useRef( null );
+    const { editPost } = useDispatch('core/editor');
+    const lastAppliedState = useRef(null);
 
     // Explicitly check for boolean true, not just truthy
     const showGradient = meta._show_pricing_gradient === true;
     const forceDarkMode = meta._force_dark_mode === true;
 
     // Apply/remove class to editor wrapper
-    useEffect( function() {
+    useEffect(() => {
       // Skip if we already applied this state (prevents flickering)
-      if ( lastAppliedState.current === showGradient ) {
+      if (lastAppliedState.current === showGradient) {
         return;
       }
 
-      var applyGradient = function() {
-        var wrappers = getAllEditorWrappers();
-        if ( wrappers.length === 0 ) {
+      const applyGradient = function () {
+        const wrappers = getAllEditorWrappers();
+        if (wrappers.length === 0) {
           return false;
         }
 
-        wrappers.forEach( function( wrapper ) {
-          if ( showGradient ) {
-            wrapper.classList.add( 'has-petrol-gradient-background' );
+        wrappers.forEach((wrapper) => {
+          if (showGradient) {
+            wrapper.classList.add('has-petrol-gradient-background');
           } else {
-            wrapper.classList.remove( 'has-petrol-gradient-background' );
+            wrapper.classList.remove('has-petrol-gradient-background');
           }
-        } );
+        });
 
         lastAppliedState.current = showGradient;
         return true;
       };
 
       // Apply immediately
-      var applied = applyGradient();
+      const applied = applyGradient();
 
       // If not applied immediately (editor not ready), retry a few times
-      var retryCount = 0;
-      var maxRetries = 5;
-      var retryInterval = null;
+      let retryCount = 0;
+      const maxRetries = 5;
+      let retryInterval = null;
 
-      if ( ! applied ) {
-        retryInterval = setInterval( function() {
+      if (!applied) {
+        retryInterval = setInterval(() => {
           retryCount++;
-          if ( applyGradient() || retryCount >= maxRetries ) {
-            clearInterval( retryInterval );
+          if (applyGradient() || retryCount >= maxRetries) {
+            clearInterval(retryInterval);
           }
-        }, 500 );
+        }, 500);
       }
 
       // Watch for iframe being added/replaced (view mode switches)
-      var observer = new MutationObserver( function( mutations ) {
-        var shouldReapply = false;
-        mutations.forEach( function( mutation ) {
+      const observer = new MutationObserver((mutations) => {
+        let shouldReapply = false;
+        mutations.forEach((mutation) => {
           // Only reapply if nodes were added (new iframe) - NOT for attribute changes
-          if ( mutation.type === 'childList' && mutation.addedNodes.length > 0 ) {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
             // Check if an iframe was added
-            mutation.addedNodes.forEach( function( node ) {
-              if ( node.tagName === 'IFRAME' || ( node.querySelector && node.querySelector( 'iframe' ) ) ) {
+            mutation.addedNodes.forEach((node) => {
+              if (node.tagName === 'IFRAME' || (node.querySelector && node.querySelector('iframe'))) {
                 shouldReapply = true;
               }
-            } );
+            });
           }
-        } );
+        });
 
-        if ( shouldReapply ) {
+        if (shouldReapply) {
           // Reset state so we reapply to new iframe
           lastAppliedState.current = null;
           // Delay to let iframe load
-          setTimeout( applyGradient, 300 );
-          setTimeout( applyGradient, 800 );
+          setTimeout(applyGradient, 300);
+          setTimeout(applyGradient, 800);
         }
-      } );
+      });
 
-      var observeTarget = document.querySelector( '.edit-post-visual-editor' ) ||
-        document.querySelector( '.block-editor-iframe__container' ) ||
-        document.querySelector( '.editor-styles-wrapper' );
+      const observeTarget = document.querySelector('.edit-post-visual-editor')
+        || document.querySelector('.block-editor-iframe__container')
+        || document.querySelector('.editor-styles-wrapper');
 
-      if ( observeTarget ) {
-        observer.observe( observeTarget, {
+      if (observeTarget) {
+        observer.observe(observeTarget, {
           childList: true,
           subtree: true,
-        } );
+        });
       }
 
       // Watch for iframe load events
-      var handleIframeLoad = function() {
+      const handleIframeLoad = function () {
         lastAppliedState.current = null;
         applyGradient();
       };
 
-      var iframe = document.querySelector( 'iframe[name="editor-canvas"]' );
-      if ( iframe ) {
-        iframe.addEventListener( 'load', handleIframeLoad );
+      const iframe = document.querySelector('iframe[name="editor-canvas"]');
+      if (iframe) {
+        iframe.addEventListener('load', handleIframeLoad);
       }
 
-      return function() {
-        if ( retryInterval ) {
-          clearInterval( retryInterval );
+      return function () {
+        if (retryInterval) {
+          clearInterval(retryInterval);
         }
         observer.disconnect();
-        if ( iframe ) {
-          iframe.removeEventListener( 'load', handleIframeLoad );
+        if (iframe) {
+          iframe.removeEventListener('load', handleIframeLoad);
         }
       };
-    }, [ showGradient ] );
+    }, [showGradient]);
 
-    var onChange = function( value ) {
+    const onChange = function (value) {
       // Reset applied state so useEffect will apply the new value
       lastAppliedState.current = null;
-      editPost( {
+      editPost({
         meta: {
           ...meta,
           _show_pricing_gradient: value,
         },
-      } );
+      });
     };
 
     return wp.element.createElement(
@@ -157,18 +155,18 @@
         title: 'Tausta',
         className: 'pricing-gradient-panel',
       },
-      wp.element.createElement( ToggleControl, {
+      wp.element.createElement(ToggleControl, {
         label: 'Näytä petrooli gradient taustalla',
         help: 'Näyttää tumman petroolin gradientin editorissa ja frontissa.',
         checked: showGradient,
-        onChange: onChange,
+        onChange,
         __nextHasNoMarginBottom: true,
-      } )
+      }),
     );
   };
 
-  registerPlugin( 'dude-pricing-gradient', {
+  registerPlugin('dude-pricing-gradient', {
     render: PricingGradientPanel,
     icon: null,
-  } );
-} )( window.wp );
+  });
+}(window.wp));
