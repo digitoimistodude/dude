@@ -1,3 +1,8 @@
+### 7.0.11: 2026-01-22
+
+* Add bold, italic, and link formatting support to all pricing-item RichText fields, Ref: DEV-567
+* Fix pricing-item block crash by adding missing v2 attributes to block.json, Ref: DEV-567
+
 ### 7.0.10: 2026-01-21
 
 * Add two-column layout with optional gradient box to pricing-item block, Ref: DEV-567

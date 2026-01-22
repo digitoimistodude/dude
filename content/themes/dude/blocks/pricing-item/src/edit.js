@@ -212,6 +212,7 @@ export default function Edit({ attributes, setAttributes }) {
                     value={title}
                     onChange={(value) => setAttributes({ title: value })}
                     placeholder={__('Tuotteen nimi…', 'dude')}
+                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
                   />
                   {isPopular && <span className="badge">Suosituin</span>}
                 </span>
@@ -222,6 +223,7 @@ export default function Edit({ attributes, setAttributes }) {
                     value={price}
                     onChange={(value) => setAttributes({ price: value })}
                     placeholder={__('Hinta…', 'dude')}
+                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
                   />
                   <RichText
                     tagName="span"
@@ -233,6 +235,7 @@ export default function Edit({ attributes, setAttributes }) {
                       })
                     }
                     placeholder={__('Lyhyt kuvaus…', 'dude')}
+                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
                   />
                 </span>
               </span>
@@ -285,7 +288,7 @@ export default function Edit({ attributes, setAttributes }) {
                   value={content}
                   onChange={(value) => setAttributes({ content: value })}
                   placeholder={__('Pidempi kuvaus…', 'dude')}
-                  allowedFormats={['core/link']}
+                  allowedFormats={['core/bold', 'core/italic', 'core/link']}
                 />
                 {featuresTitle && (
                   <p className="features-title">{featuresTitle}</p>
@@ -298,7 +301,11 @@ export default function Edit({ attributes, setAttributes }) {
                           tagName="span"
                           value={feature.text || feature}
                           onChange={(value) => updateFeature(index, value)}
-                          allowedFormats={['core/link']}
+                          allowedFormats={[
+                            'core/bold',
+                            'core/italic',
+                            'core/link',
+                          ]}
                           placeholder={__('Ominaisuus…', 'dude')}
                         />
                       </li>
@@ -318,7 +325,7 @@ export default function Edit({ attributes, setAttributes }) {
                       })
                     }
                     placeholder={__('Laatikon otsikko…', 'dude')}
-                    allowedFormats={[]}
+                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
                   />
                   {gradientBoxItems && gradientBoxItems.length > 0 && (
                     <ul className={`list-${gradientBoxListType}`}>
@@ -330,7 +337,11 @@ export default function Edit({ attributes, setAttributes }) {
                             onChange={(value) =>
                               updateGradientBoxItem(index, value)
                             }
-                            allowedFormats={['core/link']}
+                            allowedFormats={[
+                              'core/bold',
+                              'core/italic',
+                              'core/link',
+                            ]}
                             placeholder={__('Kohta…', 'dude')}
                           />
                         </li>

@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "dude/pricing-item",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "title": "Tuote",
   "category": "dude-native",
   "icon": "tag",
@@ -32,11 +32,46 @@
     },
     "content": {
       "type": "string",
+      "source": "html",
+      "selector": ".item-description",
       "default": "Pidempi kuvaus tuotteesta."
     },
     "features": {
       "type": "array",
-      "default": ["Ominaisuus 1", "Ominaisuus 2"]
+      "default": [
+        { "text": "Ominaisuus 1" },
+        { "text": "Ominaisuus 2" }
+      ]
+    },
+    "featuresTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "showGradientBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "gradientBoxHeading": {
+      "type": "string",
+      "source": "html",
+      "selector": ".gradient-box-heading",
+      "default": ""
+    },
+    "gradientBoxItems": {
+      "type": "array",
+      "default": []
+    },
+    "gradientBoxListType": {
+      "type": "string",
+      "default": "bullet"
+    },
+    "gradientBoxButtonText": {
+      "type": "string",
+      "default": ""
+    },
+    "gradientBoxButtonUrl": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "dude",
