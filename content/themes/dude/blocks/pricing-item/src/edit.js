@@ -77,6 +77,7 @@ export default function Edit({ attributes, setAttributes }) {
             label={__('Suosituin', 'dude')}
             checked={isPopular}
             onChange={(value) => setAttributes({ isPopular: value })}
+            __nextHasNoMarginBottom
           />
 
           <TextControl
@@ -84,6 +85,8 @@ export default function Edit({ attributes, setAttributes }) {
             value={featuresTitle}
             onChange={(value) => setAttributes({ featuresTitle: value })}
             help={__('Näytetään ennen ominaisuuslistaa', 'dude')}
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
           />
 
           <p>
@@ -102,6 +105,8 @@ export default function Edit({ attributes, setAttributes }) {
                 value={feature.text || feature}
                 onChange={(value) => updateFeature(index, value)}
                 style={{ flex: 1 }}
+                __next40pxDefaultSize
+                __nextHasNoMarginBottom
               />
               <Button
                 isDestructive
@@ -127,6 +132,7 @@ export default function Edit({ attributes, setAttributes }) {
               'Lisää oikealle puolelle gradientti-laatikko lisäsisällölle',
               'dude'
             )}
+            __nextHasNoMarginBottom
           />
         </PanelBody>
       </InspectorControls>

@@ -5,6 +5,8 @@
 * Fix accordion icon rotation in editor by adding override for -315deg transform, Ref: DEV-567
 * Add bold, italic, and link formatting support to all pricing-item RichText fields, Ref: DEV-567
 * Fix pricing-item block crash by adding missing v2 attributes to block.json, Ref: DEV-567
+* Add __nextHasNoMarginBottom prop to ToggleControl components to fix deprecation warnings, Ref: DEV-567
+* Add __next40pxDefaultSize and __nextHasNoMarginBottom props to TextControl components, Ref: DEV-567
 
 ### 7.0.10: 2026-01-21
 
