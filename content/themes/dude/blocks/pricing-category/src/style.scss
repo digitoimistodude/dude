@@ -107,6 +107,8 @@
       margin-bottom: 16px;
     }
 
+    // Core list block in editor
+    .wp-block-list,
     ul {
       list-style: none;
       margin: 0 0 20px;
@@ -121,21 +123,39 @@
         position: relative;
       }
     }
+
+    // Core buttons block in editor
+    .wp-block-buttons {
+      margin: 0;
+
+      .wp-block-button {
+        margin: 0;
+      }
+    }
+
+    // Core button styling in editor
+    .wp-block-button__link,
+    .button {
+      background-color: var(--color-mint) !important;
+      border-radius: 8px !important;
+      color: var(--color-midnight) !important;
+      display: inline-block;
+      font-size: var(--font-size-16);
+      font-weight: 600;
+      padding: 12px 24px !important;
+      text-decoration: none !important;
+    }
   }
 
-  // Gradient box list bullets
-  .panel-gradient-box ul li::before {
+  // Gradient box list bullets in editor
+  .panel-gradient-box ul li::before,
+  .panel-gradient-box .wp-block-list li::before {
     color: var(--color-mint);
-    content: "•";
-    font-size: var(--font-size-20);
-    left: 10px;
-    position: absolute;
-  }
-
-  .panel-gradient-box .list-checkbox li::before {
     content: "✓";
     font-size: var(--font-size-18);
     font-weight: 700;
+    left: 10px;
+    position: absolute;
   }
 }
 // stylelint-enable selector-class-pattern, no-descending-specificity
@@ -368,6 +388,8 @@
       margin: 0 0 16px;
     }
 
+    // Core list block styles
+    .wp-block-list,
     ul {
       list-style: none;
       margin: 0 0 20px;
@@ -383,34 +405,45 @@
       }
     }
 
-    .button-mint {
-      display: inline-block;
+    // Core buttons block
+    .wp-block-buttons {
+      margin: 0;
+
+      .wp-block-button {
+        margin: 0;
+      }
     }
-  }
 
-  // Gradient box list bullets
-  .panel-gradient-box ul li::before {
-    color: var(--color-mint);
-    content: "•";
-    font-size: var(--font-size-20);
-    left: 10px;
-    position: absolute;
-  }
-
-  .panel-gradient-box .list-checkbox li::before {
-    content: "✓";
-    font-size: var(--font-size-18);
-    font-weight: 700;
-  }
-
-  // Gradient box links
-  .panel-gradient-box a {
-    color: var(--color-mint);
-    text-decoration: underline;
-
-    &:hover,
-    &:focus {
+    // Core button or custom button
+    .wp-block-button__link,
+    .button {
+      background-color: var(--color-mint);
+      border-radius: 8px;
+      color: var(--color-midnight);
+      display: inline-block;
+      font-size: var(--font-size-16);
+      font-weight: 600;
+      padding: 12px 24px;
       text-decoration: none;
+      transition: all 0.2s;
+
+      &:hover,
+      &:focus {
+        opacity: 0.9;
+        text-decoration: none;
+      }
+    }
+
+    // Text links
+    p a,
+    li a {
+      color: var(--color-mint);
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
     }
   }
 
@@ -421,6 +454,17 @@
     @media (max-width: 600px) {
       padding: 24px;
     }
+  }
+
+  // Gradient box list bullets
+  .panel-gradient-box ul li::before,
+  .panel-gradient-box .wp-block-list li::before {
+    color: var(--color-mint);
+    content: "✓";
+    font-size: var(--font-size-18);
+    font-weight: 700;
+    left: 10px;
+    position: absolute;
   }
 
   // Expanded state - rotate icon (override global -315deg)

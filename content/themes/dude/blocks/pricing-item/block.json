@@ -56,22 +56,6 @@
       "source": "html",
       "selector": ".gradient-box-heading",
       "default": ""
-    },
-    "gradientBoxItems": {
-      "type": "array",
-      "default": []
-    },
-    "gradientBoxListType": {
-      "type": "string",
-      "default": "bullet"
-    },
-    "gradientBoxButtonText": {
-      "type": "string",
-      "default": ""
-    },
-    "gradientBoxButtonUrl": {
-      "type": "string",
-      "default": ""
     }
   },
   "textdomain": "dude",

@@ -3,13 +3,13 @@ import {
   useBlockProps,
   RichText,
   InspectorControls,
+  InnerBlocks,
 } from '@wordpress/block-editor';
 import {
   PanelBody,
   Button,
   TextControl,
   ToggleControl,
-  SelectControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
@@ -24,10 +24,6 @@ export default function Edit({ attributes, setAttributes }) {
     featuresTitle,
     showGradientBox,
     gradientBoxHeading,
-    gradientBoxItems,
-    gradientBoxListType,
-    gradientBoxButtonText,
-    gradientBoxButtonUrl,
   } = attributes;
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -50,22 +46,28 @@ export default function Edit({ attributes, setAttributes }) {
     setAttributes({ features: newFeatures });
   };
 
-  const updateGradientBoxItem = (index, value) => {
-    const newItems = [...gradientBoxItems];
-    newItems[index] = { text: value };
-    setAttributes({ gradientBoxItems: newItems });
-  };
-
-  const addGradientBoxItem = () => {
-    setAttributes({
-      gradientBoxItems: [...gradientBoxItems, { text: 'Uusi kohta' }],
-    });
-  };
-
-  const removeGradientBoxItem = (index) => {
-    const newItems = gradientBoxItems.filter((_, i) => i !== index);
-    setAttributes({ gradientBoxItems: newItems });
-  };
+  const GRADIENT_BOX_TEMPLATE = [
+    [
+      'core/list',
+      {
+        className: 'list-checkbox',
+        placeholder: __('Lisää listan kohteet…', 'dude'),
+      },
+    ],
+    [
+      'core/buttons',
+      {},
+      [
+        [
+          'core/button',
+          {
+            text: __('Painikkeen teksti', 'dude'),
+            className: 'is-style-mint',
+          },
+        ],
+      ],
+    ],
+  ];
 
   return (
     <>
@@ -127,74 +129,6 @@ export default function Edit({ attributes, setAttributes }) {
             )}
           />
         </PanelBody>
-
-        {showGradientBox && (
-          <PanelBody
-            title={__('Gradientti-laatikko asetukset', 'dude')}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__('Listan tyyppi', 'dude')}
-              value={gradientBoxListType}
-              options={[
-                { label: 'Bullet-lista', value: 'bullet' },
-                { label: 'Checkbox-lista', value: 'checkbox' },
-              ]}
-              onChange={(value) =>
-                setAttributes({ gradientBoxListType: value })
-              }
-            />
-
-            <p>
-              <strong>{__('Listan kohteet', 'dude')}</strong>
-            </p>
-            {gradientBoxItems.map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  display: 'flex',
-                  gap: '8px',
-                  marginBottom: '8px',
-                }}
-              >
-                <TextControl
-                  value={item.text || item}
-                  onChange={(value) => updateGradientBoxItem(index, value)}
-                  style={{ flex: 1 }}
-                />
-                <Button
-                  isDestructive
-                  variant="secondary"
-                  onClick={() => removeGradientBoxItem(index)}
-                  style={{ flexShrink: 0 }}
-                >
-                  {__('X', 'dude')}
-                </Button>
-              </div>
-            ))}
-            <Button variant="secondary" onClick={addGradientBoxItem}>
-              {__('+ Lisää kohta', 'dude')}
-            </Button>
-
-            <hr style={{ margin: '16px 0' }} />
-
-            <TextControl
-              label={__('Painikkeen teksti', 'dude')}
-              value={gradientBoxButtonText}
-              onChange={(value) =>
-                setAttributes({ gradientBoxButtonText: value })
-              }
-            />
-            <TextControl
-              label={__('Painikkeen URL', 'dude')}
-              value={gradientBoxButtonUrl}
-              onChange={(value) =>
-                setAttributes({ gradientBoxButtonUrl: value })
-              }
-              type="url"
-            />
-          </PanelBody>
-        )}
       </InspectorControls>
 
       <div {...blockProps}>
@@ -327,35 +261,11 @@ export default function Edit({ attributes, setAttributes }) {
                     placeholder={__('Laatikon otsikko…', 'dude')}
                     allowedFormats={['core/bold', 'core/italic', 'core/link']}
                   />
-                  {gradientBoxItems && gradientBoxItems.length > 0 && (
-                    <ul className={`list-${gradientBoxListType}`}>
-                      {gradientBoxItems.map((item, index) => (
-                        <li key={index}>
-                          <RichText
-                            tagName="span"
-                            value={item.text || item}
-                            onChange={(value) =>
-                              updateGradientBoxItem(index, value)
-                            }
-                            allowedFormats={[
-                              'core/bold',
-                              'core/italic',
-                              'core/link',
-                            ]}
-                            placeholder={__('Kohta…', 'dude')}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {gradientBoxButtonText && gradientBoxButtonUrl && (
-                    <a
-                      href={gradientBoxButtonUrl}
-                      className="button button-mint"
-                    >
-                      {gradientBoxButtonText}
-                    </a>
-                  )}
+                  <InnerBlocks
+                    allowedBlocks={['core/list', 'core/buttons', 'core/button']}
+                    template={GRADIENT_BOX_TEMPLATE}
+                    templateLock={false}
+                  />
                 </div>
               )}
             </div>

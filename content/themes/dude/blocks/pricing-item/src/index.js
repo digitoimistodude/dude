@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
 import Edit from './edit';
 import metadata from '../block.json';
 
@@ -34,10 +34,6 @@ const v1 = {
       featuresTitle: '',
       showGradientBox: false,
       gradientBoxHeading: '',
-      gradientBoxItems: [],
-      gradientBoxListType: 'bullet',
-      gradientBoxButtonText: '',
-      gradientBoxButtonUrl: '',
     };
   },
   save: ({ attributes }) => {
@@ -140,10 +136,6 @@ registerBlockType(metadata.name, {
       featuresTitle,
       showGradientBox,
       gradientBoxHeading,
-      gradientBoxItems,
-      gradientBoxListType,
-      gradientBoxButtonText,
-      gradientBoxButtonUrl,
     } = attributes;
 
     // Generate unique ID from title for accessibility
@@ -251,20 +243,7 @@ registerBlockType(metadata.name, {
                     value={gradientBoxHeading}
                   />
                 )}
-                {gradientBoxItems && gradientBoxItems.length > 0 && (
-                  <ul className={`list-${gradientBoxListType}`}>
-                    {gradientBoxItems.map((item, index) => (
-                      <li key={index}>
-                        <RichText.Content tagName="span" value={item.text} />
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {gradientBoxButtonText && gradientBoxButtonUrl && (
-                  <a href={gradientBoxButtonUrl} className="button button-mint">
-                    {gradientBoxButtonText}
-                  </a>
-                )}
+                <InnerBlocks.Content />
               </div>
             )}
           </div>
