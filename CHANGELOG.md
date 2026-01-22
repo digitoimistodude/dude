@@ -1,12 +1,13 @@
 ### 7.0.11: 2026-01-22
 
-* Replace custom gradient box controls with WordPress core blocks (InnerBlocks), Ref: DEV-567
-* Use core/list and core/button blocks in gradient box for better inline editing UX, Ref: DEV-567
-* Fix accordion icon rotation in editor by adding override for -315deg transform, Ref: DEV-567
-* Add bold, italic, and link formatting support to all pricing-item RichText fields, Ref: DEV-567
-* Fix pricing-item block crash by adding missing v2 attributes to block.json, Ref: DEV-567
-* Add __nextHasNoMarginBottom prop to ToggleControl components to fix deprecation warnings, Ref: DEV-567
-* Add __next40pxDefaultSize and __nextHasNoMarginBottom props to TextControl components, Ref: DEV-567
+* Replace custom gradient box controls with WordPress core blocks (InnerBlocks), Ref: DEV-701
+* Use core/list and core/button blocks in gradient box for better inline editing UX, Ref: DEV-701
+* Fix accordion icon rotation in editor by adding override for -315deg transform, Ref: DEV-701
+* Add bold, italic, and link formatting support to all pricing-item RichText fields, Ref: DEV-701
+* Fix pricing-item block crash by adding missing v2 attributes to block.json, Ref: DEV-701
+* Add __nextHasNoMarginBottom prop to ToggleControl components to fix deprecation warnings, Ref: DEV-701
+* Add __next40pxDefaultSize and __nextHasNoMarginBottom props to TextControl components, Ref: DEV-701
+* Fix GitHub Actions workflow npm cache error by using actions/cache instead of setup-node cache
 
 ### 7.0.10: 2026-01-21
 

@@ -18,8 +18,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: content/themes/dude/package-lock.json
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: content/themes/dude/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('content/themes/dude/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
