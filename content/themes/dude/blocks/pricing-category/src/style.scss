@@ -510,6 +510,14 @@
     transform: rotate(180deg) !important;
   }
 }
+
+.block-pricing-category .accordion-trigger[aria-expanded='true'] .accordion-icon {
+  transform: rotate(0deg) !important;
+
+  svg {
+    transform: rotate(180deg) !important;
+  }
+}
 /* stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
 .block-pricing-category .accordion-cta {
   margin-top: 10px;
