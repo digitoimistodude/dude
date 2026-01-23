@@ -10,6 +10,7 @@
 * Fix GitHub Actions workflow npm cache error by using actions/cache instead of setup-node cache, Ref: DEV-701
 * Fix accordion chevron rotation with !important to override global editor styles, Ref: DEV-701
 * Update gradient box button styles (28px border-radius, 10px 20px padding, 14px medium font), Ref: DEV-701
+* Replace checkmark text character with SVG icon in gradient box list items, Ref: DEV-701
 
 ### 7.0.10: 2026-01-21
 

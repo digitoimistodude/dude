@@ -150,12 +150,15 @@
   // Gradient box list bullets in editor
   .panel-gradient-box ul li::before,
   .panel-gradient-box .wp-block-list li::before {
-    color: var(--color-mint);
-    content: "✓";
-    font-size: var(--font-size-18);
-    font-weight: 700;
-    left: 10px;
+    background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 5L7.50065 14.1667L3.33398 10" stroke="%237EFFE1" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    content: "";
+    height: 20px;
+    left: 0;
     position: absolute;
+    width: 20px;
   }
 }
 // stylelint-enable selector-class-pattern, no-descending-specificity
@@ -459,12 +462,15 @@
   // Gradient box list bullets
   .panel-gradient-box ul li::before,
   .panel-gradient-box .wp-block-list li::before {
-    color: var(--color-mint);
-    content: "✓";
-    font-size: var(--font-size-18);
-    font-weight: 700;
-    left: 10px;
+    background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 5L7.50065 14.1667L3.33398 10" stroke="%237EFFE1" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    content: "";
+    height: 20px;
+    left: 0;
     position: absolute;
+    width: 20px;
   }
 
   // Expanded state - rotate icon (override global -315deg)
