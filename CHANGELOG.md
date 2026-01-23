@@ -1,4 +1,4 @@
-### 7.0.11: 2026-01-22
+### 7.0.11: 2026-01-23
 
 * Replace custom gradient box controls with WordPress core blocks (InnerBlocks), Ref: DEV-701
 * Use core/list and core/button blocks in gradient box for better inline editing UX, Ref: DEV-701
@@ -7,7 +7,8 @@
 * Fix pricing-item block crash by adding missing v2 attributes to block.json, Ref: DEV-701
 * Add __nextHasNoMarginBottom prop to ToggleControl components to fix deprecation warnings, Ref: DEV-701
 * Add __next40pxDefaultSize and __nextHasNoMarginBottom props to TextControl components, Ref: DEV-701
-* Fix GitHub Actions workflow npm cache error by using actions/cache instead of setup-node cache
+* Fix GitHub Actions workflow npm cache error by using actions/cache instead of setup-node cache, Ref: DEV-701
+* Fix accordion chevron rotation with !important to override global editor styles, Ref: DEV-701
 
 ### 7.0.10: 2026-01-21
 

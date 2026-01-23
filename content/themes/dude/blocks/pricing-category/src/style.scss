@@ -469,10 +469,10 @@
 
   // Expanded state - rotate icon (override global -315deg)
   button.accordion-trigger[aria-expanded='true'] .accordion-icon {
-    transform: rotate(0deg);
+    transform: rotate(0deg) !important;
 
     svg {
-      transform: rotate(180deg);
+      transform: rotate(180deg) !important;
     }
   }
 
@@ -492,6 +492,15 @@
       transition: transform 100ms;
       width: 18px;
     }
+  }
+}
+
+// Editor-specific override for accordion icon rotation (override global -315deg)
+.editor-styles-wrapper .block-pricing-category .pricing-accordion-item button.accordion-trigger[aria-expanded='true'] .accordion-icon {
+  transform: rotate(0deg) !important;
+
+  svg {
+    transform: rotate(180deg) !important;
   }
 }
 
