@@ -137,12 +137,12 @@
     .wp-block-button__link,
     .button {
       background-color: var(--color-mint) !important;
-      border-radius: 8px !important;
+      border-radius: 28px !important;
       color: var(--color-midnight) !important;
       display: inline-block;
-      font-size: var(--font-size-16);
-      font-weight: 600;
-      padding: 12px 24px !important;
+      font-size: var(--font-size-14);
+      font-weight: 500;
+      padding: 10px 20px !important;
       text-decoration: none !important;
     }
   }
@@ -418,12 +418,12 @@
     .wp-block-button__link,
     .button {
       background-color: var(--color-mint);
-      border-radius: 8px;
+      border-radius: 28px;
       color: var(--color-midnight);
       display: inline-block;
-      font-size: var(--font-size-16);
-      font-weight: 600;
-      padding: 12px 24px;
+      font-size: var(--font-size-14);
+      font-weight: 500;
+      padding: 10px 20px;
       text-decoration: none;
       transition: all 0.2s;
 
@@ -496,6 +496,7 @@
 }
 
 // Editor-specific override for accordion icon rotation (override global -315deg)
+/* stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
 .editor-styles-wrapper .block-pricing-category .pricing-accordion-item button.accordion-trigger[aria-expanded='true'] .accordion-icon {
   transform: rotate(0deg) !important;
 
@@ -503,7 +504,7 @@
     transform: rotate(180deg) !important;
   }
 }
-
+/* stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
 .block-pricing-category .accordion-cta {
   margin-top: 10px;
 
