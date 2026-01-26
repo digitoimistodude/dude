@@ -1,172 +1,6 @@
 // Pricing Category block styles
-// Loaded on both frontend and editor
-
-// Editor-specific overrides to reset WordPress defaults and force white colors
-// stylelint-disable selector-class-pattern, no-descending-specificity, declaration-no-important
-.editor-styles-wrapper .block-pricing-category {
-  // Force white colors since editor can't detect dark gradient
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .wp-block-heading,
-  .category-title,
-  .accordion-trigger {
-    color: #fff !important;
-  }
-
-  .item-header .item-name {
-    color: #fff !important;
-  }
-
-  p,
-  .wp-block-paragraph,
-  .category-description {
-    color: rgb(255 255 255 / 0.8) !important;
-  }
-
-  // Reset paragraph margins
-  p,
-  .wp-block-paragraph {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  // Reset heading margins
-  h2,
-  h3 {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  // Editor uses div.accordion-trigger (not button) to allow RichText editing
-  .pricing-accordion-item .accordion-trigger {
-    align-items: center;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    display: flex;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    justify-content: space-between;
-    margin: 0;
-    padding: 32px;
-    text-align: left;
-    width: 100%;
-
-    @media (max-width: 600px) {
-      padding: 24px;
-    }
-  }
-
-  // Override global pointer-events: none to allow clicking in editor
-  .pricing-accordion-item .accordion-title {
-    pointer-events: auto;
-  }
-
-  // Make accordion icon clickable in editor
-  .pricing-accordion-item .accordion-icon {
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  // Accordion panel in editor - override global accordion styles
-  .pricing-accordion-item .accordion-panel {
-    padding: 0 32px 32px;
-
-    > div {
-      padding-bottom: 0;
-      padding-right: 0;
-    }
-  }
-
-  // Reset list styles
-  ul {
-    margin: 10px 0 0;
-    padding-left: 13px;
-  }
-
-  // Two-column layout for gradient box
-  .panel-layout.has-gradient-box {
-    display: grid;
-    gap: 32px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  // Hide gradient box when toggle is off in editor
-  .panel-layout:not(.has-gradient-box) .panel-gradient-box {
-    display: none;
-  }
-
-  // Gradient box in editor
-  .panel-gradient-box {
-    background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
-    border-radius: 12px;
-    padding: 24px;
-
-    .gradient-box-heading {
-      color: #fff !important;
-      margin-bottom: 16px;
-    }
-
-    // Core list block in editor
-    .wp-block-list,
-    ul {
-      list-style: none;
-      margin: 0 0 20px;
-      padding: 0;
-
-      li {
-        color: rgb(255 255 255 / 0.8) !important;
-        font-size: var(--font-size-16);
-        line-height: 1.7;
-        margin-bottom: 8px;
-        padding-left: 28px;
-        position: relative;
-      }
-    }
-
-    // Core buttons block in editor
-    .wp-block-buttons {
-      margin: 0;
-
-      .wp-block-button {
-        margin: 0;
-      }
-    }
-
-    // Core button styling in editor
-    .wp-block-button__link,
-    .button {
-      background-color: var(--color-mint) !important;
-      border-radius: 28px !important;
-      color: var(--color-midnight) !important;
-      display: inline-block;
-      font-size: var(--font-size-14);
-      font-weight: 500;
-      padding: 10px 20px !important;
-      text-decoration: none !important;
-    }
-  }
-
-  // Gradient box list bullets in editor
-  .panel-gradient-box ul li::before,
-  .panel-gradient-box .wp-block-list li::before {
-    background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 5L7.50065 14.1667L3.33398 10" stroke="%237EFFE1" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    content: "";
-    height: 20px;
-    left: 0;
-    position: absolute;
-    width: 20px;
-  }
-}
-// stylelint-enable selector-class-pattern, no-descending-specificity
+// Shared styles loaded on both frontend and editor
+// Editor-only overrides are in editor.scss
 .block-pricing-category {
   padding-bottom: 0;
   padding-top: calc(var(--padding-block) + 26px);
@@ -337,54 +171,45 @@
     }
   }
 
-  // Two-column layout wrapper
-  .panel-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  // Two-column layout for gradient box (frontend only)
+  .panel-layout.has-gradient-box {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
 
-    &.has-gradient-box {
-      display: grid;
-      gap: 32px;
-      grid-template-columns: 1fr 1fr;
-
-      @media (max-width: 1050px) {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    // Hide gradient box when toggle is off
-    &:not(.has-gradient-box) .panel-gradient-box {
-      display: none;
+    @media (max-width: 1050px) {
+      grid-template-columns: 1fr;
     }
   }
 
-  // Left column
-  .panel-main {
-    .item-description {
-      color: rgb(255 255 255 / 0.8);
-      font-size: var(--font-size-16);
-      line-height: 1.7;
-      margin: 0 0 10px;
-    }
-
-    .features-title {
-      color: var(--color-heading);
-      font-size: var(--font-size-16);
-      font-weight: 600;
-      margin: 16px 0 8px;
-    }
+  // Hide gradient box when toggle is off
+  .panel-layout:not(.has-gradient-box) .panel-gradient-box {
+    display: none;
   }
 
-  // Panel main links
+  // Left column content
+  .panel-main .item-description {
+    color: rgb(255 255 255 / 0.8);
+    font-size: var(--font-size-16);
+    line-height: 1.7;
+    margin: 0 0 10px;
+  }
+
+  .panel-main .features-title {
+    color: var(--color-heading);
+    font-size: var(--font-size-16);
+    font-weight: 600;
+    margin: 16px 0 8px;
+  }
+
   .panel-main a {
     color: var(--color-mint);
     text-decoration: underline;
+  }
 
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
+  .panel-main a:hover,
+  .panel-main a:focus {
+    text-decoration: none;
   }
 
   // Right gradient box
@@ -482,6 +307,21 @@
     position: absolute;
     width: 20px;
   }
+
+  // Button styles for is-style-mint in gradient box
+  /* stylelint-disable selector-max-class, selector-max-specificity */
+  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link {
+    transition: all 0.18s;
+  }
+
+  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link:hover,
+  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link:focus {
+    background-color: var(--color-button-background-hover);
+    border-color: var(--color-button-background-hover);
+    box-shadow: 0 0 0 3px var(--color-button-background-hover);
+    color: var(--color-button-hover);
+  }
+  /* stylelint-enable selector-max-class, selector-max-specificity */
 
   // Expanded state - rotate icon (override global -315deg)
   button.accordion-trigger[aria-expanded='true'] .accordion-icon {

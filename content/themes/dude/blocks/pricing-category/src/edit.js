@@ -7,6 +7,7 @@ import {
 } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 import './style.scss';
+import './editor.scss';
 
 const TEMPLATE = [
   [

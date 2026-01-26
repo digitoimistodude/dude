@@ -8,6 +8,13 @@
 * Add isEligible check to v2 deprecation to properly match old blocks with content/features attributes, Ref: DEV-701
 * Fix v2 deprecation default for showGradientBox to match old blocks (false), Ref: DEV-701
 * Update pricing-item template with specific default content and links for panel-main and gradient box, Ref: DEV-701
+* Split pricing-category styles into separate style.scss and editor.scss files for better maintainability, Ref: DEV-701
+* Add grid layout to block-editor-block-list__layout for two-column editor display of gradient box, Ref: DEV-701
+* Override global has-petrol-gradient-background rules to preserve text colors and backgrounds in pricing blocks, Ref: DEV-701
+* Fix has-global-padding causing incorrect padding on wp-block-group elements in editor, Ref: DEV-701
+* Add is-style-mint button hover states with correct colors and box-shadow to gradient box buttons, Ref: DEV-701
+* Fix inconsistent list padding and margins between editor and frontend views, Ref: DEV-701
+* Update npm lint:styles script to fail on warnings with max-warnings=0 flag for CI reliability, Ref: DEV-701
 
 ### 7.0.11: 2026-01-23
 
