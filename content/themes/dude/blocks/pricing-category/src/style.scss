@@ -96,6 +96,11 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  // Hide gradient box when toggle is off in editor
+  .panel-layout:not(.has-gradient-box) .panel-gradient-box {
+    display: none;
+  }
+
   // Gradient box in editor
   .panel-gradient-box {
     background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
@@ -346,6 +351,11 @@
       @media (max-width: 1050px) {
         grid-template-columns: 1fr;
       }
+    }
+
+    // Hide gradient box when toggle is off
+    &:not(.has-gradient-box) .panel-gradient-box {
+      display: none;
     }
   }
 

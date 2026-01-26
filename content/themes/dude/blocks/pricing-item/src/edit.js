@@ -10,10 +10,8 @@ import {
   ToggleControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { createBlock } from '@wordpress/blocks';
-import { useDispatch, useSelect } from '@wordpress/data';
 
-export default function Edit({ attributes, setAttributes, clientId }) {
+export default function Edit({ attributes, setAttributes }) {
   const {
     title,
     isPopular,
@@ -26,62 +24,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps({
     className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`,
   });
-
-  const { insertBlock } = useDispatch('core/block-editor');
-  const { getBlock } = useSelect((select) => select('core/block-editor'), []);
-
-  const handleGradientBoxToggle = (value) => {
-    setAttributes({ showGradientBox: value });
-
-    if (value) {
-      // Add gradient box group when toggled on
-      const parentBlock = getBlock(clientId);
-      const innerBlocks = parentBlock?.innerBlocks || [];
-
-      // Check if gradient box group already exists
-      const hasGradientBox = innerBlocks.some(
-        (block) =>
-          block.name === 'core/group' &&
-          block.attributes.className === 'panel-gradient-box'
-      );
-
-      if (!hasGradientBox) {
-        // Create gradient box group
-        const gradientBoxGroup = createBlock(
-          'core/group',
-          {
-            className: 'panel-gradient-box',
-            layout: { type: 'constrained' },
-          },
-          [
-            createBlock('core/heading', {
-              level: 4,
-              placeholder: __('Laatikon otsikko…', 'dude'),
-              className: 'gradient-box-heading',
-              content: __('Mitä saat', 'dude'),
-            }),
-            createBlock('core/list', {
-              className: 'list-checkbox',
-              placeholder: __('Lisää listan kohteet…', 'dude'),
-              values: '<li>Esimerkki ominaisuus 1</li><li>Esimerkki ominaisuus 2</li>',
-            }),
-            createBlock(
-              'core/buttons',
-              {},
-              [
-                createBlock('core/button', {
-                  text: __('Ota yhteyttä', 'dude'),
-                  className: 'is-style-mint',
-                }),
-              ]
-            ),
-          ]
-        );
-
-        insertBlock(gradientBoxGroup, innerBlocks.length, clientId);
-      }
-    }
-  };
 
   const TEMPLATE = [
     [
@@ -121,6 +63,46 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         ],
       ],
     ],
+    [
+      'core/group',
+      {
+        className: 'panel-gradient-box',
+        layout: { type: 'constrained' },
+      },
+      [
+        [
+          'core/heading',
+          {
+            level: 4,
+            placeholder: __('Laatikon otsikko…', 'dude'),
+            className: 'gradient-box-heading',
+            content: __('Mitä saat', 'dude'),
+          },
+        ],
+        [
+          'core/list',
+          {
+            className: 'list-checkbox',
+            placeholder: __('Lisää listan kohteet…', 'dude'),
+            values:
+              '<li>Esimerkki ominaisuus 1</li><li>Esimerkki ominaisuus 2</li>',
+          },
+        ],
+        [
+          'core/buttons',
+          {},
+          [
+            [
+              'core/button',
+              {
+                text: __('Ota yhteyttä', 'dude'),
+                className: 'is-style-mint',
+              },
+            ],
+          ],
+        ],
+      ],
+    ],
   ];
 
   return (
@@ -137,7 +119,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           <ToggleControl
             label={__('Näytä gradientti-laatikko', 'dude')}
             checked={showGradientBox}
-            onChange={handleGradientBoxToggle}
+            onChange={(value) => setAttributes({ showGradientBox: value })}
             help={__(
               'Lisää oikealle puolelle gradientti-laatikko lisäsisällölle',
               'dude'

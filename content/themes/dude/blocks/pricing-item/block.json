@@ -32,7 +32,7 @@
     },
     "showGradientBox": {
       "type": "boolean",
-      "default": false
+      "default": true
     }
   },
   "textdomain": "dude",

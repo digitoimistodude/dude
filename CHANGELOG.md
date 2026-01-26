@@ -3,7 +3,9 @@
 * Refactor pricing-item block to use InnerBlocks with core/group templates for inline editing, Ref: DEV-701
 * Fix v2 block validation by handling both object and string feature formats in deprecation, Ref: DEV-701
 * Add default content to pricing-item template blocks for better initial UX, Ref: DEV-701
-* Implement dynamic gradient box insertion when toggled on in pricing-item, Ref: DEV-701
+* Set gradient box to show by default when adding new pricing-item block, Ref: DEV-701
+* Add CSS rules to hide gradient box when toggle is off in both editor and frontend, Ref: DEV-701
+* Fix example text spacing in template (Esimerkki ominaisuus instead of Esimerkkiominaisuus), Ref: DEV-701
 
 ### 7.0.11: 2026-01-23
 
