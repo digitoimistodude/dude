@@ -38,10 +38,8 @@ export default function Edit({ attributes, setAttributes }) {
           {
             placeholder: __('Pidempi kuvaus…', 'dude'),
             className: 'item-description',
-            content: __(
-              'Kirjoita tähän tuotteen pidempi kuvaus ja yksityiskohdat.',
-              'dude'
-            ),
+            content:
+              'Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi.',
           },
         ],
         [
@@ -50,7 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
             level: 4,
             placeholder: __('Ominaisuuksien otsikko (valinnainen)…', 'dude'),
             className: 'features-title',
-            content: __('Sisältää', 'dude'),
+            content: 'Esimerkkejä hintaluokan sivustoista:',
           },
         ],
         [
@@ -58,7 +56,7 @@ export default function Edit({ attributes, setAttributes }) {
           {
             placeholder: __('Lisää ominaisuudet…', 'dude'),
             values:
-              '<li>Esimerkkiominaisuus 1</li><li>Esimerkkiominaisuus 2</li><li>Esimerkkiominaisuus 3</li>',
+              '<li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li>',
           },
         ],
       ],
@@ -76,7 +74,7 @@ export default function Edit({ attributes, setAttributes }) {
             level: 4,
             placeholder: __('Laatikon otsikko…', 'dude'),
             className: 'gradient-box-heading',
-            content: __('Mitä saat', 'dude'),
+            content: 'Kasvavalle yritykselle, joka tarvitsee jotain ja jotain:',
           },
         ],
         [
@@ -85,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
             className: 'list-checkbox',
             placeholder: __('Lisää listan kohteet…', 'dude'),
             values:
-              '<li>Esimerkkiominaisuus 1</li><li>Esimerkkiominaisuus 2</li>',
+              '<li>Selkeä sisältöjen jäsentely</li><li>Räätälöidyt sisältörakenteet</li><li>Parempi konversio</li><li>Brändin vahvistaminen</li><li>Perusintegraatiot</li>',
           },
         ],
         [
@@ -95,7 +93,8 @@ export default function Edit({ attributes, setAttributes }) {
             [
               'core/button',
               {
-                text: __('Ota yhteyttä', 'dude'),
+                text: 'Pyydä tarjous',
+                url: 'https://www.dude.fi/ota-yhteytta',
                 className: 'is-style-mint',
               },
             ],

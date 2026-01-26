@@ -7,6 +7,7 @@
 * Add CSS rules to hide gradient box when toggle is off in both editor and frontend, Ref: DEV-701
 * Add isEligible check to v2 deprecation to properly match old blocks with content/features attributes, Ref: DEV-701
 * Fix v2 deprecation default for showGradientBox to match old blocks (false), Ref: DEV-701
+* Update pricing-item template with specific default content and links for panel-main and gradient box, Ref: DEV-701
 
 ### 7.0.11: 2026-01-23
 
