@@ -124,6 +124,7 @@ const v1 = {
 };
 
 // v2 deprecation - used content, features, featuresTitle, gradientBoxHeading attributes
+// IMPORTANT: Keep showGradientBox default as false to match old blocks
 const v2 = {
   attributes: {
     title: { type: 'string', default: 'Tuotteen nimi' },
@@ -135,6 +136,13 @@ const v2 = {
     featuresTitle: { type: 'string', default: '' },
     showGradientBox: { type: 'boolean', default: false },
     gradientBoxHeading: { type: 'string', default: '' },
+  },
+  supports: {
+    __experimentalExposeControlsToChildren: true,
+  },
+  isEligible: (attributes) => {
+    // Match blocks that have the old v2 structure with content/features attributes
+    return attributes.content !== undefined || attributes.features !== undefined;
   },
   migrate: (attributes, innerBlocks) => {
     // Keep only the new attributes, discard old content/features data

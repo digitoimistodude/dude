@@ -58,7 +58,7 @@ export default function Edit({ attributes, setAttributes }) {
           {
             placeholder: __('Lisää ominaisuudet…', 'dude'),
             values:
-              '<li>Esimerkki ominaisuus 1</li><li>Esimerkki ominaisuus 2</li><li>Esimerkki ominaisuus 3</li>',
+              '<li>Esimerkkiominaisuus 1</li><li>Esimerkkiominaisuus 2</li><li>Esimerkkiominaisuus 3</li>',
           },
         ],
       ],
@@ -85,7 +85,7 @@ export default function Edit({ attributes, setAttributes }) {
             className: 'list-checkbox',
             placeholder: __('Lisää listan kohteet…', 'dude'),
             values:
-              '<li>Esimerkki ominaisuus 1</li><li>Esimerkki ominaisuus 2</li>',
+              '<li>Esimerkkiominaisuus 1</li><li>Esimerkkiominaisuus 2</li>',
           },
         ],
         [

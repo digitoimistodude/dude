@@ -5,7 +5,8 @@
 * Add default content to pricing-item template blocks for better initial UX, Ref: DEV-701
 * Set gradient box to show by default when adding new pricing-item block, Ref: DEV-701
 * Add CSS rules to hide gradient box when toggle is off in both editor and frontend, Ref: DEV-701
-* Fix example text spacing in template (Esimerkki ominaisuus instead of Esimerkkiominaisuus), Ref: DEV-701
+* Add isEligible check to v2 deprecation to properly match old blocks with content/features attributes, Ref: DEV-701
+* Fix v2 deprecation default for showGradientBox to match old blocks (false), Ref: DEV-701
 
 ### 7.0.11: 2026-01-23
 
