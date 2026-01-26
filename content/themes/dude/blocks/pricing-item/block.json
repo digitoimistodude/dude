@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "dude/pricing-item",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "title": "Tuote",
   "category": "dude-native",
   "icon": "tag",
@@ -30,32 +30,9 @@
       "type": "string",
       "default": "Lyhyt kuvaus"
     },
-    "content": {
-      "type": "string",
-      "source": "html",
-      "selector": ".item-description",
-      "default": "Pidempi kuvaus tuotteesta."
-    },
-    "features": {
-      "type": "array",
-      "default": [
-        { "text": "Ominaisuus 1" },
-        { "text": "Ominaisuus 2" }
-      ]
-    },
-    "featuresTitle": {
-      "type": "string",
-      "default": ""
-    },
     "showGradientBox": {
       "type": "boolean",
       "default": false
-    },
-    "gradientBoxHeading": {
-      "type": "string",
-      "source": "html",
-      "selector": ".gradient-box-heading",
-      "default": ""
     }
   },
   "textdomain": "dude",

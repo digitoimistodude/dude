@@ -1,3 +1,7 @@
+### 7.0.12: 2026-01-26
+
+* Refactor pricing-item block to use InnerBlocks with core/group templates for inline editing, Ref: DEV-701
+
 ### 7.0.11: 2026-01-23
 
 * Replace custom gradient box controls with WordPress core blocks (InnerBlocks), Ref: DEV-701

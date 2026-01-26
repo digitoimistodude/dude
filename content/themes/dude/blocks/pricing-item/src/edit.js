@@ -7,11 +7,9 @@ import {
 } from '@wordpress/block-editor';
 import {
   PanelBody,
-  Button,
-  TextControl,
   ToggleControl,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useMemo } from '@wordpress/element';
 
 export default function Edit({ attributes, setAttributes }) {
   const {
@@ -19,11 +17,7 @@ export default function Edit({ attributes, setAttributes }) {
     isPopular,
     price,
     shortDescription,
-    content,
-    features,
-    featuresTitle,
     showGradientBox,
-    gradientBoxHeading,
   } = attributes;
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -31,43 +25,81 @@ export default function Edit({ attributes, setAttributes }) {
     className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`,
   });
 
-  const updateFeature = (index, value) => {
-    const newFeatures = [...features];
-    newFeatures[index] = { text: value };
-    setAttributes({ features: newFeatures });
-  };
-
-  const addFeature = () => {
-    setAttributes({ features: [...features, { text: 'Uusi ominaisuus' }] });
-  };
-
-  const removeFeature = (index) => {
-    const newFeatures = features.filter((_, i) => i !== index);
-    setAttributes({ features: newFeatures });
-  };
-
-  const GRADIENT_BOX_TEMPLATE = [
-    [
-      'core/list',
+  const getPanelTemplate = useMemo(() => {
+    const mainGroup = [
+      'core/group',
       {
-        className: 'list-checkbox',
-        placeholder: __('Lisää listan kohteet…', 'dude'),
+        className: 'panel-main',
+        layout: { type: 'constrained' },
       },
-    ],
-    [
-      'core/buttons',
-      {},
       [
         [
-          'core/button',
+          'core/paragraph',
           {
-            text: __('Painikkeen teksti', 'dude'),
-            className: 'is-style-mint',
+            placeholder: __('Pidempi kuvaus…', 'dude'),
+            className: 'item-description',
+          },
+        ],
+        [
+          'core/heading',
+          {
+            level: 4,
+            placeholder: __('Ominaisuuksien otsikko (valinnainen)…', 'dude'),
+            className: 'features-title',
+          },
+        ],
+        [
+          'core/list',
+          {
+            placeholder: __('Lisää ominaisuudet…', 'dude'),
           },
         ],
       ],
-    ],
-  ];
+    ];
+
+    if (showGradientBox) {
+      const gradientBoxGroup = [
+        'core/group',
+        {
+          className: 'panel-gradient-box',
+          layout: { type: 'constrained' },
+        },
+        [
+          [
+            'core/heading',
+            {
+              level: 4,
+              placeholder: __('Laatikon otsikko…', 'dude'),
+              className: 'gradient-box-heading',
+            },
+          ],
+          [
+            'core/list',
+            {
+              className: 'list-checkbox',
+              placeholder: __('Lisää listan kohteet…', 'dude'),
+            },
+          ],
+          [
+            'core/buttons',
+            {},
+            [
+              [
+                'core/button',
+                {
+                  text: __('Painikkeen teksti', 'dude'),
+                  className: 'is-style-mint',
+                },
+              ],
+            ],
+          ],
+        ],
+      ];
+      return [mainGroup, gradientBoxGroup];
+    }
+
+    return [mainGroup];
+  }, [showGradientBox]);
 
   return (
     <>
@@ -79,50 +111,6 @@ export default function Edit({ attributes, setAttributes }) {
             onChange={(value) => setAttributes({ isPopular: value })}
             __nextHasNoMarginBottom
           />
-
-          <TextControl
-            label={__('Ominaisuuksien otsikko (valinnainen)', 'dude')}
-            value={featuresTitle}
-            onChange={(value) => setAttributes({ featuresTitle: value })}
-            help={__('Näytetään ennen ominaisuuslistaa', 'dude')}
-            __next40pxDefaultSize
-            __nextHasNoMarginBottom
-          />
-
-          <p>
-            <strong>{__('Ominaisuudet', 'dude')}</strong>
-          </p>
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              style={{
-                display: 'flex',
-                gap: '8px',
-                marginBottom: '8px',
-              }}
-            >
-              <TextControl
-                value={feature.text || feature}
-                onChange={(value) => updateFeature(index, value)}
-                style={{ flex: 1 }}
-                __next40pxDefaultSize
-                __nextHasNoMarginBottom
-              />
-              <Button
-                isDestructive
-                variant="secondary"
-                onClick={() => removeFeature(index)}
-                style={{ flexShrink: 0 }}
-              >
-                {__('X', 'dude')}
-              </Button>
-            </div>
-          ))}
-          <Button variant="secondary" onClick={addFeature}>
-            {__('+ Lisää ominaisuus', 'dude')}
-          </Button>
-
-          <hr style={{ margin: '16px 0' }} />
 
           <ToggleControl
             label={__('Näytä gradientti-laatikko', 'dude')}
@@ -221,59 +209,18 @@ export default function Edit({ attributes, setAttributes }) {
                 showGradientBox ? ' has-gradient-box' : ''
               }`}
             >
-              <div className="panel-main">
-                <RichText
-                  tagName="p"
-                  className="item-description"
-                  value={content}
-                  onChange={(value) => setAttributes({ content: value })}
-                  placeholder={__('Pidempi kuvaus…', 'dude')}
-                  allowedFormats={['core/bold', 'core/italic', 'core/link']}
-                />
-                {featuresTitle && (
-                  <p className="features-title">{featuresTitle}</p>
-                )}
-                {features && features.length > 0 && (
-                  <ul>
-                    {features.map((feature, index) => (
-                      <li key={index}>
-                        <RichText
-                          tagName="span"
-                          value={feature.text || feature}
-                          onChange={(value) => updateFeature(index, value)}
-                          allowedFormats={[
-                            'core/bold',
-                            'core/italic',
-                            'core/link',
-                          ]}
-                          placeholder={__('Ominaisuus…', 'dude')}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              {showGradientBox && (
-                <div className="panel-gradient-box">
-                  <RichText
-                    tagName="h4"
-                    className="gradient-box-heading"
-                    value={gradientBoxHeading}
-                    onChange={(value) =>
-                      setAttributes({
-                        gradientBoxHeading: value,
-                      })
-                    }
-                    placeholder={__('Laatikon otsikko…', 'dude')}
-                    allowedFormats={['core/bold', 'core/italic', 'core/link']}
-                  />
-                  <InnerBlocks
-                    allowedBlocks={['core/list', 'core/buttons', 'core/button']}
-                    template={GRADIENT_BOX_TEMPLATE}
-                    templateLock={false}
-                  />
-                </div>
-              )}
+              <InnerBlocks
+                allowedBlocks={[
+                  'core/group',
+                  'core/paragraph',
+                  'core/heading',
+                  'core/list',
+                  'core/buttons',
+                  'core/button',
+                ]}
+                template={getPanelTemplate}
+                templateLock={false}
+              />
             </div>
           </div>
         )}
