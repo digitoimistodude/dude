@@ -249,7 +249,10 @@ const v2 = {
                 <ul>
                   {features.map((feature, index) => (
                     <li key={index}>
-                      <RichText.Content tagName="span" value={feature.text} />
+                      <RichText.Content
+                        tagName="span"
+                        value={typeof feature === 'object' ? feature.text : feature}
+                      />
                     </li>
                   ))}
                 </ul>
