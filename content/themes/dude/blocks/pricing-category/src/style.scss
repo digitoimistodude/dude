@@ -217,6 +217,17 @@
     background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
     border-radius: 12px;
     padding: 24px;
+  }
+
+  // Remove WordPress global padding from core/group blocks (must come after to override)
+  .panel-main.has-global-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Gradient box needs to keep its padding, so override the has-global-padding
+  .panel-gradient-box.has-global-padding {
+    padding: 24px !important;
 
     .gradient-box-heading {
       color: var(--color-heading);
@@ -244,6 +255,7 @@
     }
 
     // Core buttons block
+    /* stylelint-disable selector-max-class, selector-max-specificity */
     .wp-block-buttons {
       margin: 0;
 
@@ -271,6 +283,7 @@
         text-decoration: none;
       }
     }
+    /* stylelint-enable selector-max-class, selector-max-specificity */
 
     // Text links
     p a,

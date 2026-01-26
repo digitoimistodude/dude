@@ -15,6 +15,7 @@
 * Add is-style-mint button hover states with correct colors and box-shadow to gradient box buttons, Ref: DEV-701
 * Fix inconsistent list padding and margins between editor and frontend views, Ref: DEV-701
 * Update npm lint:styles script to fail on warnings with max-warnings=0 flag for CI reliability, Ref: DEV-701
+* Fix has-global-padding removing gradient box padding in both editor and frontend, Ref: DEV-701
 
 ### 7.0.11: 2026-01-23
 

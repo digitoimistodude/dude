@@ -41,17 +41,11 @@
     margin: 0;
   }
 
-  // Reset constrained layout auto-centering and global padding
+  // Reset constrained layout auto-centering
   .panel-main > *,
   .panel-gradient-box > * {
     margin-left: 0 !important;
     margin-right: 0 !important;
-  }
-
-  .panel-main.has-global-padding,
-  .panel-gradient-box.has-global-padding {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
   }
 
   // Panel main list resets
