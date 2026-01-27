@@ -7,6 +7,7 @@ module.exports = {
     '**/gulp/**/*.js',
     '**/gulp/*.js',
     'gulpfile.js',
+    'blocks/**/*.js',
   ],
   parser: '@babel/eslint-parser',
   parserOptions: {
@@ -15,6 +16,17 @@ module.exports = {
   extends: 'eslint-config-airbnb/base',
   rules: {
     indent: ['error', 2],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'func-names': 'off',
+    'no-underscore-dangle': 'off',
+    'no-plusplus': 'off',
+    'no-console': 'warn',
+    'prefer-template': 'off',
+    'no-shadow': 'off',
+    'consistent-return': 'off',
+    'brace-style': 'off',
+    'semi-style': 'off',
+    'no-use-before-define': 'off',
   },
   env: {
     browser: true,
