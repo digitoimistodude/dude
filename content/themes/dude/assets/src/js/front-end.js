@@ -30,6 +30,7 @@ import initUpKeepLanding from './modules/upkeep-landing';
 import initReferenceFilters from './modules/reference-filters';
 import initLeadPopup from './modules/lead-popup';
 import initContactFormModal from './modules/contact-form-modal';
+import reloadNativeBlockStyles from './modules/swup-native-block-styles-handler';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -131,7 +132,10 @@ function init(target, args) {
 // When document has been completely loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Do things when content is replaced via Swup (v4 API)
-swup.hooks.on('content:replace', init);
+// Reload native block styles before content replacement
+swup.hooks.on('content:replace', () => {
+  reloadNativeBlockStyles();
+  init();
+});
 
 // Do things after page has loaded

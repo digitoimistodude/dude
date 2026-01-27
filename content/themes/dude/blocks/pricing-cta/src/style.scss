@@ -68,7 +68,11 @@
 
 .cta-box {
   background-color: #223948;
-  background-image: radial-gradient(ellipse at center, #1e4348 0%, rgb(30 32 38 / 0.54) 100%);
+  background-image: radial-gradient(
+    ellipse at center,
+    #1e4348 0%,
+    rgb(30 32 38 / 0.54) 100%
+  );
   border-radius: 16px;
   display: flex;
   overflow: visible;
@@ -185,7 +189,9 @@ ul.contact-methods {
 // Image block styling - targets core/image inside cta-text
 .cta-text .wp-block-image,
 .cta-inner .wp-block-image {
+  align-items: flex-end;
   bottom: 0;
+  display: grid;
   margin: 0;
   position: absolute;
   right: 80px;

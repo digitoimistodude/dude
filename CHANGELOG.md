@@ -1,3 +1,8 @@
+### 7.0.13: 2026-01-27
+
+* Add swup handler to reload native block styles on page transitions, Ref: DEV-701
+* Fix 404 error by excluding pricing-item from swup style loader (styles inherited from pricing-category), Ref: DEV-701
+
 ### 7.0.12: 2026-01-26
 
 * Refactor pricing-item block to use InnerBlocks with core/group templates for inline editing, Ref: DEV-701
