@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Refactor pricing-faq block to use RichText for inline editing of questions and answers, Ref: DEV-701
 * Add swup handler to reload native block styles on page transitions, Ref: DEV-701
 * Fix 404 error by excluding pricing-item from swup style loader (styles inherited from pricing-category), Ref: DEV-701
 
