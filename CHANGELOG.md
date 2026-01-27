@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Add responsive padding controls (desktop and mobile) to all pricing blocks, Ref: DEV-701
 * Fix pricing-faq editor text and link colors to match frontend, Ref: DEV-701
 * Fix editor accordion link colors and text styles to match frontend (mint instead of petrol), Ref: DEV-701
 * Allow Composer plugin for PHPCS installer in GitHub workflow, Ref: DEV-701
