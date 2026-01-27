@@ -2,8 +2,11 @@
 // Shared styles loaded on both frontend and editor
 // Editor-only overrides are in editor.scss
 .block-pricing-category {
-  padding-bottom: 0;
-  padding-top: calc(var(--padding-block) + 26px);
+  padding-bottom: var(--padding-bottom-desktop, 0);
+  padding-top: var(
+    --padding-top-desktop,
+    calc(var(--padding-block) + 26px)
+  );
 
   .container {
     overflow: visible;
@@ -12,7 +15,8 @@
   }
 
   @media (max-width: 600px) {
-    padding-top: var(--padding-block);
+    padding-bottom: var(--padding-bottom-mobile, 0);
+    padding-top: var(--padding-top-mobile, var(--padding-block));
   }
 }
 

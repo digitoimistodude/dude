@@ -8,6 +8,24 @@
   "icon": "money-alt",
   "description": "Hinnaston hero-osio otsikolla ja ingressillä",
   "keywords": ["pricing", "hero", "hinnasto"],
+  "attributes": {
+    "paddingTopDesktop": {
+      "type": "number",
+      "default": 64
+    },
+    "paddingBottomDesktop": {
+      "type": "number",
+      "default": 0
+    },
+    "paddingTopMobile": {
+      "type": "number",
+      "default": 75
+    },
+    "paddingBottomMobile": {
+      "type": "number",
+      "default": 0
+    }
+  },
   "supports": {
     "html": false,
     "align": ["full"],

@@ -1,7 +1,7 @@
 // Pricing Hero block styles
 // Editor-specific overrides - force white colors since editor can't detect dark gradient
 // Using high specificity to override .block.block-pricing-hero styles
-// stylelint-disable selector-class-pattern, no-descending-specificity
+// stylelint-disable selector-class-pattern, no-descending-specificity, selector-max-specificity
 .editor-styles-wrapper .block.block-pricing-hero {
   h1,
   h2,
@@ -29,8 +29,8 @@
   // Default text color for all elements
   color: var(--color-heading);
   overflow: visible;
-  padding-bottom: 0;
-  padding-top: var(--padding-container-vertical);
+  padding-bottom: var(--padding-bottom-desktop, 0);
+  padding-top: var(--padding-top-desktop, var(--padding-container-vertical));
 
   // Ensure all headings and paragraphs have explicit colors
   h1,
@@ -61,7 +61,6 @@
   }
 
   // Style the prefix heading (h1 with .prefix class)
-  // stylelint-disable-next-line no-descending-specificity
   h1.prefix,
   .wp-block-heading.prefix {
     color: var(--color-mint);
@@ -75,7 +74,6 @@
 
   // Style the main heading (h2)
   // Using px values because rem base differs between admin (16px) and frontend (10px)
-  // stylelint-disable-next-line no-descending-specificity
   h2.wp-block-heading {
     color: var(--color-heading);
     font-family: var(--font-heading);
@@ -87,7 +85,6 @@
   }
 
   // Style the ingress paragraph
-  // stylelint-disable-next-line no-descending-specificity
   p.ingress,
   .wp-block-paragraph.ingress {
     color: var(--color-paragraph);
@@ -120,7 +117,6 @@
     padding: 20px 41px;
     transition: all 0.18s;
 
-    // stylelint-disable-next-line
     &:hover,
     &:focus {
       background-color: var(--color-button-background-hover);
@@ -133,5 +129,10 @@
       font-size: 18px;
       padding: 16px 32px;
     }
+  }
+
+  @media (max-width: 1200px) {
+    padding-bottom: var(--padding-bottom-mobile, 0);
+    padding-top: var(--padding-top-mobile, 75px);
   }
 }
