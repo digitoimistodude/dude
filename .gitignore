@@ -24,7 +24,6 @@ nginx.conf
 content/autoptimize_404_handler.php
 
 # Logs
-package-lock.json
 access.log
 error.log
 logs/
