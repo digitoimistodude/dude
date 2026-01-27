@@ -37,8 +37,12 @@ jobs:
         working-directory: content/themes/dude
         run: npm ci
 
-      - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+      - name: Install PHPCS for linting
+        run: |
+          # Install PHPCS and coding standards for PHP linting
+          # Skip full composer install to avoid packages requiring private API keys
+          composer global require squizlabs/php_codesniffer dealerdirect/phpcodesniffer-composer-installer digitoimistodude/dude-coding-standards --ignore-platform-reqs
+          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
       - name: Run ESLint
         working-directory: content/themes/dude
