@@ -30,13 +30,13 @@ If you need help, ask your superviser or go back to [dudestack-instructions](htt
 
 Clone this repo and set it up manually or run:
 
-```
+```bash
 createproject --existing
 ```
 
 Then:
 
-```
+```bash
 cd /var/www/dude
 composer install
 ```
@@ -45,7 +45,7 @@ composer install
 
 Install theme dependencies and run dev server:
 
-```
+```bash
 cd /var/www/dude/content/themes/dude
 nvm use
 npm install
