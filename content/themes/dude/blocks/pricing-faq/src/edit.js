@@ -3,13 +3,9 @@ import {
   useBlockProps,
   useInnerBlocksProps,
   InspectorControls,
+  RichText,
 } from '@wordpress/block-editor';
-import {
-  PanelBody,
-  Button,
-  TextControl,
-  TextareaControl,
-} from '@wordpress/components';
+import { PanelBody, Button } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import './style.scss';
 
@@ -34,7 +30,6 @@ const TEMPLATE = [
 
 export default function Edit({ attributes, setAttributes }) {
   const { items } = attributes;
-  const [expandedSidebarItem, setExpandedSidebarItem] = useState(null);
   const [expandedPreviewItem, setExpandedPreviewItem] = useState(null);
 
   const blockProps = useBlockProps({
@@ -93,69 +88,13 @@ export default function Edit({ attributes, setAttributes }) {
     <>
       <InspectorControls>
         <PanelBody title={__('UKK-asetukset', 'dude')}>
-          <p style={{ color: '#757575', fontSize: '12px' }}>
+          <p style={{ color: '#757575', fontSize: '12px', marginBottom: '16px' }}>
             {__(
-              'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää ja muokkaa kysymyksiä alla. Klikkaa kysymystä lohkossa nähdäksesi vastauksen.',
+              'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Klikkaa kysymyksiä ja vastauksia muokataksesi niitä suoraan.',
               'dude'
             )}
           </p>
-        </PanelBody>
-
-        {items.map((item, index) => (
-          <PanelBody
-            key={item.id || index}
-            title={item.question || `Kysymys ${index + 1}`}
-            initialOpen={expandedSidebarItem === index}
-            onToggle={() =>
-              setExpandedSidebarItem(
-                expandedSidebarItem === index ? null : index
-              )
-            }
-          >
-            <TextControl
-              label={__('Kysymys', 'dude')}
-              value={item.question}
-              onChange={(value) => updateItem(index, 'question', value)}
-            />
-            <TextareaControl
-              label={__('Vastaus', 'dude')}
-              value={item.answer}
-              onChange={(value) => updateItem(index, 'answer', value)}
-              rows={4}
-            />
-
-            <div
-              style={{
-                display: 'flex',
-                gap: '8px',
-                marginTop: '16px',
-                borderTop: '1px solid #ddd',
-                paddingTop: '16px',
-              }}
-            >
-              <Button
-                variant="secondary"
-                onClick={() => moveItem(index, -1)}
-                disabled={index === 0}
-              >
-                {__('Ylös', 'dude')}
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => moveItem(index, 1)}
-                disabled={index === items.length - 1}
-              >
-                {__('Alas', 'dude')}
-              </Button>
-              <Button isDestructive onClick={() => removeItem(index)}>
-                {__('Poista', 'dude')}
-              </Button>
-            </div>
-          </PanelBody>
-        ))}
-
-        <PanelBody>
-          <Button variant="primary" onClick={addItem}>
+          <Button variant="primary" onClick={addItem} style={{ width: '100%' }}>
             {__('+ Lisää kysymys', 'dude')}
           </Button>
         </PanelBody>
@@ -177,7 +116,43 @@ export default function Edit({ attributes, setAttributes }) {
                 {items.map((item, index) => {
                   const isExpanded = expandedPreviewItem === index;
                   return (
-                    <div key={item.id || index} className="accordion-item">
+                    <div
+                      key={item.id || index}
+                      className="accordion-item"
+                      style={{ position: 'relative' }}
+                    >
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '10px',
+                          right: '10px',
+                          display: 'flex',
+                          gap: '4px',
+                          zIndex: 10,
+                        }}
+                      >
+                        <Button
+                          icon="arrow-up"
+                          onClick={() => moveItem(index, -1)}
+                          disabled={index === 0}
+                          size="small"
+                          label={__('Siirrä ylös', 'dude')}
+                        />
+                        <Button
+                          icon="arrow-down"
+                          onClick={() => moveItem(index, 1)}
+                          disabled={index === items.length - 1}
+                          size="small"
+                          label={__('Siirrä alas', 'dude')}
+                        />
+                        <Button
+                          icon="trash"
+                          onClick={() => removeItem(index)}
+                          isDestructive
+                          size="small"
+                          label={__('Poista', 'dude')}
+                        />
+                      </div>
                       <h3>
                         <button
                           className="accordion-trigger"
@@ -187,9 +162,18 @@ export default function Edit({ attributes, setAttributes }) {
                             togglePreviewItem(index);
                           }}
                           type="button"
+                          style={{ cursor: 'pointer' }}
                         >
                           <span className="accordion-title">
-                            {item.question}
+                            <RichText
+                              tagName="span"
+                              value={item.question}
+                              onChange={(value) =>
+                                updateItem(index, 'question', value)
+                              }
+                              placeholder={__('Kirjoita kysymys…', 'dude')}
+                              allowedFormats={['core/bold', 'core/italic']}
+                            />
                             <span className="accordion-icon"></span>
                           </span>
                         </button>
@@ -199,7 +183,19 @@ export default function Edit({ attributes, setAttributes }) {
                         style={{ display: isExpanded ? 'block' : 'none' }}
                       >
                         <div>
-                          <p>{item.answer}</p>
+                          <RichText
+                            tagName="p"
+                            value={item.answer}
+                            onChange={(value) =>
+                              updateItem(index, 'answer', value)
+                            }
+                            placeholder={__('Kirjoita vastaus…', 'dude')}
+                            allowedFormats={[
+                              'core/bold',
+                              'core/italic',
+                              'core/link',
+                            ]}
+                          />
                         </div>
                       </div>
                     </div>

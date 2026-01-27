@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
 import Edit from './edit';
 import './style.scss';
 
@@ -34,7 +34,10 @@ registerBlockType('dude/pricing-faq', {
                             id={`accordion-${faqId}`}
                           >
                             <span className="accordion-title">
-                              {item.question}
+                              <RichText.Content
+                                tagName="span"
+                                value={item.question}
+                              />
                               <span className="accordion-icon"></span>
                             </span>
                           </button>
@@ -47,7 +50,7 @@ registerBlockType('dude/pricing-faq', {
                           hidden
                         >
                           <div>
-                            <p>{item.answer}</p>
+                            <RichText.Content tagName="p" value={item.answer} />
                           </div>
                         </div>
                       </div>
