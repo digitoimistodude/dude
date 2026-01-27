@@ -16,7 +16,6 @@ passwords.txt
 .sass-cache/
 .git/
 .DS_Store
-composer.lock
 .vscode/
 content/cache
 content/w3tc-config
