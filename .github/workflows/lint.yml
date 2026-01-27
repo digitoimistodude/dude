@@ -39,8 +39,9 @@ jobs:
 
       - name: Install PHPCS for linting
         run: |
+          # Allow Composer plugin for PHPCS installer
+          composer global config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
           # Install PHPCS and coding standards for PHP linting
-          # Skip full composer install to avoid packages requiring private API keys
           composer global require squizlabs/php_codesniffer dealerdirect/phpcodesniffer-composer-installer digitoimistodude/dude-coding-standards --ignore-platform-reqs
           echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
