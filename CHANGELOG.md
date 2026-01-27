@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Fix GitHub workflow to install PHPCS globally instead of requiring full composer install, Ref: DEV-701
 * Add composer.lock to version control for reproducible CI builds, Ref: DEV-701
 * Add package-lock.json files to version control for reproducible CI builds, Ref: DEV-701
 * Remove maybe_show_error_block function and all calls (rely on ACF required fields instead), Ref: DEV-701
