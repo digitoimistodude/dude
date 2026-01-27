@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Add composer.lock to version control for reproducible CI builds, Ref: DEV-701
 * Add package-lock.json files to version control for reproducible CI builds, Ref: DEV-701
 * Remove maybe_show_error_block function and all calls (rely on ACF required fields instead), Ref: DEV-701
 * Refactor pricing-faq block to use RichText for inline editing of questions and answers, Ref: DEV-701
