@@ -58,6 +58,20 @@
     padding-left: 17px !important;
   }
 
+  // Link colors in accordion panel
+  .panel-main a,
+  .accordion-panel a {
+    color: var(--color-mint) !important;
+    text-decoration: underline;
+  }
+
+  .panel-main a:hover,
+  .panel-main a:focus,
+  .accordion-panel a:hover,
+  .accordion-panel a:focus {
+    text-decoration: none;
+  }
+
   // Gradient box overrides
   .panel-gradient-box {
     background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%) !important;
@@ -144,6 +158,23 @@
     padding-bottom: 0;
     padding-right: 0;
   }
+
+  // Accordion panel content colors
+  .accordion-panel .item-description,
+  .accordion-panel p {
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  .accordion-panel .features-title {
+    color: #fff !important;
+    font-weight: 600;
+  }
+
+  .accordion-panel ul li,
+  .accordion-panel ol li,
+  .accordion-panel .wp-block-list li {
+    color: rgb(255 255 255 / 0.8) !important;
+  }
 }
 
 // Override global petrol gradient background rules
@@ -186,5 +217,36 @@
 .editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .wp-block-button__link {
   background-color: var(--color-mint) !important;
   color: var(--color-midnight) !important;
+}
+
+// Link colors with petrol gradient background
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .panel-main a,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel a {
+  color: var(--color-mint) !important;
+  text-decoration: underline;
+}
+
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .panel-main a:hover,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .panel-main a:focus,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel a:hover,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel a:focus {
+  text-decoration: none;
+}
+
+// Accordion panel text colors with petrol gradient background
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel .item-description,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel p {
+  color: rgb(255 255 255 / 0.8) !important;
+}
+
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel .features-title {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel ul li,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel ol li,
+.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-category .accordion-panel .wp-block-list li {
+  color: rgb(255 255 255 / 0.8) !important;
 }
 // stylelint-enable selector-class-pattern, no-descending-specificity, declaration-no-important
