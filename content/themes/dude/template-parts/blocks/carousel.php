@@ -26,11 +26,6 @@ if ( ! isset( $args ) ) {
   $carousel_style = $args['carousel_style'] ?? 'default';
 }
 
-if ( empty( $images ) ) {
-  maybe_show_error_block( 'Kuvia ei valittuna' );
-  return;
-}
-
 // Disable cropping entirely (no fit) so images scale without being cut
 $picture_cdn_args = [
   'width'   => '1400',

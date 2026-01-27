@@ -22,11 +22,6 @@ if ( ! isset( $args ) ) {
   $description = $args['description'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
-
 $jobs_query = new \WP_query( [
   'post_type'      => 'job',
   'posts_per_page' => 50,

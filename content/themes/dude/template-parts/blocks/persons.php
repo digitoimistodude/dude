@@ -74,10 +74,6 @@ foreach ( $persons as $person ) {
   $persons_data[] = $person_tmp;
 }
 
-if ( empty( $persons_data ) ) {
-  maybe_show_error_block( 'Henkilöitä ei ole valittu.' );
-  return;
-}
 ?>
 
 <section class="block block-persons has-unified-padding-if-stacked">

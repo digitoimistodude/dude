@@ -22,15 +22,6 @@ if ( ! isset( $args ) ) {
   $steps = $args['steps'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
-
-if ( empty( $steps ) ) {
-  maybe_show_error_block( 'No steps set' );
-  return;
-}
 ?>
 
 <section class="block block-process has-radial-gradient-animation is-carousel">

@@ -144,10 +144,6 @@ if ( ! isset( $args ) ) {
   $show_title = $args['show_title'];
 }
 
-if ( empty( $title ) || empty( $reference_ids ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
 ?>
 
 <section class="block block-references has-unified-padding-if-stacked">

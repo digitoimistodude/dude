@@ -22,10 +22,6 @@ if ( ! isset( $args ) ) {
   $tabs = $args['tabs'];
 }
 
-if ( empty( $tabs ) ) {
-  maybe_show_error_block( 'Välilehtiä puuttuu' );
-  return;
-}
 ?>
 
 <section class="block block-timeline">
@@ -57,7 +53,8 @@ if ( empty( $tabs ) ) {
             <?php if ( 1 !== $i ) { echo 'tabindex="-1"'; } ?>>
               <?php echo esc_html( $year ); ?>
           </button>
-        <?php $i++; endwhile; ?>
+        <?php $i++;
+      endwhile; ?>
       </div>
     </div>
 
@@ -93,7 +90,8 @@ if ( empty( $tabs ) ) {
           </div>
 
         </div>
-      <?php $i++; endwhile; ?>
+      <?php $i++;
+      endwhile; ?>
     </div>
 
   </div>

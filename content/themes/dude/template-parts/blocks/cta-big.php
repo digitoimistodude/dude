@@ -26,11 +26,6 @@ if ( ! isset( $args ) ) {
   $style = $args['style'];
 }
 
-if ( empty( $title ) || empty( $content ) || empty( $button ) ) {
-  maybe_show_error_block( 'Vaadittu sisältö puuttuu.' );
-  return;
-}
-
 $classes = [
   'cta-box',
   'cta-box-big',

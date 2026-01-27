@@ -31,10 +31,6 @@ if ( isset( $alt_title ) && ! empty( $alt_title ) ) {
   $title = $alt_title;
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
 ?>
 
 <section class="block block-hero-jobs block-background-petrol has-bg-image">

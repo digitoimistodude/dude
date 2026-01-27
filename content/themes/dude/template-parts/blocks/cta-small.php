@@ -24,11 +24,6 @@ if ( ! isset( $args ) ) {
   $button = $args['button'];
 }
 
-if ( empty( $title ) || empty( $content ) || empty( $button ) ) {
-  maybe_show_error_block( 'Vaadittu sisältö puuttuu.' );
-  return;
-}
-
 $classes = [
   'block',
   'block-cta',

@@ -28,10 +28,6 @@ if ( ! empty( $person_id ) ) {
   ];
 }
 
-if ( empty( $form_id ) ) {
-  maybe_show_error_block( 'Lomaketta ei ole valittuna.' );
-  return;
-}
 ?>
 
 <section class="block block-form-person has-unified-padding-if-stacked">

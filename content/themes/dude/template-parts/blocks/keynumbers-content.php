@@ -26,10 +26,6 @@ if ( ! isset( $args ) ) {
   $additional_info_content = $args['additional_info_content'];
 }
 
-if ( empty( $keynumbers || $content ) ) {
-  maybe_show_error_block( 'Avainluku ja tekstisisältö ovat pakollisia' );
-  return;
-}
 ?>
 
 <section class="block block-keynumbers-content has-unified-padding-if-stacked">

@@ -24,10 +24,6 @@ if ( ! isset( $args ) ) {
   $link = $args['link'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko on pakollinen' );
-  return;
-}
 ?>
 
 <section class="block block-hero-centered has-unified-padding-if-stacked">

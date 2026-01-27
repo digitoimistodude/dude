@@ -30,11 +30,6 @@ if ( ! isset( $args ) ) {
   $block_color = $args( 'block_color' );
 }
 
-if ( empty( $title ) || empty( $columns_raw ) ) {
-  maybe_show_error_block( 'Otsikko ja lohkot on pakollisia' );
-  return;
-}
-
 $columns = [];
 foreach ( $columns_raw as $column ) {
   if ( empty( $column['title'] ) ) {

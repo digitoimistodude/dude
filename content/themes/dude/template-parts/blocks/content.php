@@ -16,10 +16,6 @@ namespace Air_Light;
 
 $content = get_field( 'content' );
 
-if ( empty( $content ) ) {
-  maybe_show_error_block( 'Tekstisisältö on pakollinen' );
-  return;
-}
 ?>
 
 <section class="block block-content">

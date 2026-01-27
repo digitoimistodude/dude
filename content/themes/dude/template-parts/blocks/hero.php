@@ -25,11 +25,6 @@ if ( ! isset( $args ) ) {
   $content = $args['content'];
 }
 
-if ( empty( $title ) || empty( $content ) ) {
-  maybe_show_error_block( 'Otsikko ja tekstisisältö on vaadittu' );
-  return;
-}
-
 // Sales phone
 $salesperson_id = get_custom_setting( 'salesperson', 'general' );
 $sales_phone = get_post_meta( $salesperson_id, 'tel', true );

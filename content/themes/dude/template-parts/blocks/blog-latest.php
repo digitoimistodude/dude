@@ -41,12 +41,7 @@ if ( ! $diamond_articles ) {
 
   } else {
     $post_ids = $args['post_ids'];
-  }
-
-  if ( empty( $post_ids ) ) {
-    maybe_show_error_block( 'Valitsehan niitä kirjoituksia' );
-    return;
-  }
+  }  
 } elseif ( $diamond_articles ) {
   $diamond_article_ids = get_custom_setting( 'diamond_articles', 'diamond-articles' );
 
@@ -61,18 +56,9 @@ if ( ! $diamond_articles ) {
     'fields'          => 'ids',
   ] );
 
-  if ( ! $posts_query->have_posts() ) {
-    maybe_show_error_block( 'Miten voi olla, Duden blogissa ei mittää kirjotuksia?' );
-    return;
-  }
-
-  $post_ids = $posts_query->posts;
+    $post_ids = $posts_query->posts;
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko on pakollinen.' );
-  return;
-}
 ?>
 
 <section class="<?php echo esc_attr( join( ' ', $classes ) ) ?>">

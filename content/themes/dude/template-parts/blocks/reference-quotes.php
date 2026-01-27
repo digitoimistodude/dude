@@ -23,11 +23,6 @@ if ( ! isset( $args ) ) {
   $reference_ids = $args['reference_ids'];
 }
 
-if ( empty( $reference_ids ) ) {
-  maybe_show_error_block( 'Referenssejä ei ole valittuna' );
-  return;
-}
-
 $quote_ids = [];
 $quote_field = 'quote_short';
 foreach ( $reference_ids as $reference_id ) {
@@ -38,15 +33,6 @@ foreach ( $reference_ids as $reference_id ) {
   $quote_ids[] = $reference_id;
 }
 
-if ( empty( $quote_ids ) ) {
-  maybe_show_error_block( 'Lyhyitä lainauksia ei ole.' );
-  return;
-}
-
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko on pakollinen.' );
-  return;
-}
 ?>
 
 <?php

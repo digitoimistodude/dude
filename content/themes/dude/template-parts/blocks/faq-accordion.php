@@ -32,10 +32,6 @@ foreach ( $question_ids as $question_id ) {
   $question_datas[] = $question_data_tmp;
 }
 
-if ( empty( $question_datas ) ) {
-  maybe_show_error_block( 'Yhtään kysymystä ei ole lisätty' );
-  return;
-}
 // Add these data attributes to accordion div if you want multiple:
 // data-allow-multiple
 

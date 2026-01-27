@@ -27,11 +27,6 @@ if ( get_field( 'hide_block' ) ) {
   return;
 }
 
-if ( empty( $title ) || empty( $image ) ) {
-  maybe_show_error_block( 'A title and image is required' );
-  return;
-}
-
 $classes = [
   'block',
   'block-image-content',

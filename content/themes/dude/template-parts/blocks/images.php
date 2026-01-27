@@ -20,10 +20,6 @@ if ( ! isset( $args ) ) {
   $images = $args['images'];
 }
 
-if ( empty( $images ) ) {
-  maybe_show_error_block( 'Asetappa ne kuvat' );
-  return;
-}
 ?>
 
 <section class="block block-images">

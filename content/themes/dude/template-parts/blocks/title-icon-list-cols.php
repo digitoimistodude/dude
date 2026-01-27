@@ -20,10 +20,6 @@ if ( ! isset( $args ) ) {
   $cols = $args['cols'];
 }
 
-if ( empty( $cols ) ) {
-  maybe_show_error_block( 'Kentistä puuttuu sisältöä' );
-  return;
-}
 ?>
 
 <section class="block block-icon-list-cols">

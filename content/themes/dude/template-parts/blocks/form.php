@@ -24,16 +24,6 @@ if ( ! isset( $args ) ) {
   $form_id = $args['wpforms_id'];
 }
 
-if ( ! function_exists( 'wpforms_display' ) ) {
-  maybe_show_error_block( 'Lomakelisäosa ei ole aktiivinen.' );
-  return;
-}
-
-if ( empty( $form_id ) ) {
-  maybe_show_error_block( 'Lomaketta ei valittu.' );
-  return;
-}
-
 if ( is_singular( 'job' ) && '1' === get_post_meta( get_the_ID(), 'filled', true ) ) {
   return;
 }
