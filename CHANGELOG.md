@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Allow Composer plugin for PHPCS installer in GitHub workflow, Ref: DEV-701
 * Fix GitHub workflow to install PHPCS globally instead of requiring full composer install, Ref: DEV-701
 * Add composer.lock to version control for reproducible CI builds, Ref: DEV-701
 * Add package-lock.json files to version control for reproducible CI builds, Ref: DEV-701
