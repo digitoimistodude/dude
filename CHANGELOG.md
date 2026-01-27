@@ -1,5 +1,6 @@
 ### 7.0.13: 2026-01-27
 
+* Fix editor accordion link colors and text styles to match frontend (mint instead of petrol), Ref: DEV-701
 * Allow Composer plugin for PHPCS installer in GitHub workflow, Ref: DEV-701
 * Fix GitHub workflow to install PHPCS globally instead of requiring full composer install, Ref: DEV-701
 * Add composer.lock to version control for reproducible CI builds, Ref: DEV-701
