@@ -3,10 +3,7 @@
 // Editor-only overrides are in editor.scss
 .block-pricing-category {
   padding-bottom: var(--padding-bottom-desktop, 0);
-  padding-top: var(
-    --padding-top-desktop,
-    calc(var(--padding-block) + 26px)
-  );
+  padding-top: var(--padding-top-desktop, calc(var(--padding-block) + 26px));
 
   .container {
     overflow: visible;
@@ -318,7 +315,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 20px 20px;
-    content: "";
+    content: '';
     height: 20px;
     left: 0;
     position: absolute;
@@ -331,8 +328,12 @@
     transition: all 0.18s;
   }
 
-  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link:hover,
-  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link:focus {
+  .panel-gradient-box
+    .wp-block-button.is-style-mint
+    .wp-block-button__link:hover,
+  .panel-gradient-box
+    .wp-block-button.is-style-mint
+    .wp-block-button__link:focus {
     background-color: var(--color-button-background-hover);
     border-color: var(--color-button-background-hover);
     box-shadow: 0 0 0 3px var(--color-button-background-hover);
@@ -370,7 +371,11 @@
 
 // Editor-specific override for accordion icon rotation (override global -315deg)
 /* stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
-.editor-styles-wrapper .block-pricing-category .pricing-accordion-item button.accordion-trigger[aria-expanded='true'] .accordion-icon {
+.editor-styles-wrapper
+  .block-pricing-category
+  .pricing-accordion-item
+  button.accordion-trigger[aria-expanded='true']
+  .accordion-icon {
   transform: rotate(0deg) !important;
 
   svg {
@@ -378,7 +383,9 @@
   }
 }
 
-.block-pricing-category .accordion-trigger[aria-expanded='true'] .accordion-icon {
+.block-pricing-category
+  .accordion-trigger[aria-expanded='true']
+  .accordion-icon {
   transform: rotate(0deg) !important;
 
   svg {

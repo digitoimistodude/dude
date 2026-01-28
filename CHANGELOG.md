@@ -1,3 +1,7 @@
+### 7.0.14: 2026-01-28
+
+* Build assets after ESLint fixes, Ref: DEV-701
+
 ### 7.0.13: 2026-01-27
 
 * Fix build errors by resolving ESLint plugin conflict in blocks directory, Ref: DEV-701

@@ -1,1 +1,765 @@
-(()=>{"use strict";const e=window.wp.blocks,a=window.wp.blockEditor,s=window.wp.i18n,t=window.wp.components,i=window.wp.element,n=window.ReactJSXRuntime,o=JSON.parse('{"UU":"dude/pricing-item"}'),l=e=>e.toString().toLowerCase().trim().replace(/\s+/g,"-").replace(/[^\w-]+/g,"").replace(/--+/g,"-"),r={attributes:{title:{type:"string",default:"Tuotteen nimi"},isPopular:{type:"boolean",default:!1},price:{type:"string",default:"0 €"},shortDescription:{type:"string",default:"Lyhyt kuvaus"},content:{type:"string",default:"Pidempi kuvaus tuotteesta."},features:{type:"array",default:["Ominaisuus 1","Ominaisuus 2"]}},migrate:e=>{const a=e.features.map(e=>"string"==typeof e?{text:e}:e);return{...e,features:a,featuresTitle:"",showGradientBox:!1,gradientBoxHeading:""}},save:({attributes:e})=>{const{title:s,isPopular:t,price:i,shortDescription:o,content:r,features:c}=e,d=l(s||"pricing-item"),p=`accordion-${d}`,h=d,u=a.useBlockProps.save({className:"pricing-accordion-item"+(t?" is-popular":"")});return(0,n.jsxs)("div",{...u,children:[(0,n.jsx)("h3",{children:(0,n.jsx)("button",{className:"accordion-trigger",type:"button","aria-expanded":"false","aria-controls":h,id:p,children:(0,n.jsxs)("span",{className:"accordion-title",children:[(0,n.jsxs)("span",{className:"item-content",children:[(0,n.jsxs)("span",{className:"item-header",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"item-name",value:s}),t&&(0,n.jsx)("span",{className:"badge",children:"Suosituin"})]}),(0,n.jsxs)("span",{className:"item-meta",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"price",value:i}),(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"description",value:o})]})]}),(0,n.jsx)("span",{className:"accordion-icon",children:(0,n.jsx)("svg",{width:"18",height:"10",viewBox:"0 0 18 10",fill:"none",xmlns:"http://www.w3.org/2000/svg","aria-hidden":"true",children:(0,n.jsx)("path",{d:"M.666.667l8 8 8-8",stroke:"#7EFFE1",strokeWidth:"1.333",strokeLinecap:"round",strokeLinejoin:"round"})})})]})})}),(0,n.jsx)("div",{id:h,role:"region","aria-labelledby":p,className:"accordion-panel",hidden:!0,children:(0,n.jsxs)("div",{children:[r&&(0,n.jsx)("p",{children:r}),c&&c.length>0&&(0,n.jsx)("ul",{children:c.map((e,a)=>(0,n.jsx)("li",{children:e},a))})]})})]})}},c={attributes:{title:{type:"string",default:"Tuotteen nimi"},isPopular:{type:"boolean",default:!1},price:{type:"string",default:"0 €"},shortDescription:{type:"string",default:"Lyhyt kuvaus"},content:{type:"string",default:""},features:{type:"array",default:[]},featuresTitle:{type:"string",default:""},showGradientBox:{type:"boolean",default:!1},gradientBoxHeading:{type:"string",default:""}},supports:{__experimentalExposeControlsToChildren:!0},isEligible:e=>void 0!==e.content||void 0!==e.features,migrate:e=>({title:e.title,isPopular:e.isPopular,price:e.price,shortDescription:e.shortDescription,showGradientBox:e.showGradientBox}),save:({attributes:e})=>{const{title:s,isPopular:t,price:i,shortDescription:o,content:r,features:c,featuresTitle:d,showGradientBox:p,gradientBoxHeading:h}=e,u=l(s||"pricing-item"),m=`accordion-${u}`,x=u,g=a.useBlockProps.save({className:"pricing-accordion-item"+(t?" is-popular":"")});return(0,n.jsxs)("div",{...g,children:[(0,n.jsx)("h3",{children:(0,n.jsx)("button",{className:"accordion-trigger",type:"button","aria-expanded":"false","aria-controls":x,id:m,children:(0,n.jsxs)("span",{className:"accordion-title",children:[(0,n.jsxs)("span",{className:"item-content",children:[(0,n.jsxs)("span",{className:"item-header",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"item-name",value:s}),t&&(0,n.jsx)("span",{className:"badge",children:"Suosituin"})]}),(0,n.jsxs)("span",{className:"item-meta",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"price",value:i}),(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"description",value:o})]})]}),(0,n.jsx)("span",{className:"accordion-icon",children:(0,n.jsx)("svg",{width:"18",height:"10",viewBox:"0 0 18 10",fill:"none",xmlns:"http://www.w3.org/2000/svg","aria-hidden":"true",children:(0,n.jsx)("path",{d:"M.666.667l8 8 8-8",stroke:"#7EFFE1",strokeWidth:"1.333",strokeLinecap:"round",strokeLinejoin:"round"})})})]})})}),(0,n.jsx)("div",{id:x,role:"region","aria-labelledby":m,className:"accordion-panel",hidden:!0,children:(0,n.jsxs)("div",{className:"panel-layout"+(p?" has-gradient-box":""),children:[(0,n.jsxs)("div",{className:"panel-main",children:[r&&(0,n.jsx)(a.RichText.Content,{tagName:"p",className:"item-description",value:r}),d&&(0,n.jsx)("p",{className:"features-title",children:d}),c&&c.length>0&&(0,n.jsx)("ul",{children:c.map((e,s)=>(0,n.jsx)("li",{children:(0,n.jsx)(a.RichText.Content,{tagName:"span",value:"object"==typeof e?e.text:e})},s))})]}),p&&(0,n.jsxs)("div",{className:"panel-gradient-box",children:[h&&(0,n.jsx)(a.RichText.Content,{tagName:"h4",className:"gradient-box-heading",value:h}),(0,n.jsx)(a.InnerBlocks.Content,{})]})]})})]})}};(0,e.registerBlockType)(o.UU,{edit:function({attributes:e,setAttributes:o}){const{title:l,isPopular:r,price:c,shortDescription:d,showGradientBox:p}=e,[h,u]=(0,i.useState)(!1),m=(0,a.useBlockProps)({className:"pricing-accordion-item"+(r?" is-popular":"")}),x=[["core/group",{className:"panel-main",layout:{type:"constrained"}},[["core/paragraph",{placeholder:(0,s.__)("Pidempi kuvaus…","dude"),className:"item-description",content:"Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi."}],["core/heading",{level:4,placeholder:(0,s.__)("Ominaisuuksien otsikko (valinnainen)…","dude"),className:"features-title",content:"Esimerkkejä hintaluokan sivustoista:"}],["core/list",{placeholder:(0,s.__)("Lisää ominaisuudet…","dude"),values:'<li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li>'}]]],["core/group",{className:"panel-gradient-box",layout:{type:"constrained"}},[["core/heading",{level:4,placeholder:(0,s.__)("Laatikon otsikko…","dude"),className:"gradient-box-heading",content:"Kasvavalle yritykselle, joka tarvitsee jotain ja jotain:"}],["core/list",{className:"list-checkbox",placeholder:(0,s.__)("Lisää listan kohteet…","dude"),values:"<li>Selkeä sisältöjen jäsentely</li><li>Räätälöidyt sisältörakenteet</li><li>Parempi konversio</li><li>Brändin vahvistaminen</li><li>Perusintegraatiot</li>"}],["core/buttons",{},[["core/button",{text:"Pyydä tarjous",url:"https://www.dude.fi/ota-yhteytta",className:"is-style-mint"}]]]]]];return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(a.InspectorControls,{children:(0,n.jsxs)(t.PanelBody,{title:(0,s.__)("Tuotteen asetukset","dude"),children:[(0,n.jsx)(t.ToggleControl,{label:(0,s.__)("Suosituin","dude"),checked:r,onChange:e=>o({isPopular:e}),__nextHasNoMarginBottom:!0}),(0,n.jsx)(t.ToggleControl,{label:(0,s.__)("Näytä gradientti-laatikko","dude"),checked:p,onChange:e=>o({showGradientBox:e}),help:(0,s.__)("Lisää oikealle puolelle gradientti-laatikko lisäsisällölle","dude"),__nextHasNoMarginBottom:!0})]})}),(0,n.jsxs)("div",{...m,children:[(0,n.jsx)("div",{className:"accordion-header",children:(0,n.jsx)("div",{className:"accordion-trigger","aria-expanded":h?"true":"false",children:(0,n.jsxs)("span",{className:"accordion-title",children:[(0,n.jsxs)("span",{className:"item-content",children:[(0,n.jsxs)("span",{className:"item-header",children:[(0,n.jsx)(a.RichText,{tagName:"span",className:"item-name",value:l,onChange:e=>o({title:e}),placeholder:(0,s.__)("Tuotteen nimi…","dude"),allowedFormats:["core/bold","core/italic","core/link"]}),r&&(0,n.jsx)("span",{className:"badge",children:"Suosituin"})]}),(0,n.jsxs)("span",{className:"item-meta",children:[(0,n.jsx)(a.RichText,{tagName:"span",className:"price",value:c,onChange:e=>o({price:e}),placeholder:(0,s.__)("Hinta…","dude"),allowedFormats:["core/bold","core/italic","core/link"]}),(0,n.jsx)(a.RichText,{tagName:"span",className:"description",value:d,onChange:e=>o({shortDescription:e}),placeholder:(0,s.__)("Lyhyt kuvaus…","dude"),allowedFormats:["core/bold","core/italic","core/link"]})]})]}),(0,n.jsx)("span",{className:"accordion-icon",onClick:()=>u(!h),onKeyDown:e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),u(!h))},role:"button",tabIndex:0,"aria-label":h?(0,s.__)("Sulje","dude"):(0,s.__)("Avaa","dude"),children:(0,n.jsx)("svg",{width:"18",height:"10",viewBox:"0 0 18 10",fill:"none",xmlns:"http://www.w3.org/2000/svg","aria-hidden":"true",children:(0,n.jsx)("path",{d:"M.666.667l8 8 8-8",stroke:"#7EFFE1",strokeWidth:"1.333",strokeLinecap:"round",strokeLinejoin:"round"})})})]})})}),h&&(0,n.jsx)("div",{className:"accordion-panel",children:(0,n.jsx)("div",{className:"panel-layout"+(p?" has-gradient-box":""),children:(0,n.jsx)(a.InnerBlocks,{allowedBlocks:["core/group","core/paragraph","core/heading","core/list","core/buttons","core/button"],template:x,templateLock:!1})})})]})]})},save:({attributes:e})=>{const{title:s,isPopular:t,price:i,shortDescription:o,showGradientBox:r}=e,c=l(s||"pricing-item"),d=`accordion-${c}`,p=c,h=a.useBlockProps.save({className:"pricing-accordion-item"+(t?" is-popular":"")});return(0,n.jsxs)("div",{...h,children:[(0,n.jsx)("h3",{children:(0,n.jsx)("button",{className:"accordion-trigger",type:"button","aria-expanded":"false","aria-controls":p,id:d,children:(0,n.jsxs)("span",{className:"accordion-title",children:[(0,n.jsxs)("span",{className:"item-content",children:[(0,n.jsxs)("span",{className:"item-header",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"item-name",value:s}),t&&(0,n.jsx)("span",{className:"badge",children:"Suosituin"})]}),(0,n.jsxs)("span",{className:"item-meta",children:[(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"price",value:i}),(0,n.jsx)(a.RichText.Content,{tagName:"span",className:"description",value:o})]})]}),(0,n.jsx)("span",{className:"accordion-icon",children:(0,n.jsx)("svg",{width:"18",height:"10",viewBox:"0 0 18 10",fill:"none",xmlns:"http://www.w3.org/2000/svg","aria-hidden":"true",children:(0,n.jsx)("path",{d:"M.666.667l8 8 8-8",stroke:"#7EFFE1",strokeWidth:"1.333",strokeLinecap:"round",strokeLinejoin:"round"})})})]})})}),(0,n.jsx)("div",{id:p,role:"region","aria-labelledby":d,className:"accordion-panel",hidden:!0,children:(0,n.jsx)("div",{className:"panel-layout"+(r?" has-gradient-box":""),children:(0,n.jsx)(a.InnerBlocks.Content,{})})})]})},deprecated:[c,r]})})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./blocks/pricing-item/block.json"
+/*!****************************************!*\
+  !*** ./blocks/pricing-item/block.json ***!
+  \****************************************/
+(module) {
+
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"dude/pricing-item","version":"3.0.0","title":"Tuote","category":"dude-native","icon":"tag","description":"Yksittäinen tuote hinnastokategoriassa","keywords":["pricing","item","product","tuote"],"parent":["dude/pricing-category"],"supports":{"html":false,"reusable":false},"attributes":{"title":{"type":"string","default":"Tuotteen nimi"},"isPopular":{"type":"boolean","default":false},"price":{"type":"string","default":"0 €"},"shortDescription":{"type":"string","default":"Lyhyt kuvaus"},"showGradientBox":{"type":"boolean","default":true}},"textdomain":"dude","editorScript":"file:./build/index.js"}');
+
+/***/ },
+
+/***/ "./blocks/pricing-item/src/edit.js"
+/*!*****************************************!*\
+  !*** ./blocks/pricing-item/src/edit.js ***!
+  \*****************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+function Edit({
+  attributes,
+  setAttributes
+}) {
+  const {
+    title,
+    isPopular,
+    price,
+    shortDescription,
+    showGradientBox
+  } = attributes;
+  const [isExpanded, setIsExpanded] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+    className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`
+  });
+  const TEMPLATE = [['core/group', {
+    className: 'panel-main',
+    layout: {
+      type: 'constrained'
+    }
+  }, [['core/paragraph', {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Pidempi kuvaus…', 'dude'),
+    className: 'item-description',
+    content: 'Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi.'
+  }], ['core/heading', {
+    level: 4,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Ominaisuuksien otsikko (valinnainen)…', 'dude'),
+    className: 'features-title',
+    content: 'Esimerkkejä hintaluokan sivustoista:'
+  }], ['core/list', {
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Lisää ominaisuudet…', 'dude'),
+    values: '<li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li><li><a href="https://www.google.com">Esimerkkicase</a></li>'
+  }]]], ['core/group', {
+    className: 'panel-gradient-box',
+    layout: {
+      type: 'constrained'
+    }
+  }, [['core/heading', {
+    level: 4,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Laatikon otsikko…', 'dude'),
+    className: 'gradient-box-heading',
+    content: 'Kasvavalle yritykselle, joka tarvitsee jotain ja jotain:'
+  }], ['core/list', {
+    className: 'list-checkbox',
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Lisää listan kohteet…', 'dude'),
+    values: '<li>Selkeä sisältöjen jäsentely</li><li>Räätälöidyt sisältörakenteet</li><li>Parempi konversio</li><li>Brändin vahvistaminen</li><li>Perusintegraatiot</li>'
+  }], ['core/buttons', {}, [['core/button', {
+    text: 'Pyydä tarjous',
+    url: 'https://www.dude.fi/ota-yhteytta',
+    className: 'is-style-mint'
+  }]]]]]];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuotteen asetukset', 'dude'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Suosituin', 'dude'),
+          checked: isPopular,
+          onChange: value => setAttributes({
+            isPopular: value
+          }),
+          __nextHasNoMarginBottom: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Näytä gradientti-laatikko', 'dude'),
+          checked: showGradientBox,
+          onChange: value => setAttributes({
+            showGradientBox: value
+          }),
+          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Lisää oikealle puolelle gradientti-laatikko lisäsisällölle', 'dude'),
+          __nextHasNoMarginBottom: true
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "accordion-header",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "accordion-trigger",
+          "aria-expanded": isExpanded ? 'true' : 'false',
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            className: "accordion-title",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "item-content",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-header",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                  tagName: "span",
+                  className: "item-name",
+                  value: title,
+                  onChange: value => setAttributes({
+                    title: value
+                  }),
+                  placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Tuotteen nimi…', 'dude'),
+                  allowedFormats: ['core/bold', 'core/italic', 'core/link']
+                }), isPopular && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  className: "badge",
+                  children: "Suosituin"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-meta",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                  tagName: "span",
+                  className: "price",
+                  value: price,
+                  onChange: value => setAttributes({
+                    price: value
+                  }),
+                  placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hinta…', 'dude'),
+                  allowedFormats: ['core/bold', 'core/italic', 'core/link']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                  tagName: "span",
+                  className: "description",
+                  value: shortDescription,
+                  onChange: value => setAttributes({
+                    shortDescription: value
+                  }),
+                  placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Lyhyt kuvaus…', 'dude'),
+                  allowedFormats: ['core/bold', 'core/italic', 'core/link']
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "accordion-icon",
+              onClick: () => setIsExpanded(!isExpanded),
+              onKeyDown: e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setIsExpanded(!isExpanded);
+                }
+              },
+              role: "button",
+              tabIndex: 0,
+              "aria-label": isExpanded ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sulje', 'dude') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Avaa', 'dude'),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+                width: "18",
+                height: "10",
+                viewBox: "0 0 18 10",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M.666.667l8 8 8-8",
+                  stroke: "#7EFFE1",
+                  strokeWidth: "1.333",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round"
+                })
+              })
+            })]
+          })
+        })
+      }), isExpanded && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "accordion-panel",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: `panel-layout${showGradientBox ? ' has-gradient-box' : ''}`,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+            allowedBlocks: ['core/group', 'core/paragraph', 'core/heading', 'core/list', 'core/buttons', 'core/button'],
+            template: TEMPLATE,
+            templateLock: false
+          })
+        })
+      })]
+    })]
+  });
+}
+
+/***/ },
+
+/***/ "@wordpress/block-editor"
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+(module) {
+
+module.exports = window["wp"]["blockEditor"];
+
+/***/ },
+
+/***/ "@wordpress/blocks"
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+(module) {
+
+module.exports = window["wp"]["blocks"];
+
+/***/ },
+
+/***/ "@wordpress/components"
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ },
+
+/***/ "@wordpress/element"
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+(module) {
+
+module.exports = window["wp"]["element"];
+
+/***/ },
+
+/***/ "@wordpress/i18n"
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+(module) {
+
+module.exports = window["wp"]["i18n"];
+
+/***/ },
+
+/***/ "react/jsx-runtime"
+/*!**********************************!*\
+  !*** external "ReactJSXRuntime" ***!
+  \**********************************/
+(module) {
+
+module.exports = window["ReactJSXRuntime"];
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!******************************************!*\
+  !*** ./blocks/pricing-item/src/index.js ***!
+  \******************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./blocks/pricing-item/src/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../block.json */ "./blocks/pricing-item/block.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+// Generate a slug from title for accessible IDs
+
+const slugify = text => {
+  return text.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-');
+};
+
+// v1 deprecation - old format with string features
+const v1 = {
+  attributes: {
+    title: {
+      type: 'string',
+      default: 'Tuotteen nimi'
+    },
+    isPopular: {
+      type: 'boolean',
+      default: false
+    },
+    price: {
+      type: 'string',
+      default: '0 €'
+    },
+    shortDescription: {
+      type: 'string',
+      default: 'Lyhyt kuvaus'
+    },
+    content: {
+      type: 'string',
+      default: 'Pidempi kuvaus tuotteesta.'
+    },
+    features: {
+      type: 'array',
+      default: ['Ominaisuus 1', 'Ominaisuus 2']
+    }
+  },
+  migrate: attributes => {
+    const migratedFeatures = attributes.features.map(f => typeof f === 'string' ? {
+      text: f
+    } : f);
+    return {
+      ...attributes,
+      features: migratedFeatures,
+      featuresTitle: '',
+      showGradientBox: false,
+      gradientBoxHeading: ''
+    };
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      title,
+      isPopular,
+      price,
+      shortDescription,
+      content,
+      features
+    } = attributes;
+    const itemId = slugify(title || 'pricing-item');
+    const triggerId = `accordion-${itemId}`;
+    const panelId = itemId;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          className: "accordion-trigger",
+          type: "button",
+          "aria-expanded": "false",
+          "aria-controls": panelId,
+          id: triggerId,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            className: "accordion-title",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "item-content",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-header",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "item-name",
+                  value: title
+                }), isPopular && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  className: "badge",
+                  children: "Suosituin"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-meta",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "price",
+                  value: price
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "description",
+                  value: shortDescription
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "accordion-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+                width: "18",
+                height: "10",
+                viewBox: "0 0 18 10",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M.666.667l8 8 8-8",
+                  stroke: "#7EFFE1",
+                  strokeWidth: "1.333",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round"
+                })
+              })
+            })]
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        id: panelId,
+        role: "region",
+        "aria-labelledby": triggerId,
+        className: "accordion-panel",
+        hidden: true,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          children: [content && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: content
+          }), features && features.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+            children: features.map((feature, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              children: feature
+            }, index))
+          })]
+        })
+      })]
+    });
+  }
+};
+
+// v2 deprecation - used content, features, featuresTitle, gradientBoxHeading attributes
+// IMPORTANT: Keep showGradientBox default as false to match old blocks
+const v2 = {
+  attributes: {
+    title: {
+      type: 'string',
+      default: 'Tuotteen nimi'
+    },
+    isPopular: {
+      type: 'boolean',
+      default: false
+    },
+    price: {
+      type: 'string',
+      default: '0 €'
+    },
+    shortDescription: {
+      type: 'string',
+      default: 'Lyhyt kuvaus'
+    },
+    content: {
+      type: 'string',
+      default: ''
+    },
+    features: {
+      type: 'array',
+      default: []
+    },
+    featuresTitle: {
+      type: 'string',
+      default: ''
+    },
+    showGradientBox: {
+      type: 'boolean',
+      default: false
+    },
+    gradientBoxHeading: {
+      type: 'string',
+      default: ''
+    }
+  },
+  supports: {
+    __experimentalExposeControlsToChildren: true
+  },
+  isEligible: attributes => {
+    // Match blocks that have the old v2 structure with content/features attributes
+    return attributes.content !== undefined || attributes.features !== undefined;
+  },
+  migrate: attributes => {
+    // Keep only the new attributes, discard old content/features data
+    // The user will need to re-enter content using InnerBlocks
+    return {
+      title: attributes.title,
+      isPopular: attributes.isPopular,
+      price: attributes.price,
+      shortDescription: attributes.shortDescription,
+      showGradientBox: attributes.showGradientBox
+    };
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      title,
+      isPopular,
+      price,
+      shortDescription,
+      content,
+      features,
+      featuresTitle,
+      showGradientBox,
+      gradientBoxHeading
+    } = attributes;
+    const itemId = slugify(title || 'pricing-item');
+    const triggerId = `accordion-${itemId}`;
+    const panelId = itemId;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          className: "accordion-trigger",
+          type: "button",
+          "aria-expanded": "false",
+          "aria-controls": panelId,
+          id: triggerId,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            className: "accordion-title",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "item-content",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-header",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "item-name",
+                  value: title
+                }), isPopular && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  className: "badge",
+                  children: "Suosituin"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-meta",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "price",
+                  value: price
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "description",
+                  value: shortDescription
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "accordion-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+                width: "18",
+                height: "10",
+                viewBox: "0 0 18 10",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M.666.667l8 8 8-8",
+                  stroke: "#7EFFE1",
+                  strokeWidth: "1.333",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round"
+                })
+              })
+            })]
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        id: panelId,
+        role: "region",
+        "aria-labelledby": triggerId,
+        className: "accordion-panel",
+        hidden: true,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: `panel-layout${showGradientBox ? ' has-gradient-box' : ''}`,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "panel-main",
+            children: [content && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+              tagName: "p",
+              className: "item-description",
+              value: content
+            }), featuresTitle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              className: "features-title",
+              children: featuresTitle
+            }), features && features.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+              children: features.map((feature, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  value: typeof feature === 'object' ? feature.text : feature
+                })
+              }, index))
+            })]
+          }), showGradientBox && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "panel-gradient-box",
+            children: [gradientBoxHeading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+              tagName: "h4",
+              className: "gradient-box-heading",
+              value: gradientBoxHeading
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})]
+          })]
+        })
+      })]
+    });
+  }
+};
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_3__.name, {
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: ({
+    attributes
+  }) => {
+    const {
+      title,
+      isPopular,
+      price,
+      shortDescription,
+      showGradientBox
+    } = attributes;
+
+    // Generate unique ID from title for accessibility
+    const itemId = slugify(title || 'pricing-item');
+    const triggerId = `accordion-${itemId}`;
+    const panelId = itemId;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: `pricing-accordion-item${isPopular ? ' is-popular' : ''}`
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          className: "accordion-trigger",
+          type: "button",
+          "aria-expanded": "false",
+          "aria-controls": panelId,
+          id: triggerId,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+            className: "accordion-title",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "item-content",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-header",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "item-name",
+                  value: title
+                }), isPopular && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                  className: "badge",
+                  children: "Suosituin"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "item-meta",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "price",
+                  value: price
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+                  tagName: "span",
+                  className: "description",
+                  value: shortDescription
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "accordion-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("svg", {
+                width: "18",
+                height: "10",
+                viewBox: "0 0 18 10",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+                  d: "M.666.667l8 8 8-8",
+                  stroke: "#7EFFE1",
+                  strokeWidth: "1.333",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round"
+                })
+              })
+            })]
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        id: panelId,
+        role: "region",
+        "aria-labelledby": triggerId,
+        className: "accordion-panel",
+        hidden: true,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: `panel-layout${showGradientBox ? ' has-gradient-box' : ''}`,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
+        })
+      })]
+    });
+  },
+  deprecated: [v2, v1]
+});
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=index.js.map
