@@ -1,5 +1,6 @@
 ### 7.0.14: 2026-01-28
 
+* Add block appender to pricing-category to enable adding and removing pricing items, Ref: DEV-701
 * Build assets after ESLint fixes, Ref: DEV-701
 
 ### 7.0.13: 2026-01-27

@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, useInnerBlocksProps, InspectorControls, RichText } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps, InspectorControls, RichText, InnerBlocks } from '@wordpress/block-editor';
 import { PanelBody, RangeControl } from '@wordpress/components';
 import './style.scss';
 import './editor.scss';
@@ -60,6 +60,7 @@ export default function Edit( { attributes, setAttributes } ) {
     {
       template: TEMPLATE,
       allowedBlocks: ALLOWED_BLOCKS,
+      renderAppender: InnerBlocks.ButtonBlockAppender,
     }
   );
 
