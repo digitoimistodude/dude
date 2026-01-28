@@ -1,5 +1,7 @@
 ### 7.0.14: 2026-01-28
 
+* Refactor pricing-faq block to use core/accordion and core/accordion-item instead of custom array, Ref: DEV-701
+* Add deprecation to migrate old pricing-faq blocks with items array to new core/accordion format, Ref: DEV-701
 * Add block appender to pricing-category to enable adding and removing pricing items, Ref: DEV-701
 * Build assets after ESLint fixes, Ref: DEV-701
 

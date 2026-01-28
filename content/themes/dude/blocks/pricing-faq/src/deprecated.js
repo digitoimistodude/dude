@@ -1,0 +1,142 @@
+import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
+
+const v1 = {
+  attributes: {
+    paddingTopDesktop: {
+      type: 'number',
+      default: 0,
+    },
+    paddingBottomDesktop: {
+      type: 'number',
+      default: 0,
+    },
+    paddingTopMobile: {
+      type: 'number',
+      default: 0,
+    },
+    paddingBottomMobile: {
+      type: 'number',
+      default: 0,
+    },
+    items: {
+      type: 'array',
+      default: [],
+    },
+  },
+  save: ( { attributes } ) => {
+    const { items, paddingTopDesktop, paddingBottomDesktop, paddingTopMobile, paddingBottomMobile } = attributes;
+
+    const blockProps = useBlockProps.save( {
+      className: 'block block-pricing-faq block-upkeep-faq',
+      style: {
+        '--padding-top-desktop': `${ paddingTopDesktop }px`,
+        '--padding-bottom-desktop': `${ paddingBottomDesktop }px`,
+        '--padding-top-mobile': `${ paddingTopMobile }px`,
+        '--padding-bottom-mobile': `${ paddingBottomMobile }px`,
+      },
+    } );
+
+    return (
+      <div { ...blockProps }>
+        <div className="container">
+          <div className="faq-layout">
+            <div className="faq-intro">
+              <InnerBlocks.Content />
+            </div>
+            <div className="faq-items">
+              <div className="accordion" data-allow-multiple data-allow-toggle>
+                { items &&
+                  items.map( ( item, index ) => {
+                    const faqId = `faq-block-${ index + 1 }`;
+                    return (
+                      <div key={ index } className="accordion-item">
+                        <h3>
+                          <button aria-expanded="false" className="accordion-trigger" aria-controls={ faqId } id={ `accordion-${ faqId }` }>
+                            <span className="accordion-title">
+                              <RichText.Content tagName="span" value={ item.question } />
+                              <span className="accordion-icon"></span>
+                            </span>
+                          </button>
+                        </h3>
+                        <div id={ faqId } role="region" aria-labelledby={ `accordion-${ faqId }` } className="accordion-panel" hidden>
+                          <div>
+                            <RichText.Content tagName="p" value={ item.answer } />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  } ) }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  migrate: ( attributes ) => {
+    // Convert old items array to InnerBlocks structure
+    const { items, ...otherAttributes } = attributes;
+
+    // Create accordion items from old data
+    const accordionItems = ( items || [] ).map( ( item ) => [
+      'core/accordion-item',
+      {
+        title: item.question,
+      },
+      [
+        [
+          'core/paragraph',
+          {
+            content: item.answer,
+          },
+        ],
+      ],
+    ] );
+
+    // Return migrated attributes and innerBlocks
+    return [
+      otherAttributes,
+      [
+        [
+          'core/group',
+          {
+            className: 'faq-intro',
+          },
+          [
+            [
+              'core/heading',
+              {
+                level: 2,
+                content: 'Hyvä tietää',
+              },
+            ],
+            [
+              'core/paragraph',
+              {
+                content: 'Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset.',
+              },
+            ],
+          ],
+        ],
+        [
+          'core/group',
+          {
+            className: 'faq-items',
+          },
+          [
+            [
+              'core/accordion',
+              {},
+              accordionItems,
+            ],
+          ],
+        ],
+      ],
+    ];
+  },
+  isEligible: ( attributes ) => {
+    return attributes.items !== undefined && Array.isArray( attributes.items );
+  },
+};
+
+export default [ v1 ];
