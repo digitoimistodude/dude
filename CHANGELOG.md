@@ -1,5 +1,7 @@
 ### 7.0.14: 2026-02-03
 
+* Fix broken custom padding controls in all pricing blocks by removing non-functional attributes from save functions and adding deprecations to migrate existing blocks
+* Remove all --padding-top-desktop and --padding-bottom-desktop CSS custom properties from pricing blocks in favor of WordPress core spacing
 * Add custom spacing scale to theme.json matching theme's design system (20px to 170px), Ref: DEV-701
 * Fix pricing-faq deprecation isEligible to only match old blocks with custom padding attributes, Ref: DEV-701
 * Revert pricing-faq to working custom items array implementation while keeping core spacing support, Ref: DEV-701

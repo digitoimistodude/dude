@@ -3,13 +3,8 @@
 // stylelint-disable declaration-no-important
 .block.block-pricing-faq {
   background-color: transparent !important;
-  padding-bottom: var(--padding-bottom-desktop, 0);
-  padding-top: var(--padding-top-desktop, 0);
-
-  @media (max-width: 1200px) {
-    padding-bottom: var(--padding-bottom-mobile, 0);
-    padding-top: var(--padding-top-mobile, 0);
-  }
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .block-pricing-faq .faq-layout {
@@ -231,30 +226,57 @@
 }
 
 // Editor overrides with dark mode
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .faq-intro h2,
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .faq-intro .wp-block-heading {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .faq-intro
+  h2,
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .faq-intro
+  .wp-block-heading {
   color: #fff !important;
 }
 
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .faq-intro p,
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .faq-intro .wp-block-paragraph {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .faq-intro
+  p,
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .faq-intro
+  .wp-block-paragraph {
   color: #fff !important;
 }
 
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .accordion-title .rich-text {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .accordion-title
+  .rich-text {
   color: #fff !important;
 }
 
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .accordion-panel .rich-text {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .accordion-panel
+  .rich-text {
   color: rgb(255 255 255 / 0.65) !important;
 }
 
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .accordion-panel a {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .accordion-panel
+  a {
   color: #7effe1 !important;
   text-decoration: underline;
 }
 
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .accordion-panel a:hover,
-.editor-styles-wrapper.has-petrol-gradient-background .block-pricing-faq .accordion-panel a:focus {
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .accordion-panel
+  a:hover,
+.editor-styles-wrapper.has-petrol-gradient-background
+  .block-pricing-faq
+  .accordion-panel
+  a:focus {
   text-decoration: none;
 }

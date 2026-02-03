@@ -58,16 +58,15 @@
 
 // Core blocks handle their own typography
 .block-pricing-cta {
-  padding-bottom: var(--padding-bottom-desktop, 0);
-  padding-top: var(--padding-top-desktop, var(--padding-block));
+  padding-bottom: 0;
+  padding-top: var(--padding-block);
 
   > .container {
     overflow: visible !important;
   }
 
   @media (max-width: 1200px) {
-    padding-bottom: var(--padding-bottom-mobile, 0);
-    padding-top: var(--padding-top-mobile, var(--padding-block));
+    padding-top: var(--padding-block);
   }
 }
 

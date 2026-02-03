@@ -1,11 +1,38 @@
-import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
-import Edit from './edit';
-import deprecated from './deprecated';
-import './style.scss';
 
-registerBlockType('dude/pricing-cta', {
-  edit: Edit,
+const v1 = {
+  attributes: {
+    phoneText: {
+      type: 'string',
+      default:
+        'Soita Juhalle <a href="tel:+358400443221">0400 443 221</a> tai lähetä WhatsAppia',
+    },
+    emailText: {
+      type: 'string',
+      default:
+        'Lähetä sähköpostia <a href="mailto:moro@dude.fi">moro@dude.fi</a>',
+    },
+    formText: {
+      type: 'string',
+      default: '<a href="/yhteystiedot/">Täytä yhteydenottolomake →</a>',
+    },
+    paddingTopDesktop: {
+      type: 'number',
+      default: 80,
+    },
+    paddingBottomDesktop: {
+      type: 'number',
+      default: 0,
+    },
+    paddingTopMobile: {
+      type: 'number',
+      default: 80,
+    },
+    paddingBottomMobile: {
+      type: 'number',
+      default: 0,
+    },
+  },
   save: ({ attributes }) => {
     const { phoneText, emailText, formText } = attributes;
 
@@ -81,5 +108,12 @@ registerBlockType('dude/pricing-cta', {
       </section>
     );
   },
-  deprecated,
-});
+  isEligible: (attributes) => {
+    return (
+      attributes.paddingTopDesktop !== undefined ||
+      attributes.paddingBottomDesktop !== undefined
+    );
+  },
+};
+
+export default [v1];

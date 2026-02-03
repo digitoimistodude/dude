@@ -11,7 +11,11 @@
   "supports": {
     "html": false,
     "align": ["full"],
-    "anchor": true
+    "anchor": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
   },
   "example": {
     "attributes": {
@@ -32,22 +36,6 @@
     "formText": {
       "type": "string",
       "default": "<a href=\"/yhteystiedot/\">Täytä yhteydenottolomake →</a>"
-    },
-    "paddingTopDesktop": {
-      "type": "number",
-      "default": 80
-    },
-    "paddingBottomDesktop": {
-      "type": "number",
-      "default": 0
-    },
-    "paddingTopMobile": {
-      "type": "number",
-      "default": 80
-    },
-    "paddingBottomMobile": {
-      "type": "number",
-      "default": 0
     }
   },
   "textdomain": "dude",

@@ -35,17 +35,17 @@
         {
           "name": "X-Large",
           "slug": "x-large",
-          "size": "clamp(48px, calc(25px + 4.6vw), 80px)"
+          "size": "clamp(48px, calc(25px + 5vw), 80px)"
         },
         {
           "name": "2X-Large",
           "slug": "2-x-large",
-          "size": "clamp(48px, calc(25px + 4.6vw), 120px)"
+          "size": "clamp(48px, calc(25px + 10vw), 120px)"
         },
         {
           "name": "3X-Large",
           "slug": "3-x-large",
-          "size": "clamp(48px, calc(25px + 4.6vw), 170px)"
+          "size": "clamp(48px, calc(25px + 10vw), 300px)"
         }
       ]
     },

@@ -1,12 +1,33 @@
-import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
-import Edit from './edit';
-import deprecated from './deprecated';
-import metadata from '../block.json';
-import './style.scss';
 
-registerBlockType(metadata.name, {
-  edit: Edit,
+const v1 = {
+  attributes: {
+    title: {
+      type: 'string',
+      default: 'Räätälöidyt WordPress-sivustot',
+    },
+    description: {
+      type: 'string',
+      default:
+        'Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi.',
+    },
+    paddingTopDesktop: {
+      type: 'number',
+      default: 0,
+    },
+    paddingBottomDesktop: {
+      type: 'number',
+      default: 0,
+    },
+    paddingTopMobile: {
+      type: 'number',
+      default: 0,
+    },
+    paddingBottomMobile: {
+      type: 'number',
+      default: 0,
+    },
+  },
   save: ({ attributes }) => {
     const { title, description } = attributes;
 
@@ -42,5 +63,12 @@ registerBlockType(metadata.name, {
       </section>
     );
   },
-  deprecated,
-});
+  isEligible: (attributes) => {
+    return (
+      attributes.paddingTopDesktop !== undefined ||
+      attributes.paddingBottomDesktop !== undefined
+    );
+  },
+};
+
+export default [v1];
