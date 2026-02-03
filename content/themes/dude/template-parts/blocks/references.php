@@ -163,7 +163,8 @@ if ( ! isset( $args ) ) {
           $logo_path = get_theme_file_path( "assets/svg/logos/{$logo}.svg" );
           if ( ! file_exists( $logo_path ) ) {
             continue;
-          } ?>
+          }
+          ?>
 
           <li><?php include $logo_path; ?></li>
         <?php } ?>
@@ -173,7 +174,8 @@ if ( ! isset( $args ) ) {
     <div class="cols cols-two">
       <?php foreach ( $reference_ids as $key => $reference_id ) {
         get_template_part( 'template-parts/loops/reference', null, [ 'post_id' => $reference_id, 'key' => $key ] );
-      } ?>
+      }
+      ?>
     </div>
 
     <?php if ( ! empty( $link ) ) : ?>

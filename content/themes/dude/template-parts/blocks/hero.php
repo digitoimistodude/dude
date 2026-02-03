@@ -63,7 +63,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
           <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
           <span class="play-label">Katso showreel</span>
         </button>
-        */ ?>
+        */
+        ?>
       </p>
     </div>
 
@@ -103,7 +104,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
     </div>
   </div>
-  */ ?>
+  */
+  ?>
 
   </div>
 </section>

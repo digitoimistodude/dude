@@ -81,7 +81,8 @@ function head_analytics_scripts() { ?>
   </script>
 <?php } // end head_analytics_scripts
 
-function footer_analytics_scripts() { ?>
+function footer_analytics_scripts() {
+?>
 <?php } // end footer_analytics_scripts
 
 function air_cookie_js_analytics() {
@@ -89,10 +90,12 @@ function air_cookie_js_analytics() {
     return;
   }
 
-  ob_start(); ?>
+  ob_start();
+  ?>
 <?php /*
 window.pipedriveLeadboosterConfig = {base: 'leadbooster-chat.pipedrive.com',companyId: 7297292,playbookUuid: '9c38fe13-4ddb-4df8-9978-bfbded9d9ba7',version: 2};(function () {var w = window;if (w.LeadBooster) {console.warn('LeadBooster already exists');} else {w.LeadBooster = {q: [],on: function (n, h) {this.q.push({ t: 'o', n: n, h: h });},trigger: function (n) {this.q.push({ t: 't', n: n });},};}})();
-*/ ?>
+*/
+?>
 
 (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lYNOR8xvpWe4WQJZ');
 

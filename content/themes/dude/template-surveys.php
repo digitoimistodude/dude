@@ -57,7 +57,8 @@ $hero_content = get_post_meta( get_the_id(), 'hero_content', true );
 
           <?php echo do_shortcode( '[wpforms id="' . $form_id . '"]' );
 
-          do_action( 'dude_site_main_after_content' ); ?>
+          do_action( 'dude_site_main_after_content' );
+          ?>
 
         </main><!-- #main -->
       </div><!-- #primary -->

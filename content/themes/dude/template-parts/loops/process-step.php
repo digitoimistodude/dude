@@ -26,13 +26,15 @@ $button = $step['button'];
 
   <?php echo wp_kses_post( wpautop( $step['content'] ) );
 
-  if ( ! empty( $step['list'] ) ) : ?>
+  if ( ! empty( $step['list'] ) ) :
+  ?>
     <ul>
       <?php foreach ( $step['list'] as $list_item ) : ?>
         <li>
           <?php if ( empty( $list_item['link'] ) ) :
             echo esc_html( $list_item['list_item'] );
-          else : ?>
+          else :
+          ?>
             <a href="<?php echo esc_url( $list_item['link'] ) ?>">
               <?php echo esc_html( $list_item['list_item'] ); ?>
             </a>

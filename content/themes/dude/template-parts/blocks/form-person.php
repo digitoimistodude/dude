@@ -36,7 +36,8 @@ if ( ! empty( $person_id ) ) {
     <div class="form has-transition-fade">
       <?php wpforms_display( $form_id );
 
-      do_action( 'wpforms_wp_footer_end' ); ?>
+      do_action( 'wpforms_wp_footer_end' );
+      ?>
     </div>
 
     <?php // NB! Person section removed (new contact layout 4.10.2022) ?>

@@ -153,7 +153,8 @@ get_header(); ?>
 
     <?php if ( $custom_css ) {
       echo $custom_css; // phpcs:ignore
-    } ?>
+    }
+    ?>
   </style>
 
   <?php the_content();
@@ -166,7 +167,8 @@ get_header(); ?>
     'show_title'    => true,
   ] );
 
-  do_action( 'dude_site_main_after_content' ); ?>
+  do_action( 'dude_site_main_after_content' );
+  ?>
 </main>
 
 <?php get_footer();

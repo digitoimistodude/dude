@@ -50,7 +50,8 @@ if ( ! isset( $args ) ) {
       <ul class="steps swiper-wrapper">
         <?php foreach ( $steps as $key => $step ) {
           get_template_part( 'template-parts/loops/process-step', null, [ 'step' => $step, 'step_number' => $key ] );
-        } ?>
+        }
+        ?>
       </ul>
 
     </div>

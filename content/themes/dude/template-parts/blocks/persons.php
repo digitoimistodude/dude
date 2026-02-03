@@ -110,7 +110,8 @@ foreach ( $persons as $person ) {
               <p><?php echo esc_html( $person['title'] ) ?></p>
             <?php endif;
 
-            if ( ! empty( $person['email'] ) ) : ?>
+            if ( ! empty( $person['email'] ) ) :
+            ?>
               <p>
                 <a href="mailto:<?php echo esc_attr( $person['email'] ) ?>">
                   <?php echo esc_html( $person['email'] ) ?>
@@ -118,7 +119,8 @@ foreach ( $persons as $person ) {
               </p>
             <?php endif;
 
-            if ( ! empty( $person['phone'] ) && $person['show_phone'] ) : ?>
+            if ( ! empty( $person['phone'] ) && $person['show_phone'] ) :
+            ?>
               <p>
                 <a href="tel:<?php echo esc_attr( $person['phone'] ) ?>">
                   <?php echo esc_html( $person['phone'] ) ?>
@@ -126,7 +128,8 @@ foreach ( $persons as $person ) {
               </p>
             <?php endif;
 
-            if ( isset( $person['social_media'] ) && ! empty( $person['social_media'] ) ) : ?>
+            if ( isset( $person['social_media'] ) && ! empty( $person['social_media'] ) ) :
+            ?>
               <ul class="social-media">
                 <?php foreach ( $person['social_media'] as $social ) : ?>
                   <li>

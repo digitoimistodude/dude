@@ -151,7 +151,8 @@ if ( ( $key % 2 ) !== 0 ) {
 
       if ( ! empty( $data['desc'] ) ) {
         echo ' &ndash; ' . esc_attr( $data['desc'] );
-      } ?>
+      }
+      ?>
     </a>
   </h3>
 

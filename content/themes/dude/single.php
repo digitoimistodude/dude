@@ -96,7 +96,8 @@ get_header(); ?>
 
       <?php the_content();
 
-      if ( true === $guest_post ) : ?>
+      if ( true === $guest_post ) :
+      ?>
         <div class="guest-post-author-card">
           <?php native_lazyload_tag( $guest_post_author_avatar ) ?>
 
@@ -111,7 +112,8 @@ get_header(); ?>
 
       if ( get_edit_post_link() ) {
         edit_post_link( sprintf( wp_kses( __( 'Muokkaa artikkelia <span class="screen-reader-text-dude">%s</span>', 'dude' ), [ 'span' => [ 'class' => [] ] ] ), get_the_title() ), '<p class="edit-link">', '</p>' );
-      } ?>
+      }
+      ?>
 
     </article>
 
@@ -136,7 +138,8 @@ get_header(); ?>
               <p class="job-title"><?php echo esc_html( $author_job_title ) ?></p>
             <?php endif;
 
-            if ( ! empty( $author_desc ) ) : ?>
+            if ( ! empty( $author_desc ) ) :
+            ?>
               <p class="person-description"><?php echo esc_html( $author_desc ) ?></p>
             <?php endif; ?>
 
@@ -146,7 +149,8 @@ get_header(); ?>
           </div>
         </div>
       <?php endif;
-    endif; ?>
+    endif;
+    ?>
 
   </section>
 
@@ -154,7 +158,8 @@ get_header(); ?>
     relevanssi_the_related_posts();
   }
 
-  do_action( 'dude_site_main_after_content' ); ?>
+  do_action( 'dude_site_main_after_content' );
+  ?>
 
 </main>
 

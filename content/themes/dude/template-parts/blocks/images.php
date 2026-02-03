@@ -28,7 +28,8 @@ if ( ! isset( $args ) ) {
     <?php foreach ( $images as $key => $image ) {
       $key++;
       native_lazyload_tag( $image, [ 'class' => "image-{$key}" ] );
-    } ?>
+    }
+    ?>
 
   </div>
 </section>

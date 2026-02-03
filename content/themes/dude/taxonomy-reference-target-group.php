@@ -186,7 +186,8 @@ get_header(); ?>
     ] );
   } else {
     echo '<div class="container"><p>Ei referenssejä tässä toimialassa. Varmista että olet lisännyt referenssejä "' . esc_html( $current_term->name ) . '" toimialaan WordPress-hallinnassa.</p></div>';
-  } ?>
+  }
+  ?>
 
 </main>
 

@@ -51,7 +51,8 @@ if ( ! isset( $args ) ) {
 
       echo wp_kses_post( wpautop( $content ) );
 
-      if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) : ?>
+      if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) :
+      ?>
         <p class="link-underlined-wrapper">
           <a href="<?php echo esc_url( $link['url'] ) ?>" class="link-underlined">
             <?php echo esc_html( $link['title'] ) ?>

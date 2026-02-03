@@ -71,7 +71,8 @@ if ( ! $diamond_articles ) {
     <div class="cols">
       <?php foreach ( $post_ids as $post_id ) {
         get_template_part( 'template-parts/loops/post-block', null, [ 'post_id' => $post_id ] );
-      } ?>
+      }
+      ?>
     </div>
 
     <p class="button-wrapper">

@@ -169,7 +169,8 @@ get_header(); ?>
     'show_logos'    => false,
     'show_title'    => false,
     'filterable'    => true,
-  ] ); ?>
+  ] );
+  ?>
 
 </main>
 

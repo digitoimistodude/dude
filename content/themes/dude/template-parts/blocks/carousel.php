@@ -110,4 +110,4 @@ $picture_cdn_srcset = [
 
   </div>
 </section>
-<?php endif; ?>
+<?php endif; 

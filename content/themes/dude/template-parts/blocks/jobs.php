@@ -49,11 +49,13 @@ if ( $jobs_query->have_posts() ) {
       </div>
     <?php endif;
 
-    if ( ! empty( $jobs ) ) : ?>
+    if ( ! empty( $jobs ) ) :
+    ?>
       <ul class="jobs">
         <?php foreach ( $jobs as $job ) {
           get_template_part( 'template-parts/loops/job', null, $job );
-        } ?>
+        }
+        ?>
       </ul>
     <?php else : ?>
       <div class="no-jobs">

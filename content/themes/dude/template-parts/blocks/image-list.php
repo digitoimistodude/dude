@@ -58,7 +58,8 @@ $picture_cdn_srcset = [
       <div class="col image image-background">
         <?php if ( ! empty( $image ) ) {
           get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
-        } ?>
+        }
+        ?>
       </div>
 
       <ul class="col list">

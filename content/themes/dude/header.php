@@ -81,7 +81,8 @@ if ( $force_dark_mode ) {
 
   <?php wp_head();
 
-  if ( 16399 === get_the_id() ) : ?>
+  if ( 16399 === get_the_id() ) :
+  ?>
     <style>
       .wp-block-gallery.has-nested-images figcaption {
         margin: 0 auto;

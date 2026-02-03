@@ -53,7 +53,8 @@ if ( ! empty( $form ) ) {
       gravity_form( $form, false, false, false, '', true, 1 );
     } else {
       wpforms_display( $form_id );
-    } ?>
+    }
+    ?>
 
   </div>
 </section>

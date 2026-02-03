@@ -72,7 +72,8 @@ if ( $hide_title ) {
             <?php if ( ! empty( $column['icon_svg'] ) ) : ?>
               <div class="icon">
                 <?php $icon_path = get_theme_file_path( "assets/svg/foruser/{$column['icon_svg']}" );
-                if ( file_exists( $icon_path ) ) include $icon_path; ?>
+                if ( file_exists( $icon_path ) ) include $icon_path;
+                ?>
               </div>
             <?php endif; ?>
 

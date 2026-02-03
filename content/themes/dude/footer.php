@@ -46,7 +46,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
         'fallback_cb'     => __NAMESPACE__ . '\Nav_Walker::fallback',
         'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
         'walker'          => new Nav_Walker(),
-      ) ); ?>
+      ) );
+      ?>
     </nav>
 
     <div class="footer-columns">
@@ -155,7 +156,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
 <?php // This is a workaround to flush 301 cache, details in task D-107
 // Check if slug is wordpress-yllapito-yhdelta-kumppanilta and no redirect cookie set
-if ( 'wordpress-yllapito-yhdelta-kumppanilta' === get_post_field( 'post_name', get_the_ID() ) && ! isset( $_COOKIE['upkeep_redirect_done'] ) ) : ?>
+if ( 'wordpress-yllapito-yhdelta-kumppanilta' === get_post_field( 'post_name', get_the_ID() ) && ! isset( $_COOKIE['upkeep_redirect_done'] ) ) :
+?>
   <!-- Clear 301 redirect fix, redirect back to post 18011 -->
   <form action="<?php echo esc_url( get_permalink( 18011 ) ); ?>" method="post"><input type="submit" value="Ohjataan uudelleen..." /></form>
 

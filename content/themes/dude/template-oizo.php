@@ -44,7 +44,8 @@ get_header(); ?>
 
   <?php the_content();
 
-  do_action( 'dude_site_main_after_content' ); ?>
+  do_action( 'dude_site_main_after_content' );
+  ?>
 </main>
 
 <?php get_footer();

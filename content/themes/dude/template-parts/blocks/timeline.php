@@ -54,7 +54,8 @@ if ( ! isset( $args ) ) {
               <?php echo esc_html( $year ); ?>
           </button>
         <?php $i++;
-      endwhile; ?>
+      endwhile;
+      ?>
       </div>
     </div>
 
@@ -91,7 +92,8 @@ if ( ! isset( $args ) ) {
 
         </div>
       <?php $i++;
-      endwhile; ?>
+      endwhile;
+      ?>
     </div>
 
   </div>
