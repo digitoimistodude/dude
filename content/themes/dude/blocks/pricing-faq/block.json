@@ -11,24 +11,10 @@
   "supports": {
     "html": false,
     "align": ["full"],
-    "anchor": true
-  },
-  "attributes": {
-    "paddingTopDesktop": {
-      "type": "number",
-      "default": 0
-    },
-    "paddingBottomDesktop": {
-      "type": "number",
-      "default": 0
-    },
-    "paddingTopMobile": {
-      "type": "number",
-      "default": 0
-    },
-    "paddingBottomMobile": {
-      "type": "number",
-      "default": 0
+    "anchor": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
     }
   },
   "textdomain": "dude",

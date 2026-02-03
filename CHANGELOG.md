@@ -1,6 +1,8 @@
 ### 7.0.14: 2026-02-03
 
-* Disable brand survey popup
+* Replace custom padding controls with core spacing supports in all pricing blocks, Ref: DEV-701
+* Fix pricing-faq deprecation crash by removing migrate function, Ref: DEV-701
+* Disable brand survey popup, Ref: KVLT-151
 
 ### 7.0.13: 2026-01-28
 

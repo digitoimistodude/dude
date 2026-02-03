@@ -11,7 +11,11 @@
   "supports": {
     "html": false,
     "align": ["full"],
-    "anchor": true
+    "anchor": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
   },
   "attributes": {
     "title": {
@@ -21,22 +25,6 @@
     "description": {
       "type": "string",
       "default": "Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi."
-    },
-    "paddingTopDesktop": {
-      "type": "number",
-      "default": 106
-    },
-    "paddingBottomDesktop": {
-      "type": "number",
-      "default": 0
-    },
-    "paddingTopMobile": {
-      "type": "number",
-      "default": 60
-    },
-    "paddingBottomMobile": {
-      "type": "number",
-      "default": 0
     }
   },
   "example": {

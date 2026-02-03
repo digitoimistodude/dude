@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, RichText, InnerBlocks } from '@wordpress/block-editor';
-import { PanelBody, RangeControl } from '@wordpress/components';
+import { PanelBody } from '@wordpress/components';
 import './style.scss';
 import './editor.scss';
 
@@ -43,16 +43,10 @@ const TEMPLATE = [
 const ALLOWED_BLOCKS = [ 'dude/pricing-item' ];
 
 export default function Edit( { attributes, setAttributes } ) {
-  const { title, description, paddingTopDesktop, paddingBottomDesktop, paddingTopMobile, paddingBottomMobile } = attributes;
+  const { title, description } = attributes;
 
   const blockProps = useBlockProps( {
     className: 'block block-pricing-category has-unified-padding-if-stacked',
-    style: {
-      '--padding-top-desktop': `${ paddingTopDesktop }px`,
-      '--padding-bottom-desktop': `${ paddingBottomDesktop }px`,
-      '--padding-top-mobile': `${ paddingTopMobile }px`,
-      '--padding-bottom-mobile': `${ paddingBottomMobile }px`,
-    },
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
@@ -68,13 +62,9 @@ export default function Edit( { attributes, setAttributes } ) {
     <>
       <InspectorControls>
         <PanelBody title={ __( 'Kategorian asetukset', 'dude' ) }>
-          <p style={ { color: '#757575', fontSize: '12px' } }>{ __( 'Muokkaa sisältöä suoraan lohkossa. Lisää tuotteita painamalla + -painiketta.', 'dude' ) }</p>
-        </PanelBody>
-        <PanelBody title={ __( 'Padding settings', 'dude' ) } initialOpen={ false }>
-          <RangeControl label={ __( 'Padding top (desktop)', 'dude' ) } value={ paddingTopDesktop } onChange={ ( value ) => setAttributes( { paddingTopDesktop: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Padding bottom (desktop)', 'dude' ) } value={ paddingBottomDesktop } onChange={ ( value ) => setAttributes( { paddingBottomDesktop: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Padding top (mobile)', 'dude' ) } value={ paddingTopMobile } onChange={ ( value ) => setAttributes( { paddingTopMobile: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Padding bottom (mobile)', 'dude' ) } value={ paddingBottomMobile } onChange={ ( value ) => setAttributes( { paddingBottomMobile: value } ) } min={ 0 } max={ 200 } step={ 1 } />
+          <p style={ { color: '#757575', fontSize: '12px' } }>
+            { __( 'Muokkaa sisältöä suoraan lohkossa. Lisää tuotteita painamalla + -painiketta. Käytä sivupalkin Dimensions-asetuksia marginaalien ja välistysten säätöön.', 'dude' ) }
+          </p>
         </PanelBody>
       </InspectorControls>
 

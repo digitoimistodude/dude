@@ -1,16 +1,8 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
-export default function save( { attributes } ) {
-  const { paddingTopDesktop, paddingBottomDesktop, paddingTopMobile, paddingBottomMobile } = attributes;
-
+export default function save() {
   const blockProps = useBlockProps.save( {
     className: 'block block-pricing-faq block-upkeep-faq',
-    style: {
-      '--padding-top-desktop': `${ paddingTopDesktop }px`,
-      '--padding-bottom-desktop': `${ paddingBottomDesktop }px`,
-      '--padding-top-mobile': `${ paddingTopMobile }px`,
-      '--padding-bottom-mobile': `${ paddingBottomMobile }px`,
-    },
   } );
 
   return (

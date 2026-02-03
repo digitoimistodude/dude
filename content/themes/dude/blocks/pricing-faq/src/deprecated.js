@@ -73,67 +73,6 @@ const v1 = {
       </div>
     );
   },
-  migrate: ( attributes ) => {
-    // Convert old items array to InnerBlocks structure
-    const { items, ...otherAttributes } = attributes;
-
-    // Create accordion items from old data
-    const accordionItems = ( items || [] ).map( ( item ) => [
-      'core/accordion-item',
-      {
-        title: item.question,
-      },
-      [
-        [
-          'core/paragraph',
-          {
-            content: item.answer,
-          },
-        ],
-      ],
-    ] );
-
-    // Return migrated attributes and innerBlocks
-    return [
-      otherAttributes,
-      [
-        [
-          'core/group',
-          {
-            className: 'faq-intro',
-          },
-          [
-            [
-              'core/heading',
-              {
-                level: 2,
-                content: 'Hyvä tietää',
-              },
-            ],
-            [
-              'core/paragraph',
-              {
-                content: 'Paljonko maksaa? Kauanko kestää? Lue ohesta usein kysytyt kysymykset.',
-              },
-            ],
-          ],
-        ],
-        [
-          'core/group',
-          {
-            className: 'faq-items',
-          },
-          [
-            [
-              'core/accordion',
-              {},
-              accordionItems,
-            ],
-          ],
-        ],
-      ],
-    ];
-  },
   isEligible: ( attributes ) => {
     return attributes.items !== undefined && Array.isArray( attributes.items );
   },

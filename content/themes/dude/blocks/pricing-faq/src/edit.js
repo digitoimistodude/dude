@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, useInnerBlocksProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
-import { PanelBody, RangeControl } from '@wordpress/components';
+import { PanelBody } from '@wordpress/components';
 import './style.scss';
 
 const TEMPLATE = [
@@ -85,17 +85,9 @@ const TEMPLATE = [
   ],
 ];
 
-export default function Edit( { attributes, setAttributes } ) {
-  const { paddingTopDesktop, paddingBottomDesktop, paddingTopMobile, paddingBottomMobile } = attributes;
-
+export default function Edit() {
   const blockProps = useBlockProps( {
     className: 'block block-pricing-faq block-upkeep-faq',
-    style: {
-      '--padding-top-desktop': `${ paddingTopDesktop }px`,
-      '--padding-bottom-desktop': `${ paddingBottomDesktop }px`,
-      '--padding-top-mobile': `${ paddingTopMobile }px`,
-      '--padding-bottom-mobile': `${ paddingBottomMobile }px`,
-    },
   } );
 
   const innerBlocksProps = useInnerBlocksProps(
@@ -112,14 +104,8 @@ export default function Edit( { attributes, setAttributes } ) {
       <InspectorControls>
         <PanelBody title={ __( 'UKK-asetukset', 'dude' ) }>
           <p style={ { color: '#757575', fontSize: '12px', marginBottom: '16px' } }>
-            { __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää, muokkaa ja poista kysymyksiä käyttämällä accordion-lohkoa.', 'dude' ) }
+            { __( 'Muokkaa osion otsikkoa ja kuvausta suoraan lohkossa. Lisää, muokkaa ja poista kysymyksiä käyttämällä accordion-lohkoa. Käytä sivupalkin Dimensions-asetuksia marginaalien ja välistysten säätöön.', 'dude' ) }
           </p>
-        </PanelBody>
-        <PanelBody title={ __( 'Välistysten asetukset', 'dude' ) } initialOpen={ false }>
-          <RangeControl label={ __( 'Ylävälistys (desktop)', 'dude' ) } value={ paddingTopDesktop } onChange={ ( value ) => setAttributes( { paddingTopDesktop: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Alavälistys (desktop)', 'dude' ) } value={ paddingBottomDesktop } onChange={ ( value ) => setAttributes( { paddingBottomDesktop: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Ylävälistys (mobiili)', 'dude' ) } value={ paddingTopMobile } onChange={ ( value ) => setAttributes( { paddingTopMobile: value } ) } min={ 0 } max={ 200 } step={ 1 } />
-          <RangeControl label={ __( 'Alavälistys (mobiili)', 'dude' ) } value={ paddingBottomMobile } onChange={ ( value ) => setAttributes( { paddingBottomMobile: value } ) } min={ 0 } max={ 200 } step={ 1 } />
         </PanelBody>
       </InspectorControls>
 
