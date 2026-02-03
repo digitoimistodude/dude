@@ -1,4 +1,8 @@
-### 7.0.14: 2026-01-28
+### 7.0.14: 2026-02-03
+
+* Disable brand survey popup
+
+### 7.0.13: 2026-01-28
 
 * Refactor pricing-faq block to use core/accordion and core/accordion-item instead of custom array, Ref: DEV-701
 * Add deprecation to migrate old pricing-faq blocks with items array to new core/accordion format, Ref: DEV-701
