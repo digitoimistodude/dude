@@ -1,5 +1,6 @@
 ### 7.0.14: 2026-02-03
 
+* Add custom spacing scale to theme.json matching theme's design system (20px to 170px), Ref: DEV-701
 * Fix pricing-faq deprecation isEligible to only match old blocks with custom padding attributes, Ref: DEV-701
 * Revert pricing-faq to working custom items array implementation while keeping core spacing support, Ref: DEV-701
 * Fix PHPCS auto-fixable issues and stylelint/eslint warnings across codebase, Ref: DEV-701

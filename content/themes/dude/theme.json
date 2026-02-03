@@ -10,7 +10,44 @@
     },
     "spacing": {
       "units": ["px", "rem", "%", "vw"],
-      "customSpacingSize": false
+      "customSpacingSize": false,
+      "spacingSizes": [
+        {
+          "name": "None",
+          "slug": "none",
+          "size": "0"
+        },
+        {
+          "name": "Small",
+          "slug": "small",
+          "size": "20px"
+        },
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "size": "40px"
+        },
+        {
+          "name": "Large",
+          "slug": "large",
+          "size": "60px"
+        },
+        {
+          "name": "X-Large",
+          "slug": "x-large",
+          "size": "80px"
+        },
+        {
+          "name": "2X-Large",
+          "slug": "2-x-large",
+          "size": "120px"
+        },
+        {
+          "name": "3X-Large",
+          "slug": "3-x-large",
+          "size": "170px"
+        }
+      ]
     },
     "color": {
       "custom": false,
