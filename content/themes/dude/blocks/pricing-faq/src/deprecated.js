@@ -74,7 +74,7 @@ const v1 = {
     );
   },
   isEligible: ( attributes ) => {
-    return attributes.items !== undefined && Array.isArray( attributes.items );
+    return attributes.paddingTopDesktop !== undefined || attributes.paddingBottomDesktop !== undefined;
   },
 };
 
