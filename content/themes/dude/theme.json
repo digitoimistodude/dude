@@ -20,32 +20,32 @@
         {
           "name": "Small",
           "slug": "small",
-          "size": "20px"
+          "size": "clamp(20px, calc(25px + 4.6vw), 20px)"
         },
         {
           "name": "Medium",
           "slug": "medium",
-          "size": "40px"
+          "size": "clamp(48px, calc(25px + 4.6vw), 48px)"
         },
         {
           "name": "Large",
           "slug": "large",
-          "size": "60px"
+          "size": "clamp(48px, calc(25px + 4.6vw), 60px)"
         },
         {
           "name": "X-Large",
           "slug": "x-large",
-          "size": "80px"
+          "size": "clamp(48px, calc(25px + 4.6vw), 80px)"
         },
         {
           "name": "2X-Large",
           "slug": "2-x-large",
-          "size": "120px"
+          "size": "clamp(48px, calc(25px + 4.6vw), 120px)"
         },
         {
           "name": "3X-Large",
           "slug": "3-x-large",
-          "size": "170px"
+          "size": "clamp(48px, calc(25px + 4.6vw), 170px)"
         }
       ]
     },
