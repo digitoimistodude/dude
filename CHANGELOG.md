@@ -1,5 +1,6 @@
 ### 7.0.14: 2026-02-03
 
+* Revert pricing-faq to working custom items array implementation while keeping core spacing support, Ref: DEV-701
 * Replace custom padding controls with core spacing supports in all pricing blocks, Ref: DEV-701
 * Fix pricing-faq deprecation crash by removing migrate function, Ref: DEV-701
 * Disable brand survey popup, Ref: KVLT-151

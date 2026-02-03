@@ -31,9 +31,8 @@ const shouldShowPopup = () => {
 };
 
 // Check if we're on a page where popup should be skipped
-const shouldSkipPopup = () =>
-  document.body.classList.contains('page-id-7') || // Front page
-  document.body.classList.contains('page-id-4487'); // Contact page
+const shouldSkipPopup = () => document.body.classList.contains('page-id-7') // Front page
+  || document.body.classList.contains('page-id-4487'); // Contact page
 const initLeadPopup = () => {
   // Check if popup is enabled
   if (!ENABLED) return;
@@ -60,7 +59,7 @@ const initLeadPopup = () => {
     // eslint-disable-next-line no-console
     console.log(
       `[Lead Popup] on ${pageType}, popupTimeout:`,
-      popupTimeout ? 'exists - returning' : 'null - will start timer'
+      popupTimeout ? 'exists - returning' : 'null - will start timer',
     );
     // Don't return - let the timer keep running so popup shows when user navigates to valid page
     // Only skip starting a NEW timer if one already exists
@@ -1000,8 +999,8 @@ const initLeadPopup = () => {
     // Check if contact modal is currently open (visible)
     const contactModal = document.getElementById('contact-form-modal');
     if (
-      contactModal &&
-      contactModal.classList.contains('contact-form-modal--visible')
+      contactModal
+      && contactModal.classList.contains('contact-form-modal--visible')
     ) {
       // eslint-disable-next-line no-console
       console.log('[Lead Popup] Contact modal is visible, aborting');
@@ -1010,8 +1009,7 @@ const initLeadPopup = () => {
 
     // eslint-disable-next-line no-console
     console.log('[Lead Popup] Creating popup element');
-    const popup =
-      POPUP_VARIANT === 'survey' ? createSurveyPopup() : createPopup();
+    const popup = POPUP_VARIANT === 'survey' ? createSurveyPopup() : createPopup();
     // eslint-disable-next-line no-console
     console.log('[Lead Popup] Appending popup to body');
     document.body.appendChild(popup);
@@ -1029,7 +1027,7 @@ const initLeadPopup = () => {
     // Focus trap implementation
     const content = popup.querySelector('.lead-popup__content');
     const focusableElements = content.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
     const firstFocusable = focusableElements[0];
     const lastFocusable = focusableElements[focusableElements.length - 1];
@@ -1079,8 +1077,8 @@ const initLeadPopup = () => {
         localStorage.setItem(STORAGE_KEY, expiryTime.toString());
         // Dev logging
         if (
-          window.location.hostname.includes('.test') ||
-          window.location.hostname === 'localhost'
+          window.location.hostname.includes('.test')
+          || window.location.hostname === 'localhost'
         ) {
           console.log(`Lead popup dismissed for ${DAYS_TO_HIDE} days`);
         }
@@ -1089,22 +1087,21 @@ const initLeadPopup = () => {
         localStorage.setItem(STORAGE_KEY, expiryTime.toString());
         // Dev logging
         if (
-          window.location.hostname.includes('.test') ||
-          window.location.hostname === 'localhost'
+          window.location.hostname.includes('.test')
+          || window.location.hostname === 'localhost'
         ) {
           console.log(`Lead popup dismissed for ${HOURS_TO_HIDE} hour`);
         }
       } else {
         // If just closing via overlay/escape, show again after a new random delay
-        const newDelay =
-          Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+        const newDelay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
         // Dev logging
         if (
-          window.location.hostname.includes('.test') ||
-          window.location.hostname === 'localhost'
+          window.location.hostname.includes('.test')
+          || window.location.hostname === 'localhost'
         ) {
           console.log(
-            `Lead popup closed, will reappear in ${(newDelay / 1000).toFixed(1)} seconds`
+            `Lead popup closed, will reappear in ${(newDelay / 1000).toFixed(1)} seconds`,
           );
         }
         popupTimeout = setTimeout(() => {
@@ -1172,7 +1169,7 @@ const initLeadPopup = () => {
         btn.addEventListener('click', async () => {
           const reaction = btn.getAttribute('data-reaction');
           const isActive = btn.classList.contains(
-            'lead-popup__reaction--active'
+            'lead-popup__reaction--active',
           );
 
           if (isActive) {
@@ -1224,22 +1221,21 @@ const initLeadPopup = () => {
   injectStyles();
 
   // Trigger popup after random delay
-  const delay =
-    Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+  const delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
 
   // Dev logging
   if (
-    window.location.hostname.includes('.test') ||
-    window.location.hostname === 'localhost'
+    window.location.hostname.includes('.test')
+    || window.location.hostname === 'localhost'
   ) {
     console.log(
-      `Lead popup will trigger in ${(delay / 1000).toFixed(1)} seconds`
+      `Lead popup will trigger in ${(delay / 1000).toFixed(1)} seconds`,
     );
   }
 
   // eslint-disable-next-line no-console
   console.log(
-    `[Lead Popup] Starting timer for ${(delay / 1000).toFixed(1)} seconds`
+    `[Lead Popup] Starting timer for ${(delay / 1000).toFixed(1)} seconds`,
   );
 
   popupTimeout = setTimeout(() => {
@@ -1252,7 +1248,7 @@ const initLeadPopup = () => {
     if (!shouldShowPopup()) {
       // eslint-disable-next-line no-console
       console.log(
-        '[Lead Popup] Timer fired but popup was dismissed in the meantime'
+        '[Lead Popup] Timer fired but popup was dismissed in the meantime',
       );
       return;
     }
@@ -1261,7 +1257,7 @@ const initLeadPopup = () => {
       // On excluded page, set a new timer to check again soon
       // eslint-disable-next-line no-console
       console.log(
-        '[Lead Popup] Timer fired on excluded page, will retry in 5 seconds'
+        '[Lead Popup] Timer fired on excluded page, will retry in 5 seconds',
       );
       popupTimeout = setTimeout(() => {
         popupTimeout = null;

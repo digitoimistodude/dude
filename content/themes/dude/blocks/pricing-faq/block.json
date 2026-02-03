@@ -17,6 +17,48 @@
       "margin": true
     }
   },
+  "example": {
+    "attributes": {
+      "items": [
+        {
+          "question": "Kuinka kauan projekti kestää?",
+          "answer": "Projektin kesto riippuu laajuudesta."
+        }
+      ]
+    }
+  },
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "question": "Kuinka kauan projekti kestää lorem ipsum?",
+          "answer": "Projektin kesto riippuu laajuudesta ja vaatimuksista lorem ipsum dolor sit amet."
+        },
+        {
+          "id": 2,
+          "question": "Mitä projektin hintaan sisältyy lorem ipsum?",
+          "answer": "Hinta sisältää suunnittelun, toteutuksen ja testauksen lorem ipsum dolor sit amet."
+        },
+        {
+          "id": 3,
+          "question": "Miten projekti etenee lorem ipsum?",
+          "answer": "Projekti etenee vaiheittain määrittelystä julkaisuun lorem ipsum dolor sit amet."
+        },
+        {
+          "id": 4,
+          "question": "Tarjoatteko ylläpitopalveluita lorem ipsum?",
+          "answer": "Kyllä, tarjoamme kattavat ylläpitopalvelut lorem ipsum dolor sit amet."
+        },
+        {
+          "id": 5,
+          "question": "Miten maksaminen tapahtuu lorem ipsum?",
+          "answer": "Laskutamme tyypillisesti kolmessa erässä lorem ipsum dolor sit amet."
+        }
+      ]
+    }
+  },
   "textdomain": "dude",
   "editorScript": "file:./build/index.js",
   "editorStyle": "file:./build/style-index.css",
