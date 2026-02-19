@@ -38,6 +38,7 @@ vendor/
 vendor/*
 !vendor/.gitkeep
 node_modules/
+package-lock.json
 
 # WordPress core
 wp/
