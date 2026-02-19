@@ -318,9 +318,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
     }
 
     // Add "new badge" for upkeep page 18011
-    if ( 18011 === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
-      $item_output .= '<span class="screen-reader-text-dude"> (</span><span class="new-badge">Uutta</span><span class="screen-reader-text-dude">)</span>';
-    }
+    // if ( 18011 === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
+    //   $item_output .= '<span class="screen-reader-text-dude"> (</span><span class="new-badge">Uutta</span><span class="screen-reader-text-dude">)</span>';
+    // }
 
     /*
 		 * This is the end of the internal nav item. We need to close the
