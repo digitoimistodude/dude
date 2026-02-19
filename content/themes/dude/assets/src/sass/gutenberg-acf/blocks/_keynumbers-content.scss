@@ -54,7 +54,7 @@
 
   .col-numbers {
     display: grid;
-    row-gap: 9rem;
+    row-gap: 4rem;
 
     @media (max-width: $container-ipad) {
       column-gap: 4rem;

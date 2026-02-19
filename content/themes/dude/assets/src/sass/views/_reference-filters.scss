@@ -11,12 +11,17 @@
   }
 
   .filter-columns {
-    display: flex;
-    gap: 4rem;
+    display: grid;
+    gap: 13rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (max-width: 1400px) {
+      gap: calc(13rem / 2);
+    }
 
     @media (max-width: 1200px) {
-      flex-direction: column;
       gap: 0;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 
