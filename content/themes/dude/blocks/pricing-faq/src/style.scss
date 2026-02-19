@@ -5,6 +5,11 @@
   background-color: transparent !important;
   padding-bottom: 0;
   padding-top: 0;
+
+  .container {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
 }
 
 .block-pricing-faq .faq-layout {
