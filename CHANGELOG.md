@@ -1,3 +1,7 @@
+### 7.0.15: 2026-02-19
+
+* Fix checkamrk bullet alignment, Ref: DEV-701
+
 ### 7.0.14: 2026-02-03
 
 * Fix broken custom padding controls in all pricing blocks by removing non-functional attributes from save functions and adding deprecations to migrate existing blocks
