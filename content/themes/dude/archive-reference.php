@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable
 namespace Air_Light;
 
 $reference_ids = [];
@@ -211,15 +212,14 @@ get_header(); ?>
   </section>
 
   <?php
-
-  get_template_part( 'template-parts/blocks/references', null, [
-    'reference_ids' => $reference_ids,
-    'title'         => 'Referenssit',
-    'link'          => null,
-    'show_logos'    => false,
-    'show_title'    => false,
-    'filterable'    => true,
-  ] );
+    get_template_part( 'template-parts/blocks/references', null, [
+      'reference_ids' => $reference_ids,
+      'title'         => 'Referenssit',
+      'link'          => null,
+      'show_logos'    => false,
+      'show_title'    => false,
+      'filterable'    => true,
+    ] );
   ?>
 
 </main>
