@@ -2,6 +2,8 @@
 
 * Add `reference-budget` taxonomy (Budjettiluokka) for references with filter support on archive page, Ref: DEV-765
 * Add budjettiluokka display in keynumbers-content additional-information section, Ref: DEV-765
+* Fix filter columns grid layout and keynumbers row-gap spacing, Ref: DEV-765
+* Enable duplicate option for pricing-item block, Ref: DEV-701
 * Fix checkamrk bullet alignment, Ref: DEV-701
 
 ### 7.0.14: 2026-02-03
