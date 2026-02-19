@@ -53,6 +53,7 @@ export default function Edit( { attributes, setAttributes } ) {
     { className: 'category-items accordion' },
     {
       template: TEMPLATE,
+      templateLock: false,
       allowedBlocks: ALLOWED_BLOCKS,
       renderAppender: InnerBlocks.ButtonBlockAppender,
     }

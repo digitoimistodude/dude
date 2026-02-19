@@ -470,6 +470,7 @@ add_action( 'after_setup_theme', function() {
       'page' => [
         // Native Gutenberg blocks for pricing page
         'dude/pricing-hero',
+        'dude/pricing-item',
         'dude/pricing-cta',
         'dude/pricing-category',
         'dude/pricing-faq',

@@ -17,6 +17,7 @@
       "margin": true
     }
   },
+  "allowedBlocks": ["dude/pricing-item"],
   "attributes": {
     "title": {
       "type": "string",
