@@ -18,6 +18,25 @@ const initReferenceFilters = () => {
   const advancedToggle = document.querySelector('.filter-toggle-advanced');
   const advancedContent = document.getElementById('advanced-filters-content');
   const advancedSection = document.getElementById('advanced-filters');
+  const showMoreButton = document.querySelector('.filter-show-more');
+
+  // Show more / less toggle for toimiala filters (desktop only)
+  if (showMoreButton) {
+    const archiveHead = showMoreButton.closest('.archive-head');
+
+    if (archiveHead) {
+      archiveHead.classList.add('has-show-more');
+    }
+
+    showMoreButton.dataset.defaultText = showMoreButton.textContent;
+
+    showMoreButton.addEventListener('click', () => {
+      const isExpanded = archiveHead.classList.toggle('expanded');
+      showMoreButton.textContent = isExpanded
+        ? 'Näytä vähemmän'
+        : showMoreButton.dataset.defaultText;
+    });
+  }
 
   const parseQueryParams = function (queryString) {
     const params = {};

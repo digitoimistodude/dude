@@ -80,6 +80,7 @@ get_header(); ?>
             </button>
           <?php endforeach; ?>
           </div>
+          <button type="button" class="filter-show-more">Näytä kaikki <?php echo count( $target_groups_terms ); ?> toimialaa</button>
         </div>
 
         <div class="archive-head">
