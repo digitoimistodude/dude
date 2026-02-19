@@ -11,7 +11,7 @@
   "parent": ["dude/pricing-category"],
   "supports": {
     "html": false,
-    "reusable": false
+    "reusable": true
   },
   "attributes": {
     "title": {
