@@ -26,10 +26,23 @@ foreach ( $target_groups_terms as $term ) {
   $target_groups[ $term->slug ] = $term->name;
 }
 
+// Get all budget classes from taxonomy
+$budget_terms = get_terms( [
+  'taxonomy' => 'reference-budget',
+  'hide_empty' => true,
+  'orderby' => 'term_order',
+] );
+
+$budget_classes = [ 'all' => 'Kaikki' ];
+foreach ( $budget_terms as $term ) {
+  $budget_classes[ $term->slug ] = $term->name;
+}
+
 // Get current filters from URL parameters
-$current_toimiala = isset( $_GET['toimiala'] ) ? sanitize_text_field( $_GET['toimiala'] ) : 'all';
-$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', $_GET['ratkaisut'] ) ) : [ 'all' ]; // phpcs:ignore
-$current_haku = isset( $_GET['haku'] ) ? sanitize_text_field( $_GET['haku'] ) : '';
+$current_toimiala = isset( $_GET['toimiala'] ) ? sanitize_text_field( wp_unslash( $_GET['toimiala'] ) ) : 'all'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', sanitize_text_field( wp_unslash( $_GET['ratkaisut'] ) ) ) ) : [ 'all' ]; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_haku = isset( $_GET['haku'] ) ? sanitize_text_field( wp_unslash( $_GET['haku'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_budjetti = isset( $_GET['budjetti'] ) ? sanitize_text_field( wp_unslash( $_GET['budjetti'] ) ) : 'all'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 get_header(); ?>
 
@@ -48,22 +61,40 @@ get_header(); ?>
   ?>
   <section class="reference-filters-main">
     <div class="container">
-      <div class="archive-head">
-        <p class="filter-label">Toimiala</p>
-        <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
-        <?php foreach ( $target_groups as $key => $label ) : ?>
-          <button
-            type="button"
-            class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
-            data-filter="target-group"
-            data-value="<?php echo esc_attr( $key ); ?>"
-            aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
-            <?php echo esc_html( $label ); ?>
-            <?php if ( 'all' !== $key ) : ?>
-              <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
-            <?php endif; ?>
-          </button>
-        <?php endforeach; ?>
+      <div class="filter-columns">
+        <div class="archive-head">
+          <p class="filter-label">Toimiala</p>
+          <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
+          <?php foreach ( $target_groups as $key => $label ) : ?>
+            <button
+              type="button"
+              class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
+              data-filter="target-group"
+              data-value="<?php echo esc_attr( $key ); ?>"
+              aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
+              <?php echo esc_html( $label ); ?>
+              <?php if ( 'all' !== $key ) : ?>
+                <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
+              <?php endif; ?>
+            </button>
+          <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="archive-head">
+          <p class="filter-label">Budjettiluokka</p>
+          <div class="filter-group budget-classes archive-filters" role="group" aria-label="Suodata budjettiluokittain">
+          <?php foreach ( $budget_classes as $key => $label ) : ?>
+            <button
+              type="button"
+              class="filter-button filter-budget<?php echo $key === $current_budjetti ? ' active' : ''; ?>"
+              data-filter="budget"
+              data-value="<?php echo esc_attr( $key ); ?>"
+              aria-pressed="<?php echo $key === $current_budjetti ? 'true' : 'false'; ?>">
+              <?php echo esc_html( $label ); ?>
+            </button>
+          <?php endforeach; ?>
+          </div>
         </div>
       </div>
     </div>
@@ -107,6 +138,25 @@ get_header(); ?>
                   <?php if ( 'all' !== $key ) : ?>
                     <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
                   <?php endif; ?>
+                </button>
+              <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+
+          <?php // Budget filter (mobile only) ?>
+          <div class="filter-group filter-budget-mobile">
+            <div class="archive-head">
+              <p class="filter-label">Budjettiluokka</p>
+              <div class="filter-group budget-classes archive-filters" role="group" aria-label="Suodata budjettiluokittain">
+              <?php foreach ( $budget_classes as $key => $label ) : ?>
+                <button
+                  type="button"
+                  class="filter-button filter-budget<?php echo $key === $current_budjetti ? ' active' : ''; ?>"
+                  data-filter="budget"
+                  data-value="<?php echo esc_attr( $key ); ?>"
+                  aria-pressed="<?php echo $key === $current_budjetti ? 'true' : 'false'; ?>">
+                  <?php echo esc_html( $label ); ?>
                 </button>
               <?php endforeach; ?>
               </div>

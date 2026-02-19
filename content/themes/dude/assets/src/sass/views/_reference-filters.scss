@@ -10,6 +10,16 @@
     margin-bottom: 1rem;
   }
 
+  .filter-columns {
+    display: flex;
+    gap: 4rem;
+
+    @media (max-width: 1200px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
   .container {
     padding-bottom: 0;
     padding-top: 0;
@@ -58,9 +68,10 @@
   padding-top: 0;
 }
 
-// Target group filter buttons - main filtering
+// Filter buttons - main filtering (target group + budget)
 .reference-filters-main .filter-button,
-.filter-button.filter-target-group {
+.filter-button.filter-target-group,
+.filter-button.filter-budget {
   background-color: transparent !important;
   border: 1px solid var(--color-mint) !important;
   border-radius: 0 !important;
@@ -195,8 +206,9 @@
     }
   }
 
-  // Hide mobile target groups filter on desktop
-  .filter-target-groups-mobile {
+  // Hide mobile target groups and budget filters on desktop
+  .filter-target-groups-mobile,
+  .filter-budget-mobile {
     @media (min-width: #{$container-mobile + 1px}) {
       display: none;
     }
@@ -402,9 +414,23 @@ body[data-color-scheme='dark'] .reference-filters-main .filter-button.active {
   color: var(--color-midnight);
 }
 
-body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:checked + span,
-body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox:hover span,
-body[data-color-scheme='dark'] .reference-filters-advanced .filter-solutions .filter-checkbox input[type='checkbox']:focus + span {
+body[data-color-scheme='dark']
+  .reference-filters-advanced
+  .filter-solutions
+  .filter-checkbox
+  input[type='checkbox']:checked
+  + span,
+body[data-color-scheme='dark']
+  .reference-filters-advanced
+  .filter-solutions
+  .filter-checkbox:hover
+  span,
+body[data-color-scheme='dark']
+  .reference-filters-advanced
+  .filter-solutions
+  .filter-checkbox
+  input[type='checkbox']:focus
+  + span {
   color: var(--color-midnight);
 }
 

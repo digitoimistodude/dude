@@ -114,12 +114,24 @@
     padding-inline-start: 0.4em;
   }
 
+  .budget-information {
+    .budget-price {
+      color: var(--color-text);
+      font-family: var(--font-heading);
+      font-size: var(--font-size-24);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.2;
+      margin: 0;
+    }
+  }
+
   .button-wrapper {
     margin-top: 6rem;
   }
 
   @media (max-width: $container-ipad) {
-    .additional-information {
+    .additional-information,
+    .budget-information {
       grid-column: auto / span 2;
     }
   }

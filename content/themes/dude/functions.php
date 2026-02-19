@@ -133,6 +133,10 @@ add_action( 'after_setup_theme', function() {
         'name' => 'Reference_Target_Group',
         'post_types' => [ 'reference' ],
       ],
+      'reference-budget' => [
+        'name' => 'Reference_Budget',
+        'post_types' => [ 'reference' ],
+      ],
     ],
 
     /**
@@ -351,7 +355,7 @@ add_action( 'after_setup_theme', function() {
 
     // Restrict to only selected blocks
     // Set the value to 'all' to allow all blocks everywhere
-   'allowed_blocks' => [
+    'allowed_blocks' => [
       'default' => [],
       'post' => [
         'core/archives',

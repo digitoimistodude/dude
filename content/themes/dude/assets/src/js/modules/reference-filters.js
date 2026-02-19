@@ -10,7 +10,10 @@ const initReferenceFilters = () => {
 
   const referenceItems = document.querySelectorAll('.col-reference');
   const targetGroupButtons = document.querySelectorAll('.filter-target-group');
-  const solutionCheckboxes = document.querySelectorAll('input[name="solution"]');
+  const budgetButtons = document.querySelectorAll('.filter-budget');
+  const solutionCheckboxes = document.querySelectorAll(
+    'input[name="solution"]'
+  );
   const searchInput = document.getElementById('reference-search');
   const advancedToggle = document.querySelector('.filter-toggle-advanced');
   const advancedContent = document.getElementById('advanced-filters-content');
@@ -23,7 +26,8 @@ const initReferenceFilters = () => {
       return params;
     }
 
-    const query = queryString.charAt(0) === '?' ? queryString.slice(1) : queryString;
+    const query =
+      queryString.charAt(0) === '?' ? queryString.slice(1) : queryString;
 
     if (!query) {
       return params;
@@ -92,13 +96,17 @@ const initReferenceFilters = () => {
       currentTargetGroup = urlTargetGroup;
     }
 
-    const solutionsFromUrl = urlParams.ratkaisut ? urlParams.ratkaisut.split(',') : ['all'];
+    const solutionsFromUrl = urlParams.ratkaisut
+      ? urlParams.ratkaisut.split(',')
+      : ['all'];
     const searchTermFromUrl = urlParams.haku ? urlParams.haku : '';
+    const budgetFromUrl = urlParams.budjetti ? urlParams.budjetti : 'all';
 
     return {
       targetGroup: currentTargetGroup,
       solutions: solutionsFromUrl,
       searchTerm: searchTermFromUrl,
+      budget: budgetFromUrl,
     };
   };
 
@@ -113,7 +121,8 @@ const initReferenceFilters = () => {
         e.preventDefault();
         e.stopPropagation();
 
-        const isExpanded = advancedToggle.getAttribute('aria-expanded') === 'true';
+        const isExpanded =
+          advancedToggle.getAttribute('aria-expanded') === 'true';
 
         if (isExpanded) {
           advancedToggle.setAttribute('aria-expanded', 'false');
@@ -137,14 +146,21 @@ const initReferenceFilters = () => {
 
     // Check if this button has an archive link and we're not on the main archive
     const archiveLink = button.querySelector('.archive-link');
-    if (archiveLink && button.dataset.value !== 'all' && !document.body.classList.contains('post-type-archive-reference')) {
+    if (
+      archiveLink &&
+      button.dataset.value !== 'all' &&
+      !document.body.classList.contains('post-type-archive-reference')
+    ) {
       // Navigate to the taxonomy archive
       const { archiveUrl } = archiveLink.dataset;
       if (archiveUrl) {
         window.location.href = archiveUrl;
         return;
       }
-    } else if (button.dataset.value === 'all' && !document.body.classList.contains('post-type-archive-reference')) {
+    } else if (
+      button.dataset.value === 'all' &&
+      !document.body.classList.contains('post-type-archive-reference')
+    ) {
       // Navigate to main archive for "all"
       const archiveLink = button.querySelector('.archive-link');
       if (archiveLink) {
@@ -180,7 +196,51 @@ const initReferenceFilters = () => {
     // Use closure to capture the button reference
     (function (btn) {
       btn.onclick = function () {
-        handleTargetGroupClick({ currentTarget: btn, preventDefault() {}, stopPropagation() {} });
+        handleTargetGroupClick({
+          currentTarget: btn,
+          preventDefault() {},
+          stopPropagation() {},
+        });
+      };
+    })(button);
+  }
+
+  // Budget class filtering - direct event attachment for iOS Safari compatibility
+  const handleBudgetClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const button = e.currentTarget;
+
+    // Remove active class from all budget buttons
+    for (let i = 0; i < budgetButtons.length; i += 1) {
+      const btn = budgetButtons[i];
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    }
+
+    // Add active class to clicked button
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+
+    // Update active filter
+    activeFilters.budget = button.dataset.value;
+
+    // Update URL and apply filters
+    updateUrlAndApplyFilters();
+  };
+
+  for (let i = 0; i < budgetButtons.length; i += 1) {
+    const button = budgetButtons[i];
+    button.style.cursor = 'pointer';
+
+    (function (btn) {
+      btn.onclick = function () {
+        handleBudgetClick({
+          currentTarget: btn,
+          preventDefault() {},
+          stopPropagation() {},
+        });
       };
     })(button);
   }
@@ -188,7 +248,9 @@ const initReferenceFilters = () => {
   // Solution/category filtering with multi-select - direct attachment for iOS Safari compatibility
   const handleCheckboxChange = function (e) {
     const checkbox = e.target;
-    const allCheckbox = document.querySelector('input[name="solution"][value="all"]');
+    const allCheckbox = document.querySelector(
+      'input[name="solution"][value="all"]'
+    );
 
     if (checkbox.value === 'all' && checkbox.checked) {
       for (let i = 0; i < solutionCheckboxes.length; i += 1) {
@@ -254,19 +316,30 @@ const initReferenceFilters = () => {
     const params = {};
 
     // Get the appropriate base URL from the target group button
-    const targetButton = document.querySelector(`[data-value="${activeFilters.targetGroup}"]`);
-    const archiveLink = targetButton ? targetButton.querySelector('.archive-link') : null;
+    const targetButton = document.querySelector(
+      `[data-value="${activeFilters.targetGroup}"]`
+    );
+    const archiveLink = targetButton
+      ? targetButton.querySelector('.archive-link')
+      : null;
     if (archiveLink && archiveLink.dataset.archiveUrl) {
       baseUrl = archiveLink.dataset.archiveUrl;
     }
 
     // Add remaining filter parameters as query params
-    if (activeFilters.solutions.indexOf('all') === -1 && activeFilters.solutions.length > 0) {
+    if (
+      activeFilters.solutions.indexOf('all') === -1 &&
+      activeFilters.solutions.length > 0
+    ) {
       params.ratkaisut = activeFilters.solutions.join(',');
     }
 
     if (activeFilters.searchTerm) {
       params.haku = activeFilters.searchTerm;
+    }
+
+    if (activeFilters.budget && activeFilters.budget !== 'all') {
+      params.budjetti = activeFilters.budget;
     }
 
     // Build final URL
@@ -276,6 +349,7 @@ const initReferenceFilters = () => {
       targetGroup: activeFilters.targetGroup,
       solutions: [...activeFilters.solutions],
       searchTerm: activeFilters.searchTerm,
+      budget: activeFilters.budget,
     };
     window.history.pushState({ filters: stateFilters }, '', newUrl);
 
@@ -290,12 +364,25 @@ const initReferenceFilters = () => {
       targetGroup: 'all',
       solutions: ['all'],
       searchTerm: '',
+      budget: 'all',
     };
 
     // Reset UI
     // Target group buttons
     for (let i = 0; i < targetGroupButtons.length; i += 1) {
       const btn = targetGroupButtons[i];
+      if (btn.dataset.value === 'all') {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    // Budget buttons
+    for (let i = 0; i < budgetButtons.length; i += 1) {
+      const btn = budgetButtons[i];
       if (btn.dataset.value === 'all') {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
@@ -322,13 +409,26 @@ const initReferenceFilters = () => {
 
   // Search from all categories and target groups (keep only search term)
   const searchAllFilters = () => {
-    // Reset both target group and categories to 'all', keep only search term
+    // Reset both target group, categories, and budget to 'all', keep only search term
     activeFilters.targetGroup = 'all';
     activeFilters.solutions = ['all'];
+    activeFilters.budget = 'all';
 
     // Update target group buttons UI
     for (let i = 0; i < targetGroupButtons.length; i += 1) {
       const btn = targetGroupButtons[i];
+      if (btn.dataset.value === 'all') {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    // Update budget buttons UI
+    for (let i = 0; i < budgetButtons.length; i += 1) {
+      const btn = budgetButtons[i];
       if (btn.dataset.value === 'all') {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');
@@ -360,6 +460,18 @@ const initReferenceFilters = () => {
       if (activeFilters.targetGroup !== 'all') {
         const itemTargetGroup = item.dataset.targetGroup || '';
         if (itemTargetGroup !== activeFilters.targetGroup) {
+          shouldShow = false;
+        }
+      }
+
+      // Budget filter
+      if (
+        shouldShow &&
+        activeFilters.budget &&
+        activeFilters.budget !== 'all'
+      ) {
+        const itemBudget = item.dataset.budget || '';
+        if (itemBudget !== activeFilters.budget) {
           shouldShow = false;
         }
       }
@@ -418,7 +530,13 @@ const initReferenceFilters = () => {
 
     // Check for cross-filter results if no current results and we have any filters applied
     let crossFilterCount = 0;
-    if (visibleCount === 0 && (activeFilters.targetGroup !== 'all' || activeFilters.solutions.indexOf('all') === -1 || activeFilters.searchTerm)) {
+    if (
+      visibleCount === 0 &&
+      (activeFilters.targetGroup !== 'all' ||
+        activeFilters.solutions.indexOf('all') === -1 ||
+        activeFilters.searchTerm ||
+        (activeFilters.budget && activeFilters.budget !== 'all'))
+    ) {
       crossFilterCount = countCrossFilterResults();
     }
 
@@ -479,7 +597,10 @@ const initReferenceFilters = () => {
       if (crossFilterCount > 0) {
         // Show cross-filter results message - be more specific about what was found
         let messageText = '';
-        if (activeFilters.targetGroup !== 'all' && activeFilters.solutions.indexOf('all') === -1) {
+        if (
+          activeFilters.targetGroup !== 'all' &&
+          activeFilters.solutions.indexOf('all') === -1
+        ) {
           messageText = `${crossFilterCount} hakutulosta löytyi muilta toimialoilta ja kategorioilta, haetaanko kaikista?`;
         } else if (activeFilters.targetGroup !== 'all') {
           messageText = `${crossFilterCount} hakutulosta löytyi muilta toimialoilta, haetaanko kaikista?`;
@@ -532,13 +653,26 @@ const initReferenceFilters = () => {
       }
     }
 
+    // Set budget button states based on activeFilters
+    for (let i = 0; i < budgetButtons.length; i += 1) {
+      const btn = budgetButtons[i];
+      if (btn.dataset.value === activeFilters.budget) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
     // Set solution checkboxes state based on activeFilters
     for (let i = 0; i < solutionCheckboxes.length; i += 1) {
       const checkbox = solutionCheckboxes[i];
       if (activeFilters.solutions.indexOf('all') !== -1) {
         checkbox.checked = checkbox.value === 'all';
       } else {
-        checkbox.checked = activeFilters.solutions.indexOf(checkbox.value) !== -1;
+        checkbox.checked =
+          activeFilters.solutions.indexOf(checkbox.value) !== -1;
       }
     }
 

@@ -25,6 +25,13 @@ if ( ! empty( $target_group_terms ) && ! is_wp_error( $target_group_terms ) ) {
   $target_group = $target_group_terms[0]->slug;
 }
 
+// Get budget class from taxonomy
+$budget_terms = wp_get_post_terms( $args['post_id'], 'reference-budget' );
+$budget_class = '';
+if ( ! empty( $budget_terms ) && ! is_wp_error( $budget_terms ) ) {
+  $budget_class = $budget_terms[0]->slug;
+}
+
 // Get category slugs for filtering
 $category_slugs = [];
 if ( ! empty( $data['meta_tags'] ) ) {
@@ -114,15 +121,24 @@ if ( ( $key % 2 ) !== 0 ) {
 }
 ?>
 
-<div class="col col-reference<?php if ( ! empty( $data['vimeo_video_url'] ) ) echo ' has-video'; ?>" 
+<div class="col col-reference<?php
+if ( ! empty( $data['vimeo_video_url'] ) ) {
+  echo ' has-video';
+}
+?>"
      data-title="<?php echo esc_attr( mb_strtolower( $data['title'] ) ); ?>"
      data-categories="<?php echo esc_attr( implode( ' ', $category_slugs ) ); ?>"
      data-target-group="<?php echo esc_attr( $target_group ); ?>"
+     data-budget="<?php echo esc_attr( $budget_class ); ?>"
      data-searchable="<?php echo esc_attr( mb_strtolower( $data['title'] . ' ' . $data['desc'] . ' ' . implode( ' ', array_map( function( $tag ) { return $tag->name; }, $data['meta_tags'] ) ) ) ); ?>">
 
   <a class="global-link" href="<?php echo esc_url( $data['permalink'] ) ?>" aria-hidden="true" tabindex="-1"></a>
 
-  <div class="image image-background<?php if ( empty( $data['vimeo_video_url'] ) ) echo ' has-duotone'; ?>">
+  <div class="image image-background<?php
+  if ( empty( $data['vimeo_video_url'] ) ) {
+    echo ' has-duotone';
+  }
+  ?>">
 
     <?php
     // If there is a vimeo video url, play the video in video bg instead of image
