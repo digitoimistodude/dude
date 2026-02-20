@@ -31,7 +31,6 @@ foreach ( $target_groups_terms as $term ) {
 $budget_terms = get_terms( [
   'taxonomy' => 'reference-budget',
   'hide_empty' => true,
-  'orderby' => 'term_order',
 ] );
 
 $budget_classes = [ 'all' => 'Kaikki' ];
