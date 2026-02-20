@@ -170,6 +170,24 @@ function two_factor_force_email_provider_for_user( $enabled_providers ) {
 // Disable WordPress scaling down (-scaled) images
 add_filter( 'big_image_size_threshold', '__return_false' );
 
+// Fix air-helper UTF8 orderby overriding wp-term-order's tt.order.
+// air-helper converts t.name to a CONVERT/COLLATE clause at priority 20,
+// which prevents wp-term-order (also priority 20) from detecting the
+// default name orderby. This runs after both and prepends tt.order.
+add_filter( 'get_terms_orderby', function ( $orderby, $args ) {
+  // Only act on default name ordering
+  if ( ! isset( $args['orderby'] ) || 'name' !== $args['orderby'] ) {
+    return $orderby;
+  }
+
+  // Skip if tt.order is already present
+  if ( strpos( $orderby, 'tt.order' ) !== false ) {
+    return $orderby;
+  }
+
+  return 'tt.order, ' . $orderby;
+}, 21, 2 );
+
 // Allow display CSS property in inline styles for ACF fields
 add_filter( 'safe_style_css', function( $styles ) {
   $styles[] = 'display';

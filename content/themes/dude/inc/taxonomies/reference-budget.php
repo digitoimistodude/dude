@@ -44,7 +44,7 @@ class Reference_Budget extends Taxonomy {
       'show_in_nav_menus' => false,
       'show_in_rest'      => true,
       'show_admin_column' => true,
-      'hierarchical'      => false,
+      'hierarchical'      => true,
       'show_tagcloud'     => false,
       'show_ui'           => true,
       'query_var'         => true,
