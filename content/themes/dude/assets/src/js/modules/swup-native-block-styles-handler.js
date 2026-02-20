@@ -1,62 +1,88 @@
 /**
- * Swup native block styles handler
- * Ensures WordPress native block styles are loaded when navigating with swup
- * and removed when no longer needed to prevent style leaks between pages
+ * Swup block styles handler
+ * Syncs WordPress block styles (core and custom) between pages during swup navigation.
+ * WordPress conditionally loads block styles, but swup only replaces #page content,
+ * so <head> styles from the previous page persist and new ones are missing.
  */
 
 /**
- * Check if native pricing blocks exist on page and load/remove their styles
- * WordPress conditionally loads block styles, but swup doesn't trigger the reload
- * WordPress may use <link> or <style> tags for block styles depending on version
+ * Sync block style tags from the new page's <head> into the current <head>.
+ * Adds missing styles, updates changed ones, and removes ones no longer needed.
+ *
+ * @param {Document} newDocument - The parsed document from swup's visit.to.document
  */
-export default function reloadNativeBlockStyles() {
-  // Define our native blocks that have stylesheets
-  // Note: pricing-item doesn't have its own stylesheet (styles inherited from pricing-category)
-  const blockChecks = [
-    {
-      selector: '.wp-block-dude-pricing-hero, .block-pricing-hero',
-      handle: 'dude-pricing-hero-style',
-      block: 'pricing-hero',
-    },
-    {
-      selector: '.wp-block-dude-pricing-category, .block-pricing-category',
-      handle: 'dude-pricing-category-style',
-      block: 'pricing-category',
-    },
-    {
-      selector: '.wp-block-dude-pricing-cta, .block-pricing-cta',
-      handle: 'dude-pricing-cta-style',
-      block: 'pricing-cta',
-    },
-    {
-      selector: '.wp-block-dude-pricing-faq, .block-pricing-faq',
-      handle: 'dude-pricing-faq-style',
-      block: 'pricing-faq',
-    },
-  ];
+export default function syncBlockStyles(newDocument) {
+  if (!newDocument) {
+    return;
+  }
 
-  blockChecks.forEach(({ selector, handle, block }) => {
-    const blockExists = document.querySelector(selector);
+  const currentHead = document.head;
+  const newHead = newDocument.head;
 
-    // Find any stylesheet element (link or inline style) matching this handle
-    const existingStyles = document.querySelectorAll(
-      `link[id*="${handle}"], style[id*="${handle}"]`,
-    );
+  // Selector for style elements with IDs ending in -css (WordPress convention)
+  const sel = 'style[id$="-css"], link[id$="-css"][rel="stylesheet"]';
 
-    if (blockExists && existingStyles.length === 0) {
-      // Block exists but stylesheet is missing — load it
-      const themeUrl = window.location.origin + '/content/themes/dude';
-      const styleUrl = `${themeUrl}/blocks/${block}/build/style-index.css`;
+  const currentStyles = currentHead.querySelectorAll(sel);
+  const newStyles = newHead.querySelectorAll(sel);
 
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.id = `${handle}-css`;
-      link.href = styleUrl;
-      link.media = 'all';
-      document.head.appendChild(link);
-    } else if (!blockExists && existingStyles.length > 0) {
-      // Block no longer on page — remove leaked stylesheets
-      existingStyles.forEach((el) => el.remove());
+  // Build maps of ID -> element for both documents
+  const currentMap = new Map();
+  currentStyles.forEach((el) => {
+    if (el.id) {
+      currentMap.set(el.id, el);
     }
   });
+
+  const newMap = new Map();
+  newStyles.forEach((el) => {
+    if (el.id) {
+      newMap.set(el.id, el);
+    }
+  });
+
+  // Add missing styles and update changed ones
+  newMap.forEach((newEl, id) => {
+    const currentEl = currentMap.get(id);
+
+    if (!currentEl) {
+      // Style missing from current page — add it
+      currentHead.appendChild(newEl.cloneNode(true));
+    } else if (
+      currentEl.tagName === 'STYLE'
+      && newEl.tagName === 'STYLE'
+      && currentEl.textContent !== newEl.textContent
+    ) {
+      // Same ID but different content (e.g. core-block-supports-inline-css) — replace
+      currentEl.textContent = newEl.textContent;
+    }
+  });
+
+  // Remove block-specific styles no longer needed on the new page
+  currentMap.forEach((el, id) => {
+    if (!newMap.has(id) && isBlockStyle(id)) {
+      el.remove();
+    }
+  });
+}
+
+/**
+ * Check if a style element ID belongs to a WordPress block style
+ */
+function isBlockStyle(id) {
+  // Core WordPress block styles (wp-block-gallery-inline-css, etc.)
+  if (id.startsWith('wp-block-')) {
+    return true;
+  }
+
+  // Our custom native block styles (dude-pricing-hero-style-css, etc.)
+  if (id.startsWith('dude-')) {
+    return true;
+  }
+
+  // Core block supports (core-block-supports-inline-css)
+  if (id.startsWith('core-block-')) {
+    return true;
+  }
+
+  return false;
 }

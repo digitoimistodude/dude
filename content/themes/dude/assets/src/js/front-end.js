@@ -8,7 +8,11 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 // eslint-disable-next-line no-unused-vars
 import whatInput from 'what-input';
 import getLocalization from './modules/localization';
-import { styleExternalLinks, initExternalLinkLabels, getChildAltText } from './modules/external-link';
+import {
+  styleExternalLinks,
+  initExternalLinkLabels,
+  getChildAltText,
+} from './modules/external-link';
 import initCarousels from './modules/carousels';
 import initAnchors from './modules/anchors';
 import initBackToTop from './modules/top';
@@ -30,7 +34,7 @@ import initUpKeepLanding from './modules/upkeep-landing';
 import initReferenceFilters from './modules/reference-filters';
 import initLeadPopup from './modules/lead-popup';
 import initContactFormModal from './modules/contact-form-modal';
-import reloadNativeBlockStyles from './modules/swup-native-block-styles-handler';
+import syncBlockStyles from './modules/swup-native-block-styles-handler';
 
 // Init Swup SPA-like transitions
 const swup = new Swup({
@@ -132,9 +136,9 @@ function init(target, args) {
 // When document has been completely loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Reload native block styles before content replacement
-swup.hooks.on('content:replace', () => {
-  reloadNativeBlockStyles();
+// Sync block styles from the new page and reinitialize
+swup.hooks.on('content:replace', (visit) => {
+  syncBlockStyles(visit.to.document);
   init();
 });
 
