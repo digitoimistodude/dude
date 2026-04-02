@@ -472,7 +472,7 @@ body[data-color-scheme='dark']
 body[data-color-scheme='dark']
   .reference-filters-advanced
   .filter-solutions
-  .filter-checkbox:hover
+  .filter-checkbox:has(input[type='checkbox']:checked):hover
   span,
 body[data-color-scheme='dark']
   .reference-filters-advanced

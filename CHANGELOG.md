@@ -1,3 +1,7 @@
+### 7.0.16: 2026-04-02
+
+* Fix reference filter checkbox hover text color in dark mode
+
 ### 7.0.15: 2026-02-19
 
 * Add `reference-budget` taxonomy (Budjettiluokka) for references with filter support on archive page, Ref: DEV-765
