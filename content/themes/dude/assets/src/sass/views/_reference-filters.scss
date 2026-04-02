@@ -477,7 +477,7 @@ body[data-color-scheme='dark']
 body[data-color-scheme='dark']
   .reference-filters-advanced
   .filter-solutions
-  .filter-checkbox
+  .filter-checkbox:has(input[type='checkbox']:checked)
   input[type='checkbox']:focus
   + span {
   color: var(--color-midnight);
