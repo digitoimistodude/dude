@@ -18,10 +18,30 @@ namespace Air_Light;
 get_header(); ?>
 
 <main class="site-main">
+  <div class="aurora-gradient-bg" aria-hidden="true"></div>
   <?php the_content();
 
   do_action( 'dude_site_main_after_content' );
   ?>
 </main>
+
+<script>
+  // Set aurora gradient height to cover everything up to the CTA block
+  (function() {
+    function setAuroraHeight() {
+      var cta = document.querySelector('.block-cta-big');
+      var aurora = document.querySelector('.aurora-gradient-bg');
+      if (cta && aurora) {
+        aurora.style.setProperty('--aurora-height', cta.offsetTop + 'px');
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setAuroraHeight);
+    } else {
+      setAuroraHeight();
+    }
+    window.addEventListener('resize', setAuroraHeight);
+  })();
+</script>
 
 <?php get_footer();

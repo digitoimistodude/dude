@@ -2,7 +2,11 @@
 .radial-gradient-absolute {
   --color-gradient-start: var(--color-midnight);
   --color-gradient-end: var(--color-dark-navy);
-  background-image: radial-gradient(at center, var(--color-gradient-start), var(--color-gradient-end));
+  background-image: radial-gradient(
+    at center,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
   height: 15000px;
   left: 0;
   opacity: 0;
@@ -16,17 +20,55 @@
   opacity: 1;
 }
 
-// Radial gradient animation for call to action background
-.has-radial-gradient-animation {
-  animation-duration: 15s;
-  animation-iteration-count: infinite;
-  animation-name: gradient;
-  animation-timing-function: ease;
-  background-image: linear-gradient(-45deg, #4d4f63, var(--color-dark-navy), var(--color-midnight), #23d5ab);
-  background-size: 400% 400%;
+// Aurora gradient: blue-purple left (#3a3e58) -> teal center (#1e6a72) -> bright right (#08c894)
+@mixin aurora-bg() {
+  background-color: #2e3350;
+  background-image:
+    radial-gradient(circle at 80% 30%, rgb(8 200 148 / 0.85) 0%, rgb(8 200 148 / 0.3) 20%, transparent 45%),
+    radial-gradient(circle at 95% 10%, rgb(94 255 192 / 0.6) 0%, transparent 25%),
+    radial-gradient(circle at 60% 50%, rgb(30 130 120 / 0.7) 0%, rgb(30 106 100 / 0.3) 20%, transparent 45%),
+    radial-gradient(circle at 15% 50%, rgb(58 62 88 / 1) 0%, rgb(58 62 88 / 0.5) 30%, transparent 60%),
+    radial-gradient(circle at 35% 30%, rgb(74 85 128 / 0.7) 0%, rgb(74 85 128 / 0.3) 25%, transparent 50%),
+    radial-gradient(circle at 50% 95%, #1c1e26 0%, transparent 50%);
+  background-size: 200% 200%;
 }
 
-@keyframes gradient {
+@mixin aurora-noise-layer() {
+  animation: noise-crawl 4s steps(10) infinite;
+  background-image: url('../../images/noise.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  content: '';
+  height: 120%;
+  left: -10%;
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+  pointer-events: none;
+  position: absolute;
+  top: -10%;
+  width: 120%;
+  z-index: 1;
+}
+
+// CTA gradient
+.has-radial-gradient-animation {
+  @include aurora-bg();
+  animation: aurora-shift 20s ease-in-out infinite;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    @include aurora-noise-layer();
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Slow background position shift
+@keyframes aurora-shift {
   0% {
     background-position: 0% 50%;
   }
@@ -37,5 +79,49 @@
 
   100% {
     background-position: 0% 50%;
+  }
+}
+
+// TV static noise - random position jumps
+@keyframes noise-crawl {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-100px, 50px);
+  }
+
+  20% {
+    transform: translate(60px, -80px);
+  }
+
+  30% {
+    transform: translate(-40px, 120px);
+  }
+
+  40% {
+    transform: translate(80px, -30px);
+  }
+
+  50% {
+    transform: translate(-120px, -70px);
+  }
+
+  60% {
+    transform: translate(30px, 90px);
+  }
+
+  70% {
+    transform: translate(-90px, -50px);
+  }
+
+  80% {
+    transform: translate(110px, 40px);
+  }
+
+  90% {
+    transform: translate(-60px, -100px);
   }
 }

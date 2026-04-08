@@ -1,3 +1,7 @@
+### 7.0.17: 2026-04-08
+
+* WIP: Front page aurora gradient with noise animation, NPS badge, Ref: DEV-641
+
 ### 7.0.16: 2026-04-02
 
 * Fix reference filter checkbox hover text color in dark mode

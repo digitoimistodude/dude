@@ -149,9 +149,40 @@ if ( ! isset( $args ) ) {
 <section class="block block-references has-unified-padding-if-stacked">
   <div class="container">
 
-    <h2 class="block-heading<?php if ( ! $show_title ) echo ' screen-reader-text-dude'; ?>">
-      <?php echo esc_html( $title ); ?>
-    </h2>
+    <?php if ( is_front_page() && $show_logos ) : ?>
+      <div class="references-header">
+        <h2 class="block-heading<?php if ( ! $show_title ) echo ' screen-reader-text-dude'; ?>">
+          <?php echo esc_html( $title ); ?>
+        </h2>
+
+        <?php
+        $nps_score = get_field( 'nps_score' );
+        $nps_description = get_field( 'nps_description' );
+
+        if ( ! $nps_score ) {
+          $nps_score = '92';
+        }
+
+        if ( ! $nps_description ) {
+          $nps_description = 'Ja tästä jotain tosi järkevää asiaa';
+        }
+        ?>
+
+        <div class="nps-badge" aria-label="NPS-pisteet: <?php echo esc_attr( $nps_score ); ?>">
+          <span class="nps-number"><?php echo esc_html( $nps_score ); ?></span>
+          <div class="nps-details">
+            <span class="nps-label">NPS</span>
+            <?php if ( $nps_description ) : ?>
+              <span class="nps-description"><?php echo esc_html( $nps_description ); ?></span>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    <?php else : ?>
+      <h2 class="block-heading<?php if ( ! $show_title ) echo ' screen-reader-text-dude'; ?>">
+        <?php echo esc_html( $title ); ?>
+      </h2>
+    <?php endif; ?>
 
     <?php if ( $show_logos ) : ?>
       <h2 class="logos-label" id="asiakkaitamme">

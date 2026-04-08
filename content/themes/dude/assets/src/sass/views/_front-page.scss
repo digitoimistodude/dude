@@ -1,1 +1,156 @@
+// stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, declaration-no-important, scale-unlimited/declaration-strict-value, no-unknown-animations, a11y/font-size-is-readable, property-no-vendor-prefix, order/properties-alphabetical-order
 // The styles of the most important page on the website go here (front-page).
+
+// Aurora gradient background div
+.home .site-main {
+  position: relative;
+}
+
+.aurora-gradient-bg {
+  @include aurora-bg();
+  animation: aurora-shift 20s ease-in-out infinite;
+  height: var(--aurora-height, 4000px);
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+
+  &::before {
+    @include aurora-noise-layer();
+  }
+}
+
+// All blocks in the aurora area must be transparent.
+// Aurora covers hero through everything before the CTA.
+.home .block-hero,
+.home .block-references,
+.home .block-testimonial-train {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+// Force all text white in aurora-covered blocks regardless of color scheme
+.home .block-references .block-heading,
+.home .block-references .logos-label,
+.home .block-references .link-wrapper a,
+.home .block-references .references-header h2,
+.home .block-references h3,
+.home .block-references h3 a,
+.home .block-references p,
+.home .block-references .cols li,
+.home .block-references .nps-badge,
+.home .block-references .nps-badge span,
+.home .block-references .nps-badge .nps-description,
+.home .block-testimonial-train h2,
+.home .block-testimonial-train p,
+.home .block-testimonial-train span,
+.home .block-testimonial-train cite,
+.home .block-testimonial-train figcaption {
+  color: var(--color-white) !important;
+}
+
+// Reference block on front page
+.home .block-references {
+  .logos {
+    --color-client-logo: var(--color-white);
+    --color-client-logo-no-fill: transparent;
+  }
+
+  // NPS badge header row
+  .references-header {
+    align-items: flex-start;
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+
+    .block-heading {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  // NPS badge - liquid glass
+  .nps-badge {
+    -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.1);
+    align-items: center;
+    backdrop-filter: blur(24px) saturate(1.8) brightness(1.1);
+    background:
+      linear-gradient(
+        135deg,
+        rgb(255 255 255 / 0.15) 0%,
+        rgb(255 255 255 / 0.05) 50%,
+        rgb(255 255 255 / 0.1) 100%
+      );
+    border: 1px solid rgb(255 255 255 / 0.3);
+    border-radius: 8px;
+    box-shadow:
+      inset 0 1px 1px rgb(255 255 255 / 0.25),
+      inset 0 -1px 1px rgb(255 255 255 / 0.1),
+      0 4px 24px rgb(0 0 0 / 0.15);
+    display: flex;
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    gap: 16px;
+    padding: 24px;
+    width: 320px;
+
+    .nps-number {
+      font-size: 120px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: -0.64px;
+      line-height: 1;
+    }
+
+    .nps-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nps-label {
+      font-size: 40px;
+      font-weight: var(--font-weight-medium);
+      line-height: 1;
+    }
+
+    .nps-description {
+      font-family: var(--font-paragraph);
+      font-size: 16px;
+      font-weight: var(--font-weight-regular);
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      padding: 20px;
+      width: 260px;
+
+      .nps-number {
+        font-size: 72px;
+      }
+
+      .nps-label {
+        font-size: 28px;
+      }
+
+      .nps-description {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Blocks after CTA sit on top with their own backgrounds
+.home .block-cta ~ .block {
+  position: relative;
+  z-index: 1;
+}
