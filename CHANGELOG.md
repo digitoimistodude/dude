@@ -1,4 +1,4 @@
-### 7.0.17: 2026-04-08
+### 7.0.17: 2026-04-09
 
 * WIP: Front page aurora gradient with noise animation, NPS badge, Ref: DEV-641
 

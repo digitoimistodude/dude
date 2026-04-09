@@ -18,7 +18,9 @@ namespace Air_Light;
 get_header(); ?>
 
 <main class="site-main">
-  <div class="aurora-gradient-bg" aria-hidden="true"></div>
+  <div class="aurora-gradient-bg" aria-hidden="true">
+    <?php include get_theme_file_path( 'assets/svg/aurora-gradient.svg' ); ?>
+  </div>
   <?php the_content();
 
   do_action( 'dude_site_main_after_content' );
