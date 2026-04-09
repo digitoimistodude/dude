@@ -168,7 +168,24 @@ if ( ! isset( $args ) ) {
         }
         ?>
 
+        <svg style="display:none;position:absolute;inset:0;z-index:0">
+          <filter id="liquid-lens" x="-50%" y="-50%" width="200%" height="200%">
+            <feImage x="0" y="0" result="normalMap" xlink:href="data:image/svg+xml;utf8,
+              &lt;svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'&gt;
+                &lt;radialGradient id='nmap' cx='50%' cy='50%' r='50%'&gt;
+                  &lt;stop offset='0%' stop-color='rgb(128,128,255)'/&gt;
+                  &lt;stop offset='100%' stop-color='rgb(255,255,255)'/&gt;
+                &lt;/radialGradient&gt;
+                &lt;rect width='100%' height='100%' fill='url(#nmap)'/&gt;
+              &lt;/svg&gt;" />
+            <feDisplacementMap in="SourceGraphic" in2="normalMap" scale="60" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+            <feMerge>
+              <feMergeNode in="displaced" />
+            </feMerge>
+          </filter>
+        </svg>
         <div class="nps-badge" aria-label="NPS-pisteet: <?php echo esc_attr( $nps_score ); ?>">
+          <div class="nps-glass"></div>
           <span class="nps-number"><?php echo esc_html( $nps_score ); ?></span>
           <div class="nps-details">
             <span class="nps-label">NPS</span>

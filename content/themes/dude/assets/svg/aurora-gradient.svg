@@ -21,6 +21,12 @@
         <animate attributeName="width" values="950;1000;900;950" dur="32s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="height" values="1150;1200;1100;1150" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
       </rect>
+      <rect fill="#1d1f29" opacity="0.9">
+        <animate attributeName="x" values="100;160;60;100" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <animate attributeName="y" values="-200;-140;-250;-200" dur="32s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <animate attributeName="width" values="800;850;750;800" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+        <animate attributeName="height" values="700;750;650;700" dur="26s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+      </rect>
       <rect fill="#1a3568" opacity="0.8">
         <animate attributeName="x" values="-150;-80;-200;-150" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="50;120;0;50" dur="25s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
