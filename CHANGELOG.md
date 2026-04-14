@@ -1,3 +1,7 @@
+### 7.0.18: 2026-04-14
+
+* Add content-aware liquid glass border hover effect to NPS badge, Ref: DEV-641
+
 ### 7.0.17: 2026-04-09
 
 * WIP: Front page aurora gradient with noise animation, NPS badge, Ref: DEV-641

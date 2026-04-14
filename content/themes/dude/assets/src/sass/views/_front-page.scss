@@ -101,6 +101,35 @@
     width: 325px;
     z-index: 0;
 
+    // Mouse-tracking light reflection on the border
+    &::after {
+      background: radial-gradient(
+        circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgb(255 255 255 / 1) 0%,
+        rgb(255 255 255 / 0.6) 40%,
+        rgb(255 255 255 / 0.1) 80%,
+        transparent 100%
+      );
+      border-radius: 8px;
+      content: '';
+      inset: 0;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      padding: 1px;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+      opacity: 1;
+    }
+
     .nps-glass {
       backdrop-filter: blur(10px);
       filter: url('#liquid-lens');
