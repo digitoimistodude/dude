@@ -164,7 +164,7 @@ if ( ! isset( $args ) ) {
         }
 
         if ( ! $nps_description ) {
-          $nps_description = 'Ja tästä jotain tosi järkevää asiaa';
+          $nps_description = 'Duden asiakastyytyväisyys on huipputasoa';
         }
         ?>
 

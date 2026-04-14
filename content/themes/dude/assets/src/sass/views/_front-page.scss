@@ -7,15 +7,11 @@
 }
 
 .aurora-gradient-bg {
-  animation: aurora-fade-in 1.2s ease-out both;
+  animation: aurora-fade-in 1.2s ease-out 0.2s both;
   height: var(--aurora-height, 4000px);
+  opacity: 0;
   left: 0;
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 80%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -118,14 +114,10 @@
     gap: 4rem;
     justify-content: space-between;
     margin-bottom: 4rem;
+    position: relative;
 
     .block-heading {
       margin-bottom: 0;
-    }
-
-    @media (max-width: 600px) {
-      flex-direction: column;
-      gap: 2rem;
     }
   }
 
@@ -141,8 +133,9 @@
     flex-shrink: 0;
     font-family: var(--font-heading);
     gap: 16px;
-    padding: 36px 25px;
+    padding: 25px;
     position: relative;
+    overflow: hidden;
     width: 325px;
     z-index: 0;
 
@@ -197,8 +190,14 @@
       top: -10px;
       z-index: 1;
 
-      @media (max-width: 600px) {
-        font-size: 72px;
+      @media (max-width: $container-ipad) {
+        font-size: 44px;
+        top: -5px;
+        line-height: 0.5;
+      }
+
+      @media (max-width: 440px) {
+        font-size: 30px;
       }
     }
 
@@ -217,8 +216,12 @@
       font-family: var(--font-heading);
       line-height: 1;
 
-      @media (max-width: 600px) {
-        font-size: 28px;
+      @media (max-width: $container-ipad) {
+        font-size: 25px;
+      }
+
+      @media (max-width: 440px) {
+        font-size: 16px;
       }
     }
 
@@ -229,14 +232,30 @@
       line-height: 1.25;
       opacity: 0.9;
 
-      @media (max-width: 600px) {
-        font-size: 14px;
+      @media (max-width: $container-ipad) {
+        display: none;
       }
     }
 
-    @media (max-width: 600px) {
-      padding: 20px;
-      width: 260px;
+    @media (min-width: 1560px) {
+      right: -20px;
+    }
+
+    @media (max-width: $container-ipad) {
+      gap: 8px;
+      padding: 20px 15px;
+      position: absolute;
+      right: 20px;
+      top: 0;
+      width: auto;
+      display: grid;
+    }
+
+    @media (max-width: 440px) {
+      padding: 20px 14px 15px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
   }
 }

@@ -4,6 +4,10 @@
     margin-bottom: 8rem;
     margin-top: 0;
     max-width: 100rem;
+
+    @media (max-width: $container-ipad) {
+      max-width: 80%;
+    }
   }
 
   .link-wrapper {
