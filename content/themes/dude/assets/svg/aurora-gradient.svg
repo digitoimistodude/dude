@@ -1,33 +1,33 @@
 <svg viewBox="0 0 1600 1600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1600" height="1600" fill="#1c1e26"/>
-  <rect width="1600" height="1600" fill="#08c894" fill-opacity="0.12"/>
+  <rect class="aurora-base" width="1600" height="1600" fill="#1c1e26"/>
+  <rect class="aurora-tint" width="1600" height="1600" fill="#08c894" fill-opacity="0.12"/>
   <g clip-path="url(#clip0)">
     <g filter="url(#blur0)">
-      <rect fill="#08c894" opacity="0.85">
+      <rect class="aurora-blob-teal" fill="#08c894" opacity="0.85">
         <animate attributeName="x" values="550;620;500;550" dur="25s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="50;120;0;50" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="width" values="1100;1150;1050;1100" dur="35s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="height" values="1100;1050;1150;1100" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
       </rect>
-      <rect fill="#00f0a0" opacity="0.5">
+      <rect class="aurora-blob-mint" fill="#00f0a0" opacity="0.5">
         <animate attributeName="x" values="750;820;700;750" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="-150;-80;-200;-150" dur="32s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="width" values="950;1000;900;950" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="height" values="850;900;800;850" dur="26s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
       </rect>
-      <rect fill="#1a6a8a" opacity="0.7">
+      <rect class="aurora-blob-blueteal" fill="#1a6a8a" opacity="0.7">
         <animate attributeName="x" values="150;220;100;150" dur="35s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="150;220;100;150" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="width" values="950;1000;900;950" dur="32s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="height" values="1150;1200;1100;1150" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
       </rect>
-      <rect fill="#1d1f29" opacity="0.9">
+      <rect class="aurora-blob-dark" fill="#1d1f29" opacity="0.9">
         <animate attributeName="x" values="100;160;60;100" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="-200;-140;-250;-200" dur="32s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="width" values="800;850;750;800" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="height" values="700;750;650;700" dur="26s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
       </rect>
-      <rect fill="#1a3568" opacity="0.8">
+      <rect class="aurora-blob-blue" fill="#1a3568" opacity="0.8">
         <animate attributeName="x" values="-150;-80;-200;-150" dur="30s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="y" values="50;120;0;50" dur="25s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
         <animate attributeName="width" values="750;800;700;750" dur="28s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>

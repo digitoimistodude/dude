@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, declaration-no-important, scale-unlimited/declaration-strict-value, no-unknown-animations, a11y/font-size-is-readable, property-no-vendor-prefix, order/properties-alphabetical-order
+// stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, declaration-no-important, scale-unlimited/declaration-strict-value, no-unknown-animations, a11y/font-size-is-readable, property-no-vendor-prefix, order/properties-alphabetical-order, csstools/value-no-unknown-custom-properties
 // The styles of the most important page on the website go here (front-page).
 
 // Aurora gradient background
@@ -9,6 +9,12 @@
 .aurora-gradient-bg {
   height: var(--aurora-height, 4000px);
   left: 0;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 80%,
+    transparent 100%
+  );
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -39,7 +45,48 @@
   z-index: 1;
 }
 
-// Force all text white in aurora-covered blocks regardless of color scheme
+// Aurora SVG fill colors are driven by CSS custom properties set
+// in _dark-mode.scss (color-scheme-light / color-scheme-dark mixins).
+.home .aurora-gradient-bg svg {
+  .aurora-base {
+    fill: var(--color-aurora-base);
+  }
+
+  .aurora-tint {
+    fill: var(--color-aurora-tint);
+    fill-opacity: var(--color-aurora-tint-opacity);
+  }
+
+  .aurora-blob-teal {
+    fill: var(--color-aurora-blob-teal);
+  }
+
+  .aurora-blob-mint {
+    fill: var(--color-aurora-blob-mint);
+  }
+
+  .aurora-blob-blueteal {
+    fill: var(--color-aurora-blob-blueteal);
+  }
+
+  .aurora-blob-dark {
+    fill: var(--color-aurora-blob-dark);
+  }
+
+  .aurora-blob-blue {
+    fill: var(--color-aurora-blob-blue);
+  }
+}
+
+// Noise blend mode and opacity come from theme variables too
+.home .aurora-gradient-bg::before {
+  mix-blend-mode: var(--aurora-noise-blend, overlay);
+  opacity: var(--aurora-noise-opacity, 0.4);
+}
+
+// Text and logo colors in the aurora area use theme variables.
+// Note: testimonial-train .item has its own petrol background and white text,
+// so we only theme the heading - not the carousel items inside.
 .home .block-references .block-heading,
 .home .block-references .logos-label,
 .home .block-references .link-wrapper a,
@@ -51,18 +98,14 @@
 .home .block-references .nps-badge,
 .home .block-references .nps-badge span,
 .home .block-references .nps-badge .nps-description,
-.home .block-testimonial-train h2,
-.home .block-testimonial-train p,
-.home .block-testimonial-train span,
-.home .block-testimonial-train cite,
-.home .block-testimonial-train figcaption {
-  color: var(--color-white) !important;
+.home .block-testimonial-train > .container > .block-heading {
+  color: var(--color-aurora-text);
 }
 
 // Reference block on front page
 .home .block-references {
   .logos {
-    --color-client-logo: var(--color-white);
+    --color-client-logo: var(--color-aurora-logo);
     --color-client-logo-no-fill: transparent;
   }
 
@@ -86,8 +129,8 @@
 
   // NPS badge - liquid glass
   .nps-badge {
-    background: rgb(255 255 255 / 0.08);
-    border: 1px solid rgb(255 255 255 / 0.15);
+    background: var(--color-aurora-nps-bg);
+    border: 1px solid var(--color-aurora-nps-border);
     border-radius: 8px;
     text-align: center;
     transition: transform 0.4s ease;
