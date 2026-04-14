@@ -2,6 +2,9 @@
 
 * Add content-aware liquid glass border hover effect to NPS badge, Ref: DEV-641
 * Add light theme support for front page aurora gradient and NPS badge, fade aurora out at bottom, Ref: DEV-641
+* Smoothly fade in the aurora gradient on initial load, Ref: DEV-641
+* Fix seam between hero and references block by clearing block background-image in aurora area, Ref: DEV-641
+* Remove overflow hidden from block-hero so video does not clip, Ref: DEV-641
 * Fix radiomedia logo mask rendering in light mode, Ref: DEV-641
 * Fix kiinteistomedia logo character holes on aurora gradient, Ref: DEV-641
 

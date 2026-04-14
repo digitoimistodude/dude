@@ -7,6 +7,7 @@
 }
 
 .aurora-gradient-bg {
+  animation: aurora-fade-in 1.2s ease-out both;
   height: var(--aurora-height, 4000px);
   left: 0;
   mask-image: linear-gradient(
@@ -41,6 +42,7 @@
 .home .block-references,
 .home .block-testimonial-train {
   background-color: transparent !important;
+  background-image: none !important;
   position: relative;
   z-index: 1;
 }

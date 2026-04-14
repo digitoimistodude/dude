@@ -74,6 +74,17 @@
   }
 }
 
+// Smoothly fade in the aurora on initial load
+@keyframes aurora-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 // Noise flicker - jumps background-position so the pattern reshuffles
 @keyframes noise-crawl {
   0% {
