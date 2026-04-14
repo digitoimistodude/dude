@@ -72,7 +72,11 @@
   .block-single .article-content hr,
   .wp-block-separator {
     // stylelint-disable-next-line
-    background-image: linear-gradient(to bottom, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / 0.4) 50%) !important;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0) 50%,
+      rgb(0 0 0 / 0.4) 50%
+    ) !important;
   }
 
   // Cookie consent exceptions
@@ -82,7 +86,12 @@
     // stylelint-disable-next-line
     background-color: var(--cc-text) !important;
     // stylelint-disable-next-line
-    background-image: linear-gradient(198deg, rgb(126 255 225 / 0.149) 5.92%, rgb(46 47 56 / 0.149) 56.09%, rgb(46 47 56 / 0.149) 109.5%) !important;
+    background-image: linear-gradient(
+      198deg,
+      rgb(126 255 225 / 0.149) 5.92%,
+      rgb(46 47 56 / 0.149) 56.09%,
+      rgb(46 47 56 / 0.149) 109.5%
+    ) !important;
     // stylelint-disable-next-line
     border: 0 !important;
     // stylelint-disable-next-line
@@ -111,7 +120,14 @@
   // Blocks in light mode
   .block-hero-centered,
   .block-hero {
-    background-image: linear-gradient(45deg, var(--color-dark-navy), rgb(196 227 217 / 0.16) 56%, rgb(62 71 79 / 0.7)), linear-gradient(-45deg, #323446, hsl(0deg 0% 0% / 0.5) 100%);
+    background-image:
+      linear-gradient(
+        45deg,
+        var(--color-dark-navy),
+        rgb(196 227 217 / 0.16) 56%,
+        rgb(62 71 79 / 0.7)
+      ),
+      linear-gradient(-45deg, #323446, hsl(0deg 0% 0% / 0.5) 100%);
   }
 
   .is-icon-left {
@@ -120,7 +136,8 @@
 
   // More padding when blocks don't have the same background
   .block-title-content-50-50 + .block-list > .container {
-    padding: var(--padding-container-vertical) var(--padding-container-horizontal);
+    padding: var(--padding-container-vertical)
+      var(--padding-container-horizontal);
   }
 
   .block-hero.playing {
@@ -139,8 +156,15 @@
   // stylelint-disable-next-line
   .block-carousel + .is-skip-link + .block-reference-quotes,
   .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small,
-  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small + .block-faq-accordion,
-  .block.block-image-list + .is-skip-link + .block.block-carousel + .block-cta-small {
+  .block-carousel
+    + .is-skip-link
+    + .block-reference-quotes
+    + .block-cta-small
+    + .block-faq-accordion,
+  .block.block-image-list
+    + .is-skip-link
+    + .block.block-carousel
+    + .block-cta-small {
     background-color: var(--color-light-mint);
   }
 
@@ -152,7 +176,14 @@
   .block-background-petrol-gradient,
   .block-hero-jobs.block-background-petrol,
   .block-hero-content-image.block-background-petrol {
-    background-image: linear-gradient(45deg, var(--color-petrol), rgb(74 169 181 / 0.26) 56%, rgb(32 88 96 / 0.7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+    background-image:
+      linear-gradient(
+        45deg,
+        var(--color-petrol),
+        rgb(74 169 181 / 0.26) 56%,
+        rgb(32 88 96 / 0.7)
+      ),
+      linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
   }
 
   // Other exceptions in light mode
@@ -228,7 +259,12 @@
     background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%232e2f38" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
   }
 
-  .block-form-person .container > .form #wpforms-11358-field_5 > .choice-3 > input[type='checkbox']:checked::before {
+  .block-form-person
+    .container
+    > .form
+    #wpforms-11358-field_5
+    > .choice-3
+    > input[type='checkbox']:checked::before {
     background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%237effe1" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
   }
 
@@ -344,7 +380,7 @@
   --color-aurora-blob-mint: #00f0a0;
   --color-aurora-blob-blueteal: #1a6a8a;
   --color-aurora-blob-dark: #1d1f29;
-  --color-aurora-blob-blue: #1a3568;
+  --color-aurora-blob-blue: #131d2f;
   --color-aurora-text: var(--color-white);
   --color-aurora-logo: var(--color-white);
   --color-aurora-nps-bg: rgb(255 255 255 / 0.08);
@@ -402,7 +438,11 @@
   .block-single .article-content hr,
   .wp-block-separator {
     // stylelint-disable-next-line
-    background-image: linear-gradient(to bottom, rgb(255 255 255 / 0) 50%, rgb(255 255 255 / 0.4) 50%) !important;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0) 50%,
+      rgb(255 255 255 / 0.4) 50%
+    ) !important;
   }
 
   // Cookie consent exceptions
@@ -412,7 +452,12 @@
     // stylelint-disable-next-line
     background-color: var(--color-mint) !important;
     // stylelint-disable-next-line
-    background-image: linear-gradient(198deg, #538d8026 5.92%, #7effe126 56.09%, #7effe155 109.5%);
+    background-image: linear-gradient(
+      198deg,
+      #538d8026 5.92%,
+      #7effe126 56.09%,
+      #7effe155 109.5%
+    );
     // stylelint-disable-next-line
     color: var(--color-dark-navy) !important;
     // stylelint-disable-next-line
@@ -424,7 +469,12 @@
     // background-image: linear-gradient(45deg, var(--color-dark-navy), rgb(70 85 80 / .26) 56%, rgb(62 71 79 / .7)), linear-gradient(-45deg, var(--color-dark-navy), var(--color-midnight) 100%);
     // background-image: linear-gradient(9deg, rgb(46 47 56 / 1) 0%, rgb(46 47 56 / 1) 53%, rgba(55 61 70 / 1) 100%);
     background-color: var(--color-dark-navy);
-    background-image: linear-gradient(198deg, #7effe126 5.92%, #2e2f3826 56.09%, #2e2f3826 109.5%);
+    background-image: linear-gradient(
+      198deg,
+      #7effe126 5.92%,
+      #2e2f3826 56.09%,
+      #2e2f3826 109.5%
+    );
   }
 
   .is-icon-left {
@@ -439,8 +489,15 @@
   // stylelint-disable-next-line
   .block-carousel + .is-skip-link + .block-reference-quotes,
   .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small,
-  .block-carousel + .is-skip-link + .block-reference-quotes + .block-cta-small + .block-faq-accordion,
-  .block.block-image-list + .is-skip-link + .block.block-carousel + .block-cta-small {
+  .block-carousel
+    + .is-skip-link
+    + .block-reference-quotes
+    + .block-cta-small
+    + .block-faq-accordion,
+  .block.block-image-list
+    + .is-skip-link
+    + .block.block-carousel
+    + .block-cta-small {
     background-color: var(--color-petrol);
   }
 
@@ -474,7 +531,14 @@
   .block-background-petrol-gradient,
   .block-hero-jobs.block-background-petrol,
   .block-hero-content-image.block-background-petrol {
-    background-image: linear-gradient(45deg, var(--color-petrol), rgb(70 85 80 / 0.26) 56%, rgb(32 88 96 / 0.7)), linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
+    background-image:
+      linear-gradient(
+        45deg,
+        var(--color-petrol),
+        rgb(70 85 80 / 0.26) 56%,
+        rgb(32 88 96 / 0.7)
+      ),
+      linear-gradient(-45deg, var(--color-petrol), var(--color-midnight) 100%);
 
     p {
       color: var(--color-white);
@@ -567,7 +631,12 @@
     background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%23fff" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
   }
 
-  .block-form-person .container > .form #wpforms-11358-field_5 > .choice-3 > input[type='checkbox']:checked::before {
+  .block-form-person
+    .container
+    > .form
+    #wpforms-11358-field_5
+    > .choice-3
+    > input[type='checkbox']:checked::before {
     background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"%3E%3Cpath fill="none" d="M0 0h24v24H0z"/%3E%3Cpath fill="%237effe1" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/%3E%3C/svg%3E%0A');
   }
 
@@ -704,7 +773,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  body:not([data-color-scheme='light']) .block-carousel:not(.carousel-style-alt) {
+  body:not([data-color-scheme='light'])
+    .block-carousel:not(.carousel-style-alt) {
     background-color: var(--color-petrol);
 
     h2 {
