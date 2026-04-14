@@ -6,6 +6,7 @@
     "scale-unlimited/declaration-strict-value": null,
     "selector-max-compound-selectors": 5,
     "declaration-no-important": null,
-    "a11y/no-display-none": null
+    "a11y/no-display-none": null,
+    "scss/operator-no-newline-after": null
   }
 }
