@@ -31,6 +31,21 @@
   &::before {
     @include aurora-noise-layer();
   }
+
+  // On mobile: hide the expensive SVG blur filter entirely,
+  // layer multiple gradients at different angles to break up the transition
+  @media (max-width: $container-ipad) {
+    background-image:
+      radial-gradient(ellipse 40% 50% at 100% 30%, rgb(0 240 160 / 0.3) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 50% at 85% 25%, rgb(8 200 148 / 0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 65% 55%, rgb(26 74 90 / 0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 60% at 35% 45%, rgb(26 42 64 / 0.4) 0%, transparent 80%),
+      linear-gradient(160deg, #1c1e26 0%, #1c2535 30%, #1a3a50 50%, #1a5a6a 75%, #08a878 100%);
+
+    > svg {
+      display: none;
+    }
+  }
 }
 
 // All blocks in the aurora area must be transparent

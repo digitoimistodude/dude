@@ -36,6 +36,11 @@
   top: 0;
   width: 100%;
   z-index: 2;
+
+  @media (max-width: $container-ipad) {
+    animation: none;
+    background-size: 200px 200px;
+  }
 }
 
 // CTA aurora gradient - uses inline SVG
