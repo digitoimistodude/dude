@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, declaration-no-important, scale-unlimited/declaration-strict-value, no-unknown-animations, a11y/font-size-is-readable, property-no-vendor-prefix, order/properties-alphabetical-order, csstools/value-no-unknown-custom-properties
+// stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, declaration-no-important, scale-unlimited/declaration-strict-value, no-unknown-animations, a11y/font-size-is-readable, property-no-vendor-prefix, order/properties-alphabetical-order, csstools/value-no-unknown-custom-properties, selector-max-class
 // The styles of the most important page on the website go here (front-page).
 
 // Aurora gradient background
@@ -41,6 +41,31 @@
   background-image: none !important;
   position: relative;
   z-index: 1;
+}
+
+// Light mode: dark overlay on hero for text readability over the video
+body[data-color-scheme='light'] .home .block-hero::after {
+  background-image:
+    linear-gradient(
+      45deg,
+      var(--color-dark-navy),
+      rgb(196 227 217 / 0.16) 56%,
+      rgb(62 71 79 / 0.7)
+    ),
+    linear-gradient(-45deg, #323446, rgb(0 0 0 / 0.5) 100%);
+  content: '';
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+// Hero content stays above the dark overlay (z-index: 2 is set on .content already)
+body[data-color-scheme='light'] .home .block-hero {
+  isolation: isolate;
 }
 
 // Aurora SVG fill colors are driven by CSS custom properties set
@@ -105,6 +130,30 @@
   .logos {
     --color-client-logo: var(--color-aurora-logo);
     --color-client-logo-no-fill: transparent;
+  }
+
+  // Remove text gradient from reference titles, use solid color
+  .col-reference .has-text-gradient {
+    background-image: none;
+    -webkit-text-fill-color: var(--color-aurora-text);
+
+    a {
+      color: var(--color-aurora-text);
+    }
+  }
+
+  // On hover: mint title, no gradient animation, keep duotone on image
+  .col-reference .global-link:hover + .has-duotone + .has-text-gradient,
+  .col-reference .global-link:focus + .has-duotone + .has-text-gradient,
+  .col-reference .has-text-gradient:hover,
+  .col-reference .has-text-gradient:focus {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: var(--color-mint);
+
+    a {
+      color: var(--color-mint);
+    }
   }
 
   // NPS badge header row
