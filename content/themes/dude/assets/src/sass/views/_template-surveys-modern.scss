@@ -680,6 +680,18 @@ body.template-surveys-modern {
     .wpforms-form {
       padding-top: 0;
 
+      .wpforms-field-rating {
+        flex-wrap: wrap;
+      }
+
+      .wpforms-field-rating-wrapper {
+        flex: 100%;
+      }
+
+      .wpforms-field-rating .wpforms-field-description p {
+        margin: 0;
+      }
+
       .wpforms-field-rating-items {
         margin-bottom: 4rem;
         margin-left: auto;
