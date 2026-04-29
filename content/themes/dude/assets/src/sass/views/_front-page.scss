@@ -182,6 +182,10 @@ body[data-color-scheme='light'] .home .block-hero {
 
     .block-heading {
       margin-bottom: 0;
+
+      @media (max-width: $container-ipad) {
+        margin-bottom: calc(var(--padding-container-vertical) / 2);
+      }
     }
   }
 
