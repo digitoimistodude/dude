@@ -220,6 +220,16 @@ get_header(); ?>
       'show_title'    => false,
       'filterable'    => true,
     ] );
+
+    get_template_part( 'template-parts/blocks/cta-small', null, [
+      'title'       => 'Onko sinulla projekti mielessä?',
+      'content'     => 'Ota hyvissä ajoin yhteyttä, saat meiltä neuvoja ja näkemystä jo alkumetreillä.',
+      'button'      => [
+        'url'   => get_permalink( 4487 ),
+        'title' => 'Ota yhteyttä',
+      ],
+      'extra_class' => 'block-cta-references',
+    ] );
   ?>
 
 </main>

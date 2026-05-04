@@ -65,3 +65,16 @@
     color: var(--color-white);
   }
 }
+
+// Reference pages CTA - tighter grid, bolder heading
+.block-cta-references {
+  .cta-box-content h2 {
+    font-weight: 600;
+  }
+
+  .cta-box.cta-box-small {
+    @media (min-width: 960px) {
+      grid-template-columns: minmax(0, 90rem) minmax(230px, 1fr);
+    }
+  }
+}

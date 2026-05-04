@@ -73,7 +73,7 @@
     @include aurora-noise-layer();
   }
 
-  > .container {
+  > *:not(.aurora-gradient-inner) {
     position: relative;
     z-index: 3;
   }

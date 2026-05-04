@@ -1,3 +1,7 @@
+### 7.0.19: 2026-05-04
+
+* Add CTA to references archive, taxonomy and single reference pages, Ref: KVLT-105
+
 ### 7.0.18: 2026-04-16
 
 * Add content-aware liquid glass border hover effect to NPS badge, Ref: DEV-641
