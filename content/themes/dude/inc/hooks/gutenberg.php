@@ -50,7 +50,7 @@ function use_block_editor_for_post_type( $use_block_editor, $post_type ) {
 } // end use_block_editor_for_post_type
 
 /**
- * Enqueue block editor JavaScript and CSS
+ * Enqueue block editor JavaScript
  */
 function register_block_editor_assets() {
 
@@ -70,16 +70,6 @@ function register_block_editor_assets() {
     filemtime( get_theme_file_path( get_asset_file( 'gutenberg-editor.js' ) ) ),
     'all'
   );
-
-  // Enqueue optional editor only styles
-  wp_enqueue_style(
-    'block-editor-styles',
-    get_theme_file_uri( get_asset_file( 'gutenberg-editor-styles.css' ) ),
-    [],
-    filemtime( get_theme_file_path( get_asset_file( 'gutenberg-editor-styles.css' ) ) ),
-    'all',
-    true
-  );
 } // end register_block_editor_assets
 
 // Remove Gutenberg inline "Normalization styles" like .editor-styles-wrapper h1
@@ -98,189 +88,65 @@ function remove_gutenberg_inline_styles( $editor_settings, $editor_context ) {
 } // end remove_gutenberg_inline_styles
 
 /**
- * Block editor title input styles for post types that don't show
- * post title in templates
+ * Register post meta for pricing gradient background (available on all post types)
  */
-function block_editor_title_input_styles() {
-  $post_types = [
-    'page',
-    'reference',
-    'settings',
-  ];
+function register_pricing_gradient_meta() {
+  register_post_meta( '', '_show_pricing_gradient', [
+    'show_in_rest'  => true,
+    'single'        => true,
+    'type'          => 'boolean',
+    'default'       => false,
+    'auth_callback' => function() {
+      return current_user_can( 'edit_posts' );
+    },
+  ] );
 
-  if ( ! in_array( get_post_type(), $post_types, true ) ) {
-    return;
-  }
-
-  // Get fields
-  $color_dark = get_post_meta( get_the_id(), 'brand_color', true );
-  $color_light = get_post_meta( get_the_id(), 'brand_color_light', true );
-  $color_background_block_dark = get_post_meta( get_the_id(), 'color_background_block', true );
-  $color_background_block_light = get_post_meta( get_the_id(), 'color_background_block_light', true );
-  $color_text_light = get_post_meta( get_the_id(), 'brand_color_text_light', true );
-  $color_text_dark = get_post_meta( get_the_id(), 'brand_color_text', true );
-  $color_official = get_post_meta( get_the_id(), 'brand_color_official', true );
-  $custom_css = get_post_meta( get_the_id(), 'custom_css', true );
-
-  $styles = '
-  .block-reference-quote-short,
-  .block-reference-quote-short span,
-  .block-background-reference,
-  body {
-    --color-brand-reference-bg: ' . $color_light . ';
-    --color-brand-reference-text: ' . $color_text_light . ';
-    --color-brand-reference-official: ' . $color_official . ';
-  }
-
-  .block {
-    --color-background-block: ' . $color_background_block_light . ';
-  }
-
-  @media (prefers-color-scheme: light) {
-    .block-reference-quote-short,
-    .block-reference-quote-short span,
-    .block-background-reference,
-    body {
-      --color-brand-reference-bg: ' . $color_light . ';
-      --color-brand-reference-text: ' . $color_text_light . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-
-    body[data-color-scheme="light"],
-    body[data-color-scheme="light"] .block,
-    .block {
-      --color-background-block: ' . $color_background_block_light . ';
-    }
-
-    body[data-color-scheme="dark"],
-    body[data-color-scheme="dark"] .block {
-      --color-background-block: ' . $color_background_block_dark . ';
-    }
-
-    body[data-color-scheme="light"] .block-reference-quote-short,
-    body[data-color-scheme="light"] .block-reference-quote-short span,
-    body[data-color-scheme="light"] .block-background-reference,
-    body[data-color-scheme="light"] {
-      --color-brand-reference-bg: ' . $color_light . ';
-      --color-brand-reference-text: ' . $color_text_light . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-
-    body[data-color-scheme="dark"] .block-reference-quote-short,
-    body[data-color-scheme="dark"] .block-reference-quote-short span,
-    body[data-color-scheme="dark"] .block-background-reference,
-    body[data-color-scheme="dark"] {
-      --color-brand-reference-bg: ' . $color_dark . ';
-      --color-brand-reference-text: ' . $color_text_dark . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .block-reference-quote-short,
-    .block-reference-quote-short span,
-    .block-background-reference,
-    body {
-      --color-brand-reference-bg: ' . $color_dark . ';
-      --color-brand-reference-text: ' . $color_text_dark . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-
-    body[data-color-scheme="light"],
-    body[data-color-scheme="light"] .block {
-      --color-background-block: ' . $color_background_block_light . ';
-    }
-
-    .block,
-    body[data-color-scheme="dark"],
-    body[data-color-scheme="dark"] .block {
-      --color-background-block: ' . $color_background_block_dark . ';
-    }
-
-    body[data-color-scheme="light"] .block-reference-quote-short,
-    body[data-color-scheme="light"] .block-reference-quote-short span,
-    body[data-color-scheme="light"] .block-background-reference,
-    body[data-color-scheme="light"] {
-      --color-brand-reference-bg: ' . $color_light . ';
-      --color-brand-reference-text: ' . $color_text_light . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-
-    body[data-color-scheme="dark"] .block-reference-quote-short,
-    body[data-color-scheme="dark"] .block-reference-quote-short span,
-    body[data-color-scheme="dark"] .block-background-reference,
-    body[data-color-scheme="dark"] {
-      --color-brand-reference-bg: ' . $color_dark . ';
-      --color-brand-reference-text: ' . $color_text_dark . ';
-      --color-brand-reference-official: ' . $color_official . ';
-    }
-  }
-
-  /* Print custom CSS here */
-  ' . $custom_css . '
-
-  /* Remove gap between post title wrapper and first block */
-  .edit-post-visual-editor__post-title-wrapper + .is-root-container > .wp-block:first-child {
-    padding: 4rem 2rem;
-    margin-top: 0;
-  }
-
-  .post-type-reference .edit-post-visual-editor__post-title-wrapper + .is-root-container > .wp-block:first-child {
-    padding: 0 !important;
-  }
-
-  /* Remove border from the appender */
-  .block-editor-button-block-appender {
-    box-shadow: none;
-  }
-
-  /* Remove white border from top */
-  .interface-interface-skeleton__header {
-    border-bottom: 0;
-  }
-
-  .block-editor .editor-styles-wrapper {
-    padding-top: 0;
-  }
-
-  .block-editor .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper {
-    background-color: #1e1e1e;
-    border-bottom: 1px solid #1e1e1e;
-    color: #fff;
-    position: relative;
-    z-index: 3;
-  }
-
-  .edit-post-visual-editor__post-title-wrapper {
-    margin: 0;
-  }
-
-  .block-editor .editor-styles-wrapper .editor-post-title {
-    color: #fff;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-
-  .post-type-page .edit-post-visual-editor__post-title-wrapper + .is-root-container > .wp-block:first-child {
-    padding: 0;
-  }
-
-  .block-editor .editor-styles-wrapper .editor-post-title::before {
-    color: #bababa;
-    display: block;
-    font-size: medium;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-
-  body.locale-fi .editor-styles-wrapper .editor-post-title::before {
-    content: "Nimi, joka näkyy selaimen välilehdessä ja valikossa";
-  }
-
-  body.locale-en-us .editor-styles-wrapper .editor-post-title::before {
-    content: "Post name shown in the browser tab and menus";
-  }
-  ';
-  wp_add_inline_style( 'block-editor-styles',  $styles );
+  register_post_meta( '', '_force_dark_mode', [
+    'show_in_rest'  => true,
+    'single'        => true,
+    'type'          => 'boolean',
+    'default'       => false,
+    'auth_callback' => function() {
+      return current_user_can( 'edit_posts' );
+    },
+  ] );
 }
+add_action( 'init', __NAMESPACE__ . '\register_pricing_gradient_meta' );
+
+/**
+ * Enqueue pricing gradient toggle script for block editor
+ */
+function enqueue_pricing_gradient_toggle() {
+  wp_enqueue_script(
+    'dude-pricing-gradient-toggle',
+    get_theme_file_uri( '/assets/src/js/admin/gradient-toggle.js' ),
+    [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
+    filemtime( get_theme_file_path( '/assets/src/js/admin/gradient-toggle.js' ) ),
+    true
+  );
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_pricing_gradient_toggle' );
+
+/**
+ * Enqueue force dark mode toggle script for block editor
+ */
+function enqueue_force_dark_mode_toggle() {
+  wp_enqueue_script(
+    'dude-force-dark-mode-toggle',
+    get_theme_file_uri( '/assets/src/js/admin/force-dark-mode-toggle.js' ),
+    [ 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data' ],
+    filemtime( get_theme_file_path( '/assets/src/js/admin/force-dark-mode-toggle.js' ) ),
+    true
+  );
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_force_dark_mode_toggle' );
+
+/**
+ * Register block pattern category for Dude patterns
+ */
+function register_block_pattern_categories() {
+  register_block_pattern_category( 'dude', [
+    'label' => __( 'Dude', 'flavor' ),
+  ] );
+}
+add_action( 'init', __NAMESPACE__ . '\register_block_pattern_categories' );

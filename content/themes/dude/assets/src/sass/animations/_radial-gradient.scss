@@ -1,0 +1,110 @@
+// Radial gradient for front page hero area
+.radial-gradient-absolute {
+  --color-gradient-start: var(--color-midnight);
+  --color-gradient-end: var(--color-dark-navy);
+  background-image: radial-gradient(
+    at center,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
+  height: 15000px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+.radial-gradient-absolute.radial-gradient {
+  opacity: 1;
+}
+
+// Animated noise overlay mixin
+@mixin aurora-noise-layer() {
+  animation: noise-crawl 1s steps(4) infinite;
+  background-image: url('../../images/noise.png');
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  content: '';
+  height: 100%;
+  left: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  @media (max-width: $container-ipad) {
+    animation: none;
+    background-size: 200px 200px;
+  }
+}
+
+// CTA aurora gradient - uses inline SVG
+.has-aurora-gradient,
+.has-radial-gradient-animation {
+  overflow: hidden;
+  position: relative;
+
+  .aurora-gradient-inner {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+
+    > svg {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  // Noise on CTA
+  &::before {
+    @include aurora-noise-layer();
+  }
+
+  > *:not(.aurora-gradient-inner) {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+// Smoothly fade in the aurora on initial load
+@keyframes aurora-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+// Noise flicker - jumps background-position so the pattern reshuffles
+@keyframes noise-crawl {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: -173px -247px;
+  }
+
+  50% {
+    background-position: -311px -89px;
+  }
+
+  75% {
+    background-position: -67px -359px;
+  }
+}

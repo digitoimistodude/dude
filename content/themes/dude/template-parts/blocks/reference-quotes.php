@@ -23,11 +23,6 @@ if ( ! isset( $args ) ) {
   $reference_ids = $args['reference_ids'];
 }
 
-if ( empty( $reference_ids ) ) {
-  maybe_show_error_block( 'Referenssejä ei ole valittuna' );
-  return;
-}
-
 $quote_ids = [];
 $quote_field = 'quote_short';
 foreach ( $reference_ids as $reference_id ) {
@@ -38,20 +33,12 @@ foreach ( $reference_ids as $reference_id ) {
   $quote_ids[] = $reference_id;
 }
 
-if ( empty( $quote_ids ) ) {
-  maybe_show_error_block( 'Lyhyitä lainauksia ei ole.' );
-  return;
-}
-
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko on pakollinen.' );
-  return;
-}
 ?>
 
 <?php
 // If is front page or "Verkkosivut" page
-if ( is_front_page() || is_page( 9 ) ) : ?>
+if ( is_front_page() || is_page( 9 ) ) :
+?>
   <section class="block has-unified-padding-if-stacked block-testimonial-train">
     <div class="container">
       <h2 class="block-heading">
@@ -63,7 +50,8 @@ if ( is_front_page() || is_page( 9 ) ) : ?>
       <ul class="quotes list" id="list">
         <?php foreach ( $quote_ids as $quote_id ) {
           get_template_part( 'template-parts/loops/reference-quote', null, [ 'post_id' => $quote_id, 'quote_field' => $quote_field ] );
-        } ?>
+        }
+        ?>
       </ul>
     </div>
   </section>
@@ -92,11 +80,12 @@ if ( is_front_page() || is_page( 9 ) ) : ?>
         <ul class="quotes swiper-wrapper">
           <?php foreach ( $quote_ids as $quote_id ) {
             get_template_part( 'template-parts/loops/reference-quote', null, [ 'post_id' => $quote_id, 'quote_field' => $quote_field ] );
-          } ?>
+          }
+          ?>
         </ul>
 
       </div>
 
     </div>
   </section>
-<?php endif; ?>
+<?php endif; 

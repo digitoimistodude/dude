@@ -22,7 +22,8 @@ get_header(); ?>
   <?php get_template_part( 'template-parts/blocks/hero-jobs', null ) ?>
   <?php the_content();
 
-  do_action( 'dude_site_main_after_content' ); ?>
+  do_action( 'dude_site_main_after_content' );
+  ?>
         
 </main>
 

@@ -89,7 +89,8 @@ get_header(); ?>
   <?php
   // "No results" message block
   // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-  if ( ! empty( $_GET['s'] ) && ! have_posts() ) : ?>
+  if ( ! empty( $_GET['s'] ) && ! have_posts() ) :
+  ?>
     <section class="block block-search-results">
       <div class="container">
         <h2><?php echo esc_html( get_default_localization( 'No results found for your search' ) ); ?>.</h2>

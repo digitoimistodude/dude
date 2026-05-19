@@ -21,6 +21,12 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
   remove_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\change_attachment_image_src_to_cfcdn' );
 
   $image_data = wp_get_attachment_image_src( $image_id, 'full' );
+
+  // Early return if image not found
+  if ( ! $image_data ) {
+    return;
+  }
+
   $image_url = $image_data[0];
 
   $crop_dimensions = get_post_meta( $image_id, '_wpsmartcrop_enabled', true ) ? get_post_meta( $image_id, '_wpsmartcrop_image_focus', true ) : [];
@@ -124,6 +130,11 @@ function get_picture_element_with_cfcdn( $image_id, $img_params, $sources, $load
 
 if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
   function build_image_cf_cdn_url( $image_url, $args = [] ) {
+    // Early return if no image URL provided
+    if ( empty( $image_url ) ) {
+      return '';
+    }
+
     unset( $args['classes'] );
 
     if ( ! isset( $args['format'] ) ) {
@@ -132,6 +143,10 @@ if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
 
     $args_url = [];
     foreach ( $args as $key => $value ) {
+      // Skip null/false values to allow excluding params like gravity and fit
+      if ( null === $value || false === $value ) {
+        continue;
+      }
       $args_url[] = "{$key}={$value}";
     }
 
@@ -139,6 +154,9 @@ if ( ! function_exists( '\Air_Light\build_image_cf_cdn_url' ) ) {
     if ( 'production' !== wp_get_environment_type() ) {
       $image_url = str_replace( 'dude.test', 'dude.fi', $image_url );
     }
+
+    // Ensure www.dude.fi is used for CF Image Resizing, Ref: DEV-619
+    $image_url = preg_replace( '#^https?://dude\.fi/#', 'https://www.dude.fi/', $image_url );
 
     return 'https://cdn.dude.fi/cdn-cgi/image/' . implode( ',', $args_url ) . "/{$image_url}";
   } // End build_image_cf_cdn_url

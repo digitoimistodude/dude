@@ -31,10 +31,6 @@ if ( isset( $alt_title ) && ! empty( $alt_title ) ) {
   $title = $alt_title;
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
 ?>
 
 <section class="block block-hero-jobs block-background-petrol has-bg-image">
@@ -50,7 +46,8 @@ if ( empty( $title ) ) {
           echo wp_kses_post( wpautop( $content ) );
         }
 
-        if ( ! empty( $button['url'] ) || ! empty( $button['title'] ) ) : ?>
+        if ( ! empty( $button['url'] ) || ! empty( $button['title'] ) ) :
+        ?>
           <p class="button-wrapper">
             <a href="<?php echo esc_url( $button['url'] ); ?>" class="no-external-link-indicator<?php if ( str_contains( $button['url'], '#' ) ) echo ' js-trigger'; ?>">
               <span class="screen-reader-text-dude">Siirry työpaikkalistaukseen: </span><?php echo wp_kses_post( $button['title'] ); ?>
@@ -66,6 +63,7 @@ if ( empty( $title ) ) {
       </div>
     <?php endif;
 
-    include get_theme_file_path( '/svg/logo-big-white.svg' ); ?>
+    include get_theme_file_path( 'assets/svg/logo-big-white.svg' );
+    ?>
   </div>
 </section>

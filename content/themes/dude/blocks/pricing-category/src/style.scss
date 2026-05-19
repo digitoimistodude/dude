@@ -1,0 +1,467 @@
+// Pricing Category block styles
+// Shared styles loaded on both frontend and editor
+// Editor-only overrides are in editor.scss
+.block-pricing-category {
+  padding-bottom: 0;
+  padding-top: calc(var(--padding-block) + 26px);
+
+  .container {
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  @media (max-width: 600px) {
+    padding-top: var(--padding-block);
+  }
+}
+
+// Grid layout for both editor and front-end
+.pricing-category {
+  display: grid;
+  gap: 65px;
+  grid-template-columns: minmax(0, 470px) minmax(0, 1fr);
+
+  @media (max-width: 1300px) {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  }
+
+  @media (max-width: 1050px) {
+    gap: 32px;
+    grid-template-columns: 1fr;
+  }
+}
+
+// Category info wrapper (left column)
+.category-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// Category items wrapper (right column)
+.category-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  // Editor block appender
+  > .block-list-appender {
+    margin-top: 0;
+  }
+
+  @media (max-width: 600px) {
+    gap: 10px;
+  }
+}
+
+// Category heading typography
+.category-title,
+.category-info h2 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-28);
+  font-weight: 500;
+  letter-spacing: -0.26px;
+  line-height: 1.4;
+  margin: 0;
+
+  @media (max-width: 600px) {
+    font-size: var(--font-size-24);
+  }
+}
+
+// Category description typography
+.category-description,
+.category-info p {
+  color: var(--color-paragraph);
+  font-size: var(--font-size-20);
+  line-height: 1.7;
+  margin: 0;
+
+  @media (max-width: 600px) {
+    font-size: var(--font-size-16);
+  }
+}
+
+// Accordion item wrapper - use .block-pricing-category for higher specificity over global accordion styles
+.block-pricing-category .pricing-accordion-item {
+  background: transparent;
+  border: 1px solid rgb(126 255 225 / 0.15);
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.18s;
+  width: 100%;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-mint);
+  }
+
+  // Reset h3 wrapper
+  > h3 {
+    margin: 0;
+  }
+
+  // Accordion trigger button (accessible pattern) - use button for specificity over global styles
+  button.accordion-trigger {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--color-heading);
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    justify-content: space-between;
+    padding: 32px;
+    text-align: left;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      padding: 24px;
+    }
+  }
+
+  // Accordion title wrapper
+  .accordion-title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  // Accordion panel (hidden by default)
+  .accordion-panel {
+    padding: 0 32px 32px;
+
+    @media (max-width: 600px) {
+      padding: 0 24px 24px;
+    }
+  }
+
+  .accordion-panel > div {
+    padding-bottom: 0;
+    padding-right: 0;
+    p,
+    li {
+      color: rgb(255 255 255 / 0.8);
+      font-size: var(--font-size-16);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    ul {
+      color: rgb(255 255 255 / 0.8);
+      font-size: var(--font-size-16);
+      line-height: 1.7;
+      margin: 10px 0 0;
+      padding-left: 17px;
+    }
+  }
+
+  // Two-column layout for gradient box (frontend only)
+  .panel-layout.has-gradient-box {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 1050px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Hide gradient box when toggle is off
+  .panel-layout:not(.has-gradient-box) .panel-gradient-box {
+    display: none;
+  }
+
+  // Left column content
+  .panel-main .item-description {
+    color: rgb(255 255 255 / 0.8);
+    font-size: var(--font-size-16);
+    line-height: 1.7;
+    margin: 0 0 10px;
+  }
+
+  .panel-main .features-title {
+    color: var(--color-heading);
+    font-size: var(--font-size-16);
+    font-weight: 600;
+    margin: 16px 0 8px;
+  }
+
+  .panel-main a {
+    color: var(--color-mint);
+    text-decoration: underline;
+  }
+
+  .panel-main a:hover,
+  .panel-main a:focus {
+    text-decoration: none;
+  }
+
+  // Right gradient box
+  .panel-gradient-box {
+    background: radial-gradient(circle, #1f4348 0%, #1e2b35 100%);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  // Remove WordPress global padding from core/group blocks (must come after to override)
+  .panel-main.has-global-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Gradient box needs to keep its padding, so override the has-global-padding
+  .panel-gradient-box.has-global-padding {
+    padding: 24px !important;
+
+    .gradient-box-heading {
+      color: var(--color-heading);
+      font-size: var(--font-size-20);
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0 0 16px;
+    }
+
+    // Core list block styles
+    .wp-block-list,
+    ul {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+
+      li {
+        color: rgb(255 255 255 / 0.8);
+        font-size: var(--font-size-16);
+        line-height: 1.7;
+        margin-bottom: 8px;
+        padding-left: 28px;
+        position: relative;
+      }
+    }
+
+    // Core buttons block
+    /* stylelint-disable selector-max-class, selector-max-specificity */
+    .wp-block-buttons {
+      margin: 0;
+
+      .wp-block-button {
+        margin: 0;
+      }
+    }
+
+    // Core button or custom button
+    .wp-block-button__link,
+    .button {
+      background-color: var(--color-mint);
+      border-radius: 28px;
+      color: var(--color-midnight);
+      display: inline-block;
+      font-size: var(--font-size-14);
+      font-weight: 500;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+
+      &:hover,
+      &:focus {
+        opacity: 0.9;
+        text-decoration: none;
+      }
+    }
+    /* stylelint-enable selector-max-class, selector-max-specificity */
+
+    // Text links
+    p a,
+    li a {
+      color: var(--color-mint);
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+
+  // Expanded state - override global expanded padding
+  button.accordion-trigger[aria-expanded='true'] {
+    padding: 32px;
+
+    @media (max-width: 600px) {
+      padding: 24px;
+    }
+  }
+
+  // Gradient box list bullets
+  .panel-gradient-box ul li::before,
+  .panel-gradient-box .wp-block-list li::before {
+    background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 5L7.50065 14.1667L3.33398 10" stroke="%237EFFE1" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    content: '';
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 20px;
+  }
+
+  // Button styles for is-style-mint in gradient box
+  /* stylelint-disable selector-max-class, selector-max-specificity */
+  .panel-gradient-box .wp-block-button.is-style-mint .wp-block-button__link {
+    transition: all 0.18s;
+  }
+
+  .panel-gradient-box
+    .wp-block-button.is-style-mint
+    .wp-block-button__link:hover,
+  .panel-gradient-box
+    .wp-block-button.is-style-mint
+    .wp-block-button__link:focus {
+    background-color: var(--color-button-background-hover);
+    border-color: var(--color-button-background-hover);
+    box-shadow: 0 0 0 3px var(--color-button-background-hover);
+    color: var(--color-button-hover);
+  }
+  /* stylelint-enable selector-max-class, selector-max-specificity */
+
+  // Expanded state - rotate icon (override global -315deg)
+  button.accordion-trigger[aria-expanded='true'] .accordion-icon {
+    transform: rotate(0deg) !important;
+
+    svg {
+      transform: rotate(180deg) !important;
+    }
+  }
+
+  // Accordion icon - override global background-image with our SVG
+  .accordion-icon {
+    align-items: center;
+    background-image: none !important;
+    display: flex;
+    flex-shrink: 0;
+    height: 18px;
+    justify-content: center;
+    min-width: 18px;
+    width: 18px;
+
+    svg {
+      height: auto;
+      transition: transform 100ms;
+      width: 18px;
+    }
+  }
+}
+
+// Editor-specific override for accordion icon rotation (override global -315deg)
+/* stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
+.editor-styles-wrapper
+  .block-pricing-category
+  .pricing-accordion-item
+  button.accordion-trigger[aria-expanded='true']
+  .accordion-icon {
+  transform: rotate(0deg) !important;
+
+  svg {
+    transform: rotate(180deg) !important;
+  }
+}
+
+.block-pricing-category
+  .accordion-trigger[aria-expanded='true']
+  .accordion-icon {
+  transform: rotate(0deg) !important;
+
+  svg {
+    transform: rotate(180deg) !important;
+  }
+}
+/* stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-compound-selectors */
+.block-pricing-category .accordion-cta {
+  margin-top: 10px;
+
+  .button {
+    margin-top: 16px;
+  }
+}
+
+.block-pricing-category .item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.block-pricing-category .item-header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .item-name {
+    color: var(--color-heading);
+    font-size: var(--font-size-24);
+    font-weight: 500;
+    line-height: 1.32;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-18);
+    }
+  }
+
+  .badge {
+    background-color: var(--color-mint);
+    border-radius: 63px;
+    color: var(--color-midnight);
+    font-size: var(--font-size-14);
+    font-weight: 600;
+    padding: 2px 14px;
+  }
+}
+
+.block-pricing-category .item-meta {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+
+  .price {
+    color: var(--color-mint);
+    font-size: var(--font-size-16);
+    font-weight: 500;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-14);
+    }
+  }
+
+  .description {
+    color: rgb(255 255 255 / 0.6);
+    font-size: var(--font-size-16);
+    font-weight: 500;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-14);
+    }
+  }
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

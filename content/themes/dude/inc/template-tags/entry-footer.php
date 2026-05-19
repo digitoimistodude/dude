@@ -26,7 +26,8 @@ function entry_footer() {
             foreach ( $categories as $category ) {
               echo '<a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a>';
             }
-          } ?>
+          }
+          ?>
         </p>
       </div>
     <?php	endif;

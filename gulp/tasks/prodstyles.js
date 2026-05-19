@@ -7,7 +7,6 @@ const cssnano = require('cssnano');
 const calcFunction = require('postcss-calc');
 const colormin = require('postcss-colormin');
 const discardEmpty = require('postcss-discard-empty');
-const discardUnused = require('postcss-discard-unused');
 const mergeLonghand = require('postcss-merge-longhand');
 const mergeAdjacentRules = require('postcss-merge-rules');
 const minifyFontValues = require('postcss-minify-font-values');
@@ -35,7 +34,6 @@ function prodstyles() {
           colormin(),
           calcFunction(),
           discardEmpty(),
-          discardUnused(),
           mergeLonghand(),
           mergeAdjacentRules(),
           minifyFontValues(),

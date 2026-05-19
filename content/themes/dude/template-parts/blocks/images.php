@@ -20,10 +20,6 @@ if ( ! isset( $args ) ) {
   $images = $args['images'];
 }
 
-if ( empty( $images ) ) {
-  maybe_show_error_block( 'Asetappa ne kuvat' );
-  return;
-}
 ?>
 
 <section class="block block-images">
@@ -32,7 +28,8 @@ if ( empty( $images ) ) {
     <?php foreach ( $images as $key => $image ) {
       $key++;
       native_lazyload_tag( $image, [ 'class' => "image-{$key}" ] );
-    } ?>
+    }
+    ?>
 
   </div>
 </section>

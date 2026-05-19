@@ -34,11 +34,6 @@ if ( ! isset( $args ) ) {
   $prefix = $args['prefix'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko ja sisältö on pakolliset.' );
-  return;
-}
-
 // If reference
 if ( get_post_type() === 'reference' ) {
   $block_color = 'reference';
@@ -75,7 +70,13 @@ if ( is_page( 4487 ) ) {
     <div class="col col-content has-transition-fade">
       <div class="content">
         <h1 id="content" class="prefix">
-          <?php if ( $serp_title ) echo esc_html( $serp_title ); else echo esc_html( $prefix ); ?>
+          <?php
+          if ( $serp_title ) {
+            echo esc_html( $serp_title );
+          } else {
+            echo esc_html( $prefix );
+          }
+?>
         </h1>
 
         <h2>

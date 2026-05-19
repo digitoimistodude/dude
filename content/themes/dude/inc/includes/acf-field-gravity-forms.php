@@ -53,4 +53,9 @@ class ACF_Field_Gravity_Forms extends acf_field {
   }
 }
 
-new ACF_Field_Gravity_Forms();
+// Register field type after ACF is initialized
+add_action( 'acf/include_field_types', function() {
+  if ( class_exists( 'acf_field' ) ) {
+    new ACF_Field_Gravity_Forms();
+  }
+} );

@@ -22,11 +22,6 @@ if ( ! isset( $args ) ) {
   $description = $args['description'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
-
 $jobs_query = new \WP_query( [
   'post_type'      => 'job',
   'posts_per_page' => 50,
@@ -54,11 +49,13 @@ if ( $jobs_query->have_posts() ) {
       </div>
     <?php endif;
 
-    if ( ! empty( $jobs ) ) : ?>
+    if ( ! empty( $jobs ) ) :
+    ?>
       <ul class="jobs">
         <?php foreach ( $jobs as $job ) {
           get_template_part( 'template-parts/loops/job', null, $job );
-        } ?>
+        }
+        ?>
       </ul>
     <?php else : ?>
       <div class="no-jobs">

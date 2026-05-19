@@ -27,11 +27,6 @@ if ( get_field( 'hide_block' ) ) {
   return;
 }
 
-if ( empty( $title ) || empty( $image ) ) {
-  maybe_show_error_block( 'A title and image is required' );
-  return;
-}
-
 $classes = [
   'block',
   'block-image-content',
@@ -104,7 +99,8 @@ if ( is_page( 4487 ) ) {
       </div>
       <?php if ( 'job' === get_post_type() ) :
         $caption = wp_get_attachment_metadata( $image )['image_meta']['caption'];
-        if ( ! empty( $caption ) ) : ?>
+        if ( ! empty( $caption ) ) :
+        ?>
         ?>
           <figcaption>
             <?php echo esc_html( $caption ); ?>
@@ -121,7 +117,8 @@ if ( is_page( 4487 ) ) {
 
         <?php echo wp_kses_post( wpautop( $content ) );
 
-        if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) : ?>
+        if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) :
+        ?>
           <p class="link-underlined-wrapper">
             <a href="<?php echo esc_url( $link['url'] ) ?>" class="link-underlined">
               <?php echo esc_html( $link['title'] ) ?>

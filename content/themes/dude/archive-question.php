@@ -35,7 +35,8 @@ get_header(); ?>
 
       <div class="accordion" data-allow-toggle>
         <?php foreach ( $question_datas as $question_data ) :
-          $key = sanitize_title( $question_data['title'] ); ?>
+          $key = sanitize_title( $question_data['title'] );
+          ?>
           <div class="accordion-item">
           <h3>
             <button

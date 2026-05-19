@@ -67,7 +67,8 @@ get_header(); ?>
             <div class="image image-background">
               <?php get_picture_element_with_cfcdn( get_post_thumbnail_id( $featured_post['post_id'] ), $picture_cdn_args, $picture_cdn_srcset );
               $video_bg = get_post_meta( $featured_post['post_id'], 'article_video', true );
-              if ( $video_bg ) : ?>
+              if ( $video_bg ) :
+              ?>
                 <div class="vimeo-iframe-wrapper vimeo-iframe-wrapper-upsell">
                   <iframe src="https://player.vimeo.com/video/<?php echo str_replace( array( 'http:', 'https:', 'vimeo.com', '/' ), '', $video_bg ); // phpcs:ignore ?>?background=1&autoplay=1&loop=1&byline=0&title=0"
                     frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
@@ -127,14 +128,16 @@ get_header(); ?>
             <?php wp_list_categories( [
               'title_li'  => null,
               'orderby'   => 'order',
-            ] ); ?>
+            ] );
+            ?>
           </ul>
       </header>
 
       <div class="cols cols-3">
         <?php foreach ( $items as $item ) {
           get_template_part( 'template-parts/loops/post', null, [ 'post_id' => $item['post_id'] ] );
-        } ?>
+        }
+        ?>
       </div>
 
     <?php the_posts_pagination(); ?>

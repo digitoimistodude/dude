@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "dude/pricing-category",
+  "version": "1.0.0",
+  "title": "Kategoria",
+  "category": "dude-native",
+  "icon": "tag",
+  "description": "Hinnaston kategoria haitarielementeillä",
+  "keywords": ["pricing", "category", "accordion", "hinnasto"],
+  "supports": {
+    "html": false,
+    "align": ["full"],
+    "anchor": true,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "allowedBlocks": ["dude/pricing-item"],
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Räätälöidyt WordPress-sivustot"
+    },
+    "description": {
+      "type": "string",
+      "default": "Lorem ipsum dolor sit amet consectetur. Dictumst malesuada sem platea placerat arcu elit morbi."
+    }
+  },
+  "example": {
+    "attributes": {
+      "title": "Räätälöidyt WordPress-sivustot",
+      "description": "Kaikki palvelumme ovat räätälöityjä ja suunniteltu kestämään aikaa."
+    },
+    "innerBlocks": [
+      {
+        "name": "dude/pricing-item",
+        "attributes": {
+          "title": "Esimerkkituote",
+          "price": "500 €",
+          "shortDescription": "Lyhyt kuvaus tuotteesta"
+        }
+      }
+    ]
+  },
+  "textdomain": "dude",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css"
+}

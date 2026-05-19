@@ -13,11 +13,6 @@ namespace Air_Light;
 // Fields
 $vimeo_url = get_field( 'vimeo_url' );
 
-if ( empty( $vimeo_url ) ) {
-  maybe_show_error_block( 'Vimeo URL -kenttää ei voi jättää tyhjäksi, lisää esim. https://vimeo.com/1000301382' );
-  return;
-}
-
 // Get VIMEO_TOKEN from .env
 $vimeo_token = getenv( 'VIMEO_TOKEN' );
 

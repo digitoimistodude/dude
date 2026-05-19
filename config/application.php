@@ -8,7 +8,9 @@
  * can.
  */
 
+// phpcs:ignore Universal.UseStatements.DisallowUseClass.FoundWithoutAlias
 use Roots\WPConfig\Config;
+// phpcs:ignore Universal.UseStatements.DisallowUseFunction.FoundWithoutAlias
 use function Env\env;
 
 /**
@@ -100,11 +102,18 @@ Config::define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?: 15 ); // Limi
 Config::define( 'MAILGUN_USEAPI', true );
 
 /**
+ * API Keys
+ */
+Config::define( 'PLAUSIBLE_API_KEY', env( 'PLAUSIBLE_API_KEY' ) );
+Config::define( 'PIPEDRIVE_API_TOKEN', env( 'PIPEDRIVE_API_TOKEN' ) );
+
+/**
  * Debugging Settings
  */
 Config::define( 'WP_DEBUG_DISPLAY', false );
 Config::define( 'WP_DEBUG_LOG', env( 'WP_DEBUG_LOG' ) ?? false );
 Config::define( 'SCRIPT_DEBUG', false );
+// phpcs:ignore WordPress.PHP.IniSet.display_errors_Disallowed
 ini_set( 'display_errors', '0' );
 
 /**
@@ -119,11 +128,19 @@ Config::define( 'WP_REDIS_CONFIG', [
   'prefix'            => env( 'DB_NAME' ),
   'database'          => env( 'REDIS_DATABASE' ) ?: 0,
   'maxttl'            => 43200, // max cache half day
-  'timeout'           => 1.0,
-  'read_timeout'      => 1.0,
-  'split_alloptions'  => true,
+  'timeout'           => 0.5,
+  'read_timeout'      => 0.5,
+  'retry_interval'    => 10,
+  'retries'           => 3,
+  'backoff'           => 'smart',
+  'serializer'        => 'igbinary',
   'async_flush'       => true,
+  'split_alloptions'  => true,
+  'prefetch'          => true,
+  'strict'            => false,
   'debug'             => false,
+  'save_commands'     => false,
+  'analytics'         => false,
 ] );
 
 if ( 'production' === getenv( 'WP_ENV' ) ) {

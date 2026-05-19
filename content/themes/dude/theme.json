@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1400px",
+      "wideSize": "1200px"
+    },
+    "spacing": {
+      "units": ["px", "rem", "%", "vw"],
+      "customSpacingSize": false,
+      "spacingSizes": [
+        {
+          "name": "None",
+          "slug": "none",
+          "size": "0"
+        },
+        {
+          "name": "Small",
+          "slug": "small",
+          "size": "clamp(20px, calc(25px + 4.6vw), 20px)"
+        },
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "size": "clamp(48px, calc(25px + 4.6vw), 48px)"
+        },
+        {
+          "name": "Large",
+          "slug": "large",
+          "size": "clamp(48px, calc(25px + 4.6vw), 60px)"
+        },
+        {
+          "name": "X-Large",
+          "slug": "x-large",
+          "size": "clamp(48px, calc(25px + 5vw), 80px)"
+        },
+        {
+          "name": "2X-Large",
+          "slug": "2-x-large",
+          "size": "clamp(48px, calc(25px + 10vw), 120px)"
+        },
+        {
+          "name": "3X-Large",
+          "slug": "3-x-large",
+          "size": "clamp(48px, calc(25px + 10vw), 300px)"
+        }
+      ]
+    },
+    "color": {
+      "custom": false,
+      "customGradient": false
+    },
+    "typography": {
+      "customFontSize": false
+    },
+    "custom": {
+      "gridBase": "1400px"
+    }
+  },
+  "styles": {
+    "spacing": {
+      "padding": {
+        "left": "var(--padding-container-horizontal)",
+        "right": "var(--padding-container-horizontal)"
+      }
+    }
+  }
+}

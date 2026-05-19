@@ -24,10 +24,6 @@ if ( ! isset( $args ) ) {
   $link = $args['link'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikko on pakollinen' );
-  return;
-}
 ?>
 
 <section class="block block-hero-centered has-unified-padding-if-stacked">
@@ -38,11 +34,25 @@ if ( empty( $title ) ) {
         <?php the_title(); ?>
       </h1>
 
-      <?php echo wp_kses_post( wpautop( $title ) );
+      <?php
+      $allowed_html = [
+        'h2'     => [],
+        'h3'     => [],
+        'p'      => [],
+        'span'   => [
+          'style' => [],
+          'class' => [],
+        ],
+        'strong' => [],
+        'em'     => [],
+        'br'     => [],
+      ];
+      echo wp_kses( $title, $allowed_html );
 
       echo wp_kses_post( wpautop( $content ) );
 
-      if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) : ?>
+      if ( ! empty( $link ) && ! empty( $link['title'] && $link['url'] ) ) :
+      ?>
         <p class="link-underlined-wrapper">
           <a href="<?php echo esc_url( $link['url'] ) ?>" class="link-underlined">
             <?php echo esc_html( $link['title'] ) ?>

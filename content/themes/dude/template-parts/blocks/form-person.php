@@ -28,10 +28,6 @@ if ( ! empty( $person_id ) ) {
   ];
 }
 
-if ( empty( $form_id ) ) {
-  maybe_show_error_block( 'Lomaketta ei ole valittuna.' );
-  return;
-}
 ?>
 
 <section class="block block-form-person has-unified-padding-if-stacked">
@@ -40,7 +36,8 @@ if ( empty( $form_id ) ) {
     <div class="form has-transition-fade">
       <?php wpforms_display( $form_id );
 
-      do_action( 'wpforms_wp_footer_end' ); ?>
+      do_action( 'wpforms_wp_footer_end' );
+      ?>
     </div>
 
     <?php // NB! Person section removed (new contact layout 4.10.2022) ?>

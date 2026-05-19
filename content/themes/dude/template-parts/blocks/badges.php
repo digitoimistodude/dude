@@ -20,10 +20,6 @@ if ( ! isset( $args ) ) {
   $title = $args['title'];
 }
 
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'A title is required' );
-  return;
-}
 ?>
 
 <section class="block block-badges">

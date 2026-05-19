@@ -24,10 +24,6 @@ if ( ! isset( $args ) ) {
   $cols = $args['cols'];
 }
 
-if ( empty( $cols ) ) {
-  maybe_show_error_block( 'Sisältöä ei ole asetettuna' );
-  return;
-}
 ?>
 
 <section class="block block-title-content-cols-30 has-unified-padding-if-stacked">

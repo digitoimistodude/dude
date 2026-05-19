@@ -62,8 +62,8 @@ foreach ( $persons as $person ) {
   $social_media_count = get_post_meta( $person['person_id'], 'social_media', true );
   for ( $i = 0; $i < $social_media_count; $i++ ) {
     $person_tmp['social_media'][] = [
-      'name' => get_post_meta( $person['person_id'], "social_media_${i}_name", true ),
-      'value' => get_post_meta( $person['person_id'], "social_media_${i}_value", true ),
+      'name' => get_post_meta( $person['person_id'], "social_media_{$i}_name", true ),
+      'value' => get_post_meta( $person['person_id'], "social_media_{$i}_value", true ),
     ];
   }
 
@@ -74,10 +74,6 @@ foreach ( $persons as $person ) {
   $persons_data[] = $person_tmp;
 }
 
-if ( empty( $persons_data ) ) {
-  maybe_show_error_block( 'Henkilöitä ei ole valittu.' );
-  return;
-}
 ?>
 
 <section class="block block-persons has-unified-padding-if-stacked">
@@ -114,7 +110,8 @@ if ( empty( $persons_data ) ) {
               <p><?php echo esc_html( $person['title'] ) ?></p>
             <?php endif;
 
-            if ( ! empty( $person['email'] ) ) : ?>
+            if ( ! empty( $person['email'] ) ) :
+            ?>
               <p>
                 <a href="mailto:<?php echo esc_attr( $person['email'] ) ?>">
                   <?php echo esc_html( $person['email'] ) ?>
@@ -122,7 +119,8 @@ if ( empty( $persons_data ) ) {
               </p>
             <?php endif;
 
-            if ( ! empty( $person['phone'] ) && $person['show_phone'] ) : ?>
+            if ( ! empty( $person['phone'] ) && $person['show_phone'] ) :
+            ?>
               <p>
                 <a href="tel:<?php echo esc_attr( $person['phone'] ) ?>">
                   <?php echo esc_html( $person['phone'] ) ?>
@@ -130,12 +128,13 @@ if ( empty( $persons_data ) ) {
               </p>
             <?php endif;
 
-            if ( isset( $person['social_media'] ) && ! empty( $person['social_media'] ) ) : ?>
+            if ( isset( $person['social_media'] ) && ! empty( $person['social_media'] ) ) :
+            ?>
               <ul class="social-media">
                 <?php foreach ( $person['social_media'] as $social ) : ?>
                   <li>
                     <a href="<?php echo esc_url( $social['value'] ) ?>" class="no-external-link-indicator">
-                      <?php include get_theme_file_path( 'svg/social/' . strtolower( str_replace( '.', '-', $social['name'] ) ) . '.svg' ) ?>
+                      <?php include get_theme_file_path( 'assets/svg/social/' . strtolower( str_replace( '.', '-', $social['name'] ) ) . '.svg' ) ?>
                       <span class="screen-reader-text-dude">
                         <?php echo esc_html( $social['name'] ) ?>
                       </span>

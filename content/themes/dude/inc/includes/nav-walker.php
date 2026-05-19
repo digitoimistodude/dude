@@ -80,7 +80,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
     if ( isset( $args->has_dropdown ) && $args->has_dropdown ) {
       // Get the icon
       ob_start();
-      require get_theme_file_path( 'svg/mobile-nav-arrow-down.svg' );
+      require get_theme_file_path( 'assets/svg/mobile-nav-arrow-down.svg' );
       $icon = ob_get_clean();
       $output .= '<button class="dropdown-toggle" aria-expanded="false" aria-label="' . get_default_localization( 'Open child menu' ) . '">';
       $output .= $icon . '</button>';
@@ -324,6 +324,20 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
     // Put the item contents into $output.
 	$item_output .= isset( $args->link_before ) ? $args->link_before . $title . $args->link_after : '';
+
+    // Add number of open jobs when työpaikat page on menu
+    if ( THEME_SETTINGS['page_ids']['jobs'] === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
+      $open_jobs = get_open_jobs_count();
+
+      if ( $open_jobs > 0 ) {
+        $item_output .= '<span class="open-positions-count"><span class="screen-reader-text-dude">, </span>' . $open_jobs . '<span class="screen-reader-text-dude">työpaikkaa avoinna</span></span>';
+      }
+    }
+
+    // Add "new badge" for upkeep page 18011
+    // if ( 18011 === absint( $item->object_id ) ) { // phpcs:ignore WordPress.PHP.YodaConditions
+    //   $item_output .= '<span class="screen-reader-text-dude"> (</span><span class="new-badge">Uutta</span><span class="screen-reader-text-dude">)</span>';
+    // }
 
     /*
 	 * This is the end of the internal nav item. We need to close the

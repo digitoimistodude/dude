@@ -22,11 +22,6 @@ if ( ! isset( $args ) ) {
   $image = $args( 'image' );
 }
 
-if ( empty( $items_raw ) ) {
-  maybe_show_error_block( 'Listaelementtejä on pakko olla.' );
-  return;
-}
-
 $items = [];
 foreach ( $items_raw as $item ) {
   if ( empty( $item['content'] ) ) {
@@ -34,11 +29,6 @@ foreach ( $items_raw as $item ) {
   }
 
   $items[] = $item['content'];
-}
-
-if ( empty( $items ) ) {
-  maybe_show_error_block( 'Listaelementtejä on pakko olla.' );
-  return;
 }
 
 $picture_cdn_args = [
@@ -68,7 +58,8 @@ $picture_cdn_srcset = [
       <div class="col image image-background">
         <?php if ( ! empty( $image ) ) {
           get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset );
-        } ?>
+        }
+        ?>
       </div>
 
       <ul class="col list">

@@ -1,4 +1,9 @@
-# Dotfiles and directories
+content/themes/dude/.parcel-cache
+content/upgrade-temp-backup
+content/upgrade-temp-backup/plugins/CRM-service-wp-forms
+claude
+CLAUDE.md
+.claude
 content/themes/twentytwentythree
 auth.json
 passwords.txt
@@ -11,7 +16,6 @@ passwords.txt
 .sass-cache/
 .git/
 .DS_Store
-composer.lock
 .vscode/
 content/cache
 content/w3tc-config
@@ -19,10 +23,11 @@ nginx.conf
 content/autoptimize_404_handler.php
 
 # Logs
-package-lock.json
 access.log
 error.log
+logs/
 log/
+logs/
 
 # Special git hooks
 !.githooks
@@ -33,6 +38,7 @@ vendor/
 vendor/*
 !vendor/.gitkeep
 node_modules/
+package-lock.json
 
 # WordPress core
 wp/
@@ -53,6 +59,12 @@ content/uploads
 tiedostot
 media
 media/*
+
+# Parcel
+.parcel-cache/
+
+# Source maps (optional - generated during build)
+*.map
 
 # Misc
 *.codekit

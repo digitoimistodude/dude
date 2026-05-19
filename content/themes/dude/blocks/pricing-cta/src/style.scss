@@ -1,0 +1,212 @@
+// Pricing CTA block styles
+// Editor-specific overrides - force white colors since editor can't detect dark gradient
+// stylelint-disable selector-class-pattern, no-descending-specificity, declaration-no-important
+.editor-styles-wrapper .block.block-pricing-cta {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h2.wp-block-heading,
+  .wp-block-heading {
+    color: #fff !important;
+  }
+
+  p,
+  .wp-block-paragraph {
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  li,
+  .contact-methods span {
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  a {
+    color: var(--color-mint) !important;
+    text-decoration-color: var(--color-mint) !important;
+  }
+
+  // Reset position context on editor wrappers so image positions relative to .cta-box
+  .cta-text,
+  .cta-inner,
+  .cta-inner.block-editor-block-list__layout {
+    position: static !important;
+  }
+
+  // Make image block selectable and position correctly in editor
+  // The block-editor-block-list__block class has position: relative, override it
+  .cta-image.block-editor-block-list__block,
+  .cta-image,
+  .cta-image.wp-block-image {
+    bottom: 0;
+    margin: 0;
+    pointer-events: auto;
+    position: absolute !important;
+    right: 80px;
+    width: 473px;
+    z-index: 1;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+// stylelint-enable selector-class-pattern, no-descending-specificity, declaration-no-important
+
+// Core blocks handle their own typography
+.block-pricing-cta {
+  padding-bottom: 0;
+  padding-top: var(--padding-block);
+
+  > .container {
+    overflow: visible !important;
+  }
+
+  @media (max-width: 1200px) {
+    padding-top: var(--padding-block);
+  }
+}
+
+.cta-box {
+  background-color: #223948;
+  background-image: radial-gradient(
+    ellipse at center,
+    #1e4348 0%,
+    rgb(30 32 38 / 0.54) 100%
+  );
+  border-radius: 16px;
+  display: flex;
+  overflow: visible;
+  position: relative;
+
+  // Reset editor figure margin
+  figure {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.cta-content {
+  padding: 70px;
+  width: 768px;
+
+  // Reset inner wrapper (editor adds this)
+  .cta-inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Reset block wrapper margins in editor
+  .cta-text,
+  .cta-inner > div {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Style heading inside CTA
+  h2,
+  h2.wp-block-heading {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-42);
+    font-weight: 500;
+    letter-spacing: -0.42px;
+    line-height: 1.38;
+    margin: 0 0 26px;
+    padding: 0;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-28);
+    }
+  }
+
+  // Style paragraph inside CTA (works for both front-end and editor)
+  p,
+  p:last-child,
+  .wp-block-paragraph {
+    color: var(--color-paragraph);
+    font-size: var(--font-size-24);
+    line-height: 1.7;
+    margin: 0 0 26px;
+    padding: 0;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-16);
+    }
+  }
+
+  @media (max-width: 900px) {
+    padding: 40px;
+    width: 100%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 30px;
+  }
+}
+
+.contact-methods,
+ul.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0 !important;
+  padding-inline-start: 0 !important;
+
+  li {
+    align-items: center;
+    color: var(--color-text);
+    display: flex;
+    gap: 8px;
+    padding-inline-start: 0 !important;
+  }
+
+  svg {
+    color: var(--color-mint);
+    flex-shrink: 0;
+  }
+
+  span {
+    color: var(--color-text);
+    font-size: var(--font-size-20);
+    line-height: 1.7;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-16);
+    }
+  }
+
+  a {
+    color: var(--color-mint);
+    text-decoration: underline;
+  }
+}
+
+// Image block styling - targets core/image inside cta-text
+.cta-text .wp-block-image,
+.cta-inner .wp-block-image {
+  align-items: flex-end;
+  bottom: 0;
+  display: grid;
+  margin: 0;
+  position: absolute;
+  right: 80px;
+  width: 473px;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    display: none; // stylelint-disable-line a11y/no-display-none
+  }
+}

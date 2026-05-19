@@ -44,7 +44,7 @@ $hero_content = get_post_meta( get_the_id(), 'hero_content', true );
             </div>
 
             <div class="survey-header--logo">
-              <?php include get_theme_file_path( '/svg/logo.svg' ); ?>
+              <?php include get_theme_file_path( 'assets/svg/logo.svg' ); ?>
               <p class="survey-header--logo-tagline"><a href="<?php echo esc_url( get_home_url() ); ?>">www.dude.fi</a></p>
             </div>
           </header>
@@ -57,7 +57,8 @@ $hero_content = get_post_meta( get_the_id(), 'hero_content', true );
 
           <?php echo do_shortcode( '[wpforms id="' . $form_id . '"]' );
 
-          do_action( 'dude_site_main_after_content' ); ?>
+          do_action( 'dude_site_main_after_content' );
+          ?>
 
         </main><!-- #main -->
       </div><!-- #primary -->

@@ -18,15 +18,12 @@ if ( ! isset( $args ) ) {
   $title = get_field( 'title' );
   $content = get_field( 'content' );
   $button = get_field( 'button' );
+  $extra_class = '';
 } else {
   $title = $args['title'];
   $content = $args['content'];
   $button = $args['button'];
-}
-
-if ( empty( $title ) || empty( $content ) || empty( $button ) ) {
-  maybe_show_error_block( 'Vaadittu sisältö puuttuu.' );
-  return;
+  $extra_class = isset( $args['extra_class'] ) ? $args['extra_class'] : '';
 }
 
 $classes = [
@@ -35,12 +32,20 @@ $classes = [
   'block-cta-small',
   'has-unified-padding-if-stacked',
 ];
+
+if ( ! empty( $extra_class ) ) {
+  $classes[] = $extra_class;
+}
 ?>
 
 <section class="<?php echo esc_attr( join( ' ', $classes ) ) ?>">
   <div class="container">
 
     <div class="cta-box cta-box-small has-radial-gradient-animation">
+
+      <div class="aurora-gradient-inner" aria-hidden="true">
+        <?php include get_theme_file_path( 'assets/svg/aurora-gradient.svg' ); ?>
+      </div>
 
       <div class="cta-box-content">
         <h2>

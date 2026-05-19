@@ -26,11 +26,6 @@ if ( ! isset( $args ) ) {
   $style = $args['style'];
 }
 
-if ( empty( $title ) || empty( $content ) || empty( $button ) ) {
-  maybe_show_error_block( 'Vaadittu sisältö puuttuu.' );
-  return;
-}
-
 $classes = [
   'cta-box',
   'cta-box-big',
@@ -39,12 +34,17 @@ $classes = [
 if ( 'dark' === $style ) {
   $classes[] = 'has-dark-style';
 } else {
-  $classes[] = 'has-radial-gradient-animation';
+  $classes[] = 'has-aurora-gradient';
 }
 ?>
 
 <section class="block block-cta block-cta-big">
   <div class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
+    <?php if ( 'dark' !== $style ) : ?>
+      <div class="aurora-gradient-inner" aria-hidden="true">
+        <?php include get_theme_file_path( 'assets/svg/aurora-gradient.svg' ); ?>
+      </div>
+    <?php endif; ?>
     <div class="container">
 
       <div class="content">

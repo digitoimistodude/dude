@@ -1,0 +1,124 @@
+// stylelint-disable selector-max-class, selector-max-specificity
+.block-carousel {
+  background-color: var(--color-light-mint);
+
+  h2 {
+    color: var(--color-petrol);
+    font-size: var(--font-size-62);
+  }
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  .swiper,
+  .container {
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    opacity: 0.2;
+    transition: opacity $transition-duration ease-in-out;
+  }
+
+  .swiper-slide.swiper-slide-active {
+    opacity: 1;
+  }
+
+  .swiper-controls {
+    margin: 0;
+  }
+
+  .head {
+    gap: 3rem;
+
+    @media (max-width: $container-mobile) {
+      flex-wrap: wrap;
+    }
+  }
+
+  // Alt carousel style - uses native CSS scroll instead of Swiper
+  &.carousel-style-alt {
+    background-color: transparent;
+
+    .container {
+      max-width: 100%;
+      overflow: visible;
+      padding-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+    }
+
+    .scroll-carousel {
+      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      overflow-y: visible;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .scroll-carousel-track {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      // Align first slide with container content edge (same as arrows)
+      padding-left: max(var(--padding-container-horizontal), calc((100vw - #{$width-grid-base}) / 2 + var(--padding-container-horizontal)));
+      padding-right: max(var(--padding-container-horizontal), calc((100vw - #{$width-grid-base}) / 2 + var(--padding-container-horizontal)));
+    }
+
+    .scroll-carousel-item {
+      flex-shrink: 0;
+      margin: 0;
+
+      img {
+        display: block;
+        height: auto;
+        max-width: calc(100vw - 2rem);
+        width: 100%;
+
+        @media (min-width: $width-max-mobile) {
+          height: 650px;
+          max-width: none;
+          width: auto;
+        }
+      }
+    }
+
+    .scroll-carousel-controls {
+      display: flex;
+      gap: 3.7rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: $width-grid-base;
+      padding: 3rem var(--padding-container-horizontal) 6rem;
+
+      button {
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: var(--color-dark-navy);
+        padding: 0;
+      }
+
+      @media (max-width: $width-max-mobile) {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+.block.block-image-list + .is-skip-link + .block.block-carousel .container {
+  padding-top: 0;
+}

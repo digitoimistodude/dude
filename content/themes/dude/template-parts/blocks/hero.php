@@ -25,11 +25,6 @@ if ( ! isset( $args ) ) {
   $content = $args['content'];
 }
 
-if ( empty( $title ) || empty( $content ) ) {
-  maybe_show_error_block( 'Otsikko ja tekstisisältö on vaadittu' );
-  return;
-}
-
 // Sales phone
 $salesperson_id = get_custom_setting( 'salesperson', 'general' );
 $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
@@ -41,7 +36,20 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
     <div class="content">
       <h1 id="content">
-        <?php echo esc_html( $title ); ?>
+        <?php
+        echo wp_kses( $title, [
+          'h2'     => [],
+          'h3'     => [],
+          'p'      => [],
+          'span' => [
+            'style' => [],
+            'class' => [],
+          ],
+          'strong' => [],
+          'em'     => [],
+          'br'     => [],
+        ] );
+        ?>
       </h1>
 
       <?php echo wp_kses_post( wpautop( $content ) ); ?>
@@ -55,7 +63,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
           <span class="icon-wrapper" aria-hidden="true"><span class="icon"></span></span>
           <span class="play-label">Katso showreel</span>
         </button>
-        */ ?>
+        */
+        ?>
       </p>
     </div>
 
@@ -95,7 +104,8 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 
     </div>
   </div>
-  */ ?>
+  */
+  ?>
 
   </div>
 </section>

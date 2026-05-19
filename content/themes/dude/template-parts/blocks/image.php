@@ -22,11 +22,6 @@ if ( ! isset( $args ) ) {
   $image_id = $args['image_id'];
 }
 
-if ( empty( $image_id ) ) {
-  maybe_show_error_block( 'Kuvaa ei ole asetettu' );
-  return;
-}
-
 $picture_cdn_args = [
   'width'     => '1800',
   'height'    => '1112',

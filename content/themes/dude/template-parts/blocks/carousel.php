@@ -18,21 +18,21 @@ if ( ! isset( $args ) ) {
   $title = get_field( 'title' );
   $images = get_field( 'images' );
   $make_active_bigger = get_field( 'make_active_bigger' );
+  $carousel_style = get_field( 'carousel_style' );
 } else {
   $title = $args['title'];
   $images = $args['images'];
   $make_active_bigger = $args['make_active_bigger'];
+  $carousel_style = $args['carousel_style'] ?? 'default';
 }
 
-if ( empty( $images ) ) {
-  maybe_show_error_block( 'Kuvia ei valittuna' );
-  return;
-}
-
+// Disable cropping entirely (no fit) so images scale without being cut
 $picture_cdn_args = [
-  'width'     => '1400',
-  'height'    => '840',
- ];
+  'width'   => '1400',
+  'height'  => '840',
+  'gravity' => 'auto',
+  'fit'     => null,
+];
 
 $picture_cdn_srcset = [
   220 => [
@@ -50,7 +50,32 @@ $picture_cdn_srcset = [
 ];
 ?>
 
-<section class="block block-carousel is-carousel">
+<?php if ( 'alt' === $carousel_style ) : ?>
+<section class="block block-carousel has-unified-padding-if-stacked carousel-style-alt">
+  <div class="container">
+    <div class="scroll-carousel">
+      <ul class="scroll-carousel-track">
+        <?php foreach ( $images as $image_id ) : ?>
+          <li class="scroll-carousel-item">
+            <?php get_picture_element_with_cfcdn( $image_id, $picture_cdn_args, $picture_cdn_srcset ); ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+
+    <div class="scroll-carousel-controls">
+      <button class="scroll-carousel-prev arrow-link arrow-link-prev" type="button">
+        <span class="arrow-link-arrow"></span>
+      </button>
+
+      <button class="scroll-carousel-next arrow-link arrow-link-next" type="button">
+        <span class="arrow-link-arrow"></span>
+      </button>
+    </div>
+  </div>
+</section>
+<?php else : ?>
+<section class="block block-carousel has-unified-padding-if-stacked is-carousel">
   <div class="container">
 
     <div class="swiper swiper-container<?php if ( $make_active_bigger ) { echo ' is-full-width'; } ?>">
@@ -85,3 +110,4 @@ $picture_cdn_srcset = [
 
   </div>
 </section>
+<?php endif; 

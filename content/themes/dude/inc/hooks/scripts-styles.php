@@ -86,11 +86,9 @@ function enqueue_theme_scripts() {
  * @return string file and path of the asset file
  */
 function get_asset_file( $filename ) {
-  $env = 'development' === wp_get_environment_type() && ! isset( $_GET['load_production_builds'] ) ? 'dev' : 'prod'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
   $filetype = pathinfo( $filename )['extension'];
 
-  return "{$filetype}/{$env}/{$filename}";
+  return "assets/dist/{$filetype}/{$filename}";
 } // end get_asset_file
 
 /**
@@ -106,6 +104,8 @@ function add_data_attribute_to_scripts( $tag, $handle ) {
     'cookieconsent',
     'iframemanager',
     'wpforms-generic-utils',
+    'wpforms-captcha',
+    'wpforms-repeater',
     'video-player',
   ];
 
@@ -148,6 +148,8 @@ add_action( 'wpforms_frontend_js', function() {
   wp_dequeue_script( 'wpforms-flatpickr' );
   wp_dequeue_script( 'wpforms-payment' );
   wp_dequeue_script( 'wpforms-maskedinput' );
+  wp_dequeue_script( 'wpforms-captcha' );
+  wp_dequeue_script( 'wpforms-repeater' );
 
   wp_deregister_script( 'wpforms-password-field' );
   wp_deregister_script( 'wpforms-smart-phone-field' );
@@ -160,6 +162,8 @@ add_action( 'wpforms_frontend_js', function() {
   wp_deregister_script( 'wpforms-flatpickr' );
   wp_deregister_script( 'wpforms-payment' );
   wp_deregister_script( 'wpforms-maskedinput' );
+  wp_deregister_script( 'wpforms-captcha' );
+  wp_deregister_script( 'wpforms-repeater' );
 }, 99999 );
 
 add_action( 'wpforms_frontend_css', function() {

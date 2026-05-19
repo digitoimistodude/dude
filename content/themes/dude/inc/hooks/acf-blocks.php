@@ -9,15 +9,6 @@
 
 namespace Air_Light;
 
-function acf_blocks_add_category_in_gutenberg( $categories, $post ) {
-  return array_merge( $categories, [
-    [
-      'slug'  => 'dude',
-      'title' => __( 'Theme blocks', 'dude' ),
-    ],
-  ] );
-} // end acf_blocks_add_category_in_gutenberg
-
 function acf_blocks_init() {
   if ( ! function_exists( 'acf_register_block_type' ) ) {
     return;
@@ -42,7 +33,7 @@ function acf_blocks_init() {
 
     // Check if icon is set, otherwise try to load svg icon
     if ( ! isset( $block['icon'] ) || empty( $block['icon'] ) ) {
-      $icon_path = get_theme_file_path( "svg/block-icons/{$block['name']}.svg" );
+      $icon_path = get_theme_file_path( "assets/svg/block-icons/{$block['name']}.svg" );
       $icon_path = apply_filters( 'dude_acf_block_icon', $icon_path, $block['name'], $block );
 
       if ( file_exists( $icon_path ) ) {

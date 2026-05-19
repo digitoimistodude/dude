@@ -54,7 +54,7 @@ add_action( 'after_setup_theme', function() {
      * Logo and featured image
      */
     'default_featured_image'  => null,
-    'logo'                    => '/svg/logo.svg',
+    'logo'                    => '/assets/svg/logo.svg',
 
     /**
      * Some hardcoded page ID's that are not related to custom settings.
@@ -107,6 +107,7 @@ add_action( 'after_setup_theme', function() {
       'www.dude.fi',
       'handbook.dude.fi',
       'dude.vaiheessa.fi',
+      'tontut.dude.fi',
     ],
 
     /**
@@ -130,6 +131,10 @@ add_action( 'after_setup_theme', function() {
       ],
       'reference-target-group' => [
         'name' => 'Reference_Target_Group',
+        'post_types' => [ 'reference' ],
+      ],
+      'reference-budget' => [
+        'name' => 'Reference_Budget',
         'post_types' => [ 'reference' ],
       ],
     ],
@@ -336,6 +341,7 @@ add_action( 'after_setup_theme', function() {
       'category'          => 'dude',
       'mode'              => 'preview',
       'align'             => 'full',
+      'api_version'       => 3,
       'post_types'        => [
         'page',
         'job',
@@ -349,7 +355,7 @@ add_action( 'after_setup_theme', function() {
 
     // Restrict to only selected blocks
     // Set the value to 'all' to allow all blocks everywhere
-   'allowed_blocks' => [
+    'allowed_blocks' => [
       'default' => [],
       'post' => [
         'core/archives',
@@ -460,6 +466,26 @@ add_action( 'after_setup_theme', function() {
         'core/textColumns',
         'core/verse',
         'core/video',
+      ],
+      'page' => [
+        // Native Gutenberg blocks for pricing page
+        'dude/pricing-hero',
+        'dude/pricing-item',
+        'dude/pricing-cta',
+        'dude/pricing-category',
+        'dude/pricing-faq',
+        // Core blocks
+        'core/heading',
+        'core/paragraph',
+        'core/list',
+        'core/buttons',
+        'core/image',
+        'core/columns',
+        'core/column',
+        'core/separator',
+        'core/spacer',
+        'core/html',
+        'core/block',
       ],
     ],
 

@@ -19,15 +19,6 @@ $content = get_field( 'content' );
 $images = get_field( 'images' );
 $link = get_field( 'link' );
 
-if ( empty( $images ) ) {
-  maybe_show_error_block( 'Laitteleha niitä kuvia.' );
-  return;
-}
-
-if ( empty( $title ) ) {
-  maybe_show_error_block( 'Otsikkoa ei ole asetettuna.' );
-  return;
-}
 ?>
 
 <section class="block block-title-images">
@@ -189,7 +180,11 @@ if ( empty( $title ) ) {
             ?>
             <?php get_picture_element_with_cfcdn( $image, $picture_cdn_args, $picture_cdn_srcset ); ?>
         </div>
-      <?php $count++; endforeach; ?>
+      <?php
+        $count++;
+      endforeach;
+?>
+
     </div>
 
   </div>

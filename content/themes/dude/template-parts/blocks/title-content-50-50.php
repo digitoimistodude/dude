@@ -22,10 +22,6 @@ if ( ! isset( $args ) ) {
   $content = $args['content'];
 }
 
-if ( empty( $title ) || empty( $content ) ) {
-  maybe_show_error_block( 'Otsikko ja tekstisisältö on pakolliset.' );
-  return;
-}
 ?>
 
 <section class="block block-title-content-50-50 has-unified-padding-if-stacked">

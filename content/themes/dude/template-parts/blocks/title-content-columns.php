@@ -30,11 +30,6 @@ if ( ! isset( $args ) ) {
   $block_color = $args( 'block_color' );
 }
 
-if ( empty( $title ) || empty( $columns_raw ) ) {
-  maybe_show_error_block( 'Otsikko ja lohkot on pakollisia' );
-  return;
-}
-
 $columns = [];
 foreach ( $columns_raw as $column ) {
   if ( empty( $column['title'] ) ) {
@@ -76,8 +71,9 @@ if ( $hide_title ) {
         <div class="col<?php if ( $column['icon_left'] ) echo ' is-icon-left' ?>">
             <?php if ( ! empty( $column['icon_svg'] ) ) : ?>
               <div class="icon">
-                <?php $icon_path = get_theme_file_path( "svg/foruser/{$column['icon_svg']}" );
-                if ( file_exists( $icon_path ) ) include $icon_path; ?>
+                <?php $icon_path = get_theme_file_path( "assets/svg/foruser/{$column['icon_svg']}" );
+                if ( file_exists( $icon_path ) ) include $icon_path;
+                ?>
               </div>
             <?php endif; ?>
 

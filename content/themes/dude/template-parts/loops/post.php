@@ -53,7 +53,8 @@ $picture_cdn_srcset = [
 
       <?php
       $video_bg = get_post_meta( $data['post_id'], 'article_video', true );
-      if ( $video_bg ) : ?>
+      if ( $video_bg ) :
+      ?>
         <div class="vimeo-iframe-wrapper vimeo-iframe-wrapper-upsell">
           <iframe src="https://player.vimeo.com/video/<?php echo str_replace( array( 'http:', 'https:', 'vimeo.com', '/' ), '', $video_bg ); // phpcs:ignore ?>?background=1&autoplay=1&loop=1&byline=0&title=0"
             frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>

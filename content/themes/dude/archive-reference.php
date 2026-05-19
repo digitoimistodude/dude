@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable
 namespace Air_Light;
 
 $reference_ids = [];
@@ -26,10 +27,22 @@ foreach ( $target_groups_terms as $term ) {
   $target_groups[ $term->slug ] = $term->name;
 }
 
+// Get all budget classes from taxonomy
+$budget_terms = get_terms( [
+  'taxonomy' => 'reference-budget',
+  'hide_empty' => true,
+] );
+
+$budget_classes = [ 'all' => 'Kaikki' ];
+foreach ( $budget_terms as $term ) {
+  $budget_classes[ $term->slug ] = $term->name;
+}
+
 // Get current filters from URL parameters
-$current_toimiala = isset( $_GET['toimiala'] ) ? sanitize_text_field( $_GET['toimiala'] ) : 'all';
-$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', $_GET['ratkaisut'] ) ) : [ 'all' ]; // phpcs:ignore
-$current_haku = isset( $_GET['haku'] ) ? sanitize_text_field( $_GET['haku'] ) : '';
+$current_toimiala = isset( $_GET['toimiala'] ) ? sanitize_text_field( wp_unslash( $_GET['toimiala'] ) ) : 'all'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_ratkaisut = isset( $_GET['ratkaisut'] ) ? array_map( 'sanitize_text_field', explode( ',', sanitize_text_field( wp_unslash( $_GET['ratkaisut'] ) ) ) ) : [ 'all' ]; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_haku = isset( $_GET['haku'] ) ? sanitize_text_field( wp_unslash( $_GET['haku'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$current_budjetti = isset( $_GET['budjetti'] ) ? sanitize_text_field( wp_unslash( $_GET['budjetti'] ) ) : 'all'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 get_header(); ?>
 
@@ -48,22 +61,41 @@ get_header(); ?>
   ?>
   <section class="reference-filters-main">
     <div class="container">
-      <div class="archive-head">
-        <p class="filter-label">Toimiala</p>
-        <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
-        <?php foreach ( $target_groups as $key => $label ) : ?>
-          <button
-            type="button"
-            class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
-            data-filter="target-group"
-            data-value="<?php echo esc_attr( $key ); ?>"
-            aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
-            <?php echo esc_html( $label ); ?>
-            <?php if ( 'all' !== $key ) : ?>
-              <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
-            <?php endif; ?>
-          </button>
-        <?php endforeach; ?>
+      <div class="filter-columns">
+        <div class="archive-head">
+          <p class="filter-label">Toimiala</p>
+          <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
+          <?php foreach ( $target_groups as $key => $label ) : ?>
+            <button
+              type="button"
+              class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
+              data-filter="target-group"
+              data-value="<?php echo esc_attr( $key ); ?>"
+              aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
+              <?php echo esc_html( $label ); ?>
+              <?php if ( 'all' !== $key ) : ?>
+                <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
+              <?php endif; ?>
+            </button>
+          <?php endforeach; ?>
+          </div>
+          <button type="button" class="filter-show-more">Näytä kaikki <?php echo count( $target_groups_terms ); ?> toimialaa</button>
+        </div>
+
+        <div class="archive-head">
+          <p class="filter-label">Budjettiluokka</p>
+          <div class="filter-group budget-classes archive-filters" role="group" aria-label="Suodata budjettiluokittain">
+          <?php foreach ( $budget_classes as $key => $label ) : ?>
+            <button
+              type="button"
+              class="filter-button filter-budget<?php echo $key === $current_budjetti ? ' active' : ''; ?>"
+              data-filter="budget"
+              data-value="<?php echo esc_attr( $key ); ?>"
+              aria-pressed="<?php echo $key === $current_budjetti ? 'true' : 'false'; ?>">
+              <?php echo esc_html( $label ); ?>
+            </button>
+          <?php endforeach; ?>
+          </div>
         </div>
       </div>
     </div>
@@ -85,12 +117,53 @@ get_header(); ?>
           <path d="M10.1675 2.59507H0.262451V3.36007H10.1675V4.88007H10.9275V1.07007H10.1675V2.59507Z" fill="currentColor"/>
         </svg>
       </span>
-      <span class="filter-text">Suodata lisää</span>
+      <span class="filter-text">Suodata referenssejä</span>
     </button>
 
     <div class="advanced-filters-content" id="advanced-filters-content" hidden>
       <div class="container">
         <div class="cols cols-two">
+          <?php // Target group filter (mobile only) ?>
+          <div class="filter-group filter-target-groups-mobile">
+            <div class="archive-head">
+              <p class="filter-label">Toimiala</p>
+              <div class="filter-group target-groups archive-filters" role="group" aria-label="Suodata toimialoittain">
+              <?php foreach ( $target_groups as $key => $label ) : ?>
+                <button
+                  type="button"
+                  class="filter-button filter-target-group<?php echo $key === $current_toimiala ? ' active' : ''; ?>"
+                  data-filter="target-group"
+                  data-value="<?php echo esc_attr( $key ); ?>"
+                  aria-pressed="<?php echo $key === $current_toimiala ? 'true' : 'false'; ?>">
+                  <?php echo esc_html( $label ); ?>
+                  <?php if ( 'all' !== $key ) : ?>
+                    <small class="archive-link" data-archive-url="<?php echo esc_url( get_term_link( get_term_by( 'slug', $key, 'reference-target-group' ) ) ); ?>"></small>
+                  <?php endif; ?>
+                </button>
+              <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+
+          <?php // Budget filter (mobile only) ?>
+          <div class="filter-group filter-budget-mobile">
+            <div class="archive-head">
+              <p class="filter-label">Budjettiluokka</p>
+              <div class="filter-group budget-classes archive-filters" role="group" aria-label="Suodata budjettiluokittain">
+              <?php foreach ( $budget_classes as $key => $label ) : ?>
+                <button
+                  type="button"
+                  class="filter-button filter-budget<?php echo $key === $current_budjetti ? ' active' : ''; ?>"
+                  data-filter="budget"
+                  data-value="<?php echo esc_attr( $key ); ?>"
+                  aria-pressed="<?php echo $key === $current_budjetti ? 'true' : 'false'; ?>">
+                  <?php echo esc_html( $label ); ?>
+                </button>
+              <?php endforeach; ?>
+              </div>
+            </div>
+          </div>
+
           <?php // Solutions/Categories filter ?>
           <div class="filter-group filter-solutions">
             <div class="archive-head">
@@ -139,15 +212,25 @@ get_header(); ?>
   </section>
 
   <?php
+    get_template_part( 'template-parts/blocks/references', null, [
+      'reference_ids' => $reference_ids,
+      'title'         => 'Referenssit',
+      'link'          => null,
+      'show_logos'    => false,
+      'show_title'    => false,
+      'filterable'    => true,
+    ] );
 
-  get_template_part( 'template-parts/blocks/references', null, [
-    'reference_ids' => $reference_ids,
-    'title'         => 'Referenssit',
-    'link'          => null,
-    'show_logos'    => false,
-    'show_title'    => false,
-    'filterable'    => true,
-  ] ); ?>
+    get_template_part( 'template-parts/blocks/cta-small', null, [
+      'title'       => 'Onko sinulla projekti mielessä?',
+      'content'     => 'Ota hyvissä ajoin yhteyttä, saat meiltä neuvoja ja näkemystä jo alkumetreillä.',
+      'button'      => [
+        'url'   => get_permalink( 4487 ),
+        'title' => 'Ota yhteyttä',
+      ],
+      'extra_class' => 'block-cta-references',
+    ] );
+  ?>
 
 </main>
 

@@ -1,12 +1,4 @@
 <?php
-/**
- * @Author: Timi Wahalahti
- * @Date:   2022-08-05 14:10:57
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2024-02-26 13:47:05
- * @package dude
- */
-
 namespace Air_Light;
 
 // phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedScript
@@ -15,8 +7,8 @@ function head_analytics_scripts() { ?>
   // We need to load up WPForms related scripts on the pages that are no forms
   // to make forms work with Swup.js
   ?>
-  <script data-swup-reload-script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/lib/choices.min.js" id="wpforms-choicesjs-js-swup"></script>
-  <script data-swup-reload-script data-swup-ignore-script>
+  <script data-swup-ignore-script src="<?php echo esc_url( get_home_url() ); ?>/content/plugins/wpforms/assets/lib/choices.min.js" id="wpforms-choicesjs-js-swup"></script>
+  <script data-swup-ignore-script>
   /* <![CDATA[ */
   var wpforms_conditional_logic = {"11358":{"4":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin","type":"checkbox"}]],"action":"show"},"6":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin","type":"checkbox"}]],"action":"show"},"9":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin","type":"checkbox"}]],"action":"show"},"7":{"logic":[[{"field":"5","operator":"==","value":"Haluan kertoa tarkemmin","type":"checkbox"}]],"action":"show"}}}
   /* ]]> */
@@ -25,7 +17,6 @@ function head_analytics_scripts() { ?>
   <?php if ( 'production' === wp_get_environment_type() ) : ?>
     <script data-swup-ignore-script src="https://analytics.ahrefs.com/analytics.js" data-key="Q6R+r37sIUxbXX0sqwgVGQ" async></script>
     <script data-swup-ignore-script defer data-domain="dude.fi" src="https://analytics.dude.fi/js/plausible.js"></script>
-    <script data-swup-ignore-script data-src="https://leadbooster-chat.pipedrive.com/assets/loader.js" data-cookiecategory="analytics" async></script>
   <?php endif; ?>
 
   <script>
@@ -90,7 +81,8 @@ function head_analytics_scripts() { ?>
   </script>
 <?php } // end head_analytics_scripts
 
-function footer_analytics_scripts() { ?>
+function footer_analytics_scripts() {
+?>
 <?php } // end footer_analytics_scripts
 
 function air_cookie_js_analytics() {
@@ -98,8 +90,12 @@ function air_cookie_js_analytics() {
     return;
   }
 
-  ob_start(); ?>
+  ob_start();
+  ?>
+<?php /*
 window.pipedriveLeadboosterConfig = {base: 'leadbooster-chat.pipedrive.com',companyId: 7297292,playbookUuid: '9c38fe13-4ddb-4df8-9978-bfbded9d9ba7',version: 2};(function () {var w = window;if (w.LeadBooster) {console.warn('LeadBooster already exists');} else {w.LeadBooster = {q: [],on: function (n, h) {this.q.push({ t: 'o', n: n, h: h });},trigger: function (n) {this.q.push({ t: 't', n: n });},};}})();
+*/
+?>
 
 (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('lYNOR8xvpWe4WQJZ');
 

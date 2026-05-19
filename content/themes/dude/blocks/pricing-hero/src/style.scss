@@ -1,0 +1,137 @@
+// Pricing Hero block styles
+// Editor-specific overrides - force white colors since editor can't detect dark gradient
+// Using high specificity to override .block.block-pricing-hero styles
+// stylelint-disable selector-class-pattern, no-descending-specificity, selector-max-specificity
+.editor-styles-wrapper .block.block-pricing-hero {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h1.wp-block-heading,
+  h2.wp-block-heading,
+  .wp-block-heading {
+    color: #fff !important;
+  }
+
+  p,
+  p.ingress,
+  .wp-block-paragraph,
+  .wp-block-paragraph.ingress {
+    color: rgb(255 255 255 / 0.8) !important;
+  }
+}
+// stylelint-enable selector-class-pattern, no-descending-specificity
+
+// Using .block.block-pricing-hero for higher specificity to override editor defaults
+.block.block-pricing-hero {
+  // Default text color for all elements
+  color: var(--color-heading);
+  overflow: visible;
+  padding-bottom: 0;
+  padding-top: var(--padding-container-vertical);
+
+  // Ensure all headings and paragraphs have explicit colors
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-heading);
+  }
+
+  p {
+    color: var(--color-paragraph);
+  }
+
+  .container {
+    overflow: visible;
+    padding-bottom: 0;
+    padding-top: 34px;
+
+    @media (max-width: 1200px) {
+      padding-top: 75px;
+    }
+  }
+
+  .content {
+    max-width: 1000px;
+  }
+
+  // Style the prefix heading (h1 with .prefix class)
+  h1.prefix,
+  .wp-block-heading.prefix {
+    color: var(--color-mint);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-14);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0 0 17px;
+    text-transform: uppercase;
+  }
+
+  // Style the main heading (h2)
+  // Using px values because rem base differs between admin (16px) and frontend (10px)
+  h2.wp-block-heading {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 6vw, 90px);
+    font-weight: 700;
+    letter-spacing: -0.9px;
+    line-height: 1.1;
+    margin: 0 0 27px;
+  }
+
+  // Style the ingress paragraph
+  p.ingress,
+  .wp-block-paragraph.ingress {
+    color: var(--color-paragraph);
+    font-family: var(--font-paragraph);
+    font-size: var(--font-size-30);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 930px;
+
+    @media (max-width: 600px) {
+      font-size: var(--font-size-22);
+    }
+  }
+
+  // Style the buttons wrapper
+  .wp-block-buttons {
+    margin: 16px 0 0;
+  }
+
+  // Button styles for .is-style-mint (works in both editor and front-end)
+  // Using px values because rem base differs between admin (16px) and frontend (10px)
+  .wp-block-button.is-style-mint .wp-block-button__link,
+  .wp-block-button.is-style-mint [contenteditable] {
+    background-color: var(--color-mint);
+    border: 1px solid var(--color-mint);
+    border-radius: 84px;
+    color: var(--color-dark-navy);
+    font-size: 24px;
+    font-weight: 600;
+    padding: 20px 41px;
+    transition: all 0.18s;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-button-background-hover);
+      border-color: var(--color-button-background-hover);
+      box-shadow: 0 0 0 3px var(--color-button-background-hover);
+      color: var(--color-button-hover);
+    }
+
+    @media (max-width: 600px) {
+      font-size: 18px;
+      padding: 16px 32px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    padding-top: 75px;
+  }
+}
