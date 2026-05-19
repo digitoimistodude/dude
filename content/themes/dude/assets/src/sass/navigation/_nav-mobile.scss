@@ -163,6 +163,77 @@ $hamburger-hover-transition-timing-function: linear;
     opacity: 0.5;
     transition: unset;
   }
+
+  // Click-dropdown parent toggles (JS converts parent items to buttons:
+  // nav-walker outputs .dropdown-toggle, desktop-click variant uses
+  // .menu-item-clickable). Style both to match .nav-link on mobile.
+  .site-header .menu-item-has-children > .dropdown-toggle,
+  .site-header .menu-item-clickable {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    font-size: clamp-calc($container-mobile, $width-max-mobile, 28px, 42px);
+    font-weight: var(--font-weight-semibold);
+    gap: 0.5rem;
+    justify-content: space-between;
+    opacity: 0;
+    padding: 0;
+    text-align: left;
+    transition: opacity 100ms cubic-bezier(0.14, 0, 0.42, 1.38);
+    width: 100%;
+  }
+
+  .js-nav-active .site-header .menu-item-has-children > .dropdown-toggle,
+  .js-nav-active .site-header .menu-item-clickable {
+    opacity: 1;
+  }
+
+  // Chevron indicator, rotates when open
+  .site-header .menu-item-has-children > .dropdown-toggle::after,
+  .site-header .menu-item-clickable::after {
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    height: 0.6em;
+    margin-right: 0.2em;
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+    width: 0.6em;
+  }
+
+  .site-header .menu-item-has-children > .dropdown-toggle.toggled-on::after,
+  .site-header .menu-item-clickable.toggled-on::after {
+    transform: rotate(-135deg);
+  }
+
+  // Sub-menus collapse by default, expand inline (accordion) when toggled
+  .site-header .sub-menu {
+    display: none;
+    margin: 0;
+    padding: 0.6rem 0 0.2rem 1.2rem;
+  }
+
+  .site-header .sub-menu.toggled-on {
+    display: block;
+  }
+
+  .site-header .sub-menu a,
+  .site-header .sub-menu .menu-item-clickable {
+    color: var(--color-white);
+    font-size: clamp-calc($container-mobile, $width-max-mobile, 18px, 24px);
+    font-weight: var(--font-weight-medium);
+    opacity: 0.85;
+  }
+
+  .site-header .sub-menu a:focus,
+  .site-header .sub-menu a:hover {
+    opacity: 0.5;
+  }
 }
 
 // Hamburger menu icon specific

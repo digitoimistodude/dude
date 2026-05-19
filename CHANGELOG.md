@@ -4,6 +4,7 @@
 * Place new-nav source (navigation modules, dropdown styles) into `assets/src` structure, Ref: KVLT-110
 * Restore open jobs count in nav-walker after new-nav rewrite, Ref: KVLT-110
 * Remove JS-driven burger top positioning, center via header flexbox, Ref: KVLT-110
+* Add mobile styling for click-dropdown nav (accordion expand, chevron), Ref: KVLT-110
 
 ### 7.0.19: 2026-05-04
 
