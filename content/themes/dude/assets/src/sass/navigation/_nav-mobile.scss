@@ -173,17 +173,17 @@ $hamburger-hover-transition-timing-function: linear;
     content: '';
     display: block;
     flex: 0 0 auto;
-    height: 0.5em;
+    height: 0.45em;
     margin-left: 1rem;
     opacity: 0.7;
-    transform: rotate(45deg);
+    transform: translateY(-0.12em) rotate(45deg);
     transition: transform 180ms ease;
-    width: 0.5em;
+    width: 0.45em;
   }
 
   .site-header .menu-item-has-children > .dropdown-toggle.toggled-on::after,
   .site-header .menu-item-clickable.toggled-on::after {
-    transform: rotate(-135deg);
+    transform: translateY(0.12em) rotate(-135deg);
   }
 
   // Sub-menus collapse by default, expand inline (accordion) when toggled

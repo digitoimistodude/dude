@@ -1,7 +1,7 @@
 function convertDropdownMenuItems(items) {
   items.forEach((li) => {
-  // Get dropdown toggle button
-    const dropdownToggle = li.querySelector('.dropdown-toggle');
+  // Get dropdown toggle button (this item's own, not a nested one)
+    const dropdownToggle = li.querySelector(':scope > .dropdown-toggle');
 
     // If no dropdown toggle, skip this item
     if (!dropdownToggle) {
@@ -14,9 +14,9 @@ function convertDropdownMenuItems(items) {
       link.setAttribute('tabindex', '-1');
     });
 
-    // Get dropdown menu item data
-    const menuItemSpan = li.querySelector('a > span');
-    const menuItemLinkElement = li.querySelector('a');
+    // Get dropdown menu item data (this item's own link, not a child's)
+    const menuItemSpan = li.querySelector(':scope > a > span');
+    const menuItemLinkElement = li.querySelector(':scope > a');
 
     // If no span or link element, skip this item
     if (!menuItemSpan || !menuItemLinkElement) {

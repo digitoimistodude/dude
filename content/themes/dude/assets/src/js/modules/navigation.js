@@ -94,6 +94,9 @@ const navMobile = () => {
       // Activate nav
       document.body.classList.toggle('js-nav-active');
 
+      // Animate the burger to a close (X) icon
+      document.getElementById('nav-toggle').classList.toggle('is-active');
+
       // Scroll to top when triggering mobile navigation
       // to ensure no gaps are between header and navigation
       // Please note, if you use sticky-nav, comment out the next line

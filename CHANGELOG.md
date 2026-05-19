@@ -7,6 +7,7 @@
 * Add mobile styling for click-dropdown nav (accordion expand, chevron), Ref: KVLT-110
 * Model mobile nav after GitHub: compact divider rows, caret, muted sub-links, Ref: KVLT-110
 * Make mobile nav a white rounded panel sliding in from the right, Ref: KVLT-110
+* Fix burger not animating to close icon, caret alignment and wrong dropdown toggle label, Ref: KVLT-110
 
 ### 7.0.19: 2026-05-04
 
