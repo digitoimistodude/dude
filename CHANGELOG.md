@@ -6,6 +6,7 @@
 * Remove JS-driven burger top positioning, center via header flexbox, Ref: KVLT-110
 * Add mobile styling for click-dropdown nav (accordion expand, chevron), Ref: KVLT-110
 * Model mobile nav after GitHub: compact divider rows, caret, muted sub-links, Ref: KVLT-110
+* Make mobile nav a white rounded panel sliding in from the right, Ref: KVLT-110
 
 ### 7.0.19: 2026-05-04
 
