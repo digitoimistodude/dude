@@ -5,7 +5,6 @@
 
 // Import functions needed for the navigation module
 import addMultipleEventListeners from './navigation/add-multiple-event-listeners';
-import calculateBurgerMenuPosition from './navigation/calculate-burger-menu-position';
 import a11yFocusTrap from './navigation/a11y-focus-trap';
 import calculateDropdownToggleHeight from './navigation/calculate-dropdown-toggle-height';
 import checkForSubmenuOverflow from './navigation/check-for-submenu-overflow';
@@ -145,9 +144,6 @@ const navMobile = () => {
       calculateDropdownToggleHeight,
     );
   });
-
-  // Calculate mobile nav-toggle position
-  calculateBurgerMenuPosition();
 };
 
 // Export different navigation functions
@@ -165,9 +161,6 @@ export default initNavigation;
 
 // Reinit some things
 window.addEventListener('resize', () => {
-  // Center vertically the absolute positioned burger
-  calculateBurgerMenuPosition();
-
   // Center vertically the absolute positioned mobile dropdown toggles by setting fixed height
   calculateDropdownToggleHeight();
 
