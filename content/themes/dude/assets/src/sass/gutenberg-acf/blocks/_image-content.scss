@@ -26,10 +26,6 @@
 
   h2 {
     @include heading-64();
-
-    @media (min-width: 1465px) {
-      margin-top: -3.2rem;
-    }
   }
 
   p,
