@@ -1,6 +1,7 @@
 ### 7.0.20: 2026-05-22
 
 * Add swup preload plugin to make navigation feel instant, Ref: DEV-1037
+* Reduce post-navigation init delay from 1000ms to 200ms for faster feature appearance, Ref: DEV-1037
 
 ### 7.0.19: 2026-05-04
 

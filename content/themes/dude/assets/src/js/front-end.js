@@ -66,7 +66,7 @@ function init(target, args) {
   initNavigation();
 
   // Init carousels for testimonials and image galleries
-  // Timeout needed for Firefox and iOS Safari for some modules
+  // Small timeout still needed for Firefox and iOS Safari for some modules
   setTimeout(() => {
     initCarousels();
 
@@ -75,7 +75,7 @@ function init(target, args) {
 
     // Init reference filters
     initReferenceFilters();
-  }, 1000);
+  }, 200);
 
   // Init all possible anchor links
   initAnchors();
