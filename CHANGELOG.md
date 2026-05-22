@@ -1,3 +1,7 @@
+### 7.0.20: 2026-05-22
+
+* Add swup preload plugin to make navigation feel instant, Ref: DEV-1037
+
 ### 7.0.19: 2026-05-04
 
 * Add CTA to references archive, taxonomy and single reference pages, Ref: KVLT-105

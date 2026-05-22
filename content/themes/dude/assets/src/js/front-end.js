@@ -5,6 +5,7 @@ import reframe from 'reframe.js';
 import Swup from 'swup';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 import SwupBodyClassPlugin from '@swup/body-class-plugin';
+import SwupPreloadPlugin from '@swup/preload-plugin';
 // eslint-disable-next-line no-unused-vars
 import whatInput from 'what-input';
 import getLocalization from './modules/localization';
@@ -42,6 +43,8 @@ const swup = new Swup({
   containers: ['#page'],
   animationSelector: '[class*="has-transition-"]',
   plugins: [
+    // Preload pages on link hover/focus so navigation feels instant
+    new SwupPreloadPlugin(),
     new SwupScriptsPlugin({
       head: true,
       body: true,
