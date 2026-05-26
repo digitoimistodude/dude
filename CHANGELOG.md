@@ -1,3 +1,7 @@
+### 7.0.20: 2026-05-26
+
+* Make reference toimiala (target-group) taxonomy hierarchical to prevent comma in tag input splitting into multiple terms, Ref: DEV-1043
+
 ### 7.0.19: 2026-05-04
 
 * Add CTA to references archive, taxonomy and single reference pages, Ref: KVLT-105
