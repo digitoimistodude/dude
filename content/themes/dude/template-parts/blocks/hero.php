@@ -76,7 +76,7 @@ $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
     preload="metadata"
     loading="lazy"
     class="showreel">
-    <source src="<?php echo esc_url( get_theme_file_uri( 'video/showreel-cut-web.mp4' ) ); ?>" type="video/mp4">
+    <source src="<?php echo esc_url( get_theme_file_uri( 'video/dude-showreel-web.mp4' ) ); ?>" type="video/mp4">
     <?php // Fallback image if video doesn't load ?>
     <img loading="eager" src="https://cdn.dude.fi/cdn-cgi/image/width=1208,height=680,quality=75,fit=cover,format=auto/https://www.dude.fi/media/showreel.jpg" width="1208" height="680" alt="Duden showreel">
   </video>
