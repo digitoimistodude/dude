@@ -4,8 +4,8 @@
  *
  * A visual hero used on front page.
  *
- * @Author:		Roni Laukkarinen
- * @Date:   		2022-02-10 12:28:36
+ * @Author:     Roni Laukkarinen
+ * @Date:           2022-02-10 12:28:36
  * @Last Modified by:   Roni Laukkarinen
  * @Last Modified time: 2022-10-28 13:05:19
  *
@@ -31,7 +31,8 @@ $sales_phone = get_post_meta( $salesperson_id, 'tel', true );
 $sales_phone_tel_value = preg_replace( '/\s+/', '', $sales_phone );
 ?>
 
-<section class="block block-hero<?php if ( is_front_page() ) : ?> block-hero-front-page<?php endif; ?>">
+<section class="block block-hero<?php if ( is_front_page() ) :
+  ?> block-hero-front-page<?php endif; ?>">
   <div class="container has-transition-fade">
 
     <div class="content">
