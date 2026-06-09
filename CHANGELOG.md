@@ -1,3 +1,8 @@
+### 7.0.22: 2026-06-09
+
+- Add swup preload plugin to make navigation feel instant, Ref: DEV-1037
+- Reduce post-navigation init delay from 1000ms to 200ms for faster feature appearance, Ref: DEV-1037
+
 ### 7.0.21: 2026-05-28
 
 - Add new showreel video to hero, ref: DEV-888
