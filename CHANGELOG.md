@@ -1,3 +1,7 @@
+### 7.0.24: 2026-06-09
+
+- Add `dude-cloudflare-purge` mu-plugin to purge Cloudflare edge cache on post save and via `wp cf purge` (configure with `CLOUDFLARE_ZONE_ID` and `CLOUDFLARE_API_TOKEN` env vars)
+
 ### 7.0.23: 2026-06-09
 
 - Remove WordPress.org profile mentions from badges block on community page

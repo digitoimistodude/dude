@@ -53,6 +53,12 @@ Config::define( 'WP_HOME', env( 'WP_HOME' ) );
 Config::define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
 
 /**
+ * Cloudflare cache purge (consumed by dude-cloudflare-purge mu-plugin)
+ */
+Config::define( 'CLOUDFLARE_ZONE_ID', env( 'CLOUDFLARE_ZONE_ID' ) ?: '' );
+Config::define( 'CLOUDFLARE_API_TOKEN', env( 'CLOUDFLARE_API_TOKEN' ) ?: '' );
+
+/**
  * Custom Content Directory
  */
 Config::define( 'CONTENT_DIR', '/content' );
