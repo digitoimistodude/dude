@@ -9,6 +9,13 @@ const initReferenceFilters = () => {
   const currentUrl = window.location.origin + window.location.pathname;
 
   const referenceItems = document.querySelectorAll('.col-reference');
+
+  // Bail out on pages without reference items so the no-results message
+  // does not get appended to an unrelated .cols.cols-two container.
+  if (referenceItems.length === 0) {
+    return;
+  }
+
   const targetGroupButtons = document.querySelectorAll('.filter-target-group');
   const budgetButtons = document.querySelectorAll('.filter-budget');
   const solutionCheckboxes = document.querySelectorAll(

@@ -1,3 +1,8 @@
+### 7.0.23: 2026-06-09
+
+- Remove WordPress.org profile mentions from badges block on community page
+- Fix reference filters showing no-results message on pages without any reference items, Ref: DEV-1037
+
 ### 7.0.22: 2026-06-09
 
 - Add swup preload plugin to make navigation feel instant, Ref: DEV-1037

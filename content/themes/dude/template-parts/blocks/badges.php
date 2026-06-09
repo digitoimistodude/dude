@@ -30,7 +30,7 @@ if ( ! isset( $args ) ) {
     </h2>
 
     <div class="content">
-      <p>Dude on ansainnut seuraavat WordPress-maailman viralliset <a href="https://make.wordpress.org/meta/handbook/documentation/profile-badges/">ansiomerkit</a> WordPress-kontribuutioistaan. Ansiomerkkejä saa automaattisesti tai WordPress-yhteisön myöntämänä. Duden käyttäjäprofiilit löytyvät julkisesti WordPress.orgista mm. seuraavien tilien alta: <a href="https://profiles.wordpress.org/digitoimistodude">digitoimistodude</a>, <a href="https://profiles.wordpress.org/rolle">rolle</a>, <a href="https://profiles.wordpress.org/sippis">sippis</a>.</p>
+      <p>Dude on ansainnut seuraavat WordPress-maailman viralliset <a href="https://make.wordpress.org/meta/handbook/documentation/profile-badges/">ansiomerkit</a> WordPress-kontribuutioistaan. Ansiomerkkejä saa automaattisesti tai WordPress-yhteisön myöntämänä.</p>
 
       <ul class="item-list">
         <li>
