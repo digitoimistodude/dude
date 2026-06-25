@@ -851,6 +851,31 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     }
     \WP_CLI::success( 'Processed ' . count( $rows ) . ' pending row(s).' );
   } );
+
+  \WP_CLI::add_command( 'dude-forms heartbeat', function () {
+    global $wpdb;
+
+    $cron_url = defined( 'DUDE_FORMS_HEARTBEAT_CRON_URL' ) ? (string) DUDE_FORMS_HEARTBEAT_CRON_URL : '';
+    $sync_url = defined( 'DUDE_FORMS_HEARTBEAT_SYNC_URL' ) ? (string) DUDE_FORMS_HEARTBEAT_SYNC_URL : '';
+
+    if ( '' !== $cron_url ) {
+      wp_remote_get( $cron_url, [ 'timeout' => 5, 'blocking' => true ] );
+    }
+
+    $stuck = (int) $wpdb->get_var(
+      "SELECT COUNT(*) FROM " . table() . " WHERE status <> 'synced' AND created_at < ( NOW() - INTERVAL 10 MINUTE )"
+    );
+
+    if ( 0 === $stuck && '' !== $sync_url ) {
+      wp_remote_get( $sync_url, [ 'timeout' => 5, 'blocking' => true ] );
+    }
+
+    if ( $stuck > 0 ) {
+      \WP_CLI::warning( $stuck . ' stuck row(s) older than 10 min - skipping sync heartbeat.' );
+    } else {
+      \WP_CLI::success( 'Heartbeats sent.' );
+    }
+  } );
 }
 
 /* -----------------------------------------------------------------------------

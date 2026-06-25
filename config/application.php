@@ -70,6 +70,8 @@ Config::define( 'DUDE_FORMS_NOTIFY_EMAIL', env( 'DUDE_FORMS_NOTIFY_EMAIL' ) ?: '
 Config::define( 'DUDE_FORMS_FREE_EMAIL_DOMAINS', env( 'DUDE_FORMS_FREE_EMAIL_DOMAINS' ) ?: 'gmail.com,googlemail.com,outlook.com,hotmail.com,live.com,yahoo.com,yahoo.fi,icloud.com,me.com,mac.com,aol.com,protonmail.com,proton.me,pm.me,yandex.com,yandex.ru,mail.com,gmx.com,gmx.de,fastmail.com,tutanota.com,zoho.com,duck.com,saunalahti.fi,suomi24.fi,kolumbus.fi,hotmail.fi' );
 Config::define( 'DUDE_FORMS_ENRICH_WITH_AI', env( 'DUDE_FORMS_ENRICH_WITH_AI' ) ?: '' );
 Config::define( 'DUDE_FORMS_CLAUDE_BIN', env( 'DUDE_FORMS_CLAUDE_BIN' ) ?: '' );
+Config::define( 'DUDE_FORMS_HEARTBEAT_CRON_URL', env( 'DUDE_FORMS_HEARTBEAT_CRON_URL' ) ?: '' );
+Config::define( 'DUDE_FORMS_HEARTBEAT_SYNC_URL', env( 'DUDE_FORMS_HEARTBEAT_SYNC_URL' ) ?: '' );
 
 /**
  * Custom Content Directory
