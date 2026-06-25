@@ -1,41 +1,40 @@
 /* eslint-disable camelcase, no-unused-vars, no-undef, func-names, no-param-reassign */
 /**
- * @Author: Roni Laukkarinen
- * @Date:   2022-08-09 18:01:38
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-10-12 15:05:50
+ * Toggle the "Haluan kertoa tarkemmin / vähemmän" label + open-state class on
+ * the WPForms 11358 conditional-trigger checkbox.
+ *
+ * Reads the checkbox's own `checked` state (the browser updates that before
+ * any handler runs) instead of inspecting a sibling element's class. The
+ * previous approach raced WPForms's own conditional-logic JS and crashed when
+ * the sibling happened to be a whitespace text node, leaving the toggle stuck.
  */
 const initFormHelpers = () => {
-  // Find all form triggers
   const formTriggers = document.querySelectorAll(
     '#wpforms-form-11358 .wpforms-conditional-trigger',
   );
 
-  if (typeof formTriggers !== 'undefined') {
-    // Loop through
-    formTriggers.forEach((formTrigger) => {
-      // When trigger is clicked
+  formTriggers.forEach((formTrigger) => {
+    const checkbox = formTrigger.querySelector('input[type="checkbox"]');
+    const label = formTrigger.querySelector('.wpforms-field-label-inline');
+    const wrapper = formTrigger.closest('.wpforms-container');
 
-      formTrigger.addEventListener('click', () => {
-        // Find first label inside form trigger
-        const formTriggerLabel = formTrigger.querySelectorAll(
-          '.wpforms-field-label-inline',
-        )[0];
+    if (!checkbox || !label) {
+      return;
+    }
 
-        if (
-          formTrigger.nextSibling.classList.contains('wpforms-conditional-hide')
-        ) {
-          formTriggerLabel.innerHTML = 'Haluan kertoa vähemmän';
-          formTrigger.parentNode.parentNode.parentNode.classList.add('is-open');
-        } else {
-          formTriggerLabel.innerHTML = 'Haluan kertoa tarkemmin';
-          formTrigger.parentNode.parentNode.parentNode.classList.remove(
-            'is-open',
-          );
-        }
-      });
-    });
-  }
+    const sync = () => {
+      if (checkbox.checked) {
+        label.textContent = 'Haluan kertoa vähemmän';
+        if (wrapper) wrapper.classList.add('is-open');
+      } else {
+        label.textContent = 'Haluan kertoa tarkemmin';
+        if (wrapper) wrapper.classList.remove('is-open');
+      }
+    };
+
+    checkbox.addEventListener('change', sync);
+    sync(); // initial state on load (e.g. browser autofill / back-button)
+  });
 };
 
 export default initFormHelpers;

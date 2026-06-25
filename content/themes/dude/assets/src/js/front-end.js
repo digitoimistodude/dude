@@ -34,7 +34,6 @@ import initA11ySkipLink from './modules/a11y-skip-link';
 import initUpKeepLanding from './modules/upkeep-landing';
 import initReferenceFilters from './modules/reference-filters';
 import initLeadPopup from './modules/lead-popup';
-import initContactFormModal from './modules/contact-form-modal';
 import initNpsBadgeHover from './modules/nps-badge-hover';
 import syncBlockStyles from './modules/swup-native-block-styles-handler';
 
@@ -128,8 +127,6 @@ function init(target, args) {
   // Init lead generation popup
   initLeadPopup();
 
-  // Init contact form modal
-  initContactFormModal();
 
   // Init NPS badge hover effect
   initNpsBadgeHover();
