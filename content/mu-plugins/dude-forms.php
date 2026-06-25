@@ -500,10 +500,11 @@ function sync_to_twenty( int $submission_id ): void {
     'status'                => 'synced',
   ], [ 'id' => $submission_id ] );
 
-  // Defer AI enrichment to a background wp-cron tick so the form-submission
-  // request can return quickly. The enrichment job is opt-in via env var, so
-  // sites that do not want it just skip this whole subsystem.
-  maybe_schedule_ai_enrichment( $submission_id );
+  // AI enrichment runs out of band via a system cron entry that calls
+  // `wp dude-forms enrich-pending` as a user who has Claude Code auth (see
+  // README). We deliberately do not use wp_schedule_single_event here because
+  // wp-cron typically runs as the WordPress system user which has no Claude
+  // Code session; the system cron picks up unenriched rows on its own cadence.
 
   // 3. Attach a Note carrying the full message + extras so the salesperson
   //    sees them in Twenty. Best-effort: if Note creation fails the lead is
@@ -836,6 +837,20 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     enrich_submission_with_ai( (int) $args[0] );
     \WP_CLI::success( 'Enrichment attempted for submission #' . (int) $args[0] );
   } );
+
+  \WP_CLI::add_command( 'dude-forms enrich-pending', function () {
+    global $wpdb;
+    $rows = $wpdb->get_col( "SELECT id FROM " . table() . " WHERE status='synced' AND enriched_at IS NULL ORDER BY id ASC LIMIT 25" );
+    if ( ! $rows ) {
+      \WP_CLI::log( 'No pending rows.' );
+      return;
+    }
+    foreach ( $rows as $id ) {
+      enrich_submission_with_ai( (int) $id );
+      \WP_CLI::log( "Enriched #{$id}" );
+    }
+    \WP_CLI::success( 'Processed ' . count( $rows ) . ' pending row(s).' );
+  } );
 }
 
 /* -----------------------------------------------------------------------------
@@ -852,21 +867,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
  *   - DUDE_FORMS_CLAUDE_BIN=/path/to/claude   override binary path
  * -----------------------------------------------------------------------------
  */
-
-const ENRICH_HOOK = 'dude_forms_enrich_ai';
-
-add_action( ENRICH_HOOK, __NAMESPACE__ . '\\enrich_submission_with_ai' );
-
-/**
- * Schedule the enrichment job a short delay after a successful sync. Only
- * scheduled when the feature flag is on, so opting out costs nothing.
- */
-function maybe_schedule_ai_enrichment( int $submission_id ): void {
-  if ( ! defined( 'DUDE_FORMS_ENRICH_WITH_AI' ) || '1' !== (string) DUDE_FORMS_ENRICH_WITH_AI ) {
-    return;
-  }
-  wp_schedule_single_event( time() + 30, ENRICH_HOOK, [ $submission_id ] );
-}
 
 /**
  * Locate the Claude Code CLI binary. Returns '' when none is available.
