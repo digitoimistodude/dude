@@ -978,8 +978,14 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
 /**
  * Delete the Twenty Person/Opportunity/Notes created by a heartbeat synthetic
- * submission, then drop the local row. Best-effort: errors are ignored because
- * the heartbeat result is more important than perfect cleanup of test data.
+ * submission, then drop the local row.
+ *
+ * Defensive: every DELETE is preceded by a GET that verifies the record
+ * carries a heartbeat marker (firstName "Heartbeat Bot ...", opportunity name
+ * containing "Heartbeat Bot", note body containing the marker phrase). This
+ * stops cleanup from ever touching a real customer record even if the marker
+ * email happens to be reused as a Twenty Person (Twenty's upsert would
+ * otherwise hand us back the real Person's id).
  */
 function cleanup_heartbeat_row( int $row_id ): void {
   global $wpdb;
@@ -987,9 +993,23 @@ function cleanup_heartbeat_row( int $row_id ): void {
   if ( ! $row ) {
     return;
   }
+  if ( ! is_heartbeat_email( (string) $row->email ) ) {
+    error_log( '[dude-forms] heartbeat cleanup refused: row ' . $row_id . ' email is not a marker' );
+    return;
+  }
 
   $api_base    = rtrim( (string) TWENTY_API_URL, '/' );
   $auth_header = 'Bearer ' . TWENTY_API_TOKEN;
+  $http_get    = static function ( string $path ) use ( $api_base, $auth_header ) {
+    $resp = wp_remote_get( $api_base . $path, [
+      'headers' => [ 'Authorization' => $auth_header ],
+      'timeout' => 5,
+    ] );
+    if ( is_wp_error( $resp ) || wp_remote_retrieve_response_code( $resp ) >= 300 ) {
+      return null;
+    }
+    return json_decode( (string) wp_remote_retrieve_body( $resp ), true );
+  };
   $http_delete = static function ( string $path ) use ( $api_base, $auth_header ): void {
     wp_remote_request( $api_base . $path, [
       'method'  => 'DELETE',
@@ -999,28 +1019,48 @@ function cleanup_heartbeat_row( int $row_id ): void {
   };
 
   if ( ! empty( $row->twenty_opportunity_id ) ) {
-    $opp_id = (string) $row->twenty_opportunity_id;
-    $resp   = wp_remote_get( $api_base . '/rest/noteTargets?filter=' . rawurlencode( 'targetOpportunityId[eq]:' . $opp_id ), [
-      'headers' => [ 'Authorization' => $auth_header ],
-      'timeout' => 5,
-    ] );
-    if ( ! is_wp_error( $resp ) && wp_remote_retrieve_response_code( $resp ) < 300 ) {
-      $body  = json_decode( (string) wp_remote_retrieve_body( $resp ), true );
-      $items = $body['data']['noteTargets'] ?? [];
+    $opp_id   = (string) $row->twenty_opportunity_id;
+    $opp_data = $http_get( '/rest/opportunities/' . rawurlencode( $opp_id ) );
+    $opp_name = (string) ( $opp_data['data']['opportunity']['name'] ?? '' );
+    if ( '' !== $opp_name && false !== strpos( $opp_name, 'Heartbeat Bot' ) ) {
+      $nt_data = $http_get( '/rest/noteTargets?filter=' . rawurlencode( 'targetOpportunityId[eq]:' . $opp_id ) );
+      $items   = $nt_data['data']['noteTargets'] ?? [];
       foreach ( (array) $items as $nt ) {
+        $note_id = (string) ( $nt['noteId'] ?? '' );
+        if ( '' !== $note_id ) {
+          $note_data = $http_get( '/rest/notes/' . rawurlencode( $note_id ) );
+          $note_title = (string) ( $note_data['data']['note']['title'] ?? '' );
+          $note_body  = (string) ( $note_data['data']['note']['bodyV2']['markdown'] ?? '' );
+          if ( false !== strpos( $note_body, HEARTBEAT_MARKER_PHRASE ) || false !== strpos( $note_title, 'Heartbeat Bot' ) ) {
+            $http_delete( '/rest/notes/' . rawurlencode( $note_id ) );
+          } else {
+            error_log( '[dude-forms] heartbeat cleanup skipped note ' . $note_id . ' (no marker in body or title)' );
+          }
+        }
         if ( ! empty( $nt['id'] ) ) {
           $http_delete( '/rest/noteTargets/' . rawurlencode( (string) $nt['id'] ) );
         }
-        if ( ! empty( $nt['noteId'] ) ) {
-          $http_delete( '/rest/notes/' . rawurlencode( (string) $nt['noteId'] ) );
-        }
       }
+      $http_delete( '/rest/opportunities/' . rawurlencode( $opp_id ) );
+    } else {
+      error_log( '[dude-forms] heartbeat cleanup skipped opportunity ' . $opp_id . ' (name="' . $opp_name . '" missing Heartbeat Bot)' );
     }
-    $http_delete( '/rest/opportunities/' . rawurlencode( $opp_id ) );
   }
 
   if ( ! empty( $row->twenty_person_id ) ) {
-    $http_delete( '/rest/people/' . rawurlencode( (string) $row->twenty_person_id ) );
+    $person_id   = (string) $row->twenty_person_id;
+    $person_data = $http_get( '/rest/people/' . rawurlencode( $person_id ) );
+    $first       = (string) ( $person_data['data']['person']['name']['firstName'] ?? '' );
+    $last        = (string) ( $person_data['data']['person']['name']['lastName']  ?? '' );
+    $primary     = (string) ( $person_data['data']['person']['emails']['primaryEmail'] ?? '' );
+    // Twenty splits "Heartbeat Bot xxx" into firstName="Heartbeat",
+    // lastName="Bot xxx". Require ALL three to align so a real Person sharing
+    // the marker email can never be hit.
+    if ( 'Heartbeat' === $first && 0 === strpos( $last, 'Bot ' ) && is_heartbeat_email( $primary ) ) {
+      $http_delete( '/rest/people/' . rawurlencode( $person_id ) );
+    } else {
+      error_log( '[dude-forms] heartbeat cleanup skipped person ' . $person_id . ' (firstName="' . $first . '" lastName="' . $last . '" email="' . $primary . '")' );
+    }
   }
 
   $wpdb->delete( table(), [ 'id' => $row_id ] );
