@@ -72,6 +72,9 @@ Config::define( 'DUDE_FORMS_ENRICH_WITH_AI', env( 'DUDE_FORMS_ENRICH_WITH_AI' ) 
 Config::define( 'DUDE_FORMS_CLAUDE_BIN', env( 'DUDE_FORMS_CLAUDE_BIN' ) ?: '' );
 Config::define( 'DUDE_FORMS_HEARTBEAT_CRON_URL', env( 'DUDE_FORMS_HEARTBEAT_CRON_URL' ) ?: '' );
 Config::define( 'DUDE_FORMS_HEARTBEAT_SYNC_URL', env( 'DUDE_FORMS_HEARTBEAT_SYNC_URL' ) ?: '' );
+Config::define( 'DUDE_FORMS_HEARTBEAT_E2E_URL', env( 'DUDE_FORMS_HEARTBEAT_E2E_URL' ) ?: '' );
+Config::define( 'DUDE_FORMS_HEARTBEAT_MARKER_EMAIL', env( 'DUDE_FORMS_HEARTBEAT_MARKER_EMAIL' ) ?: 'monitoring+heartbeat@dude.fi' );
+Config::define( 'DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL', env( 'DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL' ) ?: 'monitoring+heartbeat-notify@dude.fi' );
 
 /**
  * Custom Content Directory

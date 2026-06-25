@@ -17,6 +17,7 @@ const TABLE            = 'dude_form_submissions';
 const REST_NAMESPACE   = 'dude/v1';
 const RETRY_HOOK       = 'dude_forms_retry_twenty_sync';
 const MAX_TWENTY_RETRIES = 3;
+const HEARTBEAT_MARKER_PHRASE = 'dude-forms-heartbeat-marker';
 
 /**
  * Resolve table name with prefix.
@@ -169,6 +170,12 @@ function send_notification_email( int $submission_id ): void {
     ? DUDE_FORMS_NOTIFY_EMAIL
     : get_option( 'admin_email' );
 
+  if ( is_heartbeat_email( (string) $row->email ) ) {
+    $recipient = defined( 'DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL' ) && DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL
+      ? DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL
+      : 'monitoring+heartbeat-notify@dude.fi';
+  }
+
   $subject = sprintf( '[dude.fi] Uusi yhteydenotto: %s', $row->name );
 
   $body = "Saapunut: " . $row->created_at . "\n\n"
@@ -188,6 +195,15 @@ function send_notification_email( int $submission_id ): void {
   ];
 
   wp_mail( $recipient, $subject, $body, $headers );
+}
+
+/**
+ * Detect whether an address is the monitoring marker used by the E2E heartbeat
+ * (anything of the form `monitoring+heartbeat...@...`). Used to suppress the
+ * team notification and route the test ping into a filterable mailbox.
+ */
+function is_heartbeat_email( string $email ): bool {
+  return 1 === preg_match( '/^monitoring\+heartbeat/i', $email );
 }
 
 /**
@@ -866,16 +882,153 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
       "SELECT COUNT(*) FROM " . table() . " WHERE status <> 'synced' AND created_at < ( NOW() - INTERVAL 10 MINUTE )"
     );
 
-    if ( 0 === $stuck && '' !== $sync_url ) {
+    $twenty_ok = false;
+    if ( twenty_configured() ) {
+      $probe = wp_remote_get(
+        rtrim( (string) TWENTY_API_URL, '/' ) . '/rest/people?limit=1',
+        [
+          'headers' => [ 'Authorization' => 'Bearer ' . TWENTY_API_TOKEN ],
+          'timeout' => 5,
+        ]
+      );
+      $twenty_ok = ! is_wp_error( $probe ) && wp_remote_retrieve_response_code( $probe ) < 400;
+    }
+
+    if ( 0 === $stuck && $twenty_ok && '' !== $sync_url ) {
       wp_remote_get( $sync_url, [ 'timeout' => 5, 'blocking' => true ] );
     }
 
     if ( $stuck > 0 ) {
       \WP_CLI::warning( $stuck . ' stuck row(s) older than 10 min - skipping sync heartbeat.' );
+    } elseif ( ! $twenty_ok ) {
+      \WP_CLI::warning( 'Twenty connectivity probe failed - skipping sync heartbeat.' );
     } else {
       \WP_CLI::success( 'Heartbeats sent.' );
     }
   } );
+
+  \WP_CLI::add_command( 'dude-forms heartbeat-e2e', function () {
+    global $wpdb;
+
+    $url = defined( 'DUDE_FORMS_HEARTBEAT_E2E_URL' ) ? (string) DUDE_FORMS_HEARTBEAT_E2E_URL : '';
+    if ( '' === $url ) {
+      \WP_CLI::error( 'DUDE_FORMS_HEARTBEAT_E2E_URL not configured.' );
+    }
+    if ( ! twenty_configured() ) {
+      \WP_CLI::error( 'Twenty not configured.' );
+    }
+
+    $marker_email = defined( 'DUDE_FORMS_HEARTBEAT_MARKER_EMAIL' ) && DUDE_FORMS_HEARTBEAT_MARKER_EMAIL
+      ? (string) DUDE_FORMS_HEARTBEAT_MARKER_EMAIL
+      : 'monitoring+heartbeat@dude.fi';
+    $run_id = bin2hex( random_bytes( 4 ) );
+
+    $fields = [
+      1  => [ 'name' => 'Viesti',            'value' => '[' . HEARTBEAT_MARKER_PHRASE . " run={$run_id}] Automaattinen elinvoimatarkistus, jätä huomiotta." ],
+      2  => [ 'name' => 'Nimi',              'value' => "Heartbeat Bot {$run_id}" ],
+      8  => [ 'name' => 'Sähköposti',        'value' => $marker_email ],
+      9  => [ 'name' => 'Alustava budjetti', 'value' => '1000' ],
+      11 => [ 'name' => 'Puhelin',           'value' => '+358000000000' ],
+    ];
+    $entry     = [ 'referer_url' => 'https://dude.fi/__heartbeat' ];
+    $form_data = [
+      'id'     => BRIDGE_FORM_ID,
+      'fields' => [
+        1  => [ 'type' => 'textarea', 'label' => 'Viesti' ],
+        2  => [ 'type' => 'text',     'label' => 'Nimi' ],
+        8  => [ 'type' => 'email',    'label' => 'Sähköposti' ],
+        9  => [ 'type' => 'text',     'label' => 'Alustava budjetti' ],
+        11 => [ 'type' => 'phone',    'label' => 'Puhelin' ],
+      ],
+    ];
+
+    do_action( 'wpforms_process_complete', $fields, $entry, $form_data, 0 );
+
+    $row = $wpdb->get_row( $wpdb->prepare(
+      "SELECT * FROM " . table() . " WHERE email = %s AND message LIKE %s ORDER BY id DESC LIMIT 1",
+      $marker_email,
+      '%run=' . $run_id . '%'
+    ) );
+    if ( ! $row ) {
+      \WP_CLI::error( 'Heartbeat row not found - WP hook or DB insert failed.' );
+    }
+    $row_id = (int) $row->id;
+
+    if ( 'synced' !== $row->status || empty( $row->twenty_opportunity_id ) || empty( $row->twenty_person_id ) ) {
+      cleanup_heartbeat_row( $row_id );
+      \WP_CLI::error( 'Twenty sync did not complete: status=' . $row->status . ' err=' . (string) $row->twenty_last_error );
+    }
+
+    $api_base    = rtrim( (string) TWENTY_API_URL, '/' );
+    $auth_header = 'Bearer ' . TWENTY_API_TOKEN;
+    $opp_check   = wp_remote_get( $api_base . '/rest/opportunities/' . rawurlencode( (string) $row->twenty_opportunity_id ), [
+      'headers' => [ 'Authorization' => $auth_header ],
+      'timeout' => 5,
+    ] );
+    if ( is_wp_error( $opp_check ) || wp_remote_retrieve_response_code( $opp_check ) >= 300 ) {
+      cleanup_heartbeat_row( $row_id );
+      \WP_CLI::error( 'Twenty Opportunity not retrievable after create.' );
+    }
+
+    enrich_submission_with_ai( $row_id );
+    $after = $wpdb->get_row( $wpdb->prepare( "SELECT enriched_at FROM " . table() . " WHERE id = %d", $row_id ) );
+    if ( empty( $after->enriched_at ) ) {
+      cleanup_heartbeat_row( $row_id );
+      \WP_CLI::error( 'AI enrichment did not complete.' );
+    }
+
+    cleanup_heartbeat_row( $row_id );
+
+    wp_remote_get( $url, [ 'timeout' => 5, 'blocking' => true ] );
+    \WP_CLI::success( 'End-to-end heartbeat OK (run ' . $run_id . ').' );
+  } );
+}
+
+/**
+ * Delete the Twenty Person/Opportunity/Notes created by a heartbeat synthetic
+ * submission, then drop the local row. Best-effort: errors are ignored because
+ * the heartbeat result is more important than perfect cleanup of test data.
+ */
+function cleanup_heartbeat_row( int $row_id ): void {
+  global $wpdb;
+  $row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . table() . " WHERE id = %d", $row_id ) );
+  if ( ! $row ) {
+    return;
+  }
+
+  $api_base    = rtrim( (string) TWENTY_API_URL, '/' );
+  $auth_header = 'Bearer ' . TWENTY_API_TOKEN;
+  $http_delete = static function ( string $path ) use ( $api_base, $auth_header ): void {
+    wp_remote_request( $api_base . $path, [
+      'method'  => 'DELETE',
+      'headers' => [ 'Authorization' => $auth_header ],
+      'timeout' => 6,
+    ] );
+  };
+
+  if ( ! empty( $row->twenty_opportunity_id ) ) {
+    $opp_id = (string) $row->twenty_opportunity_id;
+    $resp   = wp_remote_get( $api_base . '/rest/noteTargets?filter=opportunityId[eq]:' . rawurlencode( $opp_id ), [
+      'headers' => [ 'Authorization' => $auth_header ],
+      'timeout' => 5,
+    ] );
+    if ( ! is_wp_error( $resp ) && wp_remote_retrieve_response_code( $resp ) < 300 ) {
+      $body  = json_decode( (string) wp_remote_retrieve_body( $resp ), true );
+      $items = $body['data']['noteTargets'] ?? [];
+      foreach ( (array) $items as $nt ) {
+        if ( ! empty( $nt['noteId'] ) ) {
+          $http_delete( '/rest/notes/' . rawurlencode( (string) $nt['noteId'] ) );
+        }
+      }
+    }
+    $http_delete( '/rest/opportunities/' . rawurlencode( $opp_id ) );
+  }
+
+  if ( ! empty( $row->twenty_person_id ) ) {
+    $http_delete( '/rest/people/' . rawurlencode( (string) $row->twenty_person_id ) );
+  }
+
+  $wpdb->delete( table(), [ 'id' => $row_id ] );
 }
 
 /* -----------------------------------------------------------------------------
