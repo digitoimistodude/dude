@@ -52,6 +52,7 @@ content/mu-plugins/*
 !content/mu-plugins/register-theme-directory.php
 !content/mu-plugins/bedrock-autoloader.php
 !content/mu-plugins/dude-cloudflare-purge.php
+!content/mu-plugins/dude-forms.php
 content/languages
 
 # Dynamic content

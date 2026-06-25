@@ -59,6 +59,19 @@ Config::define( 'CLOUDFLARE_ZONE_ID', env( 'CLOUDFLARE_ZONE_ID' ) ?: '' );
 Config::define( 'CLOUDFLARE_API_TOKEN', env( 'CLOUDFLARE_API_TOKEN' ) ?: '' );
 
 /**
+ * Twenty CRM (consumed by dude-forms mu-plugin)
+ */
+Config::define( 'TWENTY_API_URL', env( 'TWENTY_API_URL' ) ?: '' );
+Config::define( 'TWENTY_API_TOKEN', env( 'TWENTY_API_TOKEN' ) ?: '' );
+Config::define( 'TWENTY_FIRST_STAGE', env( 'TWENTY_FIRST_STAGE' ) ?: 'LIIDIT' );
+Config::define( 'TWENTY_DEFAULT_OWNER_ID', env( 'TWENTY_DEFAULT_OWNER_ID' ) ?: '' );
+Config::define( 'TWENTY_DEFAULT_TUNNISTE', env( 'TWENTY_DEFAULT_TUNNISTE' ) ?: '' );
+Config::define( 'DUDE_FORMS_NOTIFY_EMAIL', env( 'DUDE_FORMS_NOTIFY_EMAIL' ) ?: '' );
+Config::define( 'DUDE_FORMS_FREE_EMAIL_DOMAINS', env( 'DUDE_FORMS_FREE_EMAIL_DOMAINS' ) ?: 'gmail.com,googlemail.com,outlook.com,hotmail.com,live.com,yahoo.com,yahoo.fi,icloud.com,me.com,mac.com,aol.com,protonmail.com,proton.me,pm.me,yandex.com,yandex.ru,mail.com,gmx.com,gmx.de,fastmail.com,tutanota.com,zoho.com,duck.com,saunalahti.fi,suomi24.fi,kolumbus.fi,hotmail.fi' );
+Config::define( 'DUDE_FORMS_ENRICH_WITH_AI', env( 'DUDE_FORMS_ENRICH_WITH_AI' ) ?: '' );
+Config::define( 'DUDE_FORMS_CLAUDE_BIN', env( 'DUDE_FORMS_CLAUDE_BIN' ) ?: '' );
+
+/**
  * Custom Content Directory
  */
 Config::define( 'CONTENT_DIR', '/content' );
