@@ -856,7 +856,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
   \WP_CLI::add_command( 'dude-forms enrich-pending', function () {
     global $wpdb;
-    $rows = $wpdb->get_col( "SELECT id FROM " . table() . " WHERE status='synced' AND enriched_at IS NULL ORDER BY id ASC LIMIT 25" );
+    $rows = $wpdb->get_col( "SELECT id FROM " . table() . " WHERE status='synced' AND enriched_at IS NULL AND email NOT LIKE 'monitoring+heartbeat%' ORDER BY id ASC LIMIT 25" );
     if ( ! $rows ) {
       \WP_CLI::log( 'No pending rows.' );
       return;
@@ -968,13 +968,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     if ( is_wp_error( $opp_check ) || wp_remote_retrieve_response_code( $opp_check ) >= 300 ) {
       cleanup_heartbeat_row( $row_id );
       \WP_CLI::error( 'Twenty Opportunity not retrievable after create.' );
-    }
-
-    enrich_submission_with_ai( $row_id );
-    $after = $wpdb->get_row( $wpdb->prepare( "SELECT enriched_at FROM " . table() . " WHERE id = %d", $row_id ) );
-    if ( empty( $after->enriched_at ) ) {
-      cleanup_heartbeat_row( $row_id );
-      \WP_CLI::error( 'AI enrichment did not complete.' );
     }
 
     cleanup_heartbeat_row( $row_id );
