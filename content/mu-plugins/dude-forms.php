@@ -166,15 +166,14 @@ function send_notification_email( int $submission_id ): void {
     return;
   }
 
+  // Heartbeat synthetic submissions must not generate inbox or Mailgun noise.
+  if ( is_heartbeat_email( (string) $row->email ) ) {
+    return;
+  }
+
   $recipient = defined( 'DUDE_FORMS_NOTIFY_EMAIL' ) && DUDE_FORMS_NOTIFY_EMAIL
     ? DUDE_FORMS_NOTIFY_EMAIL
     : get_option( 'admin_email' );
-
-  if ( is_heartbeat_email( (string) $row->email ) ) {
-    $recipient = defined( 'DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL' ) && DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL
-      ? DUDE_FORMS_HEARTBEAT_NOTIFY_EMAIL
-      : 'monitoring+heartbeat-notify@dude.fi';
-  }
 
   $subject = sprintf( '[dude.fi] Uusi yhteydenotto: %s', $row->name );
 
@@ -1001,7 +1000,7 @@ function cleanup_heartbeat_row( int $row_id ): void {
 
   if ( ! empty( $row->twenty_opportunity_id ) ) {
     $opp_id = (string) $row->twenty_opportunity_id;
-    $resp   = wp_remote_get( $api_base . '/rest/noteTargets?filter=opportunityId[eq]:' . rawurlencode( $opp_id ), [
+    $resp   = wp_remote_get( $api_base . '/rest/noteTargets?filter=' . rawurlencode( 'targetOpportunityId[eq]:' . $opp_id ), [
       'headers' => [ 'Authorization' => $auth_header ],
       'timeout' => 5,
     ] );
@@ -1009,6 +1008,9 @@ function cleanup_heartbeat_row( int $row_id ): void {
       $body  = json_decode( (string) wp_remote_retrieve_body( $resp ), true );
       $items = $body['data']['noteTargets'] ?? [];
       foreach ( (array) $items as $nt ) {
+        if ( ! empty( $nt['id'] ) ) {
+          $http_delete( '/rest/noteTargets/' . rawurlencode( (string) $nt['id'] ) );
+        }
         if ( ! empty( $nt['noteId'] ) ) {
           $http_delete( '/rest/notes/' . rawurlencode( (string) $nt['noteId'] ) );
         }
