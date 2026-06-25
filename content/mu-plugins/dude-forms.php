@@ -1136,11 +1136,22 @@ function apply_enrichment_to_twenty( $row, array $enrichment ): void {
 
   // Briefing note
   if ( '' !== $briefing && ! empty( $row->twenty_opportunity_id ) ) {
+    $resolved_company = trim( (string) ( $company_data['name'] ?? '' ) );
+    if ( '' === $resolved_company ) {
+      $resolved_company = trim( (string) ( $row->company ?? '' ) );
+    }
+    $title_parts   = array_values( array_filter( array_map( 'trim', [ (string) $row->name, $resolved_company ] ) ) );
+    $title_subject = $title_parts ? implode( ', ', $title_parts ) : (string) $row->email;
+    $note_title    = 'Yhteydenotto - ' . $title_subject . ' - Tekoälyllä rikastettu tiivistelmä dude.fi lomakkeesta';
+
+    $server_host = gethostname() ?: ( wp_parse_url( home_url(), PHP_URL_HOST ) ?: 'dude.fi' );
+    $footer      = "\n\n---\n*Tämä tiivistelmä on tuotettu automaattisesti `claude -p` -työkalulla (Anthropic Claude Code CLI) palvelimella `" . $server_host . "`, mu-pluginissa `dude-forms` (Linear: DEV-1110). Lähde: WPForms-lomakelähetys #" . (int) $row->id . '.*';
+
     $note_resp = wp_remote_post( $api_base . '/rest/notes', [
       'headers' => [ 'Authorization' => $auth_header, 'Content-Type' => 'application/json' ],
       'body'    => wp_json_encode( [
-        'title'  => 'AI-rikastettu briefing',
-        'bodyV2' => [ 'markdown' => $briefing, 'blocknote' => '' ],
+        'title'  => $note_title,
+        'bodyV2' => [ 'markdown' => $briefing . $footer, 'blocknote' => '' ],
       ] ),
       'timeout' => 6,
     ] );
