@@ -1154,8 +1154,11 @@ Rules:
   email patterns (etunimi.sukunimi@). Empty string when unsure.
 - "person.language" is the ISO 639-1 code of the message language (e.g. "fi",
   "en", "sv"). Default to "fi".
-- "salesperson_briefing_fi" is a single short paragraph in Finnish summarising
-  who this lead seems to be and what they want, max 80 words.
+- "salesperson_briefing_fi" is a short paragraph in Finnish summarising who
+  the lead seems to be, what they want, and a sales verdict (kuuma/lämmin/
+  kylmä liidi, työnhakija, roskapostia, jne.) so a salesperson can triage at
+  a glance. Use only Finnish vocabulary and proper Finnish diacritics
+  (ä, ö, å) - never ASCII substitutes.
 
 Schema:
 $schema
@@ -1358,7 +1361,7 @@ function apply_enrichment_to_twenty( $row, array $enrichment ): void {
     $note_title    = 'Yhteydenotto - ' . $title_subject . ' - Tekoälyllä rikastettu tiivistelmä dude.fi lomakkeesta';
 
     $server_host = gethostname() ?: ( wp_parse_url( home_url(), PHP_URL_HOST ) ?: 'dude.fi' );
-    $footer      = "\n\n---\n*Tämä tiivistelmä on tuotettu automaattisesti `claude -p` -työkalulla (Anthropic Claude Code CLI) palvelimella `" . $server_host . "`, mu-pluginissa `dude-forms` (Linear: DEV-1110). Lähde: WPForms-lomakelähetys #" . (int) $row->id . '.*';
+    $footer      = "\n\n---\n*Tämä tiivistelmä on tuotettu automaattisesti `claude -p` -työkalulla (Anthropic Claude Code CLI) palvelimella `" . $server_host . "`, mu-plugin: `dude-forms` (Linear: DEV-1110). Lähde: WPForms-lomakelähetys #" . (int) $row->id . '.*';
 
     $note_resp = wp_remote_post( $api_base . '/rest/notes', [
       'headers' => [ 'Authorization' => $auth_header, 'Content-Type' => 'application/json' ],
